@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Dokumentation för Partnercenter-utvecklare
+summary: Samarbeta med Microsoft för utveckling av partnerfunktioner.
+metadata:
+  title: Dokumentation för Partnercenter-utvecklare
+  description: Samarbeta med Microsoft för utveckling av partnerfunktioner.
+  ms.service: partner-dashboard
+  ms.subservice: partnercenter-sdk
+  ms.topic: landing-page
+  ms.collection: collection
+  author: jasonwhowell
+  ms.author: jasonh
+  ms.date: 01/08/2020
+  ms.openlocfilehash: 12c6cba5f489b9ab7c3394629c319a43d2d9163b
+  ms.sourcegitcommit: 529b07030a874d644cf947790f4b53cdff438dd4
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "97766637"
+landingContent:
+- title: Utveckla med Partnercenter
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurera ditt utvecklarkonto och autentisering
+      url: partner-center-authentication.md
+    - text: Konfigurera din miljö
+      url: get-started.md
+  - linkListType: whats-new
+    links:
+    - text: Skapa en Azure-plan med API:erna
+      url: create-azure-plan.md
+  - linkListType: concept
+    links:
+    - text: Kodexempel
+      url: partner-center-samples.md
+    - text: Exempelscenarier
+      url: scenarios.md
+- title: Använda .NET SDK (v1.16.1-förhandsversion)
+  linkLists:
+  - linkListType: download
+    links:
+    - text: .NET-SDK för Partnercenter
+      url: https://www.nuget.org/packages/Microsoft.Store.PartnerCenter
+    - text: .NET-exempel för Partnercenter
+      url: https://github.com/microsoft/Partner-Center-DotNet-Samples
+  - linkListType: reference
+    links:
+    - text: Referens för hanterat .NET-API
+      url: /dotnet/api/
+    - text: Viktig information för .NET-SDK-versioner
+      url: dotnet-release-notes.md
+- title: Använda REST-API:er
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Partnercenter – REST API-referens
+      url: partner-center-rest-api-reference.md
+- title: Använda Java SDK (öppen källkod)
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Ladda ned Java SDK för Partnercenter
+      url: https://search.maven.org/artifact/com.microsoft.store/partnercenter
+    - text: GitHub-lagringsplats för Java SDK (för frågor, bidrag och problem)
+      url: https://github.com/microsoft/Partner-Center-Java
+  - linkListType: reference
+    links:
+    - text: Referens för Java-API
+      url: /java/partnercenter/overview
+- title: Använda PowerShell-modulen (öppen källkod)
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Installera PowerShell-modulen
+      url: https://www.powershellgallery.com/packages/PartnerCenter
+    - text: GitHub-lagringsplats för PowerShell (för frågor, bidrag och problem)
+      url: https://github.com/microsoft/Partner-Center-PowerShell
+  - linkListType: reference
+    links:
+    - text: PowerShell-kommandon
+      url: /powershell/partnercenter
+- title: Använda Swagger-API:et för CSP-partner
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Swagger API-referens för Partnercenter-tjänster (för CSP-partner)
+      url: https://apidocs.microsoft.com/services/partnercenter
