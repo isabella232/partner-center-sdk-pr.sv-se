@@ -4,12 +4,12 @@ description: Så här uppdaterar du den angivna konfigurations principen för de
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6bf3b6f4db7516779c157b647725368ff0e4a570
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 42c57a92020723415b4621e9f9d7c5c3278bfb77
+ms.sourcegitcommit: 970031473b2e8cd3d08c6c097949c057a51df3ef
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769792"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99505347"
 ---
 # <a name="update-a-configuration-policy-for-the-specified-customer"></a>Uppdatera en konfigurationsprincip för den angivna kunden
 
@@ -66,8 +66,8 @@ Använd följande Sök vägs parametrar när du skapar begäran.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                                   |
 |-------------|--------|----------|---------------------------------------------------------------|
-| kund-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.         |
-| princip-ID   | sträng | Yes      | En GUID-formaterad sträng som identifierar den princip som ska uppdateras. |
+| kund-ID | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.         |
+| princip-ID   | sträng | Ja      | En GUID-formaterad sträng som identifierar den princip som ska uppdateras. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -77,13 +77,13 @@ Mer information finns i [partner Center rest-rubriker](headers.md).
 
 Begär ande texten måste innehålla ett objekt som innehåller princip informationen.
 
-| Namn            | Typ             | Obligatorisk | Uppdateras | Description                                                                                                                                              |
+| Namn            | Typ             | Obligatorisk | Uppdateras | Beskrivning                                                                                                                                              |
 |-----------------|------------------|----------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id              | sträng           | Ja      | Nej        | Den GUID-formaterade sträng som identifierar principen.                                                                                                    |
+| id              | sträng           | Ja      | Inga        | Den GUID-formaterade sträng som identifierar principen.                                                                                                    |
 | name            | sträng           | Ja      | Ja       | Det egna namnet på principen.                                                                                                                         |
-| category        | sträng           | Ja      | Nej        | Princip kategorin.                                                                                                                                     |
-| beskrivning     | sträng           | No       | Ja       | Princip beskrivningen.                                                                                                                                  |
-| devicesAssigned | antal           | Nej       | Nej        | Antalet enheter.                                                                                                                                   |
+| category        | sträng           | Ja      | Inga        | Princip kategorin.                                                                                                                                     |
+| beskrivning     | sträng           | Inga       | Ja       | Princip beskrivningen.                                                                                                                                  |
+| devicesAssigned | antal           | Inga       | Inga        | Antalet enheter.                                                                                                                                   |
 | policySettings  | matris med strängar | Ja      | Ja       | Princip inställningarna: "ingen", "ta bort \_ OEM \_ -förinstallationer", "OOBE \_ User \_ not \_ Local \_ admin", "hoppa över \_ Express \_ Inställningar", "hoppa över \_ OEM \_ -registrering", hoppa över \_ EULA ". |
 
 ### <a name="request-example"></a>Exempel på begäran

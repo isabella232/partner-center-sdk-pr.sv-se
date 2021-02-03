@@ -4,12 +4,12 @@ description: Skapa en online-Marketplace för att sälja CSP-erbjudanden (Cloud 
 ms.date: 05/29/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d64deff9b002b861c9f48d076feb5841af727e3d
-ms.sourcegitcommit: 57620e249e218edc4af7c83c2ce8a3008a4adf4e
+ms.openlocfilehash: 83ae0c789f95485ec3eb272434e57421a8f93fb6
+ms.sourcegitcommit: 970031473b2e8cd3d08c6c097949c057a51df3ef
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "97769207"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99505330"
 ---
 # <a name="csp-customer-storefront-builder-quick-start-guide"></a>Snabbstartsguide för butiksbyggare för CSP-kunder
 
@@ -25,10 +25,10 @@ Med CSP Customer butik Builder kan partners enkelt skapa en online-marknadsplats
 
 Den här webbplatsen ägs fullt ut, stöds och underhålls av partner och Microsoft samlar inte in data eller telemetri från webbplatsen. CSP Customer butik Builder skapar en webbplats för partnern som är helt kompatibel med [betalnings kortet bransch data säkerhets standard](https://www.pcisecuritystandards.org/) (PCI DSS).
 
-CSP Customer butik Builder-koden omfattas av licensen som är tillgänglig i [partner Center SDK-licensavtalet](https://partnercenter.microsoft.com/partner/EULA_Partner_Center_SDK).
+CSP Customer butik Builder-koden omfattas av licensen som är tillgänglig i [partner Center SDK-licensavtalet](/legal/partner-center/eula-partner-center-sdk).
 
 >[!NOTE]
->Du ansvarar för butik webbplats hantering, underhåll och eventuella problem som kan uppstå när webbplatser skapas. Läs och förstå villkoren i [partner Center SDK-licensavtalet](https://partnercenter.microsoft.com/partner/EULA_Partner_Center_SDK).
+>Du ansvarar för butik webbplats hantering, underhåll och eventuella problem som kan uppstå när webbplatser skapas. Läs och förstå villkoren i [partner Center SDK-licensavtalet](/legal/partner-center/eula-partner-center-sdk).
 
 Mer information finns även i följande artiklar: [CSP-kund Web butik](csp-customer-web-storefront.md) och [konsolen test app](console-test-app.md).
 
@@ -52,7 +52,7 @@ CSP Customer butik Builder är avsett som ett snabbt sätt att skapa en webbplat
 
 - PayU-betalningskonfiguration fungerar för närvarande endast i Indien. PayU-tillgänglighet och support kontrol leras bara av PayU och kan tas ur drift när som helst av PayU.
 
-- Läs och förstå villkoren i [partner Center SDK-licensavtalet](https://partnercenter.microsoft.com/partner/EULA_Partner_Center_SDK).
+- Läs och förstå villkoren i [partner Center SDK-licensavtalet](/legal/partner-center/eula-partner-center-sdk).
 
 ## <a name="using-the-csp-customer-storefront-builder"></a>Använda CSP Customer butik Builder
 
