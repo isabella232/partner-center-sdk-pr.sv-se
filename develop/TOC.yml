@@ -1,0 +1,559 @@
+- name: Resurser för Partnercenter-utvecklare
+  href: index.yml
+- name: Kom igång
+  href: get-started.md
+  items:
+    - name: Utveckla för Partnercenter för Microsoft National Cloud
+      href: developing-for-partner-center-for-microsoft-national-cloud.md
+      items:
+        - name: Registrera appinformation Partnercenter
+          href: create-apps-for-partner-center-for-microsoft-national-clouds.md
+    - name: Partnercenter-exempel
+      href: partner-center-samples.md
+      items:
+        - name: Webbutik för CSP-kunder
+          href: csp-customer-web-storefront.md
+        - name: Snabbstartsguide för butiksbyggare för CSP-kunder
+          href: csp-customer-storefront-builder-quick-start-guide-.md
+        - name: Konsoltestapp
+          href: console-test-app.md
+    - name: Konfigurera API-åtkomst i Partner Center
+      href: set-up-api-access-in-partner-center.md
+    - name: Vägledning för API-begränsning
+      href: api-throttling-guidance.md
+    - name: Partner Center-autentisering
+      href: partner-center-authentication.md
+    - name: Aktivera säker programmodell
+      href: enable-secure-app-model.md
+    - name: Program för tidig användare
+      href: early-adopter-program.md
+- name: Scenarier
+  href: scenarios.md
+  items:
+    - name: Analys
+      href: usage-analytics.md
+      items:
+        - name: Partnercenter-analys – resurser
+          href: partner-center-analytics-resources.md
+    - name: Hämta all information om Azure-användningsanalys
+      href: get-all-azure-usage-analytics.md
+      items:
+        - name: Hämta all analysinformation för indirekta återförsäljare
+          href: get-all-indirect-resellers-analytics.md
+        - name: Hämta all information om hänvisningsanalys
+          href: get-all-referrals-analytics.md
+        - name: Hämta all information om sökanalys
+          href: get-all-search-analytics.md
+        - name: Hämta all information om prenumerationsanalys
+          href: get-all-subscription-analytics.md
+        - name: Hämta information om prenumerationsanalys filtrerad efter en sökfråga
+          href: get-subscription-analytics-by-search-query.md
+        - name: Hämta information om prenumerationsanalys grupperad efter datum eller perioder
+          href: get-subscription-analytics-grouped-by-dates-or-terms.md
+        - name: Hämta information om licensdistribution
+          href: get-licenses-deployment-information.md
+        - name: Hämta information om licensanvändning
+          href: get-licenses-usage-information.md
+        - name: Hämta information om kundlicensdistribution
+          href: get-customer-licenses-deployment-information.md
+        - name: Hämta information om kundlicensanvändning
+          href: get-customer-licenses-usage-information.md
+        - name: Hämta information om partnerlicensdistribution
+          href: get-partner-licenses-deployment-information.md
+        - name: Hämta information om partnerlicensanvändning
+          href: get-partner-licenses-usage-information.md
+    - name: Granskningsåtgärder
+      href: audit.md
+      items:
+        - name: Hämta en post för Partnercenter-aktivitet
+          href: get-a-record-of-partner-center-activity-by-user.md
+    - name: Enhetsdistribution
+      href: device-deployment.md
+      items:
+        - name: Skapa en ny konfigurationsprincip för den angivna kunden
+          href: create-a-new-configuration-policy-for-the-specified-customer.md
+        - name: Ta bort en konfigurationsprincip för den angivna kunden
+          href: delete-a-configuration-policy-for-the-specified-customer.md
+        - name: Hämta en lista över en kunds principer
+          href: get-a-list-of-a-customer-s-policies.md
+        - name: Hämta en kunds konfigurationsprincip
+          href: retrieve-a-customer-s-configuration-policy.md
+        - name: Uppdatera en konfigurationsprincip för den angivna kunden
+          href: update-a-configuration-policy-for-the-specified-customer.md
+        - name: Hämta status för en uppladdning av enhetsbatch
+          href: get-the-status-of-a-device-batch-upload.md
+        - name: Hämta en lista över enhetsbatchar för den angivna kunden
+          href: get-the-list-of-device-batches-for-the-specified-customer.md
+        - name: Hämta en lista över enheter för den angivna batchen och kunden
+          href: get-a-list-of-devices-for-the-specified-batch-and-customer.md
+        - name: Ladda upp en lista över enheter för att skapa en ny batch för den angivna kunden
+          href: upload-a-list-of-devices-to-create-a-new-batch-for-the-specified-customer.md
+        - name: Ladda upp en lista över enheter till en befintlig batch för den angivna kunden
+          href: upload-a-list-of-devices-for-the-specified-customer.md
+        - name: Uppdatera en lista över enheter med en princip
+          href: update-a-list-of-devices-with-a-policy.md
+        - name: Ta bort en enhet för den angivna kunden
+          href: delete-a-device-for-the-specified-customer.md
+    - name: Hantera konton och profiler
+      href: manage-profiles-and-information.md
+      items:
+        - name: Hämta en kunds prenumerationer efter partner-MPN-ID
+          href: get-all-subscriptions-by-partner.md
+        - name: Hämta en organisationsprofil
+          href: get-an-organization-profile.md
+        - name: Hämta kunder till en indirekt återförsäljare
+          href: get-customers-of-an-indirect-reseller.md
+        - name: Hämta indirekta återförsäljare för en kund
+          href: get-indirect-resellers-of-a-customer.md
+        - name: Hämta Microsoft Partner Network-profil
+          href: get-partner-network-profile.md
+        - name: Hämta partnerfaktureringsprofil
+          href: get-partner-billing-profile.md
+        - name: Verifiera ett partner-MPN-ID
+          href: get-partner-by-mpn-id.md
+        - name: Verifiera en indirekt återförsäljares signeringsstatus för Microsoft-partneravtal
+          href: verify-indirect-reseller-mpa-status.md
+        - name: Hämta supportprofil
+          href: get-support-profile.md
+        - name: Hämta partnerns juridiska företagsprofil
+          href: get-legal-business-profile.md
+        - name: Hämta en lista över indirekta återförsäljare
+          href: retrieve-a-list-of-indirect-resellers.md
+        - name: Uppdatera en organisationsprofil
+          href: update-an-organization-profile.md
+        - name: Uppdatera partnerfaktureringsprofilen
+          href: update-partner-billing-profile.md
+        - name: Uppdatera supportprofil
+          href: update-support-profile.md
+        - name: Uppdatera partnerns juridiska företagsprofil
+          href: update-legal-business-profile.md
+    - name: Hantera fakturering
+      href: manage-billing.md
+      items:
+        - name: Ändra faktureringscykeln
+          href: change-the-billing-cycle.md
+        - name: Hämta sammanfattningen av en kunds servicekostnader
+          href: get-a-customer-s-service-costs-summary.md
+        - name: Hämta radobjekt för en kunds servicekostnader
+          href: get-a-customer-s-service-costs-line-items.md
+        - name: Hämta en samling fakturor
+          href: get-a-collection-of-invoices.md
+        - name: Hämta en kunds användningsposter för Azure
+          href: get-a-customer-s-utilization-record-for-azure.md
+        - name: Hämta en faktura efter ID
+          href: get-invoice-by-id.md
+        - name: Hämta radobjekt för fakturerad förbrukning
+          href: get-invoice-billed-consumption-lineitems.md
+        - name: Hämta länkar för fakturauppskattning
+          href: get-invoice-estimate-links.md
+        - name: Hämta radobjekt för faktura
+          href: get-invoiceline-items.md
+        - name: Hämta kvittoutdrag för faktura
+          href: get-invoice-receipt-statement.md
+        - name: Hämta fakturautdrag
+          href: get-invoice-statement.md
+        - name: Hämta fakturasammanfattningar
+          href: get-invoice-summaries.md
+        - name: Hämta radobjekt för ofakturerad förbrukning
+          href: get-invoice-unbilled-consumption-lineitems.md
+        - name: Hämta radobjekt för ofakturerad avstämning
+          href: get-invoice-unbilled-recon-lineitems.md
+        - name: Hämta priser för Microsoft Azure
+          href: get-prices-for-microsoft-azure.md
+        - name: Hämta priser för Microsoft Azure Partner Shared Services
+          href: get-prices-for-microsoft-azure-partner-shared-services.md
+        - name: Hämta partnerns aktuella kontosaldo
+          href: get-the-reseller-s-current-account-balance.md
+    - name: Utgift i Azure
+      href: azure-spending.md
+      items:
+        - name: Hämta användningssammanfattning för partner
+          href: get-a-partner-usage-summary.md
+        - name: Hämta alla kundanvändningsposter för en partner
+          href: get-a-customer-s-usage-records.md
+        - name: Hämta användningssammanfattning för kund
+          href: get-a-customer-usage-summary.md
+        - name: Hämta alla prenumerationsanvändningsposter för en kund
+          href: get-a-customer-subscription-s-usage-records.md
+        - name: Hämta sammanfattning av prenumerationsanvändning
+          href: get-a-customer-subscription-usage-summary.md
+        - name: Hämta alla månatliga användningsposter för en prenumeration
+          href: get-all-monthly-usage-records-for-a-subscription.md
+        - name: Hämta användningsdata för prenumeration efter resurs
+          href: get-a-customer-subscription-resource-usage-records.md
+        - name: Hämta användningsdata för prenumeration efter mätare
+          href: get-a-customer-subscription-meter-usage-records.md
+        - name: Hämta postresurser för mätaranvändning
+          href: meter-usage-resources.md
+        - name: Hämta postresurser för resursanvändning
+          href: resource-usage-resources.md
+        - name: Hämta användningsbudget för kund
+          href: get-a-customer-s-usage-spending-budget.md
+        - name: Uppdatera användningsbudget för kund
+          href: update-a-customer-s-usage-spending-budget.md
+        - name: Produktuppgraderingsresurser
+          href: product-upgrade-resources.md
+          items:
+            - name: Hämta status för produktuppgradering
+              href: get-product-upgrade-status.md
+            - name: Hämta berättigande för produktuppgradering
+              href: get-eligibility-for-product-upgrade.md
+            - name: Skapa produktuppgraderingsentitet för en kund
+              href: create-product-upgrade-entity.md
+        - name: Hämta en lista över Azure-berättigande för en prenumeration
+          href: get-a-list-of-azure-entitlements-for-subscription.md
+    - name: Hantera kundkonton
+      href: manage-customers.md
+      items:
+        - name: Lägg till en verifierad domän för en kund
+          href: add-a-verified-domain-for-a-customer.md
+        - name: Tilldela licenser till en användare
+          href: assign-licenses-to-a-user.md
+        - name: Hämta avtalsmetadata för Microsoft Cloud-avtal
+          href: get-agreement-metadata.md
+        - name: Hämta avtalsmetadata för Microsoft-kundavtalet
+          href: get-customer-agreement-metadata.md
+        - name: Få bekräftelse på kundgodkännande av Microsoft Cloud-avtal
+          href: get-confirmation-of-customer-consent.md
+        - name: Ladda ned mall för Microsoft-kundavtal
+          href: download-customer-agreement-template.md
+        - name: Få bekräftelse på kundgodkännande av Microsoft-kundavtal
+          href: get-confirmation-of-customer-agreement.md
+        - name: Hämta status för direktsignering (direktgodkännande) för Microsoft-kundavtal
+          href: get-direct-sign-status-of-customer-agreement.md
+        - name: Bekräfta kundgodkännande av Microsoft-kundavtal
+          href: confirm-customer-consent-customer-agreement.md
+        - name: Hämta licenser tilldelade till en användare
+          href: check-which-licenses-are-assigned-to-a-user.md
+        - name: Hämta licenser tilldelade till en användare efter licensgrupp
+          href: get-licenses-assigned-to-a-user-by-license-group.md
+        - name: Skapa en kund
+          href: create-a-customer.md
+        - name: Skapa en kund för en indirekt återförsäljare
+          href: create-a-customer-for-an-indirect-reseller.md
+        - name: Skapa användarkonton för en kund
+          href: create-user-accounts-for-a-customer.md
+        - name: Ta bort ett användarkonto för en kund
+          href: delete-user-accounts-for-a-customer.md
+        - name: Hämta en samling berättiganden
+          href: get-a-collection-of-entitlements.md
+        - name: Hämta en kund efter ID
+          href: get-a-customer-by-id.md
+        - name: Hämta en kunds faktureringsprofil
+          href: get-all-of-a-customer-s-billing-profiles.md
+        - name: Hämta en kunds företagsprofil
+          href: get-a-customer-s-company-profile.md
+        - name: Hämta en kunds kvalificering
+          items:
+            - name: 'Använd asynkrona API:er'
+              href: get-customer-qualification-asynchronous.md
+            - name: 'Använd synkrona API:er'
+              href: get-customer-qualification-synchronous.md
+        - name: Hämta en kunds alla beställningar
+          href: get-all-of-a-customer-s-orders.md
+        - name: Hämta en kunds prenumerationer
+          href: get-all-of-a-customer-s-subscriptions.md
+        - name: Hämta en kunds prenumerationers överföringsberättigande
+          href: get-customer-s-subscriptions-transfer-eligibility.md
+        - name: Hämta en kunds överföringar
+          href: get-all-of-a-customer-s-transfers.md
+        - name: Hämta en kunds överföringsinformation
+          href: get-transfer-by-id.md
+        - name: Hämta en lista över alla användarkonton för en kund
+          href: get-a-list-of-all-user-accounts-for-a-customer.md
+        - name: Hämta en lista över tillgängliga licenser
+          href: get-a-list-of-available-licenses.md
+        - name: Hämta en lista över tillgängliga licenser efter licensgrupp
+          href: get-a-list-of-available-licenses-by-license-group.md
+        - name: Hämta en lista över kunder
+          href: get-a-list-of-customers.md
+        - name: Hämta en lista över kunder filtrerade efter ett sökfält
+          href: get-a-customer-by-name.md
+        - name: Hämta en lista över beställningar efter kund och faktureringscykeltyp
+          href: get-a-list-of-orders-by-customer-and-billing-cycle-type.md
+        - name: Hämta en partners valideringskoder
+          href: get-a-partner-s-validation-codes.md
+        - name: Hämta ett användarkonto efter ID
+          href: get-a-user-account-by-id.md
+        - name: Hämta användarroller för en kund
+          href: get-user-roles-for-a-customer.md
+        - name: Ta bort en kundanvändare från en roll
+          href: remove-customer-user-from-a-role.md
+        - name: Ta bort en förfrågan om återförsäljarrelation med en kund
+          href: remove-a-reseller-relationship-with-a-customer.md
+        - name: Hämta en URL för relationsbegäran
+          href: request-reseller-relationship.md
+        - name: Återställ användarlösenord för en kund
+          href: reset-user-password-for-a-customer.md
+        - name: Återställ en borttagen användare för en kund
+          href: restore-a-user-for-a-customer.md
+        - name: Ange användarroller för en kund
+          href: set-user-roles-for-a-customer.md
+        - name: Uppdatera en kunds faktureringsprofil
+          href: update-a-customer-s-billing-profile.md
+        - name: Uppdatera en kunds kvalificering
+          items:
+            - name: 'Använd asynkrona API:er'
+              href: update-customer-qualification-asynchronous.md
+            - name: 'Använd synkrona API:er'
+              href: update-customer-qualification-synchronous.md
+        - name: Uppdatera smeknamnet för en prenumeration
+          href: update-the-nickname-for-a-subscription.md
+        - name: Återkalla en kunds överföring
+          href: withdraw-a-transfer.md
+        - name: Skapa en kunds överföring
+          href: create-a-transfer.md
+        - name: Acceptera en kunds överföring
+          href: accept-a-transfer.md
+        - name: Avvisa en kunds överföring
+          href: reject-a-transfer.md
+        - name: Uppdatera användarkonton för en kund
+          href: update-user-accounts-for-a-customer.md
+        - name: Visa borttagna användare för en kund
+          href: view-a-deleted-user.md
+        - name: Skapa en självbetjäningsprincip
+          href: create-a-self-serve-policy.md
+        - name: Ta bort en självbetjäningsprincip
+          href: delete-a-self-serve-policy.md
+        - name: Hämta en lista över självbetjäningsprinciper
+          href: get-a-list-of-self-serve-policies.md
+        - name: Hämta en självbetjäningsprincip efter ID
+          href: get-a-self-serve-policy-by-id.md
+        - name: Uppdatera en självbetjäningsprincip
+          href: update-a-self-serve-policy.md
+    - name: Hantera beställningar
+      href: manage-orders.md
+      items:
+        - name: Köp en Azure-plan
+          href: create-azure-plan.md
+        - name: Köp Azure-reservationer
+          href: purchase-azure-reservations.md
+        - name: Köp en prenumeration på produkter från kommersiell marknadsplats
+          href: create-subscription-azure-marketplace-products.md
+        - name: Avbryta en prenumeration på kommersiell marknadsplats
+          href: cancel-an-azure-marketplace-subscription.md
+        - name: Avbryt programvaruinköp
+          href: cancel-software-purchases.md
+        - name: Ändra kvantiteten för en prenumeration
+          href: change-the-quantity-of-a-subscription.md
+        - name: Konvertera en utvärderingsprenumeration till betald
+          href: convert-a-trial-subscription-to-paid.md
+        - name: Kontrollera lager
+          href: check-inventory.md
+        - name: Gå till kassan för en kundvagn
+          href: checkout-a-cart.md
+        - name: Skapa en kundvagn
+          href: create-a-cart.md
+        - name: Skapa en kundvagn med tillägg
+          href: create-a-cart-with-add-ons.md
+        - name: Skapa en beställning
+          href: create-an-order.md
+        - name: Skapa en beställning för en kund till en indirekt återförsäljare
+          href: create-an-order-for-a-customer-of-an-indirect-reseller.md
+        - name: Hämta en lista över tillägg för en prenumeration
+          href: get-a-list-of-add-ons-for-a-subscription.md
+        - name: Hämta en lista över tillgängliga för en SKU (efter land)
+          href: get-a-list-of-availabilities-for-a-sku.md
+        - name: Hämta en lista över tillgängliga för en SKU (efter kund)
+          href: get-a-list-of-availabilities-for-a-sku-by-customer.md
+        - name: Hämta en lista över erbjudandekategorier efter marknad
+          href: get-a-list-of-offer-categories-by-country-and-locale.md
+        - name: Hämta en lista över erbjudanden för en marknad
+          href: get-a-list-of-offers-for-a-market.md
+        - name: Hämta en lista över produkter (efter land)
+          href: get-a-list-of-products.md
+        - name: Hämta en lista över produkter (efter kund)
+          href: get-a-list-of-products-by-customer.md
+        - name: 'Hämta en lista över SKU:er för en produkt (efter land)'
+          href: get-a-list-of-skus-for-a-product.md
+        - name: 'Hämta en lista över SKU:er för en produkt (efter kund)'
+          href: get-a-list-of-skus-for-a-product-by-customer.md
+        - name: Hämta en lista över prenumerationer efter beställning
+          href: get-a-list-of-subscriptions-by-order.md
+        - name: Hämta en lista över erbjudanden för utvärderingskonvertering
+          href: get-a-list-of-trial-conversion-offers.md
+        - name: Hämta en produkt efter ID
+          href: get-a-product-by-id.md
+        - name: Hämta en SKU efter ID
+          href: get-a-sku-by-id.md
+        - name: Hämta en prenumeration efter ID
+          href: get-a-subscription-by-id.md
+        - name: Hämta aktiveringslänk efter orderradsobjekt
+          href: get-activation-link-by-order-line-item.md
+        - name: Hämta tillägg för ett erbjudande-ID
+          href: get-addon-offers-by-offer-id.md
+        - name: Hämta en tillgänglighet efter ID
+          href: get-an-availability-by-id.md
+        - name: Hämta ett erbjudande efter ID
+          href: get-an-offer-by-id.md
+        - name: Hämta en beställning efter ID
+          href: get-an-order-by-id.md
+        - name: Hämta status för prenumerationsetablering
+          href: get-subscription-provisioning-status.md
+        - name: Hämta status för prenumerationsregistrering
+          href: get-subscription-registration-status.md
+        - name: Gör ett engångsköp
+          href: make-a-one-time-purchase.md
+        - name: Köp ett tillägg till en prenumeration
+          href: purchase-an-add-on-to-a-subscription.md
+        - name: Köp katalogobjekt
+          href: purchase-catalog-items.md
+        - name: Återaktivera en inaktiverad prenumeration
+          href: reactivate-a-suspended-a-subscription.md
+        - name: Registrera en prenumeration
+          href: register-a-subscription.md
+        - name: Inaktivera en prenumeration
+          href: suspend-a-subscription.md
+        - name: Överför en prenumeration
+          href: transition-a-subscription.md
+        - name: Uppdatera en kundvagn
+          href: update-a-cart.md
+        - name: Uppdatera automatisk förnyelse för en prenumeration på kommersiell marknadsplats
+          href: update-autorenew-for-an-azure-marketplace-subscription.md
+    - name: Ge support
+      href: provide-support.md
+      items:
+        - name: Hämta en prenumerations supportkontakt
+          href: get-a-subscription-s-support-contact.md
+        - name: Hämta alla tjänstbegäranden för en kund
+          href: get-all-service-requests-for-a-customer.md
+        - name: Hämta information om tjänstbegäran efter ID
+          href: get-service-request-details-by-id.md
+        - name: Hämta de hanterade tjänsterna för en kund efter ID
+          href: get-the-managed-services-for-a-customer-by-id.md
+        - name: Uppdatera en tjänstbegäran
+          href: update-a-service-request.md
+        - name: Uppdatera en prenumerations supportkontakt
+          href: update-a-subscription-s-support-contact.md
+- name: Sandbox-miljö för integrering
+  items:
+    - name: Partnerfunktioner för sandbox-miljö som stöder återförsäljarrelation
+      href: sandbox-scenario.md
+    - name: Testa och felsöka sandbox-miljö
+      href: test-and-debug.md
+    - name: Avbryt en beställning från sandbox-miljön för integrering
+      href: cancel-an-order-from-the-integration-sandbox.md
+    - name: Aktivera prenumeration på sandbox-miljö
+      href: activate-sandbox-subscription-azure-marketplace-products.md
+    - name: Ta bort ett kundkonto från sandbox-miljön för integrering
+      href: delete-a-customer-account-from-the-integration-sandbox.md
+- name: Referenser
+  href: /partner/develop/referrals
+  items:
+    - name: Skapa en hänvisning
+      href: /partner/develop/create-a-referral
+    - name: Hämta en lista över hänvisningar
+      href: /partner/develop/get-a-list-of-referrals
+    - name: Hämta en hänvisning efter ID
+      href: /partner/develop/get-a-referral-by-id
+    - name: Uppdatera en hänvisning
+      href: /partner/develop/update-a-referral
+- name: Verktyg
+  href: utilities.md
+  items:
+    - name: Validera en adress
+      href: validate-an-address.md
+    - name: Hämta adressformateringsregler efter marknad
+      href: get-market-specific-validation-data.md
+    - name: Verifiera domäntillgänglighet
+      href: verify-domain-availability.md
+- name: Säkerhet
+  href: partner-security-requirements.md
+  items:
+    - name: Hämta portalbegäranden utan MFA
+      href: get-portal-requests-without-mfa.md
+    - name: Hämta sammanfattning av API-begäran
+      href: get-api-request-summary.md
+    - name: Hämta information om API-begäran
+      href: get-api-request-details.md
+- name: Partnercenter – REST API-referens
+  href: partner-center-rest-api-reference.md
+  items:
+    - name: Partnercenter – REST API-ändringslogg
+      href: api-change-log.md
+    - name: 'Partnercenter – REST-URL:er'
+      href: partner-center-rest-urls.md
+    - name: Partnercenter – REST-huvuden
+      href: headers.md
+    - name: Partnercenter – REST-resurser
+      href: partner-center-rest-resources.md
+      items:
+        - name: Avtal
+          href: agreement-resources.md
+        - name: Avtalsmetadata
+          href: agreement-metadata-resources.md
+        - name: Avtalsdokumentresurser (förhandsversion)
+          href: agreement-document-resources.md
+        - name: Status för direktsignering (direktgodkännande) av kundavtal
+          href: customer-agreement-direct-sign-status-resource.md
+        - name: Analys
+          href: analytics-resources.md
+        - name: Granskning
+          href: auditing-resources.md
+        - name: Azure-priskort
+          href: azure-rate-card-resources.md
+        - name: Azure-användningspost
+          href: azure-utilization-record-resources.md
+        - name: Kundvagn
+          href: cart-resources.md
+        - name: Konverteringar
+          href: conversions-resources.md
+        - name: Landsinformation
+          href: country-information-resources.md
+        - name: Kund
+          href: customer-resources.md
+        - name: Kundanvändning
+          href: customer-usage-resources.md
+        - name: Enhetsdistribution
+          href: device-deployment-resources.md
+        - name: Berättigande
+          href: entitlement-resources.md
+        - name: Faktura
+          href: invoice-resources.md
+        - name: Licens
+          href: license-resources.md
+        - name: Hanterad tjänst
+          href: managed-service-resources.md
+        - name: Erbjudande
+          href: offer-resources.md
+        - name: Beställning
+          href: order-resources.md
+        - name: Profil
+          href: profile-resources.md
+        - name: Produkter
+          href: product-resources.md
+        - name: Relationer
+          href: relationships-resources.md
+        - name: Självbetjäningsprincip
+          href: self-serve-policy-resources.md
+        - name: Tjänstkostnader
+          href: service-costs-resources.md
+        - name: Tjänstbegäran
+          href: service-request-resources.md
+        - name: Prenumeration
+          href: subscription-resources.md
+        - name: Prenumerationsanvändning
+          href: subscription-usage-resources.md
+        - name: Uppgradera
+          href: upgrade-resources.md
+        - name: Användare
+          href: user-resources.md
+        - name: Verktygsresurser
+          href: utility-resources.md
+    - name: Felkoder för Partner Center REST
+      href: error-codes.md
+    - name: Partnercenter – REST-händelser
+      href: partner-center-webhook-events.md
+    - name: Partnercenter – språk och nationella inställningar som stöds
+      href: partner-center-supported-languages-and-locales.md
+    - name: Partnercenter – webhooks
+      href: partner-center-webhooks.md
+- name: Partnercenter – hanterad .NET API-referens
+  href: /dotnet/api/
+  items:
+    - name: Partnercenter – viktig information om .NET API
+      href: dotnet-release-notes.md
+- name: Partnercenter – Java API-referens
+  href: /java/partnercenter
+- name: Partnercenter – PowerShell-kommandon
+  href: /powershell/partnercenter
