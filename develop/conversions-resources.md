@@ -1,0 +1,55 @@
+---
+title: Konverterings resurser
+description: Läs om hur du konverterar en utvärderings prenumeration till en betald prenumeration med hjälp av konverterings resurser för partner Center API.
+ms.date: 05/23/2019
+ms.service: partner-dashboard
+ms.subservice: partnercenter-sdk
+ms.openlocfilehash: d3ade5a5af76e7c637962b6bfe076ac806f337bf
+ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "97770068"
+---
+# <a name="conversion-resources-to-convert-trial-subscriptions-to-paid"></a><span data-ttu-id="59116-103">Konverterings resurser för att konvertera utvärderings prenumerationer till betalda</span><span class="sxs-lookup"><span data-stu-id="59116-103">Conversion resources to convert trial subscriptions to paid</span></span>
+
+<span data-ttu-id="59116-104">**Gäller för:**</span><span class="sxs-lookup"><span data-stu-id="59116-104">**Applies to:**</span></span>
+
+- <span data-ttu-id="59116-105">Partnercenter</span><span class="sxs-lookup"><span data-stu-id="59116-105">Partner Center</span></span>
+- <span data-ttu-id="59116-106">Partner Center som drivs av 21Vianet</span><span class="sxs-lookup"><span data-stu-id="59116-106">Partner Center operated by 21Vianet</span></span>
+- <span data-ttu-id="59116-107">Partnercenter för Microsoft Cloud Tyskland</span><span class="sxs-lookup"><span data-stu-id="59116-107">Partner Center for Microsoft Cloud Germany</span></span>
+- <span data-ttu-id="59116-108">Välkommen till Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="59116-108">Partner Center for Microsoft Cloud for US Government</span></span>
+
+<span data-ttu-id="59116-109">Konverterings resurser stöder konvertering av en utvärderings prenumeration till en betald prenumeration.</span><span class="sxs-lookup"><span data-stu-id="59116-109">Conversion resources support the conversion of a trial subscription to a paid subscription.</span></span>
+
+## <a name="conversion"></a><span data-ttu-id="59116-110">Konvertering</span><span class="sxs-lookup"><span data-stu-id="59116-110">Conversion</span></span>
+
+<span data-ttu-id="59116-111">Innehåller information som används för att konvertera en utvärderings prenumeration till en betald prenumeration.</span><span class="sxs-lookup"><span data-stu-id="59116-111">Contains information used to convert a trial subscription to a paid subscription.</span></span>
+
+| <span data-ttu-id="59116-112">Egenskap</span><span class="sxs-lookup"><span data-stu-id="59116-112">Property</span></span> | <span data-ttu-id="59116-113">Typ</span><span class="sxs-lookup"><span data-stu-id="59116-113">Type</span></span> | <span data-ttu-id="59116-114">Description</span><span class="sxs-lookup"><span data-stu-id="59116-114">Description</span></span> |
+| -------- | ---- | ----------- |
+| <span data-ttu-id="59116-115">offerId</span><span class="sxs-lookup"><span data-stu-id="59116-115">offerId</span></span> | <span data-ttu-id="59116-116">sträng</span><span class="sxs-lookup"><span data-stu-id="59116-116">string</span></span> | <span data-ttu-id="59116-117">ID för den ursprungliga utvärderings versionen av erbjudandet.</span><span class="sxs-lookup"><span data-stu-id="59116-117">The offer identifier of the original, trial offer.</span></span> |
+| <span data-ttu-id="59116-118">targetOfferId</span><span class="sxs-lookup"><span data-stu-id="59116-118">targetOfferId</span></span> | <span data-ttu-id="59116-119">sträng</span><span class="sxs-lookup"><span data-stu-id="59116-119">string</span></span> | <span data-ttu-id="59116-120">Erbjudande-ID för mål erbjudandet.</span><span class="sxs-lookup"><span data-stu-id="59116-120">The offer identifier for the target offer.</span></span> |
+| <span data-ttu-id="59116-121">orderId</span><span class="sxs-lookup"><span data-stu-id="59116-121">orderId</span></span> | <span data-ttu-id="59116-122">sträng</span><span class="sxs-lookup"><span data-stu-id="59116-122">string</span></span> | <span data-ttu-id="59116-123">Order-ID.</span><span class="sxs-lookup"><span data-stu-id="59116-123">The order identifier.</span></span> |
+| <span data-ttu-id="59116-124">quantity</span><span class="sxs-lookup"><span data-stu-id="59116-124">quantity</span></span> | <span data-ttu-id="59116-125">int</span><span class="sxs-lookup"><span data-stu-id="59116-125">int</span></span> | <span data-ttu-id="59116-126">Antalet licenser.</span><span class="sxs-lookup"><span data-stu-id="59116-126">The number of licenses.</span></span> <span data-ttu-id="59116-127">Standardvärdet är antalet licenser i utvärderings prenumerationen.</span><span class="sxs-lookup"><span data-stu-id="59116-127">The default is the number of licenses in the trial subscription.</span></span> |
+| <span data-ttu-id="59116-128">billingCycle</span><span class="sxs-lookup"><span data-stu-id="59116-128">billingCycle</span></span> | <span data-ttu-id="59116-129">sträng</span><span class="sxs-lookup"><span data-stu-id="59116-129">string</span></span> | <span data-ttu-id="59116-130">Anger hur ofta partnern debiteras för prenumerationen.</span><span class="sxs-lookup"><span data-stu-id="59116-130">Indicates how often the partner is charged for the subscription.</span></span> <span data-ttu-id="59116-131">Möjliga värden: **månads** vis (partner faktureras per månad), **årlig** (partner faktureras per år) eller **ingen** (partner faktureras inte.</span><span class="sxs-lookup"><span data-stu-id="59116-131">Possible values: **Monthly** (partner is billed monthly), **Annual** (partner is billed annually), or **None** (Partner isn't billed.</span></span> <span data-ttu-id="59116-132">Används för utvärderings prenumerationer).</span><span class="sxs-lookup"><span data-stu-id="59116-132">Used for trial subscriptions).</span></span> |
+
+## <a name="conversionerror"></a><span data-ttu-id="59116-133">ConversionError</span><span class="sxs-lookup"><span data-stu-id="59116-133">ConversionError</span></span>
+
+<span data-ttu-id="59116-134">Representerar ett fel som inträffade under konverteringen.</span><span class="sxs-lookup"><span data-stu-id="59116-134">Represents an error that occurred during conversion.</span></span>
+
+| <span data-ttu-id="59116-135">Egenskap</span><span class="sxs-lookup"><span data-stu-id="59116-135">Property</span></span> | <span data-ttu-id="59116-136">Typ</span><span class="sxs-lookup"><span data-stu-id="59116-136">Type</span></span> | <span data-ttu-id="59116-137">Description</span><span class="sxs-lookup"><span data-stu-id="59116-137">Description</span></span> |
+| -------- | ---- | ----------- |
+| <span data-ttu-id="59116-138">kod</span><span class="sxs-lookup"><span data-stu-id="59116-138">code</span></span> | <span data-ttu-id="59116-139">sträng</span><span class="sxs-lookup"><span data-stu-id="59116-139">string</span></span> | <span data-ttu-id="59116-140">Felkoden som är kopplad till problemet.</span><span class="sxs-lookup"><span data-stu-id="59116-140">The error code associated with the issue.</span></span> <span data-ttu-id="59116-141">Möjliga värden: **övrigt** (allmänt fel), **ConversionsNotFound** (det går inte att hitta några konverteringar för utvärderings prenumerationen att konvertera till).</span><span class="sxs-lookup"><span data-stu-id="59116-141">Possible values: **Other** (general error), **ConversionsNotFound** (can't find any conversions for the trial subscription to convert to).</span></span>
+| <span data-ttu-id="59116-142">beskrivning</span><span class="sxs-lookup"><span data-stu-id="59116-142">description</span></span> | <span data-ttu-id="59116-143">sträng</span><span class="sxs-lookup"><span data-stu-id="59116-143">string</span></span> | <span data-ttu-id="59116-144">En användarvänlig text som beskriver problemet.</span><span class="sxs-lookup"><span data-stu-id="59116-144">The friendly text describing the issue.</span></span> |
+
+## <a name="conversionresult"></a><span data-ttu-id="59116-145">ConversionResult</span><span class="sxs-lookup"><span data-stu-id="59116-145">ConversionResult</span></span>
+
+<span data-ttu-id="59116-146">Representerar resultatet av en prenumerations konvertering.</span><span class="sxs-lookup"><span data-stu-id="59116-146">Represents the result of performing a subscription conversion.</span></span>
+
+| <span data-ttu-id="59116-147">Egenskap</span><span class="sxs-lookup"><span data-stu-id="59116-147">Property</span></span>       | <span data-ttu-id="59116-148">Typ</span><span class="sxs-lookup"><span data-stu-id="59116-148">Type</span></span>                                | <span data-ttu-id="59116-149">Description</span><span class="sxs-lookup"><span data-stu-id="59116-149">Description</span></span>                                                            |
+|----------------|-------------------------------------|------------------------------------------------------------------------|
+| <span data-ttu-id="59116-150">subscriptionId</span><span class="sxs-lookup"><span data-stu-id="59116-150">subscriptionId</span></span> | <span data-ttu-id="59116-151">sträng</span><span class="sxs-lookup"><span data-stu-id="59116-151">string</span></span>                              | <span data-ttu-id="59116-152">Prenumerations-ID.</span><span class="sxs-lookup"><span data-stu-id="59116-152">The subscription identifier.</span></span>                                           |
+| <span data-ttu-id="59116-153">offerId</span><span class="sxs-lookup"><span data-stu-id="59116-153">offerId</span></span>        | <span data-ttu-id="59116-154">sträng</span><span class="sxs-lookup"><span data-stu-id="59116-154">string</span></span>                              | <span data-ttu-id="59116-155">Den ursprungliga erbjudande identifieraren.</span><span class="sxs-lookup"><span data-stu-id="59116-155">The original offer identifier.</span></span>                                         |
+| <span data-ttu-id="59116-156">targetOfferId</span><span class="sxs-lookup"><span data-stu-id="59116-156">targetOfferId</span></span>  | <span data-ttu-id="59116-157">sträng</span><span class="sxs-lookup"><span data-stu-id="59116-157">string</span></span>                              | <span data-ttu-id="59116-158">Erbjudande-ID för mål erbjudandet.</span><span class="sxs-lookup"><span data-stu-id="59116-158">The offer identifier for the target offer.</span></span>                             |
+| <span data-ttu-id="59116-159">fel</span><span class="sxs-lookup"><span data-stu-id="59116-159">error</span></span>          | [<span data-ttu-id="59116-160">ConversionError</span><span class="sxs-lookup"><span data-stu-id="59116-160">ConversionError</span></span>](#conversionerror) | <span data-ttu-id="59116-161">Felet som påträffades vid försöket att konvertera, om tillämpligt..</span><span class="sxs-lookup"><span data-stu-id="59116-161">The error encountered while attempting the conversion, if applicable..</span></span> |
