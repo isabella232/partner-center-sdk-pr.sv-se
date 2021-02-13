@@ -4,12 +4,12 @@ description: Lär dig hur du använder ditt partner Center integration sandbox-k
 ms.date: 09/11/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 95e80000a199ae00a31bddc5ecae8c19ab77c64e
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: e5b8f6cc2eb239b7a8b8a8722b231f290e768004
+ms.sourcegitcommit: a8ebfa97db9e43c6b5ff05bb37ecead6b3565721
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97769960"
+ms.lasthandoff: 02/13/2021
+ms.locfileid: "100335803"
 ---
 # <a name="test-and-debug-with-your-partner-center-integration-sandbox-to-avoid-paying-unexpected-charges"></a>Testa och Felsök med ditt partner Center integration sandbox för att undvika att betala oväntade kostnader
 
@@ -27,10 +27,6 @@ Om du vill testa din kod bör du använda ditt konto för integration i begräns
 Om du kör automatisk generering av verifierings test, utför testning i produktion eller utför manuell testning i integrations sand boxen, kan du uppnå Max gränsen för integration sandbox. Dessa gränser är 75 kunder, 5 prenumerationer per kund och 25 licenser per prenumeration.
 
 - 25-licens gränsen innebär att du inte kan skaffa ett erbjudande i sand boxen som har ett lägsta licens krav som överstiger 25 licenser. Den här begränsningen omfattar test versioner.
-
-- Det går inte att hämta användnings sammanfattning på begränsade konton eftersom dessa konton är i test syfte.
-
-- API: er relaterade till fakturering och faktura fungerar inte i sand boxen eftersom inga fakturor genereras för test kontot.
 
 
 ### <a name="azure-plan"></a>Azure-plan

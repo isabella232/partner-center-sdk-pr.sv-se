@@ -4,12 +4,12 @@ description: 'Du kan hämta en samling faktura rads objekt (stängt fakturerings
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 085397f3dc36468e411cec71e0dc9ae2cc364673
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 50dac1bbc96776d395014dc7ee5a5990f0710484
+ms.sourcegitcommit: a8ebfa97db9e43c6b5ff05bb37ecead6b3565721
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769672"
+ms.lasthandoff: 02/13/2021
+ms.locfileid: "100335820"
 ---
 # <a name="get-invoice-line-items"></a>Hämta radobjekt för faktura
 
@@ -157,13 +157,13 @@ Använd följande URI och frågeparametrar när du skapar begäran.
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| faktura-ID             | sträng | Yes      | En sträng som identifierar fakturan.                             |
-| fakturering-Provider       | sträng | Yes      | Fakturerings leverantören: "Office", "Azure", "Databasmigrering".               |
-| faktura-rad-objekt-typ | sträng | Yes      | Typ av faktura information: "BillingLineItems", "UsageLineItems". |
-| ikoner                   | antal | No       | Det maximala antalet objekt som ska returneras. Standard Max storlek = 2000    |
-| offset                 | antal | No       | Det nollbaserade indexet för det första rad objekt som ska returneras.            |
+| faktura-ID             | sträng | Ja      | En sträng som identifierar fakturan.                             |
+| fakturering-Provider       | sträng | Ja      | Fakturerings leverantören: "Office", "Azure", "Databasmigrering". I det äldre fallet har vi separata data modeller för Office & Azure-transaktioner. Men i den moderna har vi en enda data modell över alla produkter som filtrerats via värdet "Databasmigrering".            |
+| faktura-rad-objekt-typ | sträng | Ja      | Typ av faktura information: "BillingLineItems", "UsageLineItems". |
+| ikoner                   | antal | Inga       | Det maximala antalet objekt som ska returneras. Standard Max storlek = 2000    |
+| offset                 | antal | Inga       | Det nollbaserade indexet för det första rad objekt som ska returneras.            |
 | seekOperation          | sträng | No       | Om **fakturerings leverantören** är lika med **Databasmigrering** anger du **seekOperation** lika med **Nästa** för att hämta nästa sida med faktura rads objekt. |
-| hasPartnerEarnedCredit | boolesk | No | Det värde som anger om rad artiklarna med partner intjänad kredit ska returneras. OBS! den här parametern används endast när fakturerings leverantörens typ är Databasmigrering och InvoiceLineItemType är UsageLineItems. |
+| hasPartnerEarnedCredit | boolesk | Inga | Det värde som anger om rad artiklarna med partner intjänad kredit ska returneras. OBS! den här parametern används endast när fakturerings leverantörens typ är Databasmigrering och InvoiceLineItemType är UsageLineItems. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
