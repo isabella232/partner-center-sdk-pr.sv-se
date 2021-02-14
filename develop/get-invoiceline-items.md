@@ -4,12 +4,12 @@ description: 'Du kan hämta en samling faktura rads objekt (stängt fakturerings
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 50dac1bbc96776d395014dc7ee5a5990f0710484
-ms.sourcegitcommit: a8ebfa97db9e43c6b5ff05bb37ecead6b3565721
+ms.openlocfilehash: e797f549e1344268c8167259a231122e7c669a2e
+ms.sourcegitcommit: 9f8ba784171ab4f980ed0c60ef6f2323849c4a98
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/13/2021
-ms.locfileid: "100335820"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100499906"
 ---
 # <a name="get-invoice-line-items"></a>Hämta radobjekt för faktura
 
@@ -158,7 +158,7 @@ Använd följande URI och frågeparametrar när du skapar begäran.
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
 | faktura-ID             | sträng | Ja      | En sträng som identifierar fakturan.                             |
-| fakturering-Provider       | sträng | Ja      | Fakturerings leverantören: "Office", "Azure", "Databasmigrering". I det äldre fallet har vi separata data modeller för Office & Azure-transaktioner. Men i den moderna har vi en enda data modell över alla produkter som filtrerats via värdet "Databasmigrering".            |
+| fakturering-Provider       | sträng | Ja      | Fakturerings leverantören: "Office", "Azure", "Databasmigrering". I det äldre fallet har vi separata data modeller för Office & Azure-transaktioner. Men den moderna har en enda data modell över alla transaktioner som filtrerats via värdet "Databasmigrering".            |
 | faktura-rad-objekt-typ | sträng | Ja      | Typ av faktura information: "BillingLineItems", "UsageLineItems". |
 | ikoner                   | antal | Inga       | Det maximala antalet objekt som ska returneras. Standard Max storlek = 2000    |
 | offset                 | antal | Inga       | Det nollbaserade indexet för det första rad objekt som ska returneras.            |

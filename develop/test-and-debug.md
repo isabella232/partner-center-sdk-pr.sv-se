@@ -4,12 +4,12 @@ description: Lär dig hur du använder ditt partner Center integration sandbox-k
 ms.date: 09/11/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e5b8f6cc2eb239b7a8b8a8722b231f290e768004
-ms.sourcegitcommit: a8ebfa97db9e43c6b5ff05bb37ecead6b3565721
+ms.openlocfilehash: 3ff4a7ec3ad984b09c60d3d820423c614fb8020d
+ms.sourcegitcommit: 9f8ba784171ab4f980ed0c60ef6f2323849c4a98
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/13/2021
-ms.locfileid: "100335803"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100499889"
 ---
 # <a name="test-and-debug-with-your-partner-center-integration-sandbox-to-avoid-paying-unexpected-charges"></a>Testa och Felsök med ditt partner Center integration sandbox för att undvika att betala oväntade kostnader
 
@@ -26,7 +26,17 @@ Om du vill testa din kod bör du använda ditt konto för integration i begräns
 
 Om du kör automatisk generering av verifierings test, utför testning i produktion eller utför manuell testning i integrations sand boxen, kan du uppnå Max gränsen för integration sandbox. Dessa gränser är 75 kunder, 5 prenumerationer per kund och 25 licenser per prenumeration.
 
-- 25-licens gränsen innebär att du inte kan skaffa ett erbjudande i sand boxen som har ett lägsta licens krav som överstiger 25 licenser. Den här begränsningen omfattar test versioner.
+25-licens gränsen innebär att du inte kan skaffa ett erbjudande i sand boxen som har ett lägsta licens krav som överstiger 25 licenser. Den här begränsningen omfattar test versioner.
+
+Det finns olika fakturor och avstämnings filer som är tillgängliga i sand Box miljöer, men alla är inte tillgängliga på äldre eller moderna plattformar. Verifiera tabellen nedan om du vill veta mer.
+
+| **Filer**                    | **Tillgänglig i äldre** | **Tillgängligt i modern** |
+| ---------------------------- | ------------------------ | ------------------------ |
+| Faktura-PDF                  | Inga                       | Ja                      |
+| Faktura avstämnings fil | Inga                       | Ja                      |
+| Faktura uppskattnings fil       | Inga                       | Ja                      |
+| Daglig fakturerings användnings fil     | Inga                       | Ja                      |
+| Daglig, ej fakturerad användnings fil   | Inga                       | Ja                      |
 
 
 ### <a name="azure-plan"></a>Azure-plan
