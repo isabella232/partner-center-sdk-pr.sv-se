@@ -4,12 +4,12 @@ description: 'Du kan hämta en samling information om ej fakturerad kommersiell 
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 594946db712c28983dd390207fb06c8d9f62f18b
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 8d3bbe7921029dc6c40c65fb8d82baaa944089b6
+ms.sourcegitcommit: 160296667833366fb3f4021d042094606e1032ec
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769678"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102472690"
 ---
 # <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Hämta fakturor för ej fakturerad kommersiell förbruknings artikel
 
@@ -129,11 +129,11 @@ Använd följande URI och frågeparametrar när du skapar begäran.
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                                     |
 |------------------------|--------|----------|---------------------------------------------------------------------------------|
-| CSP               | sträng | Yes      | Providern: "**Databasmigrering**".                                                |
-| faktura-rad-objekt-typ | sträng | Yes      | Typ av faktura information: "**UsageLineItems**", "**UsageLineItems**".               |
-| currencyCode           | sträng | Yes      | Valuta koden för de ej fakturerade rad artiklarna.                                  |
-| period                 | sträng | Yes      | Perioden för ej fakturerade rekognoseringar (t. ex. **aktuell**, **föregående**).<br/><br/>**Föregående** – om fakturerings cykeln är 01/01/2020 – 01/31/2020, så sannolikt att fakturan genereras mellan 02/06/2020 och 02/08/2020 UTC-tid. Om du behöver fråga dina ej fakturerade användnings data för fakturerings cykeln (01/01/2020 – 01/31/2020) när som helst mellan 02/01/2020 och datumet som genereras av fakturan (vilket är mellan 02/06/2020 och 02/08/2020 UTC-tid) måste du välja period som "föregående".<br/><br/>**Aktuell** – om fakturerings perioden är 01/01/2020 – 01/31/2020, så sannolikt att fakturan genereras mellan 02/06/2020 och 02/08/2020 UTC-tid. Om du behöver fråga dina ej fakturerade användnings data för fakturerings cykeln (01/01/2020 – 01/31/2020) när som helst mellan 01/01/2020 och 01/31/2020 som är inom din fakturerings cykel, måste du välja period som "aktuell". |
-| ikoner                   | antal | No       | Det maximala antalet objekt som ska returneras. Standard storleken är 2000.                    |
+| CSP               | sträng | Ja      | Providern: "**Databasmigrering**".                                                |
+| faktura-rad-objekt-typ | sträng | Ja      | Typ av faktura information: "**UsageLineItems**", "**UsageLineItems**".               |
+| currencyCode           | sträng | Ja      | Valuta koden för de ej fakturerade rad artiklarna.                                  |
+| period                 | sträng | Ja      | Perioden för ej fakturerade rekognoseringar (t. ex. **aktuell**, **föregående**). Anta att du behöver fråga dina ej fakturerade användnings data för fakturerings cykeln (01/01/2020 – 01/31/2020) i januari väljer du period som **"nuvarande,"** Else **"föregående."** |
+| ikoner                   | antal | Inga       | Det maximala antalet objekt som ska returneras. Standard storleken är 2000.                    |
 | seekOperation          | sträng | No       | Ställ in `seekOperation=Next` för att hämta nästa sida med avstämnings rad objekt.                |
 
 ### <a name="request-headers"></a>Begärandehuvuden
