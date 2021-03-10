@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 5f428bf9104fec3e4855706e8786ad3941875f3d
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: d486eed96586eb2577577eac44fa9e866479e825
+ms.sourcegitcommit: 9bc35836b389fdf083b278128a2e9ec994919f1c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769255"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102532846"
 ---
 # <a name="partner-center-supported-languages-and-locales"></a>Partnercenter – språk och nationella inställningar som stöds
 
@@ -181,7 +181,7 @@ I följande tabell visas de språk koder för kulturer och International Standar
 | Montenegro                               | ME                       | MNE                      | SR-latn – mig/en-US                    |
 | Montserrat                               | MS                       | MSR                      | sv-SE                                 |
 | Marocko                                  | MA                       | Mar                      | ar-MA/en-US                         |
-| Moçambique                               | MZ                       | MOZ                      | pt-PT/en-US                         |
+| Moçambique                               | MZ                       | MOZ                      | pt-PT                                 |
 | Myanmar                                  | MM                       | MMR                      | sv-SE                                 |
 | Namibia                                  | NA                       | Vietnam                      | en-GB/en-US                         |
 | Nauru                                    | NR                       | NRU                      | sv-SE                                 |
