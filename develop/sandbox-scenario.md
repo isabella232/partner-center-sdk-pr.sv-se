@@ -4,19 +4,19 @@ description: Partner sand Box har möjlighet att stödja relationer mellan partn
 ms.date: 11/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e01dd1a83ca459cbdf12b8e564b43a2d18f5595b
-ms.sourcegitcommit: f69ceae441bbb2ddba96e878a1ec8c1a499a4879
+ms.openlocfilehash: af46811b3615e1f904a9619de85b0aca7622490b
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180739"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711873"
 ---
 # <a name="partner-sandbox-capabilities-that-support-reseller-relationship"></a>Partnerfunktioner för sandbox-miljö som stöder återförsäljarrelation
 
 **Gäller för:**
 
 - Partnercenter
-- Partner Center som drivs av 21Vianet
+- Partnercenter drivs av 21Vianet
 - Partnercenter för Microsoft Cloud Tyskland
 - Välkommen till Partnercenter för Microsoft Cloud for US Government
 
@@ -95,7 +95,7 @@ Begär ande texten none
 
 ### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](https://docs.microsoft.com/partner-center/develop/error-codes).
+Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](./error-codes.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -103,4 +103,4 @@ Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad
 
 - [Avbryta en order från sandbox](cancel-an-order-from-the-integration-sandbox.md)
 
-- [Testa och felsök](test-and-debug.md) 
+- [Testa och felsök](test-and-debug.md)

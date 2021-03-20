@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 7faab68d20c698f5b040a76f4776dbdf14180640
-ms.sourcegitcommit: 0c98496e972aebe10eba23822aa229125bfc035d
+ms.openlocfilehash: c202d95beab771241a9665243be5f08ab6f82fd5
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97770206"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711975"
 ---
 # <a name="update-a-customers-qualification-via-synchronous-validation"></a>Uppdatera en kunds kvalificering via synkron verifiering
 
@@ -39,7 +39,7 @@ Om du vill uppdatera en kunds kvalificering till "utbildning" anropar du **[Upda
 var eduCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.Update(CustomerQualification.Education);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples- **klass**: CustomerQualificationOperations.CS
+**Exempel**: [konsol test app](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples- **klass**: CustomerQualificationOperations. CS
 
 För att uppdatera en kunds kvalificering till **GovernmentCommunityCloud** på en befintlig kund utan kvalificering.  Partnern måste också innehålla kundens [**ValidationCode**](utility-resources.md#validationcode).
 
@@ -64,8 +64,8 @@ Använd följande frågeparameter för att uppdatera kvalificeringen.
 
 | Namn                   | Typ | Obligatorisk | Beskrivning                                                                                                                                            |
 |------------------------|------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **kund-ID för klient organisation** | GUID | Yes      | Värdet är ett GUID-formaterat **kund-Tenant-ID** som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik kund som tillhör åter försäljaren. |
-| **validationCode**     | int  | No       | Krävs endast för Community-molnet för myndigheter.                                                                                                            |
+| **kund-ID för klient organisation** | GUID | Ja      | Värdet är ett GUID-formaterat **kund-Tenant-ID** som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik kund som tillhör åter försäljaren. |
+| **validationCode**     | int  | Inga       | Krävs endast för Community-molnet för myndigheter.                                                                                                            |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -107,5 +107,5 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="related-articles"></a>Relaterade artiklar
 
-- [Hämta en kunds kvalificering](get-a-customer-s-qualification.md)
+- [Hämta en kunds kvalificering](./get-customer-qualification-synchronous.md)
 - [Hämta en partners valideringskoder](get-a-partner-s-validation-codes.md)

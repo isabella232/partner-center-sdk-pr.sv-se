@@ -4,12 +4,12 @@ description: 'Du kan använda AgreementStatus-API: et för att kontrol lera om e
 ms.date: 07/24/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9501f245a6c98fa90e77de7bc0caed8ca51fa4f2
-ms.sourcegitcommit: 40baf4d825ce0ca6a254b5f368c308f025be7034
+ms.openlocfilehash: fa9480424eccc933bc9c28c3879a195fbd5f2bb1
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100537584"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711914"
 ---
 # <a name="verify-an-indirect-resellers-microsoft-partner-agreement-signing-status"></a>Verifiera en indirekt åter försäljares signerings status för Microsoft partner Agreement
 
@@ -44,7 +44,7 @@ var agreementSignatureStatusByTenantId = partnerOperations.Compliance.AgreementS
 
 - Exempel: **[konsol test app](console-test-app.md)**
 - Projekt: **PartnerCenterSDK. FeaturesSamples**
-- Klass: **GetAgreementSignatureStatus.cs**
+- Klass: **GetAgreementSignatureStatus. cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -60,8 +60,8 @@ Du måste ange en av följande två frågeparametrar för att identifiera partne
 
 | Namn | Typ | Obligatorisk | Beskrivning |
 | ---- | ---- | -------- | ----------- |
-| **MpnId** | int | No | Ett Microsoft Partner Network-ID (PGA/PLA) som identifierar den indirekta åter försäljaren. |
-| **TenantId** | GUID | No | Ett Microsoft-ID som identifierar CSP-kontot för den indirekta åter försäljaren. |
+| **MpnId** | int | Inga | Ett Microsoft Partner Network-ID (PGA/PLA) som identifierar den indirekta åter försäljaren. |
+| **TenantId** | GUID | Inga | Ett Microsoft-ID som identifierar CSP-kontot för den indirekta åter försäljaren. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -240,7 +240,7 @@ Connection: close
 
 #### <a name="csp-indirect-provider-region-and-csp-indirect-reseller-region-does-not-match"></a>Regionen för den indirekta CSP-providern och den indirekta KRYPTOGRAFIPROVIDERns region stämmer inte överens
 
-Följande exempel svar returneras när regionen för den indirekta åter försäljaren MPN-ID (PGA/PLA) inte matchar regionen för den indirekta providern. [Läs mer](https://docs.microsoft.com/partner-center/mpa-indirect-provider-faq) om CSP-regioner.
+Följande exempel svar returneras när regionen för den indirekta åter försäljaren MPN-ID (PGA/PLA) inte matchar regionen för den indirekta providern. [Läs mer](/partner-center/mpa-indirect-provider-faq) om CSP-regioner.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -264,7 +264,7 @@ Connection: close
 
 #### <a name="csp-indirect-reseller-account-exists-in-partner-center-but-hasnt-signed-the-mpa"></a>Ett indirekt åter försäljar konto för CSP finns i Partner Center men har inte signerat MPA
 
-Följande exempel svar returneras när CSP-indirekt åter försäljarens konto i Partner Center inte har signerat MPA. [Läs mer](https://docs.microsoft.com/partner-center/mpa-indirect-provider-faq)
+Följande exempel svar returneras när CSP-indirekt åter försäljarens konto i Partner Center inte har signerat MPA. [Läs mer](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -288,7 +288,7 @@ Connection: close
 
 #### <a name="no-csp-indirect-reseller-account-is-associated-with-the-given-mpn-id"></a>Inget indirekt åter försäljar konto för CSP är associerat med angivet MPN-ID
 
-Följande exempel svar returneras när Partner Center kan identifiera MPN-ID (PGA/PLA) som skickades i begäran, men det finns ingen CSP-registrering kopplad till angivet MPN-ID (PGA/PLA). [Läs mer](https://docs.microsoft.com/partner-center/mpa-indirect-provider-faq)
+Följande exempel svar returneras när Partner Center kan identifiera MPN-ID (PGA/PLA) som skickades i begäran, men det finns ingen CSP-registrering kopplad till angivet MPN-ID (PGA/PLA). [Läs mer](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -334,7 +334,7 @@ Connection: close
 
 #### <a name="no-mpa-found-with-the-given-tenant-id"></a>Ingen MPA hittades med angivet klient-ID
 
-Följande exempel svar returneras när Partner Center inte kan hitta någon MPA-signatur med angivet klient-ID. [Läs mer](https://docs.microsoft.com/partner-center/mpa-indirect-provider-faq)
+Följande exempel svar returneras när Partner Center inte kan hitta någon MPA-signatur med angivet klient-ID. [Läs mer](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request

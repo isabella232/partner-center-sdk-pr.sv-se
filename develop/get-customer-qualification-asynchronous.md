@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: 130ee276461e3390ac78ac7abd8baeefe6a70d7c
-ms.sourcegitcommit: 97f93caa57df6c64fe19868e6b2a0f7937226b51
+ms.openlocfilehash: 2c860d4a35104131197e06d4712f4ef41ba0008e
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98636391"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711922"
 ---
 # <a name="get-a-customers-qualification-asynchronously"></a>Få en kund kvalificering asynkront
 
@@ -41,7 +41,7 @@ Den här tabellen innehåller den obligatoriska Frågeparametern för att hämta
 
 | Namn               | Typ   | Obligatorisk | Beskrivning                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| **kund-ID för klient organisation** | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
+| **kund-ID för klient organisation** | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -133,4 +133,4 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="related-articles"></a>Relaterade artiklar
 
-- [Uppdatera en kunds kompetens](update-a-customer-s-qualifications.md)
+- [Uppdatera en kunds kvalificeringar](./update-customer-qualification-asynchronous.md)

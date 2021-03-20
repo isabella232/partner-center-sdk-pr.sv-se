@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 82812091be9c13d64ac183c37461e3b63b2ec294
-ms.sourcegitcommit: 0c98496e972aebe10eba23822aa229125bfc035d
+ms.openlocfilehash: e39ace3b598736abed6ab22021a8b93d473486a3
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97770185"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711905"
 ---
 # <a name="get-a-customers-qualification-via-synchronous-validation"></a>Få en kund kvalificering via synkron verifiering
 
@@ -52,7 +52,7 @@ Den här tabellen innehåller den obligatoriska Frågeparametern för att hämta
 
 | Namn               | Typ   | Obligatorisk | Beskrivning                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| **kund-ID för klient organisation** | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
+| **kund-ID för klient organisation** | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -95,4 +95,4 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="related-articles"></a>Relaterade artiklar
 
-- [Uppdatera en kunds kvalificering](update-a-customer-s-qualification.md)
+- [Uppdatera en kunds kvalificering](./update-customer-qualification-synchronous.md)

@@ -5,12 +5,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.topic: reference
 ms.date: 12/15/2020
-ms.openlocfilehash: 79359414276a1259117a8f506bbfae4441cdcbed
-ms.sourcegitcommit: f8ca3a14a763013fefafd3262d0a740881d1d7b1
+ms.openlocfilehash: b2c2cac36a8bd1bec7aa5bf6e5d1aa73b4779535
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97770281"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711856"
 ---
 # <a name="december-2020-changes-to-partner-center-rest-apis"></a>Ändringar i 2020 i samarbets-API: er i Partner Center
 
@@ -24,8 +24,8 @@ Sök efter ändringar i REST-API: er för partner Center.
 
 Partner Center-API: et har för närvarande GET-och-kvalifikationer för att verifiera utbildningens kunders berättigande. Inga ändringar görs i GET kvalificerings-API: et. Vi har dock lagt till ett retur ärende i API för att skicka kvalificering.
 
-- GET – ändras inte. [Aktuell API-artikel](get-a-customer-s-qualification.md)
-- Ärendet för att skicka returer läggs till. [Aktuell API-artikel](update-a-customer-s-qualification.md)
+- GET – ändras inte. [Aktuell API-artikel](./get-customer-qualification-synchronous.md)
+- Ärendet för att skicka returer läggs till. [Aktuell API-artikel](./update-customer-qualification-synchronous.md)
 
 Dessa API: er kommer att dras tillbaka i slutet av februari 2021 och ersätts av nya API: er enligt beskrivningen nedan.
 

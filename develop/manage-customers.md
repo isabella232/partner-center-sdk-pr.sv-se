@@ -4,19 +4,19 @@ description: I det här avsnittet beskrivs hur leverantörer av moln lösningar 
 ms.date: 02/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b76829bf8bfae51c135ea815e3360376a5ff294d
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: fa1a032735037b1b3a543d21bf4c868b52c13017
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97769501"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711958"
 ---
 # <a name="manage-customers"></a>Hantera kunder
 
 **Gäller för**
 
 - Partnercenter
-- Partner Center som drivs av 21Vianet
+- Partnercenter drivs av 21Vianet
 - Partnercenter för Microsoft Cloud Tyskland
 - Välkommen till Partnercenter för Microsoft Cloud for US Government
 
@@ -53,8 +53,8 @@ I det här avsnittet beskrivs hur leverantörer av moln lösningar kan använda 
 - [Hämta status för direktsignering (direktgodkännande) för Microsoft-kundavtal](get-direct-sign-status-of-customer-agreement.md)
 - [Bekräfta kundgodkännande av Microsoft-kundavtal](confirm-customer-consent-customer-agreement.md)
 - [Hämta en partners valideringskoder](get-a-partner-s-validation-codes.md)
-- [Hämta en kunds kvalificering](get-a-customer-s-qualification.md)
-- [Uppdatera en kunds kvalificering](update-a-customer-s-qualification.md)
+- [Hämta en kunds kvalificering](./get-customer-qualification-synchronous.md)
+- [Uppdatera en kunds kvalificering](./update-customer-qualification-synchronous.md)
 
 ## <a name="manage-user-accounts-and-assign-licenses"></a>Hantera användar konton och tilldela licenser
 
