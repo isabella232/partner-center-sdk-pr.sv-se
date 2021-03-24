@@ -4,16 +4,45 @@ description: Viktig information för den senaste versionen av Partner Center .NE
 ms.date: 09/18/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6be8f62e0c202a00b194f5af1dc8904006f8d637
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: 2fe309500cc80e962c101ad97f0712bef7e11eb3
+ms.sourcegitcommit: f7fce0b35ab1579e59136abc357b71cf768b81b4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97770238"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104895541"
 ---
 # <a name="net-sdk-release-notes"></a>Viktig information för .NET SDK
 
 Följande viktig information är tillgänglig för nya versioner av [Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter). Du hittar [.NET SDK-exempel](https://github.com/Microsoft/Partner-Center-DotNet-Samples) på GitHub. Du hittar [partner Center .NET API-referens](/dotnet/api/?view=partnercenter-dotnet-latest&preserve-view=true) i .NET API-webbläsaren.
+
+## <a name="version-1170"></a>Version 1.17.0
+
+[Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.17.0) v-1.17.0 är nu allmänt tillgänglig. Uppdaterade [GitHub-exempel](https://github.com/Microsoft/Partner-Center-DotNet-Samples) finns också tillgängliga. Följande ändringar ingår i den här versionen:
+
+* Granska uppdaterade – tillagda nya åtgärds typer för att veta när kunden godkände och avslutade DAP
+  * [DapAdminRelationshipApproved](auditing-resources.md)
+  * [DapAdminRelationshipTerminated](auditing-resources.md)
+
+* Granska uppdaterad – nya resurs-och åtgärds typer har lagts till för att stödja scenariot för kund katalog roll
+  * Resurs typ "[CustomerDirectoryRole](auditing-resources.md)"
+  * Åtgärds typer "[AddUserMember](auditing-resources.md)" och "[RemoveUserMember](auditing-resources.md)"
+
+* SDK-uppdateringar till kund konto – stöd för följande API: er
+  * Hämta/customers/{customer-tenant-id}/directSignedMicrosoftCustomerAgreementStatus
+  * Hämta/Customers/{Customer-Tenant-ID}/Qualifications 
+  * PUBLICERA/Customers/{customer_id}/Qualifications? Code = {validationCode}
+
+* **Följande ändringar införs som en del av en ny handel som för närvarande endast är tillgängliga utifrån inbjudan till partner som är en del av M365/D365 nya Commerce Experience Technical Preview.** Partner som inte ingår i den nya privata Commerce-förhands granskningen bör inte märkas och bör vara bakåtkompatibla.
+  * Katalog ändringar:
+    * Hämta/Products/{Product-ID}/SKUs/{SKU-ID}
+  * Köp och hantera:
+    * Hämta/customers/{customerId}/subscriptions
+    * Hämta/customers/{customerId}/subscriptions/{subscriptionId}
+    * KORRIGERINGs/customers/{customerId}/subscriptions/{subscriptionId}
+    * Hämta/customers/{customerId}/subscriptions/{subscriptionId}/transitioneligibilities
+    * Hämta/customers/{customerId}/subscriptions/{subscriptionId}/transitions
+    * PUBLICERA/customers/{customerId}/subscriptions/{subscriptionId}/transitions
+
 
 ## <a name="version-1163"></a>Version 1.16.3
 
