@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 3f1deb20a18bc6e7133cac91db528f2d1ad694e2
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 267e3aa63a94c5045977ad566eb5061df3b59882
+ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768739"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105030578"
 ---
 # <a name="get-the-status-of-a-customers-direct-signing-direct-acceptance-of-microsoft-customer-agreement"></a>Hämta statusen för en kunds direkta signering (direkt godkännande) för Microsofts kund avtal
 
@@ -23,11 +23,29 @@ ms.locfileid: "97768739"
 
 Den här resursen är *inte tillämplig* för:
 
-- Partner Center som drivs av 21Vianet
+- Partnercenter drivs av 21Vianet
 - Partnercenter för Microsoft Cloud Tyskland
 - Välkommen till Partnercenter för Microsoft Cloud for US Government
 
 Den här artikeln förklarar hur du kan hämta statusen för en kunds direkta godkännande av Microsofts kund avtal.
+
+## <a name="prerequisites"></a>Förutsättningar
+
+- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+
+## <a name="c"></a>C\#
+
+För att hämta statusen för en kunds direkta godkännande av Microsofts kund avtal, anropa metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID. Använd sedan egenskapen [**Agreements**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.agreements) för att hämta ett [**ICustomerAgreementCollection**](/dotnet/api/microsoft.store.partnercenter.agreements.icustomeragreementcollection) -gränssnitt. Till sist anropa `GetDirectSignedCustomerAgreementStatus()` eller `GetDirectSignedCustomerAgreementStatusAsync()` för att hämta statusen.
+
+``` csharp
+// IAggregatePartner partnerOperations;
+// string customerId;
+var customerDirectSigningStatus = partnerOperations.Customers.ById(selectedCustomerId).Agreements.GetDirectSignedCustomerAgreementStatus();
+```
+
+**Exempel**: [app för konsol exempel](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: SdkSamples- **klass**: GetDirectSignedCustomerAgreementStatus. CS
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -47,7 +65,7 @@ Du kan använda följande URI-parametrar med din begäran:
 
 | Namn             | Typ | Obligatorisk | Beskrivning                                                                               |
 |------------------|------|----------|-------------------------------------------------------------------------------------------|
-| kund-ID för klient organisation | GUID | Yes | Värdet är en GUID-formaterad **CustomerTenantId** som gör att du kan ange klient-ID för en kund. |
+| kund-ID för klient organisation | GUID | Ja | Värdet är en GUID-formaterad **CustomerTenantId** som gör att du kan ange klient-ID för en kund. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
