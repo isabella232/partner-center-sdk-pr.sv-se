@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: a13b62903e44165ef9811ea7798fcea666d483dc
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 1e19792da6a7510bf02dd11b3e77f40a8365be2b
+ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769693"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105730203"
 ---
 # <a name="get-invoice-billed-commercial-consumption-line-items"></a>Hämta fakturerade försäljnings artiklar för försäljnings förbrukning
 
@@ -109,7 +109,7 @@ Ett liknande exempel finns i följande avsnitt:
 
 - Exempel: [konsol test app](console-test-app.md)
 - Projekt: **SDK-exempel för partner Center**
-- Klass: **GetBilledConsumptionReconLineItemsPaging.cs**
+- Klass: **GetBilledConsumptionReconLineItemsPaging. cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -129,12 +129,12 @@ Använd följande URI och frågeparametrar när du skapar begäran.
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| faktura-ID             | sträng | Yes      | En sträng som identifierar fakturan.                             |
-| CSP               | sträng | Yes      | Providern: "Databasmigrering".                                  |
-| faktura-rad-objekt-typ | sträng | Yes      | Typ av faktura information: "UsageLineItems". |
-| currencyCode           | sträng | Yes      | Valuta koden för de fakturerade rad artiklarna.                    |
-| period                 | sträng | Yes      | Period för fakturerad rekognoseringar. exempel: Current, Previous.        |
-| ikoner                   | antal | No       | Det maximala antalet objekt som ska returneras. Standard storleken är 2000       |
+| faktura-ID             | sträng | Ja      | En sträng som identifierar fakturan.                             |
+| CSP               | sträng | Ja      | Providern: "Databasmigrering".                                  |
+| faktura-rad-objekt-typ | sträng | Ja      | Typ av faktura information: "UsageLineItems". |
+| currencyCode           | sträng | Ja      | Valuta koden för de fakturerade rad artiklarna.                    |
+| period                 | sträng | Ja      | Period för fakturerad rekognoseringar. exempel: Current, Previous.        |
+| ikoner                   | antal | Inga       | Det maximala antalet objekt som ska returneras. Standard storleken är 2000       |
 | seekOperation          | sträng | No       | Ange seekOperation = nästa för att hämta nästa sida med rekognoseringar rad objekt. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
@@ -238,6 +238,7 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
             "billingCurrency": "USD",
             "pricingPreTaxTotal": 0.486031696515249,
             "pricingCurrency": "USD",
+            "creditType": "Credit Not Applied",
             "invoiceLineItemType": "usage_line_items",
             "billingProvider": "marketplace",
             "attributes": {
@@ -295,6 +296,8 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
             "pcToBCExchangeRateDate": "2019-08-01T00:00:00Z",
             "effectiveUnitPrice": 0.1999968000511991808131,
             "rateOfPartnerEarnedCredit": 0,
+            "rateOfCredit": 1,
+            "creditType": "Azure Credit Applied",
             "invoiceLineItemType": "usage_line_items",
             "billingProvider": "marketplace",
             "attributes": {
@@ -414,7 +417,8 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
             "pcToBCExchangeRateDate": "2019-08-01T00:00:00Z",
             "effectiveUnitPrice": 0.1835431430074643112595,
             "rateOfPartnerEarnedCredit": 0.15,
-
+            "rateOfCredit": 0.15,
+            "creditType": "Partner Earned Credit Applied",
             "attributes": {
                 "objectType": "DailyRatedUsageLineItem"
             }

@@ -4,19 +4,19 @@ description: 'Flera faktura relaterade resurser är tillgängliga via API: er f�
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: bd2caefe4ae18c81a31083d084f1e87da1288dd9
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 8977b3b649cd930bb517965572d0efe51d6985a0
+ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768904"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105730220"
 ---
 # <a name="invoice-resources"></a>Faktura resurser
 
 **Gäller för:**
 
 - Partnercenter
-- Partner Center som drivs av 21Vianet
+- Partnercenter drivs av 21Vianet
 - Partnercenter för Microsoft Cloud Tyskland
 - Välkommen till Partnercenter för Microsoft Cloud for US Government
 
@@ -24,7 +24,7 @@ Följande faktura relaterade resurser är tillgängliga via API: er för partner
 
 ## <a name="invoice"></a>Faktura
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | id | sträng | Faktura-ID. |
 | invoiceDate | sträng i UTC-datum/tid-format | Datumet då fakturan genererades. |
@@ -47,7 +47,7 @@ Följande faktura relaterade resurser är tillgängliga via API: er för partner
 
 En faktura innehåller en samling av fakturerade artiklar, och varje objekt representeras av en InvoiceDetail-resurs.
 
-| Egenskap            | Typ                                                           | Description                                                                       |
+| Egenskap            | Typ                                                           | Beskrivning                                                                       |
 |---------------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------|
 | invoiceLineItemType | sträng                                                         | Typ av faktura information: "ingen", "användnings \_ rads \_ objekt", "fakturerings \_ rad \_ objekt". |
 | billingProvider     | sträng                                                         | Fakturerings leverantören: "ingen", "Office", "Azure" eller "Azure \_ data \_ Marketing".         |
@@ -58,7 +58,7 @@ En faktura innehåller en samling av fakturerade artiklar, och varje objekt repr
 
 Varje enskild avgift i en faktura representeras som en InvoiceLineItem.
 
-| Egenskap            | Typ                                                           | Description                                                                          |
+| Egenskap            | Typ                                                           | Beskrivning                                                                          |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | invoiceLineItemType | sträng                                                         | Typ av faktura rads objekt: "ingen", "användnings \_ rads \_ objekt", "fakturerings \_ rad \_ objekt". |
 | billingProvider     | sträng                                                         | Fakturerings leverantören: "ingen", "Office", "Azure" eller "Azure \_ data \_ Marketing".            |
@@ -68,7 +68,7 @@ Varje enskild avgift i en faktura representeras som en InvoiceLineItem.
 
 Beskriver en översikt över saldot och den totala kostnaden för en faktura.
 
-| Egenskap                 | Typ                                                           | Description                                                           |
+| Egenskap                 | Typ                                                           | Beskrivning                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
 | balanceAmount            | antal                                                         | Fakturans saldo. Detta är den totala mängden obetalda fakturor. |
 | currencyCode             | sträng                                                         | En kod som anger valutan som används för saldobeloppet.       |
@@ -86,7 +86,7 @@ Beskriver en översikt över saldot och den totala kostnaden för en faktura.
 
 Visar en sammanfattning av de enskilda detaljerna för en faktura typ (till exempel återkommande, en \_ tid).
 
-| Egenskap            | Typ                                                           | Description                                                                          |
+| Egenskap            | Typ                                                           | Beskrivning                                                                          |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | invoiceType         | sträng                                                         | Typ av faktura: "återkommande", "en \_ tid".                                       |
 | sammanfattning             | [InvoiceSummary](#invoicesummary) -objekt                       | Sammanfattningen av fakturan per faktura typ.                                         |
@@ -95,7 +95,7 @@ Visar en sammanfattning av de enskilda detaljerna för en faktura typ (till exem
 
 Representera en samling av typen [InvoiceSummary](#invoicesummary) som innehåller de enskilda detaljerna för en faktura typ per valuta.
 
-| Egenskap            | Typ                                                           | Description                                                                          |
+| Egenskap            | Typ                                                           | Beskrivning                                                                          |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | collectionOfSummary | matris med [InvoiceSummary](#invoicesummary) -objekt             | Sammanfattningen av fakturan per faktura typ per valuta.                            |
 
@@ -103,7 +103,7 @@ Representera en samling av typen [InvoiceSummary](#invoicesummary) som innehåll
 
 Representerar ett faktura fakturerings rads objekt för licensierade prenumerationer.
 
-| Egenskap                 | Typ                                                           | Description                                                           |
+| Egenskap                 | Typ                                                           | Beskrivning                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
 | debetbelopp                   | sträng                                                         | Hämtar eller anger den totala mängden. Total belopp = enhets pris * kvantitet.  |
 | dokumentattribut               | sträng                                                         | Hämtar attributen.                                                  |
@@ -141,7 +141,7 @@ Representerar ett faktura fakturerings rads objekt för licensierade prenumerati
 
 Representerar ett faktura fakturerings rads objekt för användnings prenumerationer.
 
-| Egenskap                 | Typ                                                           | Description                                                           |
+| Egenskap                 | Typ                                                           | Beskrivning                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
 | dokumentattribut               | sträng                                                         | Hämtar attributen.                                                  |
 | billingCycleType         | sträng                                                         | Hämtar eller anger typen av fakturerings cykel.                                  |
@@ -188,7 +188,7 @@ Representerar ett faktura fakturerings rads objekt för användnings prenumerati
 
 Representerar de åtgärder som är tillgängliga för ett faktura uttryck i program/PDF.
 
-| Egenskap                 | Typ                                                           | Description                                                           |
+| Egenskap                 | Typ                                                           | Beskrivning                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
 | httpResponseMessage      | objekt                                                         | ByteArrayContent med contentType = Application/PDF.                  |
 
@@ -196,7 +196,7 @@ Representerar de åtgärder som är tillgängliga för ett faktura uttryck i pro
 
 Representerar ett faktura fakturerings rads objekt för licensierade prenumerationer.
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | --- | --- | --- |
 | Partner | sträng | Hämtar eller anger partnerns klient-ID. |
 | CustomerId | sträng | Hämtar eller anger kundens klient-ID. |
@@ -216,7 +216,7 @@ Representerar ett faktura fakturerings rads objekt för licensierade prenumerati
 | UnitPrice | decimal | Hämtar eller anger enhets priset. |
 | EffectiveUnitPrice | decimal | Hämtar eller anger det effektiva enhets priset. |
 | UnitType | sträng | Hämtar eller anger enhets typen. |
-| Antal | int | Hämtar eller anger antalet enheter som är kopplade till det här rad objektet. |
+| Kvantitet | int | Hämtar eller anger antalet enheter som är kopplade till det här rad objektet. |
 | Delsumma | decimal | Hämtar eller anger beloppet efter rabatt. |
 | TaxTotal | decimal | Hämtar eller anger de skatter som debiteras. |
 | TotalForCustomer | decimal | Hämtar eller anger det totala beloppet efter rabatt och skatt. |
@@ -230,6 +230,7 @@ Representerar ett faktura fakturerings rads objekt för licensierade prenumerati
 | TermAndBillingCycle | sträng | Hämtar eller anger den period och den fakturerings cykel som är kopplad till det här köpet. |
 | AlternateId | sträng | Hämtar eller anger alternativ-ID (offert-ID). |
 | PriceAdjustmentDescription | sträng | Hämtar eller anger pris justerings beskrivningen. |
+| CreditReasonCode | sträng | Hämtar eller anger kredit orsaks koden. |
 | DiscountDetails | sträng |  **Föråldrad**. Hämtar eller anger rabatt information som är associerad med det här köpet. |
 | PricingCurrency | sträng | Hämtar eller anger pris valuta koden. |
 | PCToBCExchangeRate | decimal | Hämtar eller anger pris valutan för fakturerings valutakursen. |
@@ -245,7 +246,7 @@ Representerar ett faktura fakturerings rads objekt för licensierade prenumerati
 
 Representerar ej fakturerade, rad artiklar för fakturerings utjämning för dagligt Beräknad användning.
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | --- | --- | --- |
 | Partner | sträng | Hämtar eller anger partnerns klient-ID. |
 | PartnerName | sträng | Hämtar eller anger partner namnet. |
@@ -285,7 +286,7 @@ Representerar ej fakturerade, rad artiklar för fakturerings utjämning för dag
 | ResellerMpnId | sträng | Hämtar eller anger åter försäljarens MPN-ID för nivå 2-partnern som är kopplad till det här rad objektet. |
 | ChargeType | sträng | Hämtar eller anger avgifts typen. |
 | UnitPrice | decimal | Hämtar eller anger priset för enheten. |
-| Antal | decimal | Hämtar eller anger antalet användnings områden. |
+| Kvantitet | decimal | Hämtar eller anger antalet användnings områden. |
 | UnitType | sträng | Hämtar eller anger enhets typen (t. ex. 1 timme). |
 | BillingPreTaxTotal | decimal | Hämtar eller anger den utökade kostnaden eller den totala kostnaden före skatt i lokal valuta för kunden eller fakturerings valutan. |
 | BillingCurrency | sträng | Hämtar eller anger ISO-valutan som mätaren debiteras i i lokal valuta för kunden eller fakturerings valutan. |
@@ -297,6 +298,8 @@ Representerar ej fakturerade, rad artiklar för fakturerings utjämning för dag
 | PCToBCExchangeRateDate | DateTime | Hämtar eller anger pris valutan för fakturerings valutans datum. |
 | EffectiveUnitPrice | decimal | Hämtar eller anger det effektiva enhets priset. |
 | RateOfPartnerEarnedCredit | decimal | Hämtar eller anger frekvensen för intjänad kredit för partner. |
-| hasPartnerEarnedCredit | boolesk | Hämtar eller anger den intjänade partner krediten. |
+| HasPartnerEarnedCredit | boolesk | Hämtar eller anger den intjänade partner krediten. |
+| RateOfCredit | decimal | Hämtar eller anger kredit priset för den aktuella kredit typen. |
+| CreditType | sträng | Hämtar eller anger kredit typen. |
 | InvoiceLineItemType | InvoiceLineItemType | Returnerar typen av faktura rads objekt. |
 | BillingProvider | BillingProvider | Returnerar fakturerings leverantören. |
