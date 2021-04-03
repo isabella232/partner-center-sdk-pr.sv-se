@@ -4,12 +4,12 @@ description: 'Du kan hämta en samling information om ej fakturerad kommersiell 
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0b0ce9d4c8d310243d8b799445e5a64975f2d05d
-ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
+ms.openlocfilehash: 8b6ca8d6ff7af53dd2a258ea20e6eaeb26421440
+ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105730254"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106274673"
 ---
 # <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Hämta fakturor för ej fakturerad kommersiell förbruknings artikel
 
@@ -117,24 +117,24 @@ Ett liknande exempel finns i:
 
 Du kan använda följande syntax för din REST-begäran, beroende på ditt användnings fall. Mer information finns i beskrivningarna för varje syntax.
 
- | Metod  | URI för förfrågan         | Beskrivning av användnings fall för syntax |                                                                                                                                            |
-|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/unbilled/lineitems? Provider = Databasmigrering&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} http/1.1                              | Använd den här syntaxen för att returnera en fullständig lista över varje rad objekt för den aktuella fakturan. |
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/unbilled/lineitems? Provider = Databasmigrering&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &storlek = {size} http/1.1  | Använd den här syntaxen för stora fakturor. Använd den här syntaxen med en angiven storlek och 0-baserad förskjutning för att returnera en växlad lista med rad objekt. |
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/unbilled/lineitems? Provider = Databasmigrering&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &storlek = {size} &SeekOperation = nästa                               | Använd den här syntaxen för att hämta nästa sida av avstämnings rad objekt med `seekOperation = "Next"` . |
+| Metod  | URI för förfrågan                                                                                                                                                                                              | Beskrivning av användnings fall för syntax                                                                                                     |
+|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/unbilled/lineitems? Provider = Databasmigrering&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} http/1.1                       | Använd den här syntaxen för att returnera en fullständig lista över varje rad objekt för den aktuella fakturan.                                                    |
+| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/unbilled/lineitems? Provider = Databasmigrering&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &storlek = {size} http/1.1           | Använd den här syntaxen för stora fakturor. Använd den här syntaxen med en angiven storlek och 0-baserad förskjutning för att returnera en växlad lista med rad objekt. |
+| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/unbilled/lineitems? Provider = Databasmigrering&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &storlek = {size} &SeekOperation = nästa | Använd den här syntaxen för att hämta nästa sida av avstämnings rad objekt med `seekOperation = "Next"` .                                  |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
 Använd följande URI och frågeparametrar när du skapar begäran.
 
-| Namn                   | Typ   | Obligatorisk | Beskrivning                                                                     |
-|------------------------|--------|----------|---------------------------------------------------------------------------------|
-| CSP               | sträng | Ja      | Providern: "**Databasmigrering**".                                                |
-| faktura-rad-objekt-typ | sträng | Ja      | Typ av faktura information: "**UsageLineItems**", "**UsageLineItems**".               |
-| currencyCode           | sträng | Ja      | Valuta koden för de ej fakturerade rad artiklarna.                                  |
+| Namn                   | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                                                                                |
+|------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CSP               | sträng | Ja      | Providern: "**Databasmigrering**".                                                                                                                                                                                                               |
+| faktura-rad-objekt-typ | sträng | Ja      | Typ av faktura information: "**UsageLineItems**", "**UsageLineItems**".                                                                                                                                                                    |
+| currencyCode           | sträng | Ja      | Valuta koden för de ej fakturerade rad artiklarna.                                                                                                                                                                                             |
 | period                 | sträng | Ja      | Perioden för ej fakturerade rekognoseringar (t. ex. **aktuell**, **föregående**). Anta att du behöver fråga dina ej fakturerade användnings data för fakturerings cykeln (01/01/2020 – 01/31/2020) i januari väljer du period som **"nuvarande,"** Else **"föregående."** |
-| ikoner                   | antal | Inga       | Det maximala antalet objekt som ska returneras. Standard storleken är 2000.                    |
-| seekOperation          | sträng | No       | Ställ in `seekOperation=Next` för att hämta nästa sida med avstämnings rad objekt.                |
+| ikoner                   | antal | Inga       | Det maximala antalet objekt som ska returneras. Standard storleken är 2000.                                                                                                                                                                           |
+| seekOperation          | sträng | No       | Ställ in `seekOperation=Next` för att hämta nästa sida med avstämnings rad objekt.                                                                                                                                                                |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

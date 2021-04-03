@@ -1,17 +1,17 @@
 ---
 title: Skapa en kund för en indirekt återförsäljare
 description: 'Lär dig hur en indirekt Provider kan använda API: er i Partner Center för att skapa en kund för en indirekt åter försäljare.'
-ms.date: 11/13/2020
+ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: e2386f1963a5bb3ea4269bcbf4327c75987f3b91
-ms.sourcegitcommit: 4c253abb24140a6e00b0aea8e79a08823ea5a623
+ms.openlocfilehash: 13cd1b051abb536d397dcd4000228f67fe3206b8
+ms.sourcegitcommit: 204e518e794b6b076a17488ee9ca1aaaa4beaaec
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97770177"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106103954"
 ---
 # <a name="create-a-customer-for-an-indirect-reseller-using-partner-center-apis"></a>Skapa en kund för en indirekt åter försäljare med hjälp av API: er för partner Center
 
@@ -77,7 +77,7 @@ var customerToCreate = new Customer()
 var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: CreateCustomerforIndirectReseller.CS
+**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: CreateCustomerforIndirectReseller. CS
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -97,11 +97,11 @@ I den här tabellen beskrivs de egenskaper som krävs i begär ande texten.
 
 | Namn                                          | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                                                                                                                                                                                           |
 |-----------------------------------------------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [BillingProfile](#billing-profile)             | objekt | Yes      | Kundens fakturerings profil information.                                                                                                                                                                                                                                                                                                           |
-| [CompanyProfile](#company-profile)             | objekt | Yes      | Kundens företags profil information.                                                               
-| [AssociatedPartnerId](customer-resources.md#customer) | sträng | Yes      | ID för den indirekta åter försäljaren. Den indirekta åter försäljaren som anges av det ID som anges här måste ha ett partnerskap med den indirekta providern eller så Miss förfrågans begäran. Observera också att om AssociatedPartnerId-värdet inte anges skapas kunden som en direkt kund för den indirekta leverantören i stället för den indirekta åter försäljaren. |
-|Domain| Sträng| Yes|Kundens domän namn, till exempel contoso.onmicrosoft.com.|
-|organizationRegistrationNumber|    sträng|Yes|     Kundens organisations registrerings nummer (kallas även för INN-nummer i vissa länder). Krävs endast för kundens företag/organisation i följande länder. Armenien (AM), Azerbajdzjan (AZ), Vitryssland (av), Ungern (Slovakien), Kazakstan (KZ), Kirgizistan (KG), Moldavien (MD), Ryssland (RU), Tadzjikistan (TJ), Uzbekistan (UZ), Ukraina (UA). För kundens företag/organisation i andra länder bör detta inte anges.|
+| [BillingProfile](#billing-profile)             | objekt | Ja      | Kundens fakturerings profil information.                                                                                                                                                                                                                                                                                                           |
+| [CompanyProfile](#company-profile)             | objekt | Ja      | Kundens företags profil information.                                                               
+| [AssociatedPartnerId](customer-resources.md#customer) | sträng | Ja      | ID för den indirekta åter försäljaren. Den indirekta åter försäljaren som anges av det ID som anges här måste ha ett partnerskap med den indirekta providern eller så Miss förfrågans begäran. Observera också att om AssociatedPartnerId-värdet inte anges skapas kunden som en direkt kund för den indirekta leverantören i stället för den indirekta åter försäljaren. |
+|Domain| Sträng| Ja|Kundens domän namn, till exempel contoso.onmicrosoft.com.|
+|organizationRegistrationNumber|    sträng|Ja|     Kundens organisations registrerings nummer (kallas även för INN-nummer i vissa länder). Krävs endast för kundens företag/organisation i följande länder: Armenien (AM), Azerbajdzjan (AZ). Vitryssland (BY), Ungern (HU), Kazakstan (KZ), Kirgizistan (KG), Moldavien (MD), Ryssland (RU), Tadzjikistan (TJ), Uzbekistan (UZ), Ukraina (UA), Indien, Brasilien, Sydafrika, Polen, Förenade Arabemiraten, Saudiarabien, Turkiet, Thailand, Vietnam, Myanmar, Irak, Sydsudan och Venezuela. För kundens företag/organisation i andra länder är detta ett valfritt fält.|
 
 
 
@@ -111,11 +111,11 @@ I den här tabellen beskrivs minimi kraven för fält från [CustomerBillingProf
 
 | Namn             | Typ                                     | Obligatorisk | Beskrivning                                                                                                                                                                                                     |
 |------------------|------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| e-post            | sträng                                   | Yes      | Kundens e-postadress.                                                                                                                                                                                   |
-| substrat          | sträng                                   | Yes      | Deras föredragna kultur för kommunikation och valuta, till exempel "en-US". Se de [språk som stöds av Partner Center och nationella inställningar](partner-center-supported-languages-and-locales.md) för de kulturer som stöds. |
-| language         | sträng                                   | Yes      | Standard språket. Två characters språk koder (till exempel `en` eller `fr` ) stöds.                                                                                                                                |
-| företags \_ namn    | sträng                                   | Yes      | Registrerat företags-/organisations namn.                                                                                                                                                                       |
-| standard \_ adress | [Adress](utility-resources.md#address) | Yes      | Den registrerade adressen för kundens företag/organisation. Se [adress](utility-resources.md#address) resursen för information om eventuella längd begränsningar.                                             |
+| e-post            | sträng                                   | Ja      | Kundens e-postadress.                                                                                                                                                                                   |
+| substrat          | sträng                                   | Ja      | Deras föredragna kultur för kommunikation och valuta, till exempel "en-US". Se de [språk som stöds av Partner Center och nationella inställningar](partner-center-supported-languages-and-locales.md) för de kulturer som stöds. |
+| language         | sträng                                   | Ja      | Standard språket. Två characters språk koder (till exempel `en` eller `fr` ) stöds.                                                                                                                                |
+| företags \_ namn    | sträng                                   | Ja      | Registrerat företags-/organisations namn.                                                                                                                                                                       |
+| standard \_ adress | [Adress](utility-resources.md#address) | Ja      | Den registrerade adressen för kundens företag/organisation. Se [adress](utility-resources.md#address) resursen för information om eventuella längd begränsningar.                                             |
 
 #### <a name="company-profile"></a>Företags profil
 
@@ -123,7 +123,7 @@ I den här tabellen beskrivs minimi kraven för fält från [CustomerCompanyProf
 
 | Namn   | Typ   | Obligatorisk | Beskrivning                                                  |
 |--------|--------|----------|--------------------------------------------------------------|
-| domän | sträng | Yes     | Kundens domän namn, till exempel contoso.onmicrosoft.com. |
+| domän | sträng | Ja     | Kundens domän namn, till exempel contoso.onmicrosoft.com. |
 | organizationRegistrationNumber | sträng | Är beroende av villkor | Kundens organisations registrerings nummer (kallas även för INN-numret i vissa länder). <br/><br/>Du behöver bara fylla i det här fältet om en kunds företag/organisation finns i följande länder: <br/><br/>-Armenien (AM) <br/>– Azerbajdzjan (AZ)<br/>– Vitryssland (av)<br/>– Ungern (HU)<br/>-Kazakstan (KZ)<br/>– Kirgizistan (KG)<br/>– Moldavien (MD)<br/>– Ryssland (RU)<br/>– Tadzjikistan (TJ)<br/>-Uzbekistan (UZ)<br/>-Ukraina (UA)<br/><br/>Det här fältet krävs inte om kundens företag/organisation finns i andra länder än de som visas här.  |
 
 ### <a name="request-example"></a>Exempel på begäran

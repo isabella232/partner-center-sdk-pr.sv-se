@@ -1,24 +1,24 @@
 ---
 title: Skapa en kund
 description: 'Lär dig hur en partner av en moln lösnings leverantör (CSP) kan använda API: er för partner Center för att skapa en ny kund. Artikeln beskriver krav och vad som händer mer.'
-ms.date: 11/13/2020
+ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 3bc8081c682bdf522bcb0ca218f16cafab7b3a99
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: bc8e9d38353511e747ba4da99b11be40d08781e3
+ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97770230"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106274605"
 ---
 # <a name="create-a-customer-using-partner-center-apis"></a>Skapa en kund med hjälp av API: er för partner Center
 
 **Gäller för:**
 
 - Partnercenter
-- Partner Center som drivs av 21Vianet
+- Partnercenter drivs av 21Vianet
 - Välkommen till Partnercenter för Microsoft Cloud for US Government
 
 Den här artikeln beskriver hur du skapar en ny kund.
@@ -92,7 +92,7 @@ var customerToCreate = new Customer()
 var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: CreateCustomer.CS
+**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: CreateCustomer. CS
 
 ## <a name="java"></a>Java
 
@@ -170,7 +170,7 @@ New-PartnerCustomer -BillingAddressLine1 '1 Microsoft Way' -BillingAddressCity '
 
 I den här tabellen beskrivs de egenskaper som krävs i begär ande texten.
 
-| Namn                              | Typ   | Description                                 |
+| Namn                              | Typ   | Beskrivning                                 |
 |-----------------------------------|--------|---------------------------------------------|
 | [BillingProfile](#billing-profile) | objekt | Kundens fakturerings profil information. |
 | [CompanyProfile](#company-profile) | objekt | Kundens företags profil information. |
@@ -179,7 +179,7 @@ I den här tabellen beskrivs de egenskaper som krävs i begär ande texten.
 
 I den här tabellen beskrivs minimi kraven för fält från [CustomerBillingProfile](customer-resources.md#customerbillingprofile) -resursen som behövs för att skapa en ny kund.
 
-| Namn             | Typ                                     | Description                                                                                                                                                                                                     |
+| Namn             | Typ                                     | Beskrivning                                                                                                                                                                                                     |
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | e-post            | sträng                                   | Kundens e-postadress.                                                                                                                                                                                   |
 | substrat          | sträng                                   | Deras föredragna kultur för kommunikation och valuta, till exempel "en-US". Se de [språk som stöds av Partner Center och nationella inställningar](partner-center-supported-languages-and-locales.md) för de kulturer som stöds. |
@@ -191,11 +191,10 @@ I den här tabellen beskrivs minimi kraven för fält från [CustomerBillingProf
 
 I den här tabellen beskrivs minimi kraven för fält från [CustomerCompanyProfile](customer-resources.md#customercompanyprofile) -resursen som behövs för att skapa en ny kund.
 
-| Namn   | Typ   | Description                                                  |
+| Namn   | Typ   | Beskrivning                                                  |
 |--------|--------|--------------------------------------------------------------|
 | domän | sträng | Kundens domän namn, till exempel contoso.onmicrosoft.com. |
-|organizationRegistrationNumber|Sträng|Kundens organisations registrerings nummer (kallas även för INN-nummer i vissa länder). Krävs endast för kundens företag/organisation i följande länder. Armenien (AM), Azerbajdzjan (AZ), Vitryssland (av), Ungern (Slovakien), Kazakstan (KZ), Kirgizistan (KG), Moldavien (MD), Ryssland (RU), Tadzjikistan (TJ), Uzbekistan (UZ), Ukraina (UA). För kundens företag/organisation i andra länder bör detta inte anges.|
-
+|organizationRegistrationNumber|Sträng|Kundens organisations registrerings nummer (kallas även för INN-nummer i vissa länder). Krävs endast för kundens företag/organisation i följande länder: Armenien (AM), Azerbajdzjan (AZ), Vitryssland (av), Ungern (HU), Kazakstan (KZ), Kirgizistan (KG), Moldavien (MD), Ryssland (RU), Tadzjikistan (TJ), Uzbekistan (UZ), Ukraina (UA), Brasilien (BR), Indien, Sydafrika, Polen, Förenade Arabemiraten, Saudiarabien, Turkiet, Thailand, Vietnam, Myanmar, Irak, Sydsudan och Venezuela. För kundens företag/organisation i andra länder är detta ett valfritt fält.|
 
 ### <a name="request-example"></a>Exempel på begäran
 
