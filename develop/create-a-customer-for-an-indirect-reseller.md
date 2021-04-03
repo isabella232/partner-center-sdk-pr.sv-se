@@ -1,17 +1,17 @@
 ---
 title: Skapa en kund för en indirekt återförsäljare
 description: 'Lär dig hur en indirekt Provider kan använda API: er i Partner Center för att skapa en kund för en indirekt åter försäljare.'
-ms.date: 03/30/2021
+ms.date: 04/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 13cd1b051abb536d397dcd4000228f67fe3206b8
-ms.sourcegitcommit: 204e518e794b6b076a17488ee9ca1aaaa4beaaec
+ms.openlocfilehash: 0de40d08e9fc2b9cf87b7c3c41214fdd34ad26f3
+ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106103954"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106274588"
 ---
 # <a name="create-a-customer-for-an-indirect-reseller-using-partner-center-apis"></a>Skapa en kund för en indirekt åter försäljare med hjälp av API: er för partner Center
 
@@ -124,7 +124,7 @@ I den här tabellen beskrivs minimi kraven för fält från [CustomerCompanyProf
 | Namn   | Typ   | Obligatorisk | Beskrivning                                                  |
 |--------|--------|----------|--------------------------------------------------------------|
 | domän | sträng | Ja     | Kundens domän namn, till exempel contoso.onmicrosoft.com. |
-| organizationRegistrationNumber | sträng | Är beroende av villkor | Kundens organisations registrerings nummer (kallas även för INN-numret i vissa länder). <br/><br/>Du behöver bara fylla i det här fältet om en kunds företag/organisation finns i följande länder: <br/><br/>-Armenien (AM) <br/>– Azerbajdzjan (AZ)<br/>– Vitryssland (av)<br/>– Ungern (HU)<br/>-Kazakstan (KZ)<br/>– Kirgizistan (KG)<br/>– Moldavien (MD)<br/>– Ryssland (RU)<br/>– Tadzjikistan (TJ)<br/>-Uzbekistan (UZ)<br/>-Ukraina (UA)<br/><br/>Det här fältet krävs inte om kundens företag/organisation finns i andra länder än de som visas här.  |
+| organizationRegistrationNumber | sträng | Är beroende av villkor | Kundens organisations registrerings nummer (kallas även för INN-numret i vissa länder). <br/><br/>Du behöver bara fylla i det här fältet om en kunds företag/organisation finns i följande länder: <br/><br/>-Armenien (AM) <br/>– Azerbajdzjan (AZ)<br/>– Vitryssland (av)<br/>– Ungern (HU)<br/>-Kazakstan (KZ)<br/>– Kirgizistan (KG)<br/>– Moldavien (MD)<br/>– Ryssland (RU)<br/>– Tadzjikistan (TJ)<br/>-Uzbekistan (UZ)<br/>-Ukraina (UA)<br/>– Indien <br/>– Brasilien <br/>-Sydafrika <br/>– Polen <br/>– Förenade Arabemiraten <br/>– Saudiarabien <br/>– Turkiet <br/>– Thailand <br/>– Vietnam <br/>– Myanmar <br/>– Irak <br/>– Sydsudan <br/>-Venezuela<br/> <br/>För kundens företag/organisation i andra länder är detta ett valfritt fält.  |
 
 ### <a name="request-example"></a>Exempel på begäran
 
