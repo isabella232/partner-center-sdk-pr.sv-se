@@ -1,22 +1,22 @@
 ---
 title: Hämta partnerns juridiska företagsprofil
-description: Så här hämtar du en partners juridiska företags profil.
+description: 'Lär dig hur du använder API: er för att få din juridiska företags profil.'
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 5d7055dd0a6586e16b078109db4252250561eb29
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 1d488c8deb9f01110e92327035ce0c3c023fcb46
+ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769846"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106500030"
 ---
 # <a name="get-the-partner-legal-business-profile"></a>Hämta partnerns juridiska företagsprofil
 
 **Gäller för**
 
 - Partnercenter
-- Partner Center som drivs av 21Vianet
+- Partnercenter drivs av 21Vianet
 - Partnercenter för Microsoft Cloud Tyskland
 - Välkommen till Partnercenter för Microsoft Cloud for US Government
 
@@ -36,7 +36,7 @@ Om du vill hämta partnerns juridiska företags profil måste du först hämta e
 var billingProfile = partnerOperations.Profiles.LegalBusinessProfile.Get();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: GetLegalBusinessProfile.CS
+**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: GetLegalBusinessProfile. CS
 
 ## <a name="rest-request"></a>REST-begäran
 

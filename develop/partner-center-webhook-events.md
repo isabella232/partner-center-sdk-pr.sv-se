@@ -1,24 +1,24 @@
 ---
 title: Partner Center-webhook-händelser
-description: Dokumentation för alla webhook-händelser som stöds av Partner Center.
+description: Lär dig att testa och använda webhook-händelser för att notera när prenumerationer och andra händelser ändras i Partner Center.
 ms.date: 04/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 5358aab8efdd68ad52c583936304f99ffae12708
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 03ee1d4e74408b8cf69e2971054bf9060650cb77
+ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769249"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106500047"
 ---
 # <a name="partner-center-webhook-events"></a>Partner Center-webhook-händelser
 
 **Gäller för**
 
 - Partnercenter
-- Partner Center som drivs av 21Vianet
+- Partnercenter drivs av 21Vianet
 - Partnercenter för Microsoft Cloud Tyskland
 - Välkommen till Partnercenter för Microsoft Cloud for US Government
 
