@@ -1,87 +1,99 @@
 ---
 title: Vägledning för API-begränsning
-description: 'För partner som anropar API: er för partner Center, lär dig vilka API: er som påverkas av Microsoft API-begränsning och metod tips för att undvika eller bättre hantera begränsning.'
-ms.date: 09/09/2020
+description: För partner som anropar Partner Center-API:er kan du lära dig vilka API:er som påverkas av Microsoft API-begränsning och metodtips för att undvika eller bättre hantera begränsningar.
+ms.date: 04/14/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: vijvala
 ms.author: vijvala
-ms.openlocfilehash: a52751a97e699050075c1aac910cc51e94514f26
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: ab1138e19e06111299ab43ea13a6f033274aaa5d
+ms.sourcegitcommit: 3c3a21e73aaadf3023cf4c13b09809ceae5f027a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97770233"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107496152"
 ---
-# <a name="api-throttling-guidance-for-partners-calling-partner-center-apis"></a>API begränsnings vägledning för partner som anropar API: er för partner Center 
+# <a name="api-throttling-guidance-for-partners-calling-partner-center-apis"></a>Vägledning om API-begränsning för partner som anropar Partner Center-API:er 
 
 **Gäller för**
 
 - Partnercenter
 
-Microsoft implementerar API-begränsningen för att tillåta mer konsekvent prestanda inom ett tidsintervall för partner som anropar API: er för partner Center. Begränsning begränsar antalet begär anden till en tjänst i ett tidsintervall för att förhindra överanvändning av resurser. Även om Partner Center har utformats för att hantera en stor mängd begär Anden, och om ett överbelastat antal förfrågningar sker av några partner, hjälper begränsningen till att upprätthålla optimala prestanda och tillförlitlighet för alla partner.  
+Microsoft implementerar API-begränsning för att tillåta mer konsekventa prestanda inom ett tidsintervall för partner som anropar Partner Center-API:erna. Begränsning begränsar antalet begäranden till en tjänst i ett tidsintervall för att förhindra överanvändning av resurser. Partnercenter är utformat för att hantera ett stort antal begäranden, men om ett stort antal begäranden inträffar av få partner hjälper begränsningen till att bibehålla optimal prestanda och tillförlitlighet för alla partner.  
 
-Begränsnings gränserna varierar beroende på scenariot. Om du till exempel utför en stor mängd skrivningar är risken för begränsning högre än om du bara genomför läsningar.
+Begränsningsgränserna varierar beroende på scenariot. Om du till exempel utför en stor mängd skrivningar är risken för begränsning högre än om du bara utför läsningar.
 
-## <a name="what-happens-when-throttling-occurs"></a>Vad händer när en begränsning sker? 
+## <a name="what-happens-when-throttling-occurs"></a>Vad händer när begränsning inträffar? 
 
-När ett tröskelvärde överskrids begränsar Partner Center eventuella ytterligare förfrågningar från klienten under en viss tids period. Begränsnings beteendet beror på typen och antalet begär Anden.   
+När ett tröskelvärde för begränsning överskrids begränsar PartnerCenter eventuella ytterligare begäranden från klienten under en viss tidsperiod. Begränsningsbeteendet beror på typen och antalet begäranden.   
 
-### <a name="common-throttling-scenarios"></a>Vanliga begränsnings scenarier 
+### <a name="common-throttling-scenarios"></a>Vanliga begränsningsscenarier 
 
 De vanligaste orsakerna till begränsning av klienter är: 
 
-- **Ett stort antal begär Anden för ett API per partner klient-ID**: för vissa partner Center-API: er bestäms begränsningen av klient organisations-ID: t för många anrop till dessa API: er på samma partner klient-ID, vilket leder till att tröskelvärdet överskrids.  
+- Ett stort antal begäranden för ett **API per partnerklientorganisations-ID:** för vissa Partner Center-API:er bestäms begränsningen av partnerklient-ID. För många anrop till dessa API:er på samma partnerklientorganisations-ID resulterar i att tröskelvärdet för begränsning överskrids.  
 
-- **Ett stort antal begär Anden för ett API per partner klient-ID per kund-ID**: för andra API: er bestäms begränsningen av partner klient-ID: t/kund INNEHAVAREns ID-kombination; i dessa fall leder det till att för många anrop till samma kund-ID leder till begränsning medan anrop till andra kunder kan lyckas.
+- Ett stort antal begäranden för ett **API per partnerklientorganisations-ID per** kundklientorganisations-ID: för andra API:er bestäms begränsningen av kombination av partnerklient-ID/kundklientorganisations-ID. I dessa fall resulterar för många anrop mot samma klientorganisations-ID för samma kund i begränsningen , medan anrop till andra kunder kan lyckas.
 
-## <a name="best-practices-to-avoid-throttling"></a>Metod tips för att undvika begränsning 
+## <a name="best-practices-to-avoid-throttling"></a>Metodtips för att undvika begränsning 
  
-Programmerings metoder, till exempel kontinuerlig avsökning av en resurs, för att söka efter uppdateringar och regelbundet genomsöka resurs samlingar för att söka efter nya eller borttagna resurser är mer sannolika att begränsas och försämrar övergripande prestanda. Samtidiga API-anrop kan leda till ett stort antal begär Anden per enhets tid, vilket även kan orsaka att förfrågningar begränsas. I stället bör du använda ändrings spårning och ändrings meddelanden. Dessutom bör du kunna använda aktivitets loggar för att identifiera ändringar, se [aktivitets loggar för partner Center](get-a-record-of-partner-center-activity-by-user.md) för mer information.  Vi rekommenderar starkt att du använder API: et för aktivitets loggen för att få mer effektivitet och undvika begränsning. Se även exemplet på att använda aktivitets loggar nedan.
+Programmeringsmetoder som att kontinuerligt söka av en resurs för att söka efter uppdateringar och regelbundet genomskanna resurssamlingar för att söka efter nya eller borttagna resurser leder mer sannolikt till begränsning och försämrar den övergripande prestandan. Samtidiga API-anrop kan leda till ett stort antal begäranden per enhetstid, vilket också gör att begäranden begränsas. Du bör i stället använda ändringsspårning och ändringsmeddelanden. Dessutom bör du kunna använda aktivitetsloggar för att identifiera ändringar. Mer information finns [i Aktivitetsloggar](get-a-record-of-partner-center-activity-by-user.md) i Partnercenter.  Vi rekommenderar starkt att partner överväger att använda aktivitetslogg-API:et för att öka effektiviteten och undvika begränsning. Se även exemplet med att använda aktivitetsloggar nedan.
 
-## <a name="best-practices-to-handle-throttling"></a>Metod tips för att hantera begränsning
+## <a name="best-practices-to-handle-throttling"></a>Metodtips för att hantera begränsning
 
-Följande är metod tips för hantering av begränsning: 
+Följande är metodtips för hantering av begränsning: 
 
 - Minska graden av parallellitet. 
 - Minska frekvensen för anrop. 
-- Undvik omedelbara återförsök eftersom alla förfrågningar påförs mot dina användnings gränser. 
+- Undvik omedelbara återförsök eftersom alla begäranden ackumuleras mot dina användningsgränser. 
 
-När du implementerar felhantering använder du HTTP-felkoden 429 för att identifiera begränsning. Det misslyckade svaret innehåller Retry-After svars huvudet. Att säkerhetskopiera begär Anden med hjälp av återförsök-efter fördröjning är det snabbaste sättet att återställa från begränsning. 
+När du implementerar felhantering använder du HTTP-felkoden 429 för att identifiera begränsning. Det misslyckade svaret innehåller Retry-After svarshuvudet. Det snabbaste sättet att återställa från begränsning är att backa bort begäranden med hjälp av retry-after-fördröjningen. 
 
-Om du vill använda ett nytt försök efter fördröjningen gör du följande: 
+Om du vill använda retry-after-fördröjningen gör du följande: 
 
-1. Vänta antalet sekunder som anges i Retry-Afters huvudet. 
+1. Vänta det antal sekunder som anges i Retry-After sidhuvud. 
 
-2. Gör om begäran.  
+2. Försök att skicka begäran igen.  
 
-3. Om begäran Miss lyckas med en 429-felkod är du fortfarande begränsad. Försök igen med exponentiell backoff, Använd den rekommenderade Retry-After fördröjningen och gör om begäran tills den lyckas.
+3. Om begäran misslyckas igen med felkoden 429 begränsas du fortfarande. Försök igen med exponentiell backoff, använd den rekommenderade Retry-After och försök igen tills den lyckas.
 
-4. Om du använder SDK får du ett undantag med status kod 429 när din begäran begränsas. Använd egenskapen RetryAfter i undantags processen och försök igen när tiden har gått ut.
-
-
-## <a name="apis-currently-impacted-by-throttling"></a>API: er som påverkas av begränsning
-
-I den långa körningen begränsas alla API: er för enskild partner Center som anropar slut punkten "api.partnercenter.microsoft.com/". För närvarande tillämpas begränsnings gränserna bara på de få API: erna som anges nedan. Partner Center samlar in Telemetrin för alla API: er och justerar gränserna för begränsningen dynamiskt. I följande tabell visas de API: er där begränsningen för närvarande tillämpas.  
+4. Om du använder SDK får du ett undantag med statuskod 429 när din begäran begränsas. Använd egenskapen RetryAfter i undantaget och försök igen när tiden har gått ut.
 
 
-|**Åtgärd**| **Dokumentation för Partnercenter**|       
+## <a name="apis-currently-impacted-by-throttling"></a>API:er som för närvarande påverkas av begränsning
+
+I längden begränsas varje partnercenter-API som anropar slutpunkten "api.partnercenter.microsoft.com/". För närvarande tillämpas begränsningsgränserna endast på de API:er som anges nedan. Partnercenter samlar in telemetrin på vart och ett av API:erna och justerar begränsningsgränserna dynamiskt. I följande tabell visas de API:er där begränsning för närvarande tillämpas.  
+
+
+|**Åtgärd**| **Dokumentation för Partnercenter**|
 |------------------------|----------------------------|
-|{baseURL}/v1/Customers/{customer_id}/Orders|[skapa en order](create-an-order.md)|
-|{baseURL}/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription}/upgrades|[över gång till en prenumeration](transition-a-subscription.md)|
-|{baseURL}/v1/customers/{customer-tenant-id}/orders/{order-id}|[Köp ett tillägg till en prenumeration](purchase-an-add-on-to-a-subscription.md)|
+|{baseURL}/v1/customers/{customer_id}/orders|[skapa en order](create-an-order.md)|
+|{baseURL}/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription}/upgrades|[övergå till en prenumeration](transition-a-subscription.md)|
+|{baseURL}/v1/customers/{customer-tenant-id}/orders/{order-id}|[köpa ett tillägg till en prenumeration](purchase-an-add-on-to-a-subscription.md)|
 |{baseURL}/v1/customers/{customer-id}/carts/{cart-id}|[skapa en kundvagn](create-a-cart.md)|
-|{baseURL}/v1/customers/{customer-id}/carts/{cart-id}/checkout|[checka ut en varukorg](checkout-a-cart.md)|
-|{baseURL}/v1/customers/{customer-id}/carts/{cart-id}|[uppdatera en varukorg](update-a-cart.md)|
+|{baseURL}/v1/customers/{customer-id}/carts/{cart-id}/checkout|[checka ut en kundvagn](checkout-a-cart.md)|
+|{baseURL}/v1/customers/{customer-id}/carts/{cart-id}|[uppdatera en kundvagn](update-a-cart.md)|
 |{baseURL}/v1/customers/{customer-id}/subscriptions/{subscription-id}/registrations|[registrera en prenumeration](register-a-subscription.md)|
-|{baseURL}/v1/productupgrades|[skapa produkt uppgraderings enhet](create-product-upgrade-entity.md)|
-|{baseURL}/v1/customers/{customer-id}/subscriptions/{subscription-id}/conversions |[konvertera en utvärderings prenumeration till betald](convert-a-trial-subscription-to-paid.md)|
-|{baseURL}/v1/customers/{customer-tenant-id}|[Hämta en kund efter ID](get-a-customer-by-id.md)|
-|{baseURL}/v1/productUpgrades/eligibility|[Hämta berättigande för produkt uppgradering](get-eligibility-for-product-upgrade.md)|
+|{baseURL}/v1/productupgrades|[skapa entitet för produktuppgradering](create-product-upgrade-entity.md)|
+|{baseURL}/v1/customers/{customer-id}/subscriptions/{subscription-id}/conversions |[konvertera en utvärderingsprenumeration till betald](convert-a-trial-subscription-to-paid.md)|
+|{baseURL}/v1/customers/{customer-tenant-id}|[hämta en kund via ID](get-a-customer-by-id.md)|
+|{baseURL}/v1/productUpgrades/eligibility|[få behörighet för produktuppgradering](get-eligibility-for-product-upgrade.md)|
 |{baseURL}/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} |[hantera prenumeration](manage-orders.md#manage-a-subscription)|
+|{baseURL}/v1/customers/{customer_id}/subscriptions |[get-all-of-a-customer-s-subscriptions](get-all-of-a-customer-s-subscriptions.md)|
+|{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}|[Hämta en prenumeration efter ID](get-a-subscription-by-id.md)|
+|{baseURL}/v1/customers/{customer_id}/orders|[Hämta alla kundbeställningar](get-all-of-a-customer-s-orders.md)|
+|{baseURL}/v1/customers/{customer_id}/orders/{order_id}|[Hämta en beställning efter ID](get-an-order-by-id.md)|
+|{baseURL}/v1/customers/{customer_id}/orders/{order_id}/provisioningstatus|[Hämta status för prenumerationsetablering](get-subscription-provisioning-status.md)|
+|{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}|[Hantera beställningar och hantera en prenumeration](manage-orders.md#manage-a-subscription)|
+|{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}/addons|[Hämta en lista över tillägg för en prenumeration](get-a-list-of-add-ons-for-a-subscription.md)|
+|{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}/azureEntitlements|[Hämta en lista över Azure-rättigheter för en prenumeration](get-a-list-of-azure-entitlements-for-subscription.md)|
+|{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}/registrationstatus|[Hämta status för prenumerationsregistrering](get-subscription-registration-status.md)|
+|{baseURL}/v1/customers/{customer-tenant-id}/transfers|[Hämta alla en kunds överföringar](get-all-of-a-customer-s-transfers.md)|
+|{baseURL}/v1/productUpgrades/{upgrade-id}/status|[Hämta status för produktuppgradering](get-product-upgrade-status.md)|
+|{baseURL}/v1/customers/{customer-id}/subscriptions/{subscription-id}/conversions|[Hämta en lista över erbjudanden för utvärderingskonvertering](get-a-list-of-trial-conversion-offers.md)|
 
 
-### <a name="error-code-response"></a>Fel kod svar:
+### <a name="error-code-response"></a>Felkodssvar:
 ```http
 HTTP/1.1 429 Too Many Requests 
 
@@ -96,23 +108,23 @@ Date: Tue, 21 Jul 2020 04:10:58 GMT
 { "statusCode": 429, "message": "Rate limit is exceeded. Try again in 57 seconds." } 
 ```
 
-## <a name="example-of-activity-log"></a>Exempel på aktivitets logg
+## <a name="example-of-activity-log"></a>Exempel på aktivitetslogg
 
-För bästa praxis när du analyserar dagliga ändringar, rekommenderar vi att du söker efter en speciell dag i gransknings posten. 
+För bästa praxis vid analys av dagliga ändringar rekommenderar vi att du frågar efter granskningspost för en viss dag. 
 
-I svaret får du ett resultat av ändringar i en speciell åtgärds typ.Du kan filtrera baserat på den åtgärd du bryr dig om. Om du till exempel är intresse rad av en nyligen skapad kund kan du titta på operationType = "add_customer".  
+I svaret får du ett resultat med ändringar av den specifika åtgärdstypen.Du kan filtrera baserat på den åtgärd du bryr dig om. Om du till exempel är intresserad av en nyligen skapad kund kan du titta på operationType = "add_customer".  
 
-Lista över OperationType/-resurser finns i nedanstående API-dokument.  
+Lista över operationtype/resources finns i API-dokumentationen nedan.  
 
 - [Granska resurser](auditing-resources.md)  
 
-- [Hämta en post för en partner Center-aktivitet per användare](get-a-record-of-partner-center-activity-by-user.md)  
+- [Hämta en post för en Partnercenter-aktivitet per användare](get-a-record-of-partner-center-activity-by-user.md)  
 
 
 
 ### <a name="response-example"></a>Exempel på svar
 
-**Begäran**:  
+**Begäran:**  
 ```http
 Http Get call:  https://api.partnercenter.microsoft.com/v1/auditrecords?startDate=2020-09-02&endDate=2020-09-02&size=50 
 
