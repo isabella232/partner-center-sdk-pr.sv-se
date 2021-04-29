@@ -1,46 +1,46 @@
 ---
-title: Annullera en order från sandbox-integration
-description: 'Lär dig hur du använder API: er för partner Center för att avbryta olika typer av prenumerations order från högintegrations konton i sandbox.'
-ms.date: 08/16/2019
+title: Avbryta en beställning från sandbox-miljön för integrering
+description: Lär dig hur du använder Partner Center-API:er för att avbryta olika typer av prenumerationsbeställningar från integrations-sandbox-konton.
+ms.date: 04/28/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 363bf209e27d5223259c8c533710a3b35bbef1e6
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: c3bf862c62804a56e6f73dd3ec36d2e9eb65f997
+ms.sourcegitcommit: f59a9311c8a37d45695caf74794ec1697426acc9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97770083"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108210027"
 ---
-# <a name="cancel-an-order-from-the-integration-sandbox-using-partner-center-apis"></a>Avbryta en order från integration sandbox med API: er för partner Center
+# <a name="cancel-an-order-from-the-integration-sandbox-using-partner-center-apis"></a>Avbryta en beställning från sandbox-miljön för integrering med partnercenter-API:er
 
 **Gäller för:**
 
 - Partnercenter
-- Partner Center som drivs av 21Vianet
+- Partnercenter drivs av 21Vianet
 - Partnercenter för Microsoft Cloud Tyskland
 - Välkommen till Partnercenter för Microsoft Cloud for US Government
 
-I den här artikeln beskrivs hur du använder API: er för partner Center för att avbryta olika typer av prenumerations order från högintegrations konton. Sådana beställningar kan omfatta reserverade instanser, program vara och kommersiella Marketplace-program som en tjänst (SaaS) prenumerations order.
+I den här artikeln beskrivs hur du använder Partner Center-API:er för att avbryta olika typer av prenumerationsbeställningar från integrations-sandbox-konton. Sådana beställningar kan omfatta reserverade instanser, programvara och saaS-prenumerationsbeställningar (Software as a Service) på den kommersiella marknadsplatsen.
 
->[!NOTE]
->Tänk på att annulleringen av reserverad instans eller prenumerations order för SaaS på kommersiella marknads platser endast är möjlig från integrations sand Box konton.  
+>[!NOTE] 
+>Observera att annulleringar av reserverade instanser eller SaaS-prenumerationsbeställningar på den kommersiella marknadsplatsen endast är möjliga från integrations-sandbox-konton. Sandbox-beställningar som är äldre än 60 dagar kan inte annulleras från Partnercenter. Kontakta Partnercenter-supporten om du behöver hjälp. 
 
-Om du vill avbryta produktions order för program vara via API använder du [Cancel-Software-inköp](cancel-software-purchases.md).
-Du kan också avbryta produktions order av program vara via instrument panelen genom att [avbryta ett köp](/partner-center/csp-software-subscriptions).
+Om du vill avbryta produktionsorder för programvara via API använder [du cancel-software-purchases](cancel-software-purchases.md).
+Du kan också avbryta produktionsorder för programvara via instrumentpanelen med [hjälp av avbryta ett köp.](/partner-center/csp-software-subscriptions)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett partner konto för integration i begränsat läge med en kund som har aktiva prenumerations beställningar för reserverad instans/program vara/tredje part.
+- Ett partnerkonto för sandbox-integrering med en kund som har aktiv reserverad instans/programvara/SaaS-prenumerationsbeställningar från tredje part.
 
 ## <a name="c"></a>C\#
 
-Om du vill avbryta en beställning från sandbox-integration måste du skicka autentiseringsuppgifterna för ditt konto till- [**`CreatePartnerOperations`**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) metoden för att få ett [**`IPartner`**](/dotnet/api/microsoft.store.partnercenter.ipartner) gränssnitt för att få partner åtgärder.
+Om du vill avbryta en beställning från sandbox-miljön för integrering skickar du autentiseringsuppgifterna för ditt konto till metoden [**`CreatePartnerOperations`**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) för att hämta ett gränssnitt för att hämta [**`IPartner`**](/dotnet/api/microsoft.store.partnercenter.ipartner) partneråtgärder.
 
-Om du vill välja en viss [ordning](order-resources.md#order)använder du partner åtgärderna och anrops [**`Customers.ById()`**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) metoden med kund-ID: n för att ange kunden, följt av **`Orders.ById()`** med order-ID för att ange ordningen och slutligen **`Get`** eller **`GetAsync`** metoden för att hämta den.
+Om du [](order-resources.md#order)vill välja en viss order använder du partneråtgärderna och anropsmetoden med kund-ID:t för att ange kunden, följt av med orderidentifierare för att ange ordern och slutligen metoden eller metoden för [**`Customers.ById()`**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) att hämta **`Orders.ById()`** **`Get`** **`GetAsync`** den.
 
-Ange [**`Order.Status`**](order-resources.md#order) egenskapen till `cancelled` och Använd **`Patch()`** metoden för att uppdatera ordningen.
+Ange egenskapen [**`Order.Status`**](order-resources.md#order) till och använd metoden för att uppdatera `cancelled` **`Patch()`** ordern.
 
 ``` csharp
 // IPartnerCredentials tipAccountCredentials;
@@ -58,11 +58,11 @@ order = tipAccountPartnerOperations.Customers.ById(customerTenantId).Orders.ById
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod     | URI för förfrågan                                                                            |
 |------------|----------------------------------------------------------------------------------------|
-| **9.0a** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Orders/{order-ID} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders/{order-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -70,12 +70,12 @@ Använd följande frågeparameter för att ta bort en kund.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y        | Värdet är ett GUID-formaterat **kund-Tenant-ID** som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik kund som tillhör åter försäljaren. |
-| **order-ID** | **nollängd** | Y        | Värdet är en sträng som anger de order-ID: n som behöver avbrytas. |
+| **kund-klient-id** | **guid** | Y        | Värdet är ett GUID-formaterat **kundklient-ID** som gör att återförsäljaren kan filtrera resultaten för en viss kund som tillhör återförsäljaren. |
+| **order-id** | **sträng** | Y        | Värdet är en sträng som anger de order-ID:er som måste avbrytas. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -102,11 +102,11 @@ MS-CorrelationId: 1438ea3d-b515-45c7-9ec1-27ee0cc8e6bd
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden den avbrutna ordningen.
+Om det lyckas returnerar den här metoden den annullerade ordern.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 
