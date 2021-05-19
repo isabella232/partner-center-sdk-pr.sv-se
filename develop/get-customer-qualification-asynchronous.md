@@ -1,35 +1,35 @@
 ---
-title: Få en kunds kompetens
-description: Lär dig hur du använder asynkron verifiering för att få en kund kvalificering via API för partner Center. Partner kan använda detta för att validera utbildnings kunder.
-ms.date: 01/21/2021
+title: Skaffa en kunds kompetens
+description: Lär dig hur du använder asynkron validering för att få en kunds kvalificering via Partner Center API. Partner kan använda detta för att verifiera Education-kunder.
+ms.date: 05/17/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: 09801792c059873b9f6b842e99286eda09d38b1a
-ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
+ms.openlocfilehash: df605e4d400d29e14fd0b44bef34f88bbc7ca8b2
+ms.sourcegitcommit: 7d59c58ee36b217bd5cac089f918059e9dbb8a62
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105030579"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110027936"
 ---
-# <a name="get-a-customers-qualification-asynchronously"></a>Få en kund kvalificering asynkront
+# <a name="get-a-customers-qualification-asynchronously"></a>Hämta en kunds kvalificering asynkront
 
 **Gäller för**
 
 - Partnercenter
 
-Så här får du en kunds kvalifikationer asynkront.
+Hur du får en kunds kvalificering asynkront.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-För att få en kunds kvalifikationer, anropa metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID. Använd sedan egenskapen [**kvalificering**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) för att hämta ett [**ICustomerQualification**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) -gränssnitt. Till sist kan du ringa `GetQualifications()` eller `GetQualificationsAsync()` Hämta kundens kvalifikationer.
+För att få en kunds kvalificering anropar du [**metoden IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kundidentifieraren. Använd sedan egenskapen [**Kvalificering för**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) att hämta ett [**ICustomerQualification-gränssnitt.**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) Anropa eller `GetQualifications()` för att hämta kundens `GetQualificationsAsync()` kompetens.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -37,27 +37,27 @@ För att få en kunds kvalifikationer, anropa metoden [**IAggregatePartner. Cust
 var customerQualifications = partnerOperations.Customers.ById(customerId).Qualification.GetQualifications();
 ```
 
-**Exempel**: [app för konsol exempel](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: SdkSamples- **klass**: GetCustomerQualifications. CS
+**Exempel:** [Konsolexempelapp](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt:** SdkSamples-klass: GetCustomerQualifications.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                          |
 |---------|------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Qualifications http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/kvalificering HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Den här tabellen innehåller den obligatoriska Frågeparametern för att hämta all kvalificering.
+I den här tabellen visas den frågeparameter som krävs för att hämta alla kvalificeringar.
 
 | Namn               | Typ   | Obligatorisk | Beskrivning                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| **kund-ID för klient organisation** | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
+| **kund-klient-id** | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -75,13 +75,13 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling kvalifikationer i svars texten.  Nedan visas exempel på **Get** -anrop på en kund med **utbildnings** kompetensen.
+Om det lyckas returnerar den här metoden en samling kvalificeringar i svarstexten.  Nedan visas exempel på **GET-anrop** på en kund med **utbildningskvalifikationen.**
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
-### <a name="response-examples"></a>Svars exempel
+### <a name="response-examples"></a>Svarsexempel
 
 #### <a name="approved"></a>Godkända
 
@@ -132,6 +132,71 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
         "vettingStatus": "Denied",
         "vettingReason": "Not an Education Customer", // example Vetting Reason
         "vettingCreatedDate": "2020-12-03T10:37:38.885Z" // UTC
+    }
+]
+
+```
+
+#### <a name="state-owned-entity-samples"></a>Exempel på tillståndsägda entiteter
+
+**Tillståndsägd entitet via POST-exempel**
+
+```csharp
+
+//SOE
+POST {customer_id}/qualifications
+{
+“qualification”: “StateOwnedEntity”
+}
+
+//
+
+```
+
+**Exempel på tillståndsägd entitet via hämta kvalificering**
+
+```csharp
+
+//SOE:
+GET {customer_id}/qualifications
+[
+    {
+        “qualification”: “StateOwnedEntity”
+    }
+]
+
+```
+
+**Tillståndsägd entitet via Hämta utbildningskvalifikationer**
+
+```csharp
+
+GET {customer_id}/qualifications
+[
+    {
+        “qualification”: “Education”,
+        “vettingStatus”: “Approved”
+    },
+{
+        “qualification”: “StateOwnedEntity”
+    }
+]
+
+```
+
+**Tillståndsägd entitet via Hämta kvalificeringar med GCC**
+
+```csharp
+
+GET {customer_id}/qualifications
+[
+    {
+        “qualification”: “GovernmentCommunityCloud”,
+        “vettingStatus”: “Approved”,
+        “vettingCreateDate”: “2021-05-06T19:59:56.6832021+00:00”
+    },
+{
+        “qualification”: “StateOwnedEntity”
     }
 ]
 
