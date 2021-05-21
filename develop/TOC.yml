@@ -427,10 +427,12 @@
           href: update-a-subscription-s-support-contact.md
 - name: Sandbox-miljö för integrering
   items:
-    - name: Partnerfunktioner för sandbox-miljö som stöder återförsäljarrelation
+    - name: Sandbox-funktioner för återförsäljarrelation
       href: sandbox-scenario.md
     - name: Testa och felsöka sandbox-miljö
       href: test-and-debug.md
+    - name: CSP Indirect-providerfunktioner i sandbox-miljö
+      href: indirect-provider-sandbox-capabilities.md
     - name: Avbryt en beställning från sandbox-miljön för integrering
       href: cancel-an-order-from-the-integration-sandbox.md
     - name: Aktivera prenumeration på sandbox-miljö
