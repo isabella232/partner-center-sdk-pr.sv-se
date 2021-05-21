@@ -1,17 +1,17 @@
 ---
-title: Partnerfunktioner för sandbox-miljö som stöder återförsäljarrelation
-description: Partner sand Box har möjlighet att stödja relationer mellan partnern och kunden
-ms.date: 11/10/2020
+title: Sandbox-funktioner för återförsäljarrelation
+description: Sandbox-miljön för partner har möjlighet att stödja relationer mellan partnern och kunden
+ms.date: 05/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: af46811b3615e1f904a9619de85b0aca7622490b
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: 9bef4a15685ebbdc2212988f5ac5724b946cfd54
+ms.sourcegitcommit: 1aeaa12705a5945b8aab6bca254fedebd9c8bc4e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711873"
+ms.lasthandoff: 05/21/2021
+ms.locfileid: "110243392"
 ---
-# <a name="partner-sandbox-capabilities-that-support-reseller-relationship"></a>Partnerfunktioner för sandbox-miljö som stöder återförsäljarrelation
+# <a name="sandbox-capabilities-for-reseller-relationship"></a>Sandbox-funktioner för återförsäljarrelation
 
 **Gäller för:**
 
@@ -20,87 +20,87 @@ ms.locfileid: "104711873"
 - Partnercenter för Microsoft Cloud Tyskland
 - Välkommen till Partnercenter för Microsoft Cloud for US Government
 
-Den här artikeln förklarar vad som stöds i sand boxen för åter försäljares relationer mellan partnern och kunden. 
+Den här artikeln förklarar vad som stöds i sandbox-miljön för återförsäljarrelationer mellan partnern och kunden. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter för partner Center-kontot. Sandbox-scenariot stöder autentisering med både den fristående appen och appens och användarens autentiseringsuppgifter.
-- Ett kund-ID (kund-Tenant-ID). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard/home)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID (kund-Tenant-ID).
-- Alla Azure Reserved Virtual Machine Instances-och program inköps order måste annulleras innan du tar bort en kund från sandbox-tipset.
+- Autentiseringsuppgifter för Partnercenter-konto. Sandbox-scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Ett kund-ID (kund-klient-ID). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard/home) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t (kund-klient-ID).
+- Alla Azure Reserved Virtual Machine Instances och programvaruinköpsorder måste avbrytas innan du tar bort en kund från sandbox-miljön för Tip-integrering.
 
-## <a name="scenarios-supporting-reseller-relationship"></a>Scenarier som stöder åter försäljarens relation
+## <a name="scenarios-supporting-reseller-relationship"></a>Scenarier som stöder återförsäljarrelation
 
-1.  I sand Box Direct Bill partners och indirekta leverantörer kan du skapa relationer med den begränsade kunden. 
-2.  Sand Box Direct Bill partners och indirekta leverantörer kan inte bjuda in sandbox-kunder.
+1.  Direktfaktureringspartner och indirekta leverantörer i sandbox-miljön kan skapa relationer med Sandbox-kunden. 
+2.  Sandbox-direktfaktureringspartner och indirekta leverantörer kan inte bjuda in Sandbox-kunder.
+
+3. Direktfaktureringspartner och indirekta leverantörer i sandbox-miljö kan ta bort återförsäljarrelationer från Partner Center-gränssnittet och API:et.
+
+4. Sandbox Remove Reseller Relationship anropar Ta bort kund-AP. Detta tar bort relationen samt kundens klientorganisation. {baseURL}/v1/Customers/{customer-Tenant-id}
 
 
+    ### <a name="in-the-sandbox"></a>I sandbox-miljön
 
-### <a name="in-the-sandbox"></a>I sandbox
+    **Partner för direktfakturering:**
 
-**Direkta fakturerings partner**:
+    - Kan lägga till befintliga kunder
 
-• Kan lägga till befintliga kunder
+    - Det går inte att begära relationer med nya kunder
 
-• Det går inte att begära relationer med nya kunder
+    **Indirekta leverantörer:**
 
-**Indirekta leverantörer**:
+    - Kan lägga till befintliga kunder
 
-• Kan lägga till befintliga kunder
+    - Det går inte att begära relationer med nya kunder
 
-• Det går inte att begära relationer med nya kunder
+    - Det går inte att ha en relation med en indirekt återförsäljare
 
-• Det går inte att ha en relation med en indirekt åter försäljare
+    **Indirekt återförsäljare:** 
 
-**Indirekt åter försäljare**: (kommer snart)
+    -   Kan ha en relation med befintliga kunder
 
-• Kan ha relationer med befintliga kunder
+    -   Det går inte att begära nya relationer eller lägga till nya kunder
 
-• Det går inte att begära nya relationer eller lägga till nya kunder
+    ### <a name="in-partner-center"></a>I Partnercenter
 
-### <a name="in-partner-center"></a>I Partner Center
+    **Partner för direktfakturering:**
 
-**Direkta fakturerings partner**:
+    -   Kan lägga till nya kunder
 
-• Kan lägga till nya kunder
+    -   Kan begära relationer med nya kunder
 
-• Kan begära relationer med nya kunder
+    **Indirekta leverantörer:**
 
-**Indirekta leverantörer**:
+    -   Kan lägga till nya kunder
 
-• Kan lägga till nya kunder
+    -   Kan begära relationer med nya kunder
 
-• Kan begära relationer med nya kunder
+    -   Kan ha relationer med indirekta återförsäljare
 
-• Kan ha relationer med indirekta åter försäljare
+    **Indirekta återförsäljare:**
 
-**Indirekta åter försäljare**:
+    -   Det går inte att lägga till nya kunder
 
-• Det går inte att lägga till nya kunder
+    -   Kan begära relationer med nya kunder
 
-• Kan begära relationer med nya kunder
 
-3. I sandbox direkt fakturerings partner och indirekta leverantörer kan du ta bort åter försäljarens relation från användar gränssnittet och API: t för partner Center.
+Mer information [finns i Ta](remove-a-reseller-relationship-with-a-customer.md) bort återförsäljarrelation för kunden. Det finns dock vissa skillnader mellan funktionerna Product och Sandbox.
 
-4. Den begränsade åter försäljarens relation kommer att anropa ta bort kund-AP. Detta tar bort relationen och tar bort kund klienten. {baseURL}/v1/Customers/{customer-Tenant-id}
-
-Följ den [ta bort åter försäljarens relation](remove-a-reseller-relationship-with-a-customer.md) för kunden för mer information. Det finns dock vissa skillnader mellan produkt-och sandbox-funktionerna.
-
-### <a name="request-syntax"></a>SYNTAX FÖR BEGÄRAN
+### <a name="request-syntax"></a>BEGÄRANDESYNTAX
 
 |**Metod**|**Ta bort**|
 |-------------|------------|
 |Ta bort|{baseURL}/v1/Customers/{customer-Tenant-id} |
 
-Begär ande texten none
+Begärandetext Ingen
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](./error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](./error-codes.md)
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Aktivera sandbox-prenumerationer för Azure Marketplace-produkter](activate-sandbox-subscription-azure-marketplace-products.md)
+- [Aktivera Sandbox-prenumerationer för Azure Marketplace produkter](activate-sandbox-subscription-azure-marketplace-products.md)
 
-- [Avbryta en order från sandbox](cancel-an-order-from-the-integration-sandbox.md)
+- [Avbryta en beställning från sandbox-miljön](cancel-an-order-from-the-integration-sandbox.md)
 
 - [Testa och felsök](test-and-debug.md)
