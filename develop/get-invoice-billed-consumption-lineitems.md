@@ -1,52 +1,51 @@
 ---
-title: Hämta fakturerade försäljnings artiklar för försäljnings förbrukning
-description: 'Du kan hämta en samling av försäljnings objekt för försäljning per dag (stängd dagligt Beräknad användnings rad artikel) information för en viss faktura med hjälp av API: er för partner Center.'
+title: Hämta fakturafakturerade radobjekt för kommersiell förbrukning
+description: Du kan hämta en samling fakturaradsobjekt för kommersiell förbrukning (stängt dagligt klassificerat användningsradobjekt) för en angiven faktura med hjälp av Partner Center-API:erna.
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 1e19792da6a7510bf02dd11b3e77f40a8365be2b
-ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
+ms.openlocfilehash: 1406938b16e5a363a73c36ef0338eb5fc4305279
+ms.sourcegitcommit: 89aefbff6dbe740b6f27a888492ffc2e5f98b1e9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105730203"
+ms.lasthandoff: 05/24/2021
+ms.locfileid: "110325453"
 ---
-# <a name="get-invoice-billed-commercial-consumption-line-items"></a>Hämta fakturerade försäljnings artiklar för försäljnings förbrukning
+# <a name="get-invoice-billed-commercial-consumption-line-items"></a>Hämta fakturafakturerade radobjekt för kommersiell förbrukning
 
 **Gäller för:**
 
 - Partnercenter
 
-Du kan använda följande metoder för att få en samling information om försäljnings objekt för kommersiella förbruknings fakturor (kallas även avslutade dagliga, beräknade användnings rads objekt) för en viss faktura.
+Du kan använda följande metoder för att hämta en samling information om fakturaradsobjekt för kommersiell förbrukning (kallas även stängda artiklar för daglig beräknad användningsrad) för en angiven faktura.
 
-Detta API stöder också **Azure** -providertyp för Microsoft Azure (MS-AZR-0145P)-prenumerationer. Detta innebär att denna API är en bakåtkompatibla funktion.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett faktura-ID. Detta identifierar fakturan som rad artiklarna ska hämtas för.
+- En fakturaidentifierare. Detta identifierar fakturan som radobjekten ska hämtas för.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta de kommersiella rad artiklarna för den angivna fakturan måste du hämta faktura objektet:
+Om du vill hämta de kommersiella radobjekten för den angivna fakturan måste du hämta fakturaobjektet:
 
-1. Anropa [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) -metoden för att hämta ett gränssnitt för att fakturera åtgärder för den angivna fakturan.
+1. Anropa [**ById-metoden**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) för att hämta ett gränssnitt för fakturaåtgärder för den angivna fakturan.
 
-2. Anropa [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) -eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) -metoden för att hämta fakturaprojektet. Fakturaprojektet innehåller all information för den angivna fakturan.
+2. Anropa metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) för att hämta fakturaobjektet. Fakturaobjektet innehåller all information för den angivna fakturan.
 
-**Providern** identifierar källan till den fakturerade detalj informationen (till exempel **Databasmigrering**). **InvoiceLineItemType** anger typen (till exempel **UsageLineItem**).
+Providern identifierar källan för den fakturerade detaljinformationen (till exempel **en gång).**  **InvoiceLineItemType** anger typen (till exempel **UsageLineItem**).
 
-I följande exempel kod används en **förgrunds** slinga för att bearbeta samling med rad objekt. En separat samling av rad objekt hämtas för varje **InvoiceLineItemType**.
+I följande exempelkod används en **foreach-loop** för att bearbeta samlingen med radobjekt. En separat samling radobjekt hämtas för varje **InvoiceLineItemType**.
 
-Hämta en samling av rad objekt som motsvarar en **InvoiceDetail** -instans:
+Så här hämtar du en samling radobjekt som motsvarar en **InvoiceDetail-instans:**
 
-1. Skicka instansens **BillingProvider** och **InvoiceLineItemType** till [**by**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) -metoden.
+1. Skicka instansens **BillingProvider och** **InvoiceLineItemType** till [**metoden**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) By.
 
-2. Anropa [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) -eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) -metoden för att hämta de associerade rad objekten.
-3. Skapa en uppräknare för att passera samlingen som visas i följande exempel.
+2. Anropa metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) för att hämta de associerade radobjekten.
+3. Skapa en uppräkning för att bläddra i samlingen enligt följande exempel.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -105,41 +104,41 @@ while (fetchNext)
 }
 ```
 
-Ett liknande exempel finns i följande avsnitt:
+Ett liknande exempel finns i följande:
 
-- Exempel: [konsol test app](console-test-app.md)
-- Projekt: **SDK-exempel för partner Center**
-- Klass: **GetBilledConsumptionReconLineItemsPaging. cs**
+- Exempel: [Konsoltestapp](console-test-app.md)
+- Projekt: **Partnercenter-SDK exempel**
+- Klass: **GetBilledConsumptionReconLineItemsPaging.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
-Använd den första syntaxen för att returnera en fullständig lista över varje rad objekt för den aktuella fakturan. För stora fakturor använder du den andra syntaxen med en angiven storlek och 0-baserad förskjutning för att returnera en sid lista med rad objekt. Använd den tredje syntaxen för att hämta nästa sida av rekognoseringar rad objekt med hjälp av `seekOperation = "Next"` .
+Använd den första syntaxen för att returnera en fullständig lista över varje radobjekt för den angivna fakturan. För stora fakturor använder du den andra syntaxen med en angiven storlek och 0-baserad förskjutning för att returnera en sidad lista med radobjekt. Använd den tredje syntaxen för att hämta nästa sida med radobjekt med hjälp av `seekOperation = "Next"` .
 
 | Metod  | URI för förfrågan                                                                                                                                                     |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/{Invoice-ID}/lineitems? Provider = Databasmigrering&invoicelineitemtype = usagelineitems&CurrencyCode = {CURRENCYCODE} http/1.1                              |
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/{Invoice-ID}/lineitems? Provider = Databasmigrering&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &storlek = {size} http/1.1  |
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/{Invoice-ID}/lineitems? Provider = Databasmigrering&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &storlek = {size} &SeekOperation = nästa                               |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode} HTTP/1.1                              |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&size={size} HTTP/1.1  |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&size={size}&seekOperation=Next                               |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Använd följande URI och frågeparametrar när du skapar begäran.
+Använd följande URI- och frågeparametrar när du skapar begäran.
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| faktura-ID             | sträng | Ja      | En sträng som identifierar fakturan.                             |
-| CSP               | sträng | Ja      | Providern: "Databasmigrering".                                  |
-| faktura-rad-objekt-typ | sträng | Ja      | Typ av faktura information: "UsageLineItems". |
-| currencyCode           | sträng | Ja      | Valuta koden för de fakturerade rad artiklarna.                    |
-| period                 | sträng | Ja      | Period för fakturerad rekognoseringar. exempel: Current, Previous.        |
-| ikoner                   | antal | Inga       | Det maximala antalet objekt som ska returneras. Standard storleken är 2000       |
-| seekOperation          | sträng | No       | Ange seekOperation = nästa för att hämta nästa sida med rekognoseringar rad objekt. |
+| invoice-id             | sträng | Yes      | En sträng som identifierar fakturan.                             |
+| Leverantör               | sträng | Yes      | Providern: "OneTime".                                  |
+| invoice-line-item-type | sträng | Yes      | Typ av fakturainformation: "UsageLineItems". |
+| currencyCode           | sträng | Yes      | Valutakoden för de fakturerade radobjekten.                    |
+| period                 | sträng | Yes      | Perioden för fakturerad rekognosering. exempel: aktuell, tidigare.        |
+| ikoner                   | antal | No       | Det maximala antalet objekt som ska returneras. Standardstorleken är 2 000       |
+| seekOperation          | sträng | No       | Ange seekOperation= Nästa för att hämta nästa sida med rekognoseringsradobjekt. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -147,23 +146,23 @@ Inga.
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svaret insamling av rad objekts information.
+Om det lyckas innehåller svaret en samling information om radobjekt.
 
-För rad posten **ChargeType** mappas värdet **inköp** till **New**. Värdets **åter betalning** mappas för att **avbryta**.
+För radobjektet **ChargeType** mappas värdet **Purchase** till **Ny**. Värdet Återbetalning **mappas** till **Avbryt**.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ## <a name="rest-examples"></a>REST-exempel
 
-### <a name="request-response-example-1"></a>Request-Response-exempel 1
+### <a name="request-response-example-1"></a>Exempel på begäran-svar 1
 
-Detaljerna för det här exemplet på REST-begäran och-svar är följande:
+Informationen för det här exemplet på REST-begäran och -svar är följande:
 
-- **Provider**: **Databasmigrering**
-- **InvoiceLineItemType**: **UsageLineItems**
-- **Period**: **föregående**
+- **Provider:** **OneTime**
+- **InvoiceLineItemType:** **UsageLineItems**
+- **Period**: **Föregående**
 
 #### <a name="request-example-1"></a>Exempel på begäran 1
 
@@ -178,7 +177,7 @@ MS-PartnerCenter-Application: Partner Center .NET SDK Samples
 Host: api.partnercenter.microsoft.com
 ```
 
-#### <a name="response-example-1"></a>Svars exempel 1
+#### <a name="response-example-1"></a>Svarsexempel 1
 
 ```http
 HTTP/1.1 200 OK
@@ -328,14 +327,14 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
 }
 ```
 
-### <a name="request-response-example-2"></a>Request-Response-exempel 2
+### <a name="request-response-example-2"></a>Exempel på begäran-svar 2
 
-Detaljerna för det här exemplet på REST-begäran och-svar är följande:
+Informationen för det här exemplet på REST-begäran och -svar är följande:
 
-- **Provider**: **Databasmigrering**
-- **InvoiceLineItemType**: **UsageLineItems**
-- **Period**: **föregående**
-- **SeekOperation**: **Nästa**
+- **Provider:** **OneTime**
+- **InvoiceLineItemType:** **UsageLineItems**
+- **Period**: **Föregående**
+- **SeekOperation:** **Nästa**
 
 #### <a name="request-example-2"></a>Exempel på begäran 2
 
@@ -351,7 +350,7 @@ MS-PartnerCenter-Application: Partner Center .NET SDK Samples
 Host: api.partnercenter.microsoft.com
 ```
 
-## <a name="response-example-2"></a>Svars exempel 2
+## <a name="response-example-2"></a>Svarsexempel 2
 
 ```http
 HTTP/1.1 200 OK
