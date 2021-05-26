@@ -437,8 +437,10 @@
       href: cancel-an-order-from-the-integration-sandbox.md
     - name: Aktivera prenumeration på sandbox-miljö
       href: activate-sandbox-subscription-azure-marketplace-products.md
-    - name: Ta bort ett kundkonto från sandbox-miljön för integrering
-      href: delete-a-customer-account-from-the-integration-sandbox.md
+    - name: Skapa indirekt återförsäljare i sandbox-miljö
+      href: create-indirect-reseller-in-sandbox.md
+    - name: Ta bort indirekt återförsäljare i sandbox-miljö
+      href: delete-indirect-reseller-in-sandbox.md
 - name: Referenser
   href: /partner/develop/referrals
   items:
