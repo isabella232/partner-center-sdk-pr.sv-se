@@ -471,14 +471,17 @@
     - name: Hämta information om API-begäran
       href: get-api-request-details.md
 - name: Partnercenter – REST API-referens
-  href: partner-center-rest-api-reference.md
   items:
+    - name: Introduktion REST API Partnercenter
+      href: partner-center-rest-api-reference.md
     - name: Partnercenter – REST API-ändringslogg
       href: api-change-log.md
     - name: 'Partnercenter – REST-URL:er'
       href: partner-center-rest-urls.md
     - name: Partnercenter – REST-huvuden
       href: headers.md
+    - name: Partnercenter – REST API-referens
+      href: /rest/api/partner-center-rest/
     - name: Partnercenter – REST-resurser
       href: partner-center-rest-resources.md
       items:
@@ -553,7 +556,7 @@
     - name: Partnercenter – webhooks
       href: partner-center-webhooks.md
 - name: Partnercenter – hanterad .NET API-referens
-  href: /dotnet/api/
+  href: /dotnet/api/microsoft.store.partnercenter
   items:
     - name: Partnercenter – viktig information om .NET API
       href: dotnet-release-notes.md
