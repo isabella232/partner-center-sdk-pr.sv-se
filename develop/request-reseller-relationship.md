@@ -1,33 +1,29 @@
 ---
 title: Hämta en URL för relationsbegäran
-description: Hämta en URL för Relations förfrågan att skicka till en kund.
+description: Så här hämtar du en URL för relationsbegäran som ska skickas till en kund.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 5f899734b774ff460e005e20df8658275b2ce9d5
-ms.sourcegitcommit: d4e652e3b73c6137704d43d4a472cc5aa5549f11
+ms.openlocfilehash: 07804b36dfe0892cf8b531e0731188260c014f49
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "97770273"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547466"
 ---
-# <a name="retrieve-a-relationship-request-url"></a><span data-ttu-id="35448-103">Hämta en URL för relationsbegäran</span><span class="sxs-lookup"><span data-stu-id="35448-103">Retrieve a relationship request URL</span></span>
+# <a name="retrieve-a-relationship-request-url"></a><span data-ttu-id="364ef-103">Hämta en URL för relationsbegäran</span><span class="sxs-lookup"><span data-stu-id="364ef-103">Retrieve a relationship request URL</span></span>
 
-<span data-ttu-id="35448-104">**Gäller för**</span><span class="sxs-lookup"><span data-stu-id="35448-104">**Applies To**</span></span>
+<span data-ttu-id="364ef-104">**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Tyskland</span><span class="sxs-lookup"><span data-stu-id="364ef-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany</span></span>
 
-- <span data-ttu-id="35448-105">Partnercenter</span><span class="sxs-lookup"><span data-stu-id="35448-105">Partner Center</span></span>
-- <span data-ttu-id="35448-106">Partner Center som drivs av 21Vianet</span><span class="sxs-lookup"><span data-stu-id="35448-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="35448-107">Partnercenter för Microsoft Cloud Tyskland</span><span class="sxs-lookup"><span data-stu-id="35448-107">Partner Center for Microsoft Cloud Germany</span></span>
+<span data-ttu-id="364ef-105">Så här hämtar du en URL för relationsbegäran som ska skickas till en kund.</span><span class="sxs-lookup"><span data-stu-id="364ef-105">How to retrieve a relationship request URL to send to a customer.</span></span>
 
-<span data-ttu-id="35448-108">Hämta en URL för Relations förfrågan att skicka till en kund.</span><span class="sxs-lookup"><span data-stu-id="35448-108">How to retrieve a relationship request URL to send to a customer.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="364ef-106">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="364ef-106">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="35448-109">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="35448-109">Prerequisites</span></span>
+- <span data-ttu-id="364ef-107">Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="364ef-107">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="364ef-108">Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="364ef-108">This scenario supports authentication with App+User credentials only.</span></span>
 
-- <span data-ttu-id="35448-110">Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="35448-110">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="35448-111">Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="35448-111">This scenario supports authentication with App+User credentials only.</span></span>
+## <a name="c"></a><span data-ttu-id="364ef-109">C\#</span><span class="sxs-lookup"><span data-stu-id="364ef-109">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="35448-112">C\#</span><span class="sxs-lookup"><span data-stu-id="35448-112">C\#</span></span>
-
-<span data-ttu-id="35448-113">Om du vill hämta en URL för en Relations förfrågan använder du först [**IAggregatePartner. kunder**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) för att få ett gränssnitt till partnerns kund åtgärder.</span><span class="sxs-lookup"><span data-stu-id="35448-113">To retrieve a relationship request URL, first use [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) to get an interface to the partner's customer operations.</span></span> <span data-ttu-id="35448-114">Använd sedan egenskapen [**RelationshipRequest**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.relationshiprequest) för att hämta ett gränssnitt till begär ande åtgärder för kund relation.</span><span class="sxs-lookup"><span data-stu-id="35448-114">Next, use the [**RelationshipRequest**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.relationshiprequest) property to get an interface to customer relationship request operations.</span></span> <span data-ttu-id="35448-115">Anropa slutligen metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.getasync) för att hämta URL: en.</span><span class="sxs-lookup"><span data-stu-id="35448-115">Finally, call the [**Get**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.getasync) method to retrieve the URL.</span></span>
+<span data-ttu-id="364ef-110">Om du vill hämta en URL för relationsbegäran [**använder du först IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) för att hämta ett gränssnitt till partnerns kundåtgärder.</span><span class="sxs-lookup"><span data-stu-id="364ef-110">To retrieve a relationship request URL, first use [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) to get an interface to the partner's customer operations.</span></span> <span data-ttu-id="364ef-111">Använd sedan egenskapen [**RelationshipRequest för**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.relationshiprequest) att hämta ett gränssnitt till åtgärder för kundrelationsbegäran.</span><span class="sxs-lookup"><span data-stu-id="364ef-111">Next, use the [**RelationshipRequest**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.relationshiprequest) property to get an interface to customer relationship request operations.</span></span> <span data-ttu-id="364ef-112">Anropa slutligen metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.getasync) för att hämta URL:en.</span><span class="sxs-lookup"><span data-stu-id="364ef-112">Finally, call the [**Get**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.relationshiprequests.icustomerrelationshiprequest.getasync) method to retrieve the URL.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -35,25 +31,25 @@ ms.locfileid: "97770273"
 var customerRelationshipRequest = partnerOperations.Customers.RelationshipRequest.Get();
 ```
 
-<span data-ttu-id="35448-116">**Exempel**: [konsol test app](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="35448-116">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="35448-117">**Projekt**: Partner Center SDK-exempel **klass**: GetCustomerRelationshipRequest.CS</span><span class="sxs-lookup"><span data-stu-id="35448-117">**Project**: Partner Center SDK Samples **Class**: GetCustomerRelationshipRequest.cs</span></span>
+<span data-ttu-id="364ef-113">**Exempel:** [Konsoltestapp](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="364ef-113">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="364ef-114">**Project:** Partnercenter-SDK Samples **Class**: GetCustomerRelationshipRequest.cs</span><span class="sxs-lookup"><span data-stu-id="364ef-114">**Project**: Partner Center SDK Samples **Class**: GetCustomerRelationshipRequest.cs</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="35448-118">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="35448-118">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="364ef-115">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="364ef-115">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="35448-119">Syntax för begäran</span><span class="sxs-lookup"><span data-stu-id="35448-119">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="364ef-116">Begärandesyntax</span><span class="sxs-lookup"><span data-stu-id="364ef-116">Request syntax</span></span>
 
-| <span data-ttu-id="35448-120">Metod</span><span class="sxs-lookup"><span data-stu-id="35448-120">Method</span></span>  | <span data-ttu-id="35448-121">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="35448-121">Request URI</span></span>                                                                            |
+| <span data-ttu-id="364ef-117">Metod</span><span class="sxs-lookup"><span data-stu-id="364ef-117">Method</span></span>  | <span data-ttu-id="364ef-118">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="364ef-118">Request URI</span></span>                                                                            |
 |---------|----------------------------------------------------------------------------------------|
-| <span data-ttu-id="35448-122">**TA**</span><span class="sxs-lookup"><span data-stu-id="35448-122">**GET**</span></span> | <span data-ttu-id="35448-123">[*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/relationshiprequests http/1.1</span><span class="sxs-lookup"><span data-stu-id="35448-123">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/relationshiprequests HTTP/1.1</span></span> |
+| <span data-ttu-id="364ef-119">**Få**</span><span class="sxs-lookup"><span data-stu-id="364ef-119">**GET**</span></span> | <span data-ttu-id="364ef-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/relationshiprequests HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="364ef-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/relationshiprequests HTTP/1.1</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="35448-124">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="35448-124">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="364ef-121">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="364ef-121">Request headers</span></span>
 
-<span data-ttu-id="35448-125">Mer information finns i [partner Center rest-rubriker](headers.md).</span><span class="sxs-lookup"><span data-stu-id="35448-125">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="364ef-122">Mer information finns i [Partner Center REST-huvuden.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="364ef-122">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="35448-126">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="35448-126">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="364ef-123">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="364ef-123">Request body</span></span>
 
-<span data-ttu-id="35448-127">Inget</span><span class="sxs-lookup"><span data-stu-id="35448-127">None</span></span>
+<span data-ttu-id="364ef-124">Ingen</span><span class="sxs-lookup"><span data-stu-id="364ef-124">None</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="35448-128">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="35448-128">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="364ef-125">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="364ef-125">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/customers/relationshiprequests HTTP/1.1
@@ -66,15 +62,15 @@ Host: api.partnercenter.microsoft.com
 Connection: Keep-Alive
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="35448-129">REST-svar</span><span class="sxs-lookup"><span data-stu-id="35448-129">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="364ef-126">REST-svar</span><span class="sxs-lookup"><span data-stu-id="364ef-126">REST response</span></span>
 
-<span data-ttu-id="35448-130">Om det lyckas innehåller svaret [RelationshipRequest](relationships-resources.md#relationshiprequest) -objektet.</span><span class="sxs-lookup"><span data-stu-id="35448-130">If successful, the response contains the [RelationshipRequest](relationships-resources.md#relationshiprequest) object.</span></span>
+<span data-ttu-id="364ef-127">Om det lyckas innehåller svaret [Objektet RelationshipRequest.](relationships-resources.md#relationshiprequest)</span><span class="sxs-lookup"><span data-stu-id="364ef-127">If successful, the response contains the [RelationshipRequest](relationships-resources.md#relationshiprequest) object.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="35448-131">Slutförda svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="35448-131">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="364ef-128">Lyckade svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="364ef-128">Response success and error codes</span></span>
 
-<span data-ttu-id="35448-132">Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information.</span><span class="sxs-lookup"><span data-stu-id="35448-132">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="35448-133">Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="35448-133">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="35448-134">En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="35448-134">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="364ef-129">Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation.</span><span class="sxs-lookup"><span data-stu-id="364ef-129">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="364ef-130">Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="364ef-130">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="364ef-131">En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="364ef-131">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="35448-135">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="35448-135">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="364ef-132">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="364ef-132">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

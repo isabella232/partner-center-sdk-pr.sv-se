@@ -1,34 +1,29 @@
 ---
 title: Uppdatera supportprofil
-description: Uppdaterar en användares support profil.
+description: Uppdaterar en användares supportprofil.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 605c509eeb18f301144fec6287c9611d5a5acfe2
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 143328c5501f525d52911eead805d420f79b78ff
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769594"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530352"
 ---
-# <a name="update-support-profile"></a><span data-ttu-id="265b3-103">Uppdatera supportprofil</span><span class="sxs-lookup"><span data-stu-id="265b3-103">Update support profile</span></span>
+# <a name="update-support-profile"></a><span data-ttu-id="e4c19-103">Uppdatera supportprofil</span><span class="sxs-lookup"><span data-stu-id="e4c19-103">Update support profile</span></span>
 
-<span data-ttu-id="265b3-104">**Gäller för**</span><span class="sxs-lookup"><span data-stu-id="265b3-104">**Applies To**</span></span>
+<span data-ttu-id="e4c19-104">**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="e4c19-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="265b3-105">Partnercenter</span><span class="sxs-lookup"><span data-stu-id="265b3-105">Partner Center</span></span>
-- <span data-ttu-id="265b3-106">Partner Center som drivs av 21Vianet</span><span class="sxs-lookup"><span data-stu-id="265b3-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="265b3-107">Partnercenter för Microsoft Cloud Tyskland</span><span class="sxs-lookup"><span data-stu-id="265b3-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="265b3-108">Välkommen till Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="265b3-108">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="e4c19-105">Uppdaterar en användares supportprofil.</span><span class="sxs-lookup"><span data-stu-id="e4c19-105">Updates a user's support profile.</span></span>
 
-<span data-ttu-id="265b3-109">Uppdaterar en användares support profil.</span><span class="sxs-lookup"><span data-stu-id="265b3-109">Updates a user's support profile.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="e4c19-106">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="e4c19-106">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="265b3-110">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="265b3-110">Prerequisites</span></span>
+- <span data-ttu-id="e4c19-107">Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="e4c19-107">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="e4c19-108">Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="e4c19-108">This scenario supports authentication with App+User credentials only.</span></span>
 
-- <span data-ttu-id="265b3-111">Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="265b3-111">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="265b3-112">Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="265b3-112">This scenario supports authentication with App+User credentials only.</span></span>
+## <a name="c"></a><span data-ttu-id="e4c19-109">C\#</span><span class="sxs-lookup"><span data-stu-id="e4c19-109">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="265b3-113">C\#</span><span class="sxs-lookup"><span data-stu-id="265b3-113">C\#</span></span>
-
-<span data-ttu-id="265b3-114">Om du vill uppdatera din support profil måste du först [Hämta din support profil](get-support-profile.md) och göra de ändringar du önskar.</span><span class="sxs-lookup"><span data-stu-id="265b3-114">To update your support profile, first [get your support profile](get-support-profile.md) and make any changes you wish.</span></span> <span data-ttu-id="265b3-115">Använd sedan din [**IPartnerOperations. profils**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) -samling.</span><span class="sxs-lookup"><span data-stu-id="265b3-115">Then, use your [**IPartnerOperations.Profiles**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) collection.</span></span> <span data-ttu-id="265b3-116">Anropa egenskapen [**SupportProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) följt av metoden [**Update ()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.update) eller [**UpdateAsync ()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.updateasync) .</span><span class="sxs-lookup"><span data-stu-id="265b3-116">Call the [**SupportProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) property, followed by the [**Update()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.update) or [**UpdateAsync()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.updateasync) method.</span></span>
+<span data-ttu-id="e4c19-110">Om du vill uppdatera din supportprofil [måste du först hämta din supportprofil](get-support-profile.md) och göra önskade ändringar.</span><span class="sxs-lookup"><span data-stu-id="e4c19-110">To update your support profile, first [get your support profile](get-support-profile.md) and make any changes you wish.</span></span> <span data-ttu-id="e4c19-111">Använd sedan samlingen [**IPartnerOperations.Profiles.**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles)</span><span class="sxs-lookup"><span data-stu-id="e4c19-111">Then, use your [**IPartnerOperations.Profiles**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) collection.</span></span> <span data-ttu-id="e4c19-112">Anropa egenskapen [**SupportProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) följt av metoden [**Update()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.update) eller [**UpdateAsync().**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.updateasync)</span><span class="sxs-lookup"><span data-stu-id="e4c19-112">Call the [**SupportProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) property, followed by the [**Update()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.update) or [**UpdateAsync()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.updateasync) method.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -44,25 +39,25 @@ SupportProfile newSupportProfile = new SupportProfile
 SupportProfile updatedSupportProfile = partnerOperations.Profiles.SupportProfile.Update(newSupportProfile);
 ```
 
-<span data-ttu-id="265b3-117">**Exempel**: [konsol test app](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="265b3-117">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="265b3-118">**Projekt**: PartnerCenterSDK. FeaturesSamples- **klass**: UpdateSupportProfile.CS</span><span class="sxs-lookup"><span data-stu-id="265b3-118">**Project**: PartnerCenterSDK.FeaturesSamples **Class**: UpdateSupportProfile.cs</span></span>
+<span data-ttu-id="e4c19-113">**Exempel:** [Konsoltestapp](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="e4c19-113">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="e4c19-114">**Project:** PartnerCenterSDK.FeaturesSamples-klass: UpdateSupportProfile.cs </span><span class="sxs-lookup"><span data-stu-id="e4c19-114">**Project**: PartnerCenterSDK.FeaturesSamples **Class**: UpdateSupportProfile.cs</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="265b3-119">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="265b3-119">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="e4c19-115">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="e4c19-115">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="265b3-120">Syntax för begäran</span><span class="sxs-lookup"><span data-stu-id="265b3-120">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="e4c19-116">Begärandesyntax</span><span class="sxs-lookup"><span data-stu-id="e4c19-116">Request syntax</span></span>
 
-| <span data-ttu-id="265b3-121">Metod</span><span class="sxs-lookup"><span data-stu-id="265b3-121">Method</span></span>  | <span data-ttu-id="265b3-122">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="265b3-122">Request URI</span></span>                                                                     |
+| <span data-ttu-id="e4c19-117">Metod</span><span class="sxs-lookup"><span data-stu-id="e4c19-117">Method</span></span>  | <span data-ttu-id="e4c19-118">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="e4c19-118">Request URI</span></span>                                                                     |
 |---------|---------------------------------------------------------------------------------|
-| <span data-ttu-id="265b3-123">**PUT**</span><span class="sxs-lookup"><span data-stu-id="265b3-123">**PUT**</span></span> | <span data-ttu-id="265b3-124">[*{baseURL}*](partner-center-rest-urls.md)/v1/Profiles/supportprofile http/1.1</span><span class="sxs-lookup"><span data-stu-id="265b3-124">[*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/supportprofile HTTP/1.1</span></span> |
+| <span data-ttu-id="e4c19-119">**PUT**</span><span class="sxs-lookup"><span data-stu-id="e4c19-119">**PUT**</span></span> | <span data-ttu-id="e4c19-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/supportprofile HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="e4c19-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/supportprofile HTTP/1.1</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="265b3-125">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="265b3-125">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="e4c19-121">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="e4c19-121">Request headers</span></span>
 
-<span data-ttu-id="265b3-126">Mer information finns i [partner Center rest-rubriker](headers.md).</span><span class="sxs-lookup"><span data-stu-id="265b3-126">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="e4c19-122">Mer information finns i [Partner Center REST-huvuden.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="e4c19-122">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="265b3-127">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="265b3-127">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="e4c19-123">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="e4c19-123">Request body</span></span>
 
-<span data-ttu-id="265b3-128">Den fullständiga support profil resursen.</span><span class="sxs-lookup"><span data-stu-id="265b3-128">The full support profile resource.</span></span>
+<span data-ttu-id="e4c19-124">Den fullständiga supportprofilresursen.</span><span class="sxs-lookup"><span data-stu-id="e4c19-124">The full support profile resource.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="265b3-129">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="265b3-129">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="e4c19-125">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="e4c19-125">Request example</span></span>
 
 ```http
 PUT https://api.partnercenter.microsoft.com/v1/profiles/supportprofile HTTP/1.1
@@ -85,15 +80,15 @@ Expect: 100-continue
 }
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="265b3-130">REST-svar</span><span class="sxs-lookup"><span data-stu-id="265b3-130">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="e4c19-126">REST-svar</span><span class="sxs-lookup"><span data-stu-id="e4c19-126">REST response</span></span>
 
-<span data-ttu-id="265b3-131">Om det lyckas returnerar den här metoden uppdaterade **SupportProfile** objekt egenskaper i svars texten.</span><span class="sxs-lookup"><span data-stu-id="265b3-131">If successful, this method returns updated **SupportProfile** object properties in the response body.</span></span>
+<span data-ttu-id="e4c19-127">Om det lyckas returnerar den här metoden uppdaterade **SupportProfile-objektegenskaper** i svarstexten.</span><span class="sxs-lookup"><span data-stu-id="e4c19-127">If successful, this method returns updated **SupportProfile** object properties in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="265b3-132">Slutförda svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="265b3-132">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="e4c19-128">Lyckade svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="e4c19-128">Response success and error codes</span></span>
 
-<span data-ttu-id="265b3-133">Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information.</span><span class="sxs-lookup"><span data-stu-id="265b3-133">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="265b3-134">Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="265b3-134">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="265b3-135">En fullständig lista finns i [felkoder](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="265b3-135">For the full list, see [Error Codes](error-codes.md).</span></span>
+<span data-ttu-id="e4c19-129">Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation.</span><span class="sxs-lookup"><span data-stu-id="e4c19-129">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="e4c19-130">Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="e4c19-130">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="e4c19-131">En fullständig lista finns i [Felkoder.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="e4c19-131">For the full list, see [Error Codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="265b3-136">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="265b3-136">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="e4c19-132">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="e4c19-132">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK
