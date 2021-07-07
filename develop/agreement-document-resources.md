@@ -1,39 +1,35 @@
 ---
-title: Avtals dokument resurser
-description: AgreementDocument-resursen är ett Microsoft Agreement-dokument för för hands version och nedladdning. Den stöds av Partner Center i det offentliga Microsoft-molnet.
+title: Avtalsdokumentresurser
+description: AgreementDocument-resursen är ett Microsoft-avtalsdokument för förhandsgranskning och nedladdning. Det stöds av Partner Center i Microsofts offentliga moln.
 ms.date: 08/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 4805d25b0838bf922b81bebd998810c3f6a809c3
-ms.sourcegitcommit: d1104d5c27f8fb3908a87532f80c432f0147ef5d
+ms.openlocfilehash: 1a81da4f75594f241669db831125bd437872561c
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "97770029"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025674"
 ---
-# <a name="agreement-document-resources-supported-by-partner-center-in-the-microsoft-public-cloud"></a><span data-ttu-id="298d9-104">Avtals dokument resurser som stöds av Partner Center i det offentliga Microsoft-molnet</span><span class="sxs-lookup"><span data-stu-id="298d9-104">Agreement document resources supported by Partner Center in the Microsoft public cloud</span></span>
+# <a name="agreement-document-resources-supported-by-partner-center-in-the-microsoft-public-cloud"></a><span data-ttu-id="90ed7-104">Avtalsdokumentresurser som stöds av PartnerCenter i Microsofts offentliga moln</span><span class="sxs-lookup"><span data-stu-id="90ed7-104">Agreement document resources supported by Partner Center in the Microsoft public cloud</span></span>
 
-<span data-ttu-id="298d9-105">**Gäller för:**</span><span class="sxs-lookup"><span data-stu-id="298d9-105">**Applies to:**</span></span>
+<span data-ttu-id="90ed7-105">**Gäller för:** Partnercenter</span><span class="sxs-lookup"><span data-stu-id="90ed7-105">**Applies to**: Partner Center</span></span>
 
-- <span data-ttu-id="298d9-106">Partnercenter</span><span class="sxs-lookup"><span data-stu-id="298d9-106">Partner Center</span></span>
+<span data-ttu-id="90ed7-106">**Gäller inte för:** Partner Center som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="90ed7-106">**Does not apply to**: Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-<span data-ttu-id="298d9-107">**AgreementDocument** -resursen stöds för närvarande endast av Partner Center i det *offentliga Microsoft-molnet*.</span><span class="sxs-lookup"><span data-stu-id="298d9-107">The **AgreementDocument** resource is currently supported by Partner Center only in the *Microsoft public cloud*.</span></span> <span data-ttu-id="298d9-108">Den här resursen är inte tillämplig för:</span><span class="sxs-lookup"><span data-stu-id="298d9-108">This resource not applicable to:</span></span>
+<span data-ttu-id="90ed7-107">**AgreementDocument-resursen** stöds för närvarande endast av PartnerCenter i Det offentliga Microsoft-molnet.</span><span class="sxs-lookup"><span data-stu-id="90ed7-107">The **AgreementDocument** resource is currently supported by Partner Center only in the Microsoft public cloud.</span></span>
 
-- <span data-ttu-id="298d9-109">Partner Center som drivs av 21Vianet</span><span class="sxs-lookup"><span data-stu-id="298d9-109">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="298d9-110">Partnercenter för Microsoft Cloud Tyskland</span><span class="sxs-lookup"><span data-stu-id="298d9-110">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="298d9-111">Välkommen till Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="298d9-111">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="90ed7-108">**AgreementDocument-resursen** representerar ett Microsoft-avtalsdokument som är tillgängligt för förhandsgranskning och nedladdning.</span><span class="sxs-lookup"><span data-stu-id="90ed7-108">The **AgreementDocument** resource represents a Microsoft agreement document that is available for preview and download.</span></span>
 
-<span data-ttu-id="298d9-112">**AgreementDocument** -resursen representerar ett Microsoft Agreement-dokument som är tillgängligt för för hands version och nedladdning.</span><span class="sxs-lookup"><span data-stu-id="298d9-112">The **AgreementDocument** resource represents a Microsoft agreement document that is available for preview and download.</span></span>
+## <a name="agreementdocument"></a><span data-ttu-id="90ed7-109">AgreementDocument</span><span class="sxs-lookup"><span data-stu-id="90ed7-109">AgreementDocument</span></span>
 
-## <a name="agreementdocument"></a><span data-ttu-id="298d9-113">AgreementDocument</span><span class="sxs-lookup"><span data-stu-id="298d9-113">AgreementDocument</span></span>
+<span data-ttu-id="90ed7-110">En **AgreementDocument-resurs** innehåller följande egenskaper:</span><span class="sxs-lookup"><span data-stu-id="90ed7-110">An **AgreementDocument** resource includes the following properties:</span></span>
 
-<span data-ttu-id="298d9-114">En **AgreementDocument** -resurs innehåller följande egenskaper:</span><span class="sxs-lookup"><span data-stu-id="298d9-114">An **AgreementDocument** resource includes the following properties:</span></span>
-
-| <span data-ttu-id="298d9-115">Egenskap</span><span class="sxs-lookup"><span data-stu-id="298d9-115">Property</span></span>       | <span data-ttu-id="298d9-116">Typ</span><span class="sxs-lookup"><span data-stu-id="298d9-116">Type</span></span>   | <span data-ttu-id="298d9-117">Description</span><span class="sxs-lookup"><span data-stu-id="298d9-117">Description</span></span>                                                                                               |
+| <span data-ttu-id="90ed7-111">Egenskap</span><span class="sxs-lookup"><span data-stu-id="90ed7-111">Property</span></span>       | <span data-ttu-id="90ed7-112">Typ</span><span class="sxs-lookup"><span data-stu-id="90ed7-112">Type</span></span>   | <span data-ttu-id="90ed7-113">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="90ed7-113">Description</span></span>                                                                                               |
 |----------------|--------|-----------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="298d9-118">land</span><span class="sxs-lookup"><span data-stu-id="298d9-118">country</span></span> | <span data-ttu-id="298d9-119">sträng</span><span class="sxs-lookup"><span data-stu-id="298d9-119">string</span></span> | <span data-ttu-id="298d9-120">Landet eller marknaden som detta dokument gäller.</span><span class="sxs-lookup"><span data-stu-id="298d9-120">The country or market to which this document applies.</span></span> |
-| <span data-ttu-id="298d9-121">language</span><span class="sxs-lookup"><span data-stu-id="298d9-121">language</span></span> | <span data-ttu-id="298d9-122">sträng</span><span class="sxs-lookup"><span data-stu-id="298d9-122">string</span></span> | <span data-ttu-id="298d9-123">Språket som det här dokumentet är lokaliserat till.</span><span class="sxs-lookup"><span data-stu-id="298d9-123">The language in which this document is localized.</span></span> |
-| <span data-ttu-id="298d9-124">displayUri</span><span class="sxs-lookup"><span data-stu-id="298d9-124">displayUri</span></span> | <span data-ttu-id="298d9-125">sträng</span><span class="sxs-lookup"><span data-stu-id="298d9-125">string</span></span> | <span data-ttu-id="298d9-126">En länk för att förhandsgranska avtals dokumentet i en webbläsare.</span><span class="sxs-lookup"><span data-stu-id="298d9-126">A link to preview the agreement document in a browser.</span></span>  |
-| <span data-ttu-id="298d9-127">downloadUri</span><span class="sxs-lookup"><span data-stu-id="298d9-127">downloadUri</span></span> |<span data-ttu-id="298d9-128">sträng</span><span class="sxs-lookup"><span data-stu-id="298d9-128">string</span></span> | <span data-ttu-id="298d9-129">En länk för att ladda ned avtals dokumentet (i Microsoft Word-format).</span><span class="sxs-lookup"><span data-stu-id="298d9-129">A link to download the agreement document (in Microsoft Word format).</span></span> |
+| <span data-ttu-id="90ed7-114">land</span><span class="sxs-lookup"><span data-stu-id="90ed7-114">country</span></span> | <span data-ttu-id="90ed7-115">sträng</span><span class="sxs-lookup"><span data-stu-id="90ed7-115">string</span></span> | <span data-ttu-id="90ed7-116">Land eller marknad som det här dokumentet gäller för.</span><span class="sxs-lookup"><span data-stu-id="90ed7-116">The country or market to which this document applies.</span></span> |
+| <span data-ttu-id="90ed7-117">language</span><span class="sxs-lookup"><span data-stu-id="90ed7-117">language</span></span> | <span data-ttu-id="90ed7-118">sträng</span><span class="sxs-lookup"><span data-stu-id="90ed7-118">string</span></span> | <span data-ttu-id="90ed7-119">Det språk som det här dokumentet är lokaliserat på.</span><span class="sxs-lookup"><span data-stu-id="90ed7-119">The language in which this document is localized.</span></span> |
+| <span data-ttu-id="90ed7-120">displayUri</span><span class="sxs-lookup"><span data-stu-id="90ed7-120">displayUri</span></span> | <span data-ttu-id="90ed7-121">sträng</span><span class="sxs-lookup"><span data-stu-id="90ed7-121">string</span></span> | <span data-ttu-id="90ed7-122">En länk för att förhandsgranska avtalsdokumentet i en webbläsare.</span><span class="sxs-lookup"><span data-stu-id="90ed7-122">A link to preview the agreement document in a browser.</span></span>  |
+| <span data-ttu-id="90ed7-123">downloadUri</span><span class="sxs-lookup"><span data-stu-id="90ed7-123">downloadUri</span></span> |<span data-ttu-id="90ed7-124">sträng</span><span class="sxs-lookup"><span data-stu-id="90ed7-124">string</span></span> | <span data-ttu-id="90ed7-125">En länk för att ladda ned avtalsdokumentet (i Microsoft Word format).</span><span class="sxs-lookup"><span data-stu-id="90ed7-125">A link to download the agreement document (in Microsoft Word format).</span></span> |

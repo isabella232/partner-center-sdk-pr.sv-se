@@ -1,38 +1,35 @@
 ---
-title: Verifiera en indirekt åter försäljares signerings status för Microsoft partner Agreement
-description: 'Du kan använda AgreementStatus-API: et för att kontrol lera om en indirekt åter försäljare har undertecknat Microsofts partner avtal.'
+title: Verifiera en indirekt återförsäljares Microsoft-partneravtal signeringsstatus
+description: Du kan använda AGREEMENTStatus-API:et för att kontrollera om en indirekt återförsäljare har signerat Microsoft-partneravtal.
 ms.date: 07/24/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fa9480424eccc933bc9c28c3879a195fbd5f2bb1
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: f83acc61624a72354c390905b1250bc021dd39aa
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711914"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529842"
 ---
-# <a name="verify-an-indirect-resellers-microsoft-partner-agreement-signing-status"></a><span data-ttu-id="a0869-103">Verifiera en indirekt åter försäljares signerings status för Microsoft partner Agreement</span><span class="sxs-lookup"><span data-stu-id="a0869-103">Verify an indirect reseller's Microsoft Partner Agreement signing status</span></span>
+# <a name="verify-an-indirect-resellers-microsoft-partner-agreement-signing-status"></a><span data-ttu-id="2147b-103">Verifiera en indirekt återförsäljares Microsoft-partneravtal signeringsstatus</span><span class="sxs-lookup"><span data-stu-id="2147b-103">Verify an indirect reseller's Microsoft Partner Agreement signing status</span></span>
 
-<span data-ttu-id="a0869-104">**Gäller för:**</span><span class="sxs-lookup"><span data-stu-id="a0869-104">**Applies to:**</span></span>
+<span data-ttu-id="2147b-104">**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="2147b-104">**Applies to**: Partner Center | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="a0869-105">Partnercenter</span><span class="sxs-lookup"><span data-stu-id="a0869-105">Partner Center</span></span>
-- <span data-ttu-id="a0869-106">Välkommen till Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="a0869-106">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="2147b-105">Du kan kontrollera om en indirekt återförsäljare har signerat Microsoft-partneravtal med sitt Microsoft Partner Network-ID (MPN) ID (PGA/PLA) eller Molnlösningsleverantör-klientorganisations-ID (Microsoft ID).</span><span class="sxs-lookup"><span data-stu-id="2147b-105">You can verify whether an indirect reseller has signed the Microsoft Partner Agreement using their Microsoft Partner Network (MPN) ID (PGA/PLA) or Cloud Solution Provider (CSP) tenant ID (Microsoft ID).</span></span> <span data-ttu-id="2147b-106">Du kan använda någon av dessa identifierare för att kontrollera Microsoft-partneravtal signeringsstatus med hjälp av **AgreementStatus-API:et.**</span><span class="sxs-lookup"><span data-stu-id="2147b-106">You can use one of these identifiers to check the Microsoft Partner Agreement signing status using the **AgreementStatus** API.</span></span>
 
-<span data-ttu-id="a0869-107">Du kan kontrol lera om en indirekt åter försäljare har undertecknat Microsoft partner Agreement genom att använda sina Microsoft Partner Network (MPN) ID (PGA/PLA) eller ID för Cloud Solution Provider (CSP) för klient organisation (Microsoft-ID).</span><span class="sxs-lookup"><span data-stu-id="a0869-107">You can verify whether an indirect reseller has signed the Microsoft Partner Agreement using their Microsoft Partner Network (MPN) ID (PGA/PLA) or Cloud Solution Provider (CSP) tenant ID (Microsoft ID).</span></span> <span data-ttu-id="a0869-108">Du kan använda någon av dessa identifierare för att kontrol lera signerings statusen för Microsoft partner avtalet med **AgreementStatus** -API: et.</span><span class="sxs-lookup"><span data-stu-id="a0869-108">You can use one of these identifiers to check the Microsoft Partner Agreement signing status using the **AgreementStatus** API.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="2147b-107">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="2147b-107">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="a0869-109">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="a0869-109">Prerequisites</span></span>
+- <span data-ttu-id="2147b-108">Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="2147b-108">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="2147b-109">Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="2147b-109">This scenario supports authentication with App+User credentials only.</span></span>
 
-- <span data-ttu-id="a0869-110">Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="a0869-110">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="a0869-111">Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="a0869-111">This scenario supports authentication with App+User credentials only.</span></span>
+- <span data-ttu-id="2147b-110">MPN-ID (PGA/PLA) eller CSP-klientorganisations-ID (Microsoft ID) för den indirekta återförsäljaren.</span><span class="sxs-lookup"><span data-stu-id="2147b-110">The MPN ID (PGA/PLA) or the CSP tenant ID (Microsoft ID) of the indirect reseller.</span></span> <span data-ttu-id="2147b-111">*Du måste använda någon av dessa två identifierare.*</span><span class="sxs-lookup"><span data-stu-id="2147b-111">*You must use one of these two identifiers.*</span></span>
 
-- <span data-ttu-id="a0869-112">MPN-ID (PGA/PLA) eller CSP klient-ID (Microsoft ID) för den indirekta åter försäljaren.</span><span class="sxs-lookup"><span data-stu-id="a0869-112">The MPN ID (PGA/PLA) or the CSP tenant ID (Microsoft ID) of the indirect reseller.</span></span> <span data-ttu-id="a0869-113">*Du måste använda någon av dessa två identifierare.*</span><span class="sxs-lookup"><span data-stu-id="a0869-113">*You must use one of these two identifiers.*</span></span>
+## <a name="c"></a><span data-ttu-id="2147b-112">C\#</span><span class="sxs-lookup"><span data-stu-id="2147b-112">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="a0869-114">C\#</span><span class="sxs-lookup"><span data-stu-id="a0869-114">C\#</span></span>
+<span data-ttu-id="2147b-113">Så här hämtar du Microsoft-partneravtal signaturstatus för en indirekt återförsäljare:</span><span class="sxs-lookup"><span data-stu-id="2147b-113">To get the Microsoft Partner Agreement signature status of an indirect reseller:</span></span>
 
-<span data-ttu-id="a0869-115">Så här hämtar du en indirekt åter försäljares signatur status för Microsoft partner Agreement:</span><span class="sxs-lookup"><span data-stu-id="a0869-115">To get the Microsoft Partner Agreement signature status of an indirect reseller:</span></span>
+1. <span data-ttu-id="2147b-114">Använd din **IAggregatePartner.Compliance-samling** för att anropa **agreementSignatureStatus-egenskapen.**</span><span class="sxs-lookup"><span data-stu-id="2147b-114">Use your **IAggregatePartner.Compliance** collection to call the **AgreementSignatureStatus** property.</span></span>
 
-1. <span data-ttu-id="a0869-116">Använd din **IAggregatePartner. Compliance** -samling för att anropa egenskapen **AgreementSignatureStatus** .</span><span class="sxs-lookup"><span data-stu-id="a0869-116">Use your **IAggregatePartner.Compliance** collection to call the **AgreementSignatureStatus** property.</span></span>
-
-2. <span data-ttu-id="a0869-117">Anropa metoden [**Get ()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.get) eller [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.getasync) .</span><span class="sxs-lookup"><span data-stu-id="a0869-117">Call the [**Get()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.get) or [**GetAsync()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.getasync) method.</span></span>
+2. <span data-ttu-id="2147b-115">Anropa metoden [**Get()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.get) eller [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.getasync)</span><span class="sxs-lookup"><span data-stu-id="2147b-115">Call the [**Get()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.get) or [**GetAsync()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.getasync) method.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,36 +39,36 @@ var agreementSignatureStatusByMpnId = partnerOperations.Compliance.AgreementSign
 var agreementSignatureStatusByTenantId = partnerOperations.Compliance.AgreementSignatureStatus.Get(tenantId: "Enter Tenant Id");
 ```
 
-- <span data-ttu-id="a0869-118">Exempel: **[konsol test app](console-test-app.md)**</span><span class="sxs-lookup"><span data-stu-id="a0869-118">Sample: **[Console test app](console-test-app.md)**</span></span>
-- <span data-ttu-id="a0869-119">Projekt: **PartnerCenterSDK. FeaturesSamples**</span><span class="sxs-lookup"><span data-stu-id="a0869-119">Project: **PartnerCenterSDK.FeaturesSamples**</span></span>
-- <span data-ttu-id="a0869-120">Klass: **GetAgreementSignatureStatus. cs**</span><span class="sxs-lookup"><span data-stu-id="a0869-120">Class: **GetAgreementSignatureStatus.cs**</span></span>
+- <span data-ttu-id="2147b-116">Exempel: **[Konsoltestapp](console-test-app.md)**</span><span class="sxs-lookup"><span data-stu-id="2147b-116">Sample: **[Console test app](console-test-app.md)**</span></span>
+- <span data-ttu-id="2147b-117">Project: **PartnerCenterSDK.FeaturesExempel**</span><span class="sxs-lookup"><span data-stu-id="2147b-117">Project: **PartnerCenterSDK.FeaturesSamples**</span></span>
+- <span data-ttu-id="2147b-118">Klass: **GetAgreementSignatureStatus.cs**</span><span class="sxs-lookup"><span data-stu-id="2147b-118">Class: **GetAgreementSignatureStatus.cs**</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="a0869-121">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="a0869-121">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="2147b-119">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="2147b-119">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="a0869-122">Syntax för begäran</span><span class="sxs-lookup"><span data-stu-id="a0869-122">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="2147b-120">Begärandesyntax</span><span class="sxs-lookup"><span data-stu-id="2147b-120">Request syntax</span></span>
 
-| <span data-ttu-id="a0869-123">Metod</span><span class="sxs-lookup"><span data-stu-id="a0869-123">Method</span></span> | <span data-ttu-id="a0869-124">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="a0869-124">Request URI</span></span> |
+| <span data-ttu-id="2147b-121">Metod</span><span class="sxs-lookup"><span data-stu-id="2147b-121">Method</span></span> | <span data-ttu-id="2147b-122">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="2147b-122">Request URI</span></span> |
 | ------ | ----------- |
-| <span data-ttu-id="a0869-125">**TA**</span><span class="sxs-lookup"><span data-stu-id="a0869-125">**GET**</span></span> | <span data-ttu-id="a0869-126">*[{baseURL}](partner-center-rest-urls.md)*/v1/Compliance/{ProgramName}/agreementstatus? mpnId = {mpnId} &tenantId = {tenantId}</span><span class="sxs-lookup"><span data-stu-id="a0869-126">*[{baseURL}](partner-center-rest-urls.md)*/v1/compliance/{ProgramName}/agreementstatus?mpnId={MpnId}&tenantId={TenantId}</span></span> |
+| <span data-ttu-id="2147b-123">**Få**</span><span class="sxs-lookup"><span data-stu-id="2147b-123">**GET**</span></span> | <span data-ttu-id="2147b-124">*[{baseURL}](partner-center-rest-urls.md)*/v1/compliance/{ProgramName}/agreementstatus?mpnId={MpnId}&tenantId={TenantId}</span><span class="sxs-lookup"><span data-stu-id="2147b-124">*[{baseURL}](partner-center-rest-urls.md)*/v1/compliance/{ProgramName}/agreementstatus?mpnId={MpnId}&tenantId={TenantId}</span></span> |
 
-#### <a name="uri-parameters"></a><span data-ttu-id="a0869-127">URI-parametrar</span><span class="sxs-lookup"><span data-stu-id="a0869-127">URI parameters</span></span>
+#### <a name="uri-parameters"></a><span data-ttu-id="2147b-125">URI-parametrar</span><span class="sxs-lookup"><span data-stu-id="2147b-125">URI parameters</span></span>
 
-<span data-ttu-id="a0869-128">Du måste ange en av följande två frågeparametrar för att identifiera partnern.</span><span class="sxs-lookup"><span data-stu-id="a0869-128">You must provide one of the following two query parameters to identify the partner.</span></span> <span data-ttu-id="a0869-129">Om du inte anger någon av dessa två frågeparametrar visas ett **400-fel (felaktig begäran)** .</span><span class="sxs-lookup"><span data-stu-id="a0869-129">If you don't provide one of these two query parameters, you will receive a **400 (Bad request)** error.</span></span>
+<span data-ttu-id="2147b-126">Du måste ange någon av följande två frågeparametrar för att identifiera partnern.</span><span class="sxs-lookup"><span data-stu-id="2147b-126">You must provide one of the following two query parameters to identify the partner.</span></span> <span data-ttu-id="2147b-127">Om du inte anger någon av dessa två frågeparametrar får du ett **400-fel (felaktig** begäran).</span><span class="sxs-lookup"><span data-stu-id="2147b-127">If you don't provide one of these two query parameters, you will receive a **400 (Bad request)** error.</span></span>
 
-| <span data-ttu-id="a0869-130">Namn</span><span class="sxs-lookup"><span data-stu-id="a0869-130">Name</span></span> | <span data-ttu-id="a0869-131">Typ</span><span class="sxs-lookup"><span data-stu-id="a0869-131">Type</span></span> | <span data-ttu-id="a0869-132">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="a0869-132">Required</span></span> | <span data-ttu-id="a0869-133">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="a0869-133">Description</span></span> |
+| <span data-ttu-id="2147b-128">Namn</span><span class="sxs-lookup"><span data-stu-id="2147b-128">Name</span></span> | <span data-ttu-id="2147b-129">Typ</span><span class="sxs-lookup"><span data-stu-id="2147b-129">Type</span></span> | <span data-ttu-id="2147b-130">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="2147b-130">Required</span></span> | <span data-ttu-id="2147b-131">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="2147b-131">Description</span></span> |
 | ---- | ---- | -------- | ----------- |
-| <span data-ttu-id="a0869-134">**MpnId**</span><span class="sxs-lookup"><span data-stu-id="a0869-134">**MpnId**</span></span> | <span data-ttu-id="a0869-135">int</span><span class="sxs-lookup"><span data-stu-id="a0869-135">int</span></span> | <span data-ttu-id="a0869-136">Inga</span><span class="sxs-lookup"><span data-stu-id="a0869-136">No</span></span> | <span data-ttu-id="a0869-137">Ett Microsoft Partner Network-ID (PGA/PLA) som identifierar den indirekta åter försäljaren.</span><span class="sxs-lookup"><span data-stu-id="a0869-137">A Microsoft Partner Network ID (PGA/PLA) that identifies the indirect reseller.</span></span> |
-| <span data-ttu-id="a0869-138">**TenantId**</span><span class="sxs-lookup"><span data-stu-id="a0869-138">**TenantId**</span></span> | <span data-ttu-id="a0869-139">GUID</span><span class="sxs-lookup"><span data-stu-id="a0869-139">GUID</span></span> | <span data-ttu-id="a0869-140">Inga</span><span class="sxs-lookup"><span data-stu-id="a0869-140">No</span></span> | <span data-ttu-id="a0869-141">Ett Microsoft-ID som identifierar CSP-kontot för den indirekta åter försäljaren.</span><span class="sxs-lookup"><span data-stu-id="a0869-141">A Microsoft ID that identifies the CSP account of the indirect reseller.</span></span> |
+| <span data-ttu-id="2147b-132">**MpnId**</span><span class="sxs-lookup"><span data-stu-id="2147b-132">**MpnId**</span></span> | <span data-ttu-id="2147b-133">int</span><span class="sxs-lookup"><span data-stu-id="2147b-133">int</span></span> | <span data-ttu-id="2147b-134">Inga</span><span class="sxs-lookup"><span data-stu-id="2147b-134">No</span></span> | <span data-ttu-id="2147b-135">Ett Microsoft Partner Network-ID (PGA/PLA) som identifierar den indirekta återförsäljaren.</span><span class="sxs-lookup"><span data-stu-id="2147b-135">A Microsoft Partner Network ID (PGA/PLA) that identifies the indirect reseller.</span></span> |
+| <span data-ttu-id="2147b-136">**TenantId**</span><span class="sxs-lookup"><span data-stu-id="2147b-136">**TenantId**</span></span> | <span data-ttu-id="2147b-137">GUID</span><span class="sxs-lookup"><span data-stu-id="2147b-137">GUID</span></span> | <span data-ttu-id="2147b-138">Inga</span><span class="sxs-lookup"><span data-stu-id="2147b-138">No</span></span> | <span data-ttu-id="2147b-139">Ett Microsoft-ID som identifierar CSP-kontot för den indirekta återförsäljaren.</span><span class="sxs-lookup"><span data-stu-id="2147b-139">A Microsoft ID that identifies the CSP account of the indirect reseller.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="a0869-142">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="a0869-142">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="2147b-140">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="2147b-140">Request headers</span></span>
 
-<span data-ttu-id="a0869-143">Mer information finns i [partner Center rest](headers.md).</span><span class="sxs-lookup"><span data-stu-id="a0869-143">For more information, see [Partner Center REST](headers.md).</span></span>
+<span data-ttu-id="2147b-141">Mer information finns i [Partner Center REST](headers.md).</span><span class="sxs-lookup"><span data-stu-id="2147b-141">For more information, see [Partner Center REST](headers.md).</span></span>
 
-### <a name="request-examples"></a><span data-ttu-id="a0869-144">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="a0869-144">Request examples</span></span>
+### <a name="request-examples"></a><span data-ttu-id="2147b-142">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="2147b-142">Request examples</span></span>
 
-#### <a name="request-using-mpn-id-pgapla"></a><span data-ttu-id="a0869-145">Begäran med MPN-ID (PGA/PLA)</span><span class="sxs-lookup"><span data-stu-id="a0869-145">Request using MPN ID (PGA/PLA)</span></span>
+#### <a name="request-using-mpn-id-pgapla"></a><span data-ttu-id="2147b-143">Begäran med MPN-ID (PGA/PLA)</span><span class="sxs-lookup"><span data-stu-id="2147b-143">Request using MPN ID (PGA/PLA)</span></span>
 
-<span data-ttu-id="a0869-146">Följande exempel förfrågan hämtar signerings statusen för den indirekta åter försäljaren från den indirekta åter försäljaren Microsoft Partner Network-ID.</span><span class="sxs-lookup"><span data-stu-id="a0869-146">The following example request gets the indirect reseller's Microsoft Partner Agreement signing status using the indirect reseller's Microsoft Partner Network ID.</span></span>
+<span data-ttu-id="2147b-144">I följande exempelbegäran hämtar den indirekta återförsäljarens Microsoft-partneravtal signeringsstatus med hjälp av den indirekta återförsäljarens Microsoft Partner Network-ID.</span><span class="sxs-lookup"><span data-stu-id="2147b-144">The following example request gets the indirect reseller's Microsoft Partner Agreement signing status using the indirect reseller's Microsoft Partner Network ID.</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/compliance/csp/agreementstatus?mpnid=1234567 HTTP/1.1
@@ -83,9 +80,9 @@ X-Locale: en-US
 Host: api.partnercenter.microsoft.com
 ```
 
-#### <a name="request-using-csp-tenant-id"></a><span data-ttu-id="a0869-147">Begäran med CSP-klient-ID</span><span class="sxs-lookup"><span data-stu-id="a0869-147">Request using CSP tenant ID</span></span>
+#### <a name="request-using-csp-tenant-id"></a><span data-ttu-id="2147b-145">Begäran med CSP-klientorganisations-ID</span><span class="sxs-lookup"><span data-stu-id="2147b-145">Request using CSP tenant ID</span></span>
 
-<span data-ttu-id="a0869-148">I följande exempel förfrågan hämtas signerings statusen för den indirekta åter försäljaren från den indirekta åter försäljarens CSP-ID (Microsoft ID).</span><span class="sxs-lookup"><span data-stu-id="a0869-148">The following example request gets the indirect reseller's Microsoft Partner Agreement signing status using the indirect reseller's CSP tenant ID (Microsoft ID).</span></span>
+<span data-ttu-id="2147b-146">Följande exempelbegäran hämtar den indirekta återförsäljarens signeringsstatus Microsoft-partneravtal med hjälp av den indirekta återförsäljarens CSP-klientorganisations-ID (Microsoft-ID).</span><span class="sxs-lookup"><span data-stu-id="2147b-146">The following example request gets the indirect reseller's Microsoft Partner Agreement signing status using the indirect reseller's CSP tenant ID (Microsoft ID).</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/compliance/csp/agreementstatus?tenantId=a2898e3a-06ca-454e-a0d0-c73b0ee36bba HTTP/1.1
@@ -97,15 +94,15 @@ X-Locale: en-US
 Host: api.partnercenter.microsoft.com
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="a0869-149">REST-svar</span><span class="sxs-lookup"><span data-stu-id="a0869-149">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="2147b-147">REST-svar</span><span class="sxs-lookup"><span data-stu-id="2147b-147">REST response</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="a0869-150">Slutförda svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="a0869-150">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="2147b-148">Lyckade svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="2147b-148">Response success and error codes</span></span>
 
-<span data-ttu-id="a0869-151">Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information.</span><span class="sxs-lookup"><span data-stu-id="a0869-151">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="a0869-152">Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="a0869-152">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="a0869-153">Fullständig lista finns i REST- [fel i Partner Center](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="a0869-153">For the full list, see [Partner Center REST error](error-codes.md).</span></span>
+<span data-ttu-id="2147b-149">Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation.</span><span class="sxs-lookup"><span data-stu-id="2147b-149">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="2147b-150">Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="2147b-150">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="2147b-151">En fullständig lista finns i [Partner Center REST-fel.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="2147b-151">For the full list, see [Partner Center REST error](error-codes.md).</span></span>
 
-### <a name="response-example-success"></a><span data-ttu-id="a0869-154">Svars exempel (lyckades)</span><span class="sxs-lookup"><span data-stu-id="a0869-154">Response example (success)</span></span>
+### <a name="response-example-success"></a><span data-ttu-id="2147b-152">Svarsexempel (lyckades)</span><span class="sxs-lookup"><span data-stu-id="2147b-152">Response example (success)</span></span>
 
-<span data-ttu-id="a0869-155">Följande exempel svar visar om den indirekta åter försäljaren har undertecknat Microsofts partner avtal.</span><span class="sxs-lookup"><span data-stu-id="a0869-155">The following example response successfully returns whether the indirect reseller has signed the Microsoft Partner Agreement.</span></span>
+<span data-ttu-id="2147b-153">Följande exempelsvar returnerar om den indirekta återförsäljaren har signerat Microsoft-partneravtal.</span><span class="sxs-lookup"><span data-stu-id="2147b-153">The following example response successfully returns whether the indirect reseller has signed the Microsoft Partner Agreement.</span></span>
 
 ```http
 HTTP/1.1 200 OK
@@ -122,13 +119,13 @@ Connection: close
 }
 ```
 
-### <a name="response-examples-failure"></a><span data-ttu-id="a0869-156">Svars exempel (haveri)</span><span class="sxs-lookup"><span data-stu-id="a0869-156">Response examples (failure)</span></span>
+### <a name="response-examples-failure"></a><span data-ttu-id="2147b-154">Svarsexempel (fel)</span><span class="sxs-lookup"><span data-stu-id="2147b-154">Response examples (failure)</span></span>
 
-<span data-ttu-id="a0869-157">Du kan få svar som liknar följande exempel när det inte går att returnera signerings statusen för den indirekta åter försäljarens Microsoft-partner avtal.</span><span class="sxs-lookup"><span data-stu-id="a0869-157">You may receive responses similar to the following examples when the signing status of the indirect reseller's Microsoft Partner Agreement can't be returned.</span></span>
+<span data-ttu-id="2147b-155">Du kan få svar som liknar följande exempel när signeringsstatusen för den indirekta återförsäljarens Microsoft-partneravtal inte kan returneras.</span><span class="sxs-lookup"><span data-stu-id="2147b-155">You may receive responses similar to the following examples when the signing status of the indirect reseller's Microsoft Partner Agreement can't be returned.</span></span>
 
-#### <a name="non-guid-formatted-csp-tenant-id"></a><span data-ttu-id="a0869-158">Icke-GUID formaterat CSP-klient-ID</span><span class="sxs-lookup"><span data-stu-id="a0869-158">Non-GUID formatted CSP tenant ID</span></span>
+#### <a name="non-guid-formatted-csp-tenant-id"></a><span data-ttu-id="2147b-156">Icke-GUID-formaterat CSP-klient-ID</span><span class="sxs-lookup"><span data-stu-id="2147b-156">Non-GUID formatted CSP tenant ID</span></span>
 
-<span data-ttu-id="a0869-159">Följande exempel svar returneras när CSP-klient-ID: t som du skickade till API: t inte är ett GUID.</span><span class="sxs-lookup"><span data-stu-id="a0869-159">The following example response is returned when the CSP tenant ID that you passed to the API isn't a GUID.</span></span>
+<span data-ttu-id="2147b-157">Följande exempelsvar returneras när det CSP-klient-ID som du skickade till API:et inte är ett GUID.</span><span class="sxs-lookup"><span data-stu-id="2147b-157">The following example response is returned when the CSP tenant ID that you passed to the API isn't a GUID.</span></span>
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -148,9 +145,9 @@ Connection: close
 }
 ```
 
-#### <a name="non-numeric-mpn-id"></a><span data-ttu-id="a0869-160">Icke-numeriskt MPN-ID</span><span class="sxs-lookup"><span data-stu-id="a0869-160">Non-numeric MPN ID</span></span>
+#### <a name="non-numeric-mpn-id"></a><span data-ttu-id="2147b-158">Icke-numeriskt MPN-ID</span><span class="sxs-lookup"><span data-stu-id="2147b-158">Non-numeric MPN ID</span></span>
 
-<span data-ttu-id="a0869-161">Följande exempel svar returneras när MPN-ID (PGA/PLA) som du skickade till API: t inte är numeriskt.</span><span class="sxs-lookup"><span data-stu-id="a0869-161">The following example response is returned when the MPN ID (PGA/PLA) that you passed to the API is non-numeric.</span></span>
+<span data-ttu-id="2147b-159">Följande exempelsvar returneras när det MPN-ID (PGA/PLA) som du skickade till API:et inte är numeriskt.</span><span class="sxs-lookup"><span data-stu-id="2147b-159">The following example response is returned when the MPN ID (PGA/PLA) that you passed to the API is non-numeric.</span></span>
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -170,9 +167,9 @@ Connection: close
 }
 ```
 
-#### <a name="no-mpn-id-or-csp-tenant-id"></a><span data-ttu-id="a0869-162">Inget MPN-ID eller CSP-ID för klient organisation</span><span class="sxs-lookup"><span data-stu-id="a0869-162">No MPN ID or CSP tenant ID</span></span>
+#### <a name="no-mpn-id-or-csp-tenant-id"></a><span data-ttu-id="2147b-160">Inget MPN-ID eller CSP-klientorganisations-ID</span><span class="sxs-lookup"><span data-stu-id="2147b-160">No MPN ID or CSP tenant ID</span></span>
 
-<span data-ttu-id="a0869-163">Följande exempel svar returneras när du inte har skickat ett MPN-ID (PGA/PLA) eller CSP klient-ID till API: et.</span><span class="sxs-lookup"><span data-stu-id="a0869-163">The following example response is returned when you haven't passed an MPN ID (PGA/PLA) or CSP tenant ID to the API.</span></span> <span data-ttu-id="a0869-164">Du måste skicka en av de två ID-typerna till API: et.</span><span class="sxs-lookup"><span data-stu-id="a0869-164">You must pass one of the two ID types to the API.</span></span>
+<span data-ttu-id="2147b-161">Följande exempelsvar returneras när du inte har godkänt ett MPN-ID (PGA/PLA) eller CSP-klient-ID till API:et.</span><span class="sxs-lookup"><span data-stu-id="2147b-161">The following example response is returned when you haven't passed an MPN ID (PGA/PLA) or CSP tenant ID to the API.</span></span> <span data-ttu-id="2147b-162">Du måste skicka en av de två ID-typerna till API:et.</span><span class="sxs-lookup"><span data-stu-id="2147b-162">You must pass one of the two ID types to the API.</span></span>
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -192,9 +189,9 @@ Connection: close
 }
 ```
 
-#### <a name="both-mpn-id-and-csp-tenant-id-passed"></a><span data-ttu-id="a0869-165">Både MPN-ID och CSP klient-ID skickades</span><span class="sxs-lookup"><span data-stu-id="a0869-165">Both MPN ID and CSP tenant ID passed</span></span>
+#### <a name="both-mpn-id-and-csp-tenant-id-passed"></a><span data-ttu-id="2147b-163">Både MPN-ID och CSP-klientorganisations-ID skickades</span><span class="sxs-lookup"><span data-stu-id="2147b-163">Both MPN ID and CSP tenant ID passed</span></span>
 
-<span data-ttu-id="a0869-166">Följande exempel svar returneras när du skickar både MPN-ID (PGA/PLA) och CSP-klient-ID till API: et.</span><span class="sxs-lookup"><span data-stu-id="a0869-166">The following example response is returned when you pass both the MPN ID (PGA/PLA) and CSP tenant ID to the API.</span></span> <span data-ttu-id="a0869-167">Du måste *bara skicka en* av de två typerna av identifierare till API: et.</span><span class="sxs-lookup"><span data-stu-id="a0869-167">You must pass *only one* of the two identifier types to the API.</span></span>
+<span data-ttu-id="2147b-164">Följande exempelsvar returneras när du skickar både MPN-ID (PGA/PLA) och CSP-klient-ID till API:et.</span><span class="sxs-lookup"><span data-stu-id="2147b-164">The following example response is returned when you pass both the MPN ID (PGA/PLA) and CSP tenant ID to the API.</span></span> <span data-ttu-id="2147b-165">Du får bara *skicka en av* de två identifierartyperna till API:et.</span><span class="sxs-lookup"><span data-stu-id="2147b-165">You must pass *only one* of the two identifier types to the API.</span></span>
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -214,9 +211,9 @@ Connection: close
 }
 ```
 
-#### <a name="csp-indirect-reseller-mpn-id-pgapla-is-either-invalid-or-not-migrated-from-partner-membership-center-to-partner-center"></a><span data-ttu-id="a0869-168">MPN-ID för CSP indirekt åter försäljare (PGA/PLA) är antingen ogiltigt eller inte migrerat från partner medlemskaps Center till Partner Center</span><span class="sxs-lookup"><span data-stu-id="a0869-168">CSP Indirect Reseller MPN Id (PGA/PLA) is either invalid or not migrated from Partner Membership Center to Partner Center</span></span>
+#### <a name="csp-indirect-reseller-mpn-id-pgapla-is-either-invalid-or-not-migrated-from-partner-membership-center-to-partner-center"></a><span data-ttu-id="2147b-166">CSP Indirect Reseller MPN ID (PGA/PLA) är ogiltigt eller migreras inte från Partner Membership Center till Partnercenter</span><span class="sxs-lookup"><span data-stu-id="2147b-166">CSP Indirect Reseller MPN ID (PGA/PLA) is either invalid or not migrated from Partner Membership Center to Partner Center</span></span>
 
-<span data-ttu-id="a0869-169">Följande exempel svar returneras när den indirekta åter försäljaren MPN-ID (PGA/PLA) är antingen ogiltig eller inte migreras från partner medlemskaps Center till Partner Center.</span><span class="sxs-lookup"><span data-stu-id="a0869-169">The following example response is returned when Indirect reseller MPN ID (PGA/PLA) passed is either invalid or it is not migrated from Partner Membership Center to Partner Center.</span></span> [<span data-ttu-id="a0869-170">Läs mer</span><span class="sxs-lookup"><span data-stu-id="a0869-170">Learn More</span></span>](https://partner.microsoft.com/resources/detail/migrate-pmc-pc-mpa-guide-pptx)
+<span data-ttu-id="2147b-167">Följande exempelsvar returneras när en indirekt återförsäljares MPN-ID (PGA/PLA) skickas är antingen ogiltigt eller inte migreras från Partner Membership Center till PartnerCenter.</span><span class="sxs-lookup"><span data-stu-id="2147b-167">The following example response is returned when Indirect reseller MPN ID (PGA/PLA) passed is either invalid or it is not migrated from Partner Membership Center to Partner Center.</span></span> [<span data-ttu-id="2147b-168">Läs mer</span><span class="sxs-lookup"><span data-stu-id="2147b-168">Learn More</span></span>](https://partner.microsoft.com/resources/detail/migrate-pmc-pc-mpa-guide-pptx)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -238,9 +235,9 @@ Connection: close
 }
 ```
 
-#### <a name="csp-indirect-provider-region-and-csp-indirect-reseller-region-does-not-match"></a><span data-ttu-id="a0869-171">Regionen för den indirekta CSP-providern och den indirekta KRYPTOGRAFIPROVIDERns region stämmer inte överens</span><span class="sxs-lookup"><span data-stu-id="a0869-171">CSP Indirect Provider region and CSP Indirect Reseller region does not match</span></span>
+#### <a name="csp-indirect-provider-region-and-csp-indirect-reseller-region-does-not-match"></a><span data-ttu-id="2147b-169">CSP Indirect Provider och CSP Indirect Reseller region matchar inte</span><span class="sxs-lookup"><span data-stu-id="2147b-169">CSP Indirect Provider region and CSP Indirect Reseller region does not match</span></span>
 
-<span data-ttu-id="a0869-172">Följande exempel svar returneras när regionen för den indirekta åter försäljaren MPN-ID (PGA/PLA) inte matchar regionen för den indirekta providern.</span><span class="sxs-lookup"><span data-stu-id="a0869-172">The following example response is returned when region of Indirect reseller MPN ID (PGA/PLA) doesn't match with region of the Indirect Provider.</span></span> <span data-ttu-id="a0869-173">[Läs mer](/partner-center/mpa-indirect-provider-faq) om CSP-regioner.</span><span class="sxs-lookup"><span data-stu-id="a0869-173">[Learn more](/partner-center/mpa-indirect-provider-faq) about CSP Regions.</span></span>
+<span data-ttu-id="2147b-170">Följande exempelsvar returneras när regionen för indirekt återförsäljares MPN-ID (PGA/PLA) inte matchar regionen för den indirekta leverantören.</span><span class="sxs-lookup"><span data-stu-id="2147b-170">The following example response is returned when region of Indirect reseller MPN ID (PGA/PLA) doesn't match with region of the Indirect Provider.</span></span> <span data-ttu-id="2147b-171">[Läs mer om](/partner-center/mpa-indirect-provider-faq) CSP-regioner.</span><span class="sxs-lookup"><span data-stu-id="2147b-171">[Learn more](/partner-center/mpa-indirect-provider-faq) about CSP Regions.</span></span>
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -262,9 +259,9 @@ Connection: close
 }
 ```
 
-#### <a name="csp-indirect-reseller-account-exists-in-partner-center-but-hasnt-signed-the-mpa"></a><span data-ttu-id="a0869-174">Ett indirekt åter försäljar konto för CSP finns i Partner Center men har inte signerat MPA</span><span class="sxs-lookup"><span data-stu-id="a0869-174">CSP Indirect Reseller account exists in Partner Center but hasn't signed the MPA</span></span>
+#### <a name="csp-indirect-reseller-account-exists-in-partner-center-but-hasnt-signed-the-mpa"></a><span data-ttu-id="2147b-172">CSP Indirect Reseller konto finns i Partnercenter men har inte signerat MPA</span><span class="sxs-lookup"><span data-stu-id="2147b-172">CSP Indirect Reseller account exists in Partner Center but hasn't signed the MPA</span></span>
 
-<span data-ttu-id="a0869-175">Följande exempel svar returneras när CSP-indirekt åter försäljarens konto i Partner Center inte har signerat MPA.</span><span class="sxs-lookup"><span data-stu-id="a0869-175">The following example response is returned when CSP Indirect Reseller account in Partner Center hasn't signed the MPA.</span></span> [<span data-ttu-id="a0869-176">Läs mer</span><span class="sxs-lookup"><span data-stu-id="a0869-176">Learn More</span></span>](/partner-center/mpa-indirect-provider-faq)
+<span data-ttu-id="2147b-173">Följande exempelsvar returneras när CSP Indirect Reseller i Partnercenter inte har signerat MPA.</span><span class="sxs-lookup"><span data-stu-id="2147b-173">The following example response is returned when CSP Indirect Reseller account in Partner Center hasn't signed the MPA.</span></span> [<span data-ttu-id="2147b-174">Läs mer</span><span class="sxs-lookup"><span data-stu-id="2147b-174">Learn More</span></span>](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -286,9 +283,9 @@ Connection: close
 }
 ```
 
-#### <a name="no-csp-indirect-reseller-account-is-associated-with-the-given-mpn-id"></a><span data-ttu-id="a0869-177">Inget indirekt åter försäljar konto för CSP är associerat med angivet MPN-ID</span><span class="sxs-lookup"><span data-stu-id="a0869-177">No CSP Indirect Reseller account is associated with the given MPN ID</span></span>
+#### <a name="no-csp-indirect-reseller-account-is-associated-with-the-given-mpn-id"></a><span data-ttu-id="2147b-175">Inget CSP Indirect Reseller konto är associerat med det angivna MPN-ID:t</span><span class="sxs-lookup"><span data-stu-id="2147b-175">No CSP Indirect Reseller account is associated with the given MPN ID</span></span>
 
-<span data-ttu-id="a0869-178">Följande exempel svar returneras när Partner Center kan identifiera MPN-ID (PGA/PLA) som skickades i begäran, men det finns ingen CSP-registrering kopplad till angivet MPN-ID (PGA/PLA).</span><span class="sxs-lookup"><span data-stu-id="a0869-178">The following example response is returned when Partner Center can recognize the MPN ID (PGA/PLA) passed in the request but there is no CSP enrollment associated to the given MPN ID (PGA/PLA).</span></span> [<span data-ttu-id="a0869-179">Läs mer</span><span class="sxs-lookup"><span data-stu-id="a0869-179">Learn More</span></span>](/partner-center/mpa-indirect-provider-faq)
+<span data-ttu-id="2147b-176">Följande exempelsvar returneras när Partner Center kan identifiera det MPN-ID (PGA/PLA) som skickades i begäran, men det inte finns någon CSP-registrering kopplad till det angivna MPN-ID:t (PGA/PLA).</span><span class="sxs-lookup"><span data-stu-id="2147b-176">The following example response is returned when Partner Center can recognize the MPN ID (PGA/PLA) passed in the request but there is no CSP enrollment associated to the given MPN ID (PGA/PLA).</span></span> [<span data-ttu-id="2147b-177">Läs mer</span><span class="sxs-lookup"><span data-stu-id="2147b-177">Learn More</span></span>](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -310,9 +307,9 @@ Connection: close
 }
 ```
 
-#### <a name="invalid-tenant-id"></a><span data-ttu-id="a0869-180">Ogiltigt klient-ID</span><span class="sxs-lookup"><span data-stu-id="a0869-180">Invalid Tenant ID</span></span>
+#### <a name="invalid-tenant-id"></a><span data-ttu-id="2147b-178">Ogiltigt klientorganisations-ID</span><span class="sxs-lookup"><span data-stu-id="2147b-178">Invalid Tenant ID</span></span>
 
-<span data-ttu-id="a0869-181">Följande exempel svar returneras när ett partner Center inte hittar något konto kopplat till klient-ID: t som skickas i begäran.</span><span class="sxs-lookup"><span data-stu-id="a0869-181">The following example response is returned when Partner Center doesn't find any account associated to the Tenant ID passed in the request.</span></span>
+<span data-ttu-id="2147b-179">Följande exempelsvar returneras när Partnercenter inte hittar något konto som är kopplat till det klient-ID som skickades i begäran.</span><span class="sxs-lookup"><span data-stu-id="2147b-179">The following example response is returned when Partner Center doesn't find any account associated to the Tenant ID passed in the request.</span></span>
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -332,9 +329,9 @@ Connection: close
 }
 ```
 
-#### <a name="no-mpa-found-with-the-given-tenant-id"></a><span data-ttu-id="a0869-182">Ingen MPA hittades med angivet klient-ID</span><span class="sxs-lookup"><span data-stu-id="a0869-182">No MPA found with the given Tenant ID</span></span>
+#### <a name="no-mpa-found-with-the-given-tenant-id"></a><span data-ttu-id="2147b-180">Inget MPA hittades med det angivna klientorganisations-ID:t</span><span class="sxs-lookup"><span data-stu-id="2147b-180">No MPA found with the given Tenant ID</span></span>
 
-<span data-ttu-id="a0869-183">Följande exempel svar returneras när Partner Center inte kan hitta någon MPA-signatur med angivet klient-ID.</span><span class="sxs-lookup"><span data-stu-id="a0869-183">The following example response is returned when Partner Center can't find any MPA signature with the given Tenant ID.</span></span> [<span data-ttu-id="a0869-184">Läs mer</span><span class="sxs-lookup"><span data-stu-id="a0869-184">Learn More</span></span>](/partner-center/mpa-indirect-provider-faq)
+<span data-ttu-id="2147b-181">Följande exempelsvar returneras när Partnercenter inte kan hitta någon MPA-signatur med det angivna klientorganisations-ID:t.</span><span class="sxs-lookup"><span data-stu-id="2147b-181">The following example response is returned when Partner Center can't find any MPA signature with the given Tenant ID.</span></span> [<span data-ttu-id="2147b-182">Läs mer</span><span class="sxs-lookup"><span data-stu-id="2147b-182">Learn More</span></span>](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request

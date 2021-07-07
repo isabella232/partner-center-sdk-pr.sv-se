@@ -1,71 +1,66 @@
 ---
 title: Partnercenter – webhooks
-description: Med Webhooks kan partner registrera sig för resurs ändrings händelser.
+description: Med webhooks kan partner registrera sig för resursändringshändelser.
 ms.date: 04/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 8225623ade7e922ac23ebf0ed9215686b0601244
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 74d5981436ba29ea4f6f93a5693ec6da82777eb4
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769225"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547758"
 ---
-# <a name="partner-center-webhooks"></a><span data-ttu-id="75a3e-103">Partnercenter – webhooks</span><span class="sxs-lookup"><span data-stu-id="75a3e-103">Partner Center webhooks</span></span>
+# <a name="partner-center-webhooks"></a><span data-ttu-id="3ca1d-103">Partnercenter – webhooks</span><span class="sxs-lookup"><span data-stu-id="3ca1d-103">Partner Center webhooks</span></span>
 
-<span data-ttu-id="75a3e-104">**Gäller för**</span><span class="sxs-lookup"><span data-stu-id="75a3e-104">**Applies To**</span></span>
+<span data-ttu-id="3ca1d-104">**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="3ca1d-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="75a3e-105">Partnercenter</span><span class="sxs-lookup"><span data-stu-id="75a3e-105">Partner Center</span></span>
-- <span data-ttu-id="75a3e-106">Partner Center som drivs av 21Vianet</span><span class="sxs-lookup"><span data-stu-id="75a3e-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="75a3e-107">Partnercenter för Microsoft Cloud Tyskland</span><span class="sxs-lookup"><span data-stu-id="75a3e-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="75a3e-108">Välkommen till Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="75a3e-108">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="3ca1d-105">Med Webhook-API:erna i Partnercenter kan partner registrera sig för resursändringshändelser.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-105">The Partner Center Webhook APIs allow partners to register for resource change events.</span></span> <span data-ttu-id="3ca1d-106">Dessa händelser levereras i form av HTTP-POST:er till partnerns registrerade URL.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-106">These events are delivered in the form of HTTP POSTs to the partner's registered URL.</span></span> <span data-ttu-id="3ca1d-107">För att ta emot en händelse från Partnercenter är partner värd för ett återanrop där Partnercenter kan PUBLICERA resursändringshändelsen.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-107">To receive an event from Partner Center, partners will host a callback where Partner Center can POST the resource change event.</span></span> <span data-ttu-id="3ca1d-108">Händelsen signeras digitalt så att partnern kan verifiera att den skickades från Partnercenter.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-108">The event will be digitally signed so that the partner can verify that it was sent from Partner Center.</span></span>
 
-<span data-ttu-id="75a3e-109">API: erna för webhook i Partner Center gör att partner kan registrera sig för resurs ändrings händelser.</span><span class="sxs-lookup"><span data-stu-id="75a3e-109">The Partner Center Webhook APIs allow partners to register for resource change events.</span></span> <span data-ttu-id="75a3e-110">Dessa händelser levereras i form av HTTP-inlägg till partnerns registrerade URL.</span><span class="sxs-lookup"><span data-stu-id="75a3e-110">These events are delivered in the form of HTTP POSTs to the partner's registered URL.</span></span> <span data-ttu-id="75a3e-111">För att ta emot en händelse från Partner Center, kommer partner att vara värd för ett återanrop där Partner Center kan publicera resurs ändrings händelsen.</span><span class="sxs-lookup"><span data-stu-id="75a3e-111">To receive an event from Partner Center, partners will host a callback where Partner Center can POST the resource change event.</span></span> <span data-ttu-id="75a3e-112">Händelsen signeras digitalt så att partnern kan verifiera att den har skickats från Partner Center.</span><span class="sxs-lookup"><span data-stu-id="75a3e-112">The event will be digitally signed so that the partner can verify that it was sent from Partner Center.</span></span>
+<span data-ttu-id="3ca1d-109">Partner kan välja bland Webhook-händelser, som i följande exempel, som stöds av Partnercenter.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-109">Partners can select from Webhook events, like the following examples, that are supported by Partner Center.</span></span>
 
-<span data-ttu-id="75a3e-113">Partner kan välja mellan webhook-händelser, som följande exempel, som stöds av Partner Center.</span><span class="sxs-lookup"><span data-stu-id="75a3e-113">Partners can select from Webhook events, like the following examples, that are supported by Partner Center.</span></span>
+- <span data-ttu-id="3ca1d-110">**Testhändelse ("testskapad")**</span><span class="sxs-lookup"><span data-stu-id="3ca1d-110">**Test Event ("test-created")**</span></span>
 
-- <span data-ttu-id="75a3e-114">**Test event ("test-created")**</span><span class="sxs-lookup"><span data-stu-id="75a3e-114">**Test Event ("test-created")**</span></span>
+    <span data-ttu-id="3ca1d-111">Med den här händelsen kan du registrera dig själv och testa registreringen genom att begära en testhändelse och sedan spåra förloppet.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-111">This event allows you to self-onboard and test your registration by requesting a test event and then tracking its progress.</span></span> <span data-ttu-id="3ca1d-112">Du kan se felmeddelanden som tas emot från Microsoft när du försöker leverera händelsen.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-112">You can see the failure messages that are being received from Microsoft while trying to deliver the event.</span></span> <span data-ttu-id="3ca1d-113">Den här begränsningen gäller endast för "testskapade" händelser.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-113">This restriction only applies to "test-created" events.</span></span> <span data-ttu-id="3ca1d-114">Data som är äldre än sju dagar rensas.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-114">Data older than seven days will be purged.</span></span>
 
-    <span data-ttu-id="75a3e-115">Med den här händelsen kan du själv publicera och testa registreringen genom att begära ett test händelser och sedan följa förloppet.</span><span class="sxs-lookup"><span data-stu-id="75a3e-115">This event allows you to self-onboard and test your registration by requesting a test event and then tracking its progress.</span></span> <span data-ttu-id="75a3e-116">Du kan se de fel meddelanden som tas emot från Microsoft när du försöker leverera evenemanget.</span><span class="sxs-lookup"><span data-stu-id="75a3e-116">You can see the failure messages that are being received from Microsoft while trying to deliver the event.</span></span> <span data-ttu-id="75a3e-117">Den här begränsningen gäller endast för "test-skapade"-händelser.</span><span class="sxs-lookup"><span data-stu-id="75a3e-117">This restriction only applies to "test-created" events.</span></span> <span data-ttu-id="75a3e-118">Data som är äldre än sju dagar rensas.</span><span class="sxs-lookup"><span data-stu-id="75a3e-118">Data older than seven days will be purged.</span></span>
+- <span data-ttu-id="3ca1d-115">**Händelse med uppdaterad prenumeration ("prenumerations uppdaterad")**</span><span class="sxs-lookup"><span data-stu-id="3ca1d-115">**Subscription Updated Event ("subscription-updated")**</span></span>
 
-- <span data-ttu-id="75a3e-119">**Prenumerationen har uppdaterats ("prenumerationen har uppdaterats")**</span><span class="sxs-lookup"><span data-stu-id="75a3e-119">**Subscription Updated Event ("subscription-updated")**</span></span>
-
-    <span data-ttu-id="75a3e-120">Den här händelsen inträffar när prenumerationen ändras.</span><span class="sxs-lookup"><span data-stu-id="75a3e-120">This event is raised when the subscription changes.</span></span> <span data-ttu-id="75a3e-121">Dessa händelser genereras när det finns en intern ändring utöver när ändringar görs via partner Center-API: et.</span><span class="sxs-lookup"><span data-stu-id="75a3e-121">These events will be generated when there is an internal change in addition to when changes are made through the Partner Center API.</span></span>
+    <span data-ttu-id="3ca1d-116">Den här händelsen utlöses när prenumerationen ändras.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-116">This event is raised when the subscription changes.</span></span> <span data-ttu-id="3ca1d-117">Dessa händelser genereras när det sker en intern ändring utöver när ändringar görs via Partner Center-API:et.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-117">These events will be generated when there is an internal change in addition to when changes are made through the Partner Center API.</span></span>
 
     >[!NOTE]
-    ><span data-ttu-id="75a3e-122">Det finns en fördröjning på upp till 48 timmar mellan den tidpunkt då en prenumeration ändras och när händelsen uppdatering av prenumeration utlöses.</span><span class="sxs-lookup"><span data-stu-id="75a3e-122">There is a delay of up to 48 hours between the time a subscription changes and when the Subscription Updated event is triggered.</span></span>
+    ><span data-ttu-id="3ca1d-118">Det finns en fördröjning på upp till 48 timmar mellan den tidpunkt då en prenumeration ändras och när den uppdaterade prenumerationshändelsen utlöses.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-118">There is a delay of up to 48 hours between the time a subscription changes and when the Subscription Updated event is triggered.</span></span>
 
-- <span data-ttu-id="75a3e-123">**Tröskeln överskreds för händelsen ("usagerecords-thresholdExceeded")**</span><span class="sxs-lookup"><span data-stu-id="75a3e-123">**Threshold Exceeded Event ("usagerecords-thresholdExceeded")**</span></span>
+- <span data-ttu-id="3ca1d-119">**Tröskel överskred händelse ("usagerecords-thresholdExceeded")**</span><span class="sxs-lookup"><span data-stu-id="3ca1d-119">**Threshold Exceeded Event ("usagerecords-thresholdExceeded")**</span></span>
 
-    <span data-ttu-id="75a3e-124">Den här händelsen inträffar när mängden Microsoft Azure användning för en kund överskrider deras användnings utgifts budget (tröskel).</span><span class="sxs-lookup"><span data-stu-id="75a3e-124">This event is raised when the amount of Microsoft Azure usage for any customer exceeds their usage spending budget (their threshold).</span></span> <span data-ttu-id="75a3e-125">Mer information finns i [ställa in en Azure utgifts budget för dina kunder/Partner Center/set-a-Azure-utgifter-budget – för-kunder).</span><span class="sxs-lookup"><span data-stu-id="75a3e-125">For more information, see  [Set an Azure spending budget for your customers/partner-center/set-an-azure-spending-budget-for-your-customers).</span></span>
+    <span data-ttu-id="3ca1d-120">Den här händelsen utlöses när mängden Microsoft Azure för en kund överskrider sin utgiftsbudget för användning (deras tröskelvärde).</span><span class="sxs-lookup"><span data-stu-id="3ca1d-120">This event is raised when the amount of Microsoft Azure usage for any customer exceeds their usage spending budget (their threshold).</span></span> <span data-ttu-id="3ca1d-121">Mer information finns i [Ange en Azure-utgiftsbudget för dina kunder/partnercenter/set-an-azure-spending-budget-for-your-customers).</span><span class="sxs-lookup"><span data-stu-id="3ca1d-121">For more information, see  [Set an Azure spending budget for your customers/partner-center/set-an-azure-spending-budget-for-your-customers).</span></span>
 
-- <span data-ttu-id="75a3e-126">**Händelse som skapats av hänvisning ("hänvisning skapad")**</span><span class="sxs-lookup"><span data-stu-id="75a3e-126">**Referral Created Event ("referral-created")**</span></span>
+- <span data-ttu-id="3ca1d-122">**Skapad referenshändelse ("hänvisningsskapad")**</span><span class="sxs-lookup"><span data-stu-id="3ca1d-122">**Referral Created Event ("referral-created")**</span></span>
 
-    <span data-ttu-id="75a3e-127">Den här händelsen inträffar när referensen skapas.</span><span class="sxs-lookup"><span data-stu-id="75a3e-127">This event is raised when the referral is created.</span></span>
+    <span data-ttu-id="3ca1d-123">Den här händelsen utlöses när hänvisningen skapas.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-123">This event is raised when the referral is created.</span></span>
 
-- <span data-ttu-id="75a3e-128">**Referens för uppdaterad händelse ("hänvisning – uppdaterad")**</span><span class="sxs-lookup"><span data-stu-id="75a3e-128">**Referral Updated Event ("referral-updated")**</span></span>
+- <span data-ttu-id="3ca1d-124">**Uppdaterad referenshändelse ("hänvisnings uppdaterad")**</span><span class="sxs-lookup"><span data-stu-id="3ca1d-124">**Referral Updated Event ("referral-updated")**</span></span>
 
-    <span data-ttu-id="75a3e-129">Den här händelsen utlöses när hänvisningen uppdateras.</span><span class="sxs-lookup"><span data-stu-id="75a3e-129">This event is raised when the referral is updated.</span></span>
+    <span data-ttu-id="3ca1d-125">Den här händelsen utlöses när hänvisningen uppdateras.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-125">This event is raised when the referral is updated.</span></span>
 
-- <span data-ttu-id="75a3e-130">**Faktura klar händelse ("faktura klar")**</span><span class="sxs-lookup"><span data-stu-id="75a3e-130">**Invoice Ready Event ("invoice-ready")**</span></span>
+- <span data-ttu-id="3ca1d-126">**Fakturaklar händelse ("fakturaklar")**</span><span class="sxs-lookup"><span data-stu-id="3ca1d-126">**Invoice Ready Event ("invoice-ready")**</span></span>
 
-    <span data-ttu-id="75a3e-131">Den här händelsen inträffar när den nya fakturan är klar.</span><span class="sxs-lookup"><span data-stu-id="75a3e-131">This event is raised when the new invoice is ready.</span></span>
+    <span data-ttu-id="3ca1d-127">Den här händelsen utlöses när den nya fakturan är klar.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-127">This event is raised when the new invoice is ready.</span></span>
 
-<span data-ttu-id="75a3e-132">Framtida webhook-händelser kommer att läggas till för resurser som ändras i systemet som partnern inte har kontroll över, och ytterligare uppdateringar görs för att få dessa händelser så nära "real tid" som möjligt.</span><span class="sxs-lookup"><span data-stu-id="75a3e-132">Future Webhook events will be added for resources that change in the system that the partner isn't in control of, and further updates will be made to get those events as close to "real time" as possible.</span></span> <span data-ttu-id="75a3e-133">Feedback från partner på vilka händelser som lägger till värde i deras verksamhet är användbara när du ska avgöra vilka nya händelser som ska läggas till.</span><span class="sxs-lookup"><span data-stu-id="75a3e-133">Feedback from Partners on which events add value to their business will be useful in determining what new events to add.</span></span>
+<span data-ttu-id="3ca1d-128">Framtida Webhook-händelser läggs till för resurser som ändras i systemet som partnern inte har kontroll över, och ytterligare uppdateringar kommer att göras för att få dessa händelser så nära "realtid" som möjligt.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-128">Future Webhook events will be added for resources that change in the system that the partner isn't in control of, and further updates will be made to get those events as close to "real time" as possible.</span></span> <span data-ttu-id="3ca1d-129">Feedback från partner om vilka händelser som tillför värde i verksamheten är användbart för att avgöra vilka nya händelser som ska läggas till.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-129">Feedback from Partners on which events add value to their business will be useful in determining what new events to add.</span></span>
 
-<span data-ttu-id="75a3e-134">En fullständig lista med webhook-händelser som stöds av Partner Center finns i [partner Center webhook-händelser](partner-center-webhook-events.md).</span><span class="sxs-lookup"><span data-stu-id="75a3e-134">For a complete list of Webhook events supported by Partner Center, see [Partner Center webhook events](partner-center-webhook-events.md).</span></span>
+<span data-ttu-id="3ca1d-130">En fullständig lista över Webhook-händelser som stöds av Partnercenter finns i [Webhook-händelser i Partnercenter.](partner-center-webhook-events.md)</span><span class="sxs-lookup"><span data-stu-id="3ca1d-130">For a complete list of Webhook events supported by Partner Center, see [Partner Center webhook events](partner-center-webhook-events.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="75a3e-135">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="75a3e-135">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="3ca1d-131">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="3ca1d-131">Prerequisites</span></span>
 
-- <span data-ttu-id="75a3e-136">Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="75a3e-136">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="75a3e-137">Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="75a3e-137">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+- <span data-ttu-id="3ca1d-132">Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="3ca1d-132">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="3ca1d-133">Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-133">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-## <a name="receiving-events-from-partner-center"></a><span data-ttu-id="75a3e-138">Ta emot händelser från Partner Center</span><span class="sxs-lookup"><span data-stu-id="75a3e-138">Receiving events from Partner Center</span></span>
+## <a name="receiving-events-from-partner-center"></a><span data-ttu-id="3ca1d-134">Ta emot händelser från Partnercenter</span><span class="sxs-lookup"><span data-stu-id="3ca1d-134">Receiving events from Partner Center</span></span>
 
-<span data-ttu-id="75a3e-139">För att ta emot händelser från Partner Center måste du exponera en offentligt tillgänglig slut punkt.</span><span class="sxs-lookup"><span data-stu-id="75a3e-139">To receive events from Partner Center, you must expose a publicly accessible endpoint.</span></span> <span data-ttu-id="75a3e-140">Eftersom den här slut punkten visas måste du kontrol lera att kommunikationen är från Partner Center.</span><span class="sxs-lookup"><span data-stu-id="75a3e-140">Because this endpoint is exposed, you must validate that the communication is from Partner Center.</span></span> <span data-ttu-id="75a3e-141">Alla webhook-händelser som du får är digitalt signerade med ett certifikat som är kopplat till Microsoft-roten.</span><span class="sxs-lookup"><span data-stu-id="75a3e-141">All Webhook events that you receive are digitally signed with a certificate that chains to the Microsoft Root.</span></span> <span data-ttu-id="75a3e-142">En länk till certifikatet som används för att signera händelsen kommer också att tillhandahållas.</span><span class="sxs-lookup"><span data-stu-id="75a3e-142">A link to the certificate used to sign the event will also be provided.</span></span> <span data-ttu-id="75a3e-143">Detta gör att certifikatet kan förnyas utan att du behöver distribuera om eller konfigurera om tjänsten.</span><span class="sxs-lookup"><span data-stu-id="75a3e-143">This will allow the certificate to be renewed without you having to redeploy or reconfigure your service.</span></span> <span data-ttu-id="75a3e-144">Partner Center kommer att göra 10 försök att leverera händelsen.</span><span class="sxs-lookup"><span data-stu-id="75a3e-144">Partner Center will make 10 attempts to deliver the event.</span></span> <span data-ttu-id="75a3e-145">Om händelsen fortfarande inte levereras efter 10 försök kommer den att flyttas till en offline-kö och inga ytterligare försök görs vid leverans.</span><span class="sxs-lookup"><span data-stu-id="75a3e-145">If the event is still not delivered after 10 attempts, it will be moved into an offline queue and no further attempts will be made at delivery.</span></span>
+<span data-ttu-id="3ca1d-135">Om du vill ta emot händelser från Partnercenter måste du exponera en offentligt tillgänglig slutpunkt.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-135">To receive events from Partner Center, you must expose a publicly accessible endpoint.</span></span> <span data-ttu-id="3ca1d-136">Eftersom den här slutpunkten exponeras måste du verifiera att kommunikationen kommer från Partnercenter.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-136">Because this endpoint is exposed, you must validate that the communication is from Partner Center.</span></span> <span data-ttu-id="3ca1d-137">Alla Webhook-händelser som du får är digitalt signerade med ett certifikat som är kedjor till Microsoft Root.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-137">All Webhook events that you receive are digitally signed with a certificate that chains to the Microsoft Root.</span></span> <span data-ttu-id="3ca1d-138">En länk till certifikatet som används för att signera händelsen tillhandahålls också.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-138">A link to the certificate used to sign the event will also be provided.</span></span> <span data-ttu-id="3ca1d-139">Detta gör att certifikatet kan förnyas utan att du behöver distribuera om eller konfigurera om tjänsten.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-139">This will allow the certificate to be renewed without you having to redeploy or reconfigure your service.</span></span> <span data-ttu-id="3ca1d-140">Partnercenter gör 10 försök att leverera händelsen.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-140">Partner Center will make 10 attempts to deliver the event.</span></span> <span data-ttu-id="3ca1d-141">Om händelsen fortfarande inte levereras efter 10 försök flyttas den till en offlinekö och inga ytterligare försök görs vid leverans.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-141">If the event is still not delivered after 10 attempts, it will be moved into an offline queue and no further attempts will be made at delivery.</span></span>
 
-<span data-ttu-id="75a3e-146">I följande exempel visas en händelse som publicerats från Partner Center.</span><span class="sxs-lookup"><span data-stu-id="75a3e-146">The following sample shows an event posted from Partner Center.</span></span>
+<span data-ttu-id="3ca1d-142">I följande exempel visas en händelse som publicerats från Partnercenter.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-142">The following sample shows an event posted from Partner Center.</span></span>
 
 ```http
 POST /webhooks/callback
@@ -87,48 +82,48 @@ Content-Length: 195
 ```
 
 >[!NOTE]
-><span data-ttu-id="75a3e-147">Authorization-huvudet har ett schema för "signatur".</span><span class="sxs-lookup"><span data-stu-id="75a3e-147">The Authorization header has a scheme of "Signature".</span></span> <span data-ttu-id="75a3e-148">Det här är en Base64-kodad signatur för innehållet.</span><span class="sxs-lookup"><span data-stu-id="75a3e-148">This is a base64 encoded signature of the content.</span></span>
+><span data-ttu-id="3ca1d-143">Auktoriseringsrubriken har schemat "Signatur".</span><span class="sxs-lookup"><span data-stu-id="3ca1d-143">The Authorization header has a scheme of "Signature".</span></span> <span data-ttu-id="3ca1d-144">Det här är en base64-kodad signatur för innehållet.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-144">This is a base64 encoded signature of the content.</span></span>
 
-## <a name="how-to-authenticate-the-callback"></a><span data-ttu-id="75a3e-149">Så här autentiserar du motringningen</span><span class="sxs-lookup"><span data-stu-id="75a3e-149">How to authenticate the callback</span></span>
+## <a name="how-to-authenticate-the-callback"></a><span data-ttu-id="3ca1d-145">Så här autentiserar du motringning</span><span class="sxs-lookup"><span data-stu-id="3ca1d-145">How to authenticate the callback</span></span>
 
-<span data-ttu-id="75a3e-150">Följ dessa steg om du vill autentisera återanrops händelsen som tas emot från Partner Center:</span><span class="sxs-lookup"><span data-stu-id="75a3e-150">To authenticate the callback event received from Partner Center, follow these steps:</span></span>
+<span data-ttu-id="3ca1d-146">Följ dessa steg om du vill autentisera återanropshändelsen som tas emot från Partnercenter:</span><span class="sxs-lookup"><span data-stu-id="3ca1d-146">To authenticate the callback event received from Partner Center, follow these steps:</span></span>
 
-1. <span data-ttu-id="75a3e-151">Kontrol lera att de nödvändiga rubrikerna finns (auktorisering, x-MS-Certificate-URL, x-MS-Signature-Algorithm).</span><span class="sxs-lookup"><span data-stu-id="75a3e-151">Verify the required headers are present (Authorization, x-ms-certificate-url, x-ms-signature-algorithm).</span></span>
+1. <span data-ttu-id="3ca1d-147">Kontrollera att de nödvändiga huvudena finns (Auktorisering, x-ms-certificate-url, x-ms-signature-algorithm).</span><span class="sxs-lookup"><span data-stu-id="3ca1d-147">Verify the required headers are present (Authorization, x-ms-certificate-url, x-ms-signature-algorithm).</span></span>
 
-2. <span data-ttu-id="75a3e-152">Hämta certifikatet som används för att signera innehållet (x-MS-Certificate-URL).</span><span class="sxs-lookup"><span data-stu-id="75a3e-152">Download the certificate used to sign the content (x-ms-certificate-url).</span></span>
+2. <span data-ttu-id="3ca1d-148">Ladda ned certifikatet som används för att signera innehållet (x-ms-certificate-url).</span><span class="sxs-lookup"><span data-stu-id="3ca1d-148">Download the certificate used to sign the content (x-ms-certificate-url).</span></span>
 
-3. <span data-ttu-id="75a3e-153">Verifiera certifikat kedjan.</span><span class="sxs-lookup"><span data-stu-id="75a3e-153">Verify the Certificate Chain.</span></span>
+3. <span data-ttu-id="3ca1d-149">Verifiera certifikatkedjan.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-149">Verify the Certificate Chain.</span></span>
 
-4. <span data-ttu-id="75a3e-154">Kontrol lera "organisationen" för certifikatet.</span><span class="sxs-lookup"><span data-stu-id="75a3e-154">Verify the "Organization" of the certificate.</span></span>
+4. <span data-ttu-id="3ca1d-150">Kontrollera certifikatets "organisation".</span><span class="sxs-lookup"><span data-stu-id="3ca1d-150">Verify the "Organization" of the certificate.</span></span>
 
-5. <span data-ttu-id="75a3e-155">Läs innehållet med UTF8-kodning i en buffert.</span><span class="sxs-lookup"><span data-stu-id="75a3e-155">Read the content with UTF8 encoding into a buffer.</span></span>
+5. <span data-ttu-id="3ca1d-151">Läs innehållet med UTF8-kodning i en buffert.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-151">Read the content with UTF8 encoding into a buffer.</span></span>
 
-6. <span data-ttu-id="75a3e-156">Skapa en RSA-Krypto-Provider.</span><span class="sxs-lookup"><span data-stu-id="75a3e-156">Create an RSA Crypto Provider.</span></span>
+6. <span data-ttu-id="3ca1d-152">Skapa en RSA Crypto-provider.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-152">Create an RSA Crypto Provider.</span></span>
 
-7. <span data-ttu-id="75a3e-157">Kontrol lera att data matchar vad som har signerats med angiven hash-algoritm (till exempel SHA256).</span><span class="sxs-lookup"><span data-stu-id="75a3e-157">Verify the data matches what was signed with the specified hash algorithm (for example SHA256).</span></span>
+7. <span data-ttu-id="3ca1d-153">Kontrollera att data matchar det som signerats med den angivna hash-algoritmen (till exempel SHA256).</span><span class="sxs-lookup"><span data-stu-id="3ca1d-153">Verify the data matches what was signed with the specified hash algorithm (for example SHA256).</span></span>
 
-8. <span data-ttu-id="75a3e-158">Om verifieringen lyckas, behandla meddelandet.</span><span class="sxs-lookup"><span data-stu-id="75a3e-158">If the verification succeeds, process the message.</span></span>
+8. <span data-ttu-id="3ca1d-154">Om verifieringen lyckas bearbetar du meddelandet.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-154">If the verification succeeds, process the message.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="75a3e-159">Som standard skickas signaturens token i ett Authorization-huvud.</span><span class="sxs-lookup"><span data-stu-id="75a3e-159">By default, the signature token will be sent in an Authorization header.</span></span> <span data-ttu-id="75a3e-160">Om du anger **SignatureTokenToMsSignatureHeader** till sant i registreringen skickas signaturens token i huvudet x-MS-signatur i stället.</span><span class="sxs-lookup"><span data-stu-id="75a3e-160">If you set **SignatureTokenToMsSignatureHeader** to true in your registration, the signature token will be sent in the x-ms-signature header instead.</span></span>
+> <span data-ttu-id="3ca1d-155">Som standard skickas signaturtoken i ett auktoriseringshuvud.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-155">By default, the signature token will be sent in an Authorization header.</span></span> <span data-ttu-id="3ca1d-156">Om du ställer in **SignatureTokenToMsSignatureHeader** på true i din registrering skickas signaturtoken i huvudet x-ms-signature i stället.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-156">If you set **SignatureTokenToMsSignatureHeader** to true in your registration, the signature token will be sent in the x-ms-signature header instead.</span></span>
 
-## <a name="event-model"></a><span data-ttu-id="75a3e-161">Händelse modell</span><span class="sxs-lookup"><span data-stu-id="75a3e-161">Event model</span></span>
+## <a name="event-model"></a><span data-ttu-id="3ca1d-157">Händelsemodell</span><span class="sxs-lookup"><span data-stu-id="3ca1d-157">Event model</span></span>
 
-<span data-ttu-id="75a3e-162">I följande tabell beskrivs egenskaperna för ett partner Center-evenemang.</span><span class="sxs-lookup"><span data-stu-id="75a3e-162">The following table describes the properties of a Partner Center event.</span></span>
+<span data-ttu-id="3ca1d-158">I följande tabell beskrivs egenskaperna för en Partnercenter-händelse.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-158">The following table describes the properties of a Partner Center event.</span></span>
 
-### <a name="properties"></a><span data-ttu-id="75a3e-163">Egenskaper</span><span class="sxs-lookup"><span data-stu-id="75a3e-163">Properties</span></span>
+### <a name="properties"></a><span data-ttu-id="3ca1d-159">Egenskaper</span><span class="sxs-lookup"><span data-stu-id="3ca1d-159">Properties</span></span>
 
-| <span data-ttu-id="75a3e-164">Name</span><span class="sxs-lookup"><span data-stu-id="75a3e-164">Name</span></span>                      | <span data-ttu-id="75a3e-165">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="75a3e-165">Description</span></span>                                                                           |
+| <span data-ttu-id="3ca1d-160">Name</span><span class="sxs-lookup"><span data-stu-id="3ca1d-160">Name</span></span>                      | <span data-ttu-id="3ca1d-161">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="3ca1d-161">Description</span></span>                                                                           |
 |---------------------------|---------------------------------------------------------------------------------------|
-| <span data-ttu-id="75a3e-166">**EventName**</span><span class="sxs-lookup"><span data-stu-id="75a3e-166">**EventName**</span></span>             | <span data-ttu-id="75a3e-167">Händelsens namn.</span><span class="sxs-lookup"><span data-stu-id="75a3e-167">The name of the event.</span></span> <span data-ttu-id="75a3e-168">I formatet {Resource}-{action}.</span><span class="sxs-lookup"><span data-stu-id="75a3e-168">In the form {resource}-{action}.</span></span> <span data-ttu-id="75a3e-169">Till exempel "test-created".</span><span class="sxs-lookup"><span data-stu-id="75a3e-169">For example, "test-created".</span></span>  |
-| <span data-ttu-id="75a3e-170">**ResourceUri**</span><span class="sxs-lookup"><span data-stu-id="75a3e-170">**ResourceUri**</span></span>           | <span data-ttu-id="75a3e-171">URI för den resurs som ändrades.</span><span class="sxs-lookup"><span data-stu-id="75a3e-171">The URI of the resource that changed.</span></span>                                                 |
-| <span data-ttu-id="75a3e-172">**ResourceName**</span><span class="sxs-lookup"><span data-stu-id="75a3e-172">**ResourceName**</span></span>          | <span data-ttu-id="75a3e-173">Namnet på den resurs som ändrades.</span><span class="sxs-lookup"><span data-stu-id="75a3e-173">The name of the resource that changed.</span></span>                                                |
-| <span data-ttu-id="75a3e-174">**AuditUrl**</span><span class="sxs-lookup"><span data-stu-id="75a3e-174">**AuditUrl**</span></span>              | <span data-ttu-id="75a3e-175">Valfritt.</span><span class="sxs-lookup"><span data-stu-id="75a3e-175">Optional.</span></span> <span data-ttu-id="75a3e-176">Gransknings postens URI.</span><span class="sxs-lookup"><span data-stu-id="75a3e-176">The URI of the Audit record.</span></span>                                                |
-| <span data-ttu-id="75a3e-177">**ResourceChangeUtcDate**</span><span class="sxs-lookup"><span data-stu-id="75a3e-177">**ResourceChangeUtcDate**</span></span> | <span data-ttu-id="75a3e-178">Datum och tid i UTC-format när resurs ändringen utfördes.</span><span class="sxs-lookup"><span data-stu-id="75a3e-178">The date and time, in UTC format, when the resource change occurred.</span></span>                  |
+| <span data-ttu-id="3ca1d-162">**EventName**</span><span class="sxs-lookup"><span data-stu-id="3ca1d-162">**EventName**</span></span>             | <span data-ttu-id="3ca1d-163">Namnet på händelsen.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-163">The name of the event.</span></span> <span data-ttu-id="3ca1d-164">I formuläret {resource}-{action}.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-164">In the form {resource}-{action}.</span></span> <span data-ttu-id="3ca1d-165">Till exempel "test-created".</span><span class="sxs-lookup"><span data-stu-id="3ca1d-165">For example, "test-created".</span></span>  |
+| <span data-ttu-id="3ca1d-166">**ResourceUri**</span><span class="sxs-lookup"><span data-stu-id="3ca1d-166">**ResourceUri**</span></span>           | <span data-ttu-id="3ca1d-167">URI:en för resursen som ändrades.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-167">The URI of the resource that changed.</span></span>                                                 |
+| <span data-ttu-id="3ca1d-168">**ResourceName**</span><span class="sxs-lookup"><span data-stu-id="3ca1d-168">**ResourceName**</span></span>          | <span data-ttu-id="3ca1d-169">Namnet på den resurs som ändrades.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-169">The name of the resource that changed.</span></span>                                                |
+| <span data-ttu-id="3ca1d-170">**AuditUrl**</span><span class="sxs-lookup"><span data-stu-id="3ca1d-170">**AuditUrl**</span></span>              | <span data-ttu-id="3ca1d-171">Valfritt.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-171">Optional.</span></span> <span data-ttu-id="3ca1d-172">URI för granskningsposten.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-172">The URI of the Audit record.</span></span>                                                |
+| <span data-ttu-id="3ca1d-173">**ResourceChangeUtcDate**</span><span class="sxs-lookup"><span data-stu-id="3ca1d-173">**ResourceChangeUtcDate**</span></span> | <span data-ttu-id="3ca1d-174">Datum och tid, i UTC-format, när resursändringen inträffade.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-174">The date and time, in UTC format, when the resource change occurred.</span></span>                  |
 
-### <a name="sample"></a><span data-ttu-id="75a3e-179">Exempel</span><span class="sxs-lookup"><span data-stu-id="75a3e-179">Sample</span></span>
+### <a name="sample"></a><span data-ttu-id="3ca1d-175">Exempel</span><span class="sxs-lookup"><span data-stu-id="3ca1d-175">Sample</span></span>
 
-<span data-ttu-id="75a3e-180">Följande exempel visar strukturen för ett partner Center-evenemang.</span><span class="sxs-lookup"><span data-stu-id="75a3e-180">The following sample shows the structure of a Partner Center event.</span></span>
+<span data-ttu-id="3ca1d-176">I följande exempel visas strukturen för en Partnercenter-händelse.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-176">The following sample shows the structure of a Partner Center event.</span></span>
 
 ```http
 {
@@ -140,21 +135,21 @@ Content-Length: 195
 }
 ```
 
-## <a name="webhook-apis"></a><span data-ttu-id="75a3e-181">Webhook-API: er</span><span class="sxs-lookup"><span data-stu-id="75a3e-181">Webhook APIs</span></span>
+## <a name="webhook-apis"></a><span data-ttu-id="3ca1d-177">Webhook-API:er</span><span class="sxs-lookup"><span data-stu-id="3ca1d-177">Webhook APIs</span></span>
 
-### <a name="authentication"></a><span data-ttu-id="75a3e-182">Autentisering</span><span class="sxs-lookup"><span data-stu-id="75a3e-182">Authentication</span></span>
+### <a name="authentication"></a><span data-ttu-id="3ca1d-178">Autentisering</span><span class="sxs-lookup"><span data-stu-id="3ca1d-178">Authentication</span></span>
 
-<span data-ttu-id="75a3e-183">Alla anrop till webhook-API: erna autentiseras med hjälp av Bearer-token i Authorization-huvudet.</span><span class="sxs-lookup"><span data-stu-id="75a3e-183">All calls to the Webhook APIs are authenticated using the Bearer token in the Authorization Header.</span></span> <span data-ttu-id="75a3e-184">Hämta en åtkomsttoken för åtkomst `https://api.partnercenter.microsoft.com` .</span><span class="sxs-lookup"><span data-stu-id="75a3e-184">Acquire an access token to access `https://api.partnercenter.microsoft.com`.</span></span> <span data-ttu-id="75a3e-185">Denna token är samma token som används för att få åtkomst till resten av API: erna för partner Center.</span><span class="sxs-lookup"><span data-stu-id="75a3e-185">This token is the same token that is used to access the rest of the Partner Center APIs.</span></span>
+<span data-ttu-id="3ca1d-179">Alla anrop till Webhook-API:erna autentiseras med hjälp av bearer-token i auktoriseringshuvudet.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-179">All calls to the Webhook APIs are authenticated using the Bearer token in the Authorization Header.</span></span> <span data-ttu-id="3ca1d-180">Hämta en åtkomsttoken för att få åtkomst `https://api.partnercenter.microsoft.com` till .</span><span class="sxs-lookup"><span data-stu-id="3ca1d-180">Acquire an access token to access `https://api.partnercenter.microsoft.com`.</span></span> <span data-ttu-id="3ca1d-181">Den här token är samma token som används för att komma åt resten av Partner Center-API:erna.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-181">This token is the same token that is used to access the rest of the Partner Center APIs.</span></span>
 
-### <a name="get-a-list-of-events"></a><span data-ttu-id="75a3e-186">Hämta en lista över händelser</span><span class="sxs-lookup"><span data-stu-id="75a3e-186">Get a list of events</span></span>
+### <a name="get-a-list-of-events"></a><span data-ttu-id="3ca1d-182">Hämta en lista över händelser</span><span class="sxs-lookup"><span data-stu-id="3ca1d-182">Get a list of events</span></span>
 
-<span data-ttu-id="75a3e-187">Returnerar en lista med händelser som för närvarande stöds av webhook-API: erna.</span><span class="sxs-lookup"><span data-stu-id="75a3e-187">Returns a list of the events that are currently supported by the Webhook APIs.</span></span>
+<span data-ttu-id="3ca1d-183">Returnerar en lista över de händelser som för närvarande stöds av Webhook-API:erna.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-183">Returns a list of the events that are currently supported by the Webhook APIs.</span></span>
 
-### <a name="resource-url"></a><span data-ttu-id="75a3e-188">Resurs-URL</span><span class="sxs-lookup"><span data-stu-id="75a3e-188">Resource URL</span></span>
+### <a name="resource-url"></a><span data-ttu-id="3ca1d-184">Resurs-URL</span><span class="sxs-lookup"><span data-stu-id="3ca1d-184">Resource URL</span></span>
 
 `https://api.partnercenter.microsoft.com/webhooks/v1/registration/events`
 
-### <a name="request-example"></a><span data-ttu-id="75a3e-189">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="75a3e-189">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="3ca1d-185">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="3ca1d-185">Request example</span></span>
 
 ```http
 GET /webhooks/v1/registration/events
@@ -164,7 +159,7 @@ accept: */*
 host: api.partnercenter.microsoft.com
 ```
 
-### <a name="response-example"></a><span data-ttu-id="75a3e-190">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="75a3e-190">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="3ca1d-186">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="3ca1d-186">Response example</span></span>
 
 ```http
 HTTP/1.1 200
@@ -180,15 +175,15 @@ X-Locale: en-US
 [ "subscription-updated", "test-created", "usagerecords-thresholdExceeded" ]
 ```
 
-### <a name="register-to-receive-events"></a><span data-ttu-id="75a3e-191">Registrera dig för att ta emot händelser</span><span class="sxs-lookup"><span data-stu-id="75a3e-191">Register to receive events</span></span>
+### <a name="register-to-receive-events"></a><span data-ttu-id="3ca1d-187">Registrera dig för att ta emot händelser</span><span class="sxs-lookup"><span data-stu-id="3ca1d-187">Register to receive events</span></span>
 
-<span data-ttu-id="75a3e-192">Registrerar en klient för att ta emot de angivna händelserna.</span><span class="sxs-lookup"><span data-stu-id="75a3e-192">Registers a tenant to receive the specified events.</span></span>
+<span data-ttu-id="3ca1d-188">Registrerar en klientorganisation för att ta emot de angivna händelserna.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-188">Registers a tenant to receive the specified events.</span></span>
 
-#### <a name="resource-url"></a><span data-ttu-id="75a3e-193">Resurs-URL</span><span class="sxs-lookup"><span data-stu-id="75a3e-193">Resource URL</span></span>
+#### <a name="resource-url"></a><span data-ttu-id="3ca1d-189">Resurs-URL</span><span class="sxs-lookup"><span data-stu-id="3ca1d-189">Resource URL</span></span>
 
 `https://api.partnercenter.microsoft.com/webhooks/v1/registration`
 
-### <a name="request-example"></a><span data-ttu-id="75a3e-194">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="75a3e-194">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="3ca1d-190">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="3ca1d-190">Request example</span></span>
 
 ```http
 POST /webhooks/v1/registration
@@ -205,7 +200,7 @@ Content-Length: 219
 }
 ```
 
-### <a name="response-example"></a><span data-ttu-id="75a3e-195">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="75a3e-195">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="3ca1d-191">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="3ca1d-191">Response example</span></span>
 
 ```http
 HTTP/1.1 200
@@ -224,15 +219,15 @@ MS-RequestId: f04b1b5e-87b4-4d95-b087-d65fffec0bd2
 }
 ```
 
-### <a name="view-a-registration"></a><span data-ttu-id="75a3e-196">Visa en registrering</span><span class="sxs-lookup"><span data-stu-id="75a3e-196">View a registration</span></span>
+### <a name="view-a-registration"></a><span data-ttu-id="3ca1d-192">Visa en registrering</span><span class="sxs-lookup"><span data-stu-id="3ca1d-192">View a registration</span></span>
 
-<span data-ttu-id="75a3e-197">Returnerar en klients händelse registrering för webhookar.</span><span class="sxs-lookup"><span data-stu-id="75a3e-197">Returns the Webhooks event registration for a tenant.</span></span>
+<span data-ttu-id="3ca1d-193">Returnerar webhooks-händelseregistreringen för en klientorganisation.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-193">Returns the Webhooks event registration for a tenant.</span></span>
 
-#### <a name="resource-url"></a><span data-ttu-id="75a3e-198">Resurs-URL</span><span class="sxs-lookup"><span data-stu-id="75a3e-198">Resource URL</span></span>
+#### <a name="resource-url"></a><span data-ttu-id="3ca1d-194">Resurs-URL</span><span class="sxs-lookup"><span data-stu-id="3ca1d-194">Resource URL</span></span>
 
 `https://api.partnercenter.microsoft.com/webhooks/v1/registration`
 
-### <a name="request-example"></a><span data-ttu-id="75a3e-199">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="75a3e-199">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="3ca1d-195">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="3ca1d-195">Request example</span></span>
 
 ```http
 GET /webhooks/v1/registration
@@ -243,7 +238,7 @@ Host: api.partnercenter.microsoft.com
 Accept-Encoding: gzip, deflate
 ```
 
-### <a name="response-example"></a><span data-ttu-id="75a3e-200">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="75a3e-200">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="3ca1d-196">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="3ca1d-196">Response example</span></span>
 
 ```http
 HTTP/1.1 200
@@ -262,15 +257,15 @@ X-Locale: en-US
 }
 ```
 
-### <a name="update-an-event-registration"></a><span data-ttu-id="75a3e-201">Uppdatera en händelse registrering</span><span class="sxs-lookup"><span data-stu-id="75a3e-201">Update an event registration</span></span>
+### <a name="update-an-event-registration"></a><span data-ttu-id="3ca1d-197">Uppdatera en händelseregistrering</span><span class="sxs-lookup"><span data-stu-id="3ca1d-197">Update an event registration</span></span>
 
-<span data-ttu-id="75a3e-202">Uppdaterar en befintlig händelse registrering.</span><span class="sxs-lookup"><span data-stu-id="75a3e-202">Updates an existing event registration.</span></span>
+<span data-ttu-id="3ca1d-198">Uppdaterar en befintlig händelseregistrering.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-198">Updates an existing event registration.</span></span>
 
-#### <a name="resource-url"></a><span data-ttu-id="75a3e-203">Resurs-URL</span><span class="sxs-lookup"><span data-stu-id="75a3e-203">Resource URL</span></span>
+#### <a name="resource-url"></a><span data-ttu-id="3ca1d-199">Resurs-URL</span><span class="sxs-lookup"><span data-stu-id="3ca1d-199">Resource URL</span></span>
 
 `https://api.partnercenter.microsoft.com/webhooks/v1/registration`
 
-### <a name="request-example"></a><span data-ttu-id="75a3e-204">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="75a3e-204">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="3ca1d-200">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="3ca1d-200">Request example</span></span>
 
 ```http
 PUT /webhooks/v1/registration
@@ -287,7 +282,7 @@ Content-Length: 258
 }
 ```
 
-### <a name="response-example"></a><span data-ttu-id="75a3e-205">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="75a3e-205">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="3ca1d-201">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="3ca1d-201">Response example</span></span>
 
 ```http
 HTTP/1.1 200
@@ -306,18 +301,18 @@ MS-RequestId: f04b1b5e-87b4-4d95-b087-d65fffec0bd2
 }
 ```
 
-### <a name="send-a-test-event-to-validate-your-registration"></a><span data-ttu-id="75a3e-206">Skicka en test händelse för att verifiera registreringen</span><span class="sxs-lookup"><span data-stu-id="75a3e-206">Send a test event to validate your registration</span></span>
+### <a name="send-a-test-event-to-validate-your-registration"></a><span data-ttu-id="3ca1d-202">Skicka en testhändelse för att verifiera registreringen</span><span class="sxs-lookup"><span data-stu-id="3ca1d-202">Send a test event to validate your registration</span></span>
 
-<span data-ttu-id="75a3e-207">Genererar en test händelse för att verifiera Webhooks-registreringen.</span><span class="sxs-lookup"><span data-stu-id="75a3e-207">Generates a test event to validate the Webhooks registration.</span></span> <span data-ttu-id="75a3e-208">Det här testet är avsett att verifiera att du kan ta emot händelser från Partner Center.</span><span class="sxs-lookup"><span data-stu-id="75a3e-208">This test is intended to validate that you can receive events from Partner Center.</span></span> <span data-ttu-id="75a3e-209">Data för de här händelserna tas bort sju dagar efter det att den första händelsen har skapats.</span><span class="sxs-lookup"><span data-stu-id="75a3e-209">Data for these events will be deleted seven days after the initial event is created.</span></span> <span data-ttu-id="75a3e-210">Du måste vara registrerad för händelsen "test-created", med hjälp av registrerings-API: et, innan du skickar en verifierings händelse.</span><span class="sxs-lookup"><span data-stu-id="75a3e-210">You must be registered for the "test-created" event, using the registration API, before sending a validation event.</span></span>
+<span data-ttu-id="3ca1d-203">Genererar en testhändelse för att verifiera Webhooks-registreringen.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-203">Generates a test event to validate the Webhooks registration.</span></span> <span data-ttu-id="3ca1d-204">Det här testet är avsett att verifiera att du kan ta emot händelser från Partnercenter.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-204">This test is intended to validate that you can receive events from Partner Center.</span></span> <span data-ttu-id="3ca1d-205">Data för dessa händelser tas bort sju dagar efter att den första händelsen har skapats.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-205">Data for these events will be deleted seven days after the initial event is created.</span></span> <span data-ttu-id="3ca1d-206">Du måste vara registrerad för händelsen "test-created" med hjälp av registrerings-API:et innan du skickar en valideringshändelse.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-206">You must be registered for the "test-created" event, using the registration API, before sending a validation event.</span></span>
 
 >[!NOTE]
-><span data-ttu-id="75a3e-211">Det finns en begränsning på 2 begär Anden per minut vid bokföring av en validerings händelse.</span><span class="sxs-lookup"><span data-stu-id="75a3e-211">There is a throttle limit of 2 requests per minute when posting a validation event.</span></span>
+><span data-ttu-id="3ca1d-207">Det finns en begränsning på 2 begäranden per minut när du publicerar en valideringshändelse.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-207">There is a throttle limit of 2 requests per minute when posting a validation event.</span></span>
 
-#### <a name="resource-url"></a><span data-ttu-id="75a3e-212">Resurs-URL</span><span class="sxs-lookup"><span data-stu-id="75a3e-212">Resource URL</span></span>
+#### <a name="resource-url"></a><span data-ttu-id="3ca1d-208">Resurs-URL</span><span class="sxs-lookup"><span data-stu-id="3ca1d-208">Resource URL</span></span>
 
 `https://api.partnercenter.microsoft.com/webhooks/v1/registration/validationEvents`
 
-### <a name="request-example"></a><span data-ttu-id="75a3e-213">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="75a3e-213">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="3ca1d-209">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="3ca1d-209">Request example</span></span>
 
 ```http
 POST /webhooks/v1/registration/validationEvents
@@ -329,7 +324,7 @@ Accept-Encoding: gzip, deflate
 Content-Length:
 ```
 
-### <a name="response-example"></a><span data-ttu-id="75a3e-214">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="75a3e-214">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="3ca1d-210">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="3ca1d-210">Response example</span></span>
 
 ```http
 HTTP/1.1 200
@@ -345,15 +340,15 @@ X-Locale: en-US
 { "correlationId": "04af2aea-d413-42db-824e-f328001484d1" }
 ```
 
-### <a name="verify-that-the-event-was-delivered"></a><span data-ttu-id="75a3e-215">Kontrol lera att händelsen har levererats</span><span class="sxs-lookup"><span data-stu-id="75a3e-215">Verify that the event was delivered</span></span>
+### <a name="verify-that-the-event-was-delivered"></a><span data-ttu-id="3ca1d-211">Kontrollera att händelsen har levererats</span><span class="sxs-lookup"><span data-stu-id="3ca1d-211">Verify that the event was delivered</span></span>
 
-<span data-ttu-id="75a3e-216">Returnerar det aktuella läget för verifierings händelsen.</span><span class="sxs-lookup"><span data-stu-id="75a3e-216">Returns the current state of the validation event.</span></span> <span data-ttu-id="75a3e-217">Den här verifieringen kan vara till hjälp vid fel sökning av händelse leverans problem.</span><span class="sxs-lookup"><span data-stu-id="75a3e-217">This verification can be helpful for troubleshooting event delivery issues.</span></span> <span data-ttu-id="75a3e-218">Svaret innehåller ett resultat för varje försök som görs för att leverera händelsen.</span><span class="sxs-lookup"><span data-stu-id="75a3e-218">The Response contains a result for each attempt that is made to deliver the event.</span></span>
+<span data-ttu-id="3ca1d-212">Returnerar det aktuella tillståndet för valideringshändelsen.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-212">Returns the current state of the validation event.</span></span> <span data-ttu-id="3ca1d-213">Den här verifieringen kan vara användbar vid felsökning av problem med händelseleverans.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-213">This verification can be helpful for troubleshooting event delivery issues.</span></span> <span data-ttu-id="3ca1d-214">Svaret innehåller ett resultat för varje försök att leverera händelsen.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-214">The Response contains a result for each attempt that is made to deliver the event.</span></span>
 
-#### <a name="resource-url"></a><span data-ttu-id="75a3e-219">Resurs-URL</span><span class="sxs-lookup"><span data-stu-id="75a3e-219">Resource URL</span></span>
+#### <a name="resource-url"></a><span data-ttu-id="3ca1d-215">Resurs-URL</span><span class="sxs-lookup"><span data-stu-id="3ca1d-215">Resource URL</span></span>
 
 `https://api.partnercenter.microsoft.com/webhooks/v1/registration/validationEvents/{correlationId}`
 
-### <a name="request-example"></a><span data-ttu-id="75a3e-220">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="75a3e-220">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="3ca1d-216">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="3ca1d-216">Request example</span></span>
 
 ```http
 GET /webhooks/v1/registration/validationEvents/04af2aea-d413-42db-824e-f328001484d1
@@ -364,7 +359,7 @@ Host: api.partnercenter.microsoft.com
 Accept-Encoding: gzip, deflate
 ```
 
-### <a name="response-example"></a><span data-ttu-id="75a3e-221">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="75a3e-221">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="3ca1d-217">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="3ca1d-217">Response example</span></span>
 
 ```http
 HTTP/1.1 200
@@ -391,9 +386,9 @@ X-Locale: en-US
 }
 ```
 
-## <a name="example-for-signature-validation"></a><span data-ttu-id="75a3e-222">Exempel på verifiering av signatur</span><span class="sxs-lookup"><span data-stu-id="75a3e-222">Example for Signature Validation</span></span>
+## <a name="example-for-signature-validation"></a><span data-ttu-id="3ca1d-218">Exempel för signaturverifiering</span><span class="sxs-lookup"><span data-stu-id="3ca1d-218">Example for Signature Validation</span></span>
 
-### <a name="sample-callback-controller-signature-aspnet"></a><span data-ttu-id="75a3e-223">Exempel på signatur för återanrops kontroll (ASP.NET)</span><span class="sxs-lookup"><span data-stu-id="75a3e-223">Sample Callback Controller signature (ASP.NET)</span></span>
+### <a name="sample-callback-controller-signature-aspnet"></a><span data-ttu-id="3ca1d-219">Exempel på återanropskontrollantsignatur (ASP.NET)</span><span class="sxs-lookup"><span data-stu-id="3ca1d-219">Sample Callback Controller signature (ASP.NET)</span></span>
 
 ``` csharp
 [AuthorizeSignature]
@@ -401,9 +396,9 @@ X-Locale: en-US
 public IHttpActionResult Post(PartnerResourceChangeCallBack callback)
 ```
 
-### <a name="signature-validation"></a><span data-ttu-id="75a3e-224">Verifiering av signatur</span><span class="sxs-lookup"><span data-stu-id="75a3e-224">Signature Validation</span></span>
+### <a name="signature-validation"></a><span data-ttu-id="3ca1d-220">Signaturvalidering</span><span class="sxs-lookup"><span data-stu-id="3ca1d-220">Signature Validation</span></span>
 
-<span data-ttu-id="75a3e-225">I följande exempel visas hur du lägger till ett Authorization-attribut till den kontroll enhet som tar emot återanrop från webhook-händelser.</span><span class="sxs-lookup"><span data-stu-id="75a3e-225">The following example shows how to add an Authorization Attribute to the controller that is receiving callbacks from Webhook events.</span></span>
+<span data-ttu-id="3ca1d-221">I följande exempel visas hur du lägger till ett auktoriseringsattribut till kontrollanten som tar emot återanrop från Webhook-händelser.</span><span class="sxs-lookup"><span data-stu-id="3ca1d-221">The following example shows how to add an Authorization Attribute to the controller that is receiving callbacks from Webhook events.</span></span>
 
 ``` csharp
 namespace Webhooks.Security

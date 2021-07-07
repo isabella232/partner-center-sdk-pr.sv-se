@@ -1,38 +1,33 @@
 ---
 title: Gå till kassan för en kundvagn
-description: 'Lär dig mer om att ta en titt på en kund i en varukorg med API: er för partner Center. Du kan göra detta för att slutföra en kund order.'
+description: Lär dig hur du checkar ut en order för en kund i kundvagn med hjälp av Partner Center-API:er. Du kan göra detta för att slutföra en kundbeställning.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 094817a34cd29bc96788fcfb6a16610a8192d784
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: 9ee06797602b22a1f8257c94880a2d81e2280f2e
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97770080"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974054"
 ---
-# <a name="checkout-an-order-for-a-customer-in-a-cart"></a><span data-ttu-id="7a63a-104">Checka ut en order för en kund i en varukorg</span><span class="sxs-lookup"><span data-stu-id="7a63a-104">Checkout an order for a customer in a cart</span></span>
+# <a name="checkout-an-order-for-a-customer-in-a-cart"></a><span data-ttu-id="31a1e-104">Checka ut en order för en kund i en kundvagn</span><span class="sxs-lookup"><span data-stu-id="31a1e-104">Checkout an order for a customer in a cart</span></span>
 
-<span data-ttu-id="7a63a-105">**Gäller för:**</span><span class="sxs-lookup"><span data-stu-id="7a63a-105">**Applies to:**</span></span>
+<span data-ttu-id="31a1e-105">**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="31a1e-105">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="7a63a-106">Partnercenter</span><span class="sxs-lookup"><span data-stu-id="7a63a-106">Partner Center</span></span>
-- <span data-ttu-id="7a63a-107">Partner Center som drivs av 21Vianet</span><span class="sxs-lookup"><span data-stu-id="7a63a-107">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="7a63a-108">Partnercenter för Microsoft Cloud Tyskland</span><span class="sxs-lookup"><span data-stu-id="7a63a-108">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="7a63a-109">Välkommen till Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="7a63a-109">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="31a1e-106">Så här checkar du ut en order för en kund i en kundvagn.</span><span class="sxs-lookup"><span data-stu-id="31a1e-106">How to checkout an order for a customer in a cart.</span></span>
 
-<span data-ttu-id="7a63a-110">Så här checkar du ut en order för en kund i en kundvagn.</span><span class="sxs-lookup"><span data-stu-id="7a63a-110">How to checkout an order for a customer in a cart.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="31a1e-107">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="31a1e-107">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="7a63a-111">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="7a63a-111">Prerequisites</span></span>
+- <span data-ttu-id="31a1e-108">Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="31a1e-108">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="31a1e-109">Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="31a1e-109">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-- <span data-ttu-id="7a63a-112">Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="7a63a-112">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="7a63a-113">Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="7a63a-113">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+- <span data-ttu-id="31a1e-110">Ett kund-ID ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="31a1e-110">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="31a1e-111">Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard)</span><span class="sxs-lookup"><span data-stu-id="31a1e-111">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="31a1e-112">Välj **CSP** på Menyn i Partnercenter följt av **Kunder.**</span><span class="sxs-lookup"><span data-stu-id="31a1e-112">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="31a1e-113">Välj kunden i kundlistan och välj sedan **Konto.**</span><span class="sxs-lookup"><span data-stu-id="31a1e-113">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="31a1e-114">På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.**</span><span class="sxs-lookup"><span data-stu-id="31a1e-114">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="31a1e-115">Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="31a1e-115">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
 
-- <span data-ttu-id="7a63a-114">Ett kund-ID ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="7a63a-114">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="7a63a-115">Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center.</span><span class="sxs-lookup"><span data-stu-id="7a63a-115">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="7a63a-116">Välj **CSP** på menyn Partner Center, följt av **kunder**.</span><span class="sxs-lookup"><span data-stu-id="7a63a-116">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="7a63a-117">Välj kunden från listan kund och välj sedan **konto**.</span><span class="sxs-lookup"><span data-stu-id="7a63a-117">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="7a63a-118">På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** .</span><span class="sxs-lookup"><span data-stu-id="7a63a-118">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="7a63a-119">Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="7a63a-119">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
+- <span data-ttu-id="31a1e-116">Ett kundvagns-ID för en befintlig kundvagn.</span><span class="sxs-lookup"><span data-stu-id="31a1e-116">A Cart ID for an existing cart.</span></span>
 
-- <span data-ttu-id="7a63a-120">Ett kundvagn-ID för en befintlig varukorg.</span><span class="sxs-lookup"><span data-stu-id="7a63a-120">A Cart ID for an existing cart.</span></span>
+## <a name="c"></a><span data-ttu-id="31a1e-117">C\#</span><span class="sxs-lookup"><span data-stu-id="31a1e-117">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="7a63a-121">C\#</span><span class="sxs-lookup"><span data-stu-id="7a63a-121">C\#</span></span>
-
-<span data-ttu-id="7a63a-122">Om du vill checka ut en order för en kund får du en referens till vagnen med hjälp av varukorg och kund-ID.</span><span class="sxs-lookup"><span data-stu-id="7a63a-122">To checkout an order for a customer, get a reference to the cart using the cart and customer identifier.</span></span> <span data-ttu-id="7a63a-123">Slutligen kan du anropa **create** -eller **CreateAsync** -funktionerna för att slutföra beställningen.</span><span class="sxs-lookup"><span data-stu-id="7a63a-123">Finally, call the **Create** or **CreateAsync** functions to complete the order.</span></span>
+<span data-ttu-id="31a1e-118">Om du vill checka ut en order för en kund hämtar du en referens till kundvagnen med hjälp av kundvagnen och kundidentifieraren.</span><span class="sxs-lookup"><span data-stu-id="31a1e-118">To checkout an order for a customer, get a reference to the cart using the cart and customer identifier.</span></span> <span data-ttu-id="31a1e-119">Anropa slutligen funktionerna **Create** eller **CreateAsync** för att slutföra beställningen.</span><span class="sxs-lookup"><span data-stu-id="31a1e-119">Finally, call the **Create** or **CreateAsync** functions to complete the order.</span></span>
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -42,11 +37,11 @@ ms.locfileid: "97770080"
 var cart = partnerOperations.Customers.ById(customerId).Cart.ById(cartId).Checkout();
 ```
 
-## <a name="java"></a><span data-ttu-id="7a63a-124">Java</span><span class="sxs-lookup"><span data-stu-id="7a63a-124">Java</span></span>
+## <a name="java"></a><span data-ttu-id="31a1e-120">Java</span><span class="sxs-lookup"><span data-stu-id="31a1e-120">Java</span></span>
 
 [!INCLUDE [Partner Center Java SDK support details](<../includes/java-sdk-support.md>)]
 
-<span data-ttu-id="7a63a-125">Om du vill checka ut en order för en kund får du en referens till vagnen med hjälp av varukorg och kund-ID.</span><span class="sxs-lookup"><span data-stu-id="7a63a-125">To checkout an order for a customer, get a reference to the cart using the cart and customer identifier.</span></span> <span data-ttu-id="7a63a-126">Slutligen kan du anropa **create** -funktionen för att slutföra beställningen.</span><span class="sxs-lookup"><span data-stu-id="7a63a-126">Finally, call the **create** function to complete the order.</span></span>
+<span data-ttu-id="31a1e-121">Om du vill checka ut en order för en kund hämtar du en referens till kundvagnen med hjälp av kundvagnen och kundidentifieraren.</span><span class="sxs-lookup"><span data-stu-id="31a1e-121">To checkout an order for a customer, get a reference to the cart using the cart and customer identifier.</span></span> <span data-ttu-id="31a1e-122">Anropa slutligen **create-funktionen** för att slutföra ordern.</span><span class="sxs-lookup"><span data-stu-id="31a1e-122">Finally, call the **create** function to complete the order.</span></span>
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -56,11 +51,11 @@ var cart = partnerOperations.Customers.ById(customerId).Cart.ById(cartId).Checko
 Cart cart = partnerOperations.getCustomers().byId(customerId).getCart().byId(cartId).checkout();
 ```
 
-## <a name="powershell"></a><span data-ttu-id="7a63a-127">PowerShell</span><span class="sxs-lookup"><span data-stu-id="7a63a-127">PowerShell</span></span>
+## <a name="powershell"></a><span data-ttu-id="31a1e-123">PowerShell</span><span class="sxs-lookup"><span data-stu-id="31a1e-123">PowerShell</span></span>
 
 [!INCLUDE [Partner Center PowerShell module support details](<../includes/powershell-module-support.md>)]
 
-<span data-ttu-id="7a63a-128">Om du vill checka in en order för en kund kan du köra [**Submit-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) för att slutföra beställningen.</span><span class="sxs-lookup"><span data-stu-id="7a63a-128">To checkout an order for a customer, execute the [**Submit-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) to complete the order.</span></span>
+<span data-ttu-id="31a1e-124">Om du vill checka ut en order för en kund kör [**du Submit-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) för att slutföra beställningen.</span><span class="sxs-lookup"><span data-stu-id="31a1e-124">To checkout an order for a customer, execute the [**Submit-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) to complete the order.</span></span>
 
 ```powershell
 # $customerId
@@ -69,32 +64,32 @@ Cart cart = partnerOperations.getCustomers().byId(customerId).getCart().byId(car
 Submit-PartnerCustomerCart -CartId $cartId -CustomerId $customerId
 ```
 
-## <a name="rest-request"></a><span data-ttu-id="7a63a-129">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="7a63a-129">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="31a1e-125">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="31a1e-125">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="7a63a-130">Syntax för begäran</span><span class="sxs-lookup"><span data-stu-id="7a63a-130">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="31a1e-126">Begärandesyntax</span><span class="sxs-lookup"><span data-stu-id="31a1e-126">Request syntax</span></span>
 
-| <span data-ttu-id="7a63a-131">Metod</span><span class="sxs-lookup"><span data-stu-id="7a63a-131">Method</span></span>   | <span data-ttu-id="7a63a-132">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="7a63a-132">Request URI</span></span>                                                                                                 |
+| <span data-ttu-id="31a1e-127">Metod</span><span class="sxs-lookup"><span data-stu-id="31a1e-127">Method</span></span>   | <span data-ttu-id="31a1e-128">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="31a1e-128">Request URI</span></span>                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="7a63a-133">**EFTER**</span><span class="sxs-lookup"><span data-stu-id="7a63a-133">**POST**</span></span> | <span data-ttu-id="7a63a-134">[*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/carts/{Cart-ID}/Checkout http/1.1</span><span class="sxs-lookup"><span data-stu-id="7a63a-134">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/carts/{cart-id}/checkout HTTP/1.1</span></span>     |
+| <span data-ttu-id="31a1e-129">**Inlägg**</span><span class="sxs-lookup"><span data-stu-id="31a1e-129">**POST**</span></span> | <span data-ttu-id="31a1e-130">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/carts/{cart-id}/checkout HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="31a1e-130">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/carts/{cart-id}/checkout HTTP/1.1</span></span>     |
 
-### <a name="uri-parameters"></a><span data-ttu-id="7a63a-135">URI-parametrar</span><span class="sxs-lookup"><span data-stu-id="7a63a-135">URI parameters</span></span>
+### <a name="uri-parameters"></a><span data-ttu-id="31a1e-131">URI-parametrar</span><span class="sxs-lookup"><span data-stu-id="31a1e-131">URI parameters</span></span>
 
-<span data-ttu-id="7a63a-136">Använd följande Sök vägs parametrar för att identifiera kunden och ange den varukorg som ska checkas ut.</span><span class="sxs-lookup"><span data-stu-id="7a63a-136">Use the following path parameters to identify the customer and specify the cart to be checked out.</span></span>
+<span data-ttu-id="31a1e-132">Använd följande sökvägsparametrar för att identifiera kunden och ange vilken kundvagn som ska checkas ut.</span><span class="sxs-lookup"><span data-stu-id="31a1e-132">Use the following path parameters to identify the customer and specify the cart to be checked out.</span></span>
 
-| <span data-ttu-id="7a63a-137">Namn</span><span class="sxs-lookup"><span data-stu-id="7a63a-137">Name</span></span>            | <span data-ttu-id="7a63a-138">Typ</span><span class="sxs-lookup"><span data-stu-id="7a63a-138">Type</span></span>     | <span data-ttu-id="7a63a-139">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="7a63a-139">Required</span></span> | <span data-ttu-id="7a63a-140">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="7a63a-140">Description</span></span>                                                            |
+| <span data-ttu-id="31a1e-133">Namn</span><span class="sxs-lookup"><span data-stu-id="31a1e-133">Name</span></span>            | <span data-ttu-id="31a1e-134">Typ</span><span class="sxs-lookup"><span data-stu-id="31a1e-134">Type</span></span>     | <span data-ttu-id="31a1e-135">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="31a1e-135">Required</span></span> | <span data-ttu-id="31a1e-136">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="31a1e-136">Description</span></span>                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| <span data-ttu-id="7a63a-141">**kund-ID**</span><span class="sxs-lookup"><span data-stu-id="7a63a-141">**customer-id**</span></span> | <span data-ttu-id="7a63a-142">sträng</span><span class="sxs-lookup"><span data-stu-id="7a63a-142">string</span></span>   | <span data-ttu-id="7a63a-143">Yes</span><span class="sxs-lookup"><span data-stu-id="7a63a-143">Yes</span></span>      | <span data-ttu-id="7a63a-144">Ett GUID-formaterat kund-ID som identifierar kunden.</span><span class="sxs-lookup"><span data-stu-id="7a63a-144">A GUID formatted customer-id that identifies the customer.</span></span>             |
-| <span data-ttu-id="7a63a-145">**kundvagn-ID**</span><span class="sxs-lookup"><span data-stu-id="7a63a-145">**cart-id**</span></span>     | <span data-ttu-id="7a63a-146">sträng</span><span class="sxs-lookup"><span data-stu-id="7a63a-146">string</span></span>   | <span data-ttu-id="7a63a-147">Yes</span><span class="sxs-lookup"><span data-stu-id="7a63a-147">Yes</span></span>      | <span data-ttu-id="7a63a-148">Ett GUID-formaterat vagn-ID som identifierar vagnen.</span><span class="sxs-lookup"><span data-stu-id="7a63a-148">A GUID formatted cart-id that identifies the cart.</span></span>                     |
+| <span data-ttu-id="31a1e-137">**kund-ID**</span><span class="sxs-lookup"><span data-stu-id="31a1e-137">**customer-id**</span></span> | <span data-ttu-id="31a1e-138">sträng</span><span class="sxs-lookup"><span data-stu-id="31a1e-138">string</span></span>   | <span data-ttu-id="31a1e-139">Ja</span><span class="sxs-lookup"><span data-stu-id="31a1e-139">Yes</span></span>      | <span data-ttu-id="31a1e-140">Ett GUID-formaterat kund-ID som identifierar kunden.</span><span class="sxs-lookup"><span data-stu-id="31a1e-140">A GUID formatted customer-id that identifies the customer.</span></span>             |
+| <span data-ttu-id="31a1e-141">**cart-id**</span><span class="sxs-lookup"><span data-stu-id="31a1e-141">**cart-id**</span></span>     | <span data-ttu-id="31a1e-142">sträng</span><span class="sxs-lookup"><span data-stu-id="31a1e-142">string</span></span>   | <span data-ttu-id="31a1e-143">Ja</span><span class="sxs-lookup"><span data-stu-id="31a1e-143">Yes</span></span>      | <span data-ttu-id="31a1e-144">Ett GUID-formaterat kundvagns-ID som identifierar kundvagnen.</span><span class="sxs-lookup"><span data-stu-id="31a1e-144">A GUID formatted cart-id that identifies the cart.</span></span>                     |
 
-### <a name="request-headers"></a><span data-ttu-id="7a63a-149">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="7a63a-149">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="31a1e-145">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="31a1e-145">Request headers</span></span>
 
-<span data-ttu-id="7a63a-150">Mer information finns i [partner Center rest-rubriker](headers.md).</span><span class="sxs-lookup"><span data-stu-id="7a63a-150">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="31a1e-146">Mer information finns i [Partner Center REST-huvuden.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="31a1e-146">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="7a63a-151">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="7a63a-151">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="31a1e-147">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="31a1e-147">Request body</span></span>
 
-<span data-ttu-id="7a63a-152">Inga.</span><span class="sxs-lookup"><span data-stu-id="7a63a-152">None.</span></span>
+<span data-ttu-id="31a1e-148">Inga.</span><span class="sxs-lookup"><span data-stu-id="31a1e-148">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="7a63a-153">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="7a63a-153">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="31a1e-149">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="31a1e-149">Request example</span></span>
 
 ```http
 POST /v1/customers/d6bf25b7-e0a8-4f2d-a31b-97b55cfc774d/carts/b4c8fdea-cbe4-4d17-9576-13fcacbf9605/checkout HTTP/1.1
@@ -112,15 +107,15 @@ Expect: 100-continue
 No-Content-Body
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="7a63a-154">REST-svar</span><span class="sxs-lookup"><span data-stu-id="7a63a-154">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="31a1e-150">REST-svar</span><span class="sxs-lookup"><span data-stu-id="31a1e-150">REST response</span></span>
 
-<span data-ttu-id="7a63a-155">Om det lyckas innehåller svars texten den ifyllda [CartCheckoutResult](cart-resources.md#cartcheckoutresult) -resursen.</span><span class="sxs-lookup"><span data-stu-id="7a63a-155">If successful, the response body contains the populated [CartCheckoutResult](cart-resources.md#cartcheckoutresult) resource.</span></span>
+<span data-ttu-id="31a1e-151">Om det lyckas innehåller svarstexten den ifyllda [resursen CartCheckoutResult.](cart-resources.md#cartcheckoutresult)</span><span class="sxs-lookup"><span data-stu-id="31a1e-151">If successful, the response body contains the populated [CartCheckoutResult](cart-resources.md#cartcheckoutresult) resource.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="7a63a-156">Slutförda svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="7a63a-156">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="31a1e-152">Lyckade svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="31a1e-152">Response success and error codes</span></span>
 
-<span data-ttu-id="7a63a-157">Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information.</span><span class="sxs-lookup"><span data-stu-id="7a63a-157">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="7a63a-158">Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="7a63a-158">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="7a63a-159">En fullständig lista finns i [felkoder](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="7a63a-159">For the full list, see [Error Codes](error-codes.md).</span></span>
+<span data-ttu-id="31a1e-153">Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation.</span><span class="sxs-lookup"><span data-stu-id="31a1e-153">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="31a1e-154">Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="31a1e-154">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="31a1e-155">En fullständig lista finns i [Felkoder.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="31a1e-155">For the full list, see [Error Codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="7a63a-160">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="7a63a-160">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="31a1e-156">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="31a1e-156">Response example</span></span>
 
 ```http
 HTTP/1.1 201 Created
