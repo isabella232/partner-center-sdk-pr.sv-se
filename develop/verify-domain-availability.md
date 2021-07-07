@@ -4,33 +4,28 @@ description: Så här avgör du om en domän är tillgänglig för användning.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 84edb5b7510642ec44dad3d4f92349e40eb10b24
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: e2b8f0438516cc0aff9c4d8159c22de43ec582e4
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769606"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530284"
 ---
 # <a name="verify-domain-availability"></a>Verifiera domäntillgänglighet
 
-**Gäller för**
-
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Så här avgör du om en domän är tillgänglig för användning.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 - En domän (till exempel `contoso.onmicrosoft.com` ).
 
 ## <a name="c"></a>C\#
 
-För att kontrol lera om en domän är tillgänglig måste du först anropa [**IAggregatePartner. Domains**](/dotnet/api/microsoft.store.partnercenter.ipartner.domains) för att få ett gränssnitt till domän åtgärder. Anropa sedan metoden [**ByDomain**](/dotnet/api/microsoft.store.partnercenter.domains.idomaincollection.bydomain) med domänen för att kontrol lera. Den här metoden hämtar ett gränssnitt till de åtgärder som är tillgängliga för en speciell domän. Anropa slutligen metoden [**exists**](/dotnet/api/microsoft.store.partnercenter.domains.idomain.exists) för att se om domänen redan finns.
+Om du vill kontrollera om en domän är tillgänglig anropar du [**först IAggregatePartner.Domains för**](/dotnet/api/microsoft.store.partnercenter.ipartner.domains) att hämta ett gränssnitt till domänåtgärder. Anropa sedan [**metoden ByDomain**](/dotnet/api/microsoft.store.partnercenter.domains.idomaincollection.bydomain) med domänen för att kontrollera. Den här metoden hämtar ett gränssnitt för de åtgärder som är tillgängliga för en specifik domän. Anropa slutligen metoden [**Exists**](/dotnet/api/microsoft.store.partnercenter.domains.idomain.exists) för att se om domänen redan finns.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -39,31 +34,31 @@ För att kontrol lera om en domän är tillgänglig måste du först anropa [**I
 bool result = partnerOperations.Domains.ByDomain(domain).Exists();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: CheckDomainAvailability.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **exempelklass:** CheckDomainAvailability.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                              |
 |----------|--------------------------------------------------------------------------|
-| **FÖRETAGETS** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Domains/{Domain} http/1.1 |
+| **Huvud** | [*{baseURL}*](partner-center-rest-urls.md)/v1/domains/{domain} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande frågeparameter för att kontrol lera domänens tillgänglighet.
+Använd följande frågeparameter för att verifiera domänens tillgänglighet.
 
 | Namn       | Typ       | Obligatorisk | Beskrivning                                   |
 |------------|------------|----------|-----------------------------------------------|
-| **domänsuffix** | **nollängd** | Y        | En sträng som identifierar den domän som ska kontrol leras. |
+| **Domän** | **sträng** | Y        | En sträng som identifierar domänen som ska kontrolleras. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Inget
+Ingen
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -80,13 +75,13 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om domänen finns är den inte tillgänglig för användning och svars status koden 200 OK returneras. Om domänen inte hittas, är den tillgänglig för användning och en svars status kod 404 som inte hittas returneras.
+Om domänen finns är den inte tillgänglig för användning och svarsstatuskoden 200 OK returneras. Om domänen inte hittas är den tillgänglig för användning och svarsstatuskoden 404 Hittades inte returneras.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
-### <a name="response-example-for-when-the-domain-is-already-in-use"></a>Svars exempel för när domänen redan används
+### <a name="response-example-for-when-the-domain-is-already-in-use"></a>Svarsexempel för när domänen redan används
 
 ```http
 HTTP/1.1 200 OK
@@ -98,7 +93,7 @@ MS-ServerId: 201022015
 Date: Tue, 31 Jan 2017 22:22:35 GMT
 ```
 
-### <a name="response-example-for-when-the-domain-is-available"></a>Svars exempel för när domänen är tillgänglig
+### <a name="response-example-for-when-the-domain-is-available"></a>Svarsexempel för när domänen är tillgänglig
 
 ```http
 HTTP/1.1 404 Not Found

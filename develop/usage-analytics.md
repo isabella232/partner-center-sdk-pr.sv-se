@@ -1,26 +1,21 @@
 ---
 title: Analys
-description: 'Du kan använda Partner Center SDK och API: er för att hämta analys information via programmering. Mer information finns i artiklarna som visas här.'
+description: Du kan använda Partnercenter-SDK och API:er för att programmatiskt hämta analysinformation. Mer information finns i artiklarna som listas här.
 ms.date: 07/27/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d779b749b318f1cfadbbcc46943c533c9635b994
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 503d00d9d4acf307cfa9fad86a322be2e8549b73
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768967"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530301"
 ---
 # <a name="analytics"></a>Analys
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Du kan använda Partner Center SDK och API: er för att hämta analys information via programmering. Mer information finns i artiklarna som visas här:
+Du kan använda Partnercenter-SDK och API:er för att programmatiskt hämta analysinformation. Mer information finns i artiklarna som listas här:
 
 - [Partnercenter-analys – resurser](partner-center-analytics-resources.md)
 - [Hämta all information om Azure-användningsanalys](get-all-azure-usage-analytics.md)

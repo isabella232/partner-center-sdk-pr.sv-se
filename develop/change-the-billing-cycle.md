@@ -1,49 +1,44 @@
 ---
 title: Ändra faktureringscykeln
-description: 'Lär dig hur du uppdaterar en kund prenumeration på månatlig eller årlig fakturering med hjälp av API: er för partner Center. Du kan också göra detta från instrument panelen för partner Center.'
+description: Lär dig hur du uppdaterar en kundprenumeration till månatlig eller årlig fakturering med partnercenter-API:er. Du kan också göra detta från instrumentpanelen i Partnercenter.
 ms.date: 05/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 8a2879db061ced799e29d84e71be5b1259b07689
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: 435309229e2cb038c936028943f4c2cf27b032a7
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97770089"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974122"
 ---
-# <a name="change-a-customer-subscription-billing-cycle"></a>Ändra fakturerings cykel för kund prenumeration
+# <a name="change-a-customer-subscription-billing-cycle"></a>Ändra faktureringsperioden för en kundprenumeration
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+Uppdaterar en [order från](order-resources.md) månatlig till årlig fakturering eller från årlig till månatlig fakturering.
 
-Uppdaterar en [order](order-resources.md) från månatlig till årlig fakturering eller från årlig till månatlig fakturering.
+Den här åtgärden kan utföras på Partnercenter-instrumentpanelen genom att gå till sidan med prenumerationsinformation för en kund. När du är där ser du ett alternativ som definierar den aktuella faktureringsperioden för prenumerationen med möjlighet att ändra och skicka den.
 
-På instrument panelen för partner Center kan du utföra den här åtgärden genom att gå till en kunds prenumerations informations sida. Då visas ett alternativ som definierar den aktuella fakturerings perioden för prenumerationen med möjlighet att ändra och skicka den.
+**Utanför omfånget** för den här artikeln:
 
-**Omfattas inte av** den här artikeln:
-
-- Ändra fakturerings perioden för utvärderings versioner
-- Ändra fakturerings cyklerna för eventuella icke-årliga period erbjudanden (månatligt, 6 år) & Azure-prenumerationer
-- Ändra fakturerings cykler för inaktiva prenumerationer
-- Ändra fakturerings cykler för licenserbaserade Microsoft onlinetjänster-baserade prenumerationer
+- Ändra faktureringsperioden för utvärderingsversioner
+- Ändra faktureringscyklerna för icke-årliga erbjudanden (månadsvis, sex år) & Azure-prenumerationer
+- Ändra faktureringscykler för inaktiva prenumerationer
+- Ändra faktureringscykler för Microsoft onlinetjänster-licensbaserade prenumerationer
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Ett order-ID.
 
 ## <a name="c"></a>C\#
 
-Om du vill ändra frekvensen för fakturerings perioden uppdaterar du egenskapen [**order. BillingCycle**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.billingcycle#Microsoft_Store_PartnerCenter_Models_Orders_Order_BillingCycle) .
+Om du vill ändra frekvensen för faktureringsperioden uppdaterar du egenskapen [**Order.BillingCycle.**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.billingcycle#Microsoft_Store_PartnerCenter_Models_Orders_Order_BillingCycle)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -72,50 +67,50 @@ var createdOrder = partnerOperations.Customers.ById(customerId).Orders.ById(orde
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod    | URI för förfrågan                                                                                             |
 |-----------|---------------------------------------------------------------------------------------------------------|
-| **9.0a** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Orders/{order-ID} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders/{order-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Den här tabellen visar den obligatoriska Frågeparametern för att ändra antalet för prenumerationen.
+I den här tabellen visas den frågeparameter som krävs för att ändra antalet för prenumerationen.
 
 | Namn                   | Typ | Obligatorisk | Beskrivning                                                          |
 |------------------------|------|----------|----------------------------------------------------------------------|
-| **kund-ID för klient organisation** | GUID |    Y     | Ett GUID-formaterat **kund-Tenant-ID** som identifierar kunden |
-| **order-ID**           | GUID |    Y     | Order-ID                                                 |
+| **kund-klient-id** | GUID |    Y     | Ett **GUID-formaterat kundklient-ID** som identifierar kunden |
+| **order-id**           | GUID |    Y     | Orderidentifieraren                                                 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-I följande tabeller beskrivs egenskaperna i begär ande texten.
+I följande tabeller beskrivs egenskaperna i begärandetexten.
 
 ### <a name="order"></a>Beställning
 
 | Egenskap           | Typ             | Obligatorisk | Beskrivning                                                                |
 |--------------------|------------------|----------|----------------------------------------------------------------------------|
-| Id                 | sträng           |    N     | En beställnings identifierare som anges när beställningen har skapats |
-|ReferenceCustomerId | sträng           |    Y     | Kund-ID                                                    |
-| BillingCycle       | sträng           |    Y     | Anger med vilken frekvens partnern faktureras för den här ordern. De värden som stöds är medlems namnen som finns i [BillingCycleType](product-resources.md#billingcycletype). |
-| Rad objekt          | objekt mat ris |    Y     | En matris med [OrderLineItem](#orderlineitem) -resurser                      |
-| CreationDate       | datetime         |    N     | Datumet då ordern skapades i datum-och tids format                        |
+| Id                 | sträng           |    N     | En orderidentifierare som anges när ordern har skapats |
+|ReferenceCustomerId | sträng           |    Y     | Kundidentifieraren                                                    |
+| BillingCycle       | sträng           |    Y     | Anger med vilken frekvens partnern faktureras för den här beställningen. Värden som stöds är de medlemsnamn som finns [i BillingCycleType](product-resources.md#billingcycletype). |
+| LineItems          | matris med objekt |    Y     | En matris med [OrderLineItem-resurser](#orderlineitem)                      |
+| CreationDate       | datetime         |    N     | Det datum då ordern skapades, i datum/tid-format                        |
 | Attribut         | Objekt           |    N     | Innehåller "ObjectType": "OrderLineItem"                                     |
 
 ### <a name="orderlineitem"></a>OrderLineItem
 
 | Egenskap             | Typ   | Obligatorisk | Beskrivning                                                                        |
 |----------------------|--------|----------|------------------------------------------------------------------------------------|
-| LineItemNumber       | antal |    Y     | Rad objekts numret, från och med 0                                              |
+| LineItemNumber       | antal |    Y     | Radobjektets nummer, som börjar med 0                                              |
 | OfferId              | sträng |    Y     | ID för erbjudandet                                                                |
 | SubscriptionId       | sträng |    Y     | ID för prenumerationen                                                         |
-| FriendlyName         | sträng |    N     | Det egna namnet på prenumerationen som definieras av partnern för att hjälpa disambiguate |
-| Antal             | antal |    Y     | Antalet licenser eller instanser                                                |
-| PartnerIdOnRecord    | sträng |    N     | MPN-ID för registrerad partner                                                |
+| FriendlyName         | sträng |    N     | Det egna namnet för prenumerationen som definierats av partnern för att undvika tvetydigheter |
+| Kvantitet             | antal |    Y     | Antalet licenser eller instanser                                                |
+| PartnerIdOnRecord    | sträng |    N     | MPN-ID för partnern i posten                                                |
 | Attribut           | Objekt |    N     | Innehåller "ObjectType": "OrderLineItem"                                             |
 
 ### <a name="request-example"></a>Exempel på begäran
@@ -159,11 +154,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden den uppdaterade prenumerations ordningen i svars texten.
+Om det lyckas returnerar den här metoden den uppdaterade prenumerationsordningen i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

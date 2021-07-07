@@ -1,71 +1,66 @@
 ---
 title: Partnercenter – webhooks
-description: Med Webhooks kan partner registrera sig för resurs ändrings händelser.
+description: Med webhooks kan partner registrera sig för resursändringshändelser.
 ms.date: 04/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 8225623ade7e922ac23ebf0ed9215686b0601244
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 74d5981436ba29ea4f6f93a5693ec6da82777eb4
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769225"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547758"
 ---
 # <a name="partner-center-webhooks"></a>Partnercenter – webhooks
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+Med Webhook-API:erna i Partnercenter kan partner registrera sig för resursändringshändelser. Dessa händelser levereras i form av HTTP-POST:er till partnerns registrerade URL. För att ta emot en händelse från Partnercenter är partner värd för ett återanrop där Partnercenter kan PUBLICERA resursändringshändelsen. Händelsen signeras digitalt så att partnern kan verifiera att den skickades från Partnercenter.
 
-API: erna för webhook i Partner Center gör att partner kan registrera sig för resurs ändrings händelser. Dessa händelser levereras i form av HTTP-inlägg till partnerns registrerade URL. För att ta emot en händelse från Partner Center, kommer partner att vara värd för ett återanrop där Partner Center kan publicera resurs ändrings händelsen. Händelsen signeras digitalt så att partnern kan verifiera att den har skickats från Partner Center.
+Partner kan välja bland Webhook-händelser, som i följande exempel, som stöds av Partnercenter.
 
-Partner kan välja mellan webhook-händelser, som följande exempel, som stöds av Partner Center.
+- **Testhändelse ("testskapad")**
 
-- **Test event ("test-created")**
+    Med den här händelsen kan du registrera dig själv och testa registreringen genom att begära en testhändelse och sedan spåra förloppet. Du kan se felmeddelanden som tas emot från Microsoft när du försöker leverera händelsen. Den här begränsningen gäller endast för "testskapade" händelser. Data som är äldre än sju dagar rensas.
 
-    Med den här händelsen kan du själv publicera och testa registreringen genom att begära ett test händelser och sedan följa förloppet. Du kan se de fel meddelanden som tas emot från Microsoft när du försöker leverera evenemanget. Den här begränsningen gäller endast för "test-skapade"-händelser. Data som är äldre än sju dagar rensas.
+- **Händelse med uppdaterad prenumeration ("prenumerations uppdaterad")**
 
-- **Prenumerationen har uppdaterats ("prenumerationen har uppdaterats")**
-
-    Den här händelsen inträffar när prenumerationen ändras. Dessa händelser genereras när det finns en intern ändring utöver när ändringar görs via partner Center-API: et.
+    Den här händelsen utlöses när prenumerationen ändras. Dessa händelser genereras när det sker en intern ändring utöver när ändringar görs via Partner Center-API:et.
 
     >[!NOTE]
-    >Det finns en fördröjning på upp till 48 timmar mellan den tidpunkt då en prenumeration ändras och när händelsen uppdatering av prenumeration utlöses.
+    >Det finns en fördröjning på upp till 48 timmar mellan den tidpunkt då en prenumeration ändras och när den uppdaterade prenumerationshändelsen utlöses.
 
-- **Tröskeln överskreds för händelsen ("usagerecords-thresholdExceeded")**
+- **Tröskel överskred händelse ("usagerecords-thresholdExceeded")**
 
-    Den här händelsen inträffar när mängden Microsoft Azure användning för en kund överskrider deras användnings utgifts budget (tröskel). Mer information finns i [ställa in en Azure utgifts budget för dina kunder/Partner Center/set-a-Azure-utgifter-budget – för-kunder).
+    Den här händelsen utlöses när mängden Microsoft Azure för en kund överskrider sin utgiftsbudget för användning (deras tröskelvärde). Mer information finns i [Ange en Azure-utgiftsbudget för dina kunder/partnercenter/set-an-azure-spending-budget-for-your-customers).
 
-- **Händelse som skapats av hänvisning ("hänvisning skapad")**
+- **Skapad referenshändelse ("hänvisningsskapad")**
 
-    Den här händelsen inträffar när referensen skapas.
+    Den här händelsen utlöses när hänvisningen skapas.
 
-- **Referens för uppdaterad händelse ("hänvisning – uppdaterad")**
+- **Uppdaterad referenshändelse ("hänvisnings uppdaterad")**
 
     Den här händelsen utlöses när hänvisningen uppdateras.
 
-- **Faktura klar händelse ("faktura klar")**
+- **Fakturaklar händelse ("fakturaklar")**
 
-    Den här händelsen inträffar när den nya fakturan är klar.
+    Den här händelsen utlöses när den nya fakturan är klar.
 
-Framtida webhook-händelser kommer att läggas till för resurser som ändras i systemet som partnern inte har kontroll över, och ytterligare uppdateringar görs för att få dessa händelser så nära "real tid" som möjligt. Feedback från partner på vilka händelser som lägger till värde i deras verksamhet är användbara när du ska avgöra vilka nya händelser som ska läggas till.
+Framtida Webhook-händelser läggs till för resurser som ändras i systemet som partnern inte har kontroll över, och ytterligare uppdateringar kommer att göras för att få dessa händelser så nära "realtid" som möjligt. Feedback från partner om vilka händelser som tillför värde i verksamheten är användbart för att avgöra vilka nya händelser som ska läggas till.
 
-En fullständig lista med webhook-händelser som stöds av Partner Center finns i [partner Center webhook-händelser](partner-center-webhook-events.md).
+En fullständig lista över Webhook-händelser som stöds av Partnercenter finns i [Webhook-händelser i Partnercenter.](partner-center-webhook-events.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-## <a name="receiving-events-from-partner-center"></a>Ta emot händelser från Partner Center
+## <a name="receiving-events-from-partner-center"></a>Ta emot händelser från Partnercenter
 
-För att ta emot händelser från Partner Center måste du exponera en offentligt tillgänglig slut punkt. Eftersom den här slut punkten visas måste du kontrol lera att kommunikationen är från Partner Center. Alla webhook-händelser som du får är digitalt signerade med ett certifikat som är kopplat till Microsoft-roten. En länk till certifikatet som används för att signera händelsen kommer också att tillhandahållas. Detta gör att certifikatet kan förnyas utan att du behöver distribuera om eller konfigurera om tjänsten. Partner Center kommer att göra 10 försök att leverera händelsen. Om händelsen fortfarande inte levereras efter 10 försök kommer den att flyttas till en offline-kö och inga ytterligare försök görs vid leverans.
+Om du vill ta emot händelser från Partnercenter måste du exponera en offentligt tillgänglig slutpunkt. Eftersom den här slutpunkten exponeras måste du verifiera att kommunikationen kommer från Partnercenter. Alla Webhook-händelser som du får är digitalt signerade med ett certifikat som är kedjor till Microsoft Root. En länk till certifikatet som används för att signera händelsen tillhandahålls också. Detta gör att certifikatet kan förnyas utan att du behöver distribuera om eller konfigurera om tjänsten. Partnercenter gör 10 försök att leverera händelsen. Om händelsen fortfarande inte levereras efter 10 försök flyttas den till en offlinekö och inga ytterligare försök görs vid leverans.
 
-I följande exempel visas en händelse som publicerats från Partner Center.
+I följande exempel visas en händelse som publicerats från Partnercenter.
 
 ```http
 POST /webhooks/callback
@@ -87,48 +82,48 @@ Content-Length: 195
 ```
 
 >[!NOTE]
->Authorization-huvudet har ett schema för "signatur". Det här är en Base64-kodad signatur för innehållet.
+>Auktoriseringsrubriken har schemat "Signatur". Det här är en base64-kodad signatur för innehållet.
 
-## <a name="how-to-authenticate-the-callback"></a>Så här autentiserar du motringningen
+## <a name="how-to-authenticate-the-callback"></a>Så här autentiserar du motringning
 
-Följ dessa steg om du vill autentisera återanrops händelsen som tas emot från Partner Center:
+Följ dessa steg om du vill autentisera återanropshändelsen som tas emot från Partnercenter:
 
-1. Kontrol lera att de nödvändiga rubrikerna finns (auktorisering, x-MS-Certificate-URL, x-MS-Signature-Algorithm).
+1. Kontrollera att de nödvändiga huvudena finns (Auktorisering, x-ms-certificate-url, x-ms-signature-algorithm).
 
-2. Hämta certifikatet som används för att signera innehållet (x-MS-Certificate-URL).
+2. Ladda ned certifikatet som används för att signera innehållet (x-ms-certificate-url).
 
-3. Verifiera certifikat kedjan.
+3. Verifiera certifikatkedjan.
 
-4. Kontrol lera "organisationen" för certifikatet.
+4. Kontrollera certifikatets "organisation".
 
 5. Läs innehållet med UTF8-kodning i en buffert.
 
-6. Skapa en RSA-Krypto-Provider.
+6. Skapa en RSA Crypto-provider.
 
-7. Kontrol lera att data matchar vad som har signerats med angiven hash-algoritm (till exempel SHA256).
+7. Kontrollera att data matchar det som signerats med den angivna hash-algoritmen (till exempel SHA256).
 
-8. Om verifieringen lyckas, behandla meddelandet.
+8. Om verifieringen lyckas bearbetar du meddelandet.
 
 > [!NOTE]
-> Som standard skickas signaturens token i ett Authorization-huvud. Om du anger **SignatureTokenToMsSignatureHeader** till sant i registreringen skickas signaturens token i huvudet x-MS-signatur i stället.
+> Som standard skickas signaturtoken i ett auktoriseringshuvud. Om du ställer in **SignatureTokenToMsSignatureHeader** på true i din registrering skickas signaturtoken i huvudet x-ms-signature i stället.
 
-## <a name="event-model"></a>Händelse modell
+## <a name="event-model"></a>Händelsemodell
 
-I följande tabell beskrivs egenskaperna för ett partner Center-evenemang.
+I följande tabell beskrivs egenskaperna för en Partnercenter-händelse.
 
 ### <a name="properties"></a>Egenskaper
 
 | Name                      | Beskrivning                                                                           |
 |---------------------------|---------------------------------------------------------------------------------------|
-| **EventName**             | Händelsens namn. I formatet {Resource}-{action}. Till exempel "test-created".  |
-| **ResourceUri**           | URI för den resurs som ändrades.                                                 |
+| **EventName**             | Namnet på händelsen. I formuläret {resource}-{action}. Till exempel "test-created".  |
+| **ResourceUri**           | URI:en för resursen som ändrades.                                                 |
 | **ResourceName**          | Namnet på den resurs som ändrades.                                                |
-| **AuditUrl**              | Valfritt. Gransknings postens URI.                                                |
-| **ResourceChangeUtcDate** | Datum och tid i UTC-format när resurs ändringen utfördes.                  |
+| **AuditUrl**              | Valfritt. URI för granskningsposten.                                                |
+| **ResourceChangeUtcDate** | Datum och tid, i UTC-format, när resursändringen inträffade.                  |
 
 ### <a name="sample"></a>Exempel
 
-Följande exempel visar strukturen för ett partner Center-evenemang.
+I följande exempel visas strukturen för en Partnercenter-händelse.
 
 ```http
 {
@@ -140,15 +135,15 @@ Följande exempel visar strukturen för ett partner Center-evenemang.
 }
 ```
 
-## <a name="webhook-apis"></a>Webhook-API: er
+## <a name="webhook-apis"></a>Webhook-API:er
 
 ### <a name="authentication"></a>Autentisering
 
-Alla anrop till webhook-API: erna autentiseras med hjälp av Bearer-token i Authorization-huvudet. Hämta en åtkomsttoken för åtkomst `https://api.partnercenter.microsoft.com` . Denna token är samma token som används för att få åtkomst till resten av API: erna för partner Center.
+Alla anrop till Webhook-API:erna autentiseras med hjälp av bearer-token i auktoriseringshuvudet. Hämta en åtkomsttoken för att få åtkomst `https://api.partnercenter.microsoft.com` till . Den här token är samma token som används för att komma åt resten av Partner Center-API:erna.
 
 ### <a name="get-a-list-of-events"></a>Hämta en lista över händelser
 
-Returnerar en lista med händelser som för närvarande stöds av webhook-API: erna.
+Returnerar en lista över de händelser som för närvarande stöds av Webhook-API:erna.
 
 ### <a name="resource-url"></a>Resurs-URL
 
@@ -182,7 +177,7 @@ X-Locale: en-US
 
 ### <a name="register-to-receive-events"></a>Registrera dig för att ta emot händelser
 
-Registrerar en klient för att ta emot de angivna händelserna.
+Registrerar en klientorganisation för att ta emot de angivna händelserna.
 
 #### <a name="resource-url"></a>Resurs-URL
 
@@ -226,7 +221,7 @@ MS-RequestId: f04b1b5e-87b4-4d95-b087-d65fffec0bd2
 
 ### <a name="view-a-registration"></a>Visa en registrering
 
-Returnerar en klients händelse registrering för webhookar.
+Returnerar webhooks-händelseregistreringen för en klientorganisation.
 
 #### <a name="resource-url"></a>Resurs-URL
 
@@ -262,9 +257,9 @@ X-Locale: en-US
 }
 ```
 
-### <a name="update-an-event-registration"></a>Uppdatera en händelse registrering
+### <a name="update-an-event-registration"></a>Uppdatera en händelseregistrering
 
-Uppdaterar en befintlig händelse registrering.
+Uppdaterar en befintlig händelseregistrering.
 
 #### <a name="resource-url"></a>Resurs-URL
 
@@ -306,12 +301,12 @@ MS-RequestId: f04b1b5e-87b4-4d95-b087-d65fffec0bd2
 }
 ```
 
-### <a name="send-a-test-event-to-validate-your-registration"></a>Skicka en test händelse för att verifiera registreringen
+### <a name="send-a-test-event-to-validate-your-registration"></a>Skicka en testhändelse för att verifiera registreringen
 
-Genererar en test händelse för att verifiera Webhooks-registreringen. Det här testet är avsett att verifiera att du kan ta emot händelser från Partner Center. Data för de här händelserna tas bort sju dagar efter det att den första händelsen har skapats. Du måste vara registrerad för händelsen "test-created", med hjälp av registrerings-API: et, innan du skickar en verifierings händelse.
+Genererar en testhändelse för att verifiera Webhooks-registreringen. Det här testet är avsett att verifiera att du kan ta emot händelser från Partnercenter. Data för dessa händelser tas bort sju dagar efter att den första händelsen har skapats. Du måste vara registrerad för händelsen "test-created" med hjälp av registrerings-API:et innan du skickar en valideringshändelse.
 
 >[!NOTE]
->Det finns en begränsning på 2 begär Anden per minut vid bokföring av en validerings händelse.
+>Det finns en begränsning på 2 begäranden per minut när du publicerar en valideringshändelse.
 
 #### <a name="resource-url"></a>Resurs-URL
 
@@ -345,9 +340,9 @@ X-Locale: en-US
 { "correlationId": "04af2aea-d413-42db-824e-f328001484d1" }
 ```
 
-### <a name="verify-that-the-event-was-delivered"></a>Kontrol lera att händelsen har levererats
+### <a name="verify-that-the-event-was-delivered"></a>Kontrollera att händelsen har levererats
 
-Returnerar det aktuella läget för verifierings händelsen. Den här verifieringen kan vara till hjälp vid fel sökning av händelse leverans problem. Svaret innehåller ett resultat för varje försök som görs för att leverera händelsen.
+Returnerar det aktuella tillståndet för valideringshändelsen. Den här verifieringen kan vara användbar vid felsökning av problem med händelseleverans. Svaret innehåller ett resultat för varje försök att leverera händelsen.
 
 #### <a name="resource-url"></a>Resurs-URL
 
@@ -391,9 +386,9 @@ X-Locale: en-US
 }
 ```
 
-## <a name="example-for-signature-validation"></a>Exempel på verifiering av signatur
+## <a name="example-for-signature-validation"></a>Exempel för signaturverifiering
 
-### <a name="sample-callback-controller-signature-aspnet"></a>Exempel på signatur för återanrops kontroll (ASP.NET)
+### <a name="sample-callback-controller-signature-aspnet"></a>Exempel på återanropskontrollantsignatur (ASP.NET)
 
 ``` csharp
 [AuthorizeSignature]
@@ -401,9 +396,9 @@ X-Locale: en-US
 public IHttpActionResult Post(PartnerResourceChangeCallBack callback)
 ```
 
-### <a name="signature-validation"></a>Verifiering av signatur
+### <a name="signature-validation"></a>Signaturvalidering
 
-I följande exempel visas hur du lägger till ett Authorization-attribut till den kontroll enhet som tar emot återanrop från webhook-händelser.
+I följande exempel visas hur du lägger till ett auktoriseringsattribut till kontrollanten som tar emot återanrop från Webhook-händelser.
 
 ``` csharp
 namespace Webhooks.Security

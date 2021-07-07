@@ -1,43 +1,39 @@
 ---
 title: Avbryt programvaruinköp
-description: 'Alternativet för självbetjäning för att avbryta program varu prenumerationer och permanent program varu inköp med API: er för partner Center.'
+description: Självbetjäningsalternativ för att avbryta programvaruprenumerationer och beständiga programvaruköp med partnercenter-API:er.
 ms.date: 12/19/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 25fd10a171fa6ca01f3442d49145443f2382cc18
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 877702ac930919ff72c6cc45a3c0e8ecc7e1b5f4
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769327"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974241"
 ---
 # <a name="cancel-software-purchases"></a>Avbryt programvaruinköp
 
-**Gäller för:**
-
-- Partnercenter
-
-Du kan använda API: er för partner Center för att avbryta program varu prenumerationer och program varu inköp utan program vara (så länge som de här inköpen gjorts i fönstret för annullering från inköps datumet). Du behöver inte skapa ett support ärende för att göra sådana avbrott och kan använda följande självbetjänings metoder i stället.
+Du kan använda Partner Center-API:er för att avbryta programvaruprenumerationer och beständiga programvaruinköp (så länge dessa inköp gjordes inom annulleringsfönstret från inköpsdatum). Du behöver inte skapa en supportbiljett för att göra sådana uppsägningar och kan använda följande självbetjäningsmetoder i stället.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Om du vill avbryta en program varu beställning
+Om du vill avbryta en programvarubeställning
 
-1. Skicka dina konto uppgifter till [**CreatePartnerOperations**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) -metoden för att hämta ett [**IPartner**](/dotnet/api/microsoft.store.partnercenter.ipartner) -gränssnitt för att hämta partner åtgärder.
+1. Skicka autentiseringsuppgifterna för ditt konto [**till metoden CreatePartnerOperations**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) för att hämta [**ett IPartner-gränssnitt**](/dotnet/api/microsoft.store.partnercenter.ipartner) för att hämta partneråtgärder.
 
-2. Välj en viss [ordning](order-resources.md#order) som du vill avbryta. Anropa [**Customers. ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) -metoden med kund-ID, följt av **order. ById ()** med order-ID.
+2. Välj en viss [order](order-resources.md#order) som du vill avbryta. Anropa metoden [**Customers.ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kundidentifieraren, följt av **Orders.ById() med** orderidentifieraren.
 
-3. Anropa **Get** -eller **GetAsync** -metoden för att hämta beställningen.
+3. Anropa metoden **Get** eller **GetAsync** för att hämta ordern.
 
-4. Ange egenskapen [**order. status**](order-resources.md#order) till `cancelled` .
+4. Ange egenskapen [**Order.Status**](order-resources.md#order) till `cancelled` .
 
-5. Valfritt Om du vill ange vissa rad objekt som ska avbrytas anger du [**order. rad objekt**](order-resources.md#order) till en lista över rad objekt som du vill avbryta.
+5. (Valfritt) Om du vill ange vissa radobjekt för annullering ställer du in [**Order.LineItems**](order-resources.md#order) på en lista över radobjekt som du vill avbryta.
 
-6. Använd metoden **patch ()** för att uppdatera ordningen.
+6. Använd **metoden Patch()** för att uppdatera ordningen.
 
 ``` csharp
 // IPartnerCredentials accountCredentials;
@@ -58,11 +54,11 @@ order = accountPartnerOperations.Customers.ById(customerTenantId).Orders.ById(or
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod     | URI för förfrågan                                                                            |
 |------------|----------------------------------------------------------------------------------------|
-| **9.0a** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Orders/{order-ID} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders/{order-id} HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
@@ -70,12 +66,12 @@ Använd följande frågeparametrar för att ta bort en kund.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y        | Värdet är ett GUID-formaterat kund klient-ID som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik kund som tillhör åter försäljaren. |
-| **order-ID** | **nollängd** | Y        | Värdet är en sträng som anger identifieraren för den ordning som du vill avbryta. |
+| **kund-klient-id** | **guid** | Y        | Värdet är ett GUID-formaterat kundklient-ID som gör att återförsäljaren kan filtrera resultaten för en viss kund som tillhör återförsäljaren. |
+| **order-id** | **sträng** | Y        | Värdet är en sträng som anger identifieraren för den order som du vill avbryta. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -114,17 +110,17 @@ MS-CorrelationId: 1438ea3d-b515-45c7-9ec1-27ee0cc8e6bd
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden ordningen med annullerade rad objekt.
+Om det lyckas returnerar den här metoden ordern med annullerade radobjekt.
 
-Order status markeras som antingen **avbruten** om alla rad objekt i ordern avbryts eller **slutförs** om inte alla rad objekt i ordern annulleras.
+Orderstatusen markeras antingen som annullerad om alla radartiklar i  ordern avbryts eller slutförs om inte alla radartiklar i ordern avbryts. 
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 
-I följande exempel svar kan du se att antalet rad objekt med erbjudande-ID: t **`DG7GMGF0FKZV:0003:DG7GMGF0DWMS`** har blivit noll (0). Den här ändringen innebär att det rad objekt som har marker ATS för annullering har avbrutits. Exempel ordningen innehåller andra rad objekt som inte avbrutits, vilket innebär att statusen för den övergripande ordningen markeras som **slutförd**, inte **avbruten**.
+I följande exempelsvar kan du se att antalet radobjekt med erbjudande-ID har **`DG7GMGF0FKZV:0003:DG7GMGF0DWMS`** blivit noll (0). Den här ändringen innebär att radobjektet som markerats för annullering har avbrutits. Exempelordningen innehåller andra radobjekt som inte **annullerades,** vilket innebär att statusen för den övergripande ordern markeras som slutförd **,** inte annullerad .
 
 ```http
 HTTP/1.1 200 OK

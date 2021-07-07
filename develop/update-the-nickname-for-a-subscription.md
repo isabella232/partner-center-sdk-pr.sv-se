@@ -1,40 +1,35 @@
 ---
 title: Uppdatera smeknamnet för en prenumeration
-description: Uppdaterar det egna namnet eller smek namnet för en kunds prenumeration.
+description: Uppdaterar det egna namnet eller smeknamnet för en kunds prenumeration.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 57a9fec4b69d4a64128425ea58b4bb84d0d7dd54
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 195a85fcf29b3e4c9fe0e578d4d8cb80ca068c40
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769645"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530012"
 ---
 # <a name="update-the-nickname-for-a-subscription"></a>Uppdatera smeknamnet för en prenumeration
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+Uppdaterar det egna namnet eller smeknamnet för en kunds [prenumeration](subscription-resources.md). Det här namnet visas i Partnercenter för att hjälpa till att särskilja prenumerationerna i kundens konto.
 
-Uppdaterar det egna namnet eller smek namnet för en kunds [prenumeration](subscription-resources.md). Det här namnet visas i Partner Center för att hjälpa till att skilja prenumerationerna på kundens konto.
-
-På instrument panelen för partner Center kan du utföra den här åtgärden genom [att först välja en kund](get-a-customer-by-name.md). Välj sedan den prenumeration i fråga som du vill byta namn på. Slutför genom att ändra namnet i fältet för **prenumerationens smek** namn och välj sedan **Skicka.**
+På instrumentpanelen i Partnercenter kan du utföra den här åtgärden genom att först [välja en kund.](get-a-customer-by-name.md) Välj sedan den prenumeration som du vill byta namn på. Avsluta genom att ändra namnet i fältet **Smeknamn för prenumeration** och välj sedan **Skicka.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID.
 
 ## <a name="c"></a>C\#
 
-Om du vill uppdatera smek namnet för en kunds prenumeration börjar du med att [Hämta prenumerationen](get-a-subscription-by-id.md)och ändrar sedan prenumerationens egenskap [**FriendlyName**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.friendlyname) . När ändringen har gjorts använder du din [**IPartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) -samling och anropar metoden [**ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) . Anropa sedan egenskapen [**Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av metoden [**ById ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) . Sedan avslutar du genom att anropa [**patch-metoden ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.patch) .
+Om du vill uppdatera smeknamnet för en kunds prenumeration hämtar du först prenumerationen [och](get-a-subscription-by-id.md)ändrar sedan prenumerationens [**FriendlyName-egenskap.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.friendlyname) När ändringen har gjorts använder du samlingen [**IPartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) och anropar [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) Anropa sedan egenskapen [**Prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Avsluta sedan med att anropa [**metoden Patch().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.patch)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -48,32 +43,32 @@ Subscription selectedSubscription = customerSubscriptions.Items.FirstOrDefault(s
 var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscription.Id).Patch(selectedSubscription);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples- **klass**: UpdateSubscription.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** PartnerSDK.FeatureSamples-klass: UpdateSubscription.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod    | URI för förfrågan                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **9.0a** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Subscriptions/{ID-for-Subscription} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Den här tabellen innehåller den obligatoriska Frågeparametern för att uppdatera prenumerationens smek namn.
+I den här tabellen visas frågeparametern som krävs för att uppdatera prenumerationens smeknamn.
 
 | Namn                    | Typ     | Obligatorisk | Beskrivning                          |
 |-------------------------|----------|----------|--------------------------------------|
-| **kund-ID för klient organisation**  | **guid** | Y        | **Customer-Tenant-ID** (ett GUID). |
-| **ID för-prenumeration** | **guid** | Y        | Prenumerations-ID (ett GUID).        |
+| **kund-klient-id**  | **guid** | Y        | Kundens **klientorganisations-ID** (ett GUID). |
+| **id-for-subscription** | **guid** | Y        | Prenumerations-ID :t (ett GUID).        |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-En fullständig **prenumerations** resurs krävs i begär ande texten. Se till att egenskapen **FriendlyName** har uppdaterats.
+En fullständig **prenumerationsresurs** krävs i begärandetexten. Kontrollera att **egenskapen FriendlyName** har uppdaterats.
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -112,11 +107,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden uppdaterade [prenumerations](subscription-resources.md) resurs egenskaper i svars texten.
+Om det lyckas returnerar den här metoden uppdaterade [prenumerationsresursegenskaper](subscription-resources.md) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

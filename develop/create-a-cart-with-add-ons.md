@@ -1,47 +1,43 @@
 ---
 title: Skapa en kundvagn med tillägg
-description: 'Lär dig hur du använder API: er för partner Center för att lägga till en kund order med tillägg via en kundvagn. Artikeln delar krav och steg för att skapa en kundvagn med tilläggsprogram.'
+description: Lär dig hur du använder Partner Center-API:er för att lägga till en kundorder med tillägg via en kundvagn. Artikeln delar krav och steg för att skapa en kundvagn med tillägg.
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 81c41405a2f56eb4d1d3447d14b93e05d550cc70
-ms.sourcegitcommit: 4c253abb24140a6e00b0aea8e79a08823ea5a623
+ms.openlocfilehash: 513a9607b9194c36253630c91de9622325317c3a
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97770131"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973765"
 ---
-# <a name="create-a-cart-with-add-ons-to-a-customer-order"></a>Skapa en kundvagn med tillägg till en kund order
+# <a name="create-a-cart-with-add-ons-to-a-customer-order"></a>Skapa en kundvagn med tillägg till en kundbeställning
 
-**Gäller för:**
-
-- Partnercenter
-
-Du kan köpa tillägg via en kundvagn. Mer information om vad som för närvarande är tillgängligt för försäljning finns [i partner erbjudanden i Cloud Solution Provider-programmet](/partner-center/csp-offers).
+Du kan köpa tillägg via en kundvagn. Mer information om vad som för närvarande är tillgängligt för försäljning finns [i Partnererbjudanden i Molnlösningsleverantör program](/partner-center/csp-offers).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-En varukorg gör det möjligt att köpa ett bas erbjudande och dess motsvarande tillägg. Följ de här stegen för att skapa en kundvagn:
+Med en kundvagn kan du köpa ett baserbjudande och motsvarande tillägg. Följ dessa steg för att skapa en kundvagn:
 
-1. Instansiera ett [**vagn**](/dotnet/api/microsoft.store.partnercenter.models.carts.cart) objekt.
+1. Skapa en instans av [**ett kundvagnsobjekt.**](/dotnet/api/microsoft.store.partnercenter.models.carts.cart)
 
-2. Skapa en lista med [**CartLineItem**](/dotnet/api/microsoft.store.partnercenter.models.carts.cartlineitem) -objekt som representerar bas erbjudandet och tilldela listan till vagnens [**rad objekt**](/dotnet/api/microsoft.store.partnercenter.models.carts.cart.lineitems) -egenskap.
+2. Skapa en lista över [**CartLineItem-objekt**](/dotnet/api/microsoft.store.partnercenter.models.carts.cartlineitem) som representerar baserbjudandet och tilldela listan till kundvagnens [**lineItems-egenskap.**](/dotnet/api/microsoft.store.partnercenter.models.carts.cart.lineitems)
 
-3. Under varje bas erbjudandes rad artikel fyller du i listan över **AddOnItems** med andra **CartLineItem** -objekt som var och en representerar ett tillägg som ska köpas mot bas erbjudandet.
+3. Under varje baserbjudandes kundvagnsradsobjekt fyller du i listan **med AddOnItems** med andra **CartLineItem-objekt** som var och en representerar ett tillägg som ska köpas mot baserbjudandet.
 
-4. Få ett gränssnitt till shopping operationer genom att använda [**IAggregatePartner**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) för att anropa metoden [**ICustomerCollection. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att identifiera kunden och sedan hämta gränssnittet från egenskapen **kundvagn** .
+4. Hämta ett gränssnitt för kundvagnsåtgärder med [**hjälp av IAggregatePartner**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) för att anropa [**metoden ICustomerCollection.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden och hämta sedan gränssnittet från **egenskapen Cart.**
 
-5. Anropa slutligen metoden [**create**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.create) eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.createasync) för att skapa vagnen.
+5. Anropa slutligen metoden [**Create**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.create) eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.createasync) för att skapa kundvagnen.
 
-### <a name="c-example"></a>C- \# exempel
+### <a name="c-example"></a>\#C-exempel
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -82,11 +78,11 @@ var cart = new Cart()
 var createdCart = partnerOperations.Customers.ById(customerId).Carts.Create(cart);
 ```
 
-Följ de här stegen för att skapa en varukorg som gör det möjligt att köpa tillägg mot befintliga bas prenumerationer:
+Följ de här stegen för att skapa en kundvagn som aktiverar köp av tillägg mot befintliga basprenumerationerna:
 
-1. Skapa en **varukorg** med en ny **CartLineItem** som innehåller prenumerations-ID: t i egenskapen **ProvisioningContext** med nyckeln "ParentSubscriptionId".
+1. Skapa en **kundvagn** med en ny **CartLineItem** som innehåller prenumerations-ID:t i **egenskapen ProvisioningContext** med nyckeln "ParentSubscriptionId".
 
-2. Anropa metoden **create** eller **CreateAsync** .
+2. Anropa metoden **Create** eller **CreateAsync.**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -117,56 +113,56 @@ var createdCart = partnerOperations.Customers.ById(selectedCustomerId).Carts.Cre
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/carts http/1.1                        |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/carts HTTP/1.1                        |
 
 #### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande Sök vägs parameter för att identifiera kunden.
+Använd följande sökvägsparameter för att identifiera kunden.
 
 | Namn            | Typ     | Obligatorisk | Beskrivning                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **kund-ID** | sträng   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
+| **kund-id** | sträng   | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-I den här tabellen beskrivs egenskaperna för [kundvagn](cart-resources.md) i begär ande texten.
+I den här tabellen beskrivs [egenskaperna för](cart-resources.md) Kundvagn i begärandetexten.
 
 | Egenskap              | Typ             | Obligatorisk        | Beskrivning |
 |-----------------------|------------------|-----------------|-----------------------------------------------------------------------------------------------------------|
-| id                    | sträng           | No              | Ett kundvagn-ID som anges när vagnen skapas.                                  |
-| creationTimeStamp     | DateTime         | No              | Datumet då vagnen skapades i datum-/tids format. Används när vagnen har skapats.         |
-| lastModifiedTimeStamp | DateTime         | No              | Datumet då vagnen senast uppdaterades i datum-/tids format. Används när vagnen har skapats.    |
-| expirationTimeStamp   | DateTime         | No              | Datumet då vagnen upphör att gälla, i datum-/tids format.  Används när vagnen har skapats.            |
-| lastModifiedUser      | sträng           | No              | Den användare som senast uppdaterade vagnen. Används när vagnen har skapats.                             |
-| Rad objekt             | Objekt mat ris | Yes             | En matris med [CartLineItem](cart-resources.md#cartlineitem) -resurser.                                             |
+| id                    | sträng           | No              | En kundvagnsidentifierare som anges när kundvagnen har skapats.                                  |
+| creationTimeStamp     | DateTime         | Inga              | Datumet då kundvagnen skapades i datum/tid-format. Tillämpas när kundvagnen har skapats.         |
+| lastModifiedTimeStamp | DateTime         | Inga              | Datum då kundvagnen senast uppdaterades i datum/tid-format. Tillämpas när kundvagnen har skapats.    |
+| expirationTimeStamp   | DateTime         | Inga              | Datumet då kundvagnen upphör att gälla i datum/tid-format.  Tillämpas när kundvagnen har skapats.            |
+| lastModifiedUser      | sträng           | No              | Den användare som senast uppdaterade kundvagnen. Tillämpas när kundvagnen har skapats.                             |
+| lineItems             | Matris med objekt | Ja             | En matris med [CartLineItem-resurser.](cart-resources.md#cartlineitem)                                             |
 
-I den här tabellen beskrivs egenskaperna för [CartLineItem](cart-resources.md#cartlineitem) i begär ande texten.
+I den här tabellen beskrivs [egenskaperna för CartLineItem](cart-resources.md#cartlineitem) i begärandetexten.
 
-| Egenskap             | Typ                             | Description                                                                                                                                           |
+| Egenskap             | Typ                             | Beskrivning                                                                                                                                           |
 |----------------------|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id                   | sträng                           | En unik identifierare för ett vagn rads objekt. Används när vagnen har skapats.                                                                   |
-| catalogId            | sträng                           | Katalog objekt identifierare.                                                                                                                          |
-| friendlyName         | sträng                           | Valfritt. Det egna namnet på det objekt som definieras av partnern för att hjälpa disambiguate.                                                                 |
+| id                   | sträng                           | En unik identifierare för ett kundvagnsradsobjekt. Tillämpas när kundvagnen har skapats.                                                                   |
+| catalogId            | sträng                           | Katalogobjektets identifierare.                                                                                                                          |
+| friendlyName         | sträng                           | Valfritt. Det egna namnet för det objekt som definierats av partnern för att undvika tvetydighet.                                                                 |
 | quantity             | int                              | Antalet licenser eller instanser.                                                                                                                  |
-| currencyCode         | sträng                           | Valuta koden.                                                                                                                                    |
-| billingCycle         | Objekt                           | Typ av fakturerings cykel som angetts för den aktuella perioden.                                                                                                 |
-| deltagare         | Lista med objekt sträng par      | En samling partner on Record (MPNID) på köpet.                                                                                          |
-| provisioningContext  | Ord listans<sträng, sträng>       | En kontext som används för etablering av erbjudande.                                                                                                             |
-| orderGroup           | sträng                           | En grupp som visar vilka objekt som kan placeras tillsammans.                                                                                               |
-| addonItems           | Lista över **CartLineItem** -objekt | En samling av vagn rads objekt för tillägg som kommer att köpas mot bas prenumerationen som är resultatet av den överordnade vagnens rad objekts inköp. |
-| fel                | Objekt                           | Tillämpas efter att kundvagn har skapats i händelse av ett fel.                                                                                                    |
+| currencyCode         | sträng                           | Valutakoden.                                                                                                                                    |
+| billingCycle         | Objekt                           | Den typ av faktureringsperiod som angetts för den aktuella perioden.                                                                                                 |
+| deltagare         | Lista över objektsträngpar      | En samling PartnerId on Record (MPN ID) för köpet.                                                                                          |
+| provisioningContext  | Ordlista<sträng, sträng>       | En kontext som används för etablering av erbjudande.                                                                                                             |
+| orderGroup           | sträng                           | En grupp som anger vilka objekt som kan placeras tillsammans.                                                                                               |
+| addonItems           | Lista över **CartLineItem-objekt** | En samling kundvagnsradsobjekt för tillägg som ska köpas mot basprenumerationen som är resultatet av den överordnade kundvagnsradens köp. |
+| fel                | Objekt                           | Tillämpas efter att kundvagnen har skapats om det finns ett fel.                                                                                                    |
 
-### <a name="request-example-new-base-subscription"></a>Exempel på begäran (ny bas prenumeration)
+### <a name="request-example-new-base-subscription"></a>Exempel på begäran (ny basprenumeration)
 
-I följande REST-exempel visas hur du skapar en kundvagn med tilläggs objekt för en ny bas prenumeration.
+I följande REST-exempel visas hur du skapar en kundvagn med tillägg för en ny basprenumeration.
 
 ```http
 POST https://api.partnercenter.microsoft.com/v1/customers/18ac2950-8ea9-4dfc-92a4-ff4d4cd57796/carts HTTP/1.1
@@ -202,9 +198,9 @@ MS-CorrelationId: f73baf70-bbc3-43d0-8b29-dffa08ff9511
 }
 ```
 
-#### <a name="request-example-existing-base-subscription"></a>Exempel på begäran (befintlig bas prenumeration)
+#### <a name="request-example-existing-base-subscription"></a>Exempel på begäran (befintlig basprenumeration)
 
-I följande REST-exempel visas hur du lägger till tillägg i en befintlig bas prenumeration.
+I följande REST-exempel visas hur du lägger till tillägg till en befintlig basprenumeration.
 
 ```http
 POST https://api.partnercenter.microsoft.com/v1/customers/18ac2950-8ea9-4dfc-92a4-ff4d4cd57796/carts HTTP/1.1
@@ -228,13 +224,13 @@ MS-CorrelationId: 182474ba-7303-4d0f-870a-8c7fba5ccc4b
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden den fyllda kund [vagns](cart-resources.md) resursen i svars texten.
+Om det lyckas returnerar den här metoden den [ifyllda kundvagnsresursen](cart-resources.md) i svarstexten.
 
-#### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+#### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
-#### <a name="response-example-new-base-subscription"></a>Svars exempel (ny bas prenumeration)
+#### <a name="response-example-new-base-subscription"></a>Svarsexempel (ny basprenumeration)
 
 ```http
 HTTP/1.1 201 Created
@@ -295,7 +291,7 @@ Date: Thu, 01 Nov 2018 22:29:05 GMT
 }
 ```
 
-#### <a name="response-example-existing-base-subscription"></a>Svars exempel (befintlig bas prenumeration)
+#### <a name="response-example-existing-base-subscription"></a>Svarsexempel (befintlig basprenumeration)
 
 ```http
 HTTP/1.1 201 Created

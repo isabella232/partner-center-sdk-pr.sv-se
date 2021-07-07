@@ -1,37 +1,33 @@
 ---
 title: Uppdatera en tjänstbegäran
-description: Så här uppdaterar du en befintlig kund service förfrågan som en moln lösnings leverantör har arkiverat med Microsoft på kundens vägnar.
+description: Så här uppdaterar du en befintlig kundtjänstbegäran som en Molnlösningsleverantör har arkiverat hos Microsoft för kundens räkning.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a1df0d1f5fa4630b346d1c8b9cffabb86ce34cfb
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: efa7b2a98b6f95a763ca6e3811c43cc655c18e2b
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769741"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530097"
 ---
 # <a name="update-a-service-request"></a>Uppdatera en tjänstbegäran
 
-**Gäller för**
+**Gäller för**: Partner Center-| PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+Så här uppdaterar du en befintlig kundtjänstbegäran som en Molnlösningsleverantör har arkiverat hos Microsoft för kundens räkning.
 
-Så här uppdaterar du en befintlig kund service förfrågan som en moln lösnings leverantör har arkiverat med Microsoft på kundens vägnar.
-
-På instrument panelen för partner Center kan du utföra den här åtgärden genom [att först välja en kund](get-a-customer-by-name.md). Välj sedan **Service Management** i den vänstra panelen. Under rubriken **support begär Anden** väljer du den aktuella tjänstbegäran. Slutför genom att utföra önskade ändringar i tjänstbegäran och välj sedan **Skicka.**
+På instrumentpanelen i Partnercenter kan du utföra den här åtgärden genom att först [välja en kund.](get-a-customer-by-name.md) Välj sedan **Tjänsthantering** i det vänstra sidofältet. Under rubriken **Supportbegäranden** väljer du den tjänstbegäran som är i fråga. Slutför genom att göra önskade ändringar i tjänstbegäran och sedan välja **Skicka.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
 - Ett ID för tjänstbegäran.
 
 ## <a name="c"></a>C\#
 
-Om du vill uppdatera en kunds tjänstbegäran anropar du metoden [**IServiceRequestCollection. ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) med service förfrågnings-ID: t för att identifiera och returnera gränssnittet för tjänstbegäran. Anropa sedan metoden [**IServiceRequest. patch**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patch) eller [**PatchAsync**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patchasync) för att uppdatera tjänstbegäran. Om du vill ange de uppdaterade värdena skapar du ett nytt, tomt [**ServiceRequest**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest) -objekt och anger bara de egenskaps värden som du vill ändra. Skicka sedan objektet i anropet till patch-eller PatchAsync-metoden.
+Om du vill uppdatera en kunds tjänstbegäran anropar du [**metoden IServiceRequestCollection.ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) med id:t för tjänstbegäran för att identifiera och returnera gränssnittet för tjänstbegäran. Anropa sedan metoden [**IServiceRequest.Patch eller**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patch) [**PatchAsync**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patchasync) för att uppdatera tjänstbegäran. Om du vill ange de uppdaterade värdena skapar du ett nytt, tomt [**ServiceRequest-objekt**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest) och anger endast de egenskapsvärden som du vill ändra. Skicka sedan objektet i anropet till metoden Patch eller PatchAsync.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -43,15 +39,15 @@ ServiceRequest updatedServiceRequest = partnerOperations.ServiceRequests.ById(ex
 });
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: UpdatePartnerServiceRequest.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **exempelklass:** UpdatePartnerServiceRequest.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod    | URI för förfrågan                                                                                 |
 |-----------|---------------------------------------------------------------------------------------------|
-| **9.0a** | [*{baseURL}*](partner-center-rest-urls.md)/v1/servicerequests/{servicerequest-ID} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/servicerequests/{servicerequest-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -59,15 +55,15 @@ Använd följande URI-parameter för att uppdatera tjänstbegäran.
 
 | Namn                  | Typ     | Obligatorisk | Beskrivning                                 |
 |-----------------------|----------|----------|---------------------------------------------|
-| **servicerequest-ID** | **guid** | Y        | Ett GUID som identifierar tjänst förfrågan. |
+| **servicerequest-id** | **guid** | Y        | Ett GUID som identifierar tjänstbegäran. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Begär ande texten bör innehålla en [ServiceRequest](service-request-resources.md) -resurs. De enda värden som krävs är de som ska uppdateras.
+Begärandetexten ska innehålla en [ServiceRequest-resurs.](service-request-resources.md) De enda obligatoriska värdena är de som ska uppdateras.
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -115,11 +111,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en resurs för **tjänstbegäran** med uppdaterade egenskaper i svars texten.
+Om det lyckas returnerar den här metoden **en resurs för tjänstbegäran** med uppdaterade egenskaper i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder för Partner Center REST.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

@@ -1,36 +1,31 @@
 ---
 title: Validera en adress
-description: Verifiera en adress med hjälp av API för adress validering.
+description: Så här verifierar du en adress med hjälp av API:et för adressverifiering.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 22d5faec2fdab4907067bb01cb74e110032dea9a
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 14d45977f3af6e8bba1b7cb7f969aa7c5bb671da
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768931"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529893"
 ---
 # <a name="validate-an-address"></a>Validera en adress
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+Så här verifierar du en adress med hjälp av API:et för adressverifiering.
 
-Verifiera en adress med hjälp av API för adress validering.
-
-Adress verifierings-API: t bör endast användas för för validering av kund profil uppdateringar. Använd det för att förstå att om landet är USA, Kanada, Kina eller Mexiko, verifieras fältet Delstat mot en lista över giltiga tillstånd för respektive land. I alla andra länder sker inte det här testet, och API: et kontrollerar att tillstånd är en giltig sträng.
+API:et för adressvalidering bör endast användas för förvalidering av kundprofiluppdateringar. Använd det med förståelsen att om landet är USA, Kanada, Kina eller Mexiko verifieras fältet Delstat mot en lista över giltiga delstater för respektive land. I alla andra länder utförs inte det här testet och API:et kontrollerar endast att tillståndet är en giltig sträng.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Om du vill verifiera en adress måste du först instansiera ett nytt **adress** objekt och fylla det med den adress som ska verifieras. Hämta sedan ett gränssnitt till **validerings** åtgärder från egenskapen **IAggregatePartner.** Recalls och anropa **IsAddressValid** -metoden med objektet address.
+Verifiera en adress genom att först skapa en instans av ett **nytt address-objekt** och fylla i den med adressen som ska verifieras. Hämta sedan ett gränssnitt till **valideringsåtgärder** från **egenskapen IAggregatePartner.Validations** och anropa **metoden IsAddressValid** med adressobjektet.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -79,7 +74,7 @@ catch (PartnerException exception)
 
 ## <a name="java"></a>Java
 
-Om du vill verifiera en adress måste du först instansiera ett nytt **adress** objekt och fylla det med den adress som ska verifieras. Hämta sedan ett gränssnitt till **validerings** åtgärder från funktionen **IAggregatePartner. GetValidations** och anropa **isAddressValid** -metoden med objektet address.
+Verifiera en adress genom att först skapa en instans av ett **nytt address-objekt** och fylla i den med adressen som ska verifieras. Hämta sedan ett gränssnitt till **valideringsåtgärder** från **funktionen IAggregatePartner.getValidations** och anropa **metoden isAddressValid** med adressobjektet.
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
@@ -117,7 +112,7 @@ catch (Exception exception)
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Verifiera en adress genom att köra [**testet-PartnerAddress**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Test-PartnerAddress.md) med adress parametrarna ifyllda.
+Verifiera en adress genom att köra [**Test-PartnerAddress med**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Test-PartnerAddress.md) adressparametrarna ifyllda.
 
 ```powershell
 Test-PartnerAddress -AddressLine1 '700 Bellevue Way NE' -City 'Bellevue' -Country 'US' -PostalCode '98004' -State 'WA'
@@ -125,28 +120,28 @@ Test-PartnerAddress -AddressLine1 '700 Bellevue Way NE' -City 'Bellevue' -Countr
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                                 |
 |----------|-----------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/validations/Address http/1.1 |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/validations/address HTTP/1.1 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-I den här tabellen beskrivs de egenskaper som krävs i begär ande texten.
+I den här tabellen beskrivs de obligatoriska egenskaperna i begärandetexten.
 
 | Namn         | Typ   | Obligatorisk | Beskrivning                                                |
 |--------------|--------|----------|------------------------------------------------------------|
 | addressline1 | sträng | Y        | Den första raden i adressen.                             |
 | addressline2 | sträng | N        | Den andra raden i adressen. Den här egenskapen är valfri. |
 | city         | sträng | Y        | Staden.                                                  |
-| state        | sträng | Y        | Status.                                                 |
-| post nummer   | sträng | Y        | Post numret.                                           |
-| land      | sträng | Y        | ISO alpha-2-lands koden med två tecken.                |
+| state        | sträng | Y        | Tillståndet.                                                 |
+| Postnummer   | sträng | Y        | Postnumret.                                           |
+| land      | sträng | Y        | Landskoden ISO alpha-2 med två tecken.                |
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -172,15 +167,15 @@ Content-Length: 129
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar metoden en status kod 200 som visas i exemplet svars valideringen lyckades nedan.
+Om det lyckas returnerar metoden statuskoden 200 enligt exemplet Svar – valideringen lyckades som visas nedan.
 
-Om begäran Miss lyckas returnerar metoden en status kod 400 som visas i exemplet på svars valideringen som visas nedan. Svars texten innehåller en JSON-nyttolast med ytterligare information om felet.
+Om begäran misslyckas returnerar metoden statuskoden 400 enligt exemplet Svar – verifieringen misslyckades som visas nedan. Svarstexten innehåller en JSON-nyttolast med ytterligare information om felet.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
-### <a name="response---validation-succeeded-example"></a>Svars validering lyckades, exempel
+### <a name="response---validation-succeeded-example"></a>Svar – exempel på att valideringen lyckades
 
 ```http
 HTTP/1.1 200 OK
@@ -192,7 +187,7 @@ MS-ServerId: 030011719
 Date: Mon, 13 Mar 2017 23:56:12 GMT
 ```
 
-### <a name="response---validation-failed-example"></a>Svar – validering misslyckades, exempel
+### <a name="response---validation-failed-example"></a>Svar – exempel på misslyckad validering
 
 ```http
 HTTP/1.1 400 Bad Request

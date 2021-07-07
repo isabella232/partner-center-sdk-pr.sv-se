@@ -1,35 +1,31 @@
 ---
-title: Hämta en lista över självbetjänings principer
-description: Så här hämtar du en samling resurser som representerar en kunds principer för självbetjäning.
+title: Hämta en lista över självbetjäningsprinciper
+description: Hur du hämtar en samling resurser som representerar en kunds självbetjäningsprinciper.
 ms.date: 07/06/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: ff3116b8757e28e03615930ebd19bc75f34e2efe
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: b18fde8a11d3ed3dd31e50fdba746dd6b0bf3f97
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97770241"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025741"
 ---
-# <a name="get-a-list-of-self-serve-policies"></a>Hämta en lista över självbetjänings principer
+# <a name="get-a-list-of-self-serve-policies"></a>Hämta en lista över självbetjäningsprinciper
 
-**Gäller för:**
-
-- Partnercenter
-
-Den här artikeln beskriver hur du får en samling resurser som representerar självbetjänings principer för en entitet.
+Hämtar en samling resurser som representerar självbetjäningsprinciper för en entitet.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med program-och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med autentiseringsuppgifter för program och användare.
 
 ## <a name="c"></a>C\#
 
-Så här hämtar du en lista över alla självbetjänings principer:
+Så här hämtar du en lista över alla självbetjäningsprinciper:
 
-1. Anropa metoden [**IAggregatePartner. SelfServePolicies**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection) med enhets-ID: n för att hämta ett gränssnitt till åtgärder i principerna.
+1. Anropa metoden [**IAggregatePartner.SelfServePolicies**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection) med entitetsidentifieraren för att hämta ett gränssnitt till åtgärder för principerna.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -41,19 +37,19 @@ IPartner scopedPartnerOperations = partnerOperations.With(RequestContextFactory.
 var SelfServePolicies = scopedPartnerOperations.SelfServePolicies.Get(customerIdAsEntity);
 ```
 
-Ett exempel finns i följande avsnitt:
+Ett exempel finns i följande:
 
-- Exempel: [konsol test app](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Exempel: [Konsoltestapp](console-test-app.md)
+- Project: **PartnerSDK.FeatureExempel**
 - Klass: **GetSelfServePolicies.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy? entity_id = {ENTITY_ID} http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy?entity_id={entity_id} HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>URI-parameter
 
@@ -61,11 +57,11 @@ Använd följande frågeparameter för att hämta en lista över kunder.
 
 | Namn          | Typ       | Obligatorisk | Beskrivning                                        |
 |---------------|------------|----------|----------------------------------------------------|
-| **entity_id** | **nollängd** | Y        | Enhets-ID: t som begär åtkomst för. Detta är kundens klient-ID. |
+| **entity_id** | **sträng** | Y        | Den entitetsidentifierare som begär åtkomst. Detta är kundens klientorganisations-ID. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [sidhuvud](headers.md).
+Mer information finns i [Rubriker.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -83,11 +79,11 @@ MS-CorrelationId: b12260fb-82de-4701-a25f-dcd367690645
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) -resurser i svars texten.
+Om det lyckas returnerar den här metoden en samling [SelfServePolicy-resurser](self-serve-policy-resources.md#selfservepolicy) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

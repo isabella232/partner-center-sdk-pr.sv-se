@@ -1,40 +1,35 @@
 ---
 title: Hämta en kunds prenumerationer efter partner-MPN-ID
-description: Så här hämtar du en lista över prenumerationer som tillhandahålls av en viss partner till en angiven kund.
+description: Hur du hämtar en lista över prenumerationer som tillhandahålls av en viss partner till en angiven kund.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: c95488b62449e1ab6bd2eeefea58d6686c291f4c
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 857caa667245503f111b27379a5c8f93aa1fb0b0
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769711"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760665"
 ---
 # <a name="get-a-customers-subscriptions-by-partner-mpn-id"></a>Hämta en kunds prenumerationer efter partner-MPN-ID
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Så här hämtar du en lista över prenumerationer som tillhandahålls av en viss partner till en angiven kund.
+Hur du hämtar en lista över prenumerationer som tillhandahålls av en viss Microsoft Partner Network (MPN)-partner till en angiven kund.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Ett partner Microsoft Partner Network (MPN)-ID.
+- En MPN-partneridentifierare.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en lista över prenumerationer från en viss partner till en angiven kund använder du först metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att identifiera kunden. Hämta sedan ett gränssnitt till åtgärder för kund prenumerations insamling från egenskapen [**prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) och anropa metoden [**ByPartner**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.bypartner) med MPN-ID för att identifiera partnern och hämta ett gränssnitt till partner prenumerations åtgärder. Anropa slutligen metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.getasync) för att hämta samlingen.
+Om du vill hämta en lista över prenumerationer som tillhandahålls av en viss partner till en angiven kund använder du först [**metoden IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Hämta sedan ett gränssnitt för insamlingsåtgärder för kundprenumeration från egenskapen Prenumerationer och anropa [**metoden ByPartner**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.bypartner) med MPN-ID:t för att identifiera partnern och hämta ett gränssnitt för åtgärder för partnerprenumeration. [](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) Anropa slutligen metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.getasync) för att hämta samlingen.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -44,13 +39,13 @@ Om du vill hämta en lista över prenumerationer från en viss partner till en a
 var customerSubscriptionsByMpnId = partnerOperations.Customers.ById(customerId).Subscriptions.ByPartner(partnerMpnId).Get();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: GetSubscriptionsByMpnid.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: GetSubscriptionsByMpnid.cs
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Om du vill hämta en lista över prenumerationer från en viss partner till en angiven kund använder du först funktionen **IAggregatePartner. getCustomers. byId** med kund-ID: t för att identifiera kunden. Hämta sedan ett gränssnitt till åtgärder för kund prenumerations insamling från funktionen **getSubscriptions** och anropa **byPartner** -funktionen med MPN-ID för att identifiera partnern och hämta ett gränssnitt till partner prenumerations åtgärder. Anropa slutligen funktionen **Get** för att hämta samlingen.
+Om du vill hämta en lista över prenumerationer som tillhandahålls av en viss partner till en angiven kund använder du först funktionen **IAggregatePartner.getCustomers.byId** med kund-ID:t för att identifiera kunden. Hämta sedan ett gränssnitt för insamlingsåtgärder för kundprenumeration från funktionen **getSubscriptions** och anropa funktionen **byPartner** med MPN-ID:t för att identifiera partnern och hämta ett gränssnitt till åtgärder för partnerprenumeration. Anropa slutligen **get-funktionen** för att hämta samlingen.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -64,7 +59,7 @@ ResourceCollection<Subscription> customerSubscriptionsByMpnId = partnerOperation
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Om du vill hämta en lista över prenumerationer som tillhandahålls av en viss partner till en angiven kund kör du kommandot [**Get-PartnerCustomerSubscription**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerSubscription.md) . Ange kund-ID: t för att identifiera kunden med parametern **CustomerId** och fyll i **MpnId** -parametern med MPN-ID för att identifiera partnern.
+Om du vill hämta en lista över prenumerationer som tillhandahålls av en viss partner till en angiven kund kör du kommandot [**Get-PartnerCustomerSubscription.**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerSubscription.md) Ange kund-ID:t för att identifiera kunden med hjälp av parametern **CustomerId** och fyll i **mpnId-parametern** med MPN-ID:t för att identifiera partnern.
 
 ```powershell
 # $customerId
@@ -75,11 +70,11 @@ Get-PartnerCustomerSubscription -CustomerId $customerId -MpnId $partnerMpnId
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan |
 |---------|----------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Subscriptions? MPN \_ -ID = {MPN-ID} http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscriptions?mpn \_ id={mpn-id} HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
@@ -87,12 +82,12 @@ Använd följande sökväg och frågeparametrar för att identifiera kunden och 
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                                 |
 |-------------|--------|----------|-------------------------------------------------------------|
-| kund-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.       |
-| MPN-ID      | int    | Yes      | Ett Microsoft Partner Network-ID som identifierar partnern. |
+| kund-ID | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.       |
+| mpn-id      | int    | Ja      | Ett Microsoft Partner Network-ID som identifierar partnern. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -113,11 +108,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten samlingen av [prenumerations](subscription-resources.md) resurser.
+Om det lyckas innehåller svarstexten samlingen [prenumerationsresurser.](subscription-resources.md)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

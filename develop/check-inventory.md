@@ -1,35 +1,31 @@
 ---
-title: Kontrol lera inventering
-description: 'Lär dig hur du använder API: er för partner Center för att kontrol lera inventeringen för en bestämd uppsättning katalog objekt. Du kan göra detta för att identifiera en kunds produkter eller SKU: er.'
+title: Kontrollera inventering
+description: Lär dig hur du använder Partner Center-API:er för att kontrollera inventeringen för en specifik uppsättning katalogobjekt. Du kan göra detta för att identifiera en kunds produkter eller SKU:er.
 ms.date: 05/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6921760abc0b95aff820467e84b3e8e9435731cd
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: b982dbd7e5e10d454ef87a1e750546ea50eb8438
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97770086"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974088"
 ---
-# <a name="check-the-inventory-of-catalog-items-using-partner-center-apis"></a>Kontrol lera förteckningen över katalog objekt med API: er för partner Center
+# <a name="check-the-inventory-of-catalog-items-using-partner-center-apis"></a>Kontrollera inventeringen av katalogobjekt med partnercenter-API:er
 
-**Gäller för:**
-
-- Partnercenter
-
-Så här kontrollerar du inventeringen för en bestämd uppsättning katalog objekt.
+Så här kontrollerar du lagret för en specifik uppsättning katalogobjekt.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett eller flera produkt-ID: n. Du kan också ange SKU-ID: n.
+- Ett eller flera produkt-ID:er. Du kan också ange SKU-ID:n.
 
-- Eventuell ytterligare kontext som krävs för att verifiera inventeringen av de SKU: er som refereras av de tillhandahållna produkt-eller SKU-ID: n. Dessa krav kan variera beroende på typ av produkt/SKU och kan fastställas från [SKU: s](product-resources.md#sku) **InventoryVariables** -egenskap.
+- Eventuell ytterligare kontext som behövs för att verifiera inventeringen av de SKU:er som refereras av de tillhandahållna produkt-/SKU-ID:erna. Dessa krav kan variera beroende på typ av produkt/SKU och kan fastställas från [SKU:ns](product-resources.md#sku) **egenskap InventoryVariables.**
 
 ## <a name="c"></a>C\#
 
-Om du vill kontrol lera inventeringen skapar du ett [InventoryCheckRequest](product-resources.md#inventorycheckrequest) -objekt med ett [InventoryItem](product-resources.md#inventoryitem) -objekt för varje objekt som ska kontrol leras. Använd sedan en **IAggregatePartner. Extensions** -accessor, omfånget till **produkten** och välj sedan landet med **ByCountry ()-** metoden. Anropa slutligen metoden **CheckInventory ()** med **InventoryCheckRequest** -objektet.
+Om du vill kontrollera inventeringen skapar du [ett InventoryCheckRequest-objekt](product-resources.md#inventorycheckrequest) med hjälp av [ett InventoryItem-objekt](product-resources.md#inventoryitem) för varje objekt som ska kontrolleras. Använd sedan en **åtkomstor för IAggregatePartner.Extensions,** begränsa den till **Produkt** och välj sedan land med hjälp av **metoden ByCountry().** Anropa slutligen metoden **CheckInventory()** med ditt **InventoryCheckRequest-objekt.**
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -56,27 +52,27 @@ var inventoryResults = partnerOperations.Extensions.Product.ByCountry(countryCod
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                                                                                              |
 |----------|------------------------------------------------------------------------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Extensions/Product/checkInventory? land = {Country-Code} HTTP/1.1                        |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/extensions/product/checkInventory?country={country-code} HTTP/1.1                        |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande frågeparameter för att kontrol lera inventeringen.
+Använd följande frågeparameter för att kontrollera inventeringen.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| landskod           | sträng   | Yes      | Ett land/region-ID.                                            |
+| landskod           | sträng   | Ja      | Ett lands-/regions-ID.                                            |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Information om inventerings begär Anden som består av en [InventoryCheckRequest](product-resources.md#inventorycheckrequest) -resurs som innehåller en eller flera [InventoryItem](product-resources.md#inventoryitem) -resurser.
+Information om inventeringsbegäran som består av en [InventoryCheckRequest-resurs](product-resources.md#inventorycheckrequest) som innehåller en eller flera [InventoryItem-resurser.](product-resources.md#inventoryitem)
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -95,14 +91,14 @@ Content-Type: application/json
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en samling [InventoryItem](product-resources.md#inventoryitem) -objekt som är ifyllda med begränsnings informationen, om tillämpligt.
+Om det lyckas innehåller svarstexten en samling [InventoryItem-objekt](product-resources.md#inventoryitem) ifyllda med begränsningsinformationen, om tillämpligt.
 
 >[!NOTE]
->Om en InventoryItem för indata representerar ett objekt som inte kunde hittas i katalogen, kommer det inte att tas med i insamlingen av utdata.
+>Om indatan InventoryItem representerar ett objekt som inte kunde hittas i katalogen inkluderas det inte i utdatasamlingen.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

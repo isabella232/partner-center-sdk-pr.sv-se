@@ -1,40 +1,35 @@
 ---
 title: Ändra kvantiteten för en prenumeration
-description: 'Lär dig hur du använder API: er för partner Center för att ändra antalet licenser för en kund prenumeration. Du kan också göra detta på instrument panelen för partner Center.'
+description: Lär dig hur du använder Partner Center-API:er för att ändra antalet licenser för en kundprenumeration. Du kan också göra detta på instrumentpanelen i Partnercenter.
 ms.date: 06/05/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b9b781c50895aa3a14819bec43fcca1e931e3b30
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: d57ece4dd19ef2852f39130916222c54a9ccc85a
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97770071"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974105"
 ---
-# <a name="change-the-quantity-of-licenses-in-a-customer-subscription"></a>Ändra antalet licenser i en kund prenumeration
+# <a name="change-the-quantity-of-licenses-in-a-customer-subscription"></a>Ändra antalet licenser i en kundprenumeration
 
-**Gäller för:**
-
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Uppdaterar en [prenumeration](subscription-resources.md) för att öka eller minska antalet licenser.
 
-På instrument panelen för partner Center kan du utföra den här åtgärden genom [att först välja en kund](get-a-customer-by-name.md). Välj sedan den prenumeration i fråga som du vill byta namn på. Slutför genom att ändra värdet i fältet **kvantitet** och sedan **Skicka.**
+På instrumentpanelen i Partnercenter kan du utföra den här åtgärden genom att först [välja en kund.](get-a-customer-by-name.md) Välj sedan den prenumeration som du vill byta namn på. Slutför genom att ändra värdet i **fältet Kvantitet** och sedan välja **Skicka.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID.
 
 ## <a name="c"></a>C\#
 
-Om du vill ändra antalet för en kund prenumeration ska du först [Hämta prenumerationen](get-a-subscription-by-id.md)och sedan ändra prenumerationens egenskap för [**kvantitet**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.quantity) . När ändringen har gjorts använder du din **IAggregatePartner. Customers** -samling och anropar metoden **ById ()** . Anropa sedan egenskapen [**Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av metoden [**ById ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) . Sedan avslutar du genom att anropa **patch-metoden ()** .
+Om du vill ändra kvantiteten för en kunds prenumeration hämtar du [först prenumerationen](get-a-subscription-by-id.md)och ändrar sedan prenumerationens [**egenskap Quantity.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.quantity) När ändringen har gjorts använder du samlingen **IAggregatePartner.Customers** och anropar **metoden ById().** Anropa sedan egenskapen [**Prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Avsluta sedan med att anropa **metoden Patch().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -51,32 +46,32 @@ selectedSubscription.Quantity++;
 var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscription.Id).Patch(selectedSubscription);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample- **klass**: UpdateSubscription.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** PartnerSDK.FeatureSample-klass: UpdateSubscription.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod    | URI för förfrågan                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **9.0a** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Subscriptions/{ID-for-Subscription} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Den här tabellen visar den obligatoriska Frågeparametern för att ändra antalet för prenumerationen.
+I den här tabellen visas den frågeparameter som krävs för att ändra antalet för prenumerationen.
 
 | Namn                    | Typ     | Obligatorisk | Beskrivning                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **kund-ID för klient organisation**  | **guid** | Y        | Ett GUID som motsvarar kunden.     |
-| **ID för-prenumeration** | **guid** | Y        | Ett GUID som motsvarar prenumerationen. |
+| **kund-klient-id**  | **guid** | Y        | Ett GUID som motsvarar kunden.     |
+| **id-for-subscription** | **guid** | Y        | Ett GUID som motsvarar prenumerationen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-En fullständig **prenumerations** resurs krävs i begär ande texten. Se till att egenskapen **kvantitet** har uppdaterats.
+En fullständig **prenumerationsresurs** krävs i begärandetexten. Kontrollera att egenskapen **Quantity** har uppdaterats.
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -115,19 +110,19 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en status kod för **http-status 200** och uppdaterade [prenumerations resurs](subscription-resources.md)  egenskaper i svars texten.
+Om det lyckas returnerar den här metoden **en HTTP-statuskod 200** och uppdaterade [prenumerationsresursegenskaper](subscription-resources.md)  i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar returnerar en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa status koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar returnerar en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa statuskod, feltyp och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
-När korrigerings åtgärden tar längre tid än den förväntade tiden skickar Partner Center en **http-status 202-** status kod och ett plats huvud som pekar på varifrån prenumerationen ska hämtas. Du kan fråga prenumerationen med jämna mellanrum för att övervaka ändringar av status och antal.
+När korrigeringsåtgärden tar längre tid än förväntat skickar Partnercenter statuskoden **HTTP-status 202** och ett platshuvud som pekar på var prenumerationen ska hämtas. Du kan köra frågor mot prenumerationen regelbundet för att övervaka status- och kvantitetsändringar.
 
-### <a name="response-examples"></a>Svars exempel
+### <a name="response-examples"></a>Svarsexempel
 
-#### <a name="response-example-1"></a>Svars exempel 1
+#### <a name="response-example-1"></a>Svarsexempel 1
 
-Lyckad begäran med **http-status 200** status kod:
+Lyckad begäran med **statuskoden HTTP-status 200:**
 
 ```http
 PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<subscriptionID> HTTP/1.1
@@ -180,9 +175,9 @@ Connection: Keep-Alive
 }
 ```
 
-#### <a name="response-example-2"></a>Svars exempel 2
+#### <a name="response-example-2"></a>Svarsexempel 2
 
-Lyckad begäran med **http-status 202** status kod:
+Lyckad begäran med **statuskoden HTTP-status 202:**
 
 ```http
 PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<subscriptionID> HTTP/1.1

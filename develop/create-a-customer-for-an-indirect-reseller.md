@@ -1,45 +1,41 @@
 ---
 title: Skapa en kund för en indirekt återförsäljare
-description: 'Lär dig hur en indirekt Provider kan använda API: er i Partner Center för att skapa en kund för en indirekt åter försäljare.'
+description: Lär dig hur en indirekt leverantör kan använda Partner Center-API:er för att skapa en kund för en indirekt återförsäljare.
 ms.date: 04/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 0de40d08e9fc2b9cf87b7c3c41214fdd34ad26f3
-ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
+ms.openlocfilehash: 9a6218aeb61f3775c89d34b4d57a17741e3a1e93
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106274588"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973748"
 ---
-# <a name="create-a-customer-for-an-indirect-reseller-using-partner-center-apis"></a>Skapa en kund för en indirekt åter försäljare med hjälp av API: er för partner Center
+# <a name="create-a-customer-for-an-indirect-reseller-using-partner-center-apis"></a>Skapa en kund för en indirekt återförsäljare med partnercenter-API:er
 
-**Gäller för:**
-
-- Partnercenter
-
-En indirekt leverantör kan skapa en kund för en indirekt åter försäljare.
+En indirekt leverantör kan skapa en kund för en indirekt återförsäljare.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
 
-- Klient-ID för den indirekta åter försäljaren.
+- Klientorganisations-ID för den indirekta återförsäljaren.
 
-- Den indirekta åter försäljaren måste ha ett partnerskap med den indirekta providern.
+- Den indirekta återförsäljaren måste ha ett samarbete med den indirekta leverantören.
 
 ## <a name="c"></a>C\#
 
-Så här lägger du till en ny kund för en indirekt åter försäljare:
+Så här lägger du till en ny kund för en indirekt återförsäljare:
 
-1. Instansiera [**ett nytt**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer) kundobjekt och instansiera sedan och fyll i [**BillingProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile) och [**CompanyProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customercompanyprofile). Se till att tilldela ID för den indirekta åter försäljaren till [**AssociatedPartnerID**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer.associatedpartnerid) -egenskapen.
+1. Skapa en instans av [**ett nytt**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer) kundobjekt och skapa en instans av och fyll i [**BillingProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile) [**och CompanyProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customercompanyprofile). Se till att tilldela det indirekta återförsäljar-ID:t till [**egenskapen AssociatedPartnerID.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer.associatedpartnerid)
 
-2. Använd egenskapen [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) för att hämta ett gränssnitt till kund samlings åtgärder.
+2. Använd egenskapen [**IAggregatePartner.Customers för**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) att hämta ett gränssnitt för kundinsamlingsåtgärder.
 
-3. Anropa [**create**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.create) -eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.createasync) -metoden för att skapa kunden.
+3. Anropa metoden [**Create**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.create) eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.createasync) för att skapa kunden.
 
-### <a name="c-example"></a>C- \# exempel
+### <a name="c-example"></a>\#C-exempel
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -77,54 +73,54 @@ var customerToCreate = new Customer()
 var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: CreateCustomerforIndirectReseller. CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: CreateCustomerforIndirectReseller.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                       |
 |----------|-------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers http/1.1 |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers HTTP/1.1 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-I den här tabellen beskrivs de egenskaper som krävs i begär ande texten.
+I den här tabellen beskrivs de obligatoriska egenskaperna i begärandetexten.
 
 | Namn                                          | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                                                                                                                                                                                           |
 |-----------------------------------------------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [BillingProfile](#billing-profile)             | objekt | Ja      | Kundens fakturerings profil information.                                                                                                                                                                                                                                                                                                           |
-| [CompanyProfile](#company-profile)             | objekt | Ja      | Kundens företags profil information.                                                               
-| [AssociatedPartnerId](customer-resources.md#customer) | sträng | Ja      | ID för den indirekta åter försäljaren. Den indirekta åter försäljaren som anges av det ID som anges här måste ha ett partnerskap med den indirekta providern eller så Miss förfrågans begäran. Observera också att om AssociatedPartnerId-värdet inte anges skapas kunden som en direkt kund för den indirekta leverantören i stället för den indirekta åter försäljaren. |
-|Domain| Sträng| Ja|Kundens domän namn, till exempel contoso.onmicrosoft.com.|
-|organizationRegistrationNumber|    sträng|Ja|     Kundens organisations registrerings nummer (kallas även för INN-nummer i vissa länder). Krävs endast för kundens företag/organisation i följande länder: Armenien (AM), Azerbajdzjan (AZ). Vitryssland (BY), Ungern (HU), Kazakstan (KZ), Kirgizistan (KG), Moldavien (MD), Ryssland (RU), Tadzjikistan (TJ), Uzbekistan (UZ), Ukraina (UA), Indien, Brasilien, Sydafrika, Polen, Förenade Arabemiraten, Saudiarabien, Turkiet, Thailand, Vietnam, Myanmar, Irak, Sydsudan och Venezuela. För kundens företag/organisation i andra länder är detta ett valfritt fält.|
+| [BillingProfile](#billing-profile)             | objekt | Ja      | Kundens faktureringsprofilinformation.                                                                                                                                                                                                                                                                                                           |
+| [CompanyProfile](#company-profile)             | objekt | Ja      | Kundens företagsinformation.                                                               
+| [AssociatedPartnerId](customer-resources.md#customer) | sträng | Ja      | Det indirekta återförsäljar-ID:t. Den indirekta återförsäljaren som anges av det ID som anges här måste ha ett samarbete med den indirekta leverantören, annars misslyckas begäran. Observera också att om värdet AssociatedPartnerId inte anges skapas kunden som en direkt kund till den indirekta leverantören i stället för den indirekta återförsäljaren. |
+|Domain| Sträng| Ja|Kundens domännamn, till exempel contoso.onmicrosoft.com.|
+|organizationRegistrationNumber|    sträng|Ja|     Kundens organisationsregistreringsnummer (kallas även INN-nummer i vissa länder). Krävs endast för kundens företag/organisation som finns i följande länder: Förargiga(AM), Gör(AZ), Gör(BY), För kunden(HU), För kundens företag/organisation som finns i följande länder: Förargande(AM), Förargare(AM), Förargare (AZ), För kunden(BY), För kunden krävs att du väljer Att göra så här: Kyrgyzstan(KG), Kyrgyzstan(KG), Hubar(MD), Ryssland(RU), Kerikistan (TJ), Kerten (CUS), Kerten(1996), Hubs(1996), 1996 (1996). För kundens företag/organisation som finns i andra länder är detta ett valfritt fält.|
 
 
 
 #### <a name="billing-profile"></a>Faktureringsprofil
 
-I den här tabellen beskrivs minimi kraven för fält från [CustomerBillingProfile](customer-resources.md#customerbillingprofile) -resursen som behövs för att skapa en ny kund.
+I den här tabellen beskrivs de minsta obligatoriska fälten från [resursen CustomerBillingProfile](customer-resources.md#customerbillingprofile) som krävs för att skapa en ny kund.
 
 | Namn             | Typ                                     | Obligatorisk | Beskrivning                                                                                                                                                                                                     |
 |------------------|------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | e-post            | sträng                                   | Ja      | Kundens e-postadress.                                                                                                                                                                                   |
-| substrat          | sträng                                   | Ja      | Deras föredragna kultur för kommunikation och valuta, till exempel "en-US". Se de [språk som stöds av Partner Center och nationella inställningar](partner-center-supported-languages-and-locales.md) för de kulturer som stöds. |
-| language         | sträng                                   | Ja      | Standard språket. Två characters språk koder (till exempel `en` eller `fr` ) stöds.                                                                                                                                |
-| företags \_ namn    | sträng                                   | Ja      | Registrerat företags-/organisations namn.                                                                                                                                                                       |
-| standard \_ adress | [Adress](utility-resources.md#address) | Ja      | Den registrerade adressen för kundens företag/organisation. Se [adress](utility-resources.md#address) resursen för information om eventuella längd begränsningar.                                             |
+| Kultur          | sträng                                   | Ja      | Deras önskade kultur för kommunikation och valuta, till exempel "en-US". Se [Språk och språk som stöds i Partnercenter för](partner-center-supported-languages-and-locales.md) de kulturer som stöds. |
+| language         | sträng                                   | Ja      | Standardspråket. Två teckenspråkkoder (till `en` exempel `fr` eller ) stöds.                                                                                                                                |
+| \_företagsnamn    | sträng                                   | Ja      | Det registrerade företags-/organisationsnamnet.                                                                                                                                                                       |
+| \_standardadress | [Adress](utility-resources.md#address) | Ja      | Den registrerade adressen för kundens företag/organisation. Se [Adressresurs](utility-resources.md#address) för information om eventuella längdbegränsningar.                                             |
 
-#### <a name="company-profile"></a>Företags profil
+#### <a name="company-profile"></a>Företagsprofil
 
-I den här tabellen beskrivs minimi kraven för fält från [CustomerCompanyProfile](customer-resources.md#customercompanyprofile) -resursen som behövs för att skapa en ny kund.
+I den här tabellen beskrivs de minsta obligatoriska fälten från [resursen CustomerCompanyProfile](customer-resources.md#customercompanyprofile) som krävs för att skapa en ny kund.
 
 | Namn   | Typ   | Obligatorisk | Beskrivning                                                  |
 |--------|--------|----------|--------------------------------------------------------------|
-| domän | sträng | Ja     | Kundens domän namn, till exempel contoso.onmicrosoft.com. |
-| organizationRegistrationNumber | sträng | Är beroende av villkor | Kundens organisations registrerings nummer (kallas även för INN-numret i vissa länder). <br/><br/>Du behöver bara fylla i det här fältet om en kunds företag/organisation finns i följande länder: <br/><br/>-Armenien (AM) <br/>– Azerbajdzjan (AZ)<br/>– Vitryssland (av)<br/>– Ungern (HU)<br/>-Kazakstan (KZ)<br/>– Kirgizistan (KG)<br/>– Moldavien (MD)<br/>– Ryssland (RU)<br/>– Tadzjikistan (TJ)<br/>-Uzbekistan (UZ)<br/>-Ukraina (UA)<br/>– Indien <br/>– Brasilien <br/>-Sydafrika <br/>– Polen <br/>– Förenade Arabemiraten <br/>– Saudiarabien <br/>– Turkiet <br/>– Thailand <br/>– Vietnam <br/>– Myanmar <br/>– Irak <br/>– Sydsudan <br/>-Venezuela<br/> <br/>För kundens företag/organisation i andra länder är detta ett valfritt fält.  |
+| domän | sträng | Ja     | Kundens domännamn, till exempel contoso.onmicrosoft.com. |
+| organizationRegistrationNumber | sträng | Beror på villkor | Kundens organisationsregistreringsnummer (kallas även INN-nummer i vissa länder). <br/><br/>Du behöver bara slutföra det här fältet om en kunds företag/organisation finns i följande länder: <br/><br/>– 10:00 (AM) <br/>– På så vis (AZ)<br/>– På så vis (BY)<br/>– På så vis (HU)<br/>– Förlamning (KZ)<br/>– Kyrgyzstan (KG)<br/>– Så här gör du (MD)<br/>– Ryssland (RU)<br/>–Istikistan (TJ)<br/>–Istan ( CITY)<br/>– Äldsta (UA)<br/>– Indien <br/>– Brasilien <br/>– Sydafrika <br/>– På så vis <br/>– Förenade Arabemiraten <br/>– Saudiarabien <br/>– På så vis <br/>– På så vis <br/>– Vietnam <br/>– På så vis <br/>– På så sätt kan du <br/>– Sydsudan <br/>– På så vis<br/> <br/>För kundens företag/organisation som finns i andra länder är detta ett valfritt fält.  |
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -189,11 +185,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svaret en [kund](customer-resources.md#customer) resurs för den nya kunden.
+Om det lyckas innehåller svaret en [kundresurs](customer-resources.md#customer) för den nya kunden.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Svar har en HTTP-statuskod som anger att det lyckats eller misslyckats och ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

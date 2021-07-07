@@ -4,78 +4,74 @@ description: Så här skapar du en överföring av prenumerationer för en kund.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d5e70cc5b7ce4fcfa715f581a2151f0b8d1922b0
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: d459a0a96912ab27f312bc73af16af2d4fdb518c
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768829"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973714"
 ---
 # <a name="create-a-transfer"></a>Skapa en överföring
 
-**Gäller för:**
-
-- Partnercenter
-
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/transfers http/1.1                    |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/transfers HTTP/1.1                    |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande Sök vägs parameter för att identifiera kunden.
+Använd följande sökvägsparameter för att identifiera kunden.
 
 | Namn            | Typ     | Obligatorisk | Beskrivning                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **kund-ID** | sträng   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
+| **kund-ID** | sträng   | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-I den här tabellen beskrivs egenskaperna för [TransferEntity](transfer-entity-resources.md) i begär ande texten.
+I den här tabellen beskrivs [transferEntity-egenskaperna](transfer-entity-resources.md) i begärandetexten.
 
 | Egenskap              | Typ          | Obligatorisk  | Beskrivning                                                                                |
 |-----------------------|---------------|-----------|--------------------------------------------------------------------------------------------|
 | id                    | sträng        | No    | En transferEntity-identifierare som anges när transferEntity har skapats.                               |
-| createdTime           | DateTime      | No    | Datumet då transferEntity skapades, i datum-/tids format. Används när transferEntity har skapats.      |
-| lastModifiedTime      | DateTime      | No    | Datumet då transferEntity senast uppdaterades, i datum-/tids format. Används när transferEntity har skapats. |
-| lastModifiedUser      | sträng        | No    | Användaren som senast uppdaterade transferEntity. Används när transferEntity har skapats.                          |
-| customerName          | sträng        | No    | Valfritt. Namnet på kunden vars prenumerationer överförs.                                              |
-| customerTenantId      | sträng        | No    | Ett GUID-formaterat kund-ID som identifierar kunden. Används när transferEntity har skapats.         |
+| createdTime           | DateTime      | Inga    | Det datum då transferEntity skapades i datum/tid-format. Tillämpas när transferEntity har skapats.      |
+| lastModifiedTime      | DateTime      | Inga    | Det datum då transferEntity senast uppdaterades, i datum/tid-format. Tillämpas när transferEntity har skapats. |
+| lastModifiedUser      | sträng        | No    | Den användare som senast uppdaterade transferEntity. Tillämpas när transferEntity har skapats.                          |
+| customerName          | sträng        | No    | Valfritt. Namnet på den kund vars prenumerationer överförs.                                              |
+| customerTenantId      | sträng        | No    | Ett GUID-formaterat kund-ID som identifierar kunden. Tillämpas när transferEntity har skapats.         |
 | partnertenantid       | sträng        | No    | Ett GUID-formaterat partner-ID som identifierar partnern.                                                                   |
-| sourcePartnerName     | sträng        | No    | Valfritt. Namnet på partnerns organisation som initierar överföringen.                                           |
-| sourcePartnerTenantId | sträng        | Yes   | Ett GUID-formaterat partner-ID som identifierar den partner som initierar överföringen.                                           |
-| targetPartnerName     | sträng        | No    | Valfritt. Namnet på partnerns organisation som överföringen riktas mot.                                         |
-| targetPartnerTenantId | sträng        | Yes   | Ett GUID-formaterat partner-ID som identifierar den partner som överföringen riktas mot.                                  |
-| Rad objekt             | Objekt mat ris | Yes| En matris med [TransferLineItem](transfer-entity-resources.md#transferlineitem) -resurser.                                   |
-| status                | sträng        | No    | Status för transferEntity. Möjliga värden är "aktiva" (kan tas bort/skickas) och "slutfört" (har redan slutförts). Används när transferEntity har skapats.|
+| sourcePartnerName     | sträng        | No    | Valfritt. Namnet på den partnerorganisation som initierar överföringen.                                           |
+| sourcePartnerTenantId | sträng        | Ja   | Ett GUID-formaterat partner-ID som identifierar den partner som initierar överföringen.                                           |
+| targetPartnerName     | sträng        | No    | Valfritt. Namnet på den partnerorganisation som överföringen är riktad mot.                                         |
+| targetPartnerTenantId | sträng        | Ja   | Ett GUID-formaterat partner-ID som identifierar den partner som överföringen är riktad mot.                                  |
+| lineItems             | Matris med objekt | Ja| En matris med [TransferLineItem-resurser.](transfer-entity-resources.md#transferlineitem)                                   |
+| status                | sträng        | No    | Status för transferEntity. Möjliga värden är "Aktiv" (kan tas bort/skickas) och "Slutförd" (har redan slutförts). Tillämpas när transferEntity har skapats.|
 
-I den här tabellen beskrivs egenskaperna för [TransferLineItem](transfer-entity-resources.md#transferlineitem) i begär ande texten.
+I den här tabellen beskrivs [transferLineItem-egenskaperna](transfer-entity-resources.md#transferlineitem) i begärandetexten.
 
 |      Egenskap       |            Typ             | Obligatorisk | Beskrivning                                                                                     |
 |---------------------|-----------------------------|----------|-------------------------------------------------------------------------------------------------|
-| id                   | sträng                     | No       | En unik identifierare för ett överförings rads objekt. Används när transferEntity har skapats.|
-| subscriptionId       | sträng                     | Yes      | Prenumerations-ID.                                                                         |
-| quantity             | int                        | No       | Antalet licenser eller instanser.                                                                 |
-| billingCycle         | Objekt                     | No       | Typ av fakturerings cykel som angetts för den aktuella perioden.                                                |
-| friendlyName         | sträng                     | No       | Valfritt. Det egna namnet på det objekt som definieras av partnern för att hjälpa disambiguate.                |
-| partnerIdOnRecord    | sträng                     | No       | Partner on Record (MPNID) på köpet som inträffar när överföringen godkänns.              |
-| offerId              | sträng                     | No       | Erbjudande-ID.                                                                                |
-| addonItems           | Lista över **TransferLineItem** -objekt | No | En samling transferEntity rad objekt för tillägg som ska överföras tillsammans med den bas prenumeration som överförs. Används när transferEntity har skapats.|
-| transferError        | sträng                     | No       | Tillämpas efter att transferEntity accepterats i händelse av ett fel.                                        |
+| id                   | sträng                     | No       | En unik identifierare för ett överföringsradsobjekt. Tillämpas när transferEntity har skapats.|
+| subscriptionId       | sträng                     | Ja      | Prenumerationsidentifieraren.                                                                         |
+| quantity             | int                        | Inga       | Antalet licenser eller instanser.                                                                 |
+| billingCycle         | Objekt                     | Inga       | Den typ av faktureringsperiod som angetts för den aktuella perioden.                                                |
+| friendlyName         | sträng                     | No       | Valfritt. Det egna namnet för det objekt som definierats av partnern för att undvika tvetydighet.                |
+| partnerIdOnRecord    | sträng                     | No       | PartnerId på post (MPN-ID) för köpet som inträffar när överföringen godkänns.              |
+| offerId              | sträng                     | No       | Erbjudandeidentifieraren.                                                                                |
+| addonItems           | Lista över **TransferLineItem-objekt** | Inga | En samling transferEntity-radobjekt för addons som ska överföras tillsammans med basprenumerationen som överförs. Tillämpas när transferEntity har skapats.|
+| transferError        | sträng                     | No       | Tillämpas efter överföringEntity godkänns om det finns ett fel.                                        |
 | status               | sträng                     | No       | Status för lineitem i transferEntity.                                                    |
 
 ### <a name="request-example"></a>Exempel på begäran
@@ -109,11 +105,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden den ifyllda [TransferEnity](transfer-entity-resources.md) -resursen i svars texten.
+Om det lyckas returnerar den här metoden den [ifyllda TransferEnity-resursen](transfer-entity-resources.md) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

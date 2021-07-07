@@ -1,137 +1,132 @@
 ---
 title: Verktygsresurser
-description: 'Partner Center REST API innehåller många resurser som beskriver generella data modeller som används i SDK: n.'
+description: PartnerCenter-REST API innehåller många resurser som beskriver datamodeller för generell användning som används i hela SDK:n.
 ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 115b0508f956c4b60e4db53193ef2585fa0c9a34
-ms.sourcegitcommit: 204e518e794b6b076a17488ee9ca1aaaa4beaaec
+ms.openlocfilehash: 095cf36d47b147eb6df28d8747889e218c270659
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106103988"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529672"
 ---
 # <a name="utility-resources"></a>Verktygsresurser
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Partner Center REST API innehåller många resurser som beskriver generella data modeller som används i SDK: n.
+PartnerCenter-REST API innehåller många resurser som beskriver datamodeller för generell användning som används i hela SDK:n.
 
 ## <a name="address"></a>Adress
 
-Adress som ska användas för kund-eller partner profilerna. Mer information om format och egenskaper som stöds i olika länder/regioner finns i avsnittet [Hämta adress format regler per marknad](get-market-specific-validation-data.md).
+Adress som ska användas för kund- eller partnerprofiler. Mer information om de format och egenskaper som stöds i olika länder/regioner finns i [Hämta regler för adressformatering efter marknad.](get-market-specific-validation-data.md)
 
 | Egenskap     | Typ   | Längd (min, max) | Beskrivning                                                                                      |
 |--------------|--------|-------------------|--------------------------------------------------------------------------------------------------|
-| AddressLine1 | sträng | (1, 200)          | Den första raden i adressen.                                                                   |
+| AddressLine1 | sträng | (1, 200)          | Den första adressraden.                                                                   |
 | AddressLine2 | sträng | (0, 200)          | Den andra raden i adressen. Den här egenskapen är valfri.                                       |
 | City         | sträng | saknas               | Staden.                                                                                        |
-| Tillstånd        | sträng | (0, 2)            | Status.                                                                                       |
-| Postnummer   | sträng | saknas               | POST nummer.                                                                     |
-| Land      | sträng | (2, 2)            | Land/region i ISO-format för landskod.                                                   |
+| Tillstånd        | sträng | (0, 2)            | Tillståndet.                                                                                       |
+| Postnummer   | sträng | saknas               | Postnummer.                                                                     |
+| Land      | sträng | (2, 2)            | Land/region i ISO-landskodformat.                                                   |
 | Region       | sträng | saknas               | Regionen.                                                                                      |
 | FirstName    | sträng | (1, 50)           | Förnamnet på en kontakt på kundens företag/organisation.                              |
-| MiddleName   | sträng | (1, 50)           | Det mittersta namnet på en kontakt på kundens företag/organisation. Den här egenskapen är valfri.  |
-| LastName     | sträng | (1, 50)           | Efter namnet på en kontakt på kundens företag/organisation.                               |
-| PhoneNumber  | sträng | saknas               | Telefonnumret till en kontakt på kundens företag/organisation. Den här egenskapen är valfri.|
-|PhoneNumber|sträng|saknas|Telefonnumret till en kontakt på kundens företag/organisation. I kund profil är den här egenskapen obligatorisk för kundens företag/organisation i följande länder: Armenien (AM), Azerbajdzjan (AZ). Vitryssland (BY), Ungern (HU), Kazakstan (KZ), Kirgizistan (KG), Moldavien (MD), Ryssland (RU), Tadzjikistan (TJ), Uzbekistan (UZ), Ukraina (UA), Indien, Brasilien, Sydafrika, Polen, Förenade Arabemiraten, Saudiarabien, Turkiet, Thailand, Vietnam, Myanmar, Irak, Sydsudan och Venezuela. Annars är detta valfritt..|
+| MiddleName   | sträng | (1, 50)           | Mellannamnet på en kontakt på kundens företag/organisation. Den här egenskapen är valfri.  |
+| LastName     | sträng | (1, 50)           | Efternamnet på en kontakt på kundens företag/organisation.                               |
+| PhoneNumber  | sträng | saknas               | Telefonnummer till en kontakt på kundens företag/organisation. Den här egenskapen är valfri.|
+|PhoneNumber|sträng|saknas|Telefonnummer till en kontakt på kundens företag/organisation. I kundprofilen är den här egenskapen obligatorisk för kundens företag/organisation som finns i följande länder: Gör(AM), Gör(AZ), Gör(BY), Gör(BY), Arv(KZ), Kyrgyzstan(KG), Hubs(MD), Ryssland(RU), Kerikistan(TJ), Hubs(CUS), Kerten (UA)), Indien, Brasilien, Sydafrika, Schweiz, Förenade Arabemiraten, Saudiarabien, Anda, Andre, Huven, Etaa, Vietnam, Dos, SouthUdan och Katalys. Annars är detta valfritt.|
 
 
 ## <a name="contact"></a>Kontakt
 
-Beskriver kontakt information för en viss individ.
+Beskriver kontaktinformation för en viss person.
 
 | Egenskap    | Typ   | Beskrivning                  |
 |-------------|--------|------------------------------|
 | FirstName   | sträng | Kontaktens förnamn.    |
-| LastName    | sträng | Kontaktens efter namn.     |
+| LastName    | sträng | Kontaktens efternamn.     |
 | E-post       | sträng | Kontaktens e-postadress. |
 | PhoneNumber | sträng | Kontaktens telefonnummer.  |
 
 ## <a name="fieldfilter"></a>FieldFilter
 
-Beskriver ett filter som kan tillämpas på Sök resultat.
+Beskriver ett filter som kan tillämpas på sökresultat.
 
 | Egenskap | Typ   | Beskrivning                                                                                                                                                                                        |
 |----------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Operator | sträng | Filter operatorn: "är lika med", "är \_ lika med", "större \_ än", "större \_ än \_ eller \_ lika med", "mindre \_ än", "mindre \_ än \_ eller \_ lika med", "under sträng", ",", "eller", "börjar \_ med", " \_ börjar inte \_ med". |
+| Operator | sträng | Filteroperatorn: "equals", "not \_ equals", \_ "greater than", "greater than or \_ \_ \_ equals", "less \_ than", "less \_ than or \_ \_ equals", "substring", "and", "or", "starts \_ with", "not \_ starts \_ with". |
 
 ## <a name="fileinfo"></a>FileInfo
 
-Representerar en extern fil som överförts till Partner Center.
+Representerar en extern fil som laddats upp till Partnercenter.
 
 | Egenskap                 | Typ   | Beskrivning                                   |
 |--------------------------|--------|-----------------------------------------------|
-| Kommentar                  | sträng | En kommentar som är associerad med fil uppladdningen.    |
-| FileExtension            | sträng | Fil namns tillägget.                           |
-| FileNameWithoutExtension | sträng | Filens namn, tillägget ingår inte. |
-| Storlek                 | long   | Filens storlek.                         |
-| Id                       | sträng | Unikt ID för fil uppladdning.            |
+| Kommentar                  | sträng | En kommentar som är associerad med filuppladdningen.    |
+| FileExtension            | sträng | Filnamnstillägget.                           |
+| FileNameWithoutExtension | sträng | Namnet på filen, tillägget ingår inte. |
+| Filstorlek                 | long   | Filens storlek.                         |
+| Id                       | sträng | Det unika ID:t för filuppladdningen.            |
 
 ## <a name="link"></a>Länk
 
-Innehåller en URI-länk och associerad information.
+Innehåller en URI-länk och tillhörande information.
 
 | Egenskap | Typ                   | Beskrivning                        |
 |----------|------------------------|------------------------------------|
-| URI      | sträng                 | URI: n.                           |
-| Metod   | sträng                 | Den metod som representeras av URI: n. |
-| Sidhuvuden  | Matris med KeyValuePairs | Länkens sidhuvud.          |
+| URI      | sträng                 | URI:en.                           |
+| Metod   | sträng                 | Metoden som representeras av URI:en. |
+| Sidhuvuden  | Matris med KeyValuePairs | Rubrikerna för länken.          |
 
 ## <a name="passwordprofile"></a>PasswordProfile
 
-Beskriver ett särskilt lösen ord och om lösen ordet måste ändras.
+Beskriver ett specifikt lösenord och om lösenordet måste ändras.
 
 >[!NOTE]
->Stöds inte på Partner Center som drivs av 21Vianet.
+>Stöds inte i Partnercenter som drivs av 21Vianet.
 
 | Egenskap            | Typ                          | Beskrivning                                                            |
 |---------------------|-------------------------------|------------------------------------------------------------------------|
-| Lösenord            | [SecureString](#securestring) | Lösen ordet.                                                          |
-| ForceChangePassword | boolean                       | Anger om lösen ordet måste ändras vid nästa inloggning. |
+| Lösenord            | [SecureString](#securestring) | Lösenordet.                                                          |
+| Forcechangepassword | boolean                       | Anger om lösenordet måste ändras med två eller flera tecken vid nästa inloggning. |
 
 ## <a name="resourcelinks"></a>ResourceLinks
 
-Innehåller en lista med länkar till en resurs.
+Innehåller en lista över länkar för en resurs.
 
 | Egenskap   | Typ                                      | Beskrivning                                        |
 |------------|-------------------------------------------|----------------------------------------------------|
-| Själv       | [Länk](#link)                             | Själv URI.                                      |
+| Själv       | [Länk](#link)                             | Själv-URI:t.                                      |
 | Nästa       | [Länk](#link)                             | Nästa sida med objekt.                            |
 | Föregående   | [Länk](#link)                             | Föregående sida med objekt.                        |
-| Attribut | [ResourceAttributes](#resourceattributes) | De metadata-attribut som motsvarar användaren. |
+| Attribut | [ResourceAttributes](#resourceattributes) | Metadataattributen som motsvarar användaren. |
 
 ## <a name="resourceattributes"></a>ResourceAttributes
 
-Innehåller metadata för attribut för en resurs.
+Innehåller attributmetadata för en resurs.
 
 | Egenskap   | Typ   | Beskrivning                                 |
 |------------|--------|---------------------------------------------|
-| Etag       | sträng | Etag, även kallat objekt version. |
-| ObjectType | sträng | Typ av objekt för bas resursen.    |
+| Etag       | sträng | etag, även kallat objektversion. |
+| ObjectType | sträng | Typ av objekt för basresursen.    |
 
 ## <a name="securestring"></a>SecureString
 
-Lagrar skyddad information, till exempel ett lösen ord.
+Lagrar skyddad information, till exempel ett lösenord.
 
 | Egenskap | Typ | Beskrivning                       |
 |----------|------|-----------------------------------|
-| Längd   | int  | Den skyddade strängens längd. |
+| Längd   | int  | Längden på den skyddade strängen. |
 
 ## <a name="validationcode"></a>ValidationCode
 
-Representerar en partners verifierings kod för den offentliga community-molnet.
+Representerar en partners Government Community Cloud verifieringskod.
 
 | Egenskap         | Typ         | Beskrivning                                                              |
 |------------------|--------------|--------------------------------------------------------------------------|
-| Partner        | GUID         | Partner-ID                                                       |
-| OrganizationName | sträng       | Organisations namnet som angavs under validerings processen             |
-| ValidationId     | int          | En unik identifierare för verifiering                                       |
-| MaxCreates       | null-bara heltal | Maximalt antal kunder som får skapas med den här verifierings koden    |
-| RemainingCreates | null-bara heltal | Återstående kund skapar under detta validerings-ID                      |
-| ETag             | sträng       | Den angivna versionen av den här resursen. Ändringar när resursen ändras. |
+| PartnerId        | GUID         | Partneridentifierare                                                       |
+| OrganizationName | sträng       | Organisationsnamnet som angavs under verifieringsprocessen             |
+| ValidationId     | int          | En unik identifierare för validering                                       |
+| MaxSkapar       | nullable int | Det högsta antal kunder som får skapas med den här valideringskoden    |
+| ÅterståendeSkapar | nullable int | Återstående kund skapas under det här validerings-ID:t                      |
+| Etag             | sträng       | Den specifika versionen av den här resursen. Ändras när resursen ändras. |

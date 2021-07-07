@@ -1,38 +1,35 @@
 ---
-title: Verifiera en indirekt åter försäljares signerings status för Microsoft partner Agreement
-description: 'Du kan använda AgreementStatus-API: et för att kontrol lera om en indirekt åter försäljare har undertecknat Microsofts partner avtal.'
+title: Verifiera en indirekt återförsäljares Microsoft-partneravtal signeringsstatus
+description: Du kan använda AGREEMENTStatus-API:et för att kontrollera om en indirekt återförsäljare har signerat Microsoft-partneravtal.
 ms.date: 07/24/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fa9480424eccc933bc9c28c3879a195fbd5f2bb1
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: f83acc61624a72354c390905b1250bc021dd39aa
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711914"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529842"
 ---
-# <a name="verify-an-indirect-resellers-microsoft-partner-agreement-signing-status"></a>Verifiera en indirekt åter försäljares signerings status för Microsoft partner Agreement
+# <a name="verify-an-indirect-resellers-microsoft-partner-agreement-signing-status"></a>Verifiera en indirekt återförsäljares Microsoft-partneravtal signeringsstatus
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Du kan kontrol lera om en indirekt åter försäljare har undertecknat Microsoft partner Agreement genom att använda sina Microsoft Partner Network (MPN) ID (PGA/PLA) eller ID för Cloud Solution Provider (CSP) för klient organisation (Microsoft-ID). Du kan använda någon av dessa identifierare för att kontrol lera signerings statusen för Microsoft partner avtalet med **AgreementStatus** -API: et.
+Du kan kontrollera om en indirekt återförsäljare har signerat Microsoft-partneravtal med sitt Microsoft Partner Network-ID (MPN) ID (PGA/PLA) eller Molnlösningsleverantör-klientorganisations-ID (Microsoft ID). Du kan använda någon av dessa identifierare för att kontrollera Microsoft-partneravtal signeringsstatus med hjälp av **AgreementStatus-API:et.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
-- MPN-ID (PGA/PLA) eller CSP klient-ID (Microsoft ID) för den indirekta åter försäljaren. *Du måste använda någon av dessa två identifierare.*
+- MPN-ID (PGA/PLA) eller CSP-klientorganisations-ID (Microsoft ID) för den indirekta återförsäljaren. *Du måste använda någon av dessa två identifierare.*
 
 ## <a name="c"></a>C\#
 
-Så här hämtar du en indirekt åter försäljares signatur status för Microsoft partner Agreement:
+Så här hämtar du Microsoft-partneravtal signaturstatus för en indirekt återförsäljare:
 
-1. Använd din **IAggregatePartner. Compliance** -samling för att anropa egenskapen **AgreementSignatureStatus** .
+1. Använd din **IAggregatePartner.Compliance-samling** för att anropa **agreementSignatureStatus-egenskapen.**
 
-2. Anropa metoden [**Get ()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.get) eller [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.getasync) .
+2. Anropa metoden [**Get()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.get) eller [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,36 +39,36 @@ var agreementSignatureStatusByMpnId = partnerOperations.Compliance.AgreementSign
 var agreementSignatureStatusByTenantId = partnerOperations.Compliance.AgreementSignatureStatus.Get(tenantId: "Enter Tenant Id");
 ```
 
-- Exempel: **[konsol test app](console-test-app.md)**
-- Projekt: **PartnerCenterSDK. FeaturesSamples**
-- Klass: **GetAgreementSignatureStatus. cs**
+- Exempel: **[Konsoltestapp](console-test-app.md)**
+- Project: **PartnerCenterSDK.FeaturesExempel**
+- Klass: **GetAgreementSignatureStatus.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod | URI för förfrågan |
 | ------ | ----------- |
-| **TA** | *[{baseURL}](partner-center-rest-urls.md)*/v1/Compliance/{ProgramName}/agreementstatus? mpnId = {mpnId} &tenantId = {tenantId} |
+| **Få** | *[{baseURL}](partner-center-rest-urls.md)*/v1/compliance/{ProgramName}/agreementstatus?mpnId={MpnId}&tenantId={TenantId} |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Du måste ange en av följande två frågeparametrar för att identifiera partnern. Om du inte anger någon av dessa två frågeparametrar visas ett **400-fel (felaktig begäran)** .
+Du måste ange någon av följande två frågeparametrar för att identifiera partnern. Om du inte anger någon av dessa två frågeparametrar får du ett **400-fel (felaktig** begäran).
 
 | Namn | Typ | Obligatorisk | Beskrivning |
 | ---- | ---- | -------- | ----------- |
-| **MpnId** | int | Inga | Ett Microsoft Partner Network-ID (PGA/PLA) som identifierar den indirekta åter försäljaren. |
-| **TenantId** | GUID | Inga | Ett Microsoft-ID som identifierar CSP-kontot för den indirekta åter försäljaren. |
+| **MpnId** | int | Inga | Ett Microsoft Partner Network-ID (PGA/PLA) som identifierar den indirekta återförsäljaren. |
+| **TenantId** | GUID | Inga | Ett Microsoft-ID som identifierar CSP-kontot för den indirekta återförsäljaren. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest](headers.md).
+Mer information finns i [Partner Center REST](headers.md).
 
 ### <a name="request-examples"></a>Exempel på begäran
 
 #### <a name="request-using-mpn-id-pgapla"></a>Begäran med MPN-ID (PGA/PLA)
 
-Följande exempel förfrågan hämtar signerings statusen för den indirekta åter försäljaren från den indirekta åter försäljaren Microsoft Partner Network-ID.
+I följande exempelbegäran hämtar den indirekta återförsäljarens Microsoft-partneravtal signeringsstatus med hjälp av den indirekta återförsäljarens Microsoft Partner Network-ID.
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/compliance/csp/agreementstatus?mpnid=1234567 HTTP/1.1
@@ -83,9 +80,9 @@ X-Locale: en-US
 Host: api.partnercenter.microsoft.com
 ```
 
-#### <a name="request-using-csp-tenant-id"></a>Begäran med CSP-klient-ID
+#### <a name="request-using-csp-tenant-id"></a>Begäran med CSP-klientorganisations-ID
 
-I följande exempel förfrågan hämtas signerings statusen för den indirekta åter försäljaren från den indirekta åter försäljarens CSP-ID (Microsoft ID).
+Följande exempelbegäran hämtar den indirekta återförsäljarens signeringsstatus Microsoft-partneravtal med hjälp av den indirekta återförsäljarens CSP-klientorganisations-ID (Microsoft-ID).
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/compliance/csp/agreementstatus?tenantId=a2898e3a-06ca-454e-a0d0-c73b0ee36bba HTTP/1.1
@@ -99,13 +96,13 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. Fullständig lista finns i REST- [fel i Partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-fel.](error-codes.md)
 
-### <a name="response-example-success"></a>Svars exempel (lyckades)
+### <a name="response-example-success"></a>Svarsexempel (lyckades)
 
-Följande exempel svar visar om den indirekta åter försäljaren har undertecknat Microsofts partner avtal.
+Följande exempelsvar returnerar om den indirekta återförsäljaren har signerat Microsoft-partneravtal.
 
 ```http
 HTTP/1.1 200 OK
@@ -122,13 +119,13 @@ Connection: close
 }
 ```
 
-### <a name="response-examples-failure"></a>Svars exempel (haveri)
+### <a name="response-examples-failure"></a>Svarsexempel (fel)
 
-Du kan få svar som liknar följande exempel när det inte går att returnera signerings statusen för den indirekta åter försäljarens Microsoft-partner avtal.
+Du kan få svar som liknar följande exempel när signeringsstatusen för den indirekta återförsäljarens Microsoft-partneravtal inte kan returneras.
 
-#### <a name="non-guid-formatted-csp-tenant-id"></a>Icke-GUID formaterat CSP-klient-ID
+#### <a name="non-guid-formatted-csp-tenant-id"></a>Icke-GUID-formaterat CSP-klient-ID
 
-Följande exempel svar returneras när CSP-klient-ID: t som du skickade till API: t inte är ett GUID.
+Följande exempelsvar returneras när det CSP-klient-ID som du skickade till API:et inte är ett GUID.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -150,7 +147,7 @@ Connection: close
 
 #### <a name="non-numeric-mpn-id"></a>Icke-numeriskt MPN-ID
 
-Följande exempel svar returneras när MPN-ID (PGA/PLA) som du skickade till API: t inte är numeriskt.
+Följande exempelsvar returneras när det MPN-ID (PGA/PLA) som du skickade till API:et inte är numeriskt.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -170,9 +167,9 @@ Connection: close
 }
 ```
 
-#### <a name="no-mpn-id-or-csp-tenant-id"></a>Inget MPN-ID eller CSP-ID för klient organisation
+#### <a name="no-mpn-id-or-csp-tenant-id"></a>Inget MPN-ID eller CSP-klientorganisations-ID
 
-Följande exempel svar returneras när du inte har skickat ett MPN-ID (PGA/PLA) eller CSP klient-ID till API: et. Du måste skicka en av de två ID-typerna till API: et.
+Följande exempelsvar returneras när du inte har godkänt ett MPN-ID (PGA/PLA) eller CSP-klient-ID till API:et. Du måste skicka en av de två ID-typerna till API:et.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -192,9 +189,9 @@ Connection: close
 }
 ```
 
-#### <a name="both-mpn-id-and-csp-tenant-id-passed"></a>Både MPN-ID och CSP klient-ID skickades
+#### <a name="both-mpn-id-and-csp-tenant-id-passed"></a>Både MPN-ID och CSP-klientorganisations-ID skickades
 
-Följande exempel svar returneras när du skickar både MPN-ID (PGA/PLA) och CSP-klient-ID till API: et. Du måste *bara skicka en* av de två typerna av identifierare till API: et.
+Följande exempelsvar returneras när du skickar både MPN-ID (PGA/PLA) och CSP-klient-ID till API:et. Du får bara *skicka en av* de två identifierartyperna till API:et.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -214,9 +211,9 @@ Connection: close
 }
 ```
 
-#### <a name="csp-indirect-reseller-mpn-id-pgapla-is-either-invalid-or-not-migrated-from-partner-membership-center-to-partner-center"></a>MPN-ID för CSP indirekt åter försäljare (PGA/PLA) är antingen ogiltigt eller inte migrerat från partner medlemskaps Center till Partner Center
+#### <a name="csp-indirect-reseller-mpn-id-pgapla-is-either-invalid-or-not-migrated-from-partner-membership-center-to-partner-center"></a>CSP Indirect Reseller MPN ID (PGA/PLA) är ogiltigt eller migreras inte från Partner Membership Center till Partnercenter
 
-Följande exempel svar returneras när den indirekta åter försäljaren MPN-ID (PGA/PLA) är antingen ogiltig eller inte migreras från partner medlemskaps Center till Partner Center. [Läs mer](https://partner.microsoft.com/resources/detail/migrate-pmc-pc-mpa-guide-pptx)
+Följande exempelsvar returneras när en indirekt återförsäljares MPN-ID (PGA/PLA) skickas är antingen ogiltigt eller inte migreras från Partner Membership Center till PartnerCenter. [Läs mer](https://partner.microsoft.com/resources/detail/migrate-pmc-pc-mpa-guide-pptx)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -238,9 +235,9 @@ Connection: close
 }
 ```
 
-#### <a name="csp-indirect-provider-region-and-csp-indirect-reseller-region-does-not-match"></a>Regionen för den indirekta CSP-providern och den indirekta KRYPTOGRAFIPROVIDERns region stämmer inte överens
+#### <a name="csp-indirect-provider-region-and-csp-indirect-reseller-region-does-not-match"></a>CSP Indirect Provider och CSP Indirect Reseller region matchar inte
 
-Följande exempel svar returneras när regionen för den indirekta åter försäljaren MPN-ID (PGA/PLA) inte matchar regionen för den indirekta providern. [Läs mer](/partner-center/mpa-indirect-provider-faq) om CSP-regioner.
+Följande exempelsvar returneras när regionen för indirekt återförsäljares MPN-ID (PGA/PLA) inte matchar regionen för den indirekta leverantören. [Läs mer om](/partner-center/mpa-indirect-provider-faq) CSP-regioner.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -262,9 +259,9 @@ Connection: close
 }
 ```
 
-#### <a name="csp-indirect-reseller-account-exists-in-partner-center-but-hasnt-signed-the-mpa"></a>Ett indirekt åter försäljar konto för CSP finns i Partner Center men har inte signerat MPA
+#### <a name="csp-indirect-reseller-account-exists-in-partner-center-but-hasnt-signed-the-mpa"></a>CSP Indirect Reseller konto finns i Partnercenter men har inte signerat MPA
 
-Följande exempel svar returneras när CSP-indirekt åter försäljarens konto i Partner Center inte har signerat MPA. [Läs mer](/partner-center/mpa-indirect-provider-faq)
+Följande exempelsvar returneras när CSP Indirect Reseller i Partnercenter inte har signerat MPA. [Läs mer](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -286,9 +283,9 @@ Connection: close
 }
 ```
 
-#### <a name="no-csp-indirect-reseller-account-is-associated-with-the-given-mpn-id"></a>Inget indirekt åter försäljar konto för CSP är associerat med angivet MPN-ID
+#### <a name="no-csp-indirect-reseller-account-is-associated-with-the-given-mpn-id"></a>Inget CSP Indirect Reseller konto är associerat med det angivna MPN-ID:t
 
-Följande exempel svar returneras när Partner Center kan identifiera MPN-ID (PGA/PLA) som skickades i begäran, men det finns ingen CSP-registrering kopplad till angivet MPN-ID (PGA/PLA). [Läs mer](/partner-center/mpa-indirect-provider-faq)
+Följande exempelsvar returneras när Partner Center kan identifiera det MPN-ID (PGA/PLA) som skickades i begäran, men det inte finns någon CSP-registrering kopplad till det angivna MPN-ID:t (PGA/PLA). [Läs mer](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -310,9 +307,9 @@ Connection: close
 }
 ```
 
-#### <a name="invalid-tenant-id"></a>Ogiltigt klient-ID
+#### <a name="invalid-tenant-id"></a>Ogiltigt klientorganisations-ID
 
-Följande exempel svar returneras när ett partner Center inte hittar något konto kopplat till klient-ID: t som skickas i begäran.
+Följande exempelsvar returneras när Partnercenter inte hittar något konto som är kopplat till det klient-ID som skickades i begäran.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -332,9 +329,9 @@ Connection: close
 }
 ```
 
-#### <a name="no-mpa-found-with-the-given-tenant-id"></a>Ingen MPA hittades med angivet klient-ID
+#### <a name="no-mpa-found-with-the-given-tenant-id"></a>Inget MPA hittades med det angivna klientorganisations-ID:t
 
-Följande exempel svar returneras när Partner Center inte kan hitta någon MPA-signatur med angivet klient-ID. [Läs mer](/partner-center/mpa-indirect-provider-faq)
+Följande exempelsvar returneras när Partnercenter inte kan hitta någon MPA-signatur med det angivna klientorganisations-ID:t. [Läs mer](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request

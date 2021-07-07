@@ -1,38 +1,33 @@
 ---
 title: Gå till kassan för en kundvagn
-description: 'Lär dig mer om att ta en titt på en kund i en varukorg med API: er för partner Center. Du kan göra detta för att slutföra en kund order.'
+description: Lär dig hur du checkar ut en order för en kund i kundvagn med hjälp av Partner Center-API:er. Du kan göra detta för att slutföra en kundbeställning.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 094817a34cd29bc96788fcfb6a16610a8192d784
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: 9ee06797602b22a1f8257c94880a2d81e2280f2e
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97770080"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974054"
 ---
-# <a name="checkout-an-order-for-a-customer-in-a-cart"></a>Checka ut en order för en kund i en varukorg
+# <a name="checkout-an-order-for-a-customer-in-a-cart"></a>Checka ut en order för en kund i en kundvagn
 
-**Gäller för:**
-
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Så här checkar du ut en order för en kund i en kundvagn.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Ett kundvagn-ID för en befintlig varukorg.
+- Ett kundvagns-ID för en befintlig kundvagn.
 
 ## <a name="c"></a>C\#
 
-Om du vill checka ut en order för en kund får du en referens till vagnen med hjälp av varukorg och kund-ID. Slutligen kan du anropa **create** -eller **CreateAsync** -funktionerna för att slutföra beställningen.
+Om du vill checka ut en order för en kund hämtar du en referens till kundvagnen med hjälp av kundvagnen och kundidentifieraren. Anropa slutligen funktionerna **Create** eller **CreateAsync** för att slutföra beställningen.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -46,7 +41,7 @@ var cart = partnerOperations.Customers.ById(customerId).Cart.ById(cartId).Checko
 
 [!INCLUDE [Partner Center Java SDK support details](<../includes/java-sdk-support.md>)]
 
-Om du vill checka ut en order för en kund får du en referens till vagnen med hjälp av varukorg och kund-ID. Slutligen kan du anropa **create** -funktionen för att slutföra beställningen.
+Om du vill checka ut en order för en kund hämtar du en referens till kundvagnen med hjälp av kundvagnen och kundidentifieraren. Anropa slutligen **create-funktionen** för att slutföra ordern.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -60,7 +55,7 @@ Cart cart = partnerOperations.getCustomers().byId(customerId).getCart().byId(car
 
 [!INCLUDE [Partner Center PowerShell module support details](<../includes/powershell-module-support.md>)]
 
-Om du vill checka in en order för en kund kan du köra [**Submit-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) för att slutföra beställningen.
+Om du vill checka ut en order för en kund kör [**du Submit-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) för att slutföra beställningen.
 
 ```powershell
 # $customerId
@@ -71,24 +66,24 @@ Submit-PartnerCustomerCart -CartId $cartId -CustomerId $customerId
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/carts/{Cart-ID}/Checkout http/1.1     |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/carts/{cart-id}/checkout HTTP/1.1     |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
-Använd följande Sök vägs parametrar för att identifiera kunden och ange den varukorg som ska checkas ut.
+Använd följande sökvägsparametrar för att identifiera kunden och ange vilken kundvagn som ska checkas ut.
 
 | Namn            | Typ     | Obligatorisk | Beskrivning                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **kund-ID** | sträng   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
-| **kundvagn-ID**     | sträng   | Yes      | Ett GUID-formaterat vagn-ID som identifierar vagnen.                     |
+| **kund-ID** | sträng   | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
+| **cart-id**     | sträng   | Ja      | Ett GUID-formaterat kundvagns-ID som identifierar kundvagnen.                     |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -114,11 +109,11 @@ No-Content-Body
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten den ifyllda [CartCheckoutResult](cart-resources.md#cartcheckoutresult) -resursen.
+Om det lyckas innehåller svarstexten den ifyllda [resursen CartCheckoutResult.](cart-resources.md#cartcheckoutresult)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

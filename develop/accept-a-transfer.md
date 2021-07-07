@@ -1,50 +1,48 @@
 ---
 title: Acceptera en överföring av prenumerationer
-description: Lär dig hur du använder Partner Center REST API för att acceptera en överföring av prenumerationer för en kund. Innehåller syntax för REST-begäran, sidhuvud och REST-svar.
+description: Lär dig hur du använder Partnercenter REST API för att acceptera en överföring av prenumerationer för en kund. Innehåller syntax för REST-begäran, rubriker och REST-svar.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fd9a6788b3dd022470e516ba928a6cd873970e53
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: 762f2106d6173e352bec11936c96bc3a9c9f89cb
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97769963"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025759"
 ---
-# <a name="accept-a-transfer-of-subscriptions-for-a-customer-using-partner-center-rest-apis"></a>Acceptera en överföring av prenumerationer för en kund med hjälp av Partner Center REST-API: er
+# <a name="accept-a-transfer-of-subscriptions-for-a-customer-using-partner-center-rest-apis"></a>Acceptera en överföring av prenumerationer för en kund med hjälp av Partner Center REST API:er
 
-**Gäller för:**
-
-- Partnercenter
+Den här artikeln beskriver hur du använder REST API i Partnercenter för att acceptera överföringen av prenumerationer för en kund. Exemplet innehåller REST-syntax, rubriker och REST-svar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- En överförings identifierare för en befintlig överföring.
+- En överföringsidentifierare för en befintlig överföring.
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/transfers/{transfer-ID}/accept http/1.1                    |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/transfers/{transfer-id}/accept HTTP/1.1                    |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande Sök vägs parameter för att identifiera kunden och ange den överföring som ska godkännas.
+Använd följande sökvägsparameter för att identifiera kunden och ange vilken överföring som ska godkännas.
 
 | Namn            | Typ     | Obligatorisk | Beskrivning                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **kund-ID** | sträng   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
-| **överförings-ID** | sträng   | Yes      | Ett GUID-formaterat överförings-ID som identifierar överföringen.             |
+| **kund-ID** | sträng   | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
+| **transfer-id** | sträng   | Ja      | Ett GUID-formaterat överförings-ID som identifierar överföringen.             |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -63,11 +61,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden den ifyllda [TransferSubmitResult](transfer-entity-resources.md#transfersubmitresult) -resursen i svars texten.
+Om det lyckas returnerar den här metoden den [ifyllda TransferSubmitResult-resursen](transfer-entity-resources.md#transfersubmitresult) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

@@ -1,46 +1,42 @@
 ---
-title: Aktivera en Sandbox-prenumeration för kommersiella Marketplace-produkter
-description: 'Lär dig hur du använder REST-API: er för C/# och partner Center för att aktivera en Sandbox-prenumeration för kommersiella Marketplace-produkter.'
+title: Aktivera en sandbox-prenumeration för produkter på den kommersiella marknadsplatsen
+description: Lär dig hur du använder REST-API:er för C/# och Partner Center för att aktivera en sandbox-prenumeration för produkter på den kommersiella marknadsplatsen.
 ms.date: 09/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a78b2c84368b29f1378f46971c4814929094e299
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: b32c3e87462f58218771fc5da7da56ed177489cb
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97769951"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025708"
 ---
-# <a name="activate-a-sandbox-subscription-for-commercial-marketplace-saas-products-to-enable-billing"></a>Aktivera en Sandbox-prenumeration för kommersiella Marketplace SaaS-produkter för att möjliggöra fakturering
+# <a name="activate-a-sandbox-subscription-for-commercial-marketplace-saas-products-to-enable-billing"></a>Aktivera en sandbox-prenumeration för SaaS-produkter på den kommersiella marknadsplatsen för att aktivera fakturering
 
-**Gäller för:**
-
-- Partnercenter
-
-Så här aktiverar du en prenumeration för SaaS-produkter (Software as a Service) från integration för integration i sandbox-konton.
+Så här aktiverar du en prenumeration på den kommersiella marknadsplatsen SaaS-produkter (Programvara som en tjänst) från sandbox-konton för integrering för att aktivera fakturering.
 
 > [!NOTE]
-> Det går bara att aktivera en prenumeration för SaaS-produkter från affärs platser från integration sandbox-konton. Om du har en produktions prenumeration måste du gå till utgivarens webbplats för att slutföra installations processen. Prenumerations faktureringen påbörjas bara efter att installationen har slutförts.
+> Det går bara att aktivera en prenumeration för SaaS-produkter på den kommersiella marknadsplatsen från sandbox-konton för integrering. Om du har en produktionsprenumeration måste du besöka utgivarens webbplats för att slutföra installationen. Prenumerationsfakturering börjar först när installationen är klar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett partner konto för integration i begränsat läge med en kund som har en aktiv prenumeration på kommersiella Marketplace SaaS-produkter.
+- Ett partnerkonto för sandbox-integrering med en kund som har en aktiv prenumeration på SaaS-produkter på den kommersiella marknadsplatsen.
 
-- För partner som använder Partner Center .NET SDK måste du använda SDK-version 1.14.0 eller högre för att få åtkomst till den här funktionen.
+- För partner som använder Partner Center .NET SDK måste du använda SDK version 1.14.0 eller senare för att få åtkomst till den här funktionen.
 
 ## <a name="c"></a>C\#
 
-Använd följande steg för att aktivera en prenumeration för SaaS-produkter från kommersiella platser:
+Använd följande steg för att aktivera en prenumeration för SaaS-produkter på den kommersiella marknadsplatsen:
 
-1. Gör ett gränssnitt till tillgängliga prenumerations åtgärder. Du måste identifiera kunden och ange prenumerations-ID för utvärderings prenumerationen.
+1. Gör ett gränssnitt för prenumerationsåtgärder tillgängliga. Du måste identifiera kunden och ange prenumerations-ID för utvärderingsprenumerationen.
 
    ```csharp
    var subscriptionOperations = partnerOperations.Customers.ById(customerId).Subscriptions.ById(subscriptionId);
    ```
 
-2. Aktivera prenumerationen med hjälp av åtgärden **Aktivera** .
+2. Aktivera prenumerationen med hjälp av **åtgärden** Aktivera.
 
    ```csharp
    var subscriptionActivationResult = subscriptionOperations.Activate();
@@ -48,22 +44,22 @@ Använd följande steg för att aktivera en prenumeration för SaaS-produkter fr
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod     | URI för förfrågan                                                                            |
 |------------|----------------------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Subscriptions/{Subscription-ID}/Activate http/1.1 |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/activate HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y | Värdet är ett GUID-formaterat kund klient-ID (**kund-Tenant-ID**), vilket gör att du kan ange en kund. |
-| **prenumerations-ID** | **guid** | Y | Värdet är ett GUID-formaterat prenumerations-**ID (prenumerations-ID**), vilket gör att du kan ange en prenumeration. |
+| **kund-klient-id** | **guid** | Y | Värdet är ett GUID-formaterat kundklient-ID (**customer-tenant-id**), som gör att du kan ange en kund. |
+| **prenumerations-id** | **guid** | Y | Värdet är en GUID-formaterad prenumerationsidentifierare (**subscription-id**) som gör att du kan ange en prenumeration. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -82,11 +78,11 @@ MS-RequestId: 655890ba-4d2b-4d09-a95f-4ea1348686a5
 
 ## <a name="rest-response"></a>REST-svar
 
-Den här metoden returnerar egenskaperna för **prenumerations-ID** och **status** .
+Den här metoden returnerar **egenskaperna subscription-id** **och status.**
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

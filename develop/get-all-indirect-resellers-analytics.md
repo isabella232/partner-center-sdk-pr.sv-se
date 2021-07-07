@@ -1,70 +1,65 @@
 ---
 title: Hämta all analysinformation för indirekta återförsäljare
-description: Hämta all den indirekta åter försäljarens analys information.
+description: Hur du hämtar all indirekt återförsäljares analysinformation.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 9f9c030278ba8fef9090f7be89064ac6054129ef
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: 4252f5fcbbcb038f382408074c8fd6ede3fd1f58
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97769444"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760750"
 ---
 # <a name="get-all-indirect-resellers-analytics-information"></a>Hämta all analysinformation för indirekta återförsäljare
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Hämta all den indirekta åter försäljarens analys information för dina kunder.
+Hur du hämtar all indirekt återförsäljares analysinformation för dina kunder.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering endast med användarautentiseringsuppgifter.
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan |
 |---------|-------------|
-| **TA** | [*\{ BASEURL \}*](partner-center-rest-urls.md)/partner/v1/Analytics/indirectresellers http/1.1 |
+| **Få** | [*\{ baseURL \}*](partner-center-rest-urls.md)/partner/v1/analytics/indirectresellers HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
-| Parameter                             | Typ     | Description                              |
+| Parameter                             | Typ     | Beskrivning                              |
 |:--------------------------------------|:---------|:-----------------------------------------|
-| partnerTenantId                       | sträng   | Klient-ID för den partner som du vill hämta indirekta data om åter försäljare för. |
-| id                                    | sträng   | ID för indirekt åter försäljare                                                                 |
-| name                                  | sträng   | Namnet på den partner som du vill hämta data om indirekta åter försäljare för.      |
-| telefonförsäljning                                | sträng   | Marknaden för den partner som du vill hämta data om indirekta åter försäljare för.    |
-| firstSubscriptionCreationDate         | sträng i UTC-datum/tid-format  | Skapande datumet för den första prenumerationen som du vill hämta indirekta åter försäljar data från.  |
-| latestSubscriptionCreationDate        | sträng i UTC-datum/tid-format  | Skapande datumet för den senaste prenumerationen.                 |
-| firstSubscriptionEndDate              | sträng i UTC-datum/tid-format  | Första gången en prenumeration avslutades.                        |
-| latestSubscriptionEndDate             | sträng i UTC-datum/tid-format  | Senaste datum när en prenumeration avslutades.                  |
-| firstSubscriptionSuspendedDate        | sträng i UTC-datum/tid         | Första gången en prenumeration pausades.                    |
-| latestSubscriptionSuspendedDate       | sträng i UTC-datum/tid-format  | Senaste datum när en prenumeration pausades.              |
-| firstSubscriptionDeprovisionedDate    | sträng i UTC-datum/tid-format  | Första gången en prenumeration har avetablerats.                |
-| latestSubscriptionDeprovisionedDate   | sträng i UTC-datum/tid-format  | Senaste datum när en prenumeration har avetablerats.          |
-| subscriptionCount                     | double   | Prenumerations antal för alla mervärdes åter försäljare                                     |
-| licenseCount                          | double   | Licens antal för alla mervärdes åter försäljare.                                         |
-| indirectResellerCount                 | double   | Antal indirekta åter försäljare                                                             |
-|  top                                  | sträng   | Det antal rader med data som ska returneras i begäran. Det maximala värdet och standardvärdet om det inte anges är 10000. Om det finns fler rader i frågan, innehåller svars texten en nästa länk som du kan använda för att begära nästa sida med data.  |
-| hoppa över                                  | int      | Antalet rader som ska hoppas över i frågan. Använd den här parametern för att växla mellan stora data mängder. Hämtar till exempel **`top=10000 and skip=0`** de första 10000 raderna med data, **`top=10000 and skip=10000`** hämtar nästa 10000 rader med data och så vidare.              |
-| filter                                | sträng   | *Filter* parametern för begäran innehåller en eller flera instruktioner som filtrerar raderna i svaret. Varje instruktion innehåller ett fält och ett värde som är associerat **`eq`** med **`ne`** operatorerna or och som kan kombineras med hjälp av **`and`** eller **`or`** . Du kan ange följande fält:<br/><br/>     *partnerTenantId*<br/> *id*<br/> *Namn*<br/>                *telefonförsäljning*<br/> *firstSubscriptionCreationDate*<br/> *latestSubscriptionCreationDate*<br/>                *firstSubscriptionEndDate*<br/>                *latestSubscriptionEndDate*<br/>                *firstSubscriptionSuspendedDate*<br/>                *latestSubscriptionSuspendedDate*<br/>                *firstSubscriptionDeprovisionedDate*<br/>                *latestSubscriptionDeprovisionedDate*<br/><br/>         **Exempel:**<br/>              `.../indirectresellers?filter=market eq 'US'`<br/><br/>            **Exempel:**<br/>                `.../indirectresellers?filter=market eq 'US' or (firstSubscriptionCreationDate le cast('2018-01-01',Edm.DateTimeOffset) and firstSubscriptionCreationDate le cast('2018-04-01',Edm.DateTimeOffset))` |              
-| aggregationLevel                     | sträng    | Anger det tidsintervall som aggregerade data ska hämtas från. Kan vara en av följande strängar: &quot; dag &quot; , &quot; vecka &quot; eller &quot; månad &quot; . Om inget anges är standardvärdet &quot; dag &quot; .<br/><br/>                                 `aggregationLevel` stöds inte utan en `aggregationLevel` . `aggregationLevel` gäller för alla **datefields** som finns i `aggregationLevel`                         |
-| OrderBy                              | sträng    | En instruktion som ordnar resultat data värden för varje installation. Syntax: `...&orderby=field[order],field [order],...`. Fält parametern kan vara en av följande strängar:<br/><br/>                &quot;partnerTenantId&quot;<br/>                &quot;id&quot;<br/>                &quot;Namn&quot;<br/>                &quot;telefonförsäljning&quot;<br/>                &quot;firstSubscriptionCreationDate&quot;<br/>               &quot;latestSubscriptionCreationDate&quot;<br/>                &quot;firstSubscriptionEndDate&quot;<br/>               &quot;latestSubscriptionEndDate&quot;<br/>                &quot;firstSubscriptionSuspendedDate&quot;<br/>                &quot;latestSubscriptionSuspendedDate&quot;<br/>               &quot;firstSubscriptionDeprovisionedDate&quot;<br/>                &quot;latestSubscriptionDeprovisionedDate&quot;<br/>                &quot;subscriptionCount&quot;<br/>                &quot;licenseCount&quot;<br/><br/>   *Sorterings* parametern är valfri och kan vara `asc` eller `desc` ; för att ange stigande eller fallande ordning för varje fält. Standardvärdet är `asc`.<br/><br/>    **Exempel:**<br/>                `...&orderby=market,subscriptionCount`                                       |                   
-| groupby                              | sträng    | En instruktion som endast tillämpar data agg regering på de angivna fälten. Du kan ange följande fält:<br/><br/>         *partnerTenantId*<br/>    *id*<br/>               *Namn*<br/>                *telefonförsäljning*<br/>                *firstSubscriptionCreationDate*<br/>                *latestSubscriptionCreationDate*<br/>                *firstSubscriptionEndDate*<br/>                *latestSubscriptionEndDate*<br/>                *firstSubscriptionSuspendedDate*<br/>                *latestSubscriptionSuspendedDate*<br/>                *firstSubscriptionDeprovisionedDate*<br/>                *latestSubscriptionDeprovisionedDate*<br/><br/>                 De data rader som returneras innehåller fälten som anges i `groupby` -satsen och följande fält:<br/><br/>            *indirectResellerCount*<br/>                *licenseCount*<br/>                *subscriptionCount*<br/><br/>            `groupby`Parametern kan användas med `aggregationLevel` parametern.<br/><br/>            **Exempel:**</br>               `...&groupby=ageGroup,market&aggregationLevel=week`                         |
+| partnerTenantId                       | sträng   | Klientorganisations-ID för den partner som du vill hämta indirekta återförsäljares data för. |
+| id                                    | sträng   | Id för indirekt återförsäljare                                                                 |
+| name                                  | sträng   | Namnet på den partner som du vill hämta indirekta återförsäljares data för.      |
+| Marknaden                                | sträng   | Partnerns marknad som du vill hämta data om indirekta återförsäljare för.    |
+| firstSubscriptionCreationDate         | sträng i UTC-datum/tid-format  | Skapandedatumet för den första prenumerationen baserat på vilken du vill hämta data för indirekta återförsäljare.  |
+| latestSubscriptionCreationDate        | sträng i UTC-datum/tid-format  | Skapandedatumet för den senaste prenumerationen.                 |
+| firstSubscriptionEndDate              | sträng i UTC-datum/tid-format  | Första gången någon prenumeration avslutades.                        |
+| latestSubscriptionEndDate             | sträng i UTC-datum/tid-format  | Senaste datum då en prenumeration avslutades.                  |
+| firstSubscriptionSuspendedDate        | sträng i UTC-datum/tid         | Första gången någon prenumeration pausas.                    |
+| latestSubscriptionSuspendedDate       | sträng i UTC-datum/tid-format  | Senaste datum då en prenumeration pausades.              |
+| firstSubscriptionDeprovisionedDate    | sträng i UTC-datum/tid-format  | Första gången någon prenumeration avetableades.                |
+| latestSubscriptionDeprovisionedDate   | sträng i UTC-datum/tid-format  | Senaste datum då en prenumeration avetableades.          |
+| subscriptionCount                     | double   | Prenumerationsantal för alla återförsäljare med mervärde                                     |
+| licenseCount                          | double   | Licensantal för alla återförsäljare med mervärde.                                         |
+| indirectResellerCount                 | double   | Antal indirekta återförsäljare                                                             |
+|  top                                  | sträng   | Antalet rader med data som ska returneras i begäran. Maxvärdet och standardvärdet om det inte anges är 10000. Om det finns fler rader i frågan innehåller svarstexten en nästa länk som du kan använda för att begära nästa datasida.  |
+| hoppa över                                  | int      | Antalet rader som ska hoppas över i frågan. Använd den här parametern för att bläddra igenom stora datamängder. Hämtar till exempel de första **`top=10000 and skip=0`** 1 0000 raderna med data, hämtar de **`top=10000 and skip=10000`** kommande 10 000 raderna med data och så vidare.              |
+| filter                                | sträng   | *Filterparametern* för begäran innehåller en eller flera instruktioner som filtrerar raderna i svaret. Varje -instruktion innehåller ett fält och värde som är associerade med operatorerna eller , och **`eq`** **`ne`** -instruktioner kan kombineras med hjälp av **`and`** eller **`or`** . Du kan ange följande fält:<br/><br/>     *partnerTenantId*<br/> *id*<br/> *Namn*<br/>                *Marknaden*<br/> *firstSubscriptionCreationDate*<br/> *latestSubscriptionCreationDate*<br/>                *firstSubscriptionEndDate*<br/>                *latestSubscriptionEndDate*<br/>                *firstSubscriptionSuspendedDate*<br/>                *latestSubscriptionSuspendedDate*<br/>                *firstSubscriptionDeprovisionedDate*<br/>                *latestSubscriptionDeprovisionedDate*<br/><br/>         **Exempel:**<br/>              `.../indirectresellers?filter=market eq 'US'`<br/><br/>            **Exempel:**<br/>                `.../indirectresellers?filter=market eq 'US' or (firstSubscriptionCreationDate le cast('2018-01-01',Edm.DateTimeOffset) and firstSubscriptionCreationDate le cast('2018-04-01',Edm.DateTimeOffset))` |              
+| aggregationLevel                     | sträng    | Anger det tidsperiod som aggregerade data ska hämtas för. Kan vara någon av följande strängar: &quot; &quot; dag, &quot; vecka eller &quot; månad &quot; &quot; . Om det inte anges är standardvärdet &quot; dag &quot; .<br/><br/>                                 `aggregationLevel` stöds inte utan `aggregationLevel` . `aggregationLevel` gäller för alla **datefields** som finns i `aggregationLevel`                         |
+| Orderby                              | sträng    | En instruktion som beställer resultatdatavärdena för varje installation. Syntax: `...&orderby=field[order],field [order],...`. Fältparametern kan vara någon av följande strängar:<br/><br/>                &quot;partnerTenantId&quot;<br/>                &quot;id&quot;<br/>                &quot;Namn&quot;<br/>                &quot;Marknaden&quot;<br/>                &quot;firstSubscriptionCreationDate&quot;<br/>               &quot;latestSubscriptionCreationDate&quot;<br/>                &quot;firstSubscriptionEndDate&quot;<br/>               &quot;latestSubscriptionEndDate&quot;<br/>                &quot;firstSubscriptionSuspendedDate&quot;<br/>                &quot;latestSubscriptionSuspendedDate&quot;<br/>               &quot;firstSubscriptionDeprovisionedDate&quot;<br/>                &quot;latestSubscriptionDeprovisionedDate&quot;<br/>                &quot;subscriptionCount&quot;<br/>                &quot;licenseCount&quot;<br/><br/>   *Orderparametern* är valfri och kan vara eller ; för att ange stigande eller `asc` `desc` fallande ordning för varje fält. Standardvärdet är `asc`.<br/><br/>    **Exempel:**<br/>                `...&orderby=market,subscriptionCount`                                       |                   
+| groupby                              | sträng    | En instruktion som endast tillämpar dataaggregering på de angivna fälten. Du kan ange följande fält:<br/><br/>         *partnerTenantId*<br/>    *id*<br/>               *Namn*<br/>                *Marknaden*<br/>                *firstSubscriptionCreationDate*<br/>                *latestSubscriptionCreationDate*<br/>                *firstSubscriptionEndDate*<br/>                *latestSubscriptionEndDate*<br/>                *firstSubscriptionSuspendedDate*<br/>                *latestSubscriptionSuspendedDate*<br/>                *firstSubscriptionDeprovisionedDate*<br/>                *latestSubscriptionDeprovisionedDate*<br/><br/>                 De datarader som returneras innehåller de fält som anges `groupby` i -satsen och följande fält:<br/><br/>            *indirectResellerCount*<br/>                *licenseCount*<br/>                *subscriptionCount*<br/><br/>            Parametern `groupby` kan användas med `aggregationLevel` parametern .<br/><br/>            **Exempel:**</br>               `...&groupby=ageGroup,market&aggregationLevel=week`                         |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -82,11 +77,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en samling [indirekta åter försäljares](partner-center-analytics-resources.md#csp-program-indirect-resellers-analytics) resurser.
+Om åtgärden lyckas innehåller svarstexten en samling [indirekta återförsäljares](partner-center-analytics-resources.md#csp-program-indirect-resellers-analytics) resurser.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

@@ -1,55 +1,50 @@
 ---
-title: Konverterings resurser
-description: Läs om hur du konverterar en utvärderings prenumeration till en betald prenumeration med hjälp av konverterings resurser för partner Center API.
+title: Konverteringsresurser
+description: Lär dig mer om hur du använder konverteringsresurser i Partnercenter-API:et för att konvertera en utvärderingsprenumeration till en betald prenumeration.
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d3ade5a5af76e7c637962b6bfe076ac806f337bf
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: 1863c365627807d8de2534a2d3116807a5de70e1
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97770068"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973901"
 ---
-# <a name="conversion-resources-to-convert-trial-subscriptions-to-paid"></a>Konverterings resurser för att konvertera utvärderings prenumerationer till betalda
+# <a name="conversion-resources-to-convert-trial-subscriptions-to-paid"></a>Konverteringsresurser för att konvertera utvärderingsprenumerationer till betalda
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Konverterings resurser stöder konvertering av en utvärderings prenumeration till en betald prenumeration.
+Konverteringsresurser stöder konvertering av en utvärderingsprenumeration till en betald prenumeration.
 
 ## <a name="conversion"></a>Konvertering
 
-Innehåller information som används för att konvertera en utvärderings prenumeration till en betald prenumeration.
+Innehåller information som används för att konvertera en utvärderingsprenumeration till en betald prenumeration.
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
-| offerId | sträng | ID för den ursprungliga utvärderings versionen av erbjudandet. |
-| targetOfferId | sträng | Erbjudande-ID för mål erbjudandet. |
-| orderId | sträng | Order-ID. |
-| quantity | int | Antalet licenser. Standardvärdet är antalet licenser i utvärderings prenumerationen. |
-| billingCycle | sträng | Anger hur ofta partnern debiteras för prenumerationen. Möjliga värden: **månads** vis (partner faktureras per månad), **årlig** (partner faktureras per år) eller **ingen** (partner faktureras inte. Används för utvärderings prenumerationer). |
+| offerId | sträng | Erbjudandeidentifieraren för det ursprungliga utvärderingserbjudandet. |
+| targetOfferId | sträng | Erbjudande-ID för målerbjudandet. |
+| Ordernr | sträng | Orderidentifieraren. |
+| quantity | int | Antalet licenser. Standardvärdet är antalet licenser i utvärderingsprenumerationen. |
+| billingCycle | sträng | Anger hur ofta partnern debiteras för prenumerationen. Möjliga värden: **Varje** månad (partner faktureras månadsvis), **Årlig** (partner faktureras per år) eller **Ingen** (partner faktureras inte. Används för utvärderingsprenumerationer). |
 
 ## <a name="conversionerror"></a>ConversionError
 
-Representerar ett fel som inträffade under konverteringen.
+Representerar ett fel som uppstod under konverteringen.
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
-| kod | sträng | Felkoden som är kopplad till problemet. Möjliga värden: **övrigt** (allmänt fel), **ConversionsNotFound** (det går inte att hitta några konverteringar för utvärderings prenumerationen att konvertera till).
-| beskrivning | sträng | En användarvänlig text som beskriver problemet. |
+| kod | sträng | Felkoden som är associerad med problemet. Möjliga värden: **Annat** (allmänt fel), **ConversionsNotFound** (det går inte att hitta några konverteringar för utvärderingsprenumerationen att konvertera till).
+| beskrivning | sträng | Den egna texten som beskriver problemet. |
 
 ## <a name="conversionresult"></a>ConversionResult
 
-Representerar resultatet av en prenumerations konvertering.
+Representerar resultatet av en prenumerationskonvertering.
 
-| Egenskap       | Typ                                | Description                                                            |
+| Egenskap       | Typ                                | Beskrivning                                                            |
 |----------------|-------------------------------------|------------------------------------------------------------------------|
-| subscriptionId | sträng                              | Prenumerations-ID.                                           |
-| offerId        | sträng                              | Den ursprungliga erbjudande identifieraren.                                         |
-| targetOfferId  | sträng                              | Erbjudande-ID för mål erbjudandet.                             |
-| fel          | [ConversionError](#conversionerror) | Felet som påträffades vid försöket att konvertera, om tillämpligt.. |
+| subscriptionId | sträng                              | Prenumerationsidentifieraren.                                           |
+| offerId        | sträng                              | Den ursprungliga erbjudandeidentifieraren.                                         |
+| targetOfferId  | sträng                              | Erbjudande-ID för målerbjudandet.                             |
+| fel          | [ConversionError](#conversionerror) | Felet påträffades vid försök till konverteringen, om tillämpligt. |

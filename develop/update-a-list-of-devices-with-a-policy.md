@@ -1,42 +1,39 @@
 ---
 title: Uppdatera en lista över enheter med en princip
-description: Så här uppdaterar du en lista med enheter med en konfigurations princip för den angivna kunden.
+description: Uppdatera en lista över enheter med en konfigurationsprincip för den angivna kunden.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 04c2ef33116335db40bd2934dc7e33d57f015097
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 35b35873eb253b0929bfc01662b0beb9b31d0c6b
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769753"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530080"
 ---
 # <a name="update-a-list-of-devices-with-a-policy"></a>Uppdatera en lista över enheter med en princip
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Tyskland
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-
-Så här uppdaterar du en lista med enheter med en konfigurations princip för den angivna kunden.
+Uppdatera en lista över enheter med en konfigurationsprincip för den angivna kunden.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Princip identifieraren.
+- Principidentifieraren.
 
-- Enhets identifierare för de enheter som ska uppdateras.
+- Enhetsidentifierarna för de enheter som ska uppdateras.
 
 ## <a name="c"></a>C\#
 
-Om du vill uppdatera en lista över enheter med den angivna konfigurations principen först instansierar du en [List/dotNet/API/system. Collections. Generic. list -1) av typen [KeyValuePair/dotNet/API/system. Collections. Generic. KeyValuePair -2)[**(PolicyCategory,**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.policycategory)String) och lägger till principen som ska tillämpas, enligt följande kod exempel. Du behöver princip identifieraren för principen.
+Om du vill uppdatera en lista över enheter med den angivna konfigurationsprincipen instansierar du först en [List/dotnet/api/system.collections.generic.list-1) av typen [KeyValuePair/dotnet/api/system.collections.generic.keyvaluepair-2)[**(PolicyCategory,**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.policycategory)sträng) och lägger till principen som ska tillämpas, enligt följande kodexempel. Du behöver principidentifieraren för principen.
 
-Skapa sedan en lista över [**enhets**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device) objekt som ska uppdateras med principen, ange enhets-ID och den lista som innehåller principen som ska tillämpas för varje enhet. Sedan instansierar du ett [**DevicePolicyUpdateRequest**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.devicepolicyupdaterequest) -objekt och anger egenskapen [**enheter**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.devicebatchcreationrequest.devices) till listan över enhets objekt.
+Skapa sedan en lista över [**enhetsobjekt**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device) som ska uppdateras med principen och ange enhets-ID och listan som innehåller principen som ska tillämpas för varje enhet. Skapa sedan en instans av [**ett DevicePolicyUpdateRequest-objekt**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.devicepolicyupdaterequest) och ange [**enhetsegenskapen**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.devicebatchcreationrequest.devices) till listan över enhetsobjekt.
 
-Om du vill bearbeta begäran om uppdatering av enhets princip anropar du metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: n för att hämta ett gränssnitt till åtgärder på den angivna kunden. Hämta sedan egenskapen [**DevicePolicy**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.devicepolicy) för att hämta ett gränssnitt till kund enhets samlings åtgärder. Slutligen kan du anropa [**Update**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.icustomerdevicecollection.update) -metoden med DevicePolicyUpdateRequest-objektet för att uppdatera enheterna med principen.
+Om du vill bearbeta begäran om uppdatering av enhetsprincipen anropar du metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kundidentifieraren för att hämta ett gränssnitt för åtgärder på den angivna kunden. Hämta sedan [**devicePolicy-egenskapen**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.devicepolicy) för att hämta ett gränssnitt till kundens enhetsinsamlingsåtgärder. Anropa slutligen metoden [**Update**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.icustomerdevicecollection.update) med devicePolicyUpdateRequest-objektet för att uppdatera enheterna med principen.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -74,31 +71,31 @@ var trackingLocation =
     partnerOperations.Customers.ById(selectedCustomerId).DevicePolicy.Update(devicePolicyUpdateRequest);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: UpdateDevicesPolicy.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **exempelklass:** UpdateDevicesPolicy.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod    | URI för förfrågan                                                                                         |
 |-----------|-----------------------------------------------------------------------------------------------------|
-| **9.0a** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/DevicePolicyUpdates http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/DevicePolicyUpdates HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande Sök vägs parametrar när du skapar begäran.
+Använd följande sökvägsparametrar när du skapar begäran.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| kund-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
+| kund-ID | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Begär ande texten måste innehålla en [DevicePolicyUpdateRequest](device-deployment-resources.md#devicepolicyupdaterequest) -resurs.
+Begärandetexten måste innehålla en [DevicePolicyUpdateRequest-resurs.](device-deployment-resources.md#devicepolicyupdaterequest)
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -143,11 +140,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svaret ett **plats** huvud som har en URI som kan användas för att hämta status för den här batch-processen. Spara denna URI för användning med andra relaterade REST API: er.
+Om det lyckas innehåller svaret ett **Location-huvud** som har en URI som kan användas för att hämta status för den här batchprocessen. Spara den här URI:en för användning med andra relaterade REST API:er.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

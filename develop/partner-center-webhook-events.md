@@ -1,51 +1,46 @@
 ---
-title: Partner Center-webhook-händelser
-description: Lär dig att testa och använda webhook-händelser för att notera när prenumerationer och andra händelser ändras i Partner Center.
+title: Webhook-händelser i Partnercenter
+description: Lär dig hur du testar och använder Webhook-händelser för att observera när prenumerationer och andra händelser ändras i Partnercenter.
 ms.date: 04/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 03ee1d4e74408b8cf69e2971054bf9060650cb77
-ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
+ms.openlocfilehash: e5e363a2f928dd38304887547bdc0e5d652728d6
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106500047"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547748"
 ---
-# <a name="partner-center-webhook-events"></a>Partner Center-webhook-händelser
+# <a name="partner-center-webhook-events"></a>Webhook-händelser i Partnercenter
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+Partnercenter-webhookhändelser är resursändringshändelser som levereras i form av HTTP-POST:er till en registrerad URL. Om du vill ta emot en händelse från Partnercenter är du värd för ett återanrop där Partnercenter kan PUBLICERA händelsen. Händelsen har signerats digitalt så att du kan verifiera att den har skickats från Partnercenter.
 
-Partner Center-webhook-händelser är resurs ändrings händelser som levereras i form av HTTP-inlägg till en registrerad URL. Om du vill ta emot en händelse från Partner Center är du värd för ett återanrop där Partner Center kan publicera händelsen. Händelsen har signerats digitalt så att du kan verifiera att den har skickats från Partner Center.
-
-Information om hur du tar emot händelser, autentiserar en motringning och använder webhook-API: er för partner Center för att skapa, Visa och uppdatera en händelse registrering finns i [partner Center Webhooks](partner-center-webhooks.md).
+Information om hur du tar emot händelser, autentiserar ett återanrop och använder Partner Center-webhook-API:er för att skapa, visa och uppdatera en händelseregistrering finns [i Webhooks för Partnercenter.](partner-center-webhooks.md)
 
 ## <a name="supported-events"></a>Händelser som stöds
 
-Följande webhook-händelser stöds av Partner Center.
+Följande webhook-händelser stöds av Partnercenter.
 
-### <a name="test-event"></a>Test händelse
+### <a name="test-event"></a>Testhändelse
 
-Med den här händelsen kan du själv publicera och testa registreringen genom att begära ett test händelser och sedan följa förloppet. Du kommer att kunna se de fel meddelanden som tas emot från Microsoft när du försöker leverera evenemanget. Detta gäller endast för "test-skapade"-händelser och data som är äldre än 7 dagar rensas.
+Med den här händelsen kan du registrera dig själv och testa registreringen genom att begära en testhändelse och sedan spåra förloppet. Du kommer att kunna se felmeddelanden som tas emot från Microsoft när du försöker leverera händelsen. Detta gäller endast för "testskapade" händelser och data som är äldre än sju dagar tas bort.
 
 >[!NOTE]
->Det finns en begränsning på 2 begär Anden per minut när en test-skapad-händelse publiceras.
+>Det finns en begränsning på 2 begäranden per minut när du publicerar en testskapad händelse.
 
 #### <a name="properties"></a>Egenskaper
 
-| Egenskap                  | Typ                               | Description                                                                                                  |
+| Egenskap                  | Typ                               | Beskrivning                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | sträng                             | Händelsens namn. I formatet {Resource}-{action}. I den här händelsen är värdet "test-created".                                          |
-| ResourceUri               | URI                                | URI: n för att hämta resursen. Använder syntaxen:[*{baseURL}*](partner-center-rest-urls.md)/Webhooks/v1/Registration/validationEvents/{{correlationId}} |
-| ResourceName              | sträng                             | Namnet på den resurs som ska utlösa händelsen. I den här händelsen är värdet "test".                                  |
-| AuditUri                  | URI                                | Valfritt URI: n för att hämta gransknings posten, om den finns. Använder syntaxen:[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/AuditRecords/{{AuditId}} |
-| ResourceChangeUtcDate     | sträng i UTC-datum/tid-format | Datum och tid då resurs ändringen utfördes.                                                         |
+| EventName                 | sträng                             | Namnet på händelsen. I formuläret {resource}-{action}. För den här händelsen är värdet "test-created".                                          |
+| ResourceUri               | URI                                | URI:en för att hämta resursen. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/registration/validationEvents/{{CorrelationId}}" |
+| ResourceName              | sträng                             | Namnet på den resurs som utlöser händelsen. För den här händelsen är värdet "test".                                  |
+| AuditUri                  | URI                                | (Valfritt) URI:en för att hämta granskningsposten, om den finns. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| ResourceChangeUtcDate     | sträng i UTC-datum/tid-format | Datum och tid då resursändringen inträffade.                                                         |
 
 #### <a name="example"></a>Exempel
 
@@ -59,22 +54,22 @@ Med den här händelsen kan du själv publicera och testa registreringen genom a
 }
 ```
 
-### <a name="subscription-updated-event"></a>Händelsen uppdatering av prenumeration
+### <a name="subscription-updated-event"></a>Händelse med uppdaterad prenumeration
 
-Den här händelsen inträffar när den angivna prenumerationen ändras. En uppdaterad händelse för prenumeration skapas när det finns en intern ändring utöver när ändringar görs via partner Center-API: et.  Den här händelsen kommer bara att genereras när det finns ändringar på handels nivå, till exempel när antalet licenser ändras och när prenumerationens tillstånd ändras. Det kommer inte att genereras när resurser skapas i prenumerationen.
+Den här händelsen utlöses när den angivna prenumerationen ändras. En händelse som uppdateras av prenumerationen genereras när det sker en intern ändring utöver när ändringar görs via Partner Center-API:et.  Den här händelsen genereras bara när det finns ändringar på handelsnivå, till exempel när antalet licenser ändras och när prenumerationens tillstånd ändras. Den genereras inte när resurser skapas i prenumerationen.
 
 >[!NOTE]
->Det finns en fördröjning på upp till 48 timmar mellan den tidpunkt då en prenumeration ändras och när händelsen uppdatering av prenumeration utlöses.
+>Det finns en fördröjning på upp till 48 timmar mellan den tidpunkt då en prenumeration ändras och när den uppdaterade prenumerationshändelsen utlöses.
 
 #### <a name="properties"></a>Egenskaper
 
-| Egenskap                  | Typ                               | Description                                                                                                  |
+| Egenskap                  | Typ                               | Beskrivning                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | sträng                             | Händelsens namn. I formatet {Resource}-{action}. I den här händelsen är värdet "prenumeration-uppdaterat".                                  |
-| ResourceUri               | URI                                | URI: n för att hämta resursen. Använder syntaxen:[*{baseURL}*](partner-center-rest-urls.md)/Webhooks/v1/Customers/{{CustomerId}}/Subscriptions/{{SubscriptionId}} |
-| ResourceName              | sträng                             | Namnet på den resurs som ska utlösa händelsen. I den här händelsen är värdet "Subscription".                          |
-| AuditUri                  | URI                                | Valfritt URI: n för att hämta gransknings posten, om den finns. Använder syntaxen:[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/AuditRecords/{{AuditId}} |
-| ResourceChangeUtcDate     | sträng i UTC-datum/tid-format | Datum och tid då resurs ändringen utfördes.                                                         |
+| EventName                 | sträng                             | Namnet på händelsen. I formuläret {resource}-{action}. För den här händelsen är värdet "subscription-updated".                                  |
+| ResourceUri               | URI                                | URI:en för att hämta resursen. Använder syntaxen:[*"{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/customers/{{CustomerId}}/subscriptions/{{SubscriptionId}}" |
+| ResourceName              | sträng                             | Namnet på den resurs som utlöser händelsen. För den här händelsen är värdet "prenumeration".                          |
+| AuditUri                  | URI                                | (Valfritt) URI:en för att hämta granskningsposten, om den finns. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| ResourceChangeUtcDate     | sträng i UTC-datum/tid-format | Datum och tid då resursändringen inträffade.                                                         |
 
 #### <a name="example"></a>Exempel
 
@@ -88,19 +83,19 @@ Den här händelsen inträffar när den angivna prenumerationen ändras. En uppd
 }
 ```
 
-### <a name="threshold-exceeded-event"></a>Händelsen tröskel överskreds
+### <a name="threshold-exceeded-event"></a>Överskriden händelse för tröskelvärde
 
-Den här händelsen inträffar när mängden Microsoft Azure användning för en kund överskrider deras användnings utgifts budget (tröskel). Mer information finns i [ställa in en Azure utgifts budget för dina kunder/Partner Center/set-a-Azure-utgifter-budget – för-kunder).
+Den här händelsen utlöses när mängden Microsoft Azure för en kund överskrider sin utgiftsbudget för användning (deras tröskelvärde). Mer information finns i [Ange en Azure-utgiftsbudget för dina kunder/partnercenter/set-an-azure-spending-budget-for-your-customers).
 
 #### <a name="properties"></a>Egenskaper
 
-| Egenskap                  | Typ                               | Description                                                                                                  |
+| Egenskap                  | Typ                               | Beskrivning                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | sträng                             | Händelsens namn. I formatet {Resource}-{action}. I den här händelsen är värdet "usagerecords-thresholdExceeded".                                  |
-| ResourceUri               | URI                                | URI: n för att hämta resursen. Använder syntaxen:[*{baseURL}*](partner-center-rest-urls.md)/Webhooks/v1/Customers/usagerecords |
-| ResourceName              | sträng                             | Namnet på den resurs som ska utlösa händelsen. I den här händelsen är värdet "usagerecords".                          |
-| AuditUri                  | URI                                | Valfritt URI: n för att hämta gransknings posten, om den finns. Använder syntaxen:[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/AuditRecords/{{AuditId}} |
-| ResourceChangeUtcDate     | sträng i UTC-datum/tid-format | Datum och tid då resurs ändringen utfördes.                                                         |
+| EventName                 | sträng                             | Namnet på händelsen. I formuläret {resource}-{action}. För den här händelsen är värdet "usagerecords-thresholdExceeded".                                  |
+| ResourceUri               | URI                                | URI:en för att hämta resursen. Använder syntaxen:[*"{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/customers/usagerecords" |
+| ResourceName              | sträng                             | Namnet på den resurs som utlöser händelsen. För den här händelsen är värdet "usagerecords".                          |
+| AuditUri                  | URI                                | (Valfritt) URI:en för att hämta granskningsposten, om den finns. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| ResourceChangeUtcDate     | sträng i UTC-datum/tid-format | Datum och tid då resursändringen inträffade.                                                         |
 
 #### <a name="example"></a>Exempel
 
@@ -114,19 +109,19 @@ Den här händelsen inträffar när mängden Microsoft Azure användning för en
 }
 ```
 
-### <a name="referral-created-event"></a>Händelse för skapande av hänvisning
+### <a name="referral-created-event"></a>Skapad referenshändelse
 
-Den här händelsen inträffar när referensen skapas.
+Den här händelsen utlöses när hänvisningen skapas.
 
 #### <a name="properties"></a>Egenskaper
 
-| Egenskap                  | Typ                               | Description                                                                                                  |
+| Egenskap                  | Typ                               | Beskrivning                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | sträng                             | Händelsens namn. I formatet {Resource}-{action}. I den här händelsen är värdet "referral-created".                                  |
-| ResourceUri               | URI                                | URI: n för att hämta resursen. Använder syntaxen:[*{baseURL}*](partner-center-rest-urls.md)/Engagements/v1/Referrals/{{ReferralID}} |
-| ResourceName              | sträng                             | Namnet på den resurs som ska utlösa händelsen. I den här händelsen är värdet "referral".                          |
-| AuditUri                  | URI                                | Valfritt URI: n för att hämta gransknings posten, om den finns. Använder syntaxen:[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/AuditRecords/{{AuditId}} |
-| ResourceChangeUtcDate     | sträng i UTC-datum/tid-format | Datum och tid då resurs ändringen utfördes.                                                         |
+| EventName                 | sträng                             | Namnet på händelsen. I formuläret {resource}-{action}. För den här händelsen är värdet "referral-created".                                  |
+| ResourceUri               | URI                                | URI:en för att hämta resursen. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/engagements/v1/referrals/{{ReferralID}}" |
+| ResourceName              | sträng                             | Namnet på den resurs som utlöser händelsen. För den här händelsen är värdet "hänvisning".                          |
+| AuditUri                  | URI                                | (Valfritt) URI:en för att hämta granskningsposten, om den finns. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| ResourceChangeUtcDate     | sträng i UTC-datum/tid-format | Datum och tid då resursändringen inträffade.                                                         |
 
 #### <a name="example"></a>Exempel
 
@@ -146,13 +141,13 @@ Den här händelsen utlöses när hänvisningen uppdateras.
 
 #### <a name="properties"></a>Egenskaper
 
-| Egenskap                  | Typ                               | Description                                                                                                  |
+| Egenskap                  | Typ                               | Beskrivning                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | sträng                             | Händelsens namn. I formatet {Resource}-{action}. I den här händelsen är värdet "referral-updated".                                  |
-| ResourceUri               | URI                                | URI: n för att hämta resursen. Använder syntaxen:[*{baseURL}*](partner-center-rest-urls.md)/Engagements/v1/Referrals/{{ReferralID}} |
-| ResourceName              | sträng                             | Namnet på den resurs som ska utlösa händelsen. I den här händelsen är värdet "referral".                          |
-| AuditUri                  | URI                                | Valfritt URI: n för att hämta gransknings posten, om den finns. Använder syntaxen:[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/AuditRecords/{{AuditId}} |
-| ResourceChangeUtcDate     | sträng i UTC-datum/tid-format | Datum och tid då resurs ändringen utfördes.                                                         |
+| EventName                 | sträng                             | Namnet på händelsen. I formuläret {resource}-{action}. För den här händelsen är värdet "referral-updated".                                  |
+| ResourceUri               | URI                                | URI:en för att hämta resursen. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/engagements/v1/referrals/{{ReferralID}}" |
+| ResourceName              | sträng                             | Namnet på den resurs som utlöser händelsen. För den här händelsen är värdet "hänvisning".                          |
+| AuditUri                  | URI                                | (Valfritt) URI:en för att hämta granskningsposten, om den finns. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| ResourceChangeUtcDate     | sträng i UTC-datum/tid-format | Datum och tid då resursändringen inträffade.                                                         |
 
 #### <a name="example"></a>Exempel
 
@@ -166,17 +161,17 @@ Den här händelsen utlöses när hänvisningen uppdateras.
 }
 ```
 
-### <a name="invoice-ready-event"></a>Händelse för faktura klar
+### <a name="invoice-ready-event"></a>Fakturaklar händelse
 
-Den här händelsen inträffar när den nya fakturan är klar.
+Den här händelsen utlöses när den nya fakturan är klar.
 
-| Egenskap                  | Typ                               | Description                                                                                                  |
+| Egenskap                  | Typ                               | Beskrivning                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName | sträng | Händelsens namn. I formatet {Resource}-{action}. I den här händelsen är värdet "faktureras Ready". |
-| ResourceUri | URI | URI: n för att hämta resursen. Använder syntaxen:[*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/{{InvoiceId}} |
-| ResourceName | sträng | Namnet på den resurs som ska utlösa händelsen. I den här händelsen är värdet "faktura". |
-| AuditUri |  URI | Valfritt URI: n för att hämta gransknings posten, om den finns. Använder syntaxen:[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/AuditRecords/{{AuditId}}) |
-| ResourceChangeUtcDate | sträng i UTC-datum/tid-format | Datum och tid då resurs ändringen utfördes. |
+| EventName | sträng | Namnet på händelsen. I formuläret {resource}-{action}. För den här händelsen är värdet "fakturaklart". |
+| ResourceUri | URI | URI:en för att hämta resursen. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{{InvoiceId}}" |
+| ResourceName | sträng | Namnet på den resurs som utlöser händelsen. För den här händelsen är värdet "faktura". |
+| AuditUri |  URI | (Valfritt) URI:en för att hämta granskningsposten, om den finns. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}") |
+| ResourceChangeUtcDate | sträng i UTC-datum/tid-format | Datum och tid då resursändringen inträffade. |
 
 #### <a name="example"></a>Exempel
 

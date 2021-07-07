@@ -1,39 +1,35 @@
 ---
-title: Avtals dokument resurser
-description: AgreementDocument-resursen är ett Microsoft Agreement-dokument för för hands version och nedladdning. Den stöds av Partner Center i det offentliga Microsoft-molnet.
+title: Avtalsdokumentresurser
+description: AgreementDocument-resursen är ett Microsoft-avtalsdokument för förhandsgranskning och nedladdning. Det stöds av Partner Center i Microsofts offentliga moln.
 ms.date: 08/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 4805d25b0838bf922b81bebd998810c3f6a809c3
-ms.sourcegitcommit: d1104d5c27f8fb3908a87532f80c432f0147ef5d
+ms.openlocfilehash: 1a81da4f75594f241669db831125bd437872561c
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "97770029"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025674"
 ---
-# <a name="agreement-document-resources-supported-by-partner-center-in-the-microsoft-public-cloud"></a>Avtals dokument resurser som stöds av Partner Center i det offentliga Microsoft-molnet
+# <a name="agreement-document-resources-supported-by-partner-center-in-the-microsoft-public-cloud"></a>Avtalsdokumentresurser som stöds av PartnerCenter i Microsofts offentliga moln
 
-**Gäller för:**
+**Gäller för:** Partnercenter
 
-- Partnercenter
+**Gäller inte för:** Partner Center som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-**AgreementDocument** -resursen stöds för närvarande endast av Partner Center i det *offentliga Microsoft-molnet*. Den här resursen är inte tillämplig för:
+**AgreementDocument-resursen** stöds för närvarande endast av PartnerCenter i Det offentliga Microsoft-molnet.
 
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-**AgreementDocument** -resursen representerar ett Microsoft Agreement-dokument som är tillgängligt för för hands version och nedladdning.
+**AgreementDocument-resursen** representerar ett Microsoft-avtalsdokument som är tillgängligt för förhandsgranskning och nedladdning.
 
 ## <a name="agreementdocument"></a>AgreementDocument
 
-En **AgreementDocument** -resurs innehåller följande egenskaper:
+En **AgreementDocument-resurs** innehåller följande egenskaper:
 
-| Egenskap       | Typ   | Description                                                                                               |
+| Egenskap       | Typ   | Beskrivning                                                                                               |
 |----------------|--------|-----------------------------------------------------------------------------------------------------------|
-| land | sträng | Landet eller marknaden som detta dokument gäller. |
-| language | sträng | Språket som det här dokumentet är lokaliserat till. |
-| displayUri | sträng | En länk för att förhandsgranska avtals dokumentet i en webbläsare.  |
-| downloadUri |sträng | En länk för att ladda ned avtals dokumentet (i Microsoft Word-format). |
+| land | sträng | Land eller marknad som det här dokumentet gäller för. |
+| language | sträng | Det språk som det här dokumentet är lokaliserat på. |
+| displayUri | sträng | En länk för att förhandsgranska avtalsdokumentet i en webbläsare.  |
+| downloadUri |sträng | En länk för att ladda ned avtalsdokumentet (i Microsoft Word format). |

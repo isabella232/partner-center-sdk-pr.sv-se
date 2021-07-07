@@ -1,38 +1,33 @@
 ---
 title: Överför en prenumeration
-description: Uppgraderar en kunds prenumeration till en angiven mål prenumeration.
+description: Uppgraderar en kunds prenumeration till en angiven målprenumeration.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9b757eee8bc65c16b5c65221a4c14b6c0fd6369e
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 01455315825cad026830268b6bbd55509e964bb5
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768937"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530248"
 ---
 # <a name="transition-a-subscription"></a>Överför en prenumeration
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Uppgraderar en kunds prenumeration till en angiven mål prenumeration.
+Uppgraderar en kunds prenumeration till en angiven målprenumeration.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
-- Två prenumerations-ID: n, ett för den första prenumerationen och en för mål prenumerationen.
+- Två prenumerations-ID:er, ett för den första prenumerationen och ett för målprenumerationen.
 
 ## <a name="c"></a>C\#
 
-Om du vill uppgradera en kunds prenumeration måste du först [Hämta customer's-prenumerationen](get-a-subscription-by-id.md). Hämta sedan en lista över uppgraderingar för den prenumerationen genom att anropa egenskapen **uppgraderingar** följt av metoderna **Get ()** eller **GetAsync ()** . Välj en mål uppgradering i listan över uppgraderingar och anropa sedan egenskapen **uppgraderingar** för den första prenumerationen, följt av metoden **Create ()** .
+Om du vill uppgradera en kunds [prenumeration hämtar du först kundens prenumeration.](get-a-subscription-by-id.md) Hämta sedan en lista över uppgraderingar för prenumerationen genom att anropa **uppgraderingar-egenskapen** följt av **metoderna Get()** eller **GetAsync().** Välj en måluppgradering i listan över uppgraderingar och anropa sedan egenskapen **Uppgraderingar** för den första prenumerationen, följt av **metoden Create().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -43,34 +38,34 @@ Om du vill uppgradera en kunds prenumeration måste du först [Hämta customer's
 UpgradeResult upgradeResult = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(subscriptionIdForUpgrade).Upgrades.Create(targetOffer);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples- **klass**: UpgradeSubscription.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** PartnerSDK.FeatureSamples-klass: UpgradeSubscription.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                                                                                         |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| **TA**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Subscriptions/{ID-for-Subscription}/Upgrades http/1.1 |
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Subscriptions/{ID-for-Target}/Upgrades http/1.1       |
+| **Få**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription}/upgrades HTTP/1.1 |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-target}/upgrades HTTP/1.1       |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande frågeparameter för att överföra prenumerationen.
+Använd följande frågeparameter för att övergå till prenumerationen.
 
 | Namn                    | Typ     | Obligatorisk | Beskrivning                                       |
 |-------------------------|----------|----------|---------------------------------------------------|
-| **kund-ID för klient organisation**  | **guid** | Y        | Ett GUID som motsvarar kunden.             |
-| **ID för-prenumeration** | **guid** | Y        | Ett GUID som motsvarar den första prenumerationen. |
-| **ID – för-mål**       | **guid** | Y        | Ett GUID som motsvarar mål prenumerationen.  |
+| **kund-klient-id**  | **guid** | Y        | Ett GUID som motsvarar kunden.             |
+| **id-for-subscription** | **guid** | Y        | Ett GUID som motsvarar den första prenumerationen. |
+| **id-for-target**       | **guid** | Y        | Ett GUID som motsvarar målprenumerationen.  |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Inget
+Ingen
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -147,11 +142,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en **uppgraderings** resultat resurs i svars texten.
+Om det lyckas returnerar den här metoden **en uppgraderingsresultatresurs** i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

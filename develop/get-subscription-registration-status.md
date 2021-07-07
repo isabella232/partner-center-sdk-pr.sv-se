@@ -4,34 +4,30 @@ description: Hämta status för en prenumeration som har registrerats för anvä
 ms.date: 03/19/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e06cf8a450d6c281f7f83a68c899d1e5b29e9855
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 9e39f94c0eac402a0be3afde84279aa637868f96
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769849"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445960"
 ---
 # <a name="get-subscription-registration-status"></a>Hämta status för prenumerationsregistrering
 
-**Gäller för**
+Så här hämtar du prenumerationsregistreringsstatus för en kundprenumeration som har aktiverats för Azure Reserved VM Instances.
 
-- Partnercenter
-
-Hämta status för prenumerations registrering för en kund prenumeration som har Aktiver ATS för inköps Azure Reserved VM Instances.
-
-Om du vill köpa en virtuell Azure-reserverade VM-instans med hjälp av Partner Center API måste du ha minst en befintlig CSP Azure-prenumeration. Med metoden [Registrera en prenumeration](register-a-subscription.md) kan du registrera din befintliga CSP Azure-prenumeration, så att den kan köpa Azure Reserved VM instances. Med den här metoden kan du hämta statusen för den registreringen.
+Om du vill köpa en azure-reserverad VM-instans med partnercenter-API:et måste du ha minst en befintlig CSP Azure-prenumeration. Med [metoden Registrera en](register-a-subscription.md) prenumeration kan du registrera din befintliga CSP Azure-prenumeration, vilket gör det möjligt att köpa Azure Reserved VM Instances. Med den här metoden kan du hämta status för registreringen.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta registrerings status för en prenumeration börjar du med att använda metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att identifiera kunden. Sedan kan du hämta ett gränssnitt till prenumerations åtgärder genom att anropa metoden [**Subscription. ById ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) med prenumerations-ID: t för att identifiera prenumerationen. Använd sedan egenskapen RegistrationStatus för att hämta ett gränssnitt till den aktuella prenumerationens registrerings status åtgärder och anropa metoden **Get** eller **GetAsync** för att hämta **SubscriptionRegistrationStatus** -objektet.
+Om du vill hämta registreringsstatusen för en prenumeration börjar du med att använda metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Hämta sedan ett gränssnitt för prenumerationsåtgärder genom att anropa [**metoden Subscription.ById()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) med prenumerations-ID:t för att identifiera prenumerationen. Använd sedan egenskapen RegistrationStatus för att hämta ett gränssnitt för den aktuella prenumerationens registreringsstatusåtgärder och anropa metoden **Get** eller **GetAsync** för att hämta **objektet SubscriptionRegistrationStatus.**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -44,24 +40,24 @@ var subscriptionRegistrationDetails = partnerOperations.Customers.ById(selectedC
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod    | URI för förfrågan                                                                                                                        |
 |-----------|------------------------------------------------------------------------------------------------------------------------------------|
-| **TA**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Subscriptions/{Subscription-ID}/registrationstatus http/1.1 |
+| **Få**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscriptions/{subscription-id}/registrationstatus HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
-Använd följande Sök vägs parametrar för att identifiera kunden och prenumerationen.
+Använd följande sökvägsparametrar för att identifiera kunden och prenumerationen.
 
 | Namn                    | Typ       | Obligatorisk | Beskrivning                                                   |
 |-------------------------|------------|----------|---------------------------------------------------------------|
-| kund-ID             | sträng     | Yes      | En GUID-formaterad sträng som identifierar kunden.         |
-| prenumerations-ID         | sträng     | Yes      | En GUID-formaterad sträng som identifierar prenumerationen.     |
+| kund-id             | sträng     | Ja      | En GUID-formaterad sträng som identifierar kunden.         |
+| prenumerations-id         | sträng     | Ja      | En GUID-formaterad sträng som identifierar prenumerationen.     |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -83,11 +79,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en [SubscriptionRegistrationStatus](subscription-resources.md#subscriptionregistrationstatus) -resurs.
+Om det lyckas innehåller svarstexten en [SubscriptionRegistrationStatus-resurs.](subscription-resources.md#subscriptionregistrationstatus)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

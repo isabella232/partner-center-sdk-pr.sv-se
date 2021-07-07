@@ -1,41 +1,37 @@
 ---
 title: Avbryta en prenumeration på kommersiell marknadsplats
-description: 'Lär dig hur du använder API: er för partner Center för att avbryta en prenumeration på en kommersiell marknads plats som matchar ett kund-och prenumerations-ID'
+description: Lär dig hur du använder Partner Center-API:er för att avbryta en prenumerationsresurs på den kommersiella marknadsplatsen som matchar en kund och ett prenumerations-ID.
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 38708c17b31e39a5e7c436e0d76b4ebabbc3a801
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: 95fa265a3c103d1ec55066f12a3ede7fdb2d0170
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97770077"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974292"
 ---
-# <a name="cancel-a-commercial-marketplace-subscription-using-partner-center-apis"></a>Avbryta en prenumeration på kommersiell marknads plats med hjälp av API: er för partner Center
+# <a name="cancel-a-commercial-marketplace-subscription-using-partner-center-apis"></a>Avbryta en prenumeration på den kommersiella marknadsplatsen med partnercenter-API:er
 
-**Gäller för:**
-
-- Partnercenter
-
-Den här artikeln beskriver hur du kan använda Partner Center API för att avbryta en [prenumerations](subscription-resources.md) resurs för en kommersiell marknads plats som matchar kund-och prenumerations-ID.
+I den här artikeln beskrivs hur du kan [](subscription-resources.md) använda Partnercenter-API:et för att avbryta en prenumerationsresurs på den kommersiella marknadsplatsen som matchar kund- och prenumerations-ID:t.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID.
 
-## <a name="partner-center-dashboard-method"></a>Instrument panels metod för partner Center
+## <a name="partner-center-dashboard-method"></a>Instrumentpanelsmetod i Partnercenter
 
-Så här avbryter du en prenumeration på en kommersiell marknads plats på Partner Center-instrument panelen:
+Så här avbryter du en prenumeration på den kommersiella marknadsplatsen på instrumentpanelen i Partnercenter:
 
 1. [Välj en kund](get-a-customer-by-name.md).
 
 2. Välj den prenumeration som du vill avbryta.
 
-3. Välj alternativet för att **avbryta prenumerationen** och välj sedan **Skicka**.
+3. Välj alternativet **Avbryt prenumeration** och välj sedan **Skicka**.
 
 ## <a name="c"></a>C\#
 
@@ -43,13 +39,13 @@ Så här avbryter du en kunds prenumeration:
 
 1. [Hämta prenumerationen efter ID](get-a-subscription-by-id.md).
 
-2. Ändra prenumerationens [**status**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) egenskap. Information om **status** koder finns i [SubscriptionStatus-uppräkning](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus).
+2. Ändra prenumerationens [**statusegenskap.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) Information om **statuskoder** finns i [SubscriptionStatus-uppräkning.](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus)
 
-3. När ändringen har gjorts använder du din **`IAggregatePartner.Customers`** samling och anropar metoden **ById ()** .
+3. När ändringen har gjorts använder du din **`IAggregatePartner.Customers`** samling och anropar **metoden ById().**
 
-4. Anropa egenskapen [**Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av metoden [**ById ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) .
+4. Anropa egenskapen [**Prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid)
 
-5. Anropa **patch ()-** metoden.
+5. Anropa **metoden Patch().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -60,34 +56,34 @@ selectedSubscription.Status = SubscriptionStatus.Deleted;
 var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscription.Id).Patch(selectedSubscription);
 ```
 
-### <a name="sample-console-test-app"></a>Exempel program för konsol test
+### <a name="sample-console-test-app"></a>Exempelkonsoltestapp
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample- **klass**: UpdateSubscription.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** PartnerSDK.FeatureSample-klass: UpdateSubscription.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod    | URI för förfrågan                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **9.0a** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Subscriptions/{ID-for-Subscription} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Den här tabellen visar den obligatoriska Frågeparametern för att pausa prenumerationen.
+I den här tabellen visas frågeparametern som krävs för att pausa prenumerationen.
 
 | Namn                    | Typ     | Obligatorisk | Beskrivning                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **kund-ID för klient organisation**  | **guid** | Y        | Ett GUID som motsvarar kunden.     |
-| **ID för-prenumeration** | **guid** | Y        | Ett GUID som motsvarar prenumerationen. |
+| **kund-klient-id**  | **guid** | Y        | Ett GUID som motsvarar kunden.     |
+| **id-for-subscription** | **guid** | Y        | Ett GUID som motsvarar prenumerationen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-En fullständig **prenumerations** resurs krävs i begär ande texten. Se till att **status** egenskapen har uppdaterats.
+En fullständig **prenumerationsresurs** krävs i begärandetexten. Kontrollera att **egenskapen Status** har uppdaterats.
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -135,11 +131,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden borttagna [prenumerations](subscription-resources.md) resurs egenskaper i svars texten.
+Om det lyckas returnerar den här metoden [borttagna](subscription-resources.md) prenumerationsresursegenskaper i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

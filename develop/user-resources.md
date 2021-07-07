@@ -1,87 +1,82 @@
 ---
-title: Användar resurser
-description: Beskriver en enskild partner Center-användare, deras personliga och konto information och de behörigheter de har i Partner Center.
+title: Användarresurser
+description: Beskriver en enskild Partnercenter-användare, deras personliga information och kontoinformation samt de behörigheter som de har i Partnercenter.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0c88b9b65dfb925712ff85fb42d34251cca6e0b5
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 26bb202db3eefd9be8fe57ed2cc4dc220c8807d4
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768709"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529689"
 ---
-# <a name="user-resources"></a>Användar resurser
+# <a name="user-resources"></a>Användarresurser
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+Beskriver en enskild Partnercenter-användare, deras personliga information och kontoinformation samt de behörigheter som de har i Partnercenter.
 
-Beskriver en enskild partner Center-användare, deras personliga och konto information och de behörigheter de har i Partner Center.
-
-## <a name="user"></a>User
+## <a name="user"></a>Användare
 
 Beskriver en enskild användare.
 
-| Egenskap              | Typ                                                           | Description                                                                                                                                                                                                                |
+| Egenskap              | Typ                                                           | Beskrivning                                                                                                                                                                                                                |
 |-----------------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id                    | sträng                                                         | Användar-ID.                                                                                                                                                                                                       |
-| userPrincipalName     | sträng                                                         | Användarens huvud-ID.                                                                                                                                                                                             |
+| id                    | sträng                                                         | Användaridentifieraren.                                                                                                                                                                                                       |
+| userPrincipalName     | sträng                                                         | Användarens huvudnamnsidentifierare.                                                                                                                                                                                             |
 | firstName             | sträng                                                         | Användarens förnamn.                                                                                                                                                                                                |
-| lastName              | sträng                                                         | Användarens efter namn.                                                                                                                                                                                                 |
-| displayName           | sträng                                                         | Användarens visade namn.                                                                                                                                                                                            |
-| passwordProfile       | [PasswordProfile](utility-resources.md#passwordprofile)       | Användarens lösen ords profil.                                                                                                                                                                                               |
+| lastName              | sträng                                                         | Användarens efternamn.                                                                                                                                                                                                 |
+| displayName           | sträng                                                         | Användarens namn som visas.                                                                                                                                                                                            |
+| passwordProfile       | [PasswordProfile](utility-resources.md#passwordprofile)       | Användarens lösenordsprofil.                                                                                                                                                                                               |
 | phoneNumber           | sträng                                                         | Användarens telefonnummer.                                                                                                                                                                                                   |
-| lastDirectorySyncTime | sträng i UTC-datum/tid-format                                 | Den senaste gången som information för den här användaren synkroniserades mellan Azure Active Directory och lokala Active Directory. Ett datum/tid-värde visas bara om Azure AD Connect Sync är aktiverat. Annars är värdet null. |
-| userDomainType        | sträng                                                         | Användar domän typen: "ingen", "hanterad" eller "federerad".                                                                                                                                                                   |
-| state                 | sträng                                                         | Användarens tillstånd: "Active", "inaktiv" (för en borttagen användare).                                                                                                                                                          |
-| softDeletionTime      | sträng i UTC-datum/tid-format                                 | Representerar början på den trettio dag period efter vilken data som är associerade med en borttagen användare tas bort permanent och därför inte kan återställas.                                                                          |
-| Länkar                 | [ResourceLinks](utility-resources.md#resourcelinks)           | Resurs länkarna.                                                                                                                                                                                                        |
-| dokumentattribut            | [ResourceAttributes](utility-resources.md#resourceattributes) | Attribut för metadata.                                                                                                                                                                                                   |
+| lastDirectorySyncTime | sträng i UTC-datum/tid-format                                 | Den senaste gången informationen för den här användaren synkroniserades mellan Azure Active Directory och lokal Active Directory. Ett datum/tid-värde visas bara om Azure AD Anslut har aktiverats. Annars är värdet null. |
+| userDomainType        | sträng                                                         | Användardomäntypen: "none", "managed" eller "federated".                                                                                                                                                                   |
+| state                 | sträng                                                         | Tillståndet för användaren: "active", "inactive" (för en borttagna användare).                                                                                                                                                          |
+| softDeletionTime      | sträng i UTC-datum/tid-format                                 | Representerar början av 30-dagarsperioden efter vilken data som är associerade med en borttagna användare tas bort permanent och därför inte kan återställas.                                                                          |
+| Länkar                 | [ResourceLinks](utility-resources.md#resourcelinks)           | Resurslänkarna.                                                                                                                                                                                                        |
+| Attribut            | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen.                                                                                                                                                                                                   |
 
 ## <a name="customeruser"></a>CustomerUser
 
-Beskriver en kund användare.
+Beskriver en kundanvändare.
 
-| Egenskap              | Typ                                                           | Description                                                                                                                                                                                                                |
+| Egenskap              | Typ                                                           | Beskrivning                                                                                                                                                                                                                |
 |-----------------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| usageLocation         | sträng                                                         | Den plats där användaren tänker använda licensen.                                                                                                                                                                    |
-| id                    | sträng                                                         | Användar-ID.                                                                                                                                                                                                       |
-| userPrincipalName     | sträng                                                         | Användarens huvud-ID.                                                                                                                                                                                             |
+| usageLocation         | sträng                                                         | Den plats där användaren har för avsikt att använda licensen.                                                                                                                                                                    |
+| id                    | sträng                                                         | Användaridentifieraren.                                                                                                                                                                                                       |
+| userPrincipalName     | sträng                                                         | Användarens huvudnamnsidentifierare.                                                                                                                                                                                             |
 | firstName             | sträng                                                         | Användarens förnamn.                                                                                                                                                                                                |
-| lastName              | sträng                                                         | Användarens efter namn.                                                                                                                                                                                                 |
-| displayName           | sträng                                                         | Användarens visade namn.                                                                                                                                                                                            |
+| lastName              | sträng                                                         | Användarens efternamn.                                                                                                                                                                                                 |
+| displayName           | sträng                                                         | Användarens namn som visas.                                                                                                                                                                                            |
 | immutableId           | sträng                                                         | Användarens oföränderliga ID.                                                                                                                                                                                              |
-| passwordProfile       | [PasswordProfile](utility-resources.md#passwordprofile)       | Användarens lösen ords profil.                                                                                                                                                                                               |
+| passwordProfile       | [PasswordProfile](utility-resources.md#passwordprofile)       | Användarens lösenordsprofil.                                                                                                                                                                                               |
 | phoneNumber           | sträng                                                         | Användarens telefonnummer.                                                                                                                                                                                                   |
-| lastDirectorySyncTime | sträng i UTC-datum/tid-format                                 | Den senaste gången som information för den här användaren synkroniserades mellan Azure Active Directory och lokala Active Directory. Ett datum/tid-värde visas bara om Azure AD Connect Sync är aktiverat. Annars är värdet null. |
-| userDomainType        | sträng                                                         | Användar domän typen: "ingen", "hanterad" eller "federerad".                                                                                                                                                                   |
-| state                 | sträng                                                         | Användarens tillstånd: "Active", "inaktiv" (för en borttagen användare).                                                                                                                                                          |
-| softDeletionTime      | sträng i UTC-datum/tid-format                                 | Representerar början på den trettio dag period efter vilken data som är associerade med en borttagen användare tas bort permanent och därför inte kan återställas.                                                                          |
-| Länkar                 | [ResourceLinks](utility-resources.md#resourcelinks)           | Resurs länkarna.                                                                                                                                                                                                        |
-| dokumentattribut            | [ResourceAttributes](utility-resources.md#resourceattributes) | Attribut för metadata.                                                                                                                                                                                                   |
+| lastDirectorySyncTime | sträng i UTC-datum/tid-format                                 | Den senaste gången informationen för den här användaren synkroniserades mellan Azure Active Directory och lokal Active Directory. Ett datum/tid-värde visas bara om Azure AD Anslut har aktiverats. Annars är värdet null. |
+| userDomainType        | sträng                                                         | Användardomäntypen: "none", "managed" eller "federated".                                                                                                                                                                   |
+| state                 | sträng                                                         | Tillståndet för användaren: "active", "inactive" (för en borttagna användare).                                                                                                                                                          |
+| softDeletionTime      | sträng i UTC-datum/tid-format                                 | Representerar början av 30-dagarsperioden efter vilken data som är associerade med en borttagna användare tas bort permanent och därför inte kan återställas.                                                                          |
+| Länkar                 | [ResourceLinks](utility-resources.md#resourcelinks)           | Resurslänkarna.                                                                                                                                                                                                        |
+| Attribut            | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen.                                                                                                                                                                                                   |
 
 ## <a name="usercredentials"></a>UserCredentials
 
-Beskriver en användares inloggnings uppgifter.
+Beskriver en användares inloggningsuppgifter.
 
-| Egenskap | Typ                                               | Description                          |
+| Egenskap | Typ                                               | Beskrivning                          |
 |----------|----------------------------------------------------|--------------------------------------|
 | userName | sträng                                             | Användarens namn.                |
-| password | [SecureString](utility-resources.md#securestring) | Användarens säkert lagrade lösen ord. |
+| password | [SecureString](utility-resources.md#securestring) | Användarens lösenord lagras på ett säkert sätt. |
 
 ## <a name="usermember"></a>UserMember
 
-Beskriver en användares medlems information.
+Beskriver en användares medlemsinformation.
 
-| Egenskap          | Typ                                                           | Description                        |
+| Egenskap          | Typ                                                           | Beskrivning                        |
 |-------------------|----------------------------------------------------------------|------------------------------------|
-| displayName       | sträng                                                         | Det namn som visas för användaren.   |
-| userPrincipalName | sträng                                                         | Namnet på användarens huvud namn.    |
+| displayName       | sträng                                                         | Användarens namn som visas.   |
+| userPrincipalName | sträng                                                         | Namnet på användarens huvudnamn.    |
 | roleId            | sträng                                                         | Identifieraren för användarens roll. |
 | id                | sträng                                                         | Medlemmens identifierare.      |
-| dokumentattribut        | [ResourceAttributes](utility-resources.md#resourceattributes) | Attribut för metadata.           |
+| Attribut        | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen.           |
 

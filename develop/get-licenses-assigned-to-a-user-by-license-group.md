@@ -1,37 +1,33 @@
 ---
 title: Hämta licenser tilldelade till en användare efter licensgrupp
-description: Hämta en lista över tilldelade licenser för de angivna licens grupperna.
+description: Så här hämtar du en lista över användar tilldelade licenser för de angivna licensgrupperna.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 28c10e3e2acb30e4110213344959a87d4ddfcffb
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 54acf6f315e3062d03903a98d0c6c1946065f95e
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769669"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446011"
 ---
 # <a name="get-licenses-assigned-to-a-user-by-license-group"></a>Hämta licenser tilldelade till en användare efter licensgrupp
 
-**Gäller för**
-
-- Partnercenter
-
-Hämta en lista över tilldelade licenser för de angivna licens grupperna.
+Så här hämtar du en lista över användar tilldelade licenser för de angivna licensgrupperna.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Ett användar-ID.
+- En användaridentifierare.
 
-- En lista med en eller flera licens grupps identifierare.
+- En lista över en eller flera licensgruppsidentifierare.
 
 ## <a name="c"></a>C\#
 
-Om du vill kontrol lera vilka licenser som har tilldelats en användare från angivna licens grupper börjar du genom att instansiera en [List/dotNet/API/system. Collections. Generic. list -1) av typen [**LicenseGroupId**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid)och lägger sedan till licens grupperna i listan. Använd sedan metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att identifiera kunden. Anropa sedan metoden [**users. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) med användar-ID för att identifiera användaren. Hämta sedan ett gränssnitt till kund användar licens åtgärder från egenskapen [**licenser**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.licenses) . Slutligen skickar du listan över licens grupper till [**Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.get) -eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.getasync) -metoden för att hämta den samling av licenser som tilldelats användaren.
+Om du vill kontrollera vilka licenser som har tilldelats till en användare från angivna licensgrupper börjar du med att instansiera en [List/dotnet/api/system.collections.generic.list-1) av typen [**LicenseGroupId**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid)och lägger sedan till licensgrupperna i listan. Använd sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Anropa sedan metoden [**Users.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) med användar-ID:t för att identifiera användaren. Hämta sedan ett gränssnitt för åtgärder för kundanvändarlicenser [**från**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.licenses) egenskapen Licenser. Slutligen skickar du listan över licensgrupper till metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.getasync) för att hämta samlingen med licenser som tilldelats användaren.
 
 ``` csharp
 // string selectedCustomerUserId;
@@ -53,27 +49,27 @@ var customerUserBothAadAndSfbAssignedLicenses = partnerOperations.Customers.ById
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                                                            |
 |---------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Users/{User-ID}/licenses? LicenseGroupIds = Grupp1 http/1.1                        |
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Users/{User-ID}/licenses? LicenseGroupIds = group2 http/1.1                        |
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Users/{User-ID}/licenses? LicenseGroupIds = Grupp1&LicenseGroupIds = group2 http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/users/{user-id}/licenses?licenseGroupIds=Group1 HTTP/1.1                        |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/users/{user-id}/licenses?licenseGroupIds=Group2 HTTP/1.1                        |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/users/{user-id}/licenses?licenseGroupIds=Group1&licenseGroupIds=Group2 HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande sökväg och frågeparametrar för att identifiera kund-, användar-och licens grupper.
+Använd följande sökväg och frågeparametrar för att identifiera kund-, användar- och licensgrupper.
 
 | Namn            | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                                                                                                           |
 |-----------------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| kund-ID     | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.                                                                                                                                                                                                                 |
-| användar-id         | sträng | Yes      | En GUID-formaterad sträng som identifierar användaren.                                                                                                                                                                                                                     |
-| licenseGroupIds | sträng | No       | Ett Enum-värde som anger licens gruppen för de tilldelade licenserna. Giltiga värden: Grupp1, group2 Grupp1 – den här gruppen har alla produkter vars licens kan hanteras i Azure Active Directory (AAD). Group2 – den här gruppen har bara Minecraft produkt licenser. |
+| kund-id     | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.                                                                                                                                                                                                                 |
+| användar-id         | sträng | Ja      | En GUID-formaterad sträng som identifierar användaren.                                                                                                                                                                                                                     |
+| licenseGroupIds | sträng | No       | Ett uppräkningsvärde som anger licensgruppen för de tilldelade licenserna. Giltiga värden: Group1, Group2 Group1 – Den här gruppen har alla produkter vars licens kan hanteras i Azure Active Directory (AAD). Grupp2 – Den här gruppen har bara Minecraft produktlicenser. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -93,11 +89,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten samlingen av [licens](license-resources.md#license) resurser.
+Om det lyckas innehåller svarstexten samlingen [licensresurser.](license-resources.md#license)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 
@@ -155,9 +151,9 @@ Date: June 24 2016 22:00:25 PST
 }
 ```
 
-### <a name="response-example-no-matching-licenses-found"></a>Svars exempel (inga matchande licenser hittades)
+### <a name="response-example-no-matching-licenses-found"></a>Svarsexempel (inga matchande licenser hittades)
 
-Om det inte går att hitta matchande licenser för de angivna licens grupperna innehåller svaret en tom samling med ett totalCount-element vars värde är 0.
+Om inga matchande licenser hittas för de angivna licensgrupperna innehåller svaret en tom samling med ett totalCount-element vars värde är 0.
 
 ```http
 HTTP/1.1 200 OK
