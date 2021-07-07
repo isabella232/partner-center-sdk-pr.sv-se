@@ -1,52 +1,48 @@
 ---
 title: Hämta en kunds prenumerationers överföringsberättigande
-description: Hämta en samling av en kunds prenumerationer som är berättigade/ineligibile för överföring.
+description: Hur du hämtar en samling av en kunds prenumerationer som är berättigade/icke-berättigade för överföring.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 43086a32fa0dbbdecf65aac167c687f26fc4c2c6
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: fe8af76d1e1456754dec79291ec0853fb253d108
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768742"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446300"
 ---
 # <a name="get-a-customers-subscriptions-transfer-eligibility"></a>Hämta en kunds prenumerationers överföringsberättigande
 
-**Gäller för**
-
-- Partnercenter
-
-Hämta en samling av en kunds prenumerationer som är berättigade/inberättigade för överföring.
+Så här hämtar du en samling av en kunds prenumerationer som är berättigade/inte berättigade till överföring.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                          |
 |---------|------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/transferseligibility? transferType = {transfer-Type} http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/transferseligibility?transferType={transfer-type} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Den här tabellen innehåller den obligatoriska Frågeparametern för att hämta alla prenumerationer.
+I den här tabellen visas den frågeparameter som krävs för att hämta alla prenumerationer.
 
 | Namn               | Typ   | Obligatorisk | Beskrivning                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| kund-ID för klient organisation | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
-| överförings typ      | sträng | Yes      | Den typ av överföring som är avsedd.                |
+| kund-klient-id | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
+| överföringstyp      | sträng | Ja      | Den typ av överföring som är avsedd.                |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -65,11 +61,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling [TransferEligibility](transfer-eligibility-resources.md) -resurser i svars texten.
+Om det lyckas returnerar den här metoden en samling [TransferEligibility-resurser](transfer-eligibility-resources.md) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

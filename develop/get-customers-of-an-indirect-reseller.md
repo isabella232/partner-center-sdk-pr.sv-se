@@ -1,41 +1,37 @@
 ---
 title: Hämta kunder till en indirekt återförsäljare
-description: Så här hämtar du en lista över kunder i en indirekt åter försäljare.
+description: Så här hämtar du en lista över kunder till en indirekt återförsäljare.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: e4219f544a74bb3f34ec3aefe08cf18eed77fd42
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: e05248b16b803529258de806c25b117f3104ad2a
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769687"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446334"
 ---
 # <a name="get-customers-of-an-indirect-reseller"></a>Hämta kunder till en indirekt återförsäljare
 
-**Gäller för**
-
-- Partnercenter
-
-Så här hämtar du en lista över kunder i en indirekt åter försäljare.
+Så här hämtar du en lista över kunder till en indirekt återförsäljare.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Klient-ID för den indirekta åter försäljaren.
+- Klientorganisations-ID för den indirekta återförsäljaren.
 
 ## <a name="c"></a>C\#
 
-För att få en samling kunder som har en relation med den angivna indirekta åter försäljaren måste du först instansiera ett [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) -objekt för att skapa filtret. Du måste skicka [**CustomerSearchField. IndirectReseller**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield) -uppräknings medlemmen konverterad till en sträng och ange [**FieldFilterOperation. StartsWith**](/dotnet/api/microsoft.store.partnercenter.models.query.fieldfilteroperation) som typ av filter åtgärd. Du måste också ange klient-ID: n för den indirekta åter försäljaren för att filtrera efter.
+Om du vill hämta en samling kunder som har en relation med den angivna indirekta återförsäljaren skapar du först ett [**SimpleFieldFilter-objekt**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) för att skapa filtret. Du måste skicka uppräkningsmedlemmen [**CustomerSearchField.IndirectReseller**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield) som konverterats till en sträng och ange [**FieldFilterOperation.StartsWith**](/dotnet/api/microsoft.store.partnercenter.models.query.fieldfilteroperation) som typ av filteråtgärd. Du måste också ange klient-ID för den indirekta återförsäljaren att filtrera efter.
 
-Sedan instansierar du ett [**iQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) -objekt för att skicka till frågan genom att anropa metoden [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) och skicka filtret. BuildSimplyQuery är bara en av de frågetyper som stöds av [**QueryFactory**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory) -klassen.
+Skapa sedan en instans av [**ett iQuery-objekt**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) som ska överföras till frågan genom att anropa [**metoden BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) och skicka det till filtret. BuildSimplyQuery är bara en av de frågetyper som stöds av [**queryFactory-klassen.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
 
-Om du vill köra filtret och få resultatet måste du först använda [**IAggregatePartner. kunder**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) för att få ett gränssnitt till partnerns kund åtgärder. Anropa sedan [**fråge**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) -eller [**QueryAsync**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync) -metoden.
+Om du vill köra filtret och hämta resultatet använder du först [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) för att hämta ett gränssnitt för partnerns kundåtgärder. Anropa sedan [**metoden Query**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) eller [**QueryAsync.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync)
 
-Om du vill skapa en uppräknare för att passera växlade resultat hämtar du uppräkna ren för kund samlings uppräknare från [**IAggregatePartner. enumerations. Customers**](/dotnet/api/microsoft.store.partnercenter.enumerators.iresourcecollectionenumeratorcontainer.customers) -egenskapen och anropar sedan [**create**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create), som visas i koden nedan, och skickar variabeln som innehåller kund samlingen.
+Om du vill skapa en uppräkning för att bläddra i sidindelade resultat hämtar du kundsamlingens uppräkningsfabriksgränssnitt från egenskapen [**IAggregatePartner.Enumerators.Customers**](/dotnet/api/microsoft.store.partnercenter.enumerators.iresourcecollectionenumeratorcontainer.customers) och anropar [**sedan Skapa**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create)enligt koden nedan och anger variabeln som innehåller kundsamlingen.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -70,15 +66,15 @@ while (customersEnumerator.HasValue)
 }
 ```
 
-**Exempel**: [konsol test app](console-test-app.md)-**projekt**: Partner Center SDK-exempel **klass**: GetCustomersOfIndirectReseller.CS
+**Exempel:** [Konsoltestapp med](console-test-app.md)**Project:** Partnercenter-SDK **Exempelklass:** GetCustomersOfIndirectReseller.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers? size = {size}? filter = {filter} http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers?size={size}?filter={filter} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -86,12 +82,12 @@ Använd följande frågeparametrar för att skapa begäran.
 
 | Namn   | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                                                                                                                                   |
 |--------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ikoner   | int    | No       | Antalet resultat som ska visas samtidigt. Den här parametern är valfri.                                                                                                                                                                                                                |
-| filter | filter | Yes      | Frågan som filtrerar sökningen. Om du vill hämta kunder för en angiven indirekt åter försäljare måste du infoga den indirekta åter försäljarens identifierare och ta med och koda följande sträng: {"Field": "IndirectReseller", "värde": "{indirekt åter försäljarens identifierare}", "Operator": "börjar \_ med"}. |
+| ikoner   | int    | Inga       | Antalet resultat som ska visas samtidigt. Den här parametern är valfri.                                                                                                                                                                                                                |
+| filter | filter | Ja      | Frågan som filtrerar sökningen. Om du vill hämta kunder för en angiven indirekt återförsäljare måste du infoga den indirekta återförsäljaridentifieraren och inkludera och koda följande sträng: {"Field":"IndirectReseller","Value":"{indirect reseller identifier}","Operator":"starts \_ with"}. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -123,11 +119,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten information om åter försäljarens kunder.
+Om det lyckas innehåller svarstexten information om återförsäljarens kunder.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

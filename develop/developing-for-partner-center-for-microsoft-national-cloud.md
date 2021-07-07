@@ -1,85 +1,81 @@
 ---
-title: Utveckla för partner Center för Microsofts nationella moln
-description: Skillnader i Partner Center SDK när du utvecklar för partner Center för Microsofts nationella moln.
+title: Utveckla för PartnerCenter för Microsoft National Clouds
+description: Partnercenter-SDK skillnader när du utvecklar för Partner Center för Microsoft National Clouds.
 MS-HAID:
 - pc\_apiv2.developing\_with\_different\_partner\_center\_versions
 - pc\_apiv2.developing\_for\_partner\_center\_for\_microsoft\_national\_cloud
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7882846de0c591b21fe73345f560613f535d1788
-ms.sourcegitcommit: 529b07030a874d644cf947790f4b53cdff438dd4
+ms.openlocfilehash: d38a35fb88b4835716e429aeed731a0d55d9a669
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769411"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906450"
 ---
-# <a name="developing-for-partner-center-for-microsoft-national-clouds"></a>Utveckla för partner Center för Microsofts nationella moln
+# <a name="developing-for-partner-center-for-microsoft-national-clouds"></a>Utveckla för PartnerCenter för Microsoft National Clouds
 
-**Gäller för:**
+**Gäller för:** PartnerCenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+Partnercenter har en uppsättning SDK-dokumentation. Vissa funktioner kanske dock inte är tillgängliga i versionerna av Partner Center for Microsoft National Clouds.
 
-Partner Center har en uppsättning SDK-dokumentation. Vissa funktioner kanske inte är tillgängliga i versionerna av Partner Center för Microsofts nationella moln.
+Utvecklare måste överväga ändringar i SDK för följande versioner av Partnercenter:
 
-Utvecklare måste överväga ändringar i SDK för följande versioner av Partner Center:
-
-- [Partner Center som drivs av 21Vianet](#partner-center-operated-by-21vianet)
+- [Partnercenter drivs av 21Vianet](#partner-center-operated-by-21vianet)
 - [Partnercenter för Microsoft Cloud Tyskland](#partner-center-for-microsoft-cloud-germany)
 - [Välkommen till Partnercenter för Microsoft Cloud for US Government](#partner-center-for-microsoft-cloud-for-us-government)
 
-Varje SDK-artikel för partner Center listar tillämpliga Partner Center-versioner. Varje hanterad referens artikel visar också tillämpliga Partner Center-versioner i avsnittet **krav** .
+Varje Partnercenter-SDK listar tillämpliga Partner Center-versioner. Varje hanterad referensartikel innehåller också en lista över tillämpliga Partner Center-versioner i **avsnittet** Krav.
 
-## <a name="partner-center-operated-by-21vianet"></a>Partner Center som drivs av 21Vianet
+## <a name="partner-center-operated-by-21vianet"></a>Partnercenter drivs av 21Vianet
 
-Skillnaderna mellan *partner Center* och *partner Center som drivs av 21Vianet* är:
+Skillnaderna för partner mellan *Partner Center och* *Partnercenter som drivs av 21Vianet* är:
 
-- Det går inte att program mässigt återställa ett lösen ord för en kund användare eller fullständig partner användare.
+- Du kan inte programmässigt återställa ett lösenord för en kundanvändare eller en fullständig partneranvändare.
 
 - Prenumerationer på Azure är inte tillgängliga.
 
-- Du kan inte hantera licenserna för kundens användare. Kunderna måste i stället använda administrations centret för Office 365 för att hantera sina licenser.
+- Du kan inte hantera licenserna för kundens användare. I stället måste kunderna använda administrationscentret Office 365 för att hantera sina licenser.
 
-- Alla support förfrågningar hanteras via partner Center som drivs av 21Vianet. Tjänst begär Anden och tjänst uppdateringar gäller inte.
+- Alla supportbegäranden hanteras via Partnercenter som drivs av 21Vianet. Tjänstbegäranden och tjänstuppdateringar gäller inte.
 
 ## <a name="partner-center-for-microsoft-cloud-germany"></a>Partnercenter för Microsoft Cloud Tyskland
 
 > [!IMPORTANT]
-> Efter utvecklingen av kundernas behov kommer vår moln strategi för Tyskland att fokuseras på leverans av nya moln regioner i Tyskland som är konsekvent med vårt globala moln erbjudande. I detta fokus kommer vi inte längre att acceptera nya kunder eller att distribuera nya tjänster från den för närvarande tillgängliga Microsoft Cloud Tyskland. Befintliga-kunder kan fortsätta att använda de aktuella moln tjänsterna som finns idag, som vi ska underhålla med nödvändiga säkerhets uppdateringar.
+> Baserat på kundutvecklingen kommer vår molnstrategi för Tyskland att fokusera på leverans av de nya molnregionerna i Tyskland som är konsekventa med vårt globala molnerbjudande. Med det här fokuset kommer vi inte längre att ta emot nya kunder eller distribuera nya tjänster från det aktuella tillgängliga Microsoft Cloud Tyskland. Befintliga kunder kan fortsätta att använda de aktuella molntjänsterna som är tillgängliga idag, vilket vi kommer att underhålla med nödvändiga säkerhetsuppdateringar.
 >
-> Nya kunder kan fortsätta att använda de för närvarande tillgängliga europeiska regionerna eller de nya regionerna i Tyskland när de blir tillgängliga. Mer information finns i [Microsoft för att leverera moln tjänster från nya data Center i Tyskland](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/).
+> Framöver har nya kunder möjlighet att använda de europeiska regioner som för närvarande är tillgängliga eller de nya regionerna i Tyskland när de blir tillgängliga. Mer information finns i [Microsoft för att leverera molntjänster från nya datacenter i Tyskland.](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/)
 
-Skillnaderna mellan *partner Center* och *partner Center för Microsoft Cloud Tyskland* är:
+Skillnaderna för partner mellan *Partner Center och* Partner Center för Microsoft Cloud *Tyskland* är:
 
 - Partner kan inte skapa användare för kundens organisation eller tilldela roller.
   - Partner kan läsa fält, men kan inte skriva eller uppdatera dem.
-  - Partners måste manuellt skapa eller uppdatera sina kunders användare i administrations centret för Office 365 eller via Azure Portal. Se [Azure Active Directory-dokumentationen](/azure/active-directory/).
+  - Partner måste manuellt skapa eller uppdatera sina kunders användare i Office 365 administrationscenter eller via Azure Portal. Se [Azure Active Directory dokumentation.](/azure/active-directory/)
 
-- Du kan inte hantera licenser för kundens användare med hjälp av Partner Center för Microsoft Cloud Tyskland-portalen eller-API: er. I stället måste du använda administrations centret för Office 365 eller Azure Active Group License Management direkt (kommer snart) för att hantera sina licenser.
-  - (Valfritt) du kan använda Azure AD-Graph API. Se [tilldela licenser till en användare](/graph/api/user-assignlicense). För partner Center för Microsoft Cloud Tyskland, se till att du använder diagrammets slut punkt `https://graph.cloudapi.de` i stället för `https://graph.windows.net` .
+- Du kan inte hantera licenser för dina kundanvändare med hjälp av Partnercenter för Microsoft Cloud Tyskland-portalen eller API:er. I stället måste du använda administrationscentret Office 365 Azure Active Group license management (kommer snart) för att hantera sina licenser.
+  - (Valfritt) Du kan använda Azure AD Graph API. Se [Tilldela licenser till en användare.](/graph/api/user-assignlicense) För Partner Center för Microsoft Cloud Tyskland måste du använda slutpunkten Graph stället `https://graph.cloudapi.de` för `https://graph.windows.net` .
 
-- Det går inte att program mässigt återställa ett lösen ord för en kund användare eller fullständig partner användare. Använd administrations centret för Office 365 eller Azure Portal. Se [återställa lösen ordet för en användare i Azure Active Directory](/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal). I steg 1 måste du logga in på Azure Portal för Microsoft Cloud Tyskland.
+- Du kan inte programmässigt återställa ett lösenord för en kundanvändare eller en fullständig partneranvändare. Använd Office 365 administrationscenter eller Azure Portal. Se [Återställa lösenordet för en användare i Azure Active Directory](/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal). För steg 1 måste du logga in på Azure Portal Microsoft Cloud Tyskland.
 
-- Utvecklare måste registrera sitt app-ID manuellt för att integrera API/SDK-funktioner i appen för partner Center för Microsoft Cloud Tyskland. Mer information finns i [Registrera app-information för partner Center för Microsoft National Cloud](create-apps-for-partner-center-for-microsoft-national-clouds.md).
+- Utvecklare måste registrera sina app-ID manuellt för att integrera Partner Center API/SDK-funktioner i sin app för Partner Center för Microsoft Cloud Tyskland. Mer information finns i [Registrera appinformation för Partner Center for Microsoft National Cloud.](create-apps-for-partner-center-for-microsoft-national-clouds.md)
 
 ## <a name="partner-center-for-microsoft-cloud-for-us-government"></a>Välkommen till Partnercenter för Microsoft Cloud for US Government
 
-Skillnaderna mellan *partner Center* och *partner Center för Microsoft Cloud för amerikanska myndigheter* är:
+Skillnaderna för partner mellan *Partnercenter och* *Partnercenter för Microsoft Cloud for US Government* är:
 
-- Office 365-prenumerationer är för närvarande inte tillgängliga för partner Center för Microsoft Cloud för amerikanska myndigheter.
+- Office 365 prenumerationer är för närvarande inte tillgängliga för Partnercenter för Microsoft Cloud for US Government.
 
-- Befintliga partners som stöder Microsoft Cloud för amerikanska myndigheter måste skapa nya konton i Partner Center för Microsoft Cloud för amerikanska myndigheter.
+- Befintliga partner som stöder Microsoft Cloud for US Government måste skapa nya konton i Partnercenter för Microsoft Cloud for US Government.
 
-- Microsoft Cloud för amerikanska myndighets Kunder måste Transact med en enda partner.
-  - Multichannel och multipartner och begäran relation med en befintlig kund inom Microsoft Cloud för amerikanska myndighets scenarier gäller inte. Den här begränsningen beror på att Office 365 inte är tillgängligt för närvarande.
+- Microsoft Cloud for US Government kunder måste göra en kontakt med en enda partner.
+  - Relationen mellan flera kanaler och flera partner och begärande med en befintlig kund Microsoft Cloud for US Government om scenarierna inte gäller. Den här begränsningen beror Office 365 inte är tillgänglig för närvarande.
 
 - Partner kan inte skapa användare för kundens organisation eller tilldela roller.
-  - Partner kan läsa fält, men kan inte skriva eller uppdatera dem. Partners måste manuellt skapa eller uppdatera sina kunders användare i Azure Portal. Se [Azure Active Directory-dokumentationen](/azure/active-directory/).
+  - Partner kan läsa fält, men kan inte skriva eller uppdatera dem. Partner måste manuellt skapa eller uppdatera sina kunders användare i Azure Portal. Se [Azure Active Directory dokumentation.](/azure/active-directory/)
 
-- Det går inte att program mässigt återställa ett lösen ord för en kund användare eller fullständig partner användare. Använd Azure Portal. Se [återställa lösen ordet för en användare i Azure Active Directory](/azure/active-directory/active-directory-users-reset-password-azure-portal). I steg 1 måste du logga in på Azure Portal för Microsoft Cloud för amerikanska myndigheter.
+- Du kan inte programmässigt återställa ett lösenord för en kundanvändare eller en fullständig partneranvändare. Använd Azure-portalen. Se [Återställa lösenordet för en användare i Azure Active Directory](/azure/active-directory/active-directory-users-reset-password-azure-portal). För steg 1 måste du logga in på Azure Portal för Microsoft Cloud for US Government.
 
-- REST-slutpunkter för partner Center för Microsoft Cloud för amerikanska myndigheter är desamma som för partner Center: `https://api.partnercenter.microsoft.com` .
+- REST-slutpunkter för Partnercenter för Microsoft Cloud for US Government är samma som för Partnercenter: `https://api.partnercenter.microsoft.com` .
 
-- Utvecklare måste registrera sitt app-ID manuellt för att integrera API/SDK-funktioner i appen för partner Center för Microsoft Cloud för amerikanska myndigheter. Mer information finns i [Registrera app-information för partner Center för Microsoft National Cloud](create-apps-for-partner-center-for-microsoft-national-clouds.md).
+- Utvecklare måste registrera sina app-ID manuellt för att integrera Partner Center API/SDK-funktioner i sin app för Partnercenter för Microsoft Cloud for US Government. Mer information finns i [Registrera appinformation för Partner Center for Microsoft National Cloud.](create-apps-for-partner-center-for-microsoft-national-clouds.md)

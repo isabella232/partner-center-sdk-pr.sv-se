@@ -1,33 +1,29 @@
 ---
 title: Hämta ett användarkonto efter ID
-description: Hämta ett speciellt användar konto för en kund.
+description: Hämta ett specifikt användarkonto för en kund.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: a2f42001365324a65376318cb1f2d57dc123df0c
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 3a7cac98a8081a8557dcadfb0724f5497be7d14c
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769270"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760274"
 ---
 # <a name="get-a-user-account-by-id"></a>Hämta ett användarkonto efter ID
 
-**Gäller för**
+Hämta ett specifikt användarkonto för en kund.
 
-- Partnercenter
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
 
-Hämta ett speciellt användar konto för en kund.
-
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
-
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta ett användar konto för en kund anropar du metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att identifiera kunden. Anropa sedan metoden [**users. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) för att hämta den aktuella användaren. Anropa slutligen metoden [**users. get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.getasync) för att hämta användar kontot.
+Om du vill hämta ett användarkonto för en kund anropar du [**metoden IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Anropa sedan metoden [**Users.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) för att hämta den specifika användaren. Anropa slutligen metoden [**Users.Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.getasync) för att hämta användarkontot.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -38,15 +34,15 @@ Om du vill hämta ett användar konto för en kund anropar du metoden [**IAggreg
 var customerUsers = partnerOperations.Customers.ById(selectedCustomerId).Users.ById(selectedCustomerUserId).Get();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: GetCustomerUserDetails.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Samples-klass:** GetCustomerUserDetails.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                            |
 |---------|--------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Users/{User-ID} http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/users/{user-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -54,12 +50,12 @@ Använd följande URI-parametrar för att identifiera rätt kund och användare.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y        | Värdet är ett GUID-formaterat **kund-Tenant-ID** som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik kund som tillhör åter försäljaren. |
-| **användar-ID**            | **guid** | Y        | Värdet är ett GUID-formaterat **användar-ID** som tillhör ett enda användar konto.                                                                       |
+| **kund-klient-id** | **guid** | Y        | Värdet är ett GUID-formaterat **kundklient-ID** som gör att återförsäljaren kan filtrera resultaten för en viss kund som tillhör återförsäljaren. |
+| **användar-id**            | **guid** | Y        | Värdet är ett GUID-formaterat **användar-ID** som tillhör ett enda användarkonto.                                                                       |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -79,11 +75,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden användar kontot för kunden.
+Om det lyckas returnerar den här metoden användarkontot för kunden.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

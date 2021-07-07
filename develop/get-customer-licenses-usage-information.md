@@ -1,36 +1,32 @@
 ---
 title: Hämta information om kundlicensanvändning
-description: Hur du får licenser för användnings information för en specifik kund.
+description: Så här hämtar du information om licensers användning för en specifik kund.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 1ee19e458ec65faa21034dd230b5388f7de981b2
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: cfec12d37ce4f5f50baad57bfd45770388f8a2dc
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769708"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446436"
 ---
 # <a name="get-customer-licenses-usage-information"></a>Hämta information om kundlicensanvändning
 
-**Gäller för**
-
-- Partnercenter
-
-Hur du får distributions information för licenser för en specifik kund.
+Så här hämtar du information om licensdistribution för en specifik kund.
 
 > [!NOTE]
-> Det här scenariot har ersatts av [Hämta licens användnings information](get-licenses-usage-information.md).
+> Det här scenariot ersätts av [Hämta användningsinformation om licenser.](get-licenses-usage-information.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med app + användarautentiseringsuppgifter.
+Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta sammanställda data för distribution för en angiven kund anropar du först metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att identifiera kunden. Hämta sedan ett gränssnitt till åtgärder för insamling av kund nivå från [**Analytics**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.analytics) -egenskapen. Sedan hämtar du ett gränssnitt till kund nivåns licens analys samling från egenskapen [**licenser**](/dotnet/api/microsoft.store.partnercenter.analytics.icustomeranalyticscollection.licenses) . Slutligen anropar du metoden [**Usage. get**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) för att hämta de sammanställda data licens användningen. Om metoden lyckas får du en samling [**CustomerLicensesUsageInsights**](/dotnet/api/microsoft.store.partnercenter.models.analytics.customerlicensesusageinsights) -objekt.
+Om du vill hämta aggregerade data vid distributionen för en angiven kund anropar du först [**metoden IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Hämta sedan ett gränssnitt för insamlingsåtgärder på kundnivå från [**egenskapen**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.analytics) Analytics. Hämta sedan ett gränssnitt till analyssamlingen för licenser på kundnivå [**från**](/dotnet/api/microsoft.store.partnercenter.analytics.icustomeranalyticscollection.licenses) egenskapen Licenser. Anropa slutligen metoden [**Usage.Get**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) för att hämta aggregerade data om licensanvändningen. Om metoden lyckas får du en samling [**customerLicensesUsageInsights-objekt.**](/dotnet/api/microsoft.store.partnercenter.models.analytics.customerlicensesusageinsights)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -41,23 +37,23 @@ var customerLicensesDeploymentAnalytics = partnerOperations.Customers.ById(custo
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                              |
 |---------|----------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Analytics/licenses/Usage http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/analytics/licenses/usage HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande Sök vägs parameter för att identifiera kunden.
+Använd följande sökvägsparameter för att identifiera kunden.
 
 | Namn        | Typ | Obligatorisk | Beskrivning                                                |
 |-------------|------|----------|------------------------------------------------------------|
-| kund-ID | guid | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden. |
+| kund-ID | guid | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -78,11 +74,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en samling [CustomerLicensesUsageInsights](analytics-resources.md#customerlicensesusageinsights) -resurser som innehåller information om licensernas användning.
+Om det lyckas innehåller svarstexten en samling [CustomerLicensesUsageInsights-resurser](analytics-resources.md#customerlicensesusageinsights) som innehåller information om licensanvändning.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

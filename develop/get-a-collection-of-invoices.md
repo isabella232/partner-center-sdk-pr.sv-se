@@ -1,40 +1,35 @@
 ---
 title: Hämta en samling fakturor
-description: Hämta en samling av partnerns fakturor.
+description: Så här hämtar du en samling av partnerns fakturor.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: f56c3de8dd227f573921e5b969c2217c2f743a21
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 7698d85df3341ae4cbff0377bd0a1bb47cd36740
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769288"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906437"
 ---
 # <a name="get-a-collection-of-invoices"></a>Hämta en samling fakturor
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Hämta en samling av partnerns fakturor.
+Så här hämtar du en samling av partnerns fakturor.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en samling med alla tillgängliga fakturor använder du egenskapen [**fakturor**](/dotnet/api/microsoft.store.partnercenter.ipartner.invoices) för att hämta ett gränssnitt till faktura åtgärder och anropar sedan metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.getasync) för att hämta samlingen.
+Om du vill hämta en samling med alla tillgängliga fakturor använder du egenskapen [**Fakturor**](/dotnet/api/microsoft.store.partnercenter.ipartner.invoices) för att hämta ett gränssnitt för fakturaåtgärder och anropar sedan metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.getasync) för att hämta samlingen.
 
-För att få en sida med fakturor, anropa först metoden [**BuildIndexedQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildindexedquery) och skicka den till sid storleken för att skapa ett [**IQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) -objekt. Använd sedan egenskapen [**fakturor**](/dotnet/api/microsoft.store.partnercenter.ipartner.invoices) för att hämta ett gränssnitt för att fakturera åtgärder och skicka sedan IQuery-objektet till [**frågan**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.query) eller [**QueryAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.queryasync) -metoden för att skicka begäran och hämta den första sidan.
+Om du vill hämta en sidad samling fakturor anropar du först [**metoden BuildIndexedQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildindexedquery) och skickar sidstorleken för att skapa ett [**IQuery-objekt.**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) Använd sedan egenskapen [**Invoices**](/dotnet/api/microsoft.store.partnercenter.ipartner.invoices) för att hämta ett gränssnitt för fakturaåtgärder och skicka sedan IQuery-objektet till [**query-**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.query) eller [**QueryAsync-metoden**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.queryasync) för att skicka begäran och hämta den första sidan.
 
-Använd sedan egenskapen [**uppräknings**](/dotnet/api/microsoft.store.partnercenter.ipartner.enumerators) egenskap för att hämta ett gränssnitt till samlingen med uppräknare för insamlade resurs samlingar som stöds och sedan anropa [**fakturor. Create**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create) för att gå igenom mängden med fakturor. Slutligen använder du uppräkna ren för att hämta och arbeta med varje sida med fakturor, som du ser i följande kod exempel. Varje anrop till [**Nästa**](/dotnet/api/microsoft.store.partnercenter.enumerators.iresourcecollectionenumerator-1.next) Metod skickar en begäran till nästa sida med fakturor baserat på sid storleken.
+Använd sedan egenskapen [**Uppräkningar**](/dotnet/api/microsoft.store.partnercenter.ipartner.enumerators) för att hämta ett gränssnitt till samlingen med uppräkningar av resurssamlingar som stöds och anropa sedan [**Invoices.Create**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create) för att skapa en uppräkning för att gå igenom insamlingen av fakturor. Använd slutligen uppräkningsatorn för att hämta och arbeta med varje sida med fakturor enligt följande kodexempel. Varje anrop till [**metoden**](/dotnet/api/microsoft.store.partnercenter.enumerators.iresourcecollectionenumerator-1.next) Nästa skickar en begäran om nästa sida med fakturor baserat på sidstorleken.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -75,18 +70,18 @@ while (invoicesEnumerator.HasValue)
 }
 ```
 
-Ett något annat exempel finns i **exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: GetPagedInvoices.CS
+Ett något annorlunda exempel finns i **Exempel:** [Konsoltestapp.](console-test-app.md) **Project:** Partnercenter-SDK **exempelklass:** GetPagedInvoices.cs
 
 > [!NOTE] 
-> Samma API används för alla moderna kommersiella inköp såväl som 145p-och Office-licenser. Storlek och förskjutning räknas bara för äldre fakturor. PageSize & förskjutning kommer att ignoreras för alla moderna kommersiella köp.
+> Samma API används för alla moderna kommersiella inköp samt 145p- och Office licenser. Storlek och förskjutning beaktas endast för äldre fakturor. För alla moderna kommersiella köp ignoreras & förskjutning.
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                  |
 |---------|----------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES? size = {size} &förskjutning = {offset} http/1.1  |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices?size={size}&offset={offset} HTTP/1.1  |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
@@ -94,16 +89,16 @@ Använd följande frågeparametrar när du skapar begäran.
 
 | Namn   | Typ | Obligatorisk | Beskrivning                                                                            |
 |--------|------|----------|----------------------------------------------------------------------------------------|
-| ikoner   | int  | No       | Antalet faktura resurser som ska returneras i svaret. Den här parametern är valfri. |
-| offset | int  | No       | Det nollbaserade indexet för den första fakturan som ska returneras.                                   |
+| ikoner   | int  | Inga       | Antalet fakturaresurser som ska returneras i svaret. Den här parametern är valfri. |
+| offset | int  | Inga       | Det nollbaserade indexet för den första fakturan som ska returneras.                                   |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Inget
+Ingen
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -120,11 +115,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten samlingen av [faktura](invoice-resources.md#invoice) resurser.
+Om det lyckas innehåller svarstexten en samling [fakturaresurser.](invoice-resources.md#invoice)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

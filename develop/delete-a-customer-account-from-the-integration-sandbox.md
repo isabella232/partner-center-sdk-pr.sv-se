@@ -1,61 +1,56 @@
 ---
 title: Ta bort ett kundkonto från sandbox-miljön för integrering
-description: Så här tar du bort ett kund konto från Testing in Production (Tip) integration sandbox.
+description: Ta bort ett kundkonto från sandbox-miljön Testing in Production (tips)-integrering.
 ms.date: 06/20/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e3a1642c0202c174ddd4f65a6aeda2752def9176
-ms.sourcegitcommit: b1ff781b67b1d322820bbcac2c583229201a8c07
+ms.openlocfilehash: b9d9e44ac9c40bd4e3c7e1a9e04253f853dfd96c
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "97769423"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973136"
 ---
 # <a name="delete-a-customer-account-from-the-integration-sandbox"></a>Ta bort ett kundkonto från sandbox-miljön för integrering
 
-**Gäller för:**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-I den här artikeln beskrivs hur du delar upp relationen mellan partnern och kund kontot och återfår kvoten för Testing in Production (Tip)-integration sandbox.
+Den här artikeln förklarar hur du bryter relationen mellan partnern och kundkontot och återfår kvoten för sandbox Testing in Production integrering (tips).
 
 > [!IMPORTANT]
-> När du tar bort ett kund konto rensas alla resurser som är kopplade till kund klienten.
+> När du tar bort ett kundkonto rensas alla resurser som är associerade med kundklientorganisationen.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
-- Alla Azure Reserved Virtual Machine Instances-och program inköps order måste avbrytas innan du tar bort en kund från det begränsade tipset för tips integrering.
+- Alla Azure Reserved Virtual Machine Instances och programvaruköpordrar måste avbrytas innan du tar bort en kund från sandbox-miljön för Tipsintegrering.
 
 ## <a name="c"></a>C\#
 
-Så här tar du bort en kund från sandbox-tipset för integrering:
+Så här tar du bort en kund från sandbox-miljön för tipsintegrering:
 
-1. Skicka dina Tip-kontoautentiseringsuppgifter till [**CreatePartnerOperations**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) -metoden för att hämta ett [**IPartner**](/dotnet/api/microsoft.store.partnercenter.ipartner) -gränssnitt till partner åtgärder.
+1. Skicka autentiseringsuppgifterna för ditt tipskonto [**till metoden CreatePartnerOperations**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) för att hämta [**ett IPartner-gränssnitt**](/dotnet/api/microsoft.store.partnercenter.ipartner) till partneråtgärder.
 
-2. Använd partner åtgärds gränssnittet för att hämta en samling rättigheter:
+2. Använd gränssnittet för partneråtgärder för att hämta samlingen med rättigheter:
 
-    1. Anropa Customers [**. ById ()-**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) metoden med kund-ID: n för att ange kunden.
+    1. Anropa metoden [**Customers.ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kundidentifieraren för att ange kunden.
 
-    2. Anropa **rättighets** egenskapen.
+    2. Anropa egenskapen **Berättiganden.**
 
-    3. Anropa **Get** -eller **GetAsync** -metoden för att hämta [**rättighets**](entitlement-resources.md) samlingen.
+    3. Anropa metoden **Get** eller **GetAsync** för att hämta [**berättigandesamlingen.**](entitlement-resources.md)
 
-3. Se till att alla Azure Reserved Virtual Machine Instances-och program varu inköps order för kunden avbryts. För varje [**rättighet**](entitlement-resources.md) i samlingen:
+3. Se till att alla Azure Reserved Virtual Machine Instances och programvaruköpsorder för den kunden annulleras. För varje [**berättigande**](entitlement-resources.md) i samlingen:
 
-    1. Använd [**rättigheten. ReferenceOrder.Id**](entitlement-resources.md#referenceorder) för att få en lokal kopia av motsvarande [order](order-resources.md#order) från kundens samling beställningar.
+    1. Använd [**rättigheten. ReferenceOrder.Id**](entitlement-resources.md#referenceorder) hämta en lokal kopia av [motsvarande Order](order-resources.md#order) från kundens ordersamling.
 
-    2. Ange egenskapen [**order. status**](order-resources.md#order) till "avbruten".
+    2. Ange egenskapen [**Order.Status**](order-resources.md#order) till "Cancelled" (Avbruten).
 
-    3. Använd metoden **patch ()** för att uppdatera ordningen.
+    3. Använd **metoden Patch()** för att uppdatera ordningen.
 
-4. Avbryt alla beställningar. Exempel: följande kod exempel använder en slinga för att avsöka varje order tills dess status är "avbruten".
+4. Avbryt alla beställningar. Följande kodexempel använder till exempel en loop för att avssöka varje order tills dess status är "Cancelled".
 
     ``` csharp
     // IPartnerCredentials tipAccountCredentials;
@@ -64,7 +59,7 @@ Så här tar du bort en kund från sandbox-tipset för integrering:
 
     IPartner tipAccountPartnerOperations = PartnerService.Instance.CreatePartnerOperations(tipAccountCredentials);
 
-    // Get all entitlements whose order must be cancelled.
+    // Get all entitlements whose order must be canceled.
     ResourceCollection<Entitlement> entitlements = tipAccountPartnerOperations.Customers.ById(customerTenantId).Entitlements.Get();
 
     // Cancel all orders
@@ -79,7 +74,7 @@ Så här tar du bort en kund från sandbox-tipset för integrering:
     bool proceed = true;
     do
     {
-        // Check if all the orders were cancelled.
+        // Check if all the orders were canceled.
         foreach (var entitlement in entitlements)
         {
             var order = tipAccountPartnerOperations.Customers.ById(customerTenantId).Orders.ById(entitlement.ReferenceOrder.Id).Get();
@@ -97,17 +92,17 @@ Så här tar du bort en kund från sandbox-tipset för integrering:
     tipAccountPartnerOperations.Customers.ById(customerTenantId).Delete();
     ```
 
-5. Se till att alla beställningar avbryts genom att anropa **Delete** -metoden för kunden.
+5. Kontrollera att alla beställningar annulleras genom att anropa **delete-metoden** för kunden.
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center PartnerCenterSDK. FeaturesSamples- **klass**: DeleteCustomerFromTipAccount.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partner Center PartnerCenterSDK.FeaturesSamples-klass: DeleteCustomerFromTipAccount.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod     | URI för förfrågan                                                                            |
 |------------|----------------------------------------------------------------------------------------|
-| DELETE     | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID} http/1.1 |
+| DELETE     | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id} HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>URI-parameter
 
@@ -115,11 +110,11 @@ Använd följande frågeparameter för att ta bort en kund.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                                         |
 |------------------------|----------|----------|-------------------------------------------------------------------------------------|
-| kund-ID för klient organisation     | GUID     | Y        | Värdet är ett GUID-formaterat **kund-Tenant-ID** som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik kund som tillhör åter försäljaren. |
+| kund-klient-id     | GUID     | Y        | Värdet är ett GUID-formaterat **kundklient-ID** som gör att återförsäljaren kan filtrera resultaten för en viss kund som tillhör återförsäljaren. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -139,9 +134,9 @@ Content-Length: 0
 
 Om det lyckas returnerar den här metoden ett tomt svar.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

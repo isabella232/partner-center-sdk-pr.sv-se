@@ -1,39 +1,35 @@
 ---
 title: Hämta portalbegäranden utan MFA
-description: Hämta en lista över användar förfrågningar utan Multi-Factor Authentication (MFA) med partner REST API.
+description: Hämta en lista över användarbegäranden utan multifaktorautentisering (MFA) med hjälp av REST API.
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
-ms.openlocfilehash: fd350aa3301f00926942ae6c6af359b0d0edc423
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 41627751d3402d7712d96c15c4281a25ed9a44a7
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769075"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445586"
 ---
 # <a name="get-portal-requests-without-mfa"></a>Hämta portalbegäranden utan MFA
 
-Gäller för:
-
-- Partner Center-API
-
-Den här artikeln beskriver hur du hämtar en lista över de senaste förfrågningarna från användare som ansluter till Partner Center-portalen utan att slutföra multifaktorautentisering (MFA).
+Den här artikeln beskriver hur du hämtar en lista över de senaste begärandena från användare som använder Partner Center-portalen utan att slutföra multifaktorautentisering (MFA).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                  |
 |---------|--------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/nonMfaCompliantPartnerPrincipals |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/nonMfaCompliantPartnerPrincipals |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-- Mer information finns i [partner Center rest-rubriker](headers.md) .
+- Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -54,11 +50,11 @@ Connection: keep-alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling [begär ande](mfa-resources.md#portal-request-without-mfa) resurser för portalen i svars texten.
+Om det lyckas returnerar den här metoden en samling [portalbegäranderesurser](mfa-resources.md#portal-request-without-mfa) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

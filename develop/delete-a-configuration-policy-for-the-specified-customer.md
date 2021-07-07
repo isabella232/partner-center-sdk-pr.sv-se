@@ -1,42 +1,39 @@
 ---
 title: Ta bort en konfigurationsprincip för den angivna kunden
-description: Så här tar du bort en konfigurations princip för en angiven kund och princip identifierare.
+description: Ta bort en konfigurationsprincip för en angiven kund och principidentifierare.
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 586878367fc0873ef0fb1415799b2b7022954053
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 2d6a7d392bd6af6850eb7716528e6745943bb7bb
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769390"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973034"
 ---
 # <a name="delete-a-configuration-policy-for-the-specified-customer"></a>Ta bort en konfigurationsprincip för den angivna kunden
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Tyskland
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-
-Så här tar du bort en konfigurations princip för en angiven kund och princip identifierare.
+Ta bort en konfigurationsprincip för en angiven kund och principidentifierare.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Princip identifieraren.
+- Principidentifieraren.
 
 ## <a name="c"></a>C\#
 
-Så här tar du bort en konfigurations princip för en angiven kund:
+Så här tar du bort en konfigurationsprincip för en angiven kund:
 
-1. Anropa metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att hämta ett gränssnitt till åtgärder på den angivna kunden.
+1. Anropa metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att hämta ett gränssnitt för åtgärder på den angivna kunden.
 
-2. Anropa metoden [**ConfigurationPolicies. ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.byid) med princip-ID: t för att hämta ett gränssnitt till konfigurations princip åtgärder för den angivna principen.
+2. Anropa metoden [**ConfigurationPolicies.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.byid) med princip-ID:t för att hämta ett gränssnitt för konfigurationsprincipåtgärder för den angivna principen.
 
-3. Anropa [**Delete**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.delete) -eller [**DeleteAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.deleteasync) -metoden för att ta bort konfigurations principen.
+3. Anropa metoden [**Delete**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.delete) eller [**DeleteAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.deleteasync) för att ta bort konfigurationsprincipen.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -46,32 +43,32 @@ string selectedPolicyId;
 partnerOperations.Customers.ById(selectedCustomerId).ConfigurationPolicies.ById(selectedPolicyId).Delete();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: DeleteConfigurationPolicy.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: DeleteConfigurationPolicy.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod     | URI för förfrågan                                                                                          |
 |------------|------------------------------------------------------------------------------------------------------|
-| **TA bort** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/policies/{Policy-ID} http/1.1 |
+| **Ta bort** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/policies/{policy-id} HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Använd följande Sök vägs parametrar när du skapar begäran.
+Använd följande sökvägsparametrar när du skapar begäran.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                                   |
 |-------------|--------|----------|---------------------------------------------------------------|
-| kund-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.         |
-| princip-ID   | sträng | Yes      | En GUID-formaterad sträng som identifierar den princip som ska tas bort. |
+| kund-ID | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.         |
+| policy-id   | sträng | Ja      | En GUID-formaterad sträng som identifierar den princip som ska tas bort. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Inget
+Ingen
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -88,11 +85,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar svaret en 204-innehålls status kod.
+Om det lyckas returnerar svaret statuskoden 204 Inget innehåll.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

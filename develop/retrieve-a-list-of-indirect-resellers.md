@@ -1,31 +1,27 @@
 ---
 title: Hämta en lista över indirekta återförsäljare
-description: Hämta en lista över den inloggade partnerns indirekta åter försäljare.
+description: Så här hämtar du en lista över den inloggade partnerns indirekta återförsäljare.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e53237b97fa26d3a987f0ee7de491084b596af4a
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 58f5c3378b5b941fdc9dafcf28f5efbc58c29c7c
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769786"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446572"
 ---
 # <a name="retrieve-a-list-of-indirect-resellers"></a>Hämta en lista över indirekta återförsäljare
 
-**Gäller för**
-
-- Partnercenter
-
-Hämta en lista över den inloggade partnerns indirekta åter försäljare.
+Så här hämtar du en lista över den inloggade partnerns indirekta återförsäljare.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en lista över indirekta åter försäljare med vilka den inloggade partnern har en relation, hämtar du först ett gränssnitt till Relations samlings åtgärder från egenskapen [**partnerOperations. Relationships**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) . Anropa sedan metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) eller [**get \_ async**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) , och skicka en medlem i [**PartnerRelationshipType**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) -uppräkningen för att identifiera Relations typen. Om du vill hämta indirekta åter försäljare måste du använda IsIndirectCloudSolutionProviderOf.
+Om du vill hämta en lista över indirekta återförsäljare som den inloggade partnern har en relation med hämtar du först ett gränssnitt för åtgärder för relationssamling från [**egenskapen partnerOperations.Relationships.**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) Anropa sedan metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) eller [**Get \_ Async**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) och skicka en medlem i [**Uppräkningen PartnerRelationshipType**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) för att identifiera relationstypen. Om du vill hämta indirekta återförsäljare måste du använda IsIndirectCloudSolutionProviderOf.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -33,27 +29,27 @@ Om du vill hämta en lista över indirekta åter försäljare med vilka den inlo
 var indirectResellers = partnerOperations.Relationships.Get(PartnerRelationshipType.IsIndirectCloudSolutionProviderOf);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md)-**projekt**: Partner Center SDK-exempel **klass**: GetIndirectResellers.CS
+**Exempel:** [Konsoltestapp med](console-test-app.md)**Project:** Partnercenter-SDK **Exempelklass:** GetIndirectResellers.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                                |
 |---------|----------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Relationships? Relations \_ typ = IsIndirectCloudSolutionProviderOf http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/relationships?relationship \_ type=IsIndirectCloudSolutionProviderOf HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande frågeparameter för att identifiera Relations typen.
+Använd följande frågeparameter för att identifiera relationstypen.
 
 | Namn               | Typ    | Obligatorisk  | Beskrivning                         |
 |--------------------|---------|-----------|-------------------------------------|
-| relationship_type  | sträng  | Yes       | Värdet är sträng representationen av ett av de medlems namn som finns i [PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).<br/><br/> Om partnern är inloggad som en leverantör och du vill hämta en lista över de indirekta åter försäljare med vilka de har upprättat en relation använder du IsIndirectCloudSolutionProviderOf.<br/><br/> Om partnern är inloggad som en åter försäljare och du vill hämta en lista över de indirekta leverantörer med vilka de har upprättat en relation använder du IsIndirectResellerOf.    |
+| relationship_type  | sträng  | Ja       | Värdet är strängrepresentationen av ett av medlemsnamnen som finns i [PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).<br/><br/> Om partnern är inloggad som leverantör och du vill hämta en lista över de indirekta återförsäljare som de har upprättat en relation med använder du IsIndirectCloudSolutionProviderOf.<br/><br/> Om partnern är inloggad som återförsäljare och du vill hämta en lista över de indirekta leverantörer som de har upprättat en relation med använder du IsIndirectResellerOf.    |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -73,11 +69,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en samling [PartnerRelationship](relationships-resources.md) -resurser för att identifiera åter försäljarna.
+Om det lyckas innehåller svarstexten en samling [PartnerRelationship-resurser](relationships-resources.md) för att identifiera återförsäljarna.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

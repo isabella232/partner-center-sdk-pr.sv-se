@@ -1,59 +1,55 @@
 ---
-title: Självbetjänings princip resurser
-description: En partner ställer in självbetjänings principer för en kund.
+title: Resurser för självbetjäningsprincipen
+description: En partner anger självbetjäningsprinciper för en kund.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 04daf6aaeb69153c4139941188f53dbab8979969
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: e44581b805e076132984b67280699314e274ca94
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768952"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446725"
 ---
 # <a name="selfservepolicy-resource"></a>SelfServePolicy-resurs
 
-**Gäller för:**
-
-- Partnercenter
-
-En partner ställer in självbetjänings principer för en kund.
+En partner anger självbetjäningsprinciper för en kund.
 
 ## <a name="selfservepolicy"></a>SelfServePolicy
 
-Beskriver en varukorg.
+Beskriver en kundvagn.
 
-| Egenskap              | Typ             | Description                                                                                            |
+| Egenskap              | Typ             | Beskrivning                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
-| id                    | sträng           | En princip identifierare för egen installation som anges när du skapar den själv fungerande principen.     |
-| SelfServeEntity       | SelfServeEntity  | Den själv betjänande entitet som beviljas åtkomst.                                                     |
-| Den beviljande användaren               | Den beviljande användaren          | Den beviljande behörighet som beviljar åtkomst.                                                                    |
-| Behörigheter           | Behörighets mat ris| En matris med [behörighets](#permission) resurser.                                                                     |
+| id                    | sträng           | En principidentifierare med självbetjäning som tillhandahålls när självbetjäningsprincipen har skapats.     |
+| SelfServeEntity       | SelfServeEntity  | Entiteten med självbetjäning som beviljas åtkomst.                                                     |
+| Beviljaren               | Beviljaren          | Den beviljande som beviljar åtkomst.                                                                    |
+| Behörigheter           | Behörighetsmatris| En matris med [behörighetsresurser.](#permission)                                                                     |
 
 ## <a name="selfserveentity"></a>SelfServeEntity
 
-Representerar den entitet som beviljats behörigheter.
+Representerar den entitet som beviljas behörigheter.
 
-| Egenskap             | Typ|Description|
+| Egenskap             | Typ|Beskrivning|
 |----------------------|----------------------------------|--------------------------------------------------------------------------------------------|
-| SelfServeEntityType  | sträng                           | Entiteten beviljas åtkomst, godkända värden: kund.                                 |
-| TenantID             | sträng                           | Klient-ID: n för den entitet som har beviljats åtkomst.                                   |
+| SelfServeEntityType  | sträng                           | Entiteten beviljas åtkomst, godkända värden: Kund.                                 |
+| TenantID             | sträng                           | Klient-ID för den entitet som beviljas åtkomst.                                   |
 
-## <a name="grantor"></a>Den beviljande användaren
+## <a name="grantor"></a>Beviljaren
 
-Representerar den beviljande behörighet som beviljar behörighet.
+Representerar den beviljande som beviljar behörigheterna.
 
-| Egenskap             | Typ|Description|
+| Egenskap             | Typ|Beskrivning|
 |----------------------|----------------------------------|--------------------------------------------------------------------------------------------|
-| GrantorType          | sträng                           | Den beviljande användaren beviljar åtkomst, godkända värden: BillToPartner.                               |
-| TenantID             | sträng                           | Klient-ID för entiteten som beviljar åtkomst.                                       |
+| GrantorType          | sträng                           | Den beviljande som beviljar åtkomst, godkända värden: BillToPartner.                               |
+| TenantID             | sträng                           | Klient-ID för den entitet som beviljar åtkomst.                                       |
 
 
 ## <a name="permission"></a>Behörighet
 
-Representerar en behörighet i den självbetjänings principen.
+Representerar en behörighet i självbetjäningsprincipen.
 
-| Egenskap             | Typ|Description|
+| Egenskap             | Typ|Beskrivning|
 |----------------------|----------------------------------|--------------------------------------------------------------------------------------------|
-| Resurs             | sträng                           | Resurs åtkomsten beviljas för: AzureReservedInstances.                          |
-| Action               | sträng                           | Åtkomst till åtgärden beviljas för: Köp                                           |
+| Resurs             | sträng                           | Resursåtkomsten beviljas också: AzureReservedInstances.                          |
+| Action               | sträng                           | Åtgärdsåtkomst beviljas för: Köp                                           |

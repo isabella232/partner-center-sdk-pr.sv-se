@@ -1,28 +1,25 @@
 ---
 title: Enhetsdistribution
-description: Funktioner för distribution av API-enheter för partner Center inkluderar konfigurations principer och enheter.
+description: Partner center API-enhetsdistributionsfunktioner omfattar konfigurationsprinciper och enheter.
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 72292ee59955bb35be7ad9d59789a3e109d5f7ec
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 46fd8b53d6d42816d498103192122a81b5f6564f
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768775"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906494"
 ---
 # <a name="device-deployment"></a>Enhetsdistribution
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Tyskland
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-
-API: er för partner Center ger till gång till funktioner med Zero-Touch-distribution, så att du kan förenkla enhets konfigurationen för dina kunder.
+Partner Center-API:erna ger åtkomst till zero-touch-distributionsfunktioner så att du kan förenkla säker enhetskonfiguration för dina kunder.
 
 ## <a name="configuration-policies"></a>Konfigurationsprinciper
 
-Avsnitt om hur du lägger till, tar bort, uppdaterar och hämtar enhets konfigurations principer:
+Avsnitt om hur du lägger till, tar bort, uppdaterar och hämtar principer för enhetskonfiguration:
 
 - [Skapa en ny konfigurationsprincip för den angivna kunden](create-a-new-configuration-policy-for-the-specified-customer.md)
 - [Ta bort en konfigurationsprincip för den angivna kunden](delete-a-configuration-policy-for-the-specified-customer.md)
@@ -32,7 +29,7 @@ Avsnitt om hur du lägger till, tar bort, uppdaterar och hämtar enhets konfigur
 
 ## <a name="devices"></a>Enheter
 
-Avsnitt om hur du arbetar med och laddar upp enhets batchar och metadata för enheten:
+Avsnitt om hur du arbetar med och laddar upp enhetsbatchar och enhetsmetadata:
 
 - [Hämta status för en uppladdning av enhetsbatch](get-the-status-of-a-device-batch-upload.md)
 - [Hämta en lista över enhetsbatchar för den angivna kunden](get-the-list-of-device-batches-for-the-specified-customer.md)

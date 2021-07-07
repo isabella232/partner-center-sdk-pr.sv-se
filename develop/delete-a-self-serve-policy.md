@@ -1,35 +1,31 @@
 ---
 title: Ta bort en princip för självbetjäning
-description: Så här tar du bort en princip för självbetjäning.
+description: Ta bort en princip för självbetjäning.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 3450145d6daf2ffca5e2886245e592406cb0886d
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: 063cf98d4c78e82622e486427baeb1a5721715e5
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97770225"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973102"
 ---
 # <a name="delete-a-selfservepolicy"></a>Ta bort en SelfServePolicy
 
-**Gäller för:**
-
-- Partnercenter
-
-I det här avsnittet beskrivs hur du uppdaterar en princip för självbetjäning.
+Den här artikeln förklarar hur du uppdaterar en självbetjäningsprincip.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med program-och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för program+användare.
 
 ## <a name="c"></a>C\#
 
 Så här tar du bort en princip för självbetjäning:
 
-1. Anropa metoden [**IAggregatePartner. SelfServePolicies. ById**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.byid) med enhets-ID: n för att hämta ett gränssnitt till åtgärder i principerna.
+1. Anropa metoden [**IAggregatePartner.SelfServePolicies.ById**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.byid) med entitetsidentifieraren för att hämta ett gränssnitt till åtgärder för principerna.
 
-2. Anropa [**Delete**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.delete) -eller [**DeleteAsync**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.deleteasync) -metoden för att ta bort principen för självbetjäning.
+2. Anropa metoden [**Delete**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.delete) eller [**DeleteAsync för**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.deleteasync) att ta bort principen för självbetjäning.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,32 +38,32 @@ IPartner scopedPartnerOperations = partnerOperations.With(RequestContextFactory.
 partnerOperations.SelfServePolicies.ById(policyId).Delete();
 ```
 
-Ett exempel finns i följande avsnitt:
+Ett exempel finns i följande:
 
-- Exempel: [konsol test app](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Exempel: [Konsoltestapp](console-test-app.md)
+- Project: **PartnerSDK.FeatureExempel**
 - Klass: **DeleteSelfServePolicies.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **TA bort** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy/{ID} http/1.1 |
+| **Ta bort** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy/{id} HTTP/1.1 |
 
 **URI-parameter**
 
-Använd följande Sök vägs parametrar för att hämta den angivna produkten.
+Använd följande sökvägsparametrar för att hämta den angivna produkten.
 
 | Namn                       | Typ         | Obligatorisk | Beskrivning                                                     |
 |----------------------------|--------------|----------|-----------------------------------------------------------------|
-| **SelfServePolicy-ID**     | **nollängd**   | Yes      | En sträng som identifierar principen för självbetjäning.                 |
+| **SelfServePolicy-id**     | **sträng**   | Ja      | En sträng som identifierar självbetjäningsprincipen.                 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-- ID för begäran och korrelations-ID krävs.
-- Mer information finns i [partner Center rest-rubriker](headers.md) .
+- Ett begärande-ID och korrelations-ID krävs.
+- Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -90,9 +86,9 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

@@ -1,46 +1,43 @@
 ---
 title: Ta bort en enhet för den angivna kunden
-description: Så här tar du bort en enhet som tillhör en angiven kund.
+description: Ta bort en enhet som tillhör en angiven kund.
 ms.date: 06/20/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 69b5440f2cf07d3cb4ecd5addf429acd64530257
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: a1e05ceb8615d6f84c1df101c542342f9a6eb04b
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769387"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973085"
 ---
 # <a name="delete-a-device-for-the-specified-customer"></a>Ta bort en enhet för den angivna kunden
 
-**Gäller för:**
+**Gäller för**: Partner Center-| Partnercenter för Microsoft Cloud Tyskland
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-
-Den här artikeln förklarar hur du tar bort en enhet som tillhör en viss kund.
+Den här artikeln beskriver hur du tar bort en enhet som tillhör en angiven kund.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Enhetens batch-ID.
+- Enhetsbatchidentifieraren.
 
-- Enhets-ID.
+- Enhetsidentifieraren.
 
 ## <a name="c"></a>C\#
 
 Så här tar du bort en enhet för den angivna kunden:
 
-1. Anropa metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: n för att hämta ett gränssnitt till åtgärder på kunden.
+1. Anropa metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kundidentifieraren för att hämta ett gränssnitt till åtgärder på kunden.
 
-2. Anropa metoden [**DeviceBatches. ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) med enhetens batch-ID för att hämta ett gränssnitt till åtgärder för den angivna batchen.
+2. Anropa metoden [**DeviceBatches.ById med**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) enhetsbatchidentifieraren för att hämta ett gränssnitt till åtgärder för den angivna batchen.
 
-3. Anropa metoden [**Devices. ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.byid) för att hämta ett gränssnitt för åtgärden på den angivna enheten.
+3. Anropa metoden [**Devices.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.byid) för att hämta ett gränssnitt som ska användas på den angivna enheten.
 
-4. Anropa [**Delete**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevice.delete) -eller [**DeleteAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevice.deleteasync) -metoden för att ta bort enheten från batchen.
+4. Anropa metoden [**Delete**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevice.delete) eller [**DeleteAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevice.deleteasync) för att ta bort enheten från batchen.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -51,33 +48,33 @@ string selectedDeviceId;
 partnerOperations.Customers.ById(selectedCustomerId).DeviceBatches.ById(selectedDeviceBatchId).Devices.ById(selectedDeviceId).Delete();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: DeleteDevice.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Exempelklass:** DeleteDevice.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod     | URI för förfrågan                                                                                                                        |
 |------------|------------------------------------------------------------------------------------------------------------------------------------|
-| DELETE     | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/deviceBatches/{devicebatch-ID}/Devices/{Device-ID} http/1.1  |
+| DELETE     | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/deviceBatches/{devicebatch-id}/devices/{device-id} HTTP/1.1  |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Använd följande Sök vägs parametrar när du skapar begäran.
+Använd följande sökvägsparametrar när du skapar begäran.
 
 | Namn           | Typ   | Obligatorisk | Beskrivning                                                        |
 |----------------|--------|----------|--------------------------------------------------------------------|
-| kund-ID    | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.              |
-| devicebatch-ID | sträng | Yes      | Enhetens batch-identifierare för den batch som innehåller enheten. |
-| enhets-ID      | sträng | Yes      | Enhets-ID.                                             |
+| kund-id    | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.              |
+| devicebatch-id | sträng | Ja      | Batch-ID för enheten för batchen som innehåller enheten. |
+| device-id      | sträng | Ja      | Enhetsidentifieraren.                                             |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Inget
+Ingen
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -94,11 +91,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar svaret en **204-innehålls** status kod.
+Om det lyckas returnerar svaret **statuskoden 204 Inget** innehåll.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

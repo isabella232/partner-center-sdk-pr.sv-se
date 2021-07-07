@@ -1,42 +1,38 @@
 ---
-title: Kontrol lera en kunds berättigande för att uppgradera till en Azure-plan
-description: Du kan använda ProductUpgradeRequest-resursen för att returnera en ProductUpgradesEligibility-resurs för att avgöra om en kund är berättigad att uppgradera från en Microsoft Azure-prenumeration (MS-AZR-0145P) till en Azure-plan.
+title: Kontrollera om en kund är berättigad för uppgradering till en Azure-plan
+description: Du kan använda resursen ProductUpgradeRequest för att returnera en ProductUpgradesEligibility-resurs för att avgöra om en kund är berättigad att uppgradera från en Microsoft Azure-prenumeration (MS-AZR-0145P) till en Azure-plan.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 568ed3f4cff7d9cd520e608d43cb89bb78e00ccc
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 34a20611c7d92042b5432c5ffb3ba4702d77e0c2
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768724"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446266"
 ---
-# <a name="check-a-customers-eligibility-for-upgrading-to-an-azure-plan"></a>Kontrol lera en kunds berättigande för att uppgradera till en Azure-plan
+# <a name="check-a-customers-eligibility-for-upgrading-to-an-azure-plan"></a>Kontrollera om en kund är berättigad för uppgradering till en Azure-plan
 
-**Gäller för:**
-
-- Partnercenter
-
-Du kan använda [**ProductUpgradeRequest**](product-upgrade-resources.md#productupgraderequest) -resursen för att kontrol lera om en kund är berättigad till att uppgradera till en Azure-plan från en Microsoft Azure (MS-AZR-0145P)-prenumeration den här metoden returnerar en [**ProductUpgradesEligibility**](product-upgrade-resources.md#productupgradeseligibility) -resurs med kundens produkt uppgraderings behörighet.
+Du kan använda resursen [**ProductUpgradeRequest**](product-upgrade-resources.md#productupgraderequest) för att kontrollera om en kund är berättigad att uppgradera till en Azure-plan från en Microsoft Azure-prenumeration (MS-AZR-0145P) Den här metoden returnerar en [**ProductUpgradesEligibility-resurs**](product-upgrade-resources.md#productupgradeseligibility) med kundens berättigande för produktuppgradering.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med app + användarautentiseringsuppgifter. Följ den [säkra appens modell](enable-secure-app-model.md) när du använder app + User Authentication med API: er för partner Center.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare. Följ den [säkra appmodellen när](enable-secure-app-model.md) du använder app-+användarautentisering med Partner Center-API:er.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Produkt serien.
+- Produktfamiljen.
 
 ## <a name="c"></a>C\#
 
-Så här kontrollerar du om en kund är berättigad att uppgradera till Azure-planen:
+Så här kontrollerar du om en kund är berättigad att uppgradera till En Azure-plan:
 
-1. Skapa ett **ProductUpgradesRequest** -objekt och ange kund-ID och "Azure" som produkt familj.
+1. Skapa ett **ProductUpgradesRequest-objekt** och ange kundidentifieraren och "Azure" som produktfamilj.
 
-2. Använd samlingen **IAggregatePartner. ProductUpgrades** .
-3. Anropa metoden **CheckEligibility** och skicka in **ProductUpgradesRequest** -objektet, vilket kommer att returnera ett **ProductUpgradesEligibility** -objekt.
+2. Använd **samlingen IAggregatePartner.ProductUpgrades.**
+3. Anropa **metoden CheckEligibility** och skicka objektet **ProductUpgradesRequest,** som returnerar ett **ProductUpgradesEligibility-objekt.**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -62,19 +58,19 @@ if (productUpgradeEligibility.IsEligibile)
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                                                   |
 |----------|-----------------------------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/productUpgrades/Eligibility http/1.1 |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/productUpgrades/berättigande HTTP/1.1 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Begär ande texten måste innehålla en [**ProductUpgradeRequest**](product-upgrade-resources.md#productupgraderequest) -resurs.
+Begärandetexten måste innehålla en [**ProductUpgradeRequest-resurs.**](product-upgrade-resources.md#productupgraderequest)
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -99,11 +95,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en [**ProductUpgradesEligibility**](product-upgrade-resources.md#productupgradeseligibility) -resurs i bröd texten.
+Om det lyckas returnerar den här metoden [**en ProductUpgradesEligibility-resurs**](product-upgrade-resources.md#productupgradeseligibility) i brödtexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

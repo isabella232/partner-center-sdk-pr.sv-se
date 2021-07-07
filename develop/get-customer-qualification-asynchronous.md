@@ -6,30 +6,26 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: df605e4d400d29e14fd0b44bef34f88bbc7ca8b2
-ms.sourcegitcommit: 7d59c58ee36b217bd5cac089f918059e9dbb8a62
+ms.openlocfilehash: 4795b6e1ad008f9d854dc7efbee0c2099aefa609
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110027936"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446317"
 ---
 # <a name="get-a-customers-qualification-asynchronously"></a>Hämta en kunds kvalificering asynkront
 
-**Gäller för**
-
-- Partnercenter
-
-Hur du får en kunds kvalificering asynkront.
+Hur du får en kunds kompetens asynkront.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
 - Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-För att få en kunds kvalificering anropar du [**metoden IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kundidentifieraren. Använd sedan egenskapen [**Kvalificering för**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) att hämta ett [**ICustomerQualification-gränssnitt.**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) Anropa eller `GetQualifications()` för att hämta kundens `GetQualificationsAsync()` kompetens.
+För att få en kunds kvalificering anropar du [**metoden IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kundidentifieraren. Använd sedan egenskapen [**Kvalificering för**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) att hämta ett [**ICustomerQualification-gränssnitt.**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) Anropa eller `GetQualifications()` för att hämta kundens `GetQualificationsAsync()` kvalificeringar.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -37,7 +33,7 @@ För att få en kunds kvalificering anropar du [**metoden IAggregatePartner.Cust
 var customerQualifications = partnerOperations.Customers.ById(customerId).Qualification.GetQualifications();
 ```
 
-**Exempel:** [Konsolexempelapp](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt:** SdkSamples-klass: GetCustomerQualifications.cs 
+**Exempel:** [Konsolexempelapp](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project:** SdkSamples-klass: GetCustomerQualifications.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -49,11 +45,11 @@ var customerQualifications = partnerOperations.Customers.ById(customerId).Qualif
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-I den här tabellen visas den frågeparameter som krävs för att hämta alla kvalificeringar.
+Den här tabellen innehåller frågeparametern som krävs för att hämta alla kvalificeringar.
 
 | Namn               | Typ   | Obligatorisk | Beskrivning                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| **kund-klient-id** | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
+| **kund-klient-id** | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -75,11 +71,11 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling kvalificeringar i svarstexten.  Nedan visas exempel på **GET-anrop** på en kund med **utbildningskvalifikationen.**
+Om det lyckas returnerar den här metoden en samling kvalificeringar i svarstexten.  Nedan visas exempel på **GET-anrop** på en kund med **utbildningskvalificering.**
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-examples"></a>Svarsexempel
 

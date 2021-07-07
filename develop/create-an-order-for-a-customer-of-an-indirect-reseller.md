@@ -1,51 +1,47 @@
 ---
-title: Skapa kund ordning för indirekt åter försäljare
-description: 'Lär dig hur du använder API: er för partner Center för att skapa en order för en indirekt åter försäljares kund. Artikeln innehåller krav, steg och exmaples.'
+title: Skapa kundorder för indirekt återförsäljare
+description: Lär dig hur du använder Partner Center-API:er för att skapa en order för en kund till en indirekt återförsäljare. Artikeln innehåller krav, steg och exempel.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f72ecec8d82e6b8a1bc53c277206cafd7d8a4e03
-ms.sourcegitcommit: 4c253abb24140a6e00b0aea8e79a08823ea5a623
+ms.openlocfilehash: 6253ba2289ea1f58e7d8eaa960d7d0daaa887f0d
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97770153"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973559"
 ---
 # <a name="create-an-order-for-a-customer-of-an-indirect-reseller"></a>Skapa en beställning för en kund till en indirekt återförsäljare
 
-**Gäller för:**
-
-- Partnercenter
-
-Så här skapar du en order för en indirekt åter försäljares kund.
+Hur du skapar en order för en kund till en indirekt återförsäljare.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Erbjudande identifieraren för det objekt som ska köpas.
+- Erbjudandeidentifieraren för objektet som ska köpas.
 
-- Klient-ID för den indirekta åter försäljaren.
+- Klient-ID för den indirekta återförsäljaren.
 
 ## <a name="c"></a>C\#
 
-Så här skapar du en order för en indirekt åter försäljares kund:
+Så här skapar du en order för en kund till en indirekt återförsäljare:
 
-1. Hämta en samling av de indirekta åter försäljare som har en relation med den inloggade partnern.
+1. Hämta en samling av indirekta återförsäljare som har en relation med den inloggade partnern.
 
-2. Hämta en lokal variabel till objektet i samlingen som matchar det indirekta åter försäljarens ID. Det här steget hjälper dig att komma åt åter försäljarens [**MpnId**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationship.mpnid) -egenskap när du skapar ordern.
+2. Hämta en lokal variabel till objektet i samlingen som matchar det indirekta återförsäljar-ID:t. Det här steget hjälper dig att komma åt återförsäljarens [**MpnId-egenskap**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationship.mpnid) när du skapar ordern.
 
-3. Instansiera ett [**order**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) -objekt och ange [**ReferenceCustomerID**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.referencecustomerid) -egenskapen till kund-ID för att kunna registrera kunden.
+3. Instansiera [**ett Order-objekt**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) och ange [**egenskapen ReferenceCustomerID**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.referencecustomerid) till kundidentifieraren för att registrera kunden.
 
-4. Skapa en lista med [**OrderLineItem**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem) -objekt och tilldela listan till orderns [**rad objekt**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.lineitems) -egenskap. Varje order rads objekt innehåller inköps information för ett erbjudande. Var noga med att fylla i egenskapen [**PartnerIdOnRecord**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem.partneridonrecord) i varje rad objekt med MPN-ID: t för den indirekta åter försäljaren. Du måste ha minst ett order rads objekt.
+4. Skapa en lista [**med OrderLineItem-objekt**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem) och tilldela listan till orderns [**LineItems-egenskap.**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.lineitems) Varje orderradsartikel innehåller inköpsinformationen för ett erbjudande. Se till att fylla i egenskapen [**PartnerIdOnRecord**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem.partneridonrecord) i varje radobjekt med MPN-ID:t för den indirekta återförsäljaren. Du måste ha minst en orderrad.
 
-5. Hämta ett gränssnitt för att beställa åtgärder genom att anropa metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att identifiera kunden och hämta sedan gränssnittet från egenskapen [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) .
+5. Hämta ett gränssnitt för att beställa åtgärder genom att anropa [**metoden IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden och hämta sedan gränssnittet från [**egenskapen**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) Orders.
 
-6. Anropa [**create**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.create) -eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.createasync) -metoden för att skapa ordern.
+6. Anropa metoden [**Create**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.create) eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.createasync) för att skapa ordern.
 
-### <a name="c-example"></a>C- \# exempel
+### <a name="c-example"></a>\#C-exempel
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -81,57 +77,57 @@ var order = new Order()
 var createdOrder = partnerOperations.Customers.ById(customerId).Orders.Create(order);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md)-**projekt**: Partner Center SDK-exempel **klass**: PlaceOrderForCustomer.CS
+**Exempel:** [Konsoltestapp med](console-test-app.md)**Project:** Partnercenter-SDK **Samples-klass:** PlaceOrderForCustomer.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                                            |
 |----------|----------------------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Orders http/1.1 |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/orders HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Använd följande Sök vägs parameter för att identifiera kunden.
+Använd följande sökvägsparameter för att identifiera kunden.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| kund-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
+| kund-ID | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
 #### <a name="order"></a>Beställning
 
-I den här tabellen beskrivs **beställnings** egenskaperna i begär ande texten.
+I den här tabellen beskrivs **orderegenskaperna** i begärandetexten.
 
 | Namn | Typ | Obligatorisk | Beskrivning |
 | ---- | ---- | -------- | ----------- |
-| id | sträng | No | En beställnings identifierare som anges när beställningen har skapats. |
-| referenceCustomerId | sträng | Yes | Kund-ID. |
-| billingCycle | sträng | No | Den frekvens med vilken partnern debiteras för den här ordern. Standardvärdet är &quot; månatlig &quot; och används när beställningen har skapats. De värden som stöds är medlems namnen som finns i [**BillingCycleType**](/dotnet/api/microsoft.store.partnercenter.models.offers.billingcycletype). OBS! den årliga fakturerings funktionen är ännu inte allmänt tillgänglig. Support för årlig fakturering kommer snart. |
-| Rad objekt | objekt mat ris | Yes | En matris med [**OrderLineItem**](#orderlineitem) -resurser. |
-| creationDate | sträng | No | Datumet då ordern skapades i datum-/tids format. Används när beställningen har skapats. |
-| dokumentattribut | objekt | No | Innehåller "ObjectType": "order". |
+| id | sträng | No | En orderidentifierare som anges när ordern har skapats. |
+| referenceCustomerId | sträng | Ja | Kundidentifieraren. |
+| billingCycle | sträng | No | Frekvensen som partnern debiteras med för den här beställningen. Standardvärdet är &quot; Varje månad och tillämpas när &quot; ordern har skapats. Värden som stöds är de medlemsnamn som finns [**i BillingCycleType**](/dotnet/api/microsoft.store.partnercenter.models.offers.billingcycletype). Obs! Den årliga faktureringsfunktionen är ännu inte allmänt tillgänglig. Stöd för årlig fakturering kommer snart. |
+| lineItems | matris med objekt | Ja | En matris med [**OrderLineItem-resurser.**](#orderlineitem) |
+| creationDate | sträng | No | Det datum då ordern skapades i datum/tid-format. Tillämpas när ordern har skapats. |
+| Attribut | objekt | Inga | Innehåller "ObjectType": "Order". |
 
 #### <a name="orderlineitem"></a>OrderLineItem
 
-I den här tabellen beskrivs egenskaperna för **OrderLineItem** i begär ande texten.
+I den här tabellen beskrivs **egenskaperna OrderLineItem** i begärandetexten.
 
 | Namn | Typ | Obligatorisk | Beskrivning |
 | ---- | ---- | -------- | ----------- |
-| lineItemNumber | int | Yes | Varje rad objekt i samlingen får ett unikt rad nummer, räknat från 0 till count-1. |
-| offerId | sträng | Yes | Erbjudande-ID. |
-| subscriptionId | sträng | No | Prenumerations-ID. |
-| parentSubscriptionId | sträng | No | Valfritt. ID: t för den överordnade prenumerationen i ett tilläggs erbjudande. Gäller enbart för korrigering. |
-| friendlyName | sträng | No | Valfritt. Det egna namnet på prenumerationen som definieras av partnern för att hjälpa disambiguate. |
-| quantity | int | Yes | Antalet licenser för en licens baserad prenumeration. |
-| partnerIdOnRecord | sträng | No | När en indirekt åter försäljare placerar en indirekt åter försäljare, fyller du i det här fältet med MPN-ID: t för den **indirekta åter försäljaren** (aldrig ID: t för den indirekta providern). Detta säkerställer korrekt redovisning av incitament. **Det gick inte att ange MPN-ID: t för åter försäljaren. Åter försäljaren registreras dock inte, vilket innebär att incitaments beräkningar kanske inte omfattar försäljningen.** |
-| dokumentattribut | objekt | No | Innehåller "ObjectType": "OrderLineItem". |
+| lineItemNumber | int | Ja | Varje radobjekt i samlingen får ett unikt radnummer som räknas upp från 0 till count-1. |
+| offerId | sträng | Ja | Erbjudandeidentifieraren. |
+| subscriptionId | sträng | No | Prenumerationsidentifieraren. |
+| parentSubscriptionId | sträng | No | Valfritt. ID:t för den överordnade prenumerationen i ett tilläggserbjudande. Gäller endast PATCH. |
+| friendlyName | sträng | No | Valfritt. Det egna namnet för prenumerationen som definierats av partnern för att undvika tvetydighet. |
+| quantity | int | Ja | Antalet licenser för en licensbaserad prenumeration. |
+| partnerIdOnRecord | sträng | No | När en indirekt leverantör gör en beställning åt en indirekt återförsäljare fyller du i det här fältet med mpn-ID:t för den indirekta **återförsäljaren** (aldrig ID för den indirekta leverantören). Detta säkerställer korrekt redovisning av incitament. **Om du inte anger återförsäljarens MPN-ID misslyckas inte beställningen. Återförsäljaren registreras dock inte och därför kanske inte försäljningen ingår i incitamentberäkningarna.** |
+| Attribut | objekt | Inga | Innehåller "ObjectType":"OrderLineItem". |
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -173,11 +169,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten den ifyllda [order](order-resources.md) resursen.
+Om det lyckas innehåller svarstexten den ifyllda [orderresursen.](order-resources.md)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

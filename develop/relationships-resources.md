@@ -1,43 +1,39 @@
 ---
-title: Relationer resurser
-description: Beskriver resurser som är relaterade till relationer.
+title: Relationsresurser
+description: Beskriver resurser relaterade till relationer.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c5701414bd704b375dc23859b920609d5a975d9f
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 7dba1e99a6c97c759e3c61cde1e7565faa2ef4d1
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768877"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445739"
 ---
-# <a name="relationships-resources"></a>Relationer resurser
+# <a name="relationships-resources"></a>Relationsresurser
 
-**Gäller för**
-
-- Partnercenter
-
-Beskriver resurser som är relaterade till relationer.
+Beskriver resurser relaterade till relationer.
 
 ## <a name="partnerrelationship"></a>PartnerRelationship
 
 Representerar en relation mellan två partner.
 
-| Egenskap         | Typ                                                           | Description                                                                                                                                    |
+| Egenskap         | Typ                                                           | Beskrivning                                                                                                                                    |
 |------------------|----------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| id               | sträng                                                         | Partner-ID. Partner-ID: t anger klient-ID för den partner som finns på mottagar sidan i relationen. |
-| location         | sträng                                                         | Partnerns plats.                                                                                                                   |
-| mpnId            | sträng                                                         | Partnerns Microsoft Partner Network-ID (MPN).                                                                                 |
+| id               | sträng                                                         | Partneridentifieraren. Partneridentifieraren anger klientorganisations-ID:t för den partner som finns på mottagarens (från) sida av relationen. |
+| location         | sträng                                                         | Platsen för partnern.                                                                                                                   |
+| mpnId            | sträng                                                         | Partnerns Microsoft Partner Network (MPN).                                                                                 |
 | name             | sträng                                                         | Namnet på partnern.                                                                                                                       |
-| relationshipType | sträng                                                         | Typ av relation.                                                                                                                      |
-| state            | sträng                                                         | Status för relationen (till exempel `active` ).                                                                                                 |
-| dokumentattribut       | [ResourceAttributes](utility-resources.md#resourceattributes) | Attribut för metadata.                                                                                                                       |
+| relationshipType | sträng                                                         | Typen av relation.                                                                                                                      |
+| state            | sträng                                                         | Tillståndet för relationen (till exempel `active` ).                                                                                                 |
+| Attribut       | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen.                                                                                                                       |
 
 ## <a name="relationshiprequest"></a>RelationshipRequest
 
-Tillhandahåller URL: en som en kund kan upprätta en relation med en partner till.
+Anger den URL som en kund kan använda för att upprätta en relation med en partner.
 
-| Egenskap   | Typ                                                           | Description                   |
+| Egenskap   | Typ                                                           | Beskrivning                   |
 |------------|----------------------------------------------------------------|-------------------------------|
-| url        | sträng                                                         | URL för Relations förfrågan. |
-| dokumentattribut | [ResourceAttributes](utility-resources.md#resourceattributes) | Attribut för metadata.      |
+| url        | sträng                                                         | URL:en för relationsbegäran. |
+| Attribut | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen.      |

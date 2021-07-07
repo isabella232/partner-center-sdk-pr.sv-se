@@ -1,52 +1,47 @@
 ---
 title: Hämta all information om sökanalys
-description: Hämta all Sök analys information.
+description: Hur du hämtar all sökanalysinformation.
 ms.date: 06/27/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 967f8d0ed2d276e0f68a047204b64d83dc69da95
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: e789a013b01fb63a38c72f4fe94864ecf21f7e4b
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768757"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760172"
 ---
 # <a name="get-all-search-analytics-information"></a>Hämta all information om sökanalys
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Så här hämtar du all Sök analys information för dina kunder.
+Hur du hämtar all sökanalysinformation för dina kunder.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering endast med användarautentiseringsuppgifter.
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan |
 |---------|-------------|
-| **TA** | [*\{ BASEURL \}*](partner-center-rest-urls.md)/partner/v1/Analytics/search http/1.1 |
+| **Få** | [*\{ baseURL \}*](partner-center-rest-urls.md)/partner/v1/analytics/search HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
-|    Parameter     |  Typ  |                                                                                                                   Description                                                                                                                    |
+|    Parameter     |  Typ  |                                                                                                                   Beskrivning                                                                                                                    |
 |------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|      filter      | sträng |                                                                     Returnerar data som matchar filter villkoret. </br> **Exempel:**</br> `.../search?filter=field eq 'value'`                                                                     |
-|     groupby      | sträng |                                         Har stöd för både villkor och datum. Kort krets logik för att begränsa antalet buckets. </br> **Exempel:**</br> `.../search?groupby=termField1,dateField1,termField2`                                         |
-| aggregationLevel | sträng | Parametern *aggregationLevel* kräver en *groupby*. Parametern *aggregationLevel* gäller för alla datum fält som finns i *groupby*. </br> **Exempel:**</br>  `.../search?groupby=termField1,dateField1,termField2&aggregationLevel=day` |
-|       top        | sträng |                                                                     Sid gränsen är 10000. Tar ett värde som är mindre än 10000.  </br> **Exempel:**</br>  `.../search?top=100`                                                                     |
+|      filter      | sträng |                                                                     Returnerar data som matchar filtervillkoret. </br> **Exempel:**</br> `.../search?filter=field eq 'value'`                                                                     |
+|     groupby      | sträng |                                         Stöder både termer och datum. Kortslutningslogik för att begränsa antalet buckets. </br> **Exempel:**</br> `.../search?groupby=termField1,dateField1,termField2`                                         |
+| aggregationLevel | sträng | Parametern *aggregationLevel* kräver en *groupby*. Parametern *aggregationLevel* gäller för alla datumfält som finns i *groupby*. </br> **Exempel:**</br>  `.../search?groupby=termField1,dateField1,termField2&aggregationLevel=day` |
+|       top        | sträng |                                                                     Sidgränsen är 10 000. Tar ett värde som är mindre än 10 000.  </br> **Exempel:**</br>  `.../search?top=100`                                                                     |
 |       hoppa över       | sträng |                                                                                  Antal rader som ska hoppas över. </br> **Exempel:**</br> `.../search?top=100&skip=100`                                                                                   |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -64,11 +59,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en samling [Sök](partner-center-analytics-resources.md#search-resource) resurser.
+Om det lyckas innehåller svarstexten en samling [sökresurser.](partner-center-analytics-resources.md#search-resource)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

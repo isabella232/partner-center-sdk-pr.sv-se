@@ -1,39 +1,35 @@
 ---
-title: Hämta tillgänglighet efter ID
-description: 'Hämtar tillgänglighet för den angivna produkten och SKU: n med hjälp av ett tillgänglighets-ID.'
+title: Hämta tillgängligheten efter ID
+description: Hämtar tillgängligheten för den angivna produkten och SKU:n med hjälp av ett tillgänglighets-ID.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 824303d40e1dcb0405246c8e29562c4527d147fd
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: c31bc12d8d484cc8042f36aa865145600d9e6738
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768760"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760206"
 ---
-# <a name="get-the-availability-by-id"></a>Hämta tillgänglighet efter ID
+# <a name="get-the-availability-by-id"></a>Hämta tillgängligheten efter ID
 
-**Gäller för**
-
-- Partnercenter
-
-Hämtar tillgänglighet för den angivna produkten och SKU: n med hjälp av ett tillgänglighets-ID.
+Hämtar tillgängligheten för den angivna produkten och SKU:n med hjälp av ett tillgänglighets-ID.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 - Ett produkt-ID.
 
-- ETT SKU-ID.
+- Ett SKU-ID.
 
 - Ett tillgänglighets-ID.
 
 ## <a name="c"></a>C\#
 
-Om du vill ha information om en speciell [tillgänglighet](product-resources.md#availability)börjar du med att följa stegen i [Hämta en SKU efter ID](get-a-sku-by-id.md) för att hämta gränssnittet för en speciell [SKU: s](product-resources.md#sku) åtgärder. Från det resulterande gränssnittet väljer du egenskapen **tillgänglighet** för att hämta ett gränssnitt med tillgängliga åtgärder för tillgänglighet. Därefter skickar du tillgänglighets-ID: t till metoden **ById ()** för att hämta åtgärder för den aktuella tillgängligheten och anropa sedan **Get ()** eller **GetAsync ()** för att hämta tillgänglighets information.
+Om du vill [](product-resources.md#availability)ha information om en specifik tillgänglighet börjar du med att följa stegen i Hämta en [SKU](get-a-sku-by-id.md) efter ID för att hämta gränssnittet för en [specifik SKU:ns](product-resources.md#sku) åtgärder. Från det resulterande gränssnittet väljer du **egenskapen Availabilities (Tillgänglighet)** för att hämta ett gränssnitt med tillgängliga åtgärder för Tillgänglighet. Därefter skickar du tillgänglighets-ID:t till **metoden ById()** för att hämta åtgärderna för den specifika tillgängligheten och anropar **sedan Get()** eller **GetAsync()** för att hämta tillgänglighetsinformationen.
 
 ```csharp
 IAggregatePartner partnerOperations;
@@ -50,7 +46,7 @@ var availability = partnerOperations.Products.ByCountry(countryCode).ById(produc
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Om du vill ha information om en speciell [tillgänglighet](product-resources.md#availability)börjar du med att följa stegen i [Hämta en SKU efter ID](get-a-sku-by-id.md) för att hämta gränssnittet för en speciell [SKU: s](product-resources.md#sku) åtgärder. Från det resulterande gränssnittet väljer du funktionen **getAvailabilities** för att hämta ett gränssnitt med tillgängliga åtgärder för tillgänglighet. Därefter skickar du tillgänglighets-ID: t till funktionen **byId ()** för att hämta åtgärder för den aktuella tillgängligheten och anropar sedan funktionen **Get ()** för att hämta tillgänglighets informationen.
+Om du vill [](product-resources.md#availability)ha information om en specifik tillgänglighet börjar du med att följa stegen i Hämta en [SKU](get-a-sku-by-id.md) efter ID för att hämta gränssnittet för en [specifik SKU:ns](product-resources.md#sku) åtgärder. Från det resulterande gränssnittet väljer du funktionen **getAvailabilities** för att hämta ett gränssnitt med tillgängliga åtgärder för tillgänglighet. Därefter skickar du tillgänglighets-ID:t till **funktionen byId()** för att hämta åtgärderna för den specifika tillgängligheten och anropar **sedan funktionen get()** för att hämta tillgänglighetsinformationen.
 
 ```java
 IAggregatePartner partnerOperations;
@@ -67,7 +63,7 @@ Availability availability = partnerOperations.getProducts().byCountry(countryCod
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Om du vill ha information om en speciell [tillgänglighet](product-resources.md#availability)kör du [**Get-PartnerProductAvailability**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProductAvailability.md) och anger **parametrarna AvailabilityId**, **CountryCode**, **ProductID** och **SkuId** för att hämta tillgänglighets informationen.
+Om du vill [](product-resources.md#availability)ha information om en specifik tillgänglighet kör du [**parametrarna Get-PartnerProductAvailability**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProductAvailability.md) och **availabilityId,** **CountryCode,** **ProductId** och **SkuId** för att hämta tillgänglighetsinformationen.
 
 ```powershell
 Get-PartnerProductAvailability -Product $productId -SkuId $skuId -AvailabilityId $availabilityId
@@ -75,26 +71,26 @@ Get-PartnerProductAvailability -Product $productId -SkuId $skuId -AvailabilityId
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Products/{Product-ID}/SKUs/{SKU-ID}/availabilities/{Availability-ID}? land = {Country-Code} HTTP/1.1         |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{product-id}/skus/{sku-id}/availabilities/{availability-id}?country={country-code} HTTP/1.1         |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande sökväg och frågeparametrar för att få en speciell tillgänglighet med hjälp av ett tillgänglighets-ID.
+Använd följande sökväg och frågeparametrar för att få en specifik tillgänglighet med hjälp av ett tillgänglighets-ID.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| produkt-ID             | sträng   | Yes      | En GUID-formaterad sträng som identifierar produkten.            |
-| SKU-ID                 | sträng   | Yes      | En GUID-formaterad sträng som identifierar SKU: n.                |
-| tillgänglighets-ID        | sträng   | Yes      | En GUID-formaterad sträng som identifierar tillgängligheten.       |
-| landskod           | sträng   | Yes      | Ett land/region-ID.                                            |
+| produkt-id             | sträng   | Ja      | En GUID-formaterad sträng som identifierar produkten.            |
+| sku-id                 | sträng   | Ja      | En GUID-formaterad sträng som identifierar SKU:n.                |
+| tillgänglighets-id        | sträng   | Ja      | En GUID-formaterad sträng som identifierar tillgängligheten.       |
+| landskod           | sträng   | Ja      | Ett lands-/regions-ID.                                            |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -115,19 +111,19 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en [tillgänglighets](product-resources.md#availability) resurs.
+Om det lyckas innehåller svarstexten en [tillgänglighetsresurs.](product-resources.md#availability)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
-Den här metoden returnerar följande fel koder:
+Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Description                                                                                               |
+| HTTP-statuskod     | Felkod   | Beskrivning                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 404                  | 400013       | Det gick inte att hitta produkten.                                                                                    |
-| 404                  | 400018       | Det gick inte att hitta SKU: n.                                                                                        |
-| 404                  | 400019       | Tillgänglighet hittades inte.                                                                                   |
+| 404                  | 400018       | SKU hittades inte.                                                                                        |
+| 404                  | 400019       | Det går inte att hitta tillgängligheten.                                                                                   |
 
 ### <a name="response-example"></a>Exempel på svar
 

@@ -6,18 +6,14 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 1406938b16e5a363a73c36ef0338eb5fc4305279
-ms.sourcegitcommit: 89aefbff6dbe740b6f27a888492ffc2e5f98b1e9
+ms.openlocfilehash: 285b6fbda774c9396dee8947550ed774d52bf901
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/24/2021
-ms.locfileid: "110325453"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446232"
 ---
 # <a name="get-invoice-billed-commercial-consumption-line-items"></a>Hämta fakturafakturerade radobjekt för kommersiell förbrukning
-
-**Gäller för:**
-
-- Partnercenter
 
 Du kan använda följande metoder för att hämta en samling information om fakturaradsobjekt för kommersiell förbrukning (kallas även stängda artiklar för daglig beräknad användningsrad) för en angiven faktura.
 
@@ -107,14 +103,14 @@ while (fetchNext)
 Ett liknande exempel finns i följande:
 
 - Exempel: [Konsoltestapp](console-test-app.md)
-- Projekt: **Partnercenter-SDK exempel**
+- Project: **Partnercenter-SDK exempel**
 - Klass: **GetBilledConsumptionReconLineItemsPaging.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
 ### <a name="request-syntax"></a>Begärandesyntax
 
-Använd den första syntaxen för att returnera en fullständig lista över varje radobjekt för den angivna fakturan. För stora fakturor använder du den andra syntaxen med en angiven storlek och 0-baserad förskjutning för att returnera en sidad lista med radobjekt. Använd den tredje syntaxen för att hämta nästa sida med radobjekt med hjälp av `seekOperation = "Next"` .
+Använd den första syntaxen för att returnera en fullständig lista över alla radobjekt för den angivna fakturan. För stora fakturor använder du den andra syntaxen med en angiven storlek och 0-baserad förskjutning för att returnera en sidad lista med radobjekt. Använd den tredje syntaxen för att hämta nästa sida med rekognoseringsradobjekt med hjälp av `seekOperation = "Next"` .
 
 | Metod  | URI för förfrågan                                                                                                                                                     |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -124,16 +120,16 @@ Använd den första syntaxen för att returnera en fullständig lista över varj
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Använd följande URI- och frågeparametrar när du skapar begäran.
+Använd följande URI och frågeparametrar när du skapar begäran.
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| invoice-id             | sträng | Yes      | En sträng som identifierar fakturan.                             |
-| Leverantör               | sträng | Yes      | Providern: "OneTime".                                  |
-| invoice-line-item-type | sträng | Yes      | Typ av fakturainformation: "UsageLineItems". |
-| currencyCode           | sträng | Yes      | Valutakoden för de fakturerade radobjekten.                    |
-| period                 | sträng | Yes      | Perioden för fakturerad rekognosering. exempel: aktuell, tidigare.        |
-| ikoner                   | antal | No       | Det maximala antalet objekt som ska returneras. Standardstorleken är 2 000       |
+| faktura-id             | sträng | Ja      | En sträng som identifierar fakturan.                             |
+| Leverantör               | sträng | Ja      | Providern: "OneTime".                                  |
+| invoice-line-item-type | sträng | Ja      | Typ av fakturainformation: "UsageLineItems". |
+| currencyCode           | sträng | Ja      | Valutakoden för de fakturerade radobjekten.                    |
+| period                 | sträng | Ja      | Perioden för fakturerad rekognosering. exempel: aktuell, tidigare.        |
+| ikoner                   | antal | Inga       | Det maximala antalet objekt som ska returneras. Standardstorleken är 2 000       |
 | seekOperation          | sträng | No       | Ange seekOperation= Nästa för att hämta nästa sida med rekognoseringsradobjekt. |
 
 ### <a name="request-headers"></a>Begärandehuvuden

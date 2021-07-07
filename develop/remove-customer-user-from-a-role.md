@@ -1,33 +1,29 @@
 ---
 title: Ta bort en kundanvändare från en roll
-description: Så här tar du bort en användare från en katalog roll i ett kund konto.
+description: Ta bort en användare från en katalogroll i ett kundkonto.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6253e86f3733bbf2b9c593c5ca3f3e2fccce7c2c
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 36dc742c4f713131b4996d7dc945b6dd008a3ef5
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769648"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445654"
 ---
 # <a name="remove-a-customer-user-from-a-role"></a>Ta bort en kundanvändare från en roll
 
-**Gäller för**
-
-- Partnercenter
-
-Så här tar du bort en användare från en katalog roll i ett kund konto.
+Ta bort en användare från en katalogroll i ett kundkonto.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Om du vill ta bort en användare från en katalog roll markerar du kunden med användaren att ändra med ett anrop till metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) , där anger du rollen med hjälp av metoden [**DirectoryRoles. ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.idirectoryrolecollection.byid) med katalog roll-ID: t. Öppna sedan metoden [**UserMembers. ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermembercollection.byid) för att identifiera den användare som ska tas bort och metoden [**Delete**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermember.delete) för att ta bort användaren från rollen.
+Om du vill ta bort en användare från en katalogroll väljer du kunden med användaren som ska ändras med ett anrop till metoden [**IAggregatePartner.Customers.ById.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) Därifrån anger du rollen med hjälp av metoden [**DirectoryRoles.ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.idirectoryrolecollection.byid) med katalogrolls-ID:t. Öppna sedan metoden [**UserMembers.ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermembercollection.byid) för att identifiera användaren [](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermember.delete) som ska tas bort och ta bort metoden för att ta bort användaren från rollen.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -38,15 +34,15 @@ Om du vill ta bort en användare från en katalog roll markerar du kunden med an
 partnerOperations.Customers.ById(selectedCustomerId).DirectoryRoles.ById(selectedRoleId).UserMembers.ById(selectedUserMemberId).Delete();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: RemoveCustomerUserMemberFromDirectoryRole.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Samples-klass:** RemoveCustomerUserMemberFromDirectoryRole.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod     | URI för förfrågan                                                                                                                           |
 |------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| **TA bort** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/directoryroles/{Role-ID}/usermembers/{User-ID} http/1.1 |
+| **Ta bort** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/directoryroles/{role-ID}/usermembers/{user-ID} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -54,13 +50,13 @@ Använd följande URI-parametrar för att identifiera rätt kund, roll och anvä
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                                        |
 |------------------------|----------|----------|------------------------------------------------------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y        | Värdet är ett GUID-formaterat **kund-Tenant-ID** som identifierar kunden. |
-| **roll-ID**            | **guid** | Y        | Värdet är ett GUID-formaterat **roll-ID** som identifierar rollen.                |
-| **användar-ID**            | **guid** | Y        | Värdet är ett GUID-formaterat **användar-ID** som identifierar ett enskilt användar konto.   |
+| **kund-klient-id** | **guid** | Y        | Värdet är ett GUID-formaterat **kundklient-ID** som identifierar kunden. |
+| **roll-id**            | **guid** | Y        | Värdet är ett GUID-formaterat **roll-ID** som identifierar rollen.                |
+| **användar-id**            | **guid** | Y        | Värdet är ett GUID-formaterat **användar-ID** som identifierar ett enda användarkonto.   |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -82,11 +78,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Svars texten är tom om användaren tas bort från rollen.
+Om användaren tas bort från rollen är svarstexten tom.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

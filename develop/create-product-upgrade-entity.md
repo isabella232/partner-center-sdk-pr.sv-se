@@ -1,43 +1,39 @@
 ---
-title: Skapa en produkt uppgraderings enhet för en kund
-description: Du kan använda ProductUpgradeRequest-resursen för att skapa en enhet för produkt uppgradering för att uppgradera en kund till en specifik produkt familj.
+title: Skapa en produktuppgraderingsentitet för en kund
+description: Du kan använda resursen ProductUpgradeRequest för att skapa en produktuppgraderingsentitet för att uppgradera en kund till en viss produktfamilj.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 45830033d93e0906eafc169cf04b997e2ff7c3d8
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 4e346b7f5294a8847047c85115d8c80f34eaca84
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768814"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973424"
 ---
-# <a name="create-a-product-upgrade-entity-for-a-customer"></a>Skapa en produkt uppgraderings enhet för en kund
+# <a name="create-a-product-upgrade-entity-for-a-customer"></a>Skapa en produktuppgraderingsentitet för en kund
 
-**Gäller för:**
-
-- Partnercenter
-
-Du kan skapa en produkt uppgraderings enhet för att uppgradera en kund till en specifik produkt serie (till exempel Azure-plan) med hjälp av **ProductUpgradeRequest** -resursen.
+Du kan skapa en produktuppgraderingsentitet för att uppgradera en kund till en viss produktfamilj (till exempel Azure-plan) med hjälp av **resursen ProductUpgradeRequest.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med app + användarautentiseringsuppgifter. Följ den [säkra appens modell](enable-secure-app-model.md) när du använder app + User Authentication med API: er för partner Center.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare. Följ den [säkra appmodellen när du](enable-secure-app-model.md) använder app-/användarautentisering med Partner Center-API:er.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Produkt familjen som du vill uppgradera kunden till.
+- Den produktfamilj som du vill uppgradera kunden till.
 
 ## <a name="c"></a>C\#
 
-Uppgradera en kund till Azure-plan:
+Så här uppgraderar du en kund till en Azure-plan:
 
-1. Skapa ett **ProductUpgradesRequest** -objekt och ange kund-ID och "Azure" som produkt familj.
+1. Skapa ett **ProductUpgradesRequest-objekt** och ange kundidentifieraren och "Azure" som produktfamilj.
 
-2. Använd samlingen **IAggregatePartner. ProductUpgrades** .
+2. Använd **samlingen IAggregatePartner.ProductUpgrades.**
 
-3. Anropa metoden **create** och skicka i **ProductUpgradesRequest** -objektet, vilket kommer att returnera en **plats rubrik** sträng.
+3. Anropa metoden **Create** och skicka objektet **ProductUpgradesRequest,** som returnerar en platsrubriksträng. 
 
-4. Extrahera **uppgraderings-ID: t** från plats huvud strängen som kan användas för att [fråga uppgraderings statusen](get-product-upgrade-status.md).
+4. Extrahera **upgrade-id från** platsrubriksträngen som kan användas för att [fråga uppgraderingsstatusen](get-product-upgrade-status.md).
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -60,19 +56,19 @@ var upgradeId = Regex.Split(productUpgradeLocationHeader, "/")[1];
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                                                   |
 |----------|-----------------------------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/productupgrades http/1.1 |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/productupgrades HTTP/1.1 |
 
 #### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 #### <a name="request-body"></a>Begärandetext
 
-Begär ande texten måste innehålla en [ProductUpgradeRequest](product-upgrade-resources.md#productupgraderequest) -resurs.
+Begärandetexten måste innehålla en [ProductUpgradeRequest-resurs.](product-upgrade-resources.md#productupgraderequest)
 
 #### <a name="request-example"></a>Exempel på begäran
 
@@ -97,11 +93,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svaret ett **plats** huvud som har en URI som kan användas för att hämta produkt uppgraderings status. Spara denna URI för användning med andra relaterade REST API: er.
+Om det lyckas innehåller svaret ett **Location-huvud** som har en URI som kan användas för att hämta produktuppgraderingsstatus. Spara den här URI:en för användning med andra relaterade REST-API:er.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

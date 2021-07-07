@@ -1,46 +1,42 @@
 ---
-title: Hämta alla månatliga användnings poster för en prenumeration.
-description: Du kan använda AzureResourceMonthlyUsageRecord-resurs samlingen för att hämta en lista över tjänster i en kunds prenumeration och deras associerade användnings information.
+title: Hämta alla månatliga användningsposter för en prenumeration
+description: Du kan använda resurssamlingen AzureResourceMonthlyUsageRecord för att hämta en lista över tjänster i en kunds prenumeration och deras associerade klassificerade användningsinformation.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 1dd09d4976c9626e088cda02ce36669dd7121a99
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: ee4bd413eec7d5a2dddbe3803df8839589ab7504
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769735"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760291"
 ---
-# <a name="get-all-monthly-usage-records-for-a-subscription"></a>Hämta alla månatliga användnings poster för en prenumeration.
+# <a name="get-all-monthly-usage-records-for-a-subscription"></a>Hämta alla månatliga användningsposter för en prenumeration
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Du kan använda [**AzureResourceMonthlyUsageRecord**](/dotnet/api/microsoft.store.partnercenter.models.usage.azureresourcemonthlyusagerecord) -resurs samlingen för att hämta en lista över tjänster i en kunds prenumeration och deras associerade användnings information.
+Du kan använda [**resurssamlingen AzureResourceMonthlyUsageRecord**](/dotnet/api/microsoft.store.partnercenter.models.usage.azureresourcemonthlyusagerecord) för att hämta en lista över tjänster i en kunds prenumeration och deras associerade klassificerade användningsinformation.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Ett prenumerations-ID.
+- En prenumerationsidentifierare.
 
-*Detta API stöder bara Microsoft Azure (MS-AZR-0145P)-prenumerationer. Om du använder en Azure-plan läser du i stället [Hämta användnings data för prenumeration efter mätare](get-a-customer-subscription-meter-usage-records.md) .*
+*Det här API:et stöder Microsoft Azure prenumerationer (MS-AZR-0145P). Om du använder en Azure-plan kan du läsa [Hämta användningsdata för prenumeration per mätare i](get-a-customer-subscription-meter-usage-records.md) stället.*
 
 ## <a name="c"></a>C\#
 
-Så här hämtar du en prenumerations resursanvändnings information:
+Så här hämtar du information om prenumerationens resursanvändning:
 
-1. Använd din **IAggregatePartner. Customers** -samling för att anropa metoden **ById ()** .
+1. Använd din **IAggregatePartner.Customers-samling** för att anropa **metoden ById().**
 
-2. Anropa egenskapen **Subscriptions** , och **UsageRecords**, sedan egenskapen **Resources** .
-3. Anropa metoderna **Get ()** eller **GetAsync ()** .
+2. Anropa egenskapen **Prenumerationer** och **UsageRecords** och sedan **egenskapen** Resurser.
+3. Anropa metoderna **Get()** eller **GetAsync().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -50,32 +46,32 @@ Så här hämtar du en prenumerations resursanvändnings information:
 var usageRecords = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscriptionId).UsageRecords.Resources.Get();
 ```
 
-Ett exempel finns i följande avsnitt:
+Ett exempel finns i följande:
 
-- Exempel: [konsol test app](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSample**
+- Exempel: [Konsoltestapp](console-test-app.md)
+- Project: **PartnerSDK.FeatureSample**
 - Klass: **SubscriptionResourceUsageRecords.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                                                       |
 |---------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Subscriptions/{ID-for-Subscription}/usagerecords/Resources http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription}/usagerecords/resources HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Den här tabellen innehåller de frågeparametrar som krävs för att hämta information om den angivna användningen.
+I den här tabellen visas de frågeparametrar som krävs för att hämta den klassificerade användningsinformationen.
 
 | Namn                    | Typ     | Obligatorisk | Beskrivning                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **kund-ID för klient organisation**  | **guid** | Y        | Ett GUID som motsvarar kunden.     |
-| **prenumerations-ID** | **guid** | Y        | Ett GUID som motsvarar prenumerationen. |
+| **kund-klient-id**  | **guid** | Y        | Ett GUID som motsvarar kunden.     |
+| **prenumerations-id** | **guid** | Y        | Ett GUID som motsvarar prenumerationen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -93,11 +89,11 @@ MS-CorrelationId: 47c36033-af5d-4457-80a4-512c1626fac4
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling **AzureResourceMonthlyUsageRecord** -resurser i svars texten.
+Om det lyckas returnerar den här metoden en samling **AzureResourceMonthlyUsageRecord-resurser** i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

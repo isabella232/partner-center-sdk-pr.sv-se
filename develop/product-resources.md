@@ -1,145 +1,141 @@
 ---
-title: Produkt resurser
-description: Resurser som representerar köpbara-varor eller-tjänster. Innehåller resurser för att beskriva produkt typ och-form (SKU) och för att kontrol lera tillgängligheten för produkten i en inventering.
+title: Produktresurser
+description: Resurser som representerar köpbara varor eller tjänster. Innehåller resurser för att beskriva produkttyp och form (SKU) och för att kontrollera tillgängligheten för produkten i en inventering.
 ms.date: 04/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6a3cfacd3654e85a9824759295f97792ff740d85
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 1d536cb78c070bd06f4ab9434e066e51fb4c008c
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769228"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445892"
 ---
-# <a name="products-resources"></a>Produkt resurser
+# <a name="products-resources"></a>Produktresurser
 
-**Gäller för**
-
-- Partnercenter
-
-Resurser som representerar köpbara-varor eller-tjänster. Innehåller resurser för att beskriva produkt typ och-form (SKU) och för att kontrol lera tillgängligheten för produkten i en inventering.
+Resurser som representerar köpbara varor eller tjänster. Innehåller resurser för att beskriva produkttyp och form (SKU) och för att kontrollera tillgängligheten för produkten i en inventering.
 
 ## <a name="product"></a>Produkt
 
-Representerar en köpbara-eller tjänst. En produkt som själva är inte ett köpbara-objekt.
+Representerar en köpbar vara eller tjänst. En produkt i sig är inte ett köpbart objekt.
 
-| Egenskap           | Typ                          | Description                                                              |
+| Egenskap           | Typ                          | Beskrivning                                                              |
 |--------------------|-------------------------------|--------------------------------------------------------------------------|
-| id                 | sträng                        | ID för den här produkten.                                                 |
-| title              | sträng                        | Produkt titeln.                                                       |
-| beskrivning        | sträng                        | Produkt beskrivningen.                                                 |
-| productType        | [ItemType](#itemtype)         | Ett objekt som beskriver typ kategorisering (er) av den här produkten.     |
+| id                 | sträng                        | ID:t för den här produkten.                                                 |
+| title              | sträng                        | Produkttiteln.                                                       |
+| beskrivning        | sträng                        | Produktbeskrivningen.                                                 |
+| productType        | [ItemType](#itemtype)         | Ett objekt som beskriver typkategorisering(er) för den här produkten.     |
 | isMicrosoftProduct | boolesk                          | Anger om det här är en Microsoft-produkt.                          |
 | publisherName      | sträng                        | Namnet på produktens utgivare om det är tillgängligt.                          |
-| Länkar              | [ProductLinks](#productlinks) | Resurs länkarna som ingår i produkten.                         |
+| Länkar              | [ProductLinks](#productlinks) | Resurslänkarna i produkten.                         |
 
 ## <a name="itemtype"></a>ItemType
 
 Representerar typen av en produkt.
 
-| Egenskap        | Typ                          | Description                                                                          |
+| Egenskap        | Typ                          | Beskrivning                                                                          |
 |-----------------|-------------------------------|--------------------------------------------------------------------------------------|
-| id              | sträng                        | Typ identifieraren.                                                                 |
-| displayName     | sträng                        | Visnings namnet för den här typen.                                                      |
-| Undertyp         | [ItemType](#itemtype)         | Valfritt. Ett objekt som beskriver kategorisering av under typer för den här objekt typen.     |
+| id              | sträng                        | Typidentifieraren.                                                                 |
+| displayName     | sträng                        | Visningsnamnet för den här typen.                                                      |
+| Subtyp         | [ItemType](#itemtype)         | Valfritt. Ett objekt som beskriver en undertypskategorisering för den här objekttypen.     |
 
 ## <a name="productlinks"></a>ProductLinks
 
-Innehåller en lista med länkar till en [produkt](#product).
+Innehåller en lista över länkar för en [Produkt](#product).
 
-| Egenskap        | Typ                                                          | Description                                          |
+| Egenskap        | Typ                                                          | Beskrivning                                          |
 |-----------------|---------------------------------------------------------------|------------------------------------------------------|
-| enheter            | [Operationsföljdslänkkod](utility-resources.md#link)                             | Länken för att komma åt de underliggande SKU: erna.          |
-| Länkar           | [ResourceLinks](utility-resources.md#resourcelinks)           | Resurs länkarna som finns i den här resursen.   |
+| Sku            | [Länk](utility-resources.md#link)                             | Länken för åtkomst till de underliggande SKU:erna.          |
+| Länkar           | [ResourceLinks](utility-resources.md#resourcelinks)           | Resurslänkarna i den här resursen.   |
 
 ## <a name="sku"></a>Sku
 
-Representerar en köpbara lagerhållnings enhet (SKU) under en produkt. Dessa representerar olika former av produkten.
+Representerar en köpbar lagerhållningsenhet (SKU) under en produkt. De representerar olika former av produkten.
 
-| Egenskap               | Typ             | Description                                                                           |
+| Egenskap               | Typ             | Beskrivning                                                                           |
 |------------------------|------------------|---------------------------------------------------------------------------------------|
-| id                     | sträng           | ID för denna SKU. Detta ID är endast unikt inom kontexten för den överordnade produkten. |
-| title                  | sträng           | Rubriken på SKU: n.                                                                 |
-| beskrivning            | sträng           | Beskrivningen av SKU: n.                                                           |
-| productId              | sträng           | ID för den överordnade [produkten](#product) som innehåller denna SKU.                      |
-| minimumQuantity        | int              | Den minsta kvantitet som tillåts för köp.                                            |
-| maximumQuantity        | int              | Den högsta kvantitet som tillåts för köp.                                            |
-| isTrial                | boolesk             | Indikerar om denna SKU är ett utvärderings objekt.                                           |
-| supportedBillingCycles | matris med strängar | Listan över fakturerings cykler som stöds för denna SKU. De värden som stöds är medlems namnen som finns i [BillingCycleType](#billingcycletype). |
-| purchasePrerequisites  | matris med strängar | Listan över nödvändiga steg eller åtgärder som krävs innan du köper det här objektet. De värden som stöds är:<br/>  "InventoryCheck" – anger att objektets inventering ska utvärderas innan du försöker köpa den här artikeln.<br/> "AzureSubscriptionRegistration" – visar att en Azure-prenumeration behövs och måste registreras innan du försöker köpa det här objektet.  |
-| inventoryVariables     | matris med strängar | En lista med variabler som krävs för att köra en inventerings kontroll på det här objektet. De värden som stöds är:<br/> "CustomerId" – ID: t för kunden som köpet är för.<br/> "AzureSubscriptionId" – ID: t för den Azure-prenumeration som ska användas för ett Azure reservations köp.</br> "ArmRegionName" – den region som du vill verifiera inventeringen för. Värdet måste matcha "ArmRegionName" från SKU: n DynamicAttributes. |
-| provisioningVariables  | matris med strängar | En lista med variabler som måste tillhandahållas i etablerings kontexten för ett [vagn rads objekt](cart-resources.md#cartlineitem) vid köp av den här artikeln. De värden som stöds är:<br/> Omfattning – omfånget för ett Azure reservations köp: "Single", "Shared".<br/> "SubscriptionId" – ID: t för den Azure-prenumeration som ska användas för ett Azure reservations köp.<br/> "Varaktighet" – varaktigheten för Azure-reservationen: "1Year", "3Year".  |
-| dynamicAttributes      | nyckel/värde-par  | Ord listan för dynamiska egenskaper som gäller för det här objektet. Observera att egenskaperna i den här ord listan är dynamiska och kan ändras utan föregående meddelande. Du bör inte skapa starka beroenden för vissa nycklar som är befintliga i värdet för den här egenskapen.    |
-| Länkar                  | [ResourceLinks](utility-resources.md#resourcelinks) | Resurs länkarna som ingår i SKU: n.                   |
+| id                     | sträng           | ID:t för den här SKU:n. Det här ID:t är endast unikt inom kontexten för dess överordnade produkt. |
+| title                  | sträng           | Rubriken på SKU:n.                                                                 |
+| beskrivning            | sträng           | Beskrivning av SKU:n.                                                           |
+| productId              | sträng           | ID för den överordnade [produkten som](#product) innehåller denna SKU.                      |
+| minimumQuantity        | int              | Den minsta kvantitet som tillåts för inköp.                                            |
+| maximumQuantity        | int              | Den maximala kvantitet som tillåts för inköp.                                            |
+| isTrial                | boolesk             | Anger om den här SKU:n är ett utvärderingsobjekt.                                           |
+| supportedBillingCycles | matris med strängar | Listan över faktureringscykler som stöds för den här SKU:n. Värden som stöds är de medlemsnamn som finns [i BillingCycleType](#billingcycletype). |
+| purchasePrerequisites  | matris med strängar | Listan över nödvändiga steg eller åtgärder som krävs innan du köper det här objektet. Värdena som stöds är:<br/>  "InventoryCheck" – Anger att objektets inventering ska utvärderas innan du försöker köpa det här objektet.<br/> "AzureSubscriptionRegistration" – Anger att en Azure-prenumeration krävs och måste registreras innan du försöker köpa det här objektet.  |
+| inventoryVariables     | matris med strängar | Listan över variabler som behövs för att utföra en inventeringskontroll på det här objektet. Värdena som stöds är:<br/> "CustomerId" – ID:t för kunden som köpet gäller.<br/> "AzureSubscriptionId" – ID:t för den Azure-prenumeration som ska användas för ett Azure-reservationsköp.</br> "ArmRegionName" – Den region som inventeringen ska verifieras för. Det här värdet måste matcha "ArmRegionName" från SKU:ns DynamicAttributes. |
+| provisioningVariables  | matris med strängar | Listan över variabler som måste anges i etableringskontexten för ett kundvagnsradsobjekt [när du köper](cart-resources.md#cartlineitem) det här objektet. Värdena som stöds är:<br/> Omfång – Omfånget för ett Azure-reservationsköp: "Enkel", "Delad".<br/> "SubscriptionId" – ID:t för den Azure-prenumeration som ska användas för ett Azure-reservationsköp.<br/> "Varaktighet" – Varaktigheten för Azure-reservationen: "1Year", "3Year".  |
+| dynamicAttributes      | nyckel/värde-par  | Ordlistan med dynamiska egenskaper som gäller för det här objektet. Egenskaperna i den här ordlistan är dynamiska och kan ändras utan föregående meddelande. Du bör inte skapa starka beroenden på vissa nycklar som finns i värdet för den här egenskapen.    |
+| Länkar                  | [ResourceLinks](utility-resources.md#resourcelinks) | Resurslänkarna i SKU:n.                   |
 
 ## <a name="availability"></a>Tillgänglighet
 
-Representerar en konfiguration där en SKU är tillgänglig för köp (till exempel land, valuta och bransch segment).
+Representerar en konfiguration där en SKU är tillgänglig för inköp (till exempel land, valuta och branschsegment).
 
-| Egenskap        | Typ                        | Description                                                                         |
+| Egenskap        | Typ                        | Beskrivning                                                                         |
 |-----------------|-----------------------------------------------------|-------------------------------------------------------------------------------------|
-| id              | sträng                        | ID för denna tillgänglighet. Detta ID är endast unikt inom kontexten för den överordnade [produkten](#product) och [SKU: n](#sku). **Obs!** Detta ID kan ändras med tiden. Använd bara det här värdet inom ett kort tidsintervall efter att du har hämtat det.  |
-| productId       | sträng                        | ID för den [produkt](#product) som innehåller denna tillgänglighet.           |
-| skuId           | sträng                        | ID för den [SKU](#sku) som innehåller denna tillgänglighet.                   |
-| catalogItemId   | sträng                        | Den unika identifieraren för det här objektet i katalogen. Detta är det ID som måste vara ifyllt i egenskaperna [OrderLineItem. OfferID](order-resources.md#orderlineitem) eller [CartLineItem. CatalogItemId](cart-resources.md#cartlineitem) när du köper den överordnade [SKU: n](#sku). **Obs!** Detta ID kan ändras med tiden. Du bör endast använda detta värde inom kort tid efter att det har hämtats. Den bör endast användas och användas vid tidpunkten för köpet.  |
-| defaultCurrency | sträng                        | Standard valutan som stöds för denna tillgänglighet.                               |
-| segment         | sträng                        | Bransch segmentet för denna tillgänglighet. De värden som stöds är: kommersiell, utbildning, myndigheter, icke-vinst. |
-| land         | sträng                                              | Landet eller regionen (i ISO-format för landskod) där denna tillgänglighet gäller. |
-| isPurchasable   | boolesk                                                | Indikerar om denna tillgänglighet är köpbara. |
-| isRenewable     | boolesk                                                | Anger om den här tillgängligheten har förnyats. |
-| produkt      | [Produkt](#product)               | Produkten som denna tillgänglighet motsvarar. |
-| sku          | [SKU](#sku)            | SKU: n som denna tillgänglighet motsvarar. |
-| begreppen           | matris med [term](#term) resurser  | Den samling av villkor som gäller för denna tillgänglighet. |
-| Länkar           | [ResourceLinks](utility-resources.md#resourcelinks) | Resurs länkarna som finns i tillgänglighet. |
+| id              | sträng                        | ID för den här tillgängligheten. Detta ID är endast unikt inom kontexten för dess överordnade [produkt och](#product) [SKU.](#sku) **Obs!** Detta ID kan ändras med tiden. Du bör bara förlita dig på det här värdet inom ett kort tidsintervall när du har hämtat det.  |
+| productId       | sträng                        | ID:t för [den produkt](#product) som innehåller den här tillgängligheten.           |
+| skuId           | sträng                        | ID:t för [den SKU som](#sku) innehåller den här tillgängligheten.                   |
+| catalogItemId   | sträng                        | Den unika identifieraren för det här objektet i katalogen. Detta är det ID som måste fyllas i i egenskaperna [OrderLineItem.OfferId](order-resources.md#orderlineitem) eller [CartLineItem.CatalogItemId](cart-resources.md#cartlineitem) när du köper den överordnade [SKU:n](#sku). **Obs!** Detta ID kan ändras med tiden. Du bör bara förlita dig på det här värdet inom en kort tid efter att du har hämtat det. Den bör endast användas vid tidpunkten för köpet.  |
+| defaultCurrency | sträng                        | Standardvalutan som stöds för den här tillgängligheten.                               |
+| segment         | sträng                        | Branschsegmentet för den här tillgängligheten. Värden som stöds är: Commercial, Education, Government, NonProfit. |
+| land         | sträng                                              | Land eller region (i ISO-landskodformat) där den här tillgängligheten gäller. |
+| isPurchasable   | boolesk                                                | Anger om den här tillgängligheten är köpbar. |
+| isRenewable     | boolesk                                                | Anger om den här tillgängligheten kan förnyas. |
+| produkt      | [Produkt](#product)               | Den produkt som tillgängligheten motsvarar. |
+| sku          | [Sku](#sku)            | Den SKU som den här tillgängligheten motsvarar. |
+| Villkor           | matris med [termresurser](#term)  | En samling villkor som gäller för den här tillgängligheten. |
+| Länkar           | [ResourceLinks](utility-resources.md#resourcelinks) | Resurslänkarna som ingår i tillgängligheten. |
 
-## <a name="term"></a>Term
+## <a name="term"></a>Period
 
-Representerar en period för vilken tillgänglighet kan köpas.
+Representerar en period som tillgängligheten kan köpas för.
 
-| Egenskap              | Typ                                        | Description                                                                         |
+| Egenskap              | Typ                                        | Beskrivning                                                                         |
 |-----------------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
 | varaktighet              | sträng                                      | En ISO 8601-representation av termens varaktighet. De aktuella värdena som stöds är P1M (1 månad), P1Y (1 år) och P3Y (3 år). |
 | beskrivning           | sträng                                      | Beskrivningen av termen.           |
 
 ## <a name="inventorycheckrequest"></a>InventoryCheckRequest
 
-Representerar en begäran om att kontrol lera lagret mot vissa katalog objekt.
+Representerar en begäran om att kontrollera inventeringen mot vissa katalogobjekt.
 
-| Egenskap         | Typ                                                | Description                                                                                 |
+| Egenskap         | Typ                                                | Beskrivning                                                                                 |
 |------------------|-----------------------------------------------------|---------------------------------------------------------------------------------------------|
-| targetItems      | matris med [InventoryItem](#inventoryitem)            | Listan över katalog objekt som inventerings kontrollen kommer att utvärdera.                           |
-| inventoryContext | nyckel/värde-par                                     | Ord listan för de kontext värden som behövs för att genomföra lager kontroll (er). Varje [SKU](#sku) av produkterna definierar vilka värden (om sådana finns) som krävs för att utföra den här åtgärden.  |
-| Länkar            | [ResourceLinks](utility-resources.md#resourcelinks) | Resurs länkarna i begäran om inventerings kontroll.                            |
+| targetItems      | matris med [InventoryItem](#inventoryitem)            | Listan över katalogobjekt som inventeringskontrollen kommer att utvärdera.                           |
+| inventoryContext | nyckel/värde-par                                     | Ordlistan med kontextvärden som behövs för att utföra inventeringskontrollerna. Varje [SKU](#sku) för produkterna definierar vilka värden (om det finns några) som krävs för att utföra den här åtgärden.  |
+| Länkar            | [ResourceLinks](utility-resources.md#resourcelinks) | Resurslänkarna i begäran om inventeringskontroll.                            |
 
 ## <a name="inventoryitem"></a>InventoryItem
 
-Representerar ett enskilt objekt i en inventerings kontroll. Den här resursen används för att ange mål objekt i en indata-begäran och används också för att representera resultatet av resultatet av inventerings kontrollen.
+Representerar ett enskilt objekt i en inventeringskontrollåtgärd. Den här resursen används för att ange målobjekten i en indatabegäran och används också för att representera utdataresultatet från inventeringskontrollen.
 
-| Egenskap         | Typ                                                              | Description                                                                      |
+| Egenskap         | Typ                                                              | Beskrivning                                                                      |
 |------------------|-------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| productId        | sträng                                                            | Kunna [Produktens](#product)ID.                            |
-| skuId            | sträng                                                            | ID för SKU: [n](#sku). Det här värdet är valfritt när du använder den här resursen som indatamängd för en inventerings förfrågan. Om det här värdet inte anges kommer alla SKU: er under produkten att anses som mål objekt i inventerings kontrollen.      |
-| isRestricted     | boolesk                                                              | Anger om det här objektet hittades ha en begränsad inventering.            |
-| rättigheter     | matris med [InventoryRestriction](#inventoryrestriction)            | Information om eventuella begränsningar som har hittats för det här objektet. Den här egenskapen kommer bara att fyllas i om **isRestricted** = "true". |
+| productId        | sträng                                                            | (Krävs) ID för [produkten](#product).                            |
+| skuId            | sträng                                                            | ID för [SKU:n](#sku). När du använder den här resursen som indata för en inventeringsbegäran är det här värdet valfritt. Om det här värdet inte anges betraktas alla SKU:er under produkten som målobjekt i inventeringskontrollen.      |
+| isRestricted     | boolesk                                                              | Anger om det här objektet hittades för ett begränsat lager.            |
+| Begränsningar     | matris med [InventoryRestriction](#inventoryrestriction)            | Information om eventuella begränsningar som hittas för det här objektet. Den här egenskapen fylls bara i om **isRestricted** = "true". |
 
 ## <a name="inventoryrestriction"></a>InventoryRestriction
 
-Visar information om en inventerings begränsning. Detta gäller endast för resultat från inventerings kontroll, inte för indata-begäranden.
+Visar information om en inventeringsbegränsning. Detta gäller endast för inventeringskontrollens utdataresultat, inte för indatabegäranden.
 
-| Egenskap         | Typ                  | Description                                                                                 |
+| Egenskap         | Typ                  | Beskrivning                                                                                 |
 |------------------|-----------------------|---------------------------------------------------------------------------------------------|
 | reasonCode       | sträng                | Den kod som identifierar orsaken till begränsningen.                                    |
-| beskrivning      | sträng                | Beskrivningen av inventerings begränsningen.                                               |
-| properties       | nyckel/värde-par       | Ord lista med egenskaper som kan innehålla ytterligare information om begränsningen.           |
+| beskrivning      | sträng                | Beskrivning av inventeringsbegränsningen.                                               |
+| properties       | nyckel/värde-par       | Ordlistan med egenskaper som kan ge ytterligare information om begränsningen.           |
 
 ## <a name="billingcycletype"></a>BillingCycleType
 
-En [Enum/dotNet/API/system. Enum) med värden som anger en typ av fakturerings cykel.
+En [Enum/dotnet/api/system.enum) med värden som anger en typ av faktureringsperiod.
 
 | Värde              | Position     | Beskrivning                                                                                |
 |--------------------|--------------|--------------------------------------------------------------------------------------------|
-| Okänt            | 0            | Uppräknings initierare.                                                                          |
-| Varje månad            | 1            | Anger att partnern debiteras månads vis.                                        |
-| Årsvis             | 2            | Anger att partnern ska debiteras per år.                                       |
-| Inget               | 3            | Anger att partnern inte kommer att debiteras. Det här värdet kan användas för utvärderings objekt.    |
-| Databasmigrering            | 4            | Anger att partnern kommer att debiteras en gången.                                       |
+| Okänt            | 0            | Enum-initierare.                                                                          |
+| Månadsvis            | 1            | Anger att partnern debiteras månadsvis.                                        |
+| Årsvis             | 2            | Anger att partnern debiteras per år.                                       |
+| Ingen               | 3            | Anger att partnern inte kommer att debiteras. Det här värdet kan användas för utvärderingsobjekt.    |
+| Onetime            | 4            | Anger att partnern debiteras en gång.                                       |

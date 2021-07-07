@@ -1,113 +1,110 @@
 ---
-title: Enhets distributions resurser
-description: Resurser som rör distribution av Partner Center-enheter.
+title: Resurser för enhetsdistribution
+description: Resurser som rör distribution av Partnercenter-enheter.
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a464cdad3979c305df16a3bdc9133ce70a7ac688
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: c85f0bd6a633ac18aa8e56e5a89bfc5c8f0398cc
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768784"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906506"
 ---
-# <a name="device-deployment-resources"></a>Enhets distributions resurser
+# <a name="device-deployment-resources"></a>Resurser för enhetsdistribution
 
-**Gäller för:**
+**Gäller för**: Partner Center-| Partnercenter för Microsoft Cloud Tyskland
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-
-Följande resurser är relaterade till enhets distribution.
+Följande resurser är relaterade till enhetsdistribution.
 
 ## <a name="configurationpolicy"></a>ConfigurationPolicy
 
-**ConfigurationPolicy** innehåller information om en konfigurations princip.
+**ConfigurationPolicy** innehåller information om en konfigurationsprincip.
 
-| Egenskap             | Typ                                                           | Description                                                        |
+| Egenskap             | Typ                                                           | Beskrivning                                                        |
 |----------------------|----------------------------------------------|--------------------------------------------------------------------------------------|
 | id                   | sträng                                       | En GUID-formaterad sträng som identifierar principen.                                  |
-| name                 | sträng                                       | Det egna namnet på principen.                                                    |
-| category             | sträng                                       | Kategorin.                                                                        |
-| beskrivning          | sträng                                       | Princip beskrivningen.                                                              |
+| name                 | sträng                                       | Principens egna namn.                                                    |
+| category             | sträng                                       | Kategorin .                                                                        |
+| beskrivning          | sträng                                       | Principbeskrivningen.                                                              |
 | devicesAssignedCount | antal                                       | Antalet enheter som har tilldelats den här principen.                                       |
-| policySettings       | matris med strängar                             | Princip inställningarna: "ingen", "ta bort \_ OEM \_ -förinstallationer", "OOBE \_ User \_ not \_ Local \_ admin", "hoppa över \_ Express \_ Inställningar", "hoppa över \_ OEM \_ -registrering", "hoppa över \_ EULA".    |
+| policySettings       | matris med strängar                             | Principinställningarna: "none","remove \_ oem \_ preinstalls","oobe \_ user not local \_ \_ \_ admin","skip \_ express \_ settings","skip \_ oem \_ registration", "skip \_ eula".    |
 | createdDate          | sträng i UTC-datum/tid-format               | Datum och tid då principen skapades.                                            |
 | lastModifiedDate     | sträng i UTC-datum/tid-format               | Datum och tid då principen senast ändrades.                                      |
-| dokumentattribut           | [ResourceAttributes](utility-resources.md#resourceattributes) | Attribut för metadata.                                            |
+| Attribut           | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen.                                            |
 
 ## <a name="device"></a>Enhet
 
-**Enheten** tillhandahåller information om en enhet.
+**Enheten** innehåller information om en enhet.
 
-| Egenskap            | Typ                                                           | Description                                                              |
+| Egenskap            | Typ                                                           | Beskrivning                                                              |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------|
 | id                  | sträng                                                         | En GUID-formaterad sträng som identifierar enheten.                      |
-| serialNumber        | sträng                                                         | Serie numret som är unikt för enheten.                   |
-| productKey          | sträng                                                         | Produkt nyckeln som är unik för enheten.                     |
-| hardwareHash        | sträng                                                         | Maskinvaru-hash som unikt associeras med enheten.                   |
-| modelName           | sträng                                                         | Modell namnet som är associerat med enheten.                               |
-| oemManufacturerName | sträng                                                         | Namnet på OEM-tillverkaren som är associerad med enheten.             |
-| policies            | objekt mat ris                                               | Listan över principer som tilldelats enheten.                             |
-| uploadedDate        | sträng i UTC-datum/tid-format                                 | Datum och tid då enhets informationen laddades upp.                      |
-| allowedOperations   | matris med strängar                                               | Listan över HTTP-metoder som tillåts på en enhets-synkronisering som GET, PATCH, DELETE. |
-| dokumentattribut          | [ResourceAttributes](utility-resources.md#resourceattributes)  | Attribut för metadata.                                                 |
+| serialNumber        | sträng                                                         | Serienumret som är unikt associerat med enheten.                   |
+| Produkt          | sträng                                                         | Produktnyckeln som är unikt associerad med enheten.                     |
+| hardwareHash        | sträng                                                         | Den maskinvaruhash som är unikt associerad med enheten.                   |
+| modelName           | sträng                                                         | Modellnamnet som är associerat med enheten.                               |
+| oemManufacturerName | sträng                                                         | Namnet på den OEM-tillverkare som är associerad med enheten.             |
+| policies            | matris med objekt                                               | Listan över principer som tilldelats enheten.                             |
+| uploadedDate        | sträng i UTC-datum/tid-format                                 | Datum och tid då enhetsinformationen laddades upp.                      |
+| allowedOperations   | matris med strängar                                               | Listan över HTTP-metoder som tillåts vid en enhetssynkronisering som GET, PATCH, DELETE. |
+| Attribut          | [ResourceAttributes](utility-resources.md#resourceattributes)  | Metadataattributen.                                                 |
 
 ## <a name="batchuploaddetails"></a>BatchUploadDetails
 
-**BatchUploadDetails** beskriver statusen för en enhets batch-överföring av information om varje enhet i en lista över enheter.
+**BatchUploadDetails** beskriver status för en enhets batchuppladdning av information om varje enhet i en lista över enheter.
 
-| Egenskap        | Typ     | Description                                                                  |
+| Egenskap        | Typ     | Beskrivning                                                                  |
 |-----------------|----------|------------------------------------------------------------------------------|
-| batchTrackingId | sträng   | En GUID-formaterad sträng som är associerad med den grupp med enheter som har överförts. |
-| status          | sträng   | Status för batch-överföringen: "okänd", "köade", "bearbetar", "avslutad", "klart \_ med \_ fel". |
-| startedTime     | sträng i UTC-datum/tid-format | Datum och tid då batch-uppladdnings processen startades.   |
-| completedTime   | sträng i UTC-datum/tid-format  | Datum och tid då batch-överföringen slutfördes.   |
-| devicesStatus   | matris med [DeviceUploadDetails](#deviceuploaddetails) -resurser | En matris med objekt som anger status för varje enhets informations uppladdning. |
-| dokumentattribut      | [ResourceAttributes](utility-resources.md#resourceattributes) | Attribut för metadata.  |
+| batchTrackingId | sträng   | En GUID-formaterad sträng som är associerad med batchen med enheter som laddats upp. |
+| status          | sträng   | Status för batchuppladdningen: "unknown","queued","processing","finished","finished \_ with \_ errors". |
+| startedTime     | sträng i UTC-datum/tid-format | Datum och tid då batchuppladdningen startade.   |
+| completedTime   | sträng i UTC-datum/tid-format  | Datum och tid då batchuppladdningen slutfördes.   |
+| devicesStatus   | matris med [DeviceUploadDetails-resurser](#deviceuploaddetails) | En matris med objekt som anger status för varje uppladdning av enhetsinformation. |
+| Attribut      | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen.  |
 
 ## <a name="deviceuploaddetails"></a>DeviceUploadDetails
 
-**DeviceUploadDetails** beskriver statusen för en överföring av information om en enhet.
+**DeviceUploadDetails** beskriver status för en uppladdning av information om en enhet.
 
-| Egenskap         | Typ                    | Description                                 |
+| Egenskap         | Typ                    | Beskrivning                                 |
 |------------------|-------------------------|---------------------------------------------|
 | deviceId         | sträng                  | En GUID-formaterad sträng som är associerad med enheten. |
-| serialNumber     | sträng                  | Serie numret som är unikt för enheten. |
-| productKey       | sträng                  | Produkt nyckeln som är unik för enheten. |
-| status           | sträng                  | Status för enhets informations uppladdning: "pågår", "slutfört", "slutfört \_ med \_ fel". |
-| errorCode        | sträng                  | Fel koden för HTTP-status returneras om enhets uppladdningen Miss lyckas. |
-| errorDescription | sträng                  | HTTP-fel beskrivningen om enhets uppladdningen Miss lyckas. |
-| dokumentattribut       | [ResourceAttributes](utility-resources.md#resourceattributes) | Attribut för metadata.   |
+| serialNumber     | sträng                  | Serienumret som är unikt associerat med enheten. |
+| Produkt       | sträng                  | Produktnyckeln som är unikt associerad med enheten. |
+| status           | sträng                  | Status för uppladdning av enhetsinformation: "pågår", "slutfört", \_ "slutfört \_ med fel". |
+| errorCode        | sträng                  | HTTP-statusfelkoden returneras om enhetsuppladdningen misslyckas. |
+| errorDescription | sträng                  | Http-felbeskrivningen om enhetsuppladdningen misslyckas. |
+| Attribut       | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen.   |
 
 ## <a name="devicebatch"></a>DeviceBatch
 
 **DeviceBatch** representerar en samling enheter.
 
-| Egenskap     | Typ                                                           | Description                                                           |
+| Egenskap     | Typ                                                           | Beskrivning                                                           |
 |--------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| id           | sträng                                                         | En GUID-formaterad sträng som är associerad med gruppens enheter. |
-| createdBy    | sträng                                                         | Namnet på den klient som skapade samlingen.                   |
-| creationDate | sträng i UTC-datum/tid-format                                 | De data och den tidpunkt då samlingen skapades.                    |
+| id           | sträng                                                         | En GUID-formaterad sträng som är associerad med batchen med enheter. |
+| createdBy    | sträng                                                         | Namnet på den klientorganisation som skapade samlingen.                   |
+| creationDate | sträng i UTC-datum/tid-format                                 | Data och tid då samlingen skapades.                    |
 | deviceCount  | antal                                                         | Antalet enheter i samlingen.                              |
-| devicesLink  | [Operationsföljdslänkkod](utility-resources.md#link)                              | En länk till de enheter som ingår i den här batchen.                        |
-| dokumentattribut   | [ResourceAttributes](utility-resources.md#resourceattributes)  | Attribut för metadata.                                              |
+| devicesLink  | [Länk](utility-resources.md#link)                              | En länk till de enheter som ingår i den här batchen.                        |
+| Attribut   | [ResourceAttributes](utility-resources.md#resourceattributes)  | Metadataattributen.                                              |
 
 ## <a name="devicebatchcreationrequest"></a>DeviceBatchCreationRequest
 
-**DeviceBatchCreationRequest** innehåller den information som krävs för att skapa en enhets batch och fylla den med enheter.
+**DeviceBatchCreationRequest** tillhandahåller den information som krävs för att skapa en enhetsbatch och fylla den med enheter.
 
-| Egenskap     | Typ                                                           | Description                                                           |
+| Egenskap     | Typ                                                           | Beskrivning                                                           |
 |--------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| batchId      | sträng                                                         | En GUID-formaterad sträng som är associerad med gruppens enheter. |
-| devices      | matris med [enhets](#device) objekt                             | Varje-objekt anger en enhet. Följande kombinationer av fält för att identifiera en enhet godkänns: hardwareHash + productKey, hardwareHash + serialNumber, hardwareHash + productKey + serialNumber, endast hardwareHash, productKey, serialNumber + oemManufacturerName + modelName. |
-| dokumentattribut   | [ResourceAttributes](utility-resources.md#resourceattributes)  | Attribut för metadata.                                              |
+| batchId      | sträng                                                         | En GUID-formaterad sträng som är associerad med batchen med enheter. |
+| devices      | matris med [enhetsobjekt](#device)                             | Varje objekt anger en enhet. Följande kombinationer av fält för att identifiera en enhet accepteras: hardwareHash + productKey, hardwareHash + serialNumber, hardwareHash + productKey + serialNumber, hardwareHash only, productKey only, serialNumber + oemManufacturerName + modelName. |
+| Attribut   | [ResourceAttributes](utility-resources.md#resourceattributes)  | Metadataattributen.                                              |
 
 ## <a name="devicepolicyupdaterequest"></a>DevicePolicyUpdateRequest
 
 **DevicePolicyUpdateRequest** innehåller den information som krävs för att uppdatera en lista över enheter med en princip.
 
-| Egenskap     | Typ                                                           | Description                                                           |
+| Egenskap     | Typ                                                           | Beskrivning                                                           |
 |--------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| devices      | matris med [enhets](#device) objekt                             | Varje-objekt anger en enhet. Följande egenskaper krävs: ID, principer. |
-| dokumentattribut   | [ResourceAttributes](utility-resources.md#resourceattributes)  | Attribut för metadata.                                              |
+| devices      | matris med [enhetsobjekt](#device)                             | Varje objekt anger en enhet. Följande egenskaper krävs: Id, Principer. |
+| Attribut   | [ResourceAttributes](utility-resources.md#resourceattributes)  | Metadataattributen.                                              |

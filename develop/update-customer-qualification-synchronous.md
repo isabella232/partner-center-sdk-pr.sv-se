@@ -1,37 +1,33 @@
 ---
 title: Uppdatera en kunds kvalificering
-description: Lär dig hur du uppdaterar en kunds kvalifikationer via synkron gallring eller först konsumentsajter, inklusive adressen som är kopplad till profilen.
+description: Lär dig hur du uppdaterar en kunds kompetens via synkron kontroll eller kontroll, inklusive adressen som är associerad med profilen.
 ms.date: 12/07/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 0ffe6d1a236a8a07e1ff71163e7639ef1f3437e1
-ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
+ms.openlocfilehash: 5047743afdef02033d9494e3d8c16c9ab96b3fe9
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105030597"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446657"
 ---
-# <a name="update-a-customers-qualification-via-synchronous-validation"></a>Uppdatera en kunds kvalificering via synkron verifiering
+# <a name="update-a-customers-qualification-via-synchronous-validation"></a>Uppdatera en kunds kvalificering via synkron validering
 
-**Gäller för**
+Lär dig hur du uppdaterar en kunds kvalificeringar synkront via Partner Center-API:er. Information om hur du gör detta asynkront finns i [Uppdatera en kunds kvalificering via asynkron validering](update-customer-qualification-asynchronous.md).
 
-- Partnercenter
-
-Lär dig hur du uppdaterar en kunds kvalifikationer synkront via API: er för partner Center. Information om hur du gör detta asynkront finns i [Uppdatera en kunds kvalificering via asynkron verifiering](update-customer-qualification-asynchronous.md).
-
-En partner kan uppdatera en kunds kvalificering som "utbildning" eller "GovernmentCommunityCloud". Andra värden, "ingen" och "icke-vinst" kan inte anges.
+En partner kan uppdatera en kunds kvalificering till "Education" eller "GovernmentCommunityCloud". Andra värden, "None" och "Nonprofit", kan inte anges.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Om du vill uppdatera en kunds kvalificering till "utbildning" anropar du **[Update/dotNet/API/Microsoft. Store. Partnercenter. kvalificering. icustomerqualification. Update)** på en befintlig  [**kund**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer).
+Om du vill uppdatera en kunds kvalificering till "Education" anropar du **[Update/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification.update)** på en  [**befintlig kund**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer).
 
 ``` csharp
 // CustomerQualification is an enum
@@ -39,9 +35,9 @@ Om du vill uppdatera en kunds kvalificering till "utbildning" anropar du **[Upda
 var eduCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.Update(CustomerQualification.Education);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples- **klass**: CustomerQualificationOperations. CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** PartnerSDK.FeatureSamples-klass: CustomerQualificationOperations.cs 
 
-För att kunna uppdatera en kunds kvalificering till **GovernmentCommunityCloud** på en befintlig kund utan kvalificering måste partnern inkludera kundens [**ValidationCode**](utility-resources.md#validationcode).
+För att uppdatera en kunds kvalificering **till GovernmentCommunityCloud** på en befintlig kund utan kvalificering måste partnern inkludera kundens [**valideringskod.**](utility-resources.md#validationcode)
 
 ``` csharp
 // CustomerQualification is an enum
@@ -52,11 +48,11 @@ var gccCustomerQualification = partnerOperations.Customers.ById(existingCustomer
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                             |
 |---------|---------------------------------------------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{customer_id}/Qualification? Code = {VALIDATIONCODE} http/1.1 |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer_id}/qualification?code={validationCode} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -64,16 +60,16 @@ Använd följande frågeparameter för att uppdatera kvalificeringen.
 
 | Namn                   | Typ | Obligatorisk | Beskrivning                                                                                                                                            |
 |------------------------|------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **kund-ID för klient organisation** | GUID | Ja      | Värdet är ett GUID-formaterat **kund-Tenant-ID** som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik kund som tillhör åter försäljaren. |
-| **validationCode**     | int  | Inga       | Krävs endast för Community-molnet för myndigheter.                                                                                                            |
+| **kund-klient-id** | GUID | Ja      | Värdet är ett GUID-formaterat **kundklient-ID** som gör att återförsäljaren kan filtrera resultaten för en viss kund som tillhör återförsäljaren. |
+| **validationCode**     | int  | Inga       | Behövs bara för Government Community Cloud.                                                                                                            |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Heltal svärdet från [**CustomerQualification**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerqualification) -uppräkningen.
+Heltalsvärdet från [**CustomerQualification-uppräkning.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerqualification)
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -88,11 +84,11 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en uppdaterad [**kvalificerings**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) egenskap i svars texten.
+Om det lyckas returnerar den här metoden den uppdaterade kvalificeringsegenskapen i svarstexten. [](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

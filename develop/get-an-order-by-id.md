@@ -1,45 +1,40 @@
 ---
 title: Hämta en beställning efter ID
-description: 'Hämtar en order resurs som matchar kunden och order-ID: t.'
+description: Hämtar en orderresurs som matchar kunden och order-ID:t.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 0a39d7142e5bf97f9fb345416964d4ed6bb935ad
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 2cb2822935113fe1c5337b4ffc899fccff333d2f
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769870"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760189"
 ---
 # <a name="get-an-order-by-id"></a>Hämta en beställning efter ID
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Hämtar en [order](order-resources.md) resurs som matchar kunden och order-ID: t.
+Hämtar en [orderresurs](order-resources.md) som matchar kunden och order-ID:t.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Ett order-ID.
 
 ## <a name="c"></a>C\#
 
-Så här hämtar du en kund order efter ID:
+Så här hämtar du en kunds order efter ID:
 
-1. Använd din **IAggregatePartner. Customers** -samling och anropa **ById ()-** metoden.
+1. Använd din **IAggregatePartner.Customers-samling** och anropa **metoden ById().**
 
-2. Anropa egenskapen [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) följt av metoden [**ByID ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) en gång till.
-3. Anropa [**Get ()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.get) eller [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.getasync).
+2. Anropa egenskapen [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) följt av [**metoden ByID()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) en gång till.
+3. Anropa [**Get()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.get) eller [**GetAsync()**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.getasync).
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -49,18 +44,18 @@ Så här hämtar du en kund order efter ID:
 var order = partnerOperations.Customers.ById(selectedCustomerId).Orders.ById(selectedOrderId).Get();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample- **klass**: GetOrder.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** PartnerSDK.FeatureSample-klass: GetOrder.cs 
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Så här hämtar du en kund order efter ID:
+Så här hämtar du en kunds order efter ID:
 
-1. Använd din **IAggregatePartner. getCustomers** -funktion och anropa funktionen **byId ()** .
+1. Använd funktionen **IAggregatePartner.getCustomers** och anropa **funktionen byId().**
 
-2. Anropa funktionen **getOrders** , följt av funktionen **byID ()** en gång till.
-3. Anropa funktionen **Get ()** .
+2. Anropa funktionen **getOrders,** följt av **funktionen byID()** en gång till.
+3. Anropa **funktionen get().**
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -74,7 +69,7 @@ Order order = partnerOperations.getCustomers().byId(selectedCustomerId).getOrder
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-För att få en kund order utifrån ID kör du kommandot [**Get-PartnerCustomerOrder**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerOrder.md) och anger parametrarna **CustomerId** och **Ordernr** .
+Om du vill hämta en kunds order efter ID kör du kommandot [**Get-PartnerCustomerOrder**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerOrder.md) och anger **parametrarna CustomerId** och **OrderId.**
 
 ```powershell
 # $selectedCustomerId
@@ -85,24 +80,24 @@ Get-PartnerCustomerOrder -CustomerId $selectedCustomerId -OrderId $selectedOrder
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                  |
 |---------|--------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Orders/{ID-for-order} http/1.1  |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders/{id-for-order} HTTP/1.1  |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Den här tabellen innehåller de frågeparametrar som krävs för att hämta en order efter ID.
+I den här tabellen visas de frågeparametrar som krävs för att hämta en order efter ID.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                            |
 |------------------------|----------|----------|--------------------------------------------------------|
-| kund-ID för klient organisation     | sträng   | Yes      | En GUID-formaterad sträng som motsvarar kunden. |
-| ID-för-order           | sträng   | Yes      | En sträng som motsvarar order-ID: t.                |
+| kund-klient-id     | sträng   | Ja      | En GUID-formaterad sträng som motsvarar kunden. |
+| id-for-order           | sträng   | Ja      | En sträng som motsvarar order-ID:t.                |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -121,11 +116,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en [order](order-resources.md) resurs i svars texten.
+Om det lyckas returnerar den här metoden [en Order-resurs](order-resources.md) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

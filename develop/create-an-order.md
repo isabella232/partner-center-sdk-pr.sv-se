@@ -1,35 +1,31 @@
 ---
-title: Skapa en kund order
-description: 'Lär dig hur du använder API: er för partner Center för att skapa en order för en kund. Artikeln innehåller krav, steg och exempel.'
+title: Skapa en kundorder
+description: Lär dig hur du använder Partner Center-API:er för att skapa en order för en kund. Artikeln innehåller förutsättningar, steg och exempel.
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ce176909a1f9c350f1c16615171de57a7beb888d
-ms.sourcegitcommit: 4c253abb24140a6e00b0aea8e79a08823ea5a623
+ms.openlocfilehash: c3a86a99f43bdeec5e4c560ab59e1924b76c0636
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97770125"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973560"
 ---
-# <a name="create-an-order-for-a-customer-using-partner-center-apis"></a>Skapa en order för en kund med hjälp av API: er för partner Center
+# <a name="create-an-order-for-a-customer-using-partner-center-apis"></a>Skapa en order för en kund med partnercenter-API:er
 
-**Gäller för:**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Att skapa en **beställning för reserverade produkter från virtuella Azure-datorer** gäller *endast* för:
+Att skapa en **order för azure-reserverade VM-instansprodukter** *gäller endast* för:
 
 - Partnercenter
 
-Information om vad som för närvarande är tillgängligt för försäljning finns [i partner erbjudanden i Cloud Solution Provider-programmet](/partner-center/csp-offers).
+Information om vad som för närvarande är tillgängligt för försäljning [finns i Partnererbjudanden i Molnlösningsleverantör program](/partner-center/csp-offers).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - Ett erbjudande-ID.
 
@@ -37,13 +33,13 @@ Information om vad som för närvarande är tillgängligt för försäljning fin
 
 Så här skapar du en order för en kund:
 
-1. Instansiera ett [**order**](order-resources.md) -objekt och ange **ReferenceCustomerID** -egenskapen till kund-ID: t för att registrera kunden.
+1. Skapa en instans [**av ett Order-objekt**](order-resources.md) och ange **egenskapen ReferenceCustomerID** till kund-ID:t för att registrera kunden.
 
-2. Skapa en lista med [**OrderLineItem**](order-resources.md#orderlineitem) -objekt och tilldela listan till orderns **rad objekt** -egenskap. Varje order rads objekt innehåller inköps information för ett erbjudande. Du måste ha minst ett order rads objekt.
+2. Skapa en lista [**med OrderLineItem-objekt**](order-resources.md#orderlineitem) och tilldela listan till orderns **LineItems-egenskap.** Varje orderradsartikel innehåller inköpsinformationen för ett erbjudande. Du måste ha minst en orderrad.
 
-3. Hämta ett gränssnitt för att beställa åtgärder. Anropa först metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att identifiera kunden. Hämta sedan gränssnittet från egenskapen [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) .
+3. Hämta ett gränssnitt för att ordna åtgärder. Anropa först metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Hämta sedan gränssnittet från [**egenskapen**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) Beställningar.
 
-4. Anropa metoden [**create**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.create) eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.createasync) och skicka det till [**order**](order-resources.md) -objektet.
+4. Anropa metoden [**Create**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.create) eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.createasync) och skicka in [**orderobjektet.**](order-resources.md)
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -73,74 +69,74 @@ var order = new Order()
 var createdOrder = partnerOperations.Customers.ById(customerId).Orders.Create(order);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: CreateOrder.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **exempelklass:** CreateOrder.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                                            |
 |----------|----------------------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Orders http/1.1 |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/orders HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Använd följande Sök vägs parameter för att identifiera kunden.
+Använd följande sökvägsparameter för att identifiera kunden.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                                |
 |-------------|--------|----------|------------------------------------------------------------|
-| kund-ID | sträng | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden. |
+| kund-id | sträng | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
 #### <a name="order"></a>Beställning
 
-I den här tabellen beskrivs [beställnings](order-resources.md) egenskaperna i begär ande texten.
+I den här tabellen beskrivs [orderegenskaperna](order-resources.md) i begärandetexten.
 
 | Egenskap             | Typ                        | Obligatorisk                        | Beskrivning                                                                   |
 |----------------------|-----------------------------|---------------------------------|-------------------------------------------------------------------------------|
-| id                   | sträng                      | No                              | En beställnings identifierare som anges när beställningen har skapats.   |
-| referenceCustomerId  | sträng                      | No                              | Kund-ID. |
-| billingCycle         | sträng                      | No                              | Anger med vilken frekvens partnern faktureras för den här ordern. De värden som stöds är medlems namnen som finns i [BillingCycleType](product-resources.md#billingcycletype). Standardvärdet är "Monthly" eller "Databasmigrering" när ordern skapas. Det här fältet används när beställningen har skapats. |
-| Rad objekt            | matris med [OrderLineItem](order-resources.md#orderlineitem) -resurser | Yes      | En lista med specificerade erbjudanden som kunden köper inklusive kvantiteten.        |
-| currencyCode         | sträng                      | No                              | Skrivskyddad. Den valuta som används när ordern placeras. Används när beställningen har skapats.           |
-| creationDate         | datetime                    | No                              | Skrivskyddad. Datumet då ordern skapades i datum-/tids format. Används när beställningen har skapats.                                   |
-| status               | sträng                      | No                              | Skrivskyddad. Status för ordern.  De värden som stöds är medlems namnen som finns i [OrderStatus](order-resources.md#orderstatus).        |
-| Länkar                | [OrderLinks](utility-resources.md#resourcelinks)              | No                              | Resurs länkarna som motsvarar beställningen. |
-| dokumentattribut           | [ResourceAttributes](utility-resources.md#resourceattributes) | No                              | De metadata-attribut som motsvarar beställningen. |
+| id                   | sträng                      | No                              | En orderidentifierare som anges när ordern har skapats.   |
+| referenceCustomerId  | sträng                      | No                              | Kundidentifieraren. |
+| billingCycle         | sträng                      | No                              | Anger med vilken frekvens partnern faktureras för den här beställningen. Värden som stöds är de medlemsnamn som finns [i BillingCycleType](product-resources.md#billingcycletype). Standardvärdet är "Varje månad" eller "OneTime" när ordern skapas. Det här fältet tillämpas när ordern har skapats. |
+| lineItems            | matris med [OrderLineItem-resurser](order-resources.md#orderlineitem) | Ja      | En specificerad lista över de erbjudanden som kunden köper, inklusive kvantitet.        |
+| currencyCode         | sträng                      | No                              | Skrivskyddade. Den valuta som används när du gör beställningen. Tillämpas när ordern har skapats.           |
+| creationDate         | datetime                    | Inga                              | Skrivskyddade. Det datum då ordern skapades i datum/tid-format. Tillämpas när ordern har skapats.                                   |
+| status               | sträng                      | No                              | Skrivskyddade. Orderstatus.  Värden som stöds är de medlemsnamn som finns i [OrderStatus](order-resources.md#orderstatus).        |
+| Länkar                | [OrderLinks](utility-resources.md#resourcelinks)              | Inga                              | Resursen länkar som motsvarar ordern. |
+| Attribut           | [ResourceAttributes](utility-resources.md#resourceattributes) | Inga                              | Metadataattributen som motsvarar Order. |
 
 #### <a name="orderlineitem"></a>OrderLineItem
 
-I den här tabellen beskrivs egenskaperna för [OrderLineItem](order-resources.md#orderlineitem) i begär ande texten.
+I den här tabellen beskrivs [egenskaperna OrderLineItem](order-resources.md#orderlineitem) i begärandetexten.
 
 >[!NOTE]
->PartnerIdOnRecord bör endast anges när en indirekt leverantör placerar en order på uppdrag av en indirekt åter försäljare. Den används endast för att lagra Microsoft Partner Network-ID: t för den indirekta åter försäljaren (aldrig ID: t för den indirekta providern).
+>PartnerIdOnRecord bör endast tillhandahållas när en indirekt leverantör gör en beställning åt en indirekt återförsäljare. Den används för att lagra den indirekta återförsäljarens Microsoft Partner Network id (aldrig DEN indirekta leverantörens ID).
 
 | Namn                 | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                                                                                |
 |----------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| lineItemNumber       | int    | Yes      | Varje rad objekt i samlingen får ett unikt rad nummer, räknat från 0 till count-1.                                                                                                                                                 |
-| offerId              | sträng | Yes      | Erbjudande-ID.                                                                                                                                                                                                                      |
-| subscriptionId       | sträng | No       | Prenumerations-ID.                                                                                                                                                                                                               |
-| parentSubscriptionId | sträng | No       | Valfritt. ID: t för den överordnade prenumerationen i ett tilläggs erbjudande. Gäller enbart för korrigering.                                                                                                                                                     |
-| friendlyName         | sträng | No       | Valfritt. Det egna namnet på prenumerationen som definieras av partnern för att hjälpa disambiguate.                                                                                                                                              |
-| quantity             | int    | Yes      | Antalet licenser för en licens baserad prenumeration.                                                                                                                                                                                   |
-| partnerIdOnRecord    | sträng | No       | När en indirekt åter försäljare placerar en indirekt åter försäljare, fyller du i det här fältet med MPN-ID: t för den **indirekta åter försäljaren** (aldrig ID: t för den indirekta providern). Detta säkerställer korrekt redovisning av incitament. |
-| provisioningContext  | Ord listans<sträng, sträng>                | No       |  Information krävs för etablering av vissa objekt i katalogen. Egenskapen provisioningVariables i en SKU anger vilka egenskaper som krävs för vissa objekt i katalogen.                  |
-| Länkar                | [OrderLineItemLinks](order-resources.md#orderlineitemlinks) | No       |  Skrivskyddad. Resurs länkarna som motsvarar order rads objektet.  |
-| dokumentattribut           | [ResourceAttributes](utility-resources.md#resourceattributes) | No       | De metadata-attribut som motsvarar OrderLineItem. |
-| renewsTo             | Objekt mat ris                          | No    |En matris med [RenewsTo](order-resources.md#renewsto) -resurser.                                                                            |
+| lineItemNumber       | int    | Ja      | Varje radobjekt i samlingen får ett unikt radnummer som räknas upp från 0 till count-1.                                                                                                                                                 |
+| offerId              | sträng | Ja      | Erbjudandeidentifieraren.                                                                                                                                                                                                                      |
+| subscriptionId       | sträng | No       | Prenumerationsidentifieraren.                                                                                                                                                                                                               |
+| parentSubscriptionId | sträng | No       | Valfritt. ID:t för den överordnade prenumerationen i ett tilläggserbjudande. Gäller endast PATCH.                                                                                                                                                     |
+| friendlyName         | sträng | No       | Valfritt. Det egna namnet för prenumerationen som definierats av partnern för att undvika tvetydighet.                                                                                                                                              |
+| quantity             | int    | Ja      | Antalet licenser för en licensbaserad prenumeration.                                                                                                                                                                                   |
+| partnerIdOnRecord    | sträng | No       | När en indirekt leverantör gör en beställning åt en indirekt återförsäljare fyller du i det här fältet med MPN-ID:t för den indirekta återförsäljaren **(aldrig** DEN indirekta leverantörens ID). Detta säkerställer korrekt redovisning av incitament. |
+| provisioningContext  | Ordlista<sträng, sträng>                | Inga       |  Information som krävs för etablering för vissa objekt i katalogen. Egenskapen provisioningVariables i en SKU anger vilka egenskaper som krävs för specifika objekt i katalogen.                  |
+| Länkar                | [OrderLineItemLinks](order-resources.md#orderlineitemlinks) | Inga       |  Skrivskyddade. Resursen länkar som motsvarar orderradobjektet.  |
+| Attribut           | [ResourceAttributes](utility-resources.md#resourceattributes) | Inga       | Metadataattributen som motsvarar OrderLineItem. |
+| renewsTo             | Matris med objekt                          | Inga    |En matris med [RenewsTo-resurser.](order-resources.md#renewsto)                                                                            |
 
 ##### <a name="renewsto"></a>RenewsTo
 
-I den här tabellen beskrivs egenskaperna för [RenewsTo](order-resources.md#renewsto) i begär ande texten.
+I den här tabellen beskrivs [egenskaperna RenewsTo](order-resources.md#renewsto) i begärandetexten.
 
 | Egenskap              | Typ             | Obligatorisk        | Beskrivning |
 |-----------------------|------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------|
-| termDuration          | sträng           | No              | En ISO 8601-representation av förnyelse periodens varaktighet. De aktuella värdena som stöds är **P1M** (1 månad) och **P1Y** (1 år). |
+| termDuration          | sträng           | No              | En ISO 8601-representation av förnyelseperiodens varaktighet. De aktuella värdena som stöds **är P1M** (1 månad) och **P1Y** (1 år). |
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -172,11 +168,11 @@ Content-Type: application/json
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar metoden en [order](order-resources.md) resurs i svars texten.
+Om det lyckas returnerar metoden en [Order-resurs](order-resources.md) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

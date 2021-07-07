@@ -1,36 +1,32 @@
 ---
 title: Hämta kvittoutdrag för faktura
-description: Hämtar en faktura kvitto instruktion med hjälp av faktura-ID och kvitto-ID.
+description: Hämtar ett fakturakvittoutdrag med faktura-ID och kvitto-ID.
 ms.date: 02/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 96cef11d6778de2d9bf28e466d88a39f9415727d
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: dcac4c8f0b881409dcad3560eefb82d4bb5e877a
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768712"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446137"
 ---
 # <a name="get-invoice-receipt-statement"></a>Hämta kvittoutdrag för faktura
 
-**Gäller för**
-
-- Partnercenter
-
-Hämtar en faktura kvitto instruktion med hjälp av faktura-ID och kvitto-ID.
+Hämtar ett fakturakvittoutdrag med faktura-ID och kvitto-ID.
 
 > [!IMPORTANT]
-> Den här funktionen kan bara användas på Taiwans skatte kvitton.
+> Den här funktionen gäller endast skattekvitton för Taiwan.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
 
-- Ett giltigt faktura-ID och ett motsvarande kvitto-ID.
+- Ett giltigt faktura-ID och motsvarande kvitto-ID.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en faktura kvitto policy per ID, som börjar med partner Center SDK v-1.12.0, använder du din **IPartner. fakturor** -samling och anropar metoden **ById ()** med faktura-ID: t och anropar sedan **insamlings** **-och** anrops-ID: **t och** anropar **ById (** ) för att få åtkomst till instruktionen för faktura kvittot. Anropa slutligen metoderna **Get ()** eller **GetAsync ()** .
+Om du vill hämta ett fakturakvittoutdrag efter ID börjar du med Partnercenter-SDK v1.12.0, använder **samlingen IPartner.Invoices** och anropar **Metoden ById()** med faktura-ID:t. Anropa sedan samlingen **Kvitton** och anropa **ById()** och anropa sedan metoderna **Documents()** och **Statement()** för att få åtkomst till fakturakvittoutdraget. Anropa slutligen metoderna **Get()** eller **GetAsync().**
 
 ``` csharp
 // IPartner scopedPartnerOperations;
@@ -39,32 +35,32 @@ Om du vill hämta en faktura kvitto policy per ID, som börjar med partner Cente
 var invoiceStatement = scopedPartnerOperations.Invoices.ById(selectedInvoiceId).Receipts.ById(selectedReceipt).Documents.Statement.Get();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample- **klass**: GetInvoiceReceiptStatement.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** PartnerSDK.FeatureSample-klass: GetInvoiceReceiptStatement.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                            |
 |---------|------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/{Invoice-ID}/Receipts/{Receipt-ID}/Documents/Statement http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/receipts/{receipt-id}/documents/statement HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande frågeparameter för att hämta instruktionen för faktura kvittot.
+Använd följande frågeparameter för att hämta fakturakvittoutdraget.
 
 | Namn       | Typ   | Obligatorisk | Beskrivning                                                                                    |
 |------------|--------|-----------------------------------------------------------------------------------------------------------|
-| faktura-ID | sträng | Yes      | Värdet är ett faktura-ID som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik faktura. |
-| kvitto-ID | sträng | Yes      | Värdet är ett ID för inleverans som gör det möjligt för åter försäljaren att filtrera kvittona för en specifik faktura. |
+| faktura-id | sträng | Ja      | Värdet är ett faktura-ID som gör att återförsäljaren kan filtrera resultatet för en viss faktura. |
+| receipt-id | sträng | Ja      | Värdet är ett kvitto-ID som gör att återförsäljaren kan filtrera kvittona för en viss faktura. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Inget
+Ingen
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -78,11 +74,11 @@ MS-CorrelationId: 57eb2ca7-755f-450f-9187-eae1e75a0114
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en PDF-ström i svars texten.
+Om det lyckas returnerar den här metoden en pdf-ström i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

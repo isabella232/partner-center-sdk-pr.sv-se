@@ -1,43 +1,39 @@
 ---
 title: Återställ en borttagen användare för en kund
-description: Återställa en borttagen användare med kund-ID och användar-ID.
+description: Återställa en borttagna användare efter kund-ID och användar-ID.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9fd86a268c804a2fdd5efd67a8982afc043c95a6
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 23caf91c6b29b292c2638b4a1ad208c606c47492
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769798"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445722"
 ---
 # <a name="restore-a-deleted-user-for-a-customer"></a>Återställ en borttagen användare för en kund
 
-**Gäller för**
-
-- Partnercenter
-
-Återställa en borttagen **användare** med kund-ID och användar-ID.
+Återställa en borttagna användare efter **kund-ID** och användar-ID.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Användar-ID. Om du inte har användar-ID, se [Visa borttagna användare för en kund](view-a-deleted-user.md).
+- Användar-ID:t. Om du inte har användar-ID kan du se [Visa borttagna användare för en kund.](view-a-deleted-user.md)
 
-## <a name="when-can-you-restore-a-deleted-user-account"></a>När kan du återställa ett borttaget användar konto?
+## <a name="when-can-you-restore-a-deleted-user-account"></a>När kan du återställa ett borttagna användarkonton?
 
-Användar tillstånd är inställt på "inaktiv" när du tar bort ett användar konto. Den är på samma sätt i trettio dagar, efter vilken användar kontot och dess associerade data rensas och blir oåterkalleligt. Du kan bara återställa ett borttaget användar konto under den här trettio dagars perioden. När du har tagit bort och markerat "inaktiv" returneras inte längre användar kontot som medlem i användar samlingen (till exempel med [Hämta en lista över alla användar konton för en kund](get-a-list-of-all-user-accounts-for-a-customer.md)).
+Användartillståndet är inaktivt när du tar bort ett användarkonto. Det förblir så i 30 dagar, varpå användarkontot och tillhörande data rensas och görs oåterkalleliga. Du kan bara återställa ett borttagna användarkonton under det här 30-dagars fönstret. När användarkontot har tagits bort och markerats som "inaktivt" returneras det inte längre som medlem i användarsamlingen (till exempel genom att använda Hämta en lista över alla användarkonton [för en kund).](get-a-list-of-all-user-accounts-for-a-customer.md)
 
 ## <a name="c"></a>C\#
 
-Om du vill återställa en användare skapar du en ny instans av klassen [**CustomerUser**](/dotnet/api/microsoft.store.partnercenter.models.users.customeruser) och anger värdet för egenskapen [**User. State**](/dotnet/api/microsoft.store.partnercenter.models.users.user.state) till [**userState. Active**](/dotnet/api/microsoft.store.partnercenter.models.users.userstate).
+Om du vill återställa en användare skapar du en ny instans av klassen [**CustomerUser**](/dotnet/api/microsoft.store.partnercenter.models.users.customeruser) och anger värdet för egenskapen [**User.State**](/dotnet/api/microsoft.store.partnercenter.models.users.user.state) till [**UserState.Active**](/dotnet/api/microsoft.store.partnercenter.models.users.userstate).
 
-Du återställer en borttagen användare genom att ange användarens tillstånd till aktiv. Du behöver inte fylla i återstående fält i användar resursen igen. Dessa värden kommer automatiskt att återställas från den borttagna, inaktiva användar resursen. Använd sedan metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att identifiera kunden och metoden [**users. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) för att identifiera användaren.
+Du återställer en borttagna användare genom att ange användarens tillstånd till aktiv. Du behöver inte fylla i de återstående fälten i användarresursen på nya sätt. Dessa värden återställs automatiskt från den borttagna, inaktiva användarresursen. Använd sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden och [**metoden Users.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) för att identifiera användaren.
 
-Anropa slutligen [**korrigerings**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.patch) metoden och skicka **CustomerUser** -instansen för att skicka begäran om att återställa användaren.
+Anropa slutligen [**Patch-metoden**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.patch) och skicka **CustomerUser-instansen** för att skicka begäran om att återställa användaren.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -53,15 +49,15 @@ var updatedCustomerUser = new CustomerUser()
 var restoredCustomerUserInfo = partnerOperations.Customers.ById(selectedCustomerId).Users.ById(selectedCustomerUserId).Patch(updatedCustomerUser);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: CustomerUserRestore.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Exempelklass:** CustomerUserRestore.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod    | URI för förfrågan                                                                                            |
 |-----------|--------------------------------------------------------------------------------------------------------|
-| **9.0a** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Users/{User-ID} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/users/{user-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -69,20 +65,20 @@ Använd följande frågeparametrar för att ange kund-ID och användar-ID.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                                                                              |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y        | Värdet är ett GUID-formaterat **kund-Tenant-ID** som gör det möjligt för åter försäljaren att filtrera resultaten till en bestämd kund. |
-| **användar-ID**            | **guid** | Y        | Värdet är ett GUID-formaterat **användar-ID** som tillhör ett enda användar konto.                                         |
+| **kund-klient-id** | **guid** | Y        | Värdet är ett GUID-formaterat **kundklient-ID** som gör att återförsäljaren kan filtrera resultatet till en viss kund. |
+| **användar-id**            | **guid** | Y        | Värdet är ett GUID-formaterat **användar-ID** som tillhör ett enda användarkonto.                                         |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-I den här tabellen beskrivs de egenskaper som krävs i begär ande texten.
+I den här tabellen beskrivs de obligatoriska egenskaperna i begärandetexten.
 
 | Namn       | Typ   | Obligatorisk | Beskrivning                                                            |
 |------------|--------|----------|------------------------------------------------------------------------|
-| Stat      | sträng | Y        | Användar tillstånd. Om du vill återställa en borttagen användare måste strängen innehålla "Active". |
+| Tillstånd      | sträng | Y        | Användartillståndet. Om du vill återställa en borttagna användare måste strängen innehålla "aktiv". |
 | Attribut | objekt | N        | Innehåller "ObjectType": "CustomerUser".                                 |
 
 ### <a name="request-example"></a>Exempel på begäran
@@ -109,11 +105,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar svaret den återställda användar informationen i svars texten.
+Om det lyckas returnerar svaret den återställda användarinformationen i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder för Partner Center REST.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

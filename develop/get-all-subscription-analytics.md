@@ -1,56 +1,51 @@
 ---
 title: Hämta all information om prenumerationsanalys
-description: Hämta all information om prenumerations analys.
+description: Så här hämtar du all prenumerationsanalysinformation.
 ms.date: 08/02/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: f32fb99ad52939ae8e9de26276588d3022f18fbc
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: e1f16c92569a02bc51c96a85ecb642fbeb76a9a7
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768754"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760257"
 ---
 # <a name="get-all-subscription-analytics-information"></a>Hämta all information om prenumerationsanalys
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Den här artikeln beskriver hur du hämtar all information om prenumerations analys för dina kunder.
+Den här artikeln beskriver hur du hämtar all prenumerationsanalysinformation för dina kunder.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering endast med användarautentiseringsuppgifter.
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod | URI för förfrågan |
 |--------|-------------|
-| **TA** | [*\{ BASEURL \}*](partner-center-rest-urls.md)/partner/v1/Analytics/Subscriptions http/1.1 |
+| **Få** | [*\{ baseURL \}*](partner-center-rest-urls.md)/partner/v1/analytics/subscriptions HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-I följande tabell visas valfria parametrar och beskrivningar:
+I följande tabell visas valfria parametrar och deras beskrivningar:
 
-| Parameter | Typ |  Description |
+| Parameter | Typ |  Beskrivning |
 |-----------|------|--------------|
-| top | int | Det antal rader med data som ska returneras i begäran. Om värdet inte anges, är det högsta värdet och standardvärdet `10000` . Om det finns fler rader i frågan, innehåller svars texten en nästa länk som du kan använda för att begära nästa sida med data. |
-| hoppa över | int | Antalet rader som ska hoppas över i frågan. Använd den här parametern för att växla mellan stora data mängder. Till exempel `top=10000` och `skip=0` hämtar de första 10000 raderna med data `top=10000` och `skip=10000` hämtar nästa 10000 rader med data. |
-| filter | sträng | En eller flera instruktioner som filtrerar raderna i svaret. Varje filter instruktion innehåller ett fält namn från svars texten och ett värde som är kopplat till **`eq`** , **`ne`** , eller för vissa fält, **`contains`** operatorn. Instruktioner kan kombineras med hjälp av **`and`** eller **`or`** . Sträng värden måste omges av enkla citat tecken i **filter** parametern. I följande avsnitt finns en lista över fält som kan filtreras och de operatorer som stöds med dessa fält. |
-| aggregationLevel | sträng | Anger det tidsintervall som aggregerade data ska hämtas från. Kan vara en av följande strängar: **dag**, **vecka** eller **månad**. Om värdet inte anges är standardvärdet **dateRange**. Den här parametern gäller endast när ett datum fält skickas som en del av **groupBy** -parametern. |
-| groupBy | sträng | En instruktion som endast tillämpar data agg regering på de angivna fälten. |
+| top | int | Antalet rader med data som ska returneras i begäran. Om värdet inte anges är det högsta värdet och standardvärdet `10000` . Om det finns fler rader i frågan innehåller svarstexten en nästa länk som du kan använda för att begära nästa datasida. |
+| hoppa över | int | Antalet rader som ska hoppas över i frågan. Använd den här parametern för att bläddra igenom stora datamängder. Till exempel `top=10000` hämtar och de första 10 000 raderna med data och hämtar de kommande `skip=0` `top=10000` `skip=10000` 10 000 raderna med data. |
+| filter | sträng | En eller flera instruktioner som filtrerar raderna i svaret. Varje filtersats innehåller ett fältnamn från svarstexten och ett värde som är associerat med **`eq`** **`ne`** operatorn , eller för vissa **`contains`** fält. Instruktioner kan kombineras med **`and`** hjälp av eller **`or`** . Strängvärden måste omges av enkla citattecken i **filterparametern.** Se följande avsnitt för en lista över fält som kan filtreras och de operatorer som stöds med dessa fält. |
+| aggregationLevel | sträng | Anger det tidsperiod som aggregerade data ska hämtas för. Kan vara någon av följande strängar: **dag,** **vecka** eller **månad**. Om värdet inte anges är standardvärdet **dateRange**. Den här parametern gäller endast när ett datumfält skickas som en del av **parametern groupBy.** |
+| groupBy | sträng | En instruktion som endast tillämpar dataaggregering på de angivna fälten. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -68,11 +63,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en samling [**prenumerations**](partner-center-analytics-resources.md#subscription-resource) resurser.
+Om det lyckas innehåller svarstexten en samling [**prenumerationsresurser.**](partner-center-analytics-resources.md#subscription-resource)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

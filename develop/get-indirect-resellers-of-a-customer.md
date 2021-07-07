@@ -1,35 +1,31 @@
 ---
 title: Hämta indirekta återförsäljare för en kund
-description: Så här hämtar du en lista över de indirekta åter försäljare som har en relation med en angiven kund.
+description: Hur du hämtar en lista över indirekta återförsäljare som har en relation med en angiven kund.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: d69abf9530548f110820ca04fefb698e0e37556c
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 8697c40c22d5c19979c066b8d3a1de733e211f71
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769690"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446249"
 ---
 # <a name="get-indirect-resellers-of-a-customer"></a>Hämta indirekta återförsäljare för en kund
 
-**Gäller för**
-
-- Partnercenter
-
-Så här hämtar du en lista över de indirekta åter försäljare som har en relation med en angiven kund.
+Hur du hämtar en lista över indirekta återförsäljare som har en relation med en angiven kund.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en lista över indirekta åter försäljare som den angivna kunden har en relation till får du först ett gränssnitt till kund samlings åtgärder för den specifika kunden från [**partnerOperations. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) -egenskapen genom att ange kund-ID: t för att identifiera kunden. Anropa sedan [**relationerna. Hämta**](/dotnet/api/microsoft.store.partnercenter.relationships.icustomerrelationshipcollection.get) eller [**Hämta en \_ asynkron**](/dotnet/api/microsoft.store.partnercenter.relationships.icustomerrelationshipcollection.getasync) metod för att hämta listan över indirekta åter försäljare.
+Om du vill hämta en lista över indirekta återförsäljare som den angivna kunden har en relation med hämtar du först ett gränssnitt för kundinsamlingsåtgärder för den specifika kunden från egenskapen [**partnerOperations.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) genom att ange kund-ID:t för att identifiera kunden. Anropa sedan metoden [**Relationships.Get**](/dotnet/api/microsoft.store.partnercenter.relationships.icustomerrelationshipcollection.get) [**eller Get \_ Async**](/dotnet/api/microsoft.store.partnercenter.relationships.icustomerrelationshipcollection.getasync) för att hämta listan över indirekta återförsäljare.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -38,27 +34,27 @@ Om du vill hämta en lista över indirekta åter försäljare som den angivna ku
  var indirectResellers = partnerOperations.Customers[customerId].Relationships.Get();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md)-**projekt**: Partner Center SDK-exempel **klass**: GetIndirectResellersOfCustomer.CS
+**Exempel:** [Konsoltestapp med](console-test-app.md)**Project:** Partnercenter-SDK **Exempelklass:** GetIndirectResellersOfCustomer.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Relationships http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/relationships HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande Sök vägs parameter för att identifiera kunden.
+Använd följande sökvägsparameter för att identifiera kunden.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| kund-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
+| kund-id | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -78,11 +74,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en samling [PartnerRelationship](relationships-resources.md) -resurser för att identifiera åter försäljarna.
+Om det lyckas innehåller svarstexten en samling [PartnerRelationship-resurser](relationships-resources.md) för att identifiera återförsäljarna.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

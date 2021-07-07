@@ -1,33 +1,29 @@
 ---
 title: Ange användarroller för en kund
-description: Det finns en uppsättning katalog roller inom ett kund konto. Du kan tilldela användar konton till dessa roller.
+description: Det finns en uppsättning katalogroller i ett kundkonto. Du kan tilldela användarkonton till dessa roller.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f42120e40e54ff8bd6242634d97268091abf8e1c
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: a035d711ffa91200fa7b479ed5ec53929aa4feaf
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769591"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446708"
 ---
 # <a name="set-user-roles-for-a-customer"></a>Ange användarroller för en kund
 
-**Gäller för**
-
-- Partnercenter
-
-Det finns en uppsättning katalog roller inom ett kund konto. Du kan tilldela användar konton till dessa roller.
+Det finns en uppsättning katalogroller i ett kundkonto. Du kan tilldela användarkonton till dessa roller.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Om du vill tilldela en katalog roll till en kund användare skapar du en ny [**UserMember**](/dotnet/api/microsoft.store.partnercenter.models.roles.usermember) med relevanta användar uppgifter. Anropa sedan metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med det angivna kund-ID: t för att identifiera kunden. Därifrån använder du metoden [**DirectoryRoles. ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.idirectoryrolecollection.byid) med katalog roll-ID: t för att ange rollen. Öppna sedan **UserMembers** -samlingen och Använd [**create**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermembercollection.create) -metoden för att lägga till den nya användar medlemmen i samlingen av användar medlemmar som tilldelats rollen.
+Om du vill tilldela en katalogroll till en kundanvändare skapar du en [**ny UserMember**](/dotnet/api/microsoft.store.partnercenter.models.roles.usermember) med relevant användarinformation. Anropa sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med det angivna kund-ID:t för att identifiera kunden. Därifrån använder du metoden [**DirectoryRoles.ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.idirectoryrolecollection.byid) med katalogrolls-ID:t för att ange rollen. Öppna sedan **samlingen UserMembers** och använd metoden [**Skapa**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermembercollection.create) för att lägga till den nya användarmedlemmen i den samling av användarmedlemmar som tilldelats rollen.
 
 ``` csharp
 // UserMember createdUser;
@@ -47,39 +43,39 @@ UserMember userMemberToAdd = new UserMember()
 var userMemberAdded = partnerOperations.Customers.ById(selectedCustomer.Id).DirectoryRoles.ById(selectedRole.Id).UserMembers.Create(userMemberToAdd);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: AddUserMemberToDirectoryRole.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: AddUserMemberToDirectoryRole.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                                                                                 |
 |----------|-----------------------------------------------------------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/directoryroles/{Role-ID}/usermembers http/1.1 |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/directoryroles/{role-ID}/usermembers HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande URI-parametrar för att identifiera rätt kund och roll. Identifiera den användare som du vill tilldela rollen genom att ange identifierings informationen i begär ande texten.
+Använd följande URI-parametrar för att identifiera rätt kund och roll. Om du vill identifiera den användare som rollen ska tilldelas till anger du den identifierande informationen i begärandetexten.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y        | Värdet är ett GUID-formaterat **kund-Tenant-ID** som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik kund som tillhör åter försäljaren. |
-| **roll-ID**            | **guid** | Y        | Värdet är ett GUID-formaterat **roll-ID** som identifierar den roll som ska tilldelas användaren.                                                              |
+| **kund-klient-id** | **guid** | Y        | Värdet är ett GUID-formaterat **kundklient-ID** som gör att återförsäljaren kan filtrera resultaten för en viss kund som tillhör återförsäljaren. |
+| **roll-id**            | **guid** | Y        | Värdet är ett GUID-formaterat **roll-ID** som identifierar rollen som ska tilldelas användaren.                                                              |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-I den här tabellen beskrivs de egenskaper som krävs i begär ande texten.
+I den här tabellen beskrivs de obligatoriska egenskaperna i begärandetexten.
 
 | Namn                  | Typ       | Obligatorisk | Beskrivning                            |
 |-----------------------|------------|----------|----------------------------------------|
-| **Identitet**                | **nollängd** | Y        | ID för den användare som ska läggas till i rollen. |
-| **DisplayName**       | **nollängd** | Y        | Användarens användarvänliga visnings namn. |
-| **UserPrincipalName** | **nollängd** | Y        | Namnet på användarens huvud namn.        |
-| **Attribut**        | **jobbobjektet** | Y        | Innehåller "ObjectType": "UserMember"     |
+| **Id**                | **sträng** | Y        | ID för den användare som ska läggas till i rollen. |
+| **DisplayName**       | **sträng** | Y        | Användarens egna visningsnamn. |
+| **UserPrincipalName** | **sträng** | Y        | Namnet på användarens huvudnamn.        |
+| **Attribut**        | **Objekt** | Y        | Innehåller "ObjectType":"UserMember"     |
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -107,11 +103,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>REST-svar
 
-Den här metoden returnerar användar kontot med det roll-ID som är kopplat när användaren har tilldelat rollen.
+Den här metoden returnerar användarkontot med roll-ID:t kopplat när användaren har tilldelats rollen.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 
