@@ -1,53 +1,49 @@
 ---
 title: Hämta en kunds överföringar
-description: Så här hämtar du en lista över en kunds överföringar.
+description: Hur du hämtar en lista över en kunds överföringar.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4a25a9f6ccba0a3d64934b23ccd83a535da05e4a
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: a5892e25953bc2eec4451bdbbd5accea008828b8
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768766"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760240"
 ---
-# <a name="get-a-customers-transfers"></a><span data-ttu-id="7e75c-103">Hämta en kunds överföringar</span><span class="sxs-lookup"><span data-stu-id="7e75c-103">Get a customer's transfers</span></span>
+# <a name="get-a-customers-transfers"></a><span data-ttu-id="722a1-103">Hämta en kunds överföringar</span><span class="sxs-lookup"><span data-stu-id="722a1-103">Get a customer's transfers</span></span>
 
-<span data-ttu-id="7e75c-104">**Gäller för**</span><span class="sxs-lookup"><span data-stu-id="7e75c-104">**Applies To**</span></span>
+<span data-ttu-id="722a1-104">Hur du hämtar en lista över en kunds överföringar.</span><span class="sxs-lookup"><span data-stu-id="722a1-104">How to get a list of a customer's transfers.</span></span>
 
-- <span data-ttu-id="7e75c-105">Partnercenter</span><span class="sxs-lookup"><span data-stu-id="7e75c-105">Partner Center</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="722a1-105">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="722a1-105">Prerequisites</span></span>
 
-<span data-ttu-id="7e75c-106">Så här hämtar du en lista över en kunds överföringar.</span><span class="sxs-lookup"><span data-stu-id="7e75c-106">How to get a list of a customer's transfers.</span></span>
+- <span data-ttu-id="722a1-106">Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="722a1-106">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="722a1-107">Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="722a1-107">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="7e75c-107">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="7e75c-107">Prerequisites</span></span>
+- <span data-ttu-id="722a1-108">Ett kund-ID ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="722a1-108">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="722a1-109">Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard)</span><span class="sxs-lookup"><span data-stu-id="722a1-109">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="722a1-110">Välj **CSP** på Menyn i Partnercenter följt av **Kunder.**</span><span class="sxs-lookup"><span data-stu-id="722a1-110">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="722a1-111">Välj kunden i kundlistan och välj sedan **Konto.**</span><span class="sxs-lookup"><span data-stu-id="722a1-111">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="722a1-112">På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.**</span><span class="sxs-lookup"><span data-stu-id="722a1-112">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="722a1-113">Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="722a1-113">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
 
-- <span data-ttu-id="7e75c-108">Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="7e75c-108">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="7e75c-109">Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="7e75c-109">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="722a1-114">Begärandesyntax</span><span class="sxs-lookup"><span data-stu-id="722a1-114">Request syntax</span></span>
 
-- <span data-ttu-id="7e75c-110">Ett kund-ID ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="7e75c-110">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="7e75c-111">Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center.</span><span class="sxs-lookup"><span data-stu-id="7e75c-111">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="7e75c-112">Välj **CSP** på menyn Partner Center, följt av **kunder**.</span><span class="sxs-lookup"><span data-stu-id="7e75c-112">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="7e75c-113">Välj kunden från listan kund och välj sedan **konto**.</span><span class="sxs-lookup"><span data-stu-id="7e75c-113">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="7e75c-114">På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** .</span><span class="sxs-lookup"><span data-stu-id="7e75c-114">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="7e75c-115">Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="7e75c-115">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
-
-### <a name="request-syntax"></a><span data-ttu-id="7e75c-116">Syntax för begäran</span><span class="sxs-lookup"><span data-stu-id="7e75c-116">Request syntax</span></span>
-
-| <span data-ttu-id="7e75c-117">Metod</span><span class="sxs-lookup"><span data-stu-id="7e75c-117">Method</span></span>  | <span data-ttu-id="7e75c-118">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="7e75c-118">Request URI</span></span>                                                                                          |
+| <span data-ttu-id="722a1-115">Metod</span><span class="sxs-lookup"><span data-stu-id="722a1-115">Method</span></span>  | <span data-ttu-id="722a1-116">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="722a1-116">Request URI</span></span>                                                                                          |
 |---------|------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="7e75c-119">**TA**</span><span class="sxs-lookup"><span data-stu-id="7e75c-119">**GET**</span></span> | <span data-ttu-id="7e75c-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/transfers http/1.1</span><span class="sxs-lookup"><span data-stu-id="7e75c-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/transfers HTTP/1.1</span></span> |
+| <span data-ttu-id="722a1-117">**Få**</span><span class="sxs-lookup"><span data-stu-id="722a1-117">**GET**</span></span> | <span data-ttu-id="722a1-118">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/transfers HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="722a1-118">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/transfers HTTP/1.1</span></span> |
 
-### <a name="uri-parameter"></a><span data-ttu-id="7e75c-121">URI-parameter</span><span class="sxs-lookup"><span data-stu-id="7e75c-121">URI parameter</span></span>
+### <a name="uri-parameter"></a><span data-ttu-id="722a1-119">URI-parameter</span><span class="sxs-lookup"><span data-stu-id="722a1-119">URI parameter</span></span>
 
-<span data-ttu-id="7e75c-122">Den här tabellen innehåller den obligatoriska Frågeparametern för att hämta alla prenumerationer.</span><span class="sxs-lookup"><span data-stu-id="7e75c-122">This table lists the required query parameter to get all the subscriptions.</span></span>
+<span data-ttu-id="722a1-120">Den här tabellen innehåller frågeparametern som krävs för att hämta alla prenumerationer.</span><span class="sxs-lookup"><span data-stu-id="722a1-120">This table lists the required query parameter to get all the subscriptions.</span></span>
 
-| <span data-ttu-id="7e75c-123">Namn</span><span class="sxs-lookup"><span data-stu-id="7e75c-123">Name</span></span>               | <span data-ttu-id="7e75c-124">Typ</span><span class="sxs-lookup"><span data-stu-id="7e75c-124">Type</span></span>   | <span data-ttu-id="7e75c-125">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="7e75c-125">Required</span></span> | <span data-ttu-id="7e75c-126">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="7e75c-126">Description</span></span>                                           |
+| <span data-ttu-id="722a1-121">Namn</span><span class="sxs-lookup"><span data-stu-id="722a1-121">Name</span></span>               | <span data-ttu-id="722a1-122">Typ</span><span class="sxs-lookup"><span data-stu-id="722a1-122">Type</span></span>   | <span data-ttu-id="722a1-123">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="722a1-123">Required</span></span> | <span data-ttu-id="722a1-124">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="722a1-124">Description</span></span>                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| <span data-ttu-id="7e75c-127">kund-ID för klient organisation</span><span class="sxs-lookup"><span data-stu-id="7e75c-127">customer-tenant-id</span></span> | <span data-ttu-id="7e75c-128">sträng</span><span class="sxs-lookup"><span data-stu-id="7e75c-128">string</span></span> | <span data-ttu-id="7e75c-129">Yes</span><span class="sxs-lookup"><span data-stu-id="7e75c-129">Yes</span></span>      | <span data-ttu-id="7e75c-130">En GUID-formaterad sträng som identifierar kunden.</span><span class="sxs-lookup"><span data-stu-id="7e75c-130">A GUID-formatted string that identifies the customer.</span></span> |
+| <span data-ttu-id="722a1-125">kund-klient-id</span><span class="sxs-lookup"><span data-stu-id="722a1-125">customer-tenant-id</span></span> | <span data-ttu-id="722a1-126">sträng</span><span class="sxs-lookup"><span data-stu-id="722a1-126">string</span></span> | <span data-ttu-id="722a1-127">Ja</span><span class="sxs-lookup"><span data-stu-id="722a1-127">Yes</span></span>      | <span data-ttu-id="722a1-128">En GUID-formaterad sträng som identifierar kunden.</span><span class="sxs-lookup"><span data-stu-id="722a1-128">A GUID-formatted string that identifies the customer.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="7e75c-131">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="7e75c-131">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="722a1-129">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="722a1-129">Request headers</span></span>
 
-<span data-ttu-id="7e75c-132">Mer information finns i [partner Center rest-rubriker](headers.md).</span><span class="sxs-lookup"><span data-stu-id="7e75c-132">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="722a1-130">Mer information finns i [Partner Center REST-huvuden.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="722a1-130">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="7e75c-133">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="7e75c-133">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="722a1-131">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="722a1-131">Request body</span></span>
 
-<span data-ttu-id="7e75c-134">Inga.</span><span class="sxs-lookup"><span data-stu-id="7e75c-134">None.</span></span>
+<span data-ttu-id="722a1-132">Inga.</span><span class="sxs-lookup"><span data-stu-id="722a1-132">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="7e75c-135">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="7e75c-135">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="722a1-133">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="722a1-133">Request example</span></span>
 
 ```http
 GET /v1/customers/b67f0b00-f9e8-4c57-bcb5-0b8b95c6ccf0/transfers HTTP/1.1
@@ -58,15 +54,15 @@ MS-CorrelationId: dec58181-67b5-4831-c2c9-2fa099122f5d
 Connection: Keep-Alive
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="7e75c-136">REST-svar</span><span class="sxs-lookup"><span data-stu-id="7e75c-136">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="722a1-134">REST-svar</span><span class="sxs-lookup"><span data-stu-id="722a1-134">REST response</span></span>
 
-<span data-ttu-id="7e75c-137">Om det lyckas returnerar den här metoden en lista över [TransferEntity](transfer-entity-resources.md) -resurser i svars texten.</span><span class="sxs-lookup"><span data-stu-id="7e75c-137">If successful, this method returns a list of [TransferEntity](transfer-entity-resources.md) resources in the response body.</span></span>
+<span data-ttu-id="722a1-135">Om det lyckas returnerar den här metoden en lista [över TransferEntity-resurser](transfer-entity-resources.md) i svarstexten.</span><span class="sxs-lookup"><span data-stu-id="722a1-135">If successful, this method returns a list of [TransferEntity](transfer-entity-resources.md) resources in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="7e75c-138">Slutförda svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="7e75c-138">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="722a1-136">Lyckade svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="722a1-136">Response success and error codes</span></span>
 
-<span data-ttu-id="7e75c-139">Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information.</span><span class="sxs-lookup"><span data-stu-id="7e75c-139">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="7e75c-140">Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="7e75c-140">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="7e75c-141">En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="7e75c-141">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="722a1-137">Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation.</span><span class="sxs-lookup"><span data-stu-id="722a1-137">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="722a1-138">Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="722a1-138">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="722a1-139">En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="722a1-139">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="7e75c-142">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="7e75c-142">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="722a1-140">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="722a1-140">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK
