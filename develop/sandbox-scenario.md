@@ -4,38 +4,33 @@ description: Sandbox-miljön för partner har möjlighet att stödja relationer 
 ms.date: 05/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9bef4a15685ebbdc2212988f5ac5724b946cfd54
-ms.sourcegitcommit: 1aeaa12705a5945b8aab6bca254fedebd9c8bc4e
+ms.openlocfilehash: aa6c4fb9ef71bacfad7e0f1510fec15f6af60a05
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/21/2021
-ms.locfileid: "110243392"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547401"
 ---
 # <a name="sandbox-capabilities-for-reseller-relationship"></a>Sandbox-funktioner för återförsäljarrelation
 
-**Gäller för:**
-
-- Partnercenter
-- Partnercenter drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Den här artikeln förklarar vad som stöds i sandbox-miljön för återförsäljarrelationer mellan partnern och kunden. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Autentiseringsuppgifter för Partnercenter-konto. Sandbox-scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
-- Ett kund-ID (kund-klient-ID). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard/home) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t (kund-klient-ID).
-- Alla Azure Reserved Virtual Machine Instances och programvaruinköpsorder måste avbrytas innan du tar bort en kund från sandbox-miljön för Tip-integrering.
+- Ett kund-ID (kund-klient-ID). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard/home) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t (kund-klient-ID).
+- Alla Azure Reserved Virtual Machine Instances och programvaruköpordrar måste avbrytas innan du tar bort en kund från sandbox-miljön för Tipsintegrering.
 
 ## <a name="scenarios-supporting-reseller-relationship"></a>Scenarier som stöder återförsäljarrelation
 
-1.  Direktfaktureringspartner och indirekta leverantörer i sandbox-miljön kan skapa relationer med Sandbox-kunden. 
-2.  Sandbox-direktfaktureringspartner och indirekta leverantörer kan inte bjuda in Sandbox-kunder.
+1.  Direktfaktureringspartner och indirekta leverantörer i sandbox-miljön kan skapa relationer med sandbox-kunden. 
+2.  Faktureringspartner och indirekta leverantörer i sandbox-miljön kan inte bjuda in Sandbox-kunder.
 
-3. Direktfaktureringspartner och indirekta leverantörer i sandbox-miljö kan ta bort återförsäljarrelationer från Partner Center-gränssnittet och API:et.
+3. Faktureringspartner och indirekta leverantörer i sandbox-miljön kan ta bort återförsäljarrelationer från Partner Center-gränssnittet och API:et.
 
-4. Sandbox Remove Reseller Relationship anropar Ta bort kund-AP. Detta tar bort relationen samt kundens klientorganisation. {baseURL}/v1/Customers/{customer-Tenant-id}
+4. Sandbox Remove Reseller Relationship (Ta bort återförsäljarrelation) anropar Delete customer AP (Ta bort kund-AP). Detta tar bort relationen och kundklientorganisationen. {baseURL}/v1/Customers/{customer-Tenant-id}
 
 
     ### <a name="in-the-sandbox"></a>I sandbox-miljön
@@ -56,7 +51,7 @@ Den här artikeln förklarar vad som stöds i sandbox-miljön för återförsäl
 
     **Indirekt återförsäljare:** 
 
-    -   Kan ha en relation med befintliga kunder
+    -   Kan ha relationer med befintliga kunder
 
     -   Det går inte att begära nya relationer eller lägga till nya kunder
 

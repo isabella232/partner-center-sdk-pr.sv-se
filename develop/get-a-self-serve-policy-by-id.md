@@ -1,55 +1,51 @@
 ---
-title: Hämta en självbetjäningsprincip efter ID
-description: Hämtar den angivna självbetjänings principen med hjälp av dess ID.
+title: Hämta en princip för självbetjäning per ID
+description: Hämtar den angivna självbetjäningsprincipen med hjälp av dess ID.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: ec01d0d9b7c3858cdacf1dbaad3b2b0bb7b6a1a4
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 074d7ba65c7aab91687a67f50e871cee913fc2bb
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769087"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873844"
 ---
-# <a name="get-a-self-serve-policy-by-id"></a>Hämta en självbetjäningsprincip efter ID
+# <a name="get-a-self-serve-policy-by-id"></a>Hämta en princip för självbetjäning per ID
 
-**Gäller för**
-
-- Partnercenter
-
-Hämtar den angivna självbetjänings principen med hjälp av dess ID.
+Hämtar den angivna självbetjäningsprincipen med hjälp av dess ID.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med app + användarautentiseringsuppgifter.
-- Ett självbetjänings princip-ID.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
+- Ett princip-ID för självbetjäning.
 
 ## <a name="examples"></a>Exempel
 
 
 ## <a name="span-idrest_requestspan-idrest_requestspan-idrest_requestrest-request"></a><span id="REST_Request"/><span id="rest_request"/><span id="REST_REQUEST"/>REST-begäran
 
-**Syntax för begäran**
+**Begärandesyntax**
 
 | Metod  | URI för förfrågan                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy/{ID} http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy/{id} HTTP/1.1 |
 
 **URI-parameter**
 
-Använd följande Sök vägs parametrar för att hämta den angivna produkten.
+Använd följande sökvägsparametrar för att hämta den angivna produkten.
 
 | Namn                       | Typ         | Obligatorisk | Beskrivning                                                     |
 |----------------------------|--------------|----------|-----------------------------------------------------------------|
-| **SelfServePolicy-ID**     | **nollängd**   | Yes      | En sträng som identifierar den självbetjänings principen.                 |
+| **SelfServePolicy-id**     | **sträng**   | Ja      | En sträng som identifierar självbetjäningsprincipen.                 |
 
 **Begärandehuvuden**
 
-- Se [rubriker](headers.md) för mer information.
+- Mer information finns i [Rubriker.](headers.md)
 
-**Brödtext i begäran**
+**Begärandetext**
 
 Inga.
 
@@ -65,17 +61,17 @@ MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) -resurs.
+Om det lyckas innehåller svarstexten en [SelfServePolicy-resurs.](self-serve-policy-resources.md#selfservepolicy)
 
-**Slutförda svar och felkoder**
+**Lyckade svar och felkoder**
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
-Den här metoden returnerar följande fel koder:
+Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Description                                                                |
+| HTTP-statuskod     | Felkod   | Beskrivning                                                                |
 |----------------------|--------------|----------------------------------------------------------------------------|
-| 404                  | 600039       | Det gick inte att hitta principen för självbetjäning.                                                     |
+| 404                  | 600039       | Det går inte att hitta principen för självbetjäning.                                                     |
 
 **Exempel på svar**
 

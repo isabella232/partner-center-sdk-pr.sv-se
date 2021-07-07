@@ -1,102 +1,98 @@
 ---
 title: Snabbstartsguide för butiksbyggare för CSP-kunder
-description: Skapa en online-Marketplace för att sälja CSP-erbjudanden (Cloud Solution Provider) med hjälp av CSP Customer butik Builder.
+description: Skapa en marknadsplats online för att sälja erbjudanden för molnlösningsleverantörer (CSP) med hjälp av CSP Customer Storefront Builder.
 ms.date: 05/29/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 83ae0c789f95485ec3eb272434e57421a8f93fb6
-ms.sourcegitcommit: 970031473b2e8cd3d08c6c097949c057a51df3ef
+ms.openlocfilehash: 8550492c7a4201a955c7b051b453103628612f3e
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99505330"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973357"
 ---
 # <a name="csp-customer-storefront-builder-quick-start-guide"></a>Snabbstartsguide för butiksbyggare för CSP-kunder
 
-**Gäller för:**
+Skapa en marknadsplats online för att sälja erbjudanden för molnlösningsleverantörer (CSP) med hjälp av CSP Customer Storefront Builder.
 
-- Partnercenter
+## <a name="introduction-to-the-csp-customer-storefront-builder"></a>Introduktion till CSP Customer Storefront Builder
 
-Skapa en online-Marketplace för att sälja CSP-erbjudanden (Cloud Solution Provider) med hjälp av CSP Customer butik Builder.
+CSP Customer Storefront Builder hjälper partner att enkelt skapa en onlinemarknadsplats för att sälja CSP-erbjudanden till sina kunder. De flesta partner och små säljorganisationer vill fokusera på att sälja i stället för att utveckla en marknadsplats online. Exempelappen Partnercenter-SDK kräver kunskaper i programvaruutveckling för att skapa och distribuera en webbplats. Med CSP Customer Storefront Builder kan du snabbt och enkelt skapa din egen webbplats. Du kan också ladda ned webbplatsen som exempelkod eller distribuera direkt till din Azure-prenumeration med en Ready to Transact-webbplats.
 
-## <a name="introduction-to-the-csp-customer-storefront-builder"></a>Introduktion till CSP Customer butik Builder
+Den här webbplatsen är helt ägd, stöds och underhålls av partner och Microsoft samlar inte in några data eller telemetri från webbplatsen. CSP Customer Storefront Builder skapar en webbplats för partnern som är helt kompatibel med [Payment Card Industry Data Security Standard](https://www.pcisecuritystandards.org/) (PCI DSS).
 
-Med CSP Customer butik Builder kan partners enkelt skapa en online-marknadsplats för att sälja CSP-erbjudanden till sina kunder. De flesta partner och små försäljnings organisationer vill fokusera på försäljning i stället för att utveckla en online-marknadsplats. Partner Center SDK-exempelprogrammet kräver program utvecklings kunskaper för att skapa och distribuera en webbplats. Med CSP Customer butik Builder kan du snabbt och enkelt skapa en egen webbplats. Du kan också hämta webbplatsen som exempel kod eller distribuera direkt till din Azure-prenumeration med en klar till en Transact-webbplats.
-
-Den här webbplatsen ägs fullt ut, stöds och underhålls av partner och Microsoft samlar inte in data eller telemetri från webbplatsen. CSP Customer butik Builder skapar en webbplats för partnern som är helt kompatibel med [betalnings kortet bransch data säkerhets standard](https://www.pcisecuritystandards.org/) (PCI DSS).
-
-CSP Customer butik Builder-koden omfattas av licensen som är tillgänglig i [partner Center SDK-licensavtalet](/legal/partner-center/eula-partner-center-sdk).
+CSP Customer Storefront Builder-koden är föremål för den licens som är tillgänglig [i Partnercenter-SDK EULA](/legal/partner-center/eula-partner-center-sdk).
 
 >[!NOTE]
->Du ansvarar för butik webbplats hantering, underhåll och eventuella problem som kan uppstå när webbplatser skapas. Läs och förstå villkoren i [partner Center SDK-licensavtalet](/legal/partner-center/eula-partner-center-sdk).
+>Du ansvarar för butikswebbplatshantering, underhåll och eventuella problem som kan uppstå när webbplatsen skapas. Läs och förstå termerna i [Partnercenter-SDK EULA](/legal/partner-center/eula-partner-center-sdk).
 
-Mer information finns även i följande artiklar: [CSP-kund Web butik](csp-customer-web-storefront.md) och [konsolen test app](console-test-app.md).
+Mer information finns också i följande artiklar: [CSP customer web storefront and](csp-customer-web-storefront.md) [console test app](console-test-app.md).
 
 ## <a name="considerations"></a>Överväganden
 
-CSP Customer butik Builder är avsett som ett snabbt sätt att skapa en webbplats. Tänk på följande när du planerar:
+CSP Customer Storefront Builder är avsett som ett snabbt sätt att skapa en webbplats. Tänk på följande när du planerar:
 
-- När Microsoft och partner Center har distribuerats underhåller inte Microsoft och partner Center en kopia av partner webbplatsen eller någon information som lagts till i CSP Customer butik Builder.
+- När de har distribuerats behåller Microsoft och Partner Center inte en kopia av partnerwebbplatsen eller någon information som läggs till i CSP Customer Storefront Builder.
 
-- Partner Center kan bara distribuera en CSP-kund butik-webbplats till en partners Azure-prenumerationer.
+- Partnercenter kan bara distribuera en CSP Customer Storefront-webbplats till en partners Azure-prenumerationer.
 
-- Den här webbplatsen, när den har distribuerats, ägs helt och hanteras av partnern. Microsoft har inte åtkomst till den här webbplatsen eller data som är relaterade till webbplatsen. Partner är ansvariga för underhåll och hantering av webbplatsen. Microsoft kommer inte att tillhandahålla någon Live-webbplats eller annat stöd som är relaterat till CSP Customer butik Builder eller någon webbplats som skapats med hjälp av CSP-butik Builder.
+- Den här webbplatsen, när den har distribuerats, är helt ägd och hanteras av partnern. Microsoft har inte åtkomst till den här webbplatsen eller data som är relaterade till webbplatsen. Partner ansvarar för underhåll och hantering av webbplatsen. Microsoft tillhandahåller inte någon live-webbplats eller annan support som rör CSP Customer Storefront Builder eller någon webbplats som skapats med hjälp av CSP Customer Storefront Builder.
 
-- Partner Center kan inte komma åt eller uppgradera den här webbplatsen direkt med nya eller ändrade SDK-eller API-funktioner. Nya funktioner eller förbättringar måste ägas, utvecklas och hanteras av partners, inklusive att lägga till nya partner Center-eller API-funktioner.
+- PartnerCenter kan inte direkt komma åt eller uppgradera den här webbplatsen med nya eller ändrade SDK- eller API-funktioner. Alla nya funktioner eller förbättringar måste ägas, utvecklas och hanteras av partner, inklusive att lägga till nya Partnercenter-SDK api-funktioner.
 
-- Detta CSP Customer butik Builder ger för närvarande möjlighet att konfigurera betalning till ett PayPal Pro/PayU Money-konto (för Indien). Om partners behöver ändra betalnings processorn måste de ändra koden för att stöda betalnings metoden.
+- Detta CSP Customer Storefront Builder ger för närvarande möjlighet att konfigurera betalning till ett PayPal Pro-/PayU Money-konto (för Indien). Om partner behöver ändra betalningsprocessorn måste de ändra koden för att stödja den betalningsmetod som de föredrar.
 
-- All betalningsrelaterad information som lagts till i CSP Customer butik Builder lagras eller underhålls inte i Partner Center.
+- Betalningsrelaterad information som läggs till i CSP Customer Storefront Builder lagras eller underhålls inte i Partnercenter.
 
-- PayPal-betalningskonfiguration kommer att fungera i alla geografiska områden där PayPal är tillgängligt. PayPal-tillgänglighet och support kontrol leras bara av PayPal och kan när som helst tas ur drift av PayPal.
+- PayPal betalningskonfigurationen fungerar i alla geografiska områden där PayPal är tillgänglig. PayPal tillgänglighet och support styrs endast av PayPal och kan när som helst avbrytas av PayPal.
 
-- PayU-betalningskonfiguration fungerar för närvarande endast i Indien. PayU-tillgänglighet och support kontrol leras bara av PayU och kan tas ur drift när som helst av PayU.
+- Betalningskonfigurationen för PayU fungerar för närvarande endast i Indien. PayU:s tillgänglighet och support styrs endast av PayU och kan när som helst upphöra av PayU.
 
-- Läs och förstå villkoren i [partner Center SDK-licensavtalet](/legal/partner-center/eula-partner-center-sdk).
+- Läs och förstå termerna i [Partnercenter-SDK EULA](/legal/partner-center/eula-partner-center-sdk).
 
-## <a name="using-the-csp-customer-storefront-builder"></a>Använda CSP Customer butik Builder
+## <a name="using-the-csp-customer-storefront-builder"></a>Använda CSP Customer Storefront Builder
 
-CSP-partner administratörer på Partner Center kan distribuera en CSP-kund butik direkt från Partner Center. Med minimal ansträngning kan en ny webbplats distribueras på partnerns klient organisation. När de har distribuerats kan partner använda webbplatsen för att konfigurera varumärkes-, erbjudanden-och betalningsrelaterad information och sedan dela URL-adressen för webbplatsen till kunderna.
+CSP-partneradministratörer på Partnercenter kan distribuera en CSP Customer Storefront direkt från Partnercenter. Med minimal ansträngning kan en ny webbplats distribueras på partnerns klientorganisation. När de har distribuerats kan partner använda webbplatsen för att konfigurera varumärke, erbjudanden och betalningsrelaterad information och sedan dela webbadressen med kunder.
 
-Processen för att skapa en butik webbplats är att:
+Processen för att skapa en butikswebbplats är att:
 
 1. [Distribuera webbplatsen](#deploy)
 
-2. [Konfigurera butik](#configure)
+2. [Konfigurera butiken](#configure)
 
-3. [Transact på butik](#transact)
+3. [Transact i butiken](#transact)
 
 ### <a name="deploy"></a>Distribuera
 
-Distributions alternativ:
+Distributionsalternativ:
 
-- Hämta [butik exempel kod för partner Center](https://github.com/Microsoft/Partner-Center-Storefront) från GitHub
+- Ladda ned [exempelkoden för Partnercenter-butiken](https://github.com/Microsoft/Partner-Center-Storefront) från GitHub
 - Integrera med Azure för att distribuera den konfigurerade webbplatsen
 - Distribuera på en befintlig prenumeration eller ta med din egen prenumeration
 
 ### <a name="configure"></a>Konfigurera
 
-Det krävs inga utvecklings kunskaper för att anpassa en butik.
+Inga utvecklingskunskaper krävs för att anpassa en butik.
 
-Logga in med dina partner Center admin-autentiseringsuppgifter för att konfigurera:
+Logga in med dina administratörsautentiseringsuppgifter för Partnercenter för att konfigurera:
 
-- **Varumärke**: företags namn, logo typ, kontakter med mera.
+- **Profilering:** företagsnamn, logotyp, kontakter med mera.
 
-- **Erbjudanden**: Visa alla CSP-erbjudanden. Du kan välja vilka erbjudanden dina kunder kan visa och köpa. Du kan också anpassa erbjudande informationen och lägga till ditt pris.
+- **Erbjudanden:** Visa alla CSP-erbjudanden. Du kan välja vilka erbjudanden som dina kunder kan visa och köpa. Du kan också anpassa erbjudandeinformation och lägga till ditt pris.
 
-- **PayPal-betalnings konfiguration**: Lägg till din PayPal-betalnings konto information. Om du inte har ett PayPal-konto kan du besöka [https://www.paypal.com](https://www.paypal.com) och skapa ett nytt konto. Det här kontot kommer att användas för PayPal för att kreditera de betalningar som kunderna har gjort. *Microsoft ansvarar inte för förhållandet mellan partner och PayPal. Användningen av PayPal kan kräva att partner eller partner kunder accepterar ytterligare villkor.*
+- **PayPal: Lägg** till din PayPal information om ditt betalningskonto. Om du inte har ett PayPal konto kan du gå till [https://www.paypal.com](https://www.paypal.com) och skapa ett nytt konto. Det här kontot används för att PayPal kreditera de betalningar som görs av kunder. *Microsoft ansvarar inte för relationen mellan partner och PayPal. Användning av PayPal kan kräva att partnern eller partnerns kunder godkänner ytterligare villkor.*
 
-- (*För Indien*) **PayU-betalnings konfiguration**: Lägg till information om betalnings konto för PayU Money. Om du inte har något konto för PayU Money kan du besöka [https://www.payumoney.com/](https://www.payumoney.com/) och skapa ett nytt konto. Det här kontot kommer att användas för PayU för att kreditera de betalningar som kunderna har gjort. *Microsoft ansvarar inte för förhållandet mellan partner och PayU. Användningen av PayU kan kräva att partnern eller partner kunder samtycker till ytterligare villkor.*
+- (*För Indien*) **Betalningskonfiguration för PayU:** Lägg till information om ditt PayU Money-betalningskonto. Om du inte har något PayU Money-konto kan du gå till [https://www.payumoney.com/](https://www.payumoney.com/) och skapa ett nytt konto. Det här kontot används för PayU för att kreditera de betalningar som görs av kunder. *Microsoft ansvarar inte för relationen mellan partner och PayU. Användning av PayU kan kräva att partnerns eller partnerns kunder godkänner ytterligare villkor.*
 
 ### <a name="transact"></a>Transaktion
 
-- Efter distributionen kan kunderna köpa och Transact direkt.
+- Efter distributionen kan kunder köpa och handla direkt.
 
-- Kunder kan köpa direkt från partner portalen som är integrerad med partner Center SDK.
+- Kunder kan köpa direkt från partnerportalen som är integrerad med Partnercenter-SDK.
 
 #### <a name="customer-countries"></a>Kund länder
 
-Kunder kan tillhöra följande länder:
+Kunder kan tillhöra dessa länder:
 
 | Landskod | Landsnamn   |
 |--------------|----------------|
@@ -129,7 +125,7 @@ Kunder kan tillhöra följande länder:
 | NL           | Nederländerna    |
 | NZ           | Nya Zeeland    |
 | NO           | Norge         |
-| IO           | Polen         |
+| Po           | Polen         |
 | PT           | Portugal       |
 | RO           | Rumänien        |
 | SK           | Slovakien       |
@@ -140,126 +136,126 @@ Kunder kan tillhöra följande länder:
 | GB           | Storbritannien |
 | USA           | USA  |
 
-## <a name="partner-experience-scenarios"></a>Scenarier för partner upplevelser
+## <a name="partner-experience-scenarios"></a>Partnerupplevelsescenarier
 
 ### <a name="deployment-scenario"></a>Distributionsscenario
 
-Så här distribuerar du en utökad eller anpassad CSP-kund butik:
+Så här distribuerar du en förbättrad eller anpassad CSP Customer Storefront:
 
-- Hämta [partner Center butik exempel kod](https://github.com/Microsoft/Partner-Center-Storefront) för att göra ytterligare anpassningar.
+- Ladda ned [exempelkoden i Partnercenter-butiken](https://github.com/Microsoft/Partner-Center-Storefront) för att göra ytterligare anpassningar.
 
 - Använd Microsoft Visual Studio 2015 (eller senare) för att utveckla.
 
-- Utveckla ytterligare ändringar och förbättringar (inklusive auktoriseringar, certifieringar, manifest ändringar och andra objekt).
+- Skapa för ytterligare ändringar och förbättringar (inklusive auktoriseringar, certifieringar, manifeständringar och andra objekt).
 
 ### <a name="configuration-scenario"></a>Konfigurationsscenario
 
-- Den nyligen skapade webbplatsen är länkad till en partner klient organisation och har åtkomst till alla administratörs konton för den här partnerns klient organisation.
+- Den nyligen skapade webbplatsen är länkad till en partnerklientorganisation och har åtkomst till alla administratörskonton för den här partnerklientorganisationen.
 
-  - Partner kan logga in på den nya webbplatsen med sina autentiseringsuppgifter för partner Center-administratören.
+  - Partner kan logga in på den nya webbplatsen med sina administratörsautentiseringsuppgifter för Partnercenter.
 
-- Butik-programmet stöder för närvarande franska, spanska, nederländska, tyska, japanska och engelska. (Engelska fungerar som reserv språk.)
+- Butiksprogrammet stöder för närvarande franska, spanska, nederländska, tyska, japanska och engelska. (Engelska fungerar som reservspråk.)
 
-  - Butik konfigurerar språket genom att använda partnerns standard språk från partnerns profil i Partner Center. Detta språk används för att konfigurera valutor, datum format och lokaliserade erbjudanden i lagrings platsen.
+  - Butiken konfigurerar språkinställningarna med hjälp av partnerns standardspråk från partnerns profil i Partnercenter. Detta språk används för att konfigurera valutor, datumformat och lokaliserade erbjudanden på lagringsplatsen.
 
-- Partner kan konfigurera anpassning, erbjudanden och PayPal-eller PayU (för Indien) betalnings information.
+- Partner kan konfigurera varumärke, erbjudanden och PayPal betalningsinformation för PayU (för Indien).
 
-- Partner kan uppdatera företagets namn, företags logo typ, sidhuvud avbildning, Sälj-och support kontakter med mera.
+- Partner kan uppdatera företagets namn, företagslogotyp, rubrikbild, sälj- och supportkontakter med mera.
 
-- Partner kan se alla CSP-erbjudanden som är tillgängliga utifrån deras territorium.
+- Partner kan se alla CSP-erbjudanden som är tillgängliga baserat på deras område.
 
   - Partner kan välja vilka erbjudanden de vill visa för alla sina kunder.
 
-  - En CSP-partner kan välja ett eller flera erbjudanden och uppdatera namn, kvantitet, funktions beskrivning och pris.
-  - Priset är det årliga priset. Kunderna prenumererar varje år.
+  - En CSP-partner kan välja ett eller flera erbjudanden och uppdatera namn, kvantitet, funktionsbeskrivning och pris.
+  - Priset är det årliga priset. Kunder prenumererar varje år.
 
-- Partner kan när som helst konfigurera för hands godkända transaktioner för (a) alla aktuella och framtida kunder eller (b) vissa kunder.
+- Partner kan när som helst konfigurera förhandsgodkända transaktioner för (a) alla aktuella och framtida kunder ELLER (b) specifika kunder.
 
-  - För hands godkända kunder behöver inte betala på portalen när de lägger till nya prenumerationer, köpa ytterligare licenser till befintliga prenumerationer eller förnya en prenumeration.
+  - Förhandsgodkända kunder behöver inte betala på portalen när de lägger till nya prenumerationer, köper ytterligare licenser till befintliga prenumerationer eller förnyar en prenumeration.
 
-  - Kunder som godkänts i förväg omdirigeras inte till PayPal eller PayU (för Indien) för betalning under dessa transaktioner.
+  - Förhandsgodkända kunder omdirigeras inte till PayPal payU (för Indien) för betalning under dessa transaktioner.
 
-  - I förväg godkända kund transaktioner kan en partner utföra faktureringen offline och fakturera till sina för hands godkända kunder.
+  - Med förhandsgodkända kundtransaktioner kan en partner utföra offlinefakturering och fakturering till sina förhandsgodkända kunder.
 
-- En CSP-partner kan mata in sin PayPal-kontoinformation som PayPal-klient-ID och hemlighet. En CSP-partner kan också välja om de vill testa med ett begränsat läge eller ett Live-konto.
+- En CSP-partner kan ange PayPal kontoinformation, till exempel PayPal klient-ID och hemlighet. En CSP-partner kan också välja om de vill testa med en sandbox-miljö eller ett live-konto.
 
-  - Partner kan hitta den här informationen om [https://developer.paypal.com/](https://developer.paypal.com/) i **mina appar & autentiseringsuppgifter**. Du kan också hämta den här informationen från en aktuell app eller genom att skapa en ny app i PayPal.
-  - Skapa ett nytt PayPal-konto om du inte redan har ett. Det här kontot kommer att användas för PayPal för att kreditera de betalningar som kunderna har gjort.
+  - Partner hittar den här informationen i [https://developer.paypal.com/](https://developer.paypal.com/) mina appar och & **autentiseringsuppgifter.** Du kan också hämta den här informationen från en aktuell app eller genom att skapa en ny app i PayPal.
+  - Skapa ett PayPal konto om du inte redan har ett. Det här kontot används för att PayPal kreditera betalningar som görs av kunder.
 
-    - Information om hur du öppnar ett PayPal-företags konto finns i [https://developer.paypal.com/docs/classic/lifecycle/goingLive/#register](https://developer.paypal.com/docs/classic/lifecycle/goingLive/#register) .
+    - Information om hur du PayPal ett företagskonto finns i [https://developer.paypal.com/docs/classic/lifecycle/goingLive/#register](https://developer.paypal.com/docs/classic/lifecycle/goingLive/#register) .
 
-    - Information om hur du skapar ett PayPal sandbox-konto finns i [https://developer.paypal.com/docs/classic/lifecycle/ug_sandbox/](https://developer.paypal.com/docs/classic/lifecycle/ug_sandbox/) .
+    - Information om hur du skapar PayPal sandbox-konto finns i [https://developer.paypal.com/docs/classic/lifecycle/ug_sandbox/](https://developer.paypal.com/docs/classic/lifecycle/ug_sandbox/) .
 
-- (För Indien) en CSP-partner kan mata in sin PayU Money-konto information, till exempel PayU-klient-ID och lösen ord. Partner kan hitta mer information om [https://developer.payumoney.com/](https://developer.payumoney.com/) .
+- (För Indien) kan en CSP-partner ange kontoinformation för PayU Money, till exempel PayU-klient-ID och lösenord. Partner kan hitta mer information om [https://developer.payumoney.com/](https://developer.payumoney.com/) .
 
-  - Skapa ett nytt PayU Money-konto om du inte redan har ett. Om du vill öppna ett PayU Money-konto går du till [https://www.payumoney.com/merchant-account/#/](https://www.payumoney.com/merchant-account/#/) . Det här kontot kommer att användas för PayU för att kreditera de betalningar som kunderna har gjort.
+  - Skapa ett nytt PayU Money-konto om du inte redan har ett. Om du vill öppna ett PayU Money-konto går du till [https://www.payumoney.com/merchant-account/#/](https://www.payumoney.com/merchant-account/#/) . Det här kontot används för PayU för att kreditera betalningar som görs av kunder.
 
-## <a name="customer-experience-scenarios"></a>Kund upplevelse scenarier
+## <a name="customer-experience-scenarios"></a>Kundupplevelsescenarier
 
-### <a name="new-customer-sign-up-scenario"></a>Nytt kund registrerings scenario
+### <a name="new-customer-sign-up-scenario"></a>Scenario för ny kunds registrering
 
-- Som standard är webbplatsen allmänt tillgänglig och visar partnerns katalog på Start sidan.
+- Som standard är webbplatsen offentligt tillgänglig och visar partnerkatalogen på startsidan.
 
 - Kunder kan nu tillhöra ett stort antal [kund länder](#customer-countries).
 
-- Den europeiska fri handels sammanslutningen (EFTA)-länderna, Nordamerika, Japan, Indien, Australien och nya Zeeland-regioner har marker ATS.
-  - Den här funktionen använder stöd för regional auktorisering i Partner Center SDK.
+- Fokus har varit på regionerna European Free Trade Association (EFTA), Nordamerika, Japan, Indien, Australien och Nya Zeeland.
+  - Den här funktionen använder det regionala auktoriseringsstödet i Partnercenter-SDK.
 
 - Kunder kan välja ett erbjudande från katalogen att köpa.
-  - De kan lägga till kund namn, adress och domän relaterad information.
+  - De kan lägga till kundnamn, adress och domänrelaterad information.
 
-- Kunderna dirigeras till utcheckningen PayPal eller PayU (för Indien). Kunder kan tillhandahålla betalning med hjälp av antingen:
-  - Deras befintliga PayPal-eller PayU-konto (för Indien)
-  - Finansierings instrument som stöds i sitt land av PayPal eller PayU (för Indien). Dessa kan omfatta kredit kort, betalkort och bank konton i förekommande fall.
+- Kunderna dirigeras till utcheckningsupplevelsen PayPal PayU (för Indien). Kunder kan betala med hjälp av antingen:
+  - Deras befintliga PayPal eller PayU-konto (för Indien)
+  - Bidragsinstrument som stöds i deras land av PayPal PayU (för Indien). Dessa kan omfatta kreditkort, debetkort och bankkonton efter vad som är tillämpligt.
 
-- En kund klient organisation skapas för den här kunden. Efter att du har skapat klient organisations ordningen tillhandahåller kunderna kontots användar namn, lösen ord och prenumerations information.
-  - Kunder kan spara användar namn och lösen ord för att förbli inloggade för ytterligare köp.
-  - Varje prenumeration har köpts för ett år och kunderna kan förnya under 30 dagar innan prenumerationens slutdatum.
+- En kundklient skapas för den här kunden. När klientbeställningen har skapats får kunderna kontoinformation om användarnamn, lösenord och prenumeration.
+  - Kunder kan spara användarnamnet och lösenordet för att vara inloggade för ytterligare köp.
+  - Varje prenumeration köps för ett år och kunder kan förnya inom 30 dagar före prenumerationens slutdatum.
 
-### <a name="view-prior-purchases-scenario"></a>Visa tidigare inköps scenario
+### <a name="view-prior-purchases-scenario"></a>Visa tidigare köpscenario
 
-- Kunden loggar in med kundens användar namn och lösen ord och går till avsnittet **mina beställningar** .
+- Kunden loggar in med kundens klientorganisations användarnamn och lösenord och går till **avsnittet Mina** beställningar.
 
-- Kunder kan gå till sidan **mina beställningar** där de kan visa köpta prenumerationer och göra uppdateringar om det behövs.
+- Kunder kan navigera till sidan **Mina beställningar** där de kan visa köpta prenumerationer och göra uppdateringar om det behövs.
 
-- Kunder kan gå till sidan **Mina prenumerationer** där de kan se alla prenumerationer (licensbaserade och användnings), inklusive de som finns i Partner Center.
+- Kunder kan navigera till **sidan Mina** prenumerationer där de kan visa alla prenumerationer (licensbaserade och användningsbaserade), inklusive de som finns i Partnercenter.
 
-### <a name="add-licenses-to-existing-subscriptions-scenario"></a>Lägg till licenser i befintliga prenumerations scenario
+### <a name="add-licenses-to-existing-subscriptions-scenario"></a>Lägga till licenser i ett befintligt prenumerationsscenario
 
-- Från avsnittet **mina beställningar** kan kunder lägga till fler licenser i befintliga prenumerationer. Kunder kan lägga till fler licenser när som helst under ett prenumerations år.
+- I avsnittet **Mina beställningar** kan kunder lägga till fler licenser till befintliga prenumerationer. Kunder kan lägga till fler licenser när som helst under ett prenumerationsår.
 
-- Varje tillagd licens ändrar inte slutdatum för prenumerationen. Priset för prenumerationen ändras dock baserat på det datum då du lägger till licensen och där datumet infaller under året. Priserna beräknas per dag för att bara debiteras för de återstående dagarna på året.
+- Varje tillagd licens ändrar inte slutdatumet för prenumerationen. Priset för prenumerationen ändras dock baserat på det datum då du lägger till licensen och var datumet är under året. Prissättningen prorreras dagligen till att endast debiteras för de återstående dagarna på året.
 
-### <a name="add-more-subscriptions-scenario"></a>Lägg till fler prenumerations scenario
+### <a name="add-more-subscriptions-scenario"></a>Lägg till fler prenumerationsscenario
 
-- Kunder kan köpa valfritt antal prenumerationer när som helst från avsnittet **Lägg till prenumerationer** under **mina beställningar**.
+- Kunder kan när som helst köpa val av antal prenumerationer i avsnittet **Lägg till** prenumerationer under **Mina beställningar.**
 
-- En kund kan välja en prenumeration, lägga till en kvantitet och betala för att slutföra transaktionen och börja använda prenumerationen direkt. Om en kund är en för hands godkänd kund är prenumerationen tillgänglig för användning omedelbart och en faktura skickas till kunden för betalning.
+- En kund kan välja en prenumeration, lägga till en kvantitet och betala för att slutföra transaktionen och börja använda prenumerationen direkt. Om en kund är en förhandsgodkänd kund är prenumerationen tillgänglig för användning omedelbart och en faktura skickas till kunden för betalning.
 
-### <a name="renew-subscription-scenario"></a>Förnya prenumerations scenario
+### <a name="renew-subscription-scenario"></a>Förnya prenumerationsscenario
 
-- En kund kan förnya en prenumeration under de senaste 30 dagarna innan prenumerationens slutdatum.
+- En kund kan förnya en prenumeration under de senaste 30 dagarna före prenumerationens slutdatum.
 
 - Detta är endast tillgängligt under de senaste 30 dagarna.
 
-- Om de inte förnyas under de senaste 30 dagarna tas prenumerationen bort från listan över prenumerationer för den här kund klienten.
+- Om prenumerationen inte förnyats under de senaste 30 dagarna tas den bort från listan över prenumerationer för den här kundklientorganisationen.
 
-- Det går inte att uppdatera antalet under förnyelsen.
+- Du kan inte uppdatera kvantiteten under förnyelsen.
 
-### <a name="payments-scenario"></a>Betalnings scenario
+### <a name="payments-scenario"></a>Betalningsscenario
 
-- Om kunden är för hands godkänd för transaktioner av administratören, visas inte betalnings upplevelsen för ovanstående scenarier. Partnern kan istället skicka fakturan för betalning till den förgodkännde kunden.
+- Om kunden har förhandsgodkänd för transaktioner av administratören visas inte betalningsupplevelsen för ovanstående scenarier. Partnern kan i stället skicka fakturan för betalning till den förhandsgodkända kunden.
 
-- För alla nya inköp kan du lägga till fler licenser, lägga till prenumerationer och förnya. En kund kan betala en partner med hjälp av den här webbplatsen via PayPal eller PayU (för Indien).
+- För alla nya köp kan du lägga till fler licenser, lägga till prenumerationer och förnya. En kund kan betala en partner med hjälp av den här webbplatsen via PayPal eller PayU (för Indien).
 
-- Den här webbplatsen är integrerad med PayPal eller PayU (för Indien) och gör det möjligt för partner att acceptera betalningar från sina kunder. PayPal eller PayU (för Indien) krediterar detta belopp i en partners konto. PayPal eller PayU (för Indien) bank konto hantering är utanför den här webbplatsen och hanteras på PayPal.com respektive PayUmoney.com.
+- Den här webbplatsen är integrerad med PayPal eller PayU (för Indien) och gör att partner kan acceptera betalningar från sina kunder. PayPal eller PayU (för Indien) krediterar det här beloppet på en partners konto. PayPal eller PayU -kontohantering (för Indien) utanför den här webbplatsen och hanteras på PayPal.com eller PayUmoney.com respektive.
 
-- Detta är beroende av partner som konfigurerar sina PayPal-orPayU (för Indien) betalnings konfiguration på PayPal.com eller PayUmoney.com. Microsoft sparar inte den här informationen eller faktiska betalnings transaktioner som beror på användningen av det här alternativet.
+- Detta är beroende av att partner konfigurerar sin PayPal ellerbetalningskonfiguration (för Indien) på PayPal.com eller PayUmoney.com. Microsoft sparar inte den här informationen eller faktiska betalningstransaktioner som är resultatet av användningen av det här alternativet.
 
-### <a name="prorated-pricing-scenario"></a>Proportionellt pris scenario
+### <a name="prorated-pricing-scenario"></a>Scenario med prisprorerat pris
 
-- Den här webbplatsen stöder proportionell prissättning i fall när kunder lägger till fler licenser till en befintlig prenumeration.
+- Den här webbplatsen har stöd för prorated prissättning i fall när kunder lägger till fler licenser i en befintlig prenumeration.
 
-- Varje prenumeration upphör att gälla efter ett år och kan inte ändras efter att prenumerationen har köpts.
+- Varje prenumeration går ut efter ett år och kan inte ändras efter att prenumerationen har köpts.
 
-- Prenumerationens slutdatum ändras inte genom att ytterligare licenser läggs till. Kunderna debiteras för det återstående antalet dagar fram till slutdatumet. Om till exempel en prenumerations kostnad på dagen är $365 och du lägger till en licens på dag två, blir priset för den nya licensen $364. Om du lägger till en licens på 10 dagar senare blir priset $354.
+- Slutdatumet för prenumerationen ändras inte genom att ytterligare licenser läggs till. Kunder debiteras för återstående antal dagar fram till slutdatumet. Om prenumerationskostnaden till exempel är 365 USD på dag ett och du lägger till en licens till dag två blir priset för den nya licensen 364 USD. Om du lägger till ytterligare en licens 10 dagar senare blir priset 354 USD.

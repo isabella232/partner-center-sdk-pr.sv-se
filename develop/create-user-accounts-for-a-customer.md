@@ -1,41 +1,37 @@
 ---
 title: Skapa användarkonton för en kund
-description: Skapa ett nytt användar konto för din kund.
+description: Skapa ett nytt användarkonto för kunden.
 ms.date: 05/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 9131a1c4c37d07b1994b67379ec8361fda13a371
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: d086d7ba72c9d9e42dc88684ddeafc9a597bfd7c
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768808"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973391"
 ---
 # <a name="create-user-accounts-for-a-customer"></a>Skapa användarkonton för en kund
 
-**Gäller för:**
-
-- Partnercenter
-
-Skapa ett nytt användar konto för din kund.
+Skapa ett nytt användarkonto för kunden.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Så här hämtar du ett nytt användar konto för en kund:
+Så här skaffar du ett nytt användarkonto för en kund:
 
-1. Skapa ett nytt **CustomerUser** -objekt med relevant användar information.
+1. Skapa ett nytt **CustomerUser-objekt** med relevant användarinformation.
 
-2. Använd din **IAggregatePartner. Customers** -samling och anropa **ById ()-** metoden.
+2. Använd din **IAggregatePartner.Customers-samling** och anropa **metoden ById().**
 
-3. Anropa egenskapen **Users** följt av **create** -metoden.
+3. Anropa egenskapen **Användare** följt av **metoden** Skapa.
 
 ``` csharp
 // string selectedCustomerId;
@@ -55,15 +51,15 @@ var userToCreate = new CustomerUser()
 User createdUser = partnerOperations.Customers.ById(selectedCustomerId).Users.Create(userToCreate);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples- **klass**: CustomerUserCreate.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** PartnerSDK.FeatureSamples-klass: CustomerUserCreate.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                                                  |
 |----------|----------------------------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Users http/1.1 |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/users HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
@@ -71,12 +67,12 @@ Använd följande frågeparametrar för att identifiera rätt kund.
 
 | Namn | Typ | Obligatorisk | Beskrivning |
 |----- |----- | -------- |------------ |
-| **kund-ID för klient organisation** | **guid** | Y | Värdet är ett GUID-formaterat **kund-Tenant-ID**. Den gör det möjligt för åter försäljaren att filtrera resultaten för en specifik kund som tillhör åter försäljaren. |
-| **användar-ID** | **guid** | N | Värdet är ett GUID-formaterat **användar-ID** som tillhör ett enda användar konto. |
+| **kund-klient-id** | **guid** | Y | Värdet är ett GUID-formaterat **kundklient-id.** Det gör att återförsäljaren kan filtrera resultaten för en viss kund som tillhör återförsäljaren. |
+| **användar-id** | **guid** | N | Värdet är ett GUID-formaterat **användar-ID** som tillhör ett enda användarkonto. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -109,11 +105,11 @@ MS-CorrelationId: 8a53b025-d5be-4d98-ab20-229d1813de76
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden ett användar konto, inklusive GUID.
+Om det lyckas returnerar den här metoden ett användarkonto, inklusive GUID.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

@@ -1,60 +1,59 @@
 ---
 title: Webbutik för CSP-kunder
-description: Den här exempel webbplats koden visar en fungerande onlinebutik för kunder som köper prenumerationer på Microsoft-produkter.
+description: Den här exempelwebbplatskoden visar en fungerande onlinebutik där kunder kan köpa prenumerationer på Microsoft-produkter.
 ms.date: 05/29/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: bd488b9b9bf2c1df4bebc8513d230a02b06b2ce4
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: d68f17d707731f426cb980a566b6478790d3507c
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768799"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973340"
 ---
 # <a name="csp-customer-web-storefront"></a>Webbutik för CSP-kunder
 
-**Gäller för:**
+**Gäller för:** Partnercenter
 
-- Partnercenter
+**Gäller inte för:** Partner Center for Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-> [!NOTE]
-> Den här exempel appen gäller endast den globala instansen av Partner Center. Den gäller inte för partner Center för Microsoft Cloud Tyskland eller till Partner Center för Microsoft Cloud för amerikanska myndigheter.
+Den här exempelappen gäller endast för den globala instansen av Partnercenter.
 
-[Partner Center-butik](https://github.com/Microsoft/Partner-Center-Storefront) är en **exempel webbplats** för en onlinebutik som kunder kan använda för att köpa prenumerationer på Microsoft-produkter. Du kan ändra den här **exempel koden** för din egen användning för att [Konfigurera erbjudandena](#configure-offers), [lägga till varumärke](#configure-branding) och [lägga till en betalnings metod](#configure-payment-types).
+Butiken [i Partnercenter är](https://github.com/Microsoft/Partner-Center-Storefront) en **exempelwebbplats för en** onlinebutik som kunder kan använda för att köpa prenumerationer på Microsoft-produkter. Du kan ändra den **här exempelkoden** för eget bruk för [att konfigurera erbjudandena,](#configure-offers)lägga [till varumärke](#configure-branding)och lägga till [en betalningsmetod](#configure-payment-types).
 
 ## <a name="sample-code"></a>Exempelkod
 
-Hämta [butik exempel kod för partner Center](https://github.com/Microsoft/Partner-Center-Storefront) från GitHub.
+Ladda ned [exempelkoden för Partnercenter-butiken](https://github.com/Microsoft/Partner-Center-Storefront) från GitHub.
 
 ## <a name="configure-authentication"></a>Konfigurera autentisering
 
-Innan du skapar programmet uppdaterar du följande värden i Web.config-filen för att avspegla den Azure AD-autentiseringsinformation som du skapade i [partner Center-autentisering](partner-center-authentication.md). Du bör använda dina konto inställningar för integration i begränsat läge vid tidig utveckling eller för testning i produktion (TiP).
+Innan du skapar programmet uppdaterar du följande värden i Web.config för att återspegla den Azure AD-autentiseringsinformation som du skapade i [Partnercenter-autentisering .](partner-center-authentication.md) Du bör använda inställningarna för sandbox-kontots integrering under tidig utveckling eller för testning i produktion (TiP).
 
-- **partnerCenter. applicationId**
+- **partnerCenter.applicationId**
 - **partnerCenter.applicationSecret**
-- **partnerCenter. Domain**
-- **webportal. clientId**
-- **webportal. clientSecret**
-- **webporting. Domain**
-- **webportal. azureStorageConnectionString**
+- **partnerCenter.domain**
+- **webPortal.clientId**
+- **webPortal.clientSecret**
+- **webPortal.domain**
+- **webPortal.azureStorageConnectionString**
 
 ## <a name="configure-offers"></a>Konfigurera erbjudanden
 
 Du kan konfigurera uppsättningen med erbjudanden (**MicrosoftOffer**) i **OfferCatalogViewModel**.
 
-## <a name="configure-branding"></a>Konfigurera anpassning
+## <a name="configure-branding"></a>Konfigurera varumärkesmärking
 
-Den här exempel webbplatsen spårar följande företags-och varumärkes information i *BrandingConfiguration.cs* och *PortalBranding.cs*:
+Den här exempelwebbplatsen spårar följande företagsinformation och varumärkesinformation *i BrandingConfiguration.cs* *och PortalBranding.cs:*
 
 - Organisationsnamn
-- Organisations logo typ
-- Sidhuvud bild
-- Sekretess avtal
+- Organisationens logotyp
+- Rubrikbild
+- Sekretessavtal
 - E-postadress för kontakt
 - Telefonnummer till kontakt
-- Support-e-post
+- E-post för support
 - Telefonnummer till support
 
-### <a name="configure-payment-types"></a>Konfigurera betalnings typer
+### <a name="configure-payment-types"></a>Konfigurera betalningstyper
 
-Appen använder för närvarande en PayPal-Gateway, implementerad i *PayPalGateway.cs*.
+Appen använder för närvarande en PayPal gateway, implementerad i *PayPalGateway.cs.*

@@ -1,35 +1,31 @@
 ---
-title: Uppdatera en princip för självbetjäning
-description: Så här uppdaterar du en självbetjänings princip.
+title: Uppdatera en självbetjäningsprincip
+description: Så här uppdaterar du en självbetjäningsprincip.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4d53ab8e5b8ef5b7be83360a3f43ec7791b2e3b4
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: d94382e73fd2a79751fe5f8f8414df2befde584f
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97770249"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445263"
 ---
 # <a name="update-a-selfservepolicy"></a>Uppdatera en SelfServePolicy
 
-**Gäller för:**
-
-- Partnercenter
-
-I det här avsnittet beskrivs hur du uppdaterar en princip för självbetjäning.
+Den här artikeln förklarar hur du uppdaterar en självbetjäningsprincip.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med program-och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med autentiseringsuppgifter för program och användare.
 
 ## <a name="c"></a>C\#
 
-Så här tar du bort en princip för självbetjäning:
+Så här tar du bort en självbetjäningsprincip:
 
-1. Anropa metoden [**IAggregatePartner. SelfServePolicies. ById**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.byid) med enhets-ID: n för att hämta ett gränssnitt till åtgärder i principerna.
+1. Anropa metoden [**IAggregatePartner.SelfServePolicies.ById**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.byid) med entitetsidentifieraren för att hämta ett gränssnitt till åtgärder för principerna.
 
-2. Anropa metoden för att [**Skicka**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.put) eller [**PutAsync**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.putasync) för att uppdatera principen för självbetjäning.
+2. Anropa [**Put-**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.put) eller [**PutAsync-metoden**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.putasync) för att uppdatera självbetjäningsprincipen.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -44,36 +40,36 @@ partnerOperations.SelfServePolicies.ById(policy.id).Put(policy);
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod   | URI för förfrågan                                                       |
 |----------|-------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy http/1.1 |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy HTTP/1.1 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-- ID för begäran och korrelation krävs.
-- Mer information finns i [partner Center rest-rubriker](headers.md) .
+- En begärandeidentifierare och korrelationsidentifierare krävs.
+- Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-I den här tabellen beskrivs de egenskaper som krävs i begär ande texten.
+I den här tabellen beskrivs de obligatoriska egenskaperna i begärandetexten.
 
-| Namn                              | Typ   | Description                                 |
+| Namn                              | Typ   | Beskrivning                                 |
 |------------------------------------------------------------------|--------|---------------------------------------------|
-| [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy)| objekt | Den självbetjänings princip informationen. |
+| [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy)| objekt | Information om självbetjäningsprincipen. |
 
 #### <a name="selfservepolicy"></a>SelfServePolicy
 
-I den här tabellen beskrivs de minimi krav som krävs från den [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) -resurs som krävs för att skapa en ny princip för självbetjäning.
+I den här tabellen beskrivs de minsta obligatoriska fälten från [SelfServePolicy-resursen](self-serve-policy-resources.md#selfservepolicy) som krävs för att skapa en ny självbetjäningsprincip.
 
-| Egenskap              | Typ             | Description                                                                                            |
+| Egenskap              | Typ             | Beskrivning                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
-| id                    | sträng           | Ett självbetjänings princip-ID som anges när du skapar en egen princip.     |
-| SelfServeEntity       | SelfServeEntity  | Den självbetjänings enhet som beviljas åtkomst.                                                     |
-| Den beviljande användaren               | Den beviljande användaren          | Den beviljande behörighet som beviljar åtkomst.                                                                    |
-| Behörigheter           | Behörighets mat ris| En matris med [behörighets](self-serve-policy-resources.md#permission) resurser.                                                      |
-| Etag                  | sträng           | Etag.                                                                                               |
+| id                    | sträng           | En principidentifierare med självbetjäning som tillhandahålls när självbetjäningsprincipen har skapats.     |
+| SelfServeEntity       | SelfServeEntity  | Entiteten med självbetjäning som beviljas åtkomst.                                                     |
+| Beviljaren               | Beviljaren          | Den beviljande som beviljar åtkomst.                                                                    |
+| Behörigheter           | Behörighetsmatris| En matris med [behörighetsresurser.](self-serve-policy-resources.md#permission)                                                      |
+| Etag                  | sträng           | The Etag.                                                                                               |
 
 
 ### <a name="request-example"></a>Exempel på begäran
@@ -110,18 +106,18 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas, returnerar detta API en [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) -resurs för den uppdaterade självbetjänings principen.
+Om det lyckas returnerar detta API en [SelfServePolicy-resurs](self-serve-policy-resources.md#selfservepolicy) för den uppdaterade självbetjäningsprincipen.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
-Den här metoden returnerar följande fel koder:
+Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Description                                                                |
+| HTTP-statuskod     | Felkod   | Beskrivning                                                                |
 |----------------------|--------------|----------------------------------------------------------------------------|
-| 404                  | 600039       | Det gick inte att hitta principen för självbetjäning                                            |
-| 404                  | 600040       | Den självbetjänings princip identifieraren är felaktig                                  |
+| 404                  | 600039       | Självbetjäningsprincipen hittades inte                                            |
+| 404                  | 600040       | Principidentifieraren för självbetjäning är felaktig                                  |
 
 
 ### <a name="response-example"></a>Exempel på svar

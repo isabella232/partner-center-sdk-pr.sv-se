@@ -1,98 +1,94 @@
 ---
-title: Service kostnads resurser
-description: Beskriver resurser som är relaterade till tjänster som köpts av en kund.
+title: Resurser för tjänstkostnader
+description: Beskriver resurser relaterade till tjänster som köpts av en kund.
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c0236329d93d8ddc9019a15fb67a81a3af3e7620
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: dbddc1973dd9a904cedd549c1772cd4c74c69a60
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769198"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547418"
 ---
-# <a name="service-costs-resources"></a>Service kostnads resurser
+# <a name="service-costs-resources"></a>Resurser för tjänstkostnader
 
-**Gäller för:**
-
-- Partnercenter
-
-Beskriver resurser som är relaterade till tjänster som köpts av en kund.
+Beskriver resurser relaterade till tjänster som köpts av en kund.
 
 ## <a name="servicecostssummary"></a>ServiceCostsSummary
 
-**ServiceCostsSummary** innehåller en sammanfattning som sammanställer alla tjänster som köpts av den angivna kunden under fakturerings perioden.
+**ServiceCostsSummary** innehåller en sammanfattning som sammanställer alla tjänster som köpts av den angivna kunden under faktureringsperioden.
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
-| information | matris med [ServiceCostsSummaryDetail](#servicecostssummarydetail) -objekt | Detalj listan för tjänst kostnads sammanfattning, särskiljs efter faktura typ.|
-| Länkar | [ResourceLinks](utility-resources.md#resourcelinks) | Resurs länkarna. |
-| dokumentattribut | [ResourceAttributes](utility-resources.md#resourceattributes) | Attribut för metadata. |
+| Detaljer | matris med [ServiceCostsSummaryDetail-objekt](#servicecostssummarydetail) | Detaljerad lista över tjänstkostnadssammanfattningar, unikt efter fakturatyp.|
+| Länkar | [ResourceLinks](utility-resources.md#resourcelinks) | Resurslänkarna. |
+| Attribut | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen. |
 
 > [!IMPORTANT]
-> **Fälten i följande tabell är föråldrade.** Om du vill hämta återkommande och engångs kostnads summeringar använder du fältet **information** i stället. **Informations** fältet beskrivs i föregående tabell. Mer **information** finns i data fältets motsvarande datavärden, men inte på rot nivå fälten.
+> **Fälten i följande tabell är inaktuella.** Om du vill hämta kostnadssammanfattningar för återkommande och engångstjänster använder du **informationsfältet** i stället. **Informationsfältet** beskrivs i föregående tabell. Se **informationsfältets** motsvarande datavärden, men inte fälten på rotnivå.
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
-| billingStartDate | date | Fakturerings periodens början. |
-| billingEndDate | date | Slutet av fakturerings perioden. |
-| pretaxTotal | double | Summan före skatt för alla kostnader för kunden. |
-| Tax  | double | Den totala skatt som gjorts för alla artiklar som köpts av kunden. |
-| afterTaxTotal | double | Den totala totalkostnaden för alla objekt som har köpts av kunden. |
-| currencyCode | sträng | Representerar valutan som används för kostnaderna. |
-| currencySymbol | sträng | Valuta symbolen som används för kostnaderna. |
-| customerId | sträng | ID för kunden som gör köpet. |
+| billingStartDate | date | Början av faktureringsperioden. |
+| billingEndDate | date | Slutet av faktureringsperioden. |
+| pretaxTotal | double | Summan före skatt av alla kostnader för kunden. |
+| Skatt  | double | Den totala skatt som uppstått för alla artiklar som köpts av kunden. |
+| afterTaxTotal | double | Den totala nettokostnaden för alla objekt som köpts av kunden. |
+| currencyCode | sträng | Representerar den valuta som används för kostnaderna. |
+| currencySymbol | sträng | Valutasymbolen som används för kostnaderna. |
+| customerId | sträng | ID för den kund som gör köpet. |
 
 ## <a name="servicecostssummarydetail"></a>ServiceCostsSummaryDetail
 
-**ServiceCostsSummaryDetail** beskriver en sammanfattning för tjänst kostnader som sammanställer alla tjänster som köpts av den angivna kunden under fakturerings perioden (från antingen återkommande eller engångs fakturor).
+**ServiceCostsSummaryDetail** beskriver en sammanfattning av tjänstkostnad som aggregerar alla tjänster som köpts av den angivna kunden under faktureringsperioden (från återkommande fakturor eller engångsfakturor).
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
-| invoiceType | sträng | Den invoiceType som service kostnads sammanfattningen har genererats för. |
-| sammanfattning | [ServiceCostsSummary](#servicecostssummary) | Tjänste kostnads sammanfattningen som aggregeras av en kund under en faktura typ. |
+| invoiceType | sträng | Den invoiceType som tjänstkostnadssammanfattningen har genererats. |
+| sammanfattning | [ServiceCostsSummary](#servicecostssummary) | Sammanfattning av tjänstkostnad sammanställd av en kund under en fakturatyp. |
 
 ## <a name="servicecostlineitem"></a>ServiceCostLineItem
 
-**ServiceCostLineItem** beskriver ett enda objekt som köps av kunden.
+**ServiceCostLineItem** beskriver ett enskilt objekt som köpts av kunden.
 
 > [!IMPORTANT]
-> Följande egenskaper *gäller bara för* service kostnads rad objekt där produkten är ett *Engångs köp*: **productId**, **productName**, **skuId**, **skuName**, **availabilityId**, **publisherId**, **publisherName**, **termAndBillingCycle**, **discountDetails**. Dessa egenskaper *gäller inte för* service rad objekt där produkten är ett *återkommande köp*. Dessa egenskaper gäller till exempel *inte* för prenumerations Office 365-och Azure-datorer.
+> Följande egenskaper  gäller endast för tjänstkostnadsradobjekt där produkten är ett engångsköp:  **productId**, **productName**, **skuId**, **skuName**, **availabilityId**, **publisherId**, **publisherName**, **termAndBillingCycle**, **discountDetails**. De här *egenskaperna gäller inte för tjänstradsobjekt* där produkten är ett *återkommande köp.* Dessa egenskaper gäller till *exempel inte för prenumerationsbaserade* Office 365 och Azure.
 
-| Egenskap                 | Typ                           | Description                                                          |
+| Egenskap                 | Typ                           | Beskrivning                                                          |
 |--------------------------|--------------------------------|----------------------------------------------------------------------|
-| /SD                | sträng i UTC-datum/tid-format | Start datumet för avgiften.                                       |
+| Startdate                | sträng i UTC-datum/tid-format | Startdatumet för avgiften.                                       |
 | endDate                  | sträng i UTC-datum/tid-format | Slutdatumet för avgiften.                                         |
 | subscriptionFriendlyName | sträng                         | Det egna namnet för prenumerationen.                              |
-| subscriptionId           | sträng                         | Prenumerations-ID.                                         |
-| orderId                  | sträng                         | Order-ID.                                                |
-| offerId                  | sträng                         | Erbjudande-ID.                                                |
-| offerName                | sträng                         | Namnet på erbjudandet.                                                      |
-| resellerMPNId            | sträng                         | Används endast i scenarier på 2-nivå partner. Hänvisar till MPN-ID: n. |
-| chargeType               | sträng                         | Den associerade avgifts typen.                                          |
-| quantity                 | antal                         | Antalet enheter som används eller köps.                             |
+| subscriptionId           | sträng                         | Prenumerationsidentifieraren.                                         |
+| Ordernr                  | sträng                         | Orderidentifieraren.                                                |
+| offerId                  | sträng                         | Erbjudandeidentifieraren.                                                |
+| offerName                | sträng                         | Erbjudandets namn.                                                      |
+| resellerMPNId            | sträng                         | Används endast i partnerscenarier med två nivåer. Refererar till MPN-identifieraren. |
+| chargeType               | sträng                         | Den associerade avgiftstypen.                                          |
+| quantity                 | antal                         | Antalet enheter som används eller köpts.                             |
 | unitPrice                | antal                         | Priset per enhet.                                                  |
-| pretaxTotal              | antal                         | Den totala kostnaden för den här artikeln före skatt.                         |
-| Tax                      | antal                         | Den totala moms avgiften som tillkommer för den här artikeln.                         |
-| afterTaxTotal            | antal                         | Den totala netto kostnaden för den här artikeln.                                    |
+| pretaxTotal              | antal                         | Den totala avgiften för det här objektet före skatter.                         |
+| Skatt                      | antal                         | Den totala skatteavgiften för det här objektet.                         |
+| afterTaxTotal            | antal                         | Den totala nettokostnaden för det här objektet.                                    |
 | currencyCode             | sträng                         | Representerar valutan som används för kostnaderna.                          |
-| currencySymbol           | sträng                         | Valuta symbolen som används för kostnaderna.                              |
-| customerId               | sträng                         | ID för kunden som gör köpet.                          |
+| currencySymbol           | sträng                         | Valutasymbolen som används för kostnaderna.                              |
+| customerId               | sträng                         | ID för den kund som gör köpet.                          |
 | customerName             | sträng                         | Namnet på kunden som gör köpet.                        |
-| invoiceNumber            | sträng                         | Faktura numret som det här rad objektet tillhör.                   |
-| productId                | sträng                         | Produkt-ID.                                              |
+| invoiceNumber            | sträng                         | Det fakturanummer som det här radobjektet tillhör.                   |
+| productId                | sträng                         | Produktidentifieraren.                                              |
 | skuId                    | sträng                         | SKU-identifieraren.                                                  |
-| availabilityId           | sträng                         | Tillgänglighets identifieraren.                                         |
-| Namn              | sträng                         | Produkt namnet.                                                    |
-| skuName                  | sträng                         | SKU-namn.                                                        |
-| publisherName            | sträng                         | Utgivar namnet.                                                  |
-| publisherId              | sträng                         | Utgivar-ID.                                            |
-| termAndBillingCycle      | sträng                         | Termen och fakturerings perioden.                                          |
-| discountDetails          | sträng                         | Rabatt information.                                                |
+| availabilityId           | sträng                         | Tillgänglighetsidentifieraren.                                         |
+| Productname              | sträng                         | Produktnamnet.                                                    |
+| skuName                  | sträng                         | SKU-namnet.                                                        |
+| publisherName            | sträng                         | Utgivarens namn.                                                  |
+| publisherId              | sträng                         | Utgivarens identifierare.                                            |
+| termAndBillingCycle      | sträng                         | Period och faktureringsperiod.                                          |
+| discountDetails          | sträng                         | Rabattinformationen.                                                |
 
 ## <a name="servicecostssummarylinks"></a>ServiceCostsSummaryLinks
 
-| Egenskap             | Typ                               | Description                         |
+| Egenskap             | Typ                               | Beskrivning                         |
 |----------------------|------------------------------------|-------------------------------------|
-| serviceCostLineItems | [Operationsföljdslänkkod](utility-resources.md#link) | URI: n för att hämta rad objekten. |
-| ständiga                 | [Operationsföljdslänkkod](utility-resources.md#link) | Själv URI.                       |
+| serviceCostLineItems | [Länk](utility-resources.md#link) | URI:en för att hämta radobjekten. |
+| Själv                 | [Länk](utility-resources.md#link) | Själv-URI.                       |

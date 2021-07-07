@@ -1,38 +1,33 @@
 ---
 title: Uppdatera partnerns juridiska företagsprofil
-description: Så här uppdaterar du partnerns juridiska företags profil.
+description: Så här uppdaterar du partnerns juridiska affärsprofil.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 6c61b51ab0680e36daa99c11dc8e8c3506259d29
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: cb9f5815e0019c5e9b648dfd865e9752f0afdf05
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769600"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530335"
 ---
 # <a name="update-the-partner-legal-business-profile"></a>Uppdatera partnerns juridiska företagsprofil
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Så här uppdaterar du partnerns juridiska företags profil.
+Så här uppdaterar du partnerns juridiska affärsprofil.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Om du vill uppdatera partnerns juridiska företags profil måste du först instansiera ett **LegalBusinessProfile** -objekt och fylla det med den befintliga profilen. Mer information finns i [Hämta partnerns juridiska företags profil](get-legal-business-profile.md). Uppdatera sedan de egenskaper som du behöver ändra. Följande kod exempel illustrerar hur du ändrar adress och primära telefonnummer till kontakt.
+Om du vill uppdatera partnerns juridiska affärsprofil instansierar du först **ett LegalBusinessProfile-objekt** och fyller det med den befintliga profilen. Mer information finns i Hämta [partnerns juridiska företagsprofil](get-legal-business-profile.md). Uppdatera sedan de egenskaper som du behöver ändra. I följande kodexempel visas hur du ändrar adress- och primära kontakttelefonnummer.
 
-Hämta sedan ett gränssnitt till partner profils åtgärds samlingen från egenskapen **IAggregatePartner. profiles** . Hämta sedan värdet för egenskapen **LegalBusinessProfile** för att få ett gränssnitt till juridiska affärs profil åtgärder. Slutligen kan du anropa [**Update**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.update) -eller [**UpdateAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.updateasync) -metoden med det ändrade objektet för att uppdatera profilen.
+Hämta sedan ett gränssnitt till partnerprofilens driftsamling från egenskapen **IAggregatePartner.Profiles.** Hämta sedan värdet för egenskapen **LegalBusinessProfile** för att hämta ett gränssnitt för juridiska affärsprofilåtgärder. Anropa slutligen metoden [**Update**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.update) eller [**UpdateAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.updateasync) med det ändrade objektet för att uppdatera profilen.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -49,19 +44,19 @@ var updatedLegalBusinessProfile = partnerOperations.Profiles.LegalBusinessProfil
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                    |
 |---------|--------------------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Profiles/legalbusiness http/1.1 |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/legalbusiness HTTP/1.1 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Resurs för juridisk företags profil.
+Resursen för juridisk företagsprofil.
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -127,11 +122,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten den uppdaterade **LegalBusinessProfile**
+Om det lyckas innehåller svarstexten den uppdaterade **LegalBusinessProfile**
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

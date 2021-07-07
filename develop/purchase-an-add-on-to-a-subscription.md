@@ -4,52 +4,48 @@ description: Så här köper du ett tillägg till en befintlig prenumeration.
 ms.date: 11/29/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 975a2516bccdc6274bfec5d6a3286a649fc4f808
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: d8b700a2ad41a37ca0ad745f3e7767449974b18a
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769657"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547690"
 ---
 # <a name="purchase-an-add-on-to-a-subscription"></a>Köp ett tillägg till en prenumeration
 
-**Gäller för**
-
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud for US Government
 
 Så här köper du ett tillägg till en befintlig prenumeration.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Ett prenumerations-ID. Det här är den befintliga prenumerationen för vilken du kan köpa ett tilläggs erbjudande.
+- Ett prenumerations-ID. Det här är den befintliga prenumeration som du kan köpa ett tilläggserbjudande för.
 
-- Ett erbjudande-ID som identifierar tilläggs erbjudandet för köp.
+- Ett erbjudande-ID som identifierar tilläggserbjudandet att köpa.
 
 ## <a name="purchasing-an-add-on-through-code"></a>Köpa ett tillägg via kod
 
-När du köper ett tillägg till en prenumeration uppdaterar du den ursprungliga prenumerations ordningen med ordern för tillägget. I följande är customerId kund-ID: t, subscriptionId är prenumerations-ID och addOnOfferId är erbjudande-ID för tillägget.
+När du köper ett tillägg till en prenumeration uppdaterar du den ursprungliga prenumerationsbeställningen med ordern för tillägget. I följande är customerId kund-ID, subscriptionId är prenumerations-ID och addOnOfferId är erbjudandets ID för tillägget.
 
 Här är stegen:
 
-1.  Hämta ett gränssnitt till prenumerationens åtgärder.
+1.  Hämta ett gränssnitt för åtgärderna för prenumerationen.
 
     ``` csharp
     var subscriptionOperations = partnerOperations.Customers.ById(customerId).Subscriptions.ById(subscriptionId);
     ```
 
-2.  Använd det gränssnittet för att instansiera ett prenumerations objekt. Detta hämtar information om överordnad prenumeration, inklusive order-ID.
+2.  Använd det gränssnittet för att instansiera ett prenumerationsobjekt. Då får du information om den överordnade prenumerationen, inklusive order-ID:t.
 
     ``` csharp
     var parentSubscription = subscriptionOperations.Get();
     ```
 
-3.  Instansiera ett nytt [**order**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) objekt. Den här order instansen används för att uppdatera den ursprungliga order som används för att köpa prenumerationen. Lägg till ett enskilt rad objekt i den ordning som representerar tillägget.
+3.  Skapa en instans av ett nytt [**Order-objekt.**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) Den här orderinstansen används för att uppdatera den ursprungliga order som användes för att köpa prenumerationen. Lägg till ett objekt med en rad i den ordning som representerar tillägget.
     ``` csharp
     var orderToUpdate = new Order()
     {
@@ -68,16 +64,16 @@ Här är stegen:
     };
     ```
 
-4.  Uppdatera den ursprungliga ordningen för prenumerationen med den nya ordern för tillägget.
+4.  Uppdatera den ursprungliga beställningen för prenumerationen med den nya ordern för tillägget.
     ``` csharp
     Order updatedOrder = partnerOperations.Customers.ById(customerId).Orders.ById(parentSubscription.OrderId).Patch(orderToUpdate);
     ```
 
 ## <a name="c"></a>C\#
 
-Om du vill köpa ett tillägg börjar du med att hämta ett gränssnitt till prenumerations åtgärderna genom att anropa metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att identifiera kunden och metoden [**Subscriptions. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) för att identifiera den prenumeration som har tilläggs erbjudandet. Använd det [**gränssnittet**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) för att hämta prenumerations informationen genom att anropa [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get). Varför behöver du prenumerations informationen? Eftersom du behöver order-ID: t för prenumerations ordern. Det är den ordning som ska uppdateras med tillägget.
+Om du vill köpa ett tillägg börjar du med att hämta ett gränssnitt för prenumerationsåtgärder genom att anropa metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden och [**metoden Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) för att identifiera prenumerationen som har tilläggserbjudandet. Använd det [**gränssnittet för**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) att hämta prenumerationsinformationen genom att anropa [**Hämta**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get). Prenumerationsinformationen innehåller order-ID:t för prenumerationsordern, vilket är ordern som ska uppdateras med tillägget.
 
-Sedan instansierar du ett nytt [**order**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) -objekt och fyller det med en enda [**LineItem**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem) -instans som innehåller informationen för att identifiera tillägget, som du ser i följande kodfragment. Du använder det här nya objektet för att uppdatera prenumerations ordningen med tillägget. Slutligen kan du anropa [**korrigerings**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.patch) metoden för att uppdatera prenumerations ordningen, efter att först ha identifierat kunden med [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) och ordern med [**Orders. ById**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid).
+Skapa sedan en instans av ett nytt [**Order-objekt**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) och fyll i det med en enda [**LineItem-instans**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem) som innehåller informationen för att identifiera tillägget, enligt följande kodfragment. Du använder det här nya objektet för att uppdatera prenumerationsordningen med tillägget. Anropa slutligen [**Patch-metoden**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.patch) för att uppdatera prenumerationsordningen, efter att först ha identifierat kunden [**med IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) och [**ordern med Orders.ById**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid).
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -113,15 +109,15 @@ var orderToUpdate = new Order()
 Order updatedOrder = partnerOperations.Customers.ById(customerId).Orders.ById(parentSubscription.OrderId).Patch(orderToUpdate);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: AddSubscriptionAddOn.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **exempelklass:** AddSubscriptionAddOn.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod    | URI för förfrågan                                                                                              |
 |-----------|----------------------------------------------------------------------------------------------------------|
-| **9.0a** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Orders/{order-ID} http/1.1 |
+| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders/{order-id} HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
@@ -129,38 +125,38 @@ Använd följande parametrar för att identifiera kunden och ordern.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                                        |
 |------------------------|----------|----------|------------------------------------------------------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y        | Värdet är ett GUID-formaterat **kund-Tenant-ID** som identifierar kunden. |
-| **order-ID**           | **guid** | Y        | Order-ID.                                                              |
+| **kund-klient-id** | **guid** | Y        | Värdet är ett GUID-formaterat **kundklient-ID** som identifierar kunden. |
+| **order-id**           | **guid** | Y        | Orderidentifieraren.                                                              |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-I följande tabeller beskrivs egenskaperna i begär ande texten.
+I följande tabeller beskrivs egenskaperna i begärandetexten.
 
 ## <a name="order"></a>Beställning
 
 | Namn                | Typ             | Obligatorisk | Beskrivning                                          |
 |---------------------|------------------|----------|------------------------------------------------------|
-| Id                  | sträng           | N        | Order-ID.                                        |
-| ReferenceCustomerId | sträng           | Y        | Kund-ID.                                     |
-| Rad objekt           | objekt mat ris | Y        | En matris med [OrderLineItem](#orderlineitem) -objekt. |
-| CreationDate        | sträng           | N        | Datumet då ordern skapades i datum-/tids format. |
-| Attribut          | objekt           | N        | Innehåller "ObjectType": "order".                      |
+| Id                  | sträng           | N        | Order-ID:t.                                        |
+| ReferenceCustomerId | sträng           | Y        | Kund-ID: t.                                     |
+| LineItems           | matris med objekt | Y        | En matris med [OrderLineItem-objekt.](#orderlineitem) |
+| CreationDate        | sträng           | N        | Det datum då ordern skapades i datum/tid-format. |
+| Attribut          | objekt           | N        | Innehåller "ObjectType": "Order".                      |
 
 ## <a name="orderlineitem"></a>OrderLineItem
 
 | Namn                 | Typ   | Obligatorisk | Beskrivning                                                  |
 |----------------------|--------|----------|--------------------------------------------------------------|
-| LineItemNumber       | antal | Y        | Rad objekts numret, från och med 0.                       |
-| OfferId              | sträng | Y        | Erbjudande-ID för tillägget.                                  |
-| SubscriptionId       | sträng | N        | ID: t för den tilläggs prenumeration som har köpts.                 |
-| ParentSubscriptionId | sträng | Y        | ID för den överordnade prenumeration som har tilläggs erbjudandet. |
-| FriendlyName         | sträng | N        | Det egna namnet för det här rad objektet.                        |
-| Antal             | antal | Y        | Antalet licenser.                                      |
-| PartnerIdOnRecord    | sträng | N        | MPN-ID: t för post partnern.                         |
+| LineItemNumber       | antal | Y        | Radobjektets nummer, som börjar med 0.                       |
+| OfferId              | sträng | Y        | Erbjudandets ID för tillägget.                                  |
+| SubscriptionId       | sträng | N        | ID för tilläggsprenumerationen som köpts.                 |
+| ParentSubscriptionId | sträng | Y        | ID:t för den överordnade prenumeration som har tilläggserbjudandet. |
+| FriendlyName         | sträng | N        | Det egna namnet för det här radobjektet.                        |
+| Kvantitet             | antal | Y        | Antalet licenser.                                      |
+| PartnerIdOnRecord    | sträng | N        | MPN-ID:t för postpartnern.                         |
 | Attribut           | objekt | N        | Innehåller "ObjectType": "OrderLineItem".                      |
 
 ### <a name="request-example"></a>Exempel på begäran
@@ -202,11 +198,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden den uppdaterade prenumerations ordningen i svars texten.
+Om det lyckas returnerar den här metoden den uppdaterade prenumerationsordningen i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

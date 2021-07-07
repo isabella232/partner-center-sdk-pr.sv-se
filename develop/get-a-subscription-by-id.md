@@ -1,40 +1,35 @@
 ---
 title: Hämta en prenumeration efter ID
-description: Hämtar en prenumerations resurs som matchar kund-ID och prenumerations-ID.
+description: Hämtar en prenumerationsresurs som matchar kund-ID och prenumerations-ID.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 6690a6886eeb31a78cdb556280d4bdc2b4beb124
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 75f21a3f76e5502ba40b89995aa26bd0e668b3fa
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769627"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873827"
 ---
 # <a name="get-a-subscription-by-id"></a>Hämta en prenumeration efter ID
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Hämtar en [prenumerations](subscription-resources.md) resurs som matchar kund-ID och PRENUMERATIONS-ID.
+Hämtar en [prenumerationsresurs](subscription-resources.md) som matchar kund-ID och prenumerations-ID.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID.
 
 ## <a name="c"></a>C\#
 
-För att få en prenumeration efter ID börjar du med att hämta ett gränssnitt till prenumerations åtgärderna genom att anropa metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att identifiera kunden och metoden [**Subscriptions. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) för att identifiera prenumerationen. Använd det [**gränssnittet**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) för att hämta prenumerations informationen genom att anropa [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get).
+Om du vill hämta en prenumeration per ID börjar du med att hämta ett gränssnitt för prenumerationsåtgärder genom att anropa metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden och [**metoden Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) för att identifiera prenumerationen. Använd det [**gränssnittet för**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) att hämta prenumerationsinformationen genom att anropa [**Hämta**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get).
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -44,28 +39,28 @@ För att få en prenumeration efter ID börjar du med att hämta ett gränssnitt
 var subscriptionDetails = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(subscriptionID).Get();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: GetSubscription.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: GetSubscription.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                                |
 |---------|----------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Subscriptions/{ID-for-Subscription} http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Den här tabellen innehåller de frågeparametrar som krävs för att hämta prenumerationen.
+I den här tabellen visas de frågeparametrar som krävs för att hämta prenumerationen.
 
 | Namn                    | Typ     | Obligatorisk | Beskrivning                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **kund-ID för klient organisation**  | **guid** | Y        | Ett GUID som motsvarar kunden.     |
-| **ID för-prenumeration** | **guid** | Y        | Ett GUID som motsvarar prenumerationen. |
+| **kund-klient-id**  | **guid** | Y        | Ett GUID som motsvarar kunden.     |
+| **id-for-subscription** | **guid** | Y        | Ett GUID som motsvarar prenumerationen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -85,13 +80,13 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en [prenumerations](subscription-resources.md) resurs i svars texten.
+Om det lyckas returnerar den här metoden [en prenumerationsresurs](subscription-resources.md) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
-### <a name="response-example-for-a-standard-subscription"></a>Svars exempel för en standard prenumeration
+### <a name="response-example-for-a-standard-subscription"></a>Svarsexempel för en standardprenumeration
 
 ```http
 HTTP/1.1 200 OK
@@ -138,9 +133,9 @@ Date: Fri, 27 Jan 2017 21:51:40 GMT
 }
 ```
 
-### <a name="response-example-for-an-add-on-subscription"></a>Svars exempel för en tilläggs prenumeration
+### <a name="response-example-for-an-add-on-subscription"></a>Svarsexempel för en tilläggsprenumeration
 
-Svaret för en tilläggs prenumeration innehåller det överordnade prenumerations-ID: t i bröd texten och i länkarna.
+Svaret för en tilläggsprenumeration innehåller det överordnade prenumerations-ID:t i brödtexten och i länkarna.
 
 ```http
 HTTP/1.1 200 OK

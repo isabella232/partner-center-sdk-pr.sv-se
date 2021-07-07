@@ -1,81 +1,77 @@
 ---
 title: Resurser för tjänstbegäran
-description: Partner kan skicka fil tjänst begär Anden åt sina partners till att rapportera avbrott i tjänster som tillhandahålls av Microsoft eller begära annan teknisk support som de inte kan tillhandahålla.
+description: Partner kan skicka tjänstbegäranden åt sina partner för att rapportera avbrottstjänster som tillhandahålls av Microsoft eller för att begära annan teknisk support som de inte kan tillhandahålla.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 072f9eddaf9d854f1dcc8cc65f7928b6c95700fa
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 02a02e6a873ad8785150368f3d4b89af2b588529
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768925"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547367"
 ---
 # <a name="service-request-resources"></a>Resurser för tjänstbegäran
 
-**Gäller för**
+**Gäller för**: Partner Center-| PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Partner kan skicka fil tjänst begär Anden åt sina partners till att rapportera avbrott i tjänster som tillhandahålls av Microsoft eller begära annan teknisk support som de inte kan tillhandahålla.
+Partner kan skicka tjänstbegäranden åt sina partner för att rapportera avbrottstjänster som tillhandahålls av Microsoft eller för att begära annan teknisk support som de inte kan tillhandahålla.
 
 ## <a name="servicerequest"></a>ServiceRequest
 
 Beskriver en tjänstbegäran som har arkiverats av en partner, inklusive hur begäran fortskrider.
 
-| Egenskap         | Typ                                                          | Description                                                                          |
+| Egenskap         | Typ                                                          | Beskrivning                                                                          |
 |------------------|---------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| Rubrik            | sträng                                                        | Rubriken för tjänst begär Anden.                                                           |
+| Rubrik            | sträng                                                        | Rubriken för tjänstbegäran.                                                           |
 | Description      | sträng                                                        | Beskrivningen.                                                                     |
-| Allvarlighetsgrad         | sträng                                                        | Allvarlighets graden: "okänd", "kritisk", "måttlig" eller "minimal".                       |
-| SupportTopicId   | sträng                                                        | ID för support ämnet.                                                         |
-| SupportTopicName | sträng                                                        | Namnet på support ämnet.                                                       |
+| Allvarlighetsgrad         | sträng                                                        | Allvarlighetsgraden: "okänd", "kritisk", "måttlig" eller "minimal".                       |
+| SupportTopicId   | sträng                                                        | ID för supportämnet.                                                         |
+| SupportTopicName | sträng                                                        | Namnet på supportämnet.                                                       |
 | Id               | sträng                                                        | ID för tjänstbegäran.                                                       |
-| Status           | sträng                                                        | Status för tjänstbegäran: "ingen", "öppen", "stängd" eller "åtgärd \_ krävs". |
-| Organisation     | [ServiceRequestOrganization](#servicerequestorganization)     | Organisation för vilken tjänstbegäran skapas.                               |
-| PrimaryContact   | [ServiceRequestContact](#servicerequestcontact)               | Primär kontakt för tjänstbegäran.                                              |
-| LastUpdatedBy    | [ServiceRequestContact](#servicerequestcontact)               | "Senast uppdaterad av" kontakta ändringar i tjänstbegäran.                        |
-| ProductName      | sträng                                                        | Namnet på den produkt som motsvarar tjänst förfrågan.                     |
-| ProductId        | sträng                                                        | Produktens ID.                                                               |
-| CreatedDate      | date                                                          | Datum för när service förfrågan skapades.                                          |
-| LastModifiedDate | date                                                          | Det datum då tjänste förfrågan senast ändrades.                                 |
-| LastClosedDate   | date                                                          | Datumet då tjänste förfrågan senast stängdes.                                   |
-| FileLinks        | matris med [fileinfo](utility-resources.md#fileinfo) -resurser | Den samling med fil länkar som hör till tjänstbegäran.                    |
+| Status           | sträng                                                        | Status för tjänstbegäran: "none", "open", "closed" eller "attention \_ needed". |
+| Organisation     | [ServiceRequestOrganization](#servicerequestorganization)     | Organisation som tjänstbegäran skapas för.                               |
+| PrimaryContact   | [ServiceRequestContact](#servicerequestcontact)               | Primär kontakt i tjänstbegäran.                                              |
+| LastUpdatedBy    | [ServiceRequestContact](#servicerequestcontact)               | "Senast uppdaterad av"-kontakt för ändringar i tjänstbegäran.                        |
+| ProductName      | sträng                                                        | Namnet på den produkt som motsvarar tjänstbegäran.                     |
+| ProductId        | sträng                                                        | ID för produkten.                                                               |
+| CreatedDate      | date                                                          | Datumet då tjänstbegäran skapades.                                          |
+| LastModifiedDate | date                                                          | Det datum då tjänstbegäran senast ändrades.                                 |
+| LastClosedDate   | date                                                          | Det datum då tjänstbegäran senast avslutades.                                   |
+| FileLinks        | matris med [FileInfo-resurser](utility-resources.md#fileinfo) | Den samling fillänkar som hör till tjänstbegäran.                    |
 | NewNote          | [ServiceRequestNote](#servicerequestnote)                     | En anteckning kan läggas till i en befintlig tjänstbegäran.                                  |
 | Kommentarer            | matris med [ServiceRequestNotes](#servicerequestnote)           | En samling anteckningar som lagts till i tjänstbegäran.                                  |
-| CountryCode      | sträng                                                        | Det land som motsvarar tjänste förfrågan.                                    |
-| Attribut       | ResourceAttributes                                            | De metadata-attribut som motsvarar tjänst förfrågan.                        |
+| CountryCode      | sträng                                                        | Det land som motsvarar tjänstbegäran.                                    |
+| Attribut       | ResourceAttributes                                            | Metadataattributen som motsvarar tjänstbegäran.                        |
 
 ## <a name="servicerequestcontact"></a>ServiceRequestContact
 
 Beskriver en kontakt som skapar eller ändrar en tjänstbegäran.
 
-| Egenskap     | Typ                                                      | Description                                            |
+| Egenskap     | Typ                                                      | Beskrivning                                            |
 |--------------|-----------------------------------------------------------|--------------------------------------------------------|
-| Organisation | [ServiceRequestOrganization](#servicerequestorganization) | Organisation för vilken tjänstbegäran skapas. |
+| Organisation | [ServiceRequestOrganization](#servicerequestorganization) | Organisation som tjänstbegäran skapas för. |
 | ContactId    | sträng                                                    | Kontaktens unika ID.                               |
-| LastName     | sträng                                                    | Kontaktens efter namn.                          |
+| LastName     | sträng                                                    | Kontaktens efternamn.                          |
 | FirstName    | sträng                                                    | Kontaktens förnamn.                         |
 | E-post        | sträng                                                    | Kontaktens e-postadress.                              |
-| PhoneNumber  | sträng                                                    | Telefonnumret till kontakten.                       |
+| PhoneNumber  | sträng                                                    | Kontaktens telefonnummer.                       |
 
 ## <a name="servicerequestnote"></a>ServiceRequestNote
 
 Beskriver en anteckning som är kopplad till en tjänstbegäran.
 
-| Egenskap      | Typ   | Description                                  |
+| Egenskap      | Typ   | Beskrivning                                  |
 |---------------|--------|----------------------------------------------|
 | CreatedByName | sträng | Namnet på anteckningens skapare.         |
-| CreatedDate   | date   | Datum och tid när anteckningen skapades. |
+| CreatedDate   | date   | Datum och tid då anteckningen skapades. |
 | Text          | sträng | Anteckningens text.                        |
 
 ## <a name="servicerequestorganization"></a>ServiceRequestOrganization
 
 Beskriver den organisation som tjänstbegäran skapas för.
 
-| Egenskap    | Typ   | Description                           |
+| Egenskap    | Typ   | Beskrivning                           |
 |-------------|--------|---------------------------------------|
 | Id          | sträng | Organisationens unika ID.    |
 | Name        | sträng | Organisationens namn.         |
@@ -83,12 +79,12 @@ Beskriver den organisation som tjänstbegäran skapas för.
 
 ## <a name="supporttopic"></a>SupportTopic
 
-Beskriver ett support avsnitt. Tjänst begär Anden anger ett support ämne för att säkerställa att de bearbetas snabbt och effektivt.
+Beskriver ett supportämne. Tjänstförfrågningar anger ett supportämne för att säkerställa att de bearbetas snabbt och effektivt.
 
 | Egenskap    | Typ               | Beskrivning                                                   |
 |-------------|--------------------|---------------------------------------------------------------|
-| Name        | sträng             | Namnet på support ämnet.                                |
-| Description | sträng             | Beskrivning av support avsnittet.                         |
-| Id          | sträng             | Unikt ID för support ämnet.                           |
-| Attribut  | ResourceAttributes | De metadata-attribut som motsvarar tjänst förfrågan. |
+| Name        | sträng             | Namnet på supportämnet.                                |
+| Description | sträng             | Beskrivning av supportämnet.                         |
+| Id          | sträng             | Unikt ID för supportämnet.                           |
+| Attribut  | ResourceAttributes | Metadataattributen som motsvarar tjänstbegäran. |
 

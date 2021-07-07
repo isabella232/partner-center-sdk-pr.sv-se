@@ -1,41 +1,37 @@
 ---
-title: Få en användnings översikt för en partner
-description: Du kan använda PartnerUsageSummary-resursen för att få en översikt över partner användningen av alla kunder som har köpt en viss Azure-tjänst eller resurs under den aktuella fakturerings perioden.
+title: Hämta en användningssammanfattning för en partner
+description: Du kan använda resursen PartnerUsageSummary för att hämta en partneranvändningssammanfattning för alla kunder som har köpt en specifik Azure-tjänst eller -resurs under den aktuella faktureringsperioden.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: ba1885f46043a75274595239fe61ce3ef0998acf
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: f003980f1b521ad0ac26dbfd0d4821b9096fdd27
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769036"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873912"
 ---
-# <a name="get-a-usage-summary-for-a-partner"></a>Få en användnings översikt för en partner
+# <a name="get-a-usage-summary-for-a-partner"></a>Hämta en användningssammanfattning för en partner
 
-**Gäller för:**
+**Gäller för**: Partner Center-| PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+Du kan använda resursen **PartnerUsageSummary** för att få en partneranvändningssammanfattning för alla kunder som har köpt en specifik Azure-tjänst eller -resurs under den aktuella faktureringsperioden.
 
-Du kan använda **PartnerUsageSummary** -resursen för att få en översikt över partner användningen av alla kunder som har köpt en viss Azure-tjänst eller resurs under den aktuella fakturerings perioden.
-
-*Det totala antalet som returneras av detta API returnerar inte förbrukning för kunder som har en Azure-plan.* Planerat för utfasning i framtiden.
+*Summan som returneras av det här API:et returnerar inte förbrukning för kunder som har en Azure-plan.* Planerat för utfasning i framtiden.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-För att få en användnings översikt för alla kunder som har köpt en viss Azure-tjänst eller resurs under den aktuella fakturerings perioden:
+Så här hämtar du en användningssammanfattning för alla kunder som har köpt en specifik Azure-tjänst eller -resurs under den aktuella faktureringsperioden:
 
-1. Använd din **IAggregatePartner**.
+1. Använd din **IAggregatePartner.**
 
-2. Anropa egenskapen **UsageSummary** följt av metoderna **Get ()** eller **GetAsync ()** :
+2. Anropa egenskapen **UsageSummary** följt av **metoderna Get()** eller **GetAsync():**
 
     ``` csharp
     // IAggregatePartner partnerOperations;
@@ -43,23 +39,23 @@ För att få en användnings översikt för alla kunder som har köpt en viss Az
     var usageSummary = partnerOperations.UsageSummary.Get();
     ```
 
-Ett exempel finns i följande avsnitt:
+Ett exempel finns i följande:
 
-- Exempel: [konsol test app](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Exempel: [Konsoltestapp](console-test-app.md)
+- Project: **PartnerSDK.FeatureSamples**
 - Klass: **GetPartnerUsageSummary.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                         |
 |---------|---------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/usagesummary http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/usagesummary HTTP/1.1 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -77,11 +73,11 @@ MS-CorrelationId: 47c36033-af5d-4457-80a4-512c1626fac4
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en **PartnerUsageSummary** -resurs i svars texten.
+Om det lyckas returnerar den här metoden **en PartnerUsageSummary-resurs** i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

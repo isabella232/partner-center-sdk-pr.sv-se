@@ -1,29 +1,25 @@
 ---
-title: Säkerhets krav för partner
-description: 'Förstå de REST-API: er som hjälper dig att genomdriva Multi-Factor Authentication för din partner klient.'
+title: Säkerhetskrav för partner
+description: Förstå REST-API:erna som hjälper dig att framtvinga multifaktorautentisering för din partnerklientorganisation.
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
-ms.openlocfilehash: dcd3ac364e0d86ecac2c51eb34de48f1d66e2158
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: cbdf081f7d9424280e778364b130c7ac1c26f0e3
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769222"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445331"
 ---
-# <a name="partner-security-requirements-status"></a>Status för partner säkerhets krav
+# <a name="partner-security-requirements-status"></a>Status för partnersäkerhetskrav
 
-Gäller för:
+I den här artikeln beskrivs de REST-API:er som är relaterade till multifaktorautentisering (MFA) i Partnercenter. Dessa API:er hjälper dig att tillämpa MFA för varje användarkonto i din partnerklientorganisation. 
 
-- Partnercenter
+## <a name="partner-security-requirements-overview"></a>Översikt över partnersäkerhetskrav
 
-I den här artikeln beskrivs de REST-API: er som är relaterade till Multi-Factor Authentication (MFA) i Partner Center. Dessa API: er hjälper dig att genomdriva MFA för varje användar konto i din partner klient. 
+- [Översikt/partnercenter/partnersäkerhetskrav)
 
-## <a name="partner-security-requirements-overview"></a>Översikt över partner säkerhets krav
-
-- [Översikt/Partner-Center/partner-Security – krav)
-
-## <a name="understand-mfa-adoption-status"></a>Förstå status för MFA-införande
+## <a name="understand-mfa-adoption-status"></a>Förstå MFA-implementeringsstatus
 
 - [Hämta portalbegäranden utan MFA](get-portal-requests-without-mfa.md)
 - [Hämta sammanfattning av API-begäran](get-api-request-summary.md)

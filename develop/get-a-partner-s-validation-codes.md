@@ -1,39 +1,35 @@
 ---
-title: Hämta en partners offentliga community-moln validerings koder
-description: Så här hämtar du en partners offentliga community-moln validerings koder.
+title: Hämta en partners Government Community Cloud valideringskoder
+description: Hur du hämtar en partners Government Community Cloud valideringskoder.
 ms.date: 11/08/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khakiali
 ms.author: alikhaki
-ms.openlocfilehash: d84a3d3c69d835e42565c4e6f1edb06ab338340a
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 04bccf587628337004a5825b534048945f791839
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769285"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873878"
 ---
 # <a name="get-a-partners-validation-codes"></a>Hämta en partners valideringskoder
 
-**Gäller för**
+Den här artikeln beskriver hur du hämtar en samling av en partners Government Community Cloud valideringskoder. En valideringskod krävs för att skapa en kund i government community cloud.
 
-- Partnercenter
-
-Så här hämtar du en samling av en partners validerings koder för offentliga community-moln. En validerings kod krävs för att skapa en kund i det offentliga community-molnet.
-
-Om du är intresse rad av att organisationen eller din kund organisation godkänts för Office 365 myndighets GCC för CSP, kan du läsa [Office 365 myndigheter GCC för CSP-partner och kund villkor för godkännande/Partner-Center/CSP-gcc-validate).
+Om du är intresserad av att ha din organisation eller din kunds organisation godkänd för Office 365 för myndigheter GCC för CSP kan du gå till Office 365 för myndigheter GCC för [villkor för CSP-partner och kundberättigande.](/partner-center/csp-gcc-validate)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Bekräfta validering efter ifyllning av formulär [här](https://products.office.com/government/eligibility-validation?ReqType=CSPPartner).
+- Verifieringen har bekräftats när du har fyllt i formuläret [här](https://products.office.com/government/eligibility-validation?ReqType=CSPPartner).
 
 - En kund utan kvalificering.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en lista över alla validerings koder för en partner anropar du **GetValidationCodes**.
+Om du vill hämta en lista över alla valideringskoder för en partner anropar du **GetValidationCodes**.
 
 ``` csharp
 // create the partner operations
@@ -44,15 +40,15 @@ var gccValidations = partnerOperations.Validations.GetValidationCodes();
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                          |
 |---------|------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/all/validations http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/all/validations HTTP/1.1 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -70,11 +66,11 @@ MS-RequestId: 7266f5f6-30ca-4672-9eb6-6c9d6dd0e9d3
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en lista över [**ValidationCode**](utility-resources.md#validationcode) -resurser i svars texten.
+Om det lyckas returnerar den här metoden en lista [**över ValidationCode-resurser**](utility-resources.md#validationcode) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

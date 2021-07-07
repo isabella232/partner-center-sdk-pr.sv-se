@@ -1,28 +1,23 @@
 ---
 title: Ge support
-description: I det här avsnittet beskrivs hur leverantörer av moln lösningar kan använda Partner Center för att hantera support-och tjänst begär Anden program mässigt.
+description: I det här avsnittet beskrivs hur Molnlösningsleverantör kan använda Partnercenter för att programmatiskt hantera support- och tjänstbegäranden.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 71bcd766c14554112f63f4e063a6f9a2f35b1228
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: 6b8c8c846ab0e1d8669cc296c2490c921526a62c
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97769489"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547719"
 ---
 # <a name="provide-support"></a>Ge support
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+I det här avsnittet beskrivs hur Molnlösningsleverantör kan använda Partnercenter för att programmatiskt hantera support- och tjänstbegäranden.
 
-I det här avsnittet beskrivs hur leverantörer av moln lösningar kan använda Partner Center för att hantera support-och tjänst begär Anden program mässigt.
-
-## <a name="admin-services-for-a-customer"></a>Admin-tjänster för en kund
+## <a name="admin-services-for-a-customer"></a>Administratörstjänster för en kund
 
 - [Hämta de hanterade tjänsterna för en kund efter ID](get-the-managed-services-for-a-customer-by-id.md)
 
@@ -32,4 +27,4 @@ I det här avsnittet beskrivs hur leverantörer av moln lösningar kan använda 
 - [Hämta information om tjänstbegäran efter ID](get-service-request-details-by-id.md)
 - [Uppdatera en tjänstbegäran](update-a-service-request.md)
 
-Mer information finns i [scenarier](scenarios.md).
+Mer information finns i [Scenarier](scenarios.md).

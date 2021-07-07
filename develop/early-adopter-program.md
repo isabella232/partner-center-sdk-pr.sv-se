@@ -1,52 +1,47 @@
 ---
 title: Gå med i Partnercenter-programmet för tidiga API- och SDK-användare
-description: Partner kan samar beta med Microsoft för utveckling av partner funktioner och-funktioner.
+description: Partner kan samarbeta med Microsoft för att utveckla partnerfunktioner.
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 62770ea695f63e1be7dbd624f1239286620a6432
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 8bb46a84aaab41b8e65376ce580a40ce4bc1d188
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769171"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906379"
 ---
 # <a name="join-the-partner-center-api-and-sdk-early-adopter-program"></a>Gå med i Partnercenter-programmet för tidiga API- och SDK-användare
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Partner kan samar beta med Microsoft om utveckling av API-och SDK-funktioner i Partner Center.
+Partner kan samarbeta med Microsoft när det gäller utveckling av Partner Center API och SDK-funktioner.
 
 ## <a name="program-features"></a>Programfunktioner
 
-Följande funktioner är tillgängliga för partner som ansluter till Partner Center API och SDK tidigt i programmet:
+Följande funktioner är tillgängliga för partner som går med i Partner Center API och SDK Early Adopter Program:
 
-- **Åtkomst till för hands versioner av API: er och SDK: er för partner Center**: vi kommer att tillkännage nya funktioner och funktioner i den privata partner Centers Yammer-grupp för program i förtid.
+- **Åtkomst till förhandsversioner av Partner Center-API:er** och SDK: Vi kommer att presentera nya funktioner och funktioner i den privata partnercentergruppen Early Adopter Program Yammer.
 
-- **Månatlig webb seminarier**: en månatlig webb seminarium för tidiga antaganden kommer att utföras för att besvara frågor, samla in feedback, dela scheman och tids linjer och tillhandahålla stöd för nya funktioner.
+- **Månatliga webbseminor:** ett månatligt webbseminar för tidiga användare kommer att genomföras för att besvara frågor, samla in feedback, dela scheman och tidslinjer samt ge stöd för nya funktioner.
 
-- **Support från ämnes experter**: deltagare kan ge feedback och kommunicera med ämnes experter (SMF) i den privata Yammer-gruppen.
+- **Stöd från ämnesexperter:** deltagarna kan ge feedback och kommunicera med ämnesexperter i den privata Yammer gruppen.
 
-## <a name="join-the-program"></a>Delta i programmet
+## <a name="join-the-program"></a>Anslut till programmet
 
-Du måste vara en **befintlig CSP-partner** eller en **godkänd plattforms leverantör** för att kunna delta i programmet.
+Du måste vara en **befintlig CSP-partner eller** en **godkänd plattformsleverantör för** att kunna delta i programmet.
 
-1. **Delta i programmet för Yammer Group** [partner Center tidigt](https://www.yammer.com/cloudpartnercommunity/#/threads/inGroup?type=in_group&feedId=5944712&view=all). Det tar lite tid att granska ditt program. Vi skickar e-post när du har godkänts för att ansluta till gruppen.
+1. **Gå med Yammer partnergruppen** [Partner Center Early Adopter Program](https://www.yammer.com/cloudpartnercommunity/#/threads/inGroup?type=in_group&feedId=5944712&view=all). Det tar oss lite tid att granska ditt program. Vi skickar ett e-postmeddelande till dig när du har godkänts för att gå med i gruppen.
 
    > [!NOTE]
-   > Du kan behöva ansluta till Microsoft Cloud Yammer community Network innan du kan gå med i Yammer-gruppen för tidigt i Partner Center.
+   > Du kan behöva gå med i Microsoft Cloud Yammer Community-nätverket innan du kan gå med i partnercentrets Yammer grupp.
 
-2. **Skicka ett e- [pctap@microsoft.com](mailto:pctap@microsoft.com) postmeddelande till** med ditt Microsoft-ID eller ditt tips (Testing in Production) sandbox-konto och din primära domän.
+2. **Skicka ett [pctap@microsoft.com](mailto:pctap@microsoft.com) e-postmeddelande till** med ditt Microsoft-ID eller ditt TiP-konto (Testing in Production) och din primära domän.
 
    > [!TIP]
-   > Du hittar ditt Microsoft-ID på sidan **organisations profil** på menyn **konto inställningar** .
+   > Du hittar ditt Microsoft-ID på **sidan Organisationsprofil** på **menyn Inställningar** konto.
 
-3. **Delta aktivt** i programmet genom att testa nya funktioner tidigt, engagera dig hos Microsoft och ge feedback. Ha nytta av andra i gruppen för tidiga antaganden.
+3. **Delta aktivt** i programmet genom att testa nya funktioner tidigt, engagera dig hos Microsoft och ge feedback. Var engagerade i andra i den tidiga communityn.
 
    > [!IMPORTANT]
    > Microsoft förbehåller sig rätten att ta bort inaktiva partner från programmet.

@@ -1,37 +1,33 @@
 ---
 title: Hämta en SKU efter ID
-description: Hämtar en SKU för den angivna produkten med angivet SKU-ID.
+description: Hämtar en SKU för den angivna produkten med det angivna SKU-ID:t.
 ms.date: 01/08/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 54ef72413d2d2b9e7154e82e4bbdd7427a79a2dd
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 9516a87a438a0a84a6f6069c1f9b2a2e97e90fba
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769090"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873861"
 ---
 # <a name="get-a-sku-by-id"></a>Hämta en SKU efter ID
 
-**Gäller för**
-
-- Partnercenter
-
-Hämtar en SKU för den angivna produkten med angivet SKU-ID.
+Hämtar en SKU för den angivna produkten med det angivna SKU-ID:t.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
 - Ett produkt-ID.
 
-- ETT SKU-ID.
+- Ett SKU-ID.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta information om en angiven SKU börjar du med att följa stegen i [Hämta en produkt efter ID](get-a-product-by-id.md) för att hämta gränssnittet för en speciell produkts drift. Från det resulterande gränssnittet väljer du egenskapen **SKU: er** för att hämta ett gränssnitt med tillgängliga åtgärder för SKU: er. Skicka SKU-ID: t till metoden **ById ()** och anropa **Get ()** eller **GetAsync ()** för att hämta SKU-informationen.
+Börja med att följa stegen i Hämta en produkt efter [ID](get-a-product-by-id.md) för att hämta gränssnittet för en specifik produkts åtgärder för att hämta information om en specifik SKU. Från det resulterande gränssnittet väljer du egenskapen **SKU:er** för att hämta ett gränssnitt med tillgängliga åtgärder för SKU:er. Skicka SKU-ID:t till **metoden ById()** och anropa **Get()** eller **GetAsync()** för att hämta SKU-informationen.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -45,25 +41,25 @@ var sku = partnerOperations.Products.ByCountry(countryCode).ById(productId).Skus
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                         |
 |---------|---------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Products/{Product-ID}/SKUs/{SKU-ID}? land = {Country-Code} HTTP/1.1   |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{product-id}/skus/{sku-id}?country={country-code} HTTP/1.1   |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande sökväg och frågeparametrar för att hämta en SKU för den angivna produkten med det angivna SKU-ID: t.
+Använd följande sökväg och frågeparametrar för att hämta en SKU för den angivna produkten med hjälp av det angivna SKU-ID:t.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| produkt-ID             | sträng   | Yes      | En sträng som identifierar produkten.                           |
-| SKU-ID                 | sträng   | Yes      | En sträng som identifierar SKU: n.                               |
-| landskod           | sträng   | Yes      | Ett land/region-ID.                                            |
+| produkt-id             | sträng   | Ja      | En sträng som identifierar produkten.                           |
+| sku-id                 | sträng   | Ja      | En sträng som identifierar SKU:n.                               |
+| landskod           | sträng   | Ja      | Ett lands-/regions-ID.                                            |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -85,18 +81,18 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en [SKU](product-resources.md#sku) -resurs.
+Om det lyckas innehåller svarstexten en [SKU-resurs.](product-resources.md#sku)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
-Den här metoden returnerar följande fel koder:
+Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Description                                                                                               |
+| HTTP-statuskod     | Felkod   | Beskrivning                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 404                  | 400013       | Det gick inte att hitta produkten.                                                                                    |
-| 404                  | 400018       | Det gick inte att hitta SKU: n.                                                                                        |
+| 404                  | 400018       | Det gick inte att hitta SKU:n.                                                                                        |
 
 ### <a name="response-example"></a>Exempel på svar
 
