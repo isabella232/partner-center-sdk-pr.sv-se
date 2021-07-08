@@ -1,40 +1,35 @@
 ---
 title: Hämta en lista över erbjudandekategorier efter marknad
-description: Lär dig hur du hämtar en samling som innehåller alla erbjudande kategorier i ett specifikt land/region och nationella inställningar för alla Microsoft-moln.
+description: Lär dig hur du hämtar en samling som innehåller alla erbjudandekategorier i ett visst land/en viss region och språk för alla Microsoft-moln.
 ms.date: 07/25/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 05aad095c6cb8eaee4cbf7ce976ca1b4b7a408c4
-ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
+ms.openlocfilehash: e699355f07dda3941eafed32f5f635d94000abd1
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106500064"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874286"
 ---
 # <a name="get-a-list-of-offer-categories-by-market"></a>Hämta en lista över erbjudandekategorier efter marknad
 
-**Gäller för:**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Den här artikeln beskriver hur du hämtar en samling som innehåller alla erbjudande kategorier i ett specifikt land/region och nationella inställningar.
+Den här artikeln beskriver hur du hämtar en samling som innehåller alla erbjudandekategorier i ett visst land/region och språk.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Så här hämtar du en lista över erbjudande kategorier i ett specifikt land/region och nationella inställningar:
+Så här hämtar du en lista över erbjudandekategorier i ett visst land/region och språk:
 
-1. Använd din [**IAggregatePartner. Operations**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) -samling för att anropa metoden [**with ()**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner.with) i en specifik kontext.
+1. Använd din [**IAggregatePartner.Operations-samling**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) för att anropa [**metoden With()**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner.with) i en viss kontext.
 
-2. Kontrol lera egenskapen [**OfferCategories**](/dotnet/api/microsoft.store.partnercenter.ipartner.offercategories) för det resulterande objektet.
+2. Kontrollera egenskapen [**OfferCategories**](/dotnet/api/microsoft.store.partnercenter.ipartner.offercategories) för det resulterande objektet.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,33 +37,33 @@ Så här hämtar du en lista över erbjudande kategorier i ett specifikt land/re
 ResourceCollection<OfferCategory> offerCategoryResults = partnerOperations.With(RequestContextFactory.Instance.Create()).OfferCategories.ByCountry("US").Get();
 ```
 
-Ett exempel finns i följande avsnitt:
+Ett exempel finns i följande:
 
-- Exempel: [konsol test app](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSample**
-- Klass: **PartnerSDK. FeatureSample**
+- Exempel: [Konsoltestapp](console-test-app.md)
+- Project: **PartnerSDK.FeatureSample**
+- Klass: **PartnerSDK.FeatureSample**
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                  |
 |---------|----------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offercategories? land = {Country-ID} http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offercategories?country={country-id} HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>URI-parameter
 
-Den här tabellen innehåller de frågeparametrar som krävs för att hämta erbjudande kategorier.
+I den här tabellen visas de frågeparametrar som krävs för att hämta erbjudandekategorierna.
 
 | Namn           | Typ       | Obligatorisk | Beskrivning            |
 |----------------|------------|----------|------------------------|
-| **lands-ID** | **sträng** | Y        | Land/region-ID. |
+| **lands-id** | **sträng** | Y        | Land/region-ID. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Ett **språkvariant-ID** som är formaterat som en sträng krävs.
+Ett **språk-ID formaterat** som en sträng krävs.
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -88,11 +83,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling **OfferCategory** -resurser i svars texten.
+Om det lyckas returnerar den här metoden en samling **OfferCategory-resurser** i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

@@ -1,56 +1,51 @@
 ---
-title: 'Hämta en lista över SKU: er för en produkt (per kund)'
-description: 'Hämtar en samling SKU: er för den angivna produkten per kund.'
+title: Hämta en lista över SKU:er för en produkt (efter kund)
+description: Hämtar en samling SKU:er för den angivna produkten per kund.
 ms.assetid: ''
 ms.date: 10/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 6b9c9bcd52798006d7f686405f059192a722c7e8
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: b76526d97ba9027897fc88954ba45186d58aefb8
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769096"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874167"
 ---
-# <a name="get-a-list-of-skus-for-a-product-by-customer"></a>Hämta en lista över SKU: er för en produkt (per kund)
+# <a name="get-a-list-of-skus-for-a-product-by-customer"></a>Hämta en lista över SKU:er för en produkt (efter kund)
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Hämtar en samling SKU: er för en viss produkt som är tillgänglig för en befintlig kund.
+Hämtar en samling SKU:er för en viss produkt som är tillgänglig för en befintlig kund.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
-- Ett produkt-ID (**produkt-ID**).
+- Ett produkt-ID (**product-id**).
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod | URI för förfrågan                                                                                                        |
 |--------|--------------------------------------------------------------------------------------------------------------------|
-| POST   | [*\{ BASEURL \}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Products/{Product-ID}/SKUs http/1.1 |
+| POST   | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/products/{product-id}/skus HTTP/1.1 |
 
 ### <a name="request-uri-parameter"></a>URI-parameter för begäran
 
 | Namn               | Typ | Obligatorisk | Beskrivning                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
-| kund-ID för klient organisation | GUID | Yes | Värdet är ett GUID-formaterat **kund-ID**, som är en identifierare som gör att du kan ange en kund. |
-| produkt-ID | sträng | Yes | En sträng som identifierar produkten. |
+| kund-klient-id | GUID | Ja | Värdet är ett GUID-formaterat **kundklientorganisations-ID,** vilket är en identifierare som gör att du kan ange en kund. |
+| produkt-id | sträng | Ja | En sträng som identifierar produkten. |
 
 ### <a name="request-header"></a>Begärandehuvud
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -68,15 +63,15 @@ MS-CorrelationId: b1939cb2-e83d-4fb0-989f-514fb741b734
 
 ## <a name="rest-response"></a>REST-svar
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
-Den här metoden returnerar följande fel koder:
+Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod | Felkod | Description |
+| HTTP-statuskod | Felkod | Beskrivning |
 |------------------|------------|-------------|
-| 404 | 400013 | Det gick inte att hitta den överordnade produkten. |
+| 404 | 400013 | Den överordnade produkten hittades inte. |
 
 ### <a name="response-example"></a>Exempel på svar
 

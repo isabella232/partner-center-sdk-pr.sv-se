@@ -1,43 +1,38 @@
 ---
 title: Hämta en lista över kunder
-description: Så här hämtar du en samling resurser som representerar alla partners kunder.
+description: Hur du hämtar en samling resurser som representerar alla en partners kunder.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 2dd8469458809ab38b6d6081adc91d6d1184d2d0
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 840c9d1a61451763d37a19639f99b12f1deb7521
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769630"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874354"
 ---
 # <a name="get-a-list-of-customers"></a>Hämta en lista över kunder
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Den här artikeln beskriver hur du får en samling resurser som representerar alla partners kunder.
+Den här artikeln beskriver hur du hämtar en samling resurser som representerar alla en partners kunder.
 
 > [!TIP]
-> Du kan också utföra den här åtgärden på instrument panelen för partner Center. Välj **Visa kunder** under **kund hantering** på huvud sidan. Eller Välj **kunder** på sid panelen.
+> Du kan också utföra den här åtgärden på instrumentpanelen i Partnercenter. På huvudsidan går du till **Kundhantering och** väljer **Visa kunder.** Eller välj Kunder i **sidopanelen.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
 Så här hämtar du en lista över alla kunder:
 
-1. Använd [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) -samlingen för att skapa ett **IPartner** -objekt.
+1. Använd samlingen [**IAggregatePartner.Customers för**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) att skapa ett **IPartner-objekt.**
 
-2. Hämta kund listan med metoderna [**query ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) eller [**QueryAsync ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync) . (Instruktioner om hur du skapar en fråga finns i klassen [**QueryFactory**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory) .)
+2. Hämta kundlistan med metoderna [**Query()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) [**eller QueryAsync().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync) (Anvisningar om hur du skapar en fråga finns i [**klassen QueryFactory.)**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -50,10 +45,10 @@ var customersBatch = scopedPartnerOperations.Customers.Query(QueryFactory.Instan
 var customersEnumerator = scopedPartnerOperations.Enumerators.Customers.Create(customersBatch);
 ```
 
-Ett exempel finns i följande avsnitt:
+Ett exempel finns i följande:
 
-- Exempel: [konsol test app](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Exempel: [Konsoltestapp](console-test-app.md)
+- Project: **PartnerSDK.FeatureExempel**
 - Klass: **CustomerPaging.cs**
 
 ## <a name="java"></a>Java
@@ -62,9 +57,9 @@ Ett exempel finns i följande avsnitt:
 
 Så här hämtar du en lista över alla kunder:
 
-1. Använd funktionen [**IAggregatePartner. getCustomers**] för att få en referens till kund åtgärderna.
+1. Använd funktionen [**IAggregatePartner.getCustomers**] för att hämta en referens till kundåtgärderna.
 
-2. Hämta kund listan med funktionen **query ()** .
+2. Hämta kundlistan med hjälp av **funktionen query().**
 
 ```java
 // Query the customers, get the first page if a page size was set, otherwise get all customers
@@ -100,11 +95,11 @@ Get-PartnerCustomer
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers? size = {size} http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers?size={size} HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>URI-parameter
 
@@ -112,11 +107,11 @@ Använd följande frågeparameter för att hämta en lista över kunder.
 
 | Namn     | Typ    | Obligatorisk | Beskrivning                                        |
 |----------|---------|----------|----------------------------------------------------|
-| **ändra** | **int** | Y        | Antalet resultat som ska visas samtidigt. |
+| **Storlek** | **int** | Y        | Antalet resultat som ska visas samtidigt. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -134,11 +129,11 @@ MS-CorrelationId: b12260fb-82de-4701-a25f-dcd367690645
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling [kund](customer-resources.md#customer) resurser i svars texten.
+Om det lyckas returnerar den här metoden en samling [kundresurser](customer-resources.md#customer) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

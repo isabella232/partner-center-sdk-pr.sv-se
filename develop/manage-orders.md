@@ -1,25 +1,21 @@
 ---
 title: Hantera beställningar
-description: I det här avsnittet beskrivs hur leverantörer av moln lösningar kan använda Partner Center för att hantera kund beställningar och prenumerationer program mässigt.
+description: I det här avsnittet beskrivs hur Molnlösningsleverantör kan använda Partnercenter för att programmatiskt hantera kundorder och prenumerationer.
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b3df171ecf0e86cb07372deec420244af56f05d1
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: 390baa87c96706e60582811774b74fcf11567058
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97769483"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548166"
 ---
 # <a name="manage-orders"></a>Hantera beställningar
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-I det här avsnittet beskrivs hur leverantörer av moln lösningar kan använda Partner Center för att hantera kund beställningar och prenumerationer program mässigt.
+I det här avsnittet beskrivs hur Molnlösningsleverantör kan använda Partnercenter för att programmatiskt hantera kundorder och prenumerationer.
 
 ## <a name="purchase-azure-reserved-vm-instances"></a>Köp Azure Reserved VM Instances
 
@@ -31,13 +27,13 @@ I det här avsnittet beskrivs hur leverantörer av moln lösningar kan använda 
 
 ## <a name="get-offers-from-the-catalog"></a>Hämta erbjudanden från katalogen
 
-- [Hämta en lista över erbjudande kategorier efter land och nationella inställningar](get-a-list-of-offer-categories-by-country-and-locale.md)
+- [Hämta en lista över erbjudandekategorier efter land och språk](get-a-list-of-offer-categories-by-country-and-locale.md)
 - [Hämta en lista över erbjudanden för en marknad](get-a-list-of-offers-for-a-market.md)
 - [Hämta ett erbjudande efter ID](get-an-offer-by-id.md)
 - [Hämta tillägg för ett erbjudande-ID](get-addon-offers-by-offer-id.md)
 - [Hämta en lista över produkter](get-a-list-of-products.md)
 - [Hämta en produkt efter ID](get-a-product-by-id.md)
-- [Hämta en lista över SKU: er för en produkt](get-a-list-of-skus-for-a-product.md)
+- [Hämta en lista över SKU:er för en produkt](get-a-list-of-skus-for-a-product.md)
 - [Hämta en SKU efter ID](get-a-sku-by-id.md)
 - [Hämta en lista över tillgänglighet för en SKU](get-a-list-of-availabilities-for-a-sku.md)
 - [Hämta en tillgänglighet efter ID](get-an-availability-by-id.md)
@@ -55,12 +51,12 @@ I det här avsnittet beskrivs hur leverantörer av moln lösningar kan använda 
 - [Köp katalogobjekt](purchase-catalog-items.md)
 - [Uppdatera en kundvagn](update-a-cart.md)
 
-## <a name="enable-a-subscription-for-azure-reserved-vm-instance-purchases"></a>Aktivera en prenumeration för Azure reserverad VM-instans inköp
+## <a name="enable-a-subscription-for-azure-reserved-vm-instance-purchases"></a>Aktivera en prenumeration för azure-köp av reserverade VM-instanser
 
 - [Registrera en prenumeration](register-a-subscription.md)
 - [Hämta status för prenumerationsregistrering](get-subscription-registration-status.md)
 
-## <a name="get-subscription-details"></a>Hämta prenumerations information
+## <a name="get-subscription-details"></a>Hämta prenumerationsinformation
 
 - [Hämta en prenumeration efter ID](get-a-subscription-by-id.md)
 - [Hämta en lista över prenumerationer efter beställning](get-a-list-of-subscriptions-by-order.md)
@@ -75,4 +71,4 @@ I det här avsnittet beskrivs hur leverantörer av moln lösningar kan använda 
 - [Överför en prenumeration](transition-a-subscription.md)
 - [Avbryta en prenumeration på kommersiell marknadsplats](cancel-an-azure-marketplace-subscription.md)
 
-Mer information om processen för att granska erbjudanden, skapa order eller arbeta med prenumerationer finns i [scenarier](scenarios.md).
+Mer information om hur du granskar erbjudanden, skapar beställningar eller arbetar med prenumerationer finns i [Scenarier](scenarios.md).

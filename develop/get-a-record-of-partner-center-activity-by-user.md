@@ -1,41 +1,37 @@
 ---
 title: Hämta en post för Partnercenter-aktivitet
-description: Hur du hämtar en post med åtgärder, som utförs av en partner användare eller ett program, under en viss tids period.
+description: Så här hämtar du en post med åtgärder som utförs av en partneranvändare eller ett program under en viss tidsperiod.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 2f37eae8bb96c1c1e7008e8c566b085e25d8807d
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: aec933d4b681d99080619505792bde56bdd25580
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769531"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873980"
 ---
 # <a name="get-a-record-of-partner-center-activity"></a>Hämta en post för Partnercenter-aktivitet
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+I den här artikeln beskrivs hur du hämtar en post med åtgärder som har utförts av en partneranvändare eller ett program under en viss tidsperiod.
 
-Den här artikeln beskriver hur du hämtar en post med åtgärder som utfördes av en partner användare eller ett program under en viss tids period.
-
-Använd detta API för att hämta gransknings poster för de senaste 30 dagarna från det aktuella datumet eller för ett datum intervall som anges genom att inkludera start datum och/eller slutdatum. Observera dock att data tillgänglighet för aktivitets loggen för prestanda orsaker är begränsad till föregående 90 dagar. Begär Anden med ett start datum som är större än 90 dagar före det aktuella datumet får ett felaktigt undantag för begäran (felkod: 400) och ett lämpligt meddelande.
+Använd det här API:et för att hämta granskningsposter för de senaste 30 dagarna från det aktuella datumet eller för ett datumintervall som anges genom att inkludera startdatumet och/eller slutdatumet. Observera dock att tillgängligheten för aktivitetsloggdata av prestandaskäl är begränsad till de senaste 90 dagarna. Begäranden med ett startdatum som är större än 90 dagar före det aktuella datumet får ett undantag för felaktig begäran (felkod: 400) och ett lämpligt meddelande.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en post över partner Center-åtgärder måste du först fastställa datum intervallet för de poster som du vill hämta. I följande kod exempel används endast start datum, men du kan även inkludera ett slutdatum. Mer information finns i [**fråge**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) metoden. Skapa sedan de variabler du behöver för den typ av filter som du vill använda och tilldela lämpliga värden. Om du till exempel vill filtrera efter företagets namn under sträng skapar du en variabel som ska innehålla del strängen. Om du vill filtrera efter kund-ID skapar du en variabel som innehåller ID: t.
+Om du vill hämta en post för Partner Center-åtgärder måste du först upprätta datumintervallet för de poster som du vill hämta. I följande kodexempel används bara ett startdatum, men du kan även inkludera ett slutdatum. Mer information finns i [**Frågemetod.**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) Skapa sedan de variabler som du behöver för den typ av filter som du vill använda och tilldela lämpliga värden. Om du till exempel vill filtrera efter företagsnamnsundersträng skapar du en variabel som ska innehålla delsträngen. Om du vill filtrera efter kund-ID skapar du en variabel som ska innehålla ID:t.
 
-I följande exempel finns exempel kod för att filtrera efter företagets namn under sträng, kund-ID eller resurs typ. Välj en och kommentera ut de andra. I varje fall instansierar du först ett [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) -objekt med [**Standardkonstruktorn**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter.-ctor) för att skapa filtret. Du måste skicka en sträng som innehåller det fält som ska sökas och lämplig operator som ska användas, som visas. Du måste också ange strängen för att filtrera efter.
+I följande exempel tillhandahålls exempelkod för att filtrera efter en delsträng för företagsnamn, kund-ID eller resurstyp. Välj en och kommentera ut de andra. I varje fall instansierar du först ett [**SimpleFieldFilter-objekt**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) med dess [**standardkonstruktor**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter.-ctor) för att skapa filtret. Du måste skicka en sträng som innehåller fältet att söka efter, och lämplig operator att tillämpa, som du ser i bilden. Du måste också ange strängen att filtrera efter.
 
-Använd sedan egenskapen [**AuditRecords**](/dotnet/api/microsoft.store.partnercenter.ipartner.auditrecords) för att hämta ett gränssnitt för att granska post åtgärder och anropa [**frågan**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) eller [**QueryAsync**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.queryasync) -metoden för att köra filtret och hämta insamlingen av [**AuditRecord**](/dotnet/api/microsoft.store.partnercenter.models.auditing.auditrecord) som representerar den första sidan i resultatet. Skicka metoden start datum, ett valfritt slutdatum som inte används i exemplet här och ett [**IQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) -objekt som representerar en fråga på en entitet. IQuery-objektet skapas genom att skicka filtret som skapats ovan till [**QueryFactory**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory) - [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) -metoden.
+Använd sedan egenskapen [**AuditRecords**](/dotnet/api/microsoft.store.partnercenter.ipartner.auditrecords) för att hämta ett gränssnitt [](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) för att granska poståtgärder och anropa query- eller [**QueryAsync-metoden**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.queryasync) för att köra filtret och hämta samlingen [**av AuditRecords**](/dotnet/api/microsoft.store.partnercenter.models.auditing.auditrecord) som representerar den första sidan i resultatet. Skicka metoden startdatumet, ett valfritt slutdatum som inte används i exemplet här och ett [**IQuery-objekt**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) som representerar en fråga på en entitet. IQuery-objektet skapas genom att skicka filtret som skapats ovan till [**QueryFactorys**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory) [**BuildSimpleQuery-metod.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery)
 
-När du har den första sidan med objekt använder du metoden [**enumerations. AuditRecords. Create**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create) för att skapa en uppräknare som du kan använda för att iterera igenom de återstående sidorna.
+När du har den första sidan med objekt använder du metoden [**Enumerators.AuditRecords.Create**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create) för att skapa en uppräkning som du kan använda för att iterera genom återstående sidor.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -77,19 +73,19 @@ while (auditRecordEnumerator.HasValue)
 }
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK exempel **mapp**: granskning
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **exempelmapp:** Granskning
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                                                                                                    |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/AuditRecords? StartDate = {StartDate} http/1.1                                                                                                     |
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/AuditRecords? StartDate = {StartDate} &EndDate = {ENDDATE} http/1.1                                                                                   |
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/AuditRecords? StartDate = {StartDate} &EndDate = {endDate} &filter = {"Field": "företags namn", "värde": "{searchSubstring}", "Operator": "del sträng"} http/1.1 |
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/AuditRecords? StartDate = {StartDate} &EndDate = {endDate} &filter = {"Field": "CustomerId", "värde": "{CustomerId}", "Operator": "är lika med"} http/1.1          |
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/AuditRecords? StartDate = {StartDate} &EndDate = {endDate} &filter = {"Field": "resourcetype", "värde": "{resourcetype}", "Operator": "är lika med"} http/1.1      |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate} HTTP/1.1                                                                                                     |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate}&endDate={endDate} HTTP/1.1                                                                                   |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate}&endDate={endDate}&filter={"Field":"CompanyName","Value":"{searchSubstring}","Operator":"substring"} HTTP/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate}&endDate={endDate}&filter={"Field":"CustomerId","Value":"{customerId}","Operator":"equals"} HTTP/1.1          |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate}&endDate={endDate}&filter={"Field":"ResourceType","Value":"{resourceType}","Operator":"equals"} HTTP/1.1      |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -97,14 +93,14 @@ Använd följande frågeparametrar när du skapar begäran.
 
 | Namn      | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                                                                |
 |-----------|--------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| /SD | date   | No       | Start datumet i formatet åååå-mm-dd. Om inget anges, kommer resultat uppsättningen att standardvärdet 30 dagar före datumet för begäran. Den här parametern är valfri när ett filter anges.                                          |
-| endDate   | date   | No       | Slutdatumet i åååå-mm-dd-format. Den här parametern är valfri när ett filter anges. När slutdatumet utelämnas eller är inställt på null, returnerar begäran Max fönstret eller använder dagens datum som slutdatum, beroende på vilket som är mindre. |
-| filter    | sträng | No       | Filtret som ska användas. Den här parametern måste vara en kodad sträng. Den här parametern är valfri när start datumet eller slutdatumet anges.                                                                                              |
+| Startdate | date   | Inga       | Startdatumet i formatet yyyy-mm-dd. Om inget anges får resultatuppsättningen standardvärdet 30 dagar före begärandedatumet. Den här parametern är valfri när ett filter anges.                                          |
+| endDate   | date   | Inga       | Slutdatumet i formatet yyyy-mm-dd. Den här parametern är valfri när ett filter anges. När slutdatumet utelämnas eller anges till null returnerar begäran det maximala fönstret eller använder idag som slutdatum, beroende på vilket som är mindre. |
+| filter    | sträng | No       | Filtret som ska tillämpas. Den här parametern måste vara en kodad sträng. Den här parametern är valfri när startdatumet eller slutdatumet anges.                                                                                              |
 
-### <a name="filter-syntax"></a>Filter-syntax
-Du måste skapa filter parametern som en serie kommaavgränsade par med nyckel/värde-par. Varje nyckel och värde måste anges individuellt och avgränsas med kolon. Hela filtret måste vara kodat.
+### <a name="filter-syntax"></a>Filtersyntax
+Du måste skriva filterparametern som en serie kommaavgränsade nyckel/värde-par. Varje nyckel och värde måste anges individuellt och avgränsas med ett kolon. Hela filtret måste vara kodat.
 
-Ett avkodat exempel ser ut så här:
+Ett okodat exempel ser ut så här:
 
 ```
 ?filter{"Field":"CompanyName","Value":"bri","Operator":"substring"}
@@ -114,13 +110,13 @@ I följande tabell beskrivs de nyckel/värde-par som krävs:
 
 | Tangent                 | Värde                             |
 |:--------------------|:----------------------------------|
-| Fält               | Det fält som ska filtreras. De värden som stöds finns i [syntaxen för begäran](get-a-record-of-partner-center-activity-by-user.md#rest-request).                                         |
-| Värde               | Värdet att filtrera efter. Skift läget för värdet ignoreras. Följande värde parametrar stöds som visas i [syntaxen för begäran](get-a-record-of-partner-center-activity-by-user.md#rest-request):<br/><br/>                                                                *searchSubstring* – Ersätt med namnet på företaget. Du kan ange en under sträng som ska matcha en del av företags namnet (till exempel `bri` kommer att matcha `Fabrikam, Inc` ).<br/>**Exempel:**`"Value":"bri"`<br/><br/>                                                                *customerId* – Ersätt med en GUID-formaterad sträng som representerar kund-ID: t.<br/>**Exempel:**`"Value":"0c39d6d5-c70d-4c55-bc02-f620844f3fd1"`<br/><br/>                                                                                        *resourceType* – Ersätt med den typ av resurs som gransknings poster ska hämtas för (till exempel prenumeration). Tillgängliga resurs typer definieras i [resourcetype](/dotnet/api/microsoft.store.partnercenter.models.auditing.resourcetype).<br/>**Exempel:**`"Value":"Subscription"`                                 |
-| Operator          | Operatorn som ska användas. De operatorer som stöds finns i [begärans syntax](get-a-record-of-partner-center-activity-by-user.md#rest-request).   |
+| Fält               | Fältet som ska filtreras. Värdena som stöds finns i Request syntax (Begär [syntax).](get-a-record-of-partner-center-activity-by-user.md#rest-request)                                         |
+| Värde               | Värdet som ska filtreras efter. Värdets fall ignoreras. Följande värdeparametrar stöds enligt [förfrågningssyntaxen:](get-a-record-of-partner-center-activity-by-user.md#rest-request)<br/><br/>                                                                *searchSubstring* – Ersätt med namnet på företaget. Du kan ange en delsträng som matchar en del av företagsnamnet (till exempel `bri` matchar `Fabrikam, Inc` ).<br/>**Exempel:**`"Value":"bri"`<br/><br/>                                                                *customerId* – Ersätt med en GUID-formaterad sträng som representerar kundidentifieraren.<br/>**Exempel:**`"Value":"0c39d6d5-c70d-4c55-bc02-f620844f3fd1"`<br/><br/>                                                                                        *resourceType* – Ersätt med den typ av resurs som du vill hämta granskningsposter för (till exempel Prenumeration). De tillgängliga resurstyperna definieras i [ResourceType](/dotnet/api/microsoft.store.partnercenter.models.auditing.resourcetype).<br/>**Exempel:**`"Value":"Subscription"`                                 |
+| Operator          | Operatorn som ska tillämpas. Operatorerna som stöds finns i Request syntax (Begär [syntax).](get-a-record-of-partner-center-activity-by-user.md#rest-request)   |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-- Mer information finns i [delar av en del i mitten av rest-rubriker](headers.md) .
+- Mer information finns i [Parter Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -141,11 +137,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas, returnerar den här metoden en uppsättning aktiviteter som uppfyller filtren.
+Om det lyckas returnerar den här metoden en uppsättning aktiviteter som uppfyller filtren.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

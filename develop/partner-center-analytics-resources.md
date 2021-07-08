@@ -1,195 +1,190 @@
 ---
 title: Partnercenteranalys
-description: Dokumentation om offentlig API för partner Center Analytics.
+description: Dokumentation om det offentliga API:et för Partnercenter Analytics.
 ms.date: 06/11/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4b14ee929f3020079f409be8817e077673d3219f
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 03d7d252a415524c6573c1bf62b8b9c1518a1b9f
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768847"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548098"
 ---
 # <a name="partner-center-analytics---resources"></a>Partnercenter-analys – resurser
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Med analys-API: et kan du få program mässig åtkomst till data som presenteras i användar upplevelsen.
+Med Analytics-API:et kan du programmatiskt komma åt data som presenteras i användarupplevelsen.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Dessa scenarier stöder endast autentisering med användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) De här scenarierna stöder autentisering endast med användarautentiseringsuppgifter.
 
-## <a name="csp-program-azure-usage-analytics"></a>CSP-program: Azure användnings analys
+## <a name="csp-program-azure-usage-analytics"></a>CSP-program: Azure-användningsanalys
 
-Följande scenario visar hur du använder analys-API: t för att hämta all information om användnings analys i Partner Center Azure.
+Följande scenario visar hur du använder Analytics-API:et för att hämta all användningsanalysinformation i Partnercenter Azure.
 
 - [Hämta all information om Azure-användningsanalys](get-all-azure-usage-analytics.md)
 
-Det här scenariot returnerar analys informationen i en samling [Azures användnings](#azure-usage-resource) resurser.
+Det här scenariot returnerar din analysinformation i en samling [Azure-användningsresurser.](#azure-usage-resource)
 
-## <a name="azure-usage-resource"></a>Azure Usage-resurs
+## <a name="azure-usage-resource"></a>Azure-användningsresurs
 
-Representerar alla analys data för Azure-användning.
+Representerar alla analytiska data för Azure-användning.
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 |----------|------|-------------|
-| CustomerTenantId | sträng | Kundens klient-ID. |
+| CustomerTenantId | sträng | Kundens klientorganisations-ID. |
 | customerName | sträng | Kundens namn. |
-| subscriptionId | sträng | Prenumerations-ID. |
+| subscriptionId | sträng | Prenumerationsidentifieraren. |
 | subscriptionName | sträng | Prenumerationens namn. |
-| usageDate | sträng | Användnings datum. |
-| resourceLocation | sträng | Platsen för data centret, västra Europa, till exempel. |
-| meterCategory | sträng | I mätar kategorin, data hantering, till exempel. |
-| meterSubcategory | sträng | Under kategori för mätning, till exempel Geo-redundant. |
-| meterUnit | sträng | Mätar enheten, till exempel gigabyte eller timmar. |
-| reservationOrderId | sträng | Reservations ordningen för en reserverad Azure VM-instans. |
-| reservationId | sträng | Reserverade instanser under en speciell RI-ordning. |
-| serviceType | sträng | Anger typen av virtuell dator. Till exempel Standard_E4s_v3. |
-| quantity | long | Anger de siffror som används i mätar enheten. |
+| usageDate | sträng | Användningsdatum. |
+| resourceLocation | sträng | Platsen för datacentret, till exempel Europa, västra. |
+| meterCategory | sträng | Mätarkategori, till exempel datahantering. |
+| meterSubcategory | sträng | Mätarunderkategorin, till exempel geo-redundant. |
+| meterUnit | sträng | Mätarenheten, till exempel gigabyte eller timmar. |
+| reservationOrderId | sträng | Reservationsbeställningen för en reserverad Azure VM-instans. |
+| reservationId | sträng | Reserverade instanser under en specifik RI-beställning. |
+| serviceType | sträng | Anger typ av virtuell dator. Till exempel Standard_E4s_v3. |
+| quantity | long | Anger de tal som används i mätarenheten. |
 
-## <a name="csp-program-indirect-resellers-analytics"></a>CSP-program: indirekt åter försäljare Analytics
+## <a name="csp-program-indirect-resellers-analytics"></a>CSP-program: analys av indirekta återförsäljare
 
-Följande scenario visar hur du använder analys-API: t för att hämta all information om dina partner Centers indirekta åter försäljare.
+Följande scenario visar hur du använder Analytics-API:et för att hämta all analysinformation om indirekta återförsäljare i Partnercenter.
 
 - [Hämta all analysinformation för indirekta återförsäljare](get-all-indirect-resellers-analytics.md)
 
-Det här scenariot returnerar analys informationen i en samling med [indirekta åter försäljar](#indirect-resellers-resource) resurser.
+Det här scenariot returnerar din analysinformation i en samling [indirekta återförsäljares](#indirect-resellers-resource) resurser.
 
-## <a name="indirect-resellers-resource"></a>Indirekt åter försäljare resurs
+## <a name="indirect-resellers-resource"></a>Resurs för indirekta återförsäljare
 
-Representerar alla analys data för indirekta åter försäljare.
+Representerar alla analytiska data för indirekta återförsäljare.
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 |----------|------|-------------|
-| partnerTenantId | sträng | Klient-ID för den partner som du vill hämta indirekta data om åter försäljare för. |
-| id | sträng | ID för indirekt åter försäljare. |
-| name | sträng | Namnet på den partner som du vill hämta data om indirekta åter försäljare för. |
-| telefonförsäljning | sträng | Marknaden för den partner som du vill hämta data om indirekta åter försäljare för. |
-| firstSubscriptionCreationDate | sträng i UTC-datum/tid-format | Skapande datumet för den första prenumerationen som du vill hämta indirekta åter försäljar data från. |
-| latestSubscriptionCreationDate | sträng i UTC-datum/tid-format | Skapande datumet för den senaste prenumerationen. |
-| firstSubscriptionEndDate | sträng i UTC-datum/tid-format | Första gången en prenumeration avslutades. |
-| latestSubscriptionEndDate | sträng i UTC-datum/tid-format | Senaste datum när en prenumeration avslutades. |
-| firstSubscriptionSuspendedDate | sträng i UTC-datum/tid-format | Första gången en prenumeration pausades. |
-| latestSubscriptionSuspendedDate | sträng i UTC-datum/tid-format | Senaste datum när en prenumeration pausades. |
-| firstSubscriptionDeprovisionedDate | sträng i UTC-datum/tid-format | Första gången en prenumeration har avetablerats. |
-| latestSubscriptionDeprovisionedDate | sträng i UTC-datum/tid-format | Senaste datum när en prenumeration har avetablerats. |
-| subscriptionCount | double | Prenumerations antal för alla mervärdes åter försäljare |
-| licenseCount | double | Licens antal för alla mervärdes åter försäljare |
-| indirectResellerCount | double | Antal indirekta åter försäljare |
+| partnerTenantId | sträng | Klientorganisations-ID för den partner som du vill hämta indirekta återförsäljares data för. |
+| id | sträng | Id för indirekt återförsäljare. |
+| name | sträng | Namnet på den partner som du vill hämta indirekta återförsäljares data för. |
+| Marknaden | sträng | Partnerns marknad som du vill hämta data om indirekta återförsäljare för. |
+| firstSubscriptionCreationDate | sträng i UTC-datum/tid-format | Skapandedatumet för den första prenumerationen baserat på vilken du vill hämta data för indirekta återförsäljare. |
+| latestSubscriptionCreationDate | sträng i UTC-datum/tid-format | Skapandedatumet för den senaste prenumerationen. |
+| firstSubscriptionEndDate | sträng i UTC-datum/tid-format | Första gången någon prenumeration avslutades. |
+| latestSubscriptionEndDate | sträng i UTC-datum/tid-format | Senaste datum då en prenumeration avslutades. |
+| firstSubscriptionSuspendedDate | sträng i UTC-datum/tid-format | Första gången någon prenumeration pausas. |
+| latestSubscriptionSuspendedDate | sträng i UTC-datum/tid-format | Senaste datum då en prenumeration pausades. |
+| firstSubscriptionDeprovisionedDate | sträng i UTC-datum/tid-format | Första gången någon prenumeration avetableades. |
+| latestSubscriptionDeprovisionedDate | sträng i UTC-datum/tid-format | Senaste datum då en prenumeration avetableades. |
+| subscriptionCount | double | Prenumerationsantal för alla återförsäljare med mervärde |
+| licenseCount | double | Licensantal för alla återförsäljare med mervärde |
+| indirectResellerCount | double | Antal indirekta återförsäljare |
 
-## <a name="csp-program-subscription-analytics"></a>CSP-program: prenumerations analys
+## <a name="csp-program-subscription-analytics"></a>CSP-program: prenumerationsanalys
 
-Följande scenarier visar hur du använder analys-API: t för att hämta all information om din partner analys för partner Center, filtrera den med en Sök fråga eller gruppera den efter datum eller villkor.
+Följande scenarier visar hur du använder Analytics-API:et för att hämta all prenumerationsanalysinformation i Partnercenter, filtrera den med en sökfråga eller gruppera den efter datum eller villkor.
 
 - [Hämta all information om prenumerationsanalys](get-all-subscription-analytics.md)
 - [Hämta information om prenumerationsanalys filtrerad efter en sökfråga](get-subscription-analytics-by-search-query.md)
 - [Hämta information om prenumerationsanalys grupperad efter datum eller perioder](get-subscription-analytics-grouped-by-dates-or-terms.md)
 
-Alla de här scenarierna returnerar analys informationen i en samling [prenumerations](#subscription-resource) resurser.
+Alla dessa scenarier returnerar din analysinformation i en samling [prenumerationsresurser.](#subscription-resource)
 
-## <a name="subscription-resource"></a>Prenumerations resurs
+## <a name="subscription-resource"></a>Prenumerationsresurs
 
-Representerar alla analys data för en prenumeration.
+Representerar alla analysdata för en prenumeration.
 
-|         Egenskap          |              Typ              |                                                                      Description                                                                       |
+|         Egenskap          |              Typ              |                                                                      Beskrivning                                                                       |
 |---------------------------|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     customerTenantId      |             sträng             |                                              En GUID-formaterad sträng som identifierar kundens klient organisation.                                              |
+|     customerTenantId      |             sträng             |                                              En GUID-formaterad sträng som identifierar kundens klientorganisation.                                              |
 |       customerName        |             sträng             |                                                               Namnet på kunden.                                                                |
-|      customerMarket       |             sträng             |                                                 Landet/regionen som kunden gör affärer med.                                                 |
-|            id             |             sträng             |                                                              Prenumerations-ID.                                                              |
-|          status           |             sträng             |                                          Prenumerationens status: "aktiv", "inaktive rad" eller "deetablerat".                                           |
-|        Namn        |             sträng             |                                                                Produktens namn.                                                                |
-|     subscriptionType      |             sträng             |       Prenumerations typ. **Obs!** det här fältet är Skift läges känsligt. De värden som stöds är: "Office", "Azure", "Microsoft365", "Dynamics", "EMS".       |
+|      customerMarket       |             sträng             |                                                 Land/region som kunden gör affärer i.                                                 |
+|            id             |             sträng             |                                                              Prenumerationsidentifieraren.                                                              |
+|          status           |             sträng             |                                          Prenumerationsstatus: "ACTIVE", "SUSPENDED" eller "DEPROVISIONED".                                           |
+|        Productname        |             sträng             |                                                                Namnet på produkten.                                                                |
+|     subscriptionType      |             sträng             |       Prenumerationstyp. **Obs!** Det här fältet är case-sensitive. Värden som stöds är: "Office", "Azure", "Microsoft365", "Dynamics", "EMS".       |
 |     autoRenewEnabled      |            boolean             |                                         Ett värde som anger om prenumerationen förnyas automatiskt.                                          |
-|         Partner         |             sträng             | MPN-ID. För en direkt åter försäljare är den här parametern MPN-ID för partnern. För en indirekt åter försäljare är den här parametern MPN-ID: t för den indirekta åter försäljaren. |
+|         partnerId         |             sträng             | ID Microsoft Partner Network (MPN). För en direktåterförsäljare är den här parametern MPN-ID för partnern. För en indirekt återförsäljare är den här parametern MPN-ID:t för den indirekta återförsäljaren. |
 |       friendlyName        |             sträng             |                                                             Namnet på prenumerationen.                                                              |
-|        partnerName        |             sträng             |                                              Namnet på partnern som prenumerationen köptes för                                               |
-|       providerName        |             sträng             |            När prenumerations transaktionen är för den indirekta åter försäljaren är Providerns namn den indirekta providern som köpte prenumerationen.             |
+|        partnerName        |             sträng             |                                              Namnet på den partner som prenumerationen köptes för                                               |
+|       providerName        |             sträng             |            När prenumerationstransaktionen är för den indirekta återförsäljaren är providernamnet den indirekta leverantör som köpte prenumerationen.             |
 |    effectiveStartDate     | sträng i UTC-datum/tid-format |                                                           Det datum då prenumerationen startar.                                                            |
-|     commitmentEndDate     | sträng i UTC-datum/tid-format |                                                            Det datum då prenumerationen slutar.                                                             |
-|    currentStateEndDate    | sträng i UTC-datum/tid-format |                                           Det datum då prenumerationens aktuella status kommer att ändras.                                            |
-| trialToPaidConversionDate | sträng i UTC-datum/tid-format |                                 Det datum då prenumerationen konverteras från utvärderings versionen till betald. Standardvärdet är null.                                 |
-|      trialStartDate       | sträng i UTC-datum/tid-format |                                Det datum då utvärderings perioden för prenumerationen startades. Standardvärdet är null.                                 |
-|       trialEndDate        | sträng i UTC-datum/tid-format |                                  Det datum då utvärderings perioden för prenumerationen upphör. Standardvärdet är null.                                  |
+|     commitmentEndDate     | sträng i UTC-datum/tid-format |                                                            Det datum då prenumerationen upphör.                                                             |
+|    currentStateEndDate    | sträng i UTC-datum/tid-format |                                           Det datum då prenumerationens aktuella status ändras.                                            |
+| trialToDateConversionDate | sträng i UTC-datum/tid-format |                                 Det datum då prenumerationen konverteras från utvärderingsversion till betald. Standardvärdet är null.                                 |
+|      trialStartDate       | sträng i UTC-datum/tid-format |                                Det datum då utvärderingsperioden för prenumerationen startade. Standardvärdet är null.                                 |
+|       trialEndDate        | sträng i UTC-datum/tid-format |                                  Det datum då utvärderingsperioden för prenumerationen upphör. Standardvärdet är null.                                  |
 |       lastUsageDate       | sträng i UTC-datum/tid-format |                                        Det datum då prenumerationen senast användes. Standardvärdet är null.                                        |
-|     deprovisionedDate     | sträng i UTC-datum/tid-format |                                      Det datum då prenumerationen avetablerades. Standardvärdet är null.                                      |
-|      lastRenewalDate      | sträng i UTC-datum/tid-format |                                       Det datum då prenumerationen senast förnyades är standardvärdet null.                                       |
+|     deprovisionedDate     | sträng i UTC-datum/tid-format |                                      Det datum då prenumerationen avetableades. Standardvärdet är null.                                      |
+|      lastRenewalDate      | sträng i UTC-datum/tid-format |                                       Det datum då prenumerationen senast förnyades. Standardvärdet är null.                                       |
 |       licenseCount        |             antal             |                                                             Det totala antalet licenser.                                                              |
-|     subscriptionCount     |             antal             |                        Antalet prenumerationer. Obs! det här värdet visas bara i svaret på en agg regerings fråga.                         |
+|     subscriptionCount     |             antal             |                        Antalet prenumerationer. Obs! Det här värdet visas bara i svaret på en aggregeringsfråga.                         |
 
-## <a name="search-analytics"></a>Sök analys
+## <a name="search-analytics"></a>Sökanalys
 
 > [!NOTE]
-> Det krävs inget medlemskap i CSP-programmet för att hämta Sök analys.
+> CSP-programmedlemskap krävs inte för att få sökanalys.
 
-Följande scenario visar hur du använder analys-API: n för att hämta all information om din partner Center search Analytics-information.
+I följande scenario visas hur du använder Analytics-API:et för att hämta all sökanalysinformation i Partnercenter.
 
 - [Hämta all information om sökanalys](get-all-search-analytics.md)
 
-Det här scenariot returnerar analys informationen i en samling [Sök](#search-resource) resurser.
+Det här scenariot returnerar din analysinformation i en samling [sökresurser.](#search-resource)
 
 ## <a name="search-resource"></a>Sök resurs
 
-Representerar alla analys data för en sökning.
+Representerar alla analytiska data för en sökning.
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 |----------|------|-------------|
-| companyName | sträng | Fakturerings företagets namn. |
-| contactButtonClicked | Boolesk | Anger om kontakt knappen klickade. |
+| companyName | sträng | Faktureringsföretagets namn. |
+| contactButtonClicked | Boolesk | Anger om kontaktknappen klickades. |
 | keywordCountry | sträng | Det land som anges i sökningen. |
-| detailsViewed | Boolesk | Anger om Sök information har visats. |
-| keywordIndustryFocus | sträng | Branschen att söka inom, t. ex. sjukvård. |
-| mpnId | sträng | Microsoft Partner Network-ID (MPN). För en direkt åter försäljare är den här parametern MPN-ID för partnern. För en indirekt åter försäljare är den här parametern MPN-ID: t för den indirekta åter försäljaren. |
-| partnerMarket | sträng | Nationella inställningar där partnern genomför verksamhet. |
+| detailsViewed | Boolesk | Anger om sökinformation visades. |
+| keywordIndustryFocus | sträng | Branschen att söka inom, till exempel sjukvård. |
+| mpnId | sträng | ID Microsoft Partner Network (MPN). För en direktåterförsäljare är den här parametern MPN-ID för partnern. För en indirekt återförsäljare är den här parametern MPN-ID:t för den indirekta återförsäljaren. |
+| partnerMarket | sträng | Språk där partnern utför sin verksamhet. |
 | keywordProduct | sträng | Den produkt som anges i sökningen. |
 | referralSubmitted | Boolesk | Anger om en hänvisning har skickats. |
-| searchDate | sträng i UTC-datum/tid-format | Datum när Sök frågan utfördes. |
-| keywordSearchText | sträng | Texten som anges i sökningen. |
-| searchResultPageViews | long | Antal gånger som partnern kommer upp i Sök resultatet. Ingår endast i ett svar på agg regering.
-| contactClicks | long | Antal gånger som kontakt knappen klickade. Ingår endast i ett svar på agg regering.
-| referralCount | long | Antalet referenser som genererats från sökningen. Ingår endast i ett svar på agg regering.
-| profileViews | long | Antal gånger som partner profilen visades. Ingår endast i ett svar på agg regering.
+| searchDate | sträng i UTC-datum/tid-format | Datum då sökfrågan uppstod. |
+| keywordSearchText | sträng | Den text som anges i sökningen. |
+| searchResultPageViews | long | Antal gånger som partnern kom upp i sökresultatet. En del av ett svar endast på aggregering.
+| contactClicks | long | Antal gånger som kontaktknappen klickades. En del av ett svar endast på aggregering.
+| referralCount | long | Antal referenser som genererats från sökningen. En del av ett svar endast på aggregering.
+| profileViews | long | Antal gånger som partnerprofilen visades. En del av ett svar endast på aggregering.
 
-## <a name="referrals-analytics"></a>Referens analys
+## <a name="referrals-analytics"></a>Referensanalys
 
 > [!NOTE]
-> Det krävs inget medlemskap i CSP-programmet för att få hänvisningar till analyser.
+> CSP-programmedlemskap krävs inte för att få referensanalys.
 
-Följande scenario visar hur du använder analys-API: t för att hämta all information om dina partner Centers referensinformations analyser.
+I följande scenario visas hur du använder Analytics-API:et för att hämta all information om referensanalysen i Partnercenter.
 
 - [Hämta all information om hänvisningsanalys](get-all-referrals-analytics.md)
 
-Det här scenariot returnerar analys informationen i en samling av [referenser](#referrals-resource) till resurser.
+Det här scenariot returnerar din analysinformation i en samling [referensresurser.](#referrals-resource)
 
 > [!NOTE]
-> Referral Analytics är inte tillgängligt för partner Center som drivs av 21Vianet.
+> Referensanalys är inte tillgängligt för Partnercenter som drivs av 21Vianet.
 
-## <a name="referrals-resource"></a>Referens resurs
+## <a name="referrals-resource"></a>Referensresurs
 
-Representerar alla analys data för en hänvisning.
+Representerar alla analytiska data för en referens.
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 |----------|------|-------------|
-| id | sträng | Kundens klient-ID.  |
+| id | sträng | Kundens klientorganisations-ID.  |
 | status | sträng | Anger om hänvisningen ledde till en kund.  |
-| customerMarket | sträng | Landet/regionen som kunden gör affärer med. |
+| customerMarket | sträng | Land/region som kunden gör affärer i. |
 | customerName | sträng | Namnet på kunden. |
-| customerOrgSize | sträng | Ett intervall som visar antalet anställda i kundens organisation. Till exempel "10to50employees". |
-| acceptedDate | sträng i UTC-datum/tid-format | Datumet då hänvisningen godkändes. |
+| customerOrgSize | sträng | Ett intervall som anger antalet anställda i kundens organisation. Till exempel "10to50employees". |
+| acceptedDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen godkändes. |
 | acknowledgedDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen bekräftades. |
 | archivedDate | sträng i UTC-datum/tid-format | Datumet då hänvisningen arkiverades. |
-| declinedDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen nekades. |
-| expiredDate | sträng i UTC-datum/tid-format | Datumet då hänvisningen upphörde att gälla. |
-| lostDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen bröts. |
-| missedDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen missades. |
-| createdDate | sträng i UTC-datum/tid-format | Datumet då hänvisningen skapades. |
-| skippedDate | sträng i UTC-datum/tid-format | Datumet då hänvisningen hoppades över. |
-| wonDate | sträng i UTC-datum/tid-format | Datumet då hänvisningen vanns. |
-| partnerMarket | sträng |  Landet/regionen som partnern gör affärer med. |
+| declinedDate | sträng i UTC-datum/tid-format | Datumet då hänvisningen avvisades. |
+| expiredDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen upphörde att gälla. |
+| lostDate | sträng i UTC-datum/tid-format | Datumet då hänvisningen förlorades. |
+| missedDate | sträng i UTC-datum/tid-format | Datumet då hänvisningen missades. |
+| createdDate | sträng i UTC-datum/tid-format | Datumet då referensen skapades. |
+| skippedDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen överhoppades. |
+| wonDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen vann. |
+| partnerMarket | sträng |  Landet/regionen som partnern gör affärer i. |

@@ -1,39 +1,35 @@
 ---
-title: Få en användnings översikt för alla kunds prenumerationer
-description: Du kan använda CustomerUsageSummary-resursen för att få en kunds användning av en specifik Azure-tjänst eller resurs under den aktuella fakturerings perioden.
+title: Hämta en användningssammanfattning för alla en kunds prenumerationer
+description: Du kan använda resursen CustomerUsageSummary för att få en kunds användning av en specifik Azure-tjänst eller -resurs under den aktuella faktureringsperioden.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0c918434367a3514e6a6ad6034b4897c33f51025
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 88c69637c94b9263ede6924cf2dd09513aa00f70
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769129"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874626"
 ---
-# <a name="get-a-usage-summary-for-all-of-a-customers-subscriptions"></a>Få en användnings översikt för alla kunds prenumerationer
+# <a name="get-a-usage-summary-for-all-of-a-customers-subscriptions"></a>Hämta en användningssammanfattning för alla en kunds prenumerationer
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Du kan använda **CustomerUsageSummary** -resursen för att få en kunds användning av en specifik Azure-tjänst eller resurs under den aktuella fakturerings perioden.
+Du kan använda **resursen CustomerUsageSummary** för att få en kunds användning av en specifik Azure-tjänst eller -resurs under den aktuella faktureringsperioden.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Så här hämtar du en användnings Sammanfattning för alla kund prenumerationer:
+Så här hämtar du en användningssammanfattning för alla en kunds prenumerationer:
 
-1. Använd din **IAggregatePartner. Customers** -samling för att anropa metoden **ById ()** .
+1. Använd din **IAggregatePartner.Customers-samling** för att anropa **metoden ById().**
 
-2. Anropa egenskapen **UsageSummary** följt av metoderna **Get ()** eller **GetAsync ()** :
+2. Anropa egenskapen **UsageSummary** följt av metoderna **Get()** eller **GetAsync():**
 
     ``` csharp
     // IAggregatePartner partnerOperations;
@@ -42,31 +38,31 @@ Så här hämtar du en användnings Sammanfattning för alla kund prenumeratione
     var usageSummary = partnerOperations.Customers.ById(selectedCustomerId).UsageSummary.Get();
     ```
 
-Ett exempel finns i följande avsnitt:
+Ett exempel finns i följande:
 
-- Exempel: [konsol test app](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Exempel: [Konsoltestapp](console-test-app.md)
+- Project: **PartnerSDK.FeatureExempel**
 - Klass: **GetCustomerUsageSummary.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                         |
 |---------|-----------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/usagesummary http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/usagesummary HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>URI-parameter
 
-Den här tabellen innehåller den obligatoriska Frågeparametern för att hämta kundens beräknade användnings information.
+Den här tabellen innehåller frågeparametern som krävs för att hämta kundens klassificerade användningsinformation.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                           |
 |------------------------|----------|----------|---------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y        | Ett GUID som motsvarar kunden. |
+| **kund-klient-id** | **guid** | Y        | Ett GUID som motsvarar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -84,17 +80,17 @@ MS-CorrelationId: 47c36033-af5d-4457-80a4-512c1626fac4
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en **CustomerUsageSummary** -resurs i svars texten.
+Om det lyckas returnerar den här metoden **en CustomerUsageSummary-resurs** i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
-### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscription"></a>Svars exempel för Microsoft Azure-prenumeration (MS-AZR-0145P)
+### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscription"></a>Exempel på svar Microsoft Azure prenumeration (MS-AZR-0145P)
 
-I det här exemplet har kunden köpt ett **145P Azure PayG** -erbjudande.
+I det här exemplet köpte kunden ett **145P Azure PayG-erbjudande.**
 
-*För kunder med Microsoft Azure-prenumerationer (MS-AZR-0145P) sker ingen ändring i API-svaret.*
+*För kunder med Microsoft Azure prenumerationer (MS-AZR-0145P) ändras inte API-svaret.*
 
 ```http
 HTTP/1.1 200 OK
@@ -131,13 +127,13 @@ Date: Tue, 17 Sep 2019 20:31:45 GMT
 }
 ```
 
-### <a name="response-example-for-azure-plan"></a>Svars exempel för Azure-plan
+### <a name="response-example-for-azure-plan"></a>Svarsexempel för Azure-plan
 
-I det här exemplet har kunden köpt en Azure-prenumeration.
+I det här exemplet köpte kunden en Azure-plan.
 
 *För kunder med Azure-planer finns följande ändringar i API-svaret:*
 
-- **currencyLocale** ersätts med **CurrencyCode**
+- **currencyLocale** ersätts med **currencyCode**
 - **usdTotalCost** är ett nytt fält
 
 ```http

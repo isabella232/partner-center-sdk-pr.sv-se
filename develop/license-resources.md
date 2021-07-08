@@ -1,106 +1,102 @@
 ---
-title: Licens resurser
-description: Beskriver resurser som är relaterade till licenser.
+title: Licensresurser
+description: Beskriver resurser relaterade till licenser.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 681f53ec73122a4861e6f1a2f96560336481a068
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: 27d44f89ac89f365e77e073c425ca45ab3638c68
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97769486"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548404"
 ---
-# <a name="license-resources"></a>Licens resurser
+# <a name="license-resources"></a>Licensresurser
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Beskriver resurser som är relaterade till licenser.
+Beskriver resurser relaterade till licenser.
 
 ## <a name="license"></a>Licens
 
-Beskriver en användar licens.
+Beskriver en användarlicens.
 
 >[!NOTE]
 >Stöds inte på Partner Center som drivs av 21Vianet.
 
-| Egenskap     | Typ                                                           | Description                                                    |
+| Egenskap     | Typ                                                           | Beskrivning                                                    |
 |--------------|----------------------------------------------------------------|----------------------------------------------------------------|
-| servicePlans | matris med ServicePlan-resurser                                 | Samlingen av tjänste planer som motsvarar licensen |
-| productSKU   | ProductSku                                                     | SKU för den produkt som motsvarar licensen.        |
-| dokumentattribut   | [ResourceAttributes](utility-resources.md#resourceattributes) | De metadata-attribut som motsvarar licensen.          |
+| servicePlans | matris med ServicePlan-resurser                                 | En samling tjänstplaner som motsvarar licensen |
+| productSKU   | ProductSku                                                     | SKU:n för den produkt som motsvarar licensen.        |
+| Attribut   | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen som motsvarar licensen.          |
 
 ## <a name="licenseupdate"></a>LicenseUpdate
 
 Innehåller information som används för att tilldela eller ta bort licenser från en användare.
 
-| Egenskap         | Typ                                                           | Description                                               |
+| Egenskap         | Typ                                                           | Beskrivning                                               |
 |------------------|----------------------------------------------------------------|-----------------------------------------------------------|
-| licensestoAssign | objekt mat ris                                               | Matris med [LicenseAssignment](#licenseassignment) -objekt. |
-| licensesToRemove | matris med strängar                                               | Produkt-SKU-identifierare för de licenser som ska tas bort.    |
-| licenseWarnings  | objekt mat ris                                               | Matris med [LicenseWarning](#licensewarning) -objekt.       |
-| dokumentattribut       | [ResourceAttributes](utility-resources.md#resourceattributes) | Attribut för metadata.                                  |
+| licensestoAssign | matris med objekt                                               | Matris med [LicenseAssignment-objekt.](#licenseassignment) |
+| licensesToRemove | matris med strängar                                               | Produktens SKU-identifierare för de licenser som ska tas bort.    |
+| licenseWarnings  | matris med objekt                                               | Matris med [LicenseWarning-objekt.](#licensewarning)       |
+| Attribut       | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen.                                  |
 
 ## <a name="licenseassignment"></a>LicenseAssignment
 
-Innehåller information som krävs för en licens uppdaterings åtgärd.
+Innehåller information som behövs för en licensuppdateringsåtgärd.
 
-| Egenskap      | Typ             | Description                                                                |
+| Egenskap      | Typ             | Beskrivning                                                                |
 |---------------|------------------|----------------------------------------------------------------------------|
-| excludedPlans | matris med strängar | Service plans-ID: n som ska undantas från tillgängligheten till användaren. |
-| skuId         | sträng           | Produkt-SKU-identifieraren för licensen.                                |
+| excludedPlans | matris med strängar | De tjänstplansidentifierare som ska undantas från tillgängligheten för användaren. |
+| skuId         | sträng           | Produktens SKU-identifierare för licensen.                                |
 
 ## <a name="licensewarning"></a>LicenseWarning
 
-Innehåller varnings information som inträffat under en licens uppdaterings åtgärd.
+Innehåller varningsinformation som inträffade under en licensuppdateringsåtgärd.
 
-| Egenskap     | Typ             | Description                                         |
+| Egenskap     | Typ             | Beskrivning                                         |
 |--------------|------------------|-----------------------------------------------------|
-| kod         | sträng           | Varnings koden.                                   |
-| meddelande      | sträng           | Varnings meddelandet.                                |
-| servicePlans | matris med strängar | De tjänst Plans namn som är associerade med varningen. |
+| kod         | sträng           | Varningskoden.                                   |
+| meddelande      | sträng           | Varningsmeddelandet.                                |
+| servicePlans | matris med strängar | De tjänstplannamn som är associerade med varningen. |
 
 ## <a name="productsku"></a>ProductSku
 
-Beskriver produkt information.
+Beskriver produktinformation.
 
-| Egenskap       | Typ             | Description                                         |
+| Egenskap       | Typ             | Beskrivning                                         |
 |----------------|------------------|-----------------------------------------------------|
-| id             | sträng           | Produkt-ID.                             |
-| name           | sträng           | Användarens huvud-ID.                      |
-| skuPartNumber  | sträng           | SKU-delens nummer namn för produkten. Till exempel, för Office 365 plan E3, är det här värdet `EnterprisePack` . Den här egenskapen kan användas i stället för ID om ID: t inte är tillgängligt.                |
-| targetType     | sträng           | Mål typen för produkten. Den här egenskapen anger om produkten är tillämplig för en `User` eller en `Tenant` .                                                                    |
-| licenseGroupId | sträng           | Identifierar via ett grupp-ID den myndighet eller tjänst som hanterar productSku-licensen. Produkter är åtskiljda under licens grupper för bättre hanterbarhet.<br/><br/>                                                                                     `group1` – Alla produkter vars licenser kan hanteras av Azure Active Directory (AAD).<br/><br/>                                            `group2` -Minecraft produkt licenser.                                         |
+| id             | sträng           | Produktidentifieraren.                             |
+| name           | sträng           | Användarens huvudnamnsidentifierare.                      |
+| skuPartNumber  | sträng           | SKU-delens nummernamn för produkten. Till exempel, för Office 365 E3 är det här värdet `EnterprisePack` . Den här egenskapen kan användas i stället för ID om ID:t inte är tillgängligt.                |
+| targetType     | sträng           | Måltypen för produkten. Den här egenskapen anger om produkten gäller för en `User` eller en `Tenant` .                                                                    |
+| licenseGroupId | sträng           | Identifierar den utfärdare eller tjänst som hanterar productSku-licensen via en gruppidentifierare. Produkter är åtskilda under licensgrupper för bättre hanterbarhet.<br/><br/>                                                                                     `group1`– Alla produkter vars licenser kan hanteras av Azure Active Directory (AAD).<br/><br/>                                            `group2`– Minecraft produktlicenser.                                         |
 
 ## <a name="serviceplan"></a>ServicePlan
 
-Identifierar en distributions bara tjänst inom en produkt-SKU. En produkt kan ha många tjänste planer.
+Identifierar en distribuerad tjänst i en produkt-SKU. En produkt kan ha många tjänstplaner.
 
-| Egenskap         | Typ   | Description                                                                                                       |
+| Egenskap         | Typ   | Beskrivning                                                                                                       |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------|
-| id               | sträng | Service plan-identifieraren.                                                                                      |
-| displayName      | sträng | Det lokaliserade visnings namnet för service planen.                                                                  |
-| serviceName      | sträng | Tjänstens namn.                                                                                                 |
-| capabilityStatus | sträng | Service planens status för service planen.                                                                      |
-| targetType       | sträng | Mål typen för service planen. Den här egenskapen anger om produkten är tillämplig för en "användare" eller "klient". |
+| id               | sträng | Identifierare för tjänstplan.                                                                                      |
+| displayName      | sträng | Det lokaliserade visningsnamnet för tjänstplanen.                                                                  |
+| Tjänstnamn      | sträng | Tjänstens namn.                                                                                                 |
+| capabilityStatus | sträng | Tjänstplanens status.                                                                      |
+| targetType       | sträng | Måltypen för tjänstplanen. Den här egenskapen anger om produkten gäller för en "användare" eller en "klientorganisation". |
 
 ## <a name="subscribedsku"></a>SubscribedSku
 
-Beskriver en registrerad produkt som ägs av en klient.
+Beskriver en prenumererad produkt som ägs av en klientorganisation.
 
-| Egenskap         | Typ                                                           | Description                                                                                       |
+| Egenskap         | Typ                                                           | Beskrivning                                                                                       |
 |------------------|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| availableUnits   | heltal                                                        | Antalet enheter som är tillgängliga för tilldelning. Det här värdet beräknas som totalt antal enheter-förbrukade enheter. |
+| availableUnits   | heltal                                                        | Antalet enheter som är tillgängliga för tilldelning. Det här värdet beräknas som totalt antal enheter – förbrukade enheter. |
 | activeUnits      | heltal                                                        | Antalet enheter som är aktiva för tilldelning.                                                        |
 | consumedUnits    | heltal                                                        | Antalet förbrukade enheter.                                                                     |
-| suspendedUnits   | heltal                                                        | Antalet inaktiverade enheter.                                                                    |
-| totalUnits       | heltal                                                        | Det totala antalet enheter. Det här värdet beräknas som summan av de aktiva och varnings enheterna.         |
-| warningUnits     | heltal                                                        | Antalet varnings enheter.                                                                      |
-| productSku       | ProductSku                                                     | Produkt-SKU: n.                                                                                  |
-| servicePlans     | matris med ServicePlan-resurser                                 | Insamling av Service planer för en produkt.                                                     |
+| suspendedUnits   | heltal                                                        | Antalet pausade enheter.                                                                    |
+| totalUnits       | heltal                                                        | Det totala antalet enheter. Det här värdet beräknas som summan av de aktiva enheterna och varningsenheterna.         |
+| warningUnits     | heltal                                                        | Antalet varningsenheter.                                                                      |
+| productSku       | ProductSku                                                     | Produkt-SKU:n.                                                                                  |
+| servicePlans     | matris med ServicePlan-resurser                                 | Insamling av tjänstplaner för en produkt.                                                     |
 | capabilityStatus | sträng                                                         | SKU-status för en produkt.                                                                      |
-| dokumentattribut       | [ResourceAttributes](utility-resources.md#resourceattributes) | De metadata-attribut som motsvarar resursen.                                            |
+| Attribut       | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen som motsvarar resursen.                                            |

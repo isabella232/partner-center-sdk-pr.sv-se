@@ -1,51 +1,46 @@
 ---
 title: Hantera fakturering
-description: I det här avsnittet beskrivs hur leverantörer av moln lösningar kan använda Partner Center för att visa och hantera sina fakturor program mässigt, och se deras kund förlopp mot en Azure utgifts budget.
+description: I det här avsnittet beskrivs hur Molnlösningsleverantör-partner kan använda Partnercenter för att programmatiskt visa och hantera sina fakturor och visa kundens framsteg mot en Azure-utgiftsbudget.
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 4d5995ea2abb5968c5ca459b8412b12dfdbbc47b
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: eaf6a426d0702130f31f08a4a30ccdfa00810270
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97769492"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548370"
 ---
 # <a name="manage-billing"></a>Hantera fakturering
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+I det här avsnittet beskrivs hur Molnlösningsleverantör-partner kan använda Partnercenter för att programmatiskt visa och hantera sina fakturor och visa kundens framsteg mot en Azure-utgiftsbudget.
 
-I det här avsnittet beskrivs hur leverantörer av moln lösningar kan använda Partner Center för att visa och hantera sina fakturor program mässigt och Visa kundens förloppet mot en Azure utgifts budget.
-
-**Fakturerings cykel:**
+**Faktureringsperiod:**
 - [Ändra faktureringscykeln](change-the-billing-cycle.md)
 
-**Priser och användning i Azure:**
+**Priser och användning för Azure:**
 - [Hämta en kunds användningsposter för Azure](get-a-customer-s-utilization-record-for-azure.md)
 - [Hämta priser för Microsoft Azure](get-prices-for-microsoft-azure.md)
 
-**Fakturor**
+**Fakturor:**
 - [Hämta en samling fakturor](get-a-collection-of-invoices.md)
 - [Hämta länkar för fakturauppskattning](get-invoice-estimate-links.md)
-- [Hämta försäljnings objekt för försäljnings fakturor på försäljnings platser](get-invoice-billed-consumption-lineitems.md)
+- [Hämta fakturafakturerade förbrukningsradsobjekt på den kommersiella marknadsplatsen](get-invoice-billed-consumption-lineitems.md)
 - [Hämta faktura efter ID](get-invoice-by-id.md)
 - [Hämta radobjekt för faktura](get-invoiceline-items.md)
 - [Hämta kvittoutdrag för faktura](get-invoice-receipt-statement.md)
 - [Hämta fakturautdrag](get-invoice-statement.md)
 - [Hämta fakturasammanfattningar](get-invoice-summaries.md)
-- [Hämta fakturor för ej fakturerade kommersiella marknads platser på marknaden](get-invoice-unbilled-consumption-lineitems.md)
+- [Hämta fakturaradsobjekt som inte fakturerats på den kommersiella marknadsplatsen](get-invoice-unbilled-consumption-lineitems.md)
 - [Hämta radobjekt för ofakturerad avstämning](get-invoice-unbilled-recon-lineitems.md)
-- [Hämta åter försäljarens aktuella konto saldo](get-the-reseller-s-current-account-balance.md)
+- [Hämta återförsäljarens aktuella kontosaldo](get-the-reseller-s-current-account-balance.md)
 
-**Utgifts budget för Azure:**
-- [Hämta användnings data för en prenumeration] (get-all-monthly-usage-records-for-a-subscription.md
-- [Hämta användnings översikt för alla kund prenumerationer](get-a-customer-usage-summary.md)
+**Utgiftsbudget för Azure:**
+- [Hämta användningsdata för en prenumeration] (get-all-monthly-usage-records-for-a-subscription.md
+- [Hämta användningssammanfattning för alla en kunds prenumerationer](get-a-customer-usage-summary.md)
 
-Mer information finns i [scenarier](scenarios.md).
+Mer information finns i [Scenarier](scenarios.md).

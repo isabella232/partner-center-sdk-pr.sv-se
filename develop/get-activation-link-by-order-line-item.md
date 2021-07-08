@@ -1,40 +1,35 @@
 ---
 title: Hämta aktiveringslänk efter orderradsobjekt
-description: Hämtar en prenumerations aktiverings länk per order rads objekt.
+description: Hämtar en prenumerationsaktiveringslänk efter orderradobjekt.
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: c0e84888870571cf6bd21306f527863f2aa7ee85
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: aa02a5a5b4a281b96e32ee6d239cc440cf8af4ec
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769267"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760784"
 ---
 # <a name="get-activation-link-by-order-line-item"></a>Hämta aktiveringslänk efter orderradsobjekt
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+Hämtar en aktiveringslänk för en kommersiell marknadsplatsprenumeration via orderradsartikelnumret.
 
-Hämtar en prenumerations aktiverings länk för en kommersiell marknads plats med order rads objekt numret.
-
-På instrument panelen för partner Center kan du utföra den här åtgärden genom att välja antingen en **prenumeration** under **prenumerationen** på huvud sidan eller välja länken **gå till utgivarens webbplats** bredvid prenumerationen som ska aktive ras på **prenumerations** sidan.
+På instrumentpanelen i Partnercenter kan du göra detta  genom att välja antingen en specifik prenumeration **under** Prenumeration på huvudsidan eller genom att välja länken Gå till **Publisher:s** webbplats bredvid prenumerationen som ska aktiveras på **sidan Prenumerationer.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Slutfört order med produkt som behöver aktive ras.
+- Slutförd order med produkt som behöver aktivering.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en rad objekts aktiverings länk använder du din [**IAggregatePartner.**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) -samling och anropar metoden [**ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med det valda kund-ID: t. Anropa sedan egenskapen [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) och metoden [**ById ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) med angivet  [**Ordernr**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.id). Anropa sedan metoden [**rad objekt**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) med **ById ()** med rad objekt nummer identifieraren.  Anropa slutligen metoden **ActivationLinks ()** .
+Om du vill hämta ett radobjekts aktiveringslänk använder du [**samlingen IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) och anropar [**metoden ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med det valda kund-ID:t. Anropa sedan egenskapen [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) och [**metoden ById()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) med din angivna  [**OrderId**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.id). Anropa sedan metoden [**LineItems**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) with **ById()** med radobjektets nummeridentifierare.  Anropa slutligen **metoden ActivationLinks().**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -48,15 +43,15 @@ var partnerOperations.Customers.ById(customerId).Orders.ById(orderId).OrderLineI
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                                               |
 |---------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{customerId}/Orders/{orderId}/lineitems/{lineItemNumber}/activationlinks http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customerId}/orders/{orderId}/lineitems/{lineItemNumber}/activationlinks HTTP/1.1 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -74,11 +69,11 @@ MS-CorrelationId: b12260fb-82de-4701-a25f-dcd367690645
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling [kund](customer-resources.md#customer) resurser i svars texten.
+Om det lyckas returnerar den här metoden en samling [kundresurser](customer-resources.md#customer) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

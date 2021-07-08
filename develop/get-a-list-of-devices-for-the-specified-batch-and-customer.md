@@ -1,46 +1,43 @@
 ---
 title: Hämta en lista över enheter för den angivna batchen och kunden
-description: Hämta en samling enheter och enhets information i den angivna enhets batchen för en kund.
+description: Så här hämtar du en samling enheter och enhetsinformation i den angivna enhetsbatchen för en kund.
 ms.date: 07/25/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 36fe3b97612adfd26c1b498f31b90f743bf774cb
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 28af1f568f755ba4c50cfac21529d6c677656c8e
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769549"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874269"
 ---
 # <a name="get-a-list-of-devices-for-the-specified-batch-and-customer"></a>Hämta en lista över enheter för den angivna batchen och kunden
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Tyskland
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-
-Den här artikeln beskriver hur du hämtar en samling enheter i en angiven enhets batch för en angiven kund. Varje enhets resurs innehåller information om enheten.
+Den här artikeln beskriver hur du hämtar en samling enheter i en angiven enhetsbatch för en angiven kund. Varje enhetsresurs innehåller information om enheten.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Ett batch-ID för enheten.
+- En enhets batchidentifierare.
 
 ## <a name="c"></a>C\#
 
-Hämta en samling enheter i en angiven enhets grupp för den angivna kunden:
+Så här hämtar du en samling enheter i en angiven enhetsbatch för den angivna kunden:
 
-1. Anropa metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att hämta ett gränssnitt till åtgärder på den angivna kunden.
+1. Anropa metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att hämta ett gränssnitt för åtgärder på den angivna kunden.
 
-2. Anropa metoden [**DeviceBatches. ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) för att hämta ett gränssnitt till enhetens batch Collection-åtgärder för den angivna batchen.
+2. Anropa metoden [**DeviceBatches.ById för**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) att hämta ett gränssnitt till enhetsbatchinsamlingsåtgärder för den angivna batchen.
 
-3. Hämta egenskapen [**enheter**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatch.devices) för att hämta ett gränssnitt till enhets samlings åtgärder för batchen.
+3. Hämta egenskapen [**Enheter**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatch.devices) för att hämta ett gränssnitt för enhetssamlingsåtgärder för batchen.
 
-4. Anropa [**Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.get) -eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.getasync) -metoden för att hämta samlingen med enheter.
+4. Anropa metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.getasync) för att hämta samlingen med enheter.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -51,36 +48,36 @@ var devices =
     partnerOperations.Customers.ById(selectedCustomerId).DeviceBatches.ById(selectedDeviceBatchId).Devices.Get();
 ```
 
-Ett exempel finns i följande avsnitt:
+Ett exempel finns i följande:
 
-- Exempel: [konsol test app](console-test-app.md)
-- Projekt: **SDK-exempel för partner Center**
+- Exempel: [Konsoltestapp](console-test-app.md)
+- Project: **Partnercenter-SDK exempel**
 - Klass: **GetDevices.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                            |
 |---------|------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/deviceBatches/{devicebatch-ID}/Devices http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/deviceBatches/{devicebatch-id}/devices HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Använd följande Sök vägs parametrar när du skapar begäran.
+Använd följande sökvägsparametrar när du skapar begäran.
 
 | Namn           | Typ   | Obligatorisk | Beskrivning                                           |
 |----------------|--------|----------|-------------------------------------------------------|
-| kund-ID    | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
-| devicebatch-ID | sträng | Yes      | En sträng identifierare som identifierar enhets batchen. |
+| kund-ID    | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
+| devicebatch-id | sträng | Ja      | En strängidentifierare som identifierar enhetsbatchen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Inget
+Ingen
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -96,11 +93,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en växlings Bart samling av [enhets](device-deployment-resources.md#device) resurser. Samlingen innehåller 100 enheter på en sida. Om du vill hämta nästa sida med 100 enheter måste continuationToken i svars texten inkluderas i efterföljande begäran som MS-ContinuationToken rubrik.
+Om det lyckas innehåller svarstexten [](device-deployment-resources.md#device) en sidad samling enhetsresurser. Samlingen innehåller 100 enheter på en sida. För att hämta nästa sida med 100 enheter måste continuationToken i svarstexten inkluderas i efterföljande begäran som ett MS-ContinuationToken huvud.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

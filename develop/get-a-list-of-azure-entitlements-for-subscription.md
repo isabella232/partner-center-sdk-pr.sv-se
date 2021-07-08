@@ -1,54 +1,50 @@
 ---
 title: Hämta en lista över Azure-berättigande för en prenumeration
-description: Du kan använda AzureEntitlement-resursen för att hämta en samling av Azures rättighets resurser som tillhör en prenumeration.
+description: Du kan använda azureEntitlement-resursen för att hämta en samling Azure-berättiganderesurser som tillhör en prenumeration.
 ms.date: 07/06/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: d7d0a10c571dc073bd49e82084f3b7ece7234daf
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 280da155122ed9efd99838d7819fb34f8f7ec52c
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769117"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874371"
 ---
 # <a name="get-a-list-of-azure-entitlements-for-a-subscription"></a>Hämta en lista över Azure-berättigande för en prenumeration
 
-**Gäller för:**
-
-- Partnercenter
-
-Du kan använda [Azure](subscription-resources.md#azureentitlement) -**AzureEntitlement** för att få en samling resurser som tillhör en prenumeration.
+Du kan använda [Azure-rättighetsresursen](subscription-resources.md#azureentitlement) **(AzureEntitlement)** för att hämta en samling resurser som tillhör en prenumeration.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Ett prenumerations-ID.
+- En prenumerationsidentifierare.
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                                   |
 |---------|---------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Subscriptions/{Subscription-ID}/azureentitlements http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/azureentitlements HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-I följande tabell visas de parametrar som krävs för att hämta alla Azure-rättigheter för en prenumeration.
+I följande tabell visas de frågeparametrar som krävs för att hämta alla Azure-rättigheter för en prenumeration.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                           |
 |------------------------|----------|----------|---------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y        | Ett GUID som motsvarar kunden. |
-| **prenumerations-ID**       | **guid** | Y        | Ett GUID som motsvarar prenumerationen.    |
+| **kund-klient-id** | **guid** | Y        | Ett GUID som motsvarar kunden. |
+| **prenumerations-id**       | **guid** | Y        | Ett GUID som motsvarar prenumerationen.    |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -67,11 +63,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling [**AzureEntitlement**](subscription-resources.md#azureentitlement) -resurser i svars texten.
+Om det lyckas returnerar den här metoden en [**samling AzureEntitlement-resurser**](subscription-resources.md#azureentitlement) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

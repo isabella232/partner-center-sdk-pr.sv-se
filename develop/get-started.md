@@ -1,64 +1,59 @@
 ---
 title: Kom igång
-description: Partner Center SDK innehåller ett hanterat API och en REST API som partner kan använda för att hantera kund-, prenumerations-och order data.
+description: I Partnercenter-SDK ett hanterat API och en REST API som partner kan använda för att hantera kund-, prenumerations- och beställningsdata.
 ms.date: 09/29/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9c2af1e11dbda19489a27e37c7f3de8ede90fd1c
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: b5d05f26d63574ef876519091dc1c33c05f36e25
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769057"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548761"
 ---
 # <a name="get-started"></a>Kom igång
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Partner Center SDK innehåller ett hanterat API och en REST API som partner kan använda för att hantera kund-, prenumerations-och order data.
+I Partnercenter-SDK ett hanterat API och en REST API som partner kan använda för att hantera kund-, prenumerations- och beställningsdata.
 
 ## <a name="get-the-code"></a>Hämta koden
 
-[Ladda ned SDK för partner Center](https://go.microsoft.com/fwlink/p/?LinkId=746681)
+[Ladda ned Partnercenter-SDK](https://go.microsoft.com/fwlink/p/?LinkId=746681)
 
 > [!NOTE]
-> API-åtkomst till Partner Center för indirekta åter försäljare är inte ett scenario som stöds.
+> API-åtkomst till Partner Center för indirekta återförsäljare stöds inte.
 
-## <a name="determine-your-version-of-partner-center"></a>Ta reda på din version av Partner Center
+## <a name="determine-your-version-of-partner-center"></a>Fastställ din version av Partnercenter
 
-Vissa versioner av Partner Center har inte hela SDK tillgängligt. Mer information finns i [utveckla för partner Center för Microsoft National Cloud](developing-for-partner-center-for-microsoft-national-cloud.md).
+I vissa versioner av Partnercenter finns inte hela SDK:n tillgänglig. Mer information finns i [Utveckla för Partner Center för Microsoft National Cloud.](developing-for-partner-center-for-microsoft-national-cloud.md)
 
 ## <a name="get-the-samples"></a>Hämta exemplen
 
-Mer information om C#-kodfragment, REST-exempel och exempel-appen finns i [exempel för partner Center](partner-center-samples.md).
+Mer information om C#-kodfragment, REST-exempel och exempelappen finns i [Partner Center-exempel.](partner-center-samples.md)
 
 ## <a name="test-vs-production"></a>Test jämfört med produktion
 
-När du börjar skriva och testa din kod bör du använda ditt konto för integration i begränsat läge (och motsvarande token) så att du inte av misstag debiteras nya avgifter som företaget ansvarar för att betala. Mer information om den här test miljön finns i [Konfigurera API-åtkomst i Partner Center](set-up-api-access-in-partner-center.md).
+När du först skriver och testar din kod bör du använda ditt sandbox-konto för integrering (och motsvarande token) så att du inte av misstag debiteras nya avgifter som ditt företag är ansvarigt för att betala. Mer information om den här testmiljön finns i [Konfigurera API-åtkomst i Partnercenter.](set-up-api-access-in-partner-center.md)
 
-När lösningen har testats och är redo att användas på verkliga kund konton måste du uppdatera dina tokens så att du använder en Azure AD-App och en hemlighet som motsvarar ditt primära partner Center-konto.
+När din lösning har testats och är redo att användas på verkliga kundkonton måste du uppdatera dina token så att du använder en Azure AD-klientapp och en hemlighet som motsvarar ditt primära Partnercenter-konto.
 
-Tips och förslag på testning och fel sökning, inklusive mer information om test-in-Production (TiP) och integration sandbox, finns i [testa och felsöka](test-and-debug.md).
+Tips och förslag om testning och felsökning, inklusive mer information om Test-in-Production (TiP) och sandbox-miljön för integrering finns [i Testa och felsöka](test-and-debug.md).
 
 ## <a name="configure-your-authentication"></a>Konfigurera din autentisering
 
-Om du vill konfigurera din Azure AD-autentisering så att du kan använda API: er för partner Center, se [partner Center-autentisering](partner-center-authentication.md).
+Information om hur du konfigurerar din Azure AD-autentisering så att du kan använda Partner Center-API:er finns [i Autentisering i Partnercenter.](partner-center-authentication.md)
 
 > [!IMPORTANT]
-> Microsoft presenterar ett säkert, skalbart ramverk för att autentisera leverantörer av moln lösnings leverantörer och kontroll panels leverantörer (CPV) via Microsoft Azure Multi-Factor Authentication (MFA)-arkitekturen.
-Partner Center använder Azure AD för autentisering och för att använda API: er för partner Center måste du konfigurera dina autentiseringsinställningar på rätt sätt.
+> Microsoft introducerar ett säkert, skalbart ramverk för autentisering av molnlösningsleverantörer (CSP) och leverantörer av kontrollpanelen (CPV) via arkitekturen för Microsoft Azure multifaktorautentisering (MFA).
+Partnercenter använder Azure AD för autentisering och för att använda Partner Center-API:er måste du konfigurera autentiseringsinställningarna korrekt.
 >
-> Mer information finns i [Aktivera säker program modell](enable-secure-app-model.md).
+> Mer information finns i [Aktivera säker programmodell.](enable-secure-app-model.md)
 
 ## <a name="get-help"></a>Få hjälp
 
-Partner kan få support i [gruppen Partner Center SDK Yammer](https://go.microsoft.com/fwlink/p/?LinkID=717360). För att få mer personligt anpassad hjälp kan utvecklare använda sina MPN-support förmåner eller Premier Support.
+Partner kan få support på [Partnercenter-SDK Yammer grupp](https://go.microsoft.com/fwlink/p/?LinkID=717360). För att få mer anpassad hjälp kan utvecklare använda sina MPN-supportförmåner eller Premier Support.
 
 ## <a name="join-the-partner-center-api-and-sdk-early-adopter-program"></a>Gå med i Partnercenter-programmet för tidiga API- och SDK-användare
 
-Information om hur du kan samar beta med Microsoft om utveckling av partner funktioner och funktioner finns i [delta i Partner Center API och SDK tidigt i programmet](early-adopter-program.md).
+Information om hur du kan samarbeta med Microsoft när det gäller utveckling av partnerfunktioner finns i Join the Partner Center API and SDK Early Adopter Program (Gå med i Partner Center-API:et och [SDK Early Adopter Program).](early-adopter-program.md)

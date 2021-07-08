@@ -1,36 +1,31 @@
 ---
 title: Hämta en lista över erbjudanden för en marknad
-description: Hämtar en samling som innehåller alla erbjudanden för en speciell marknad.
+description: Hämtar en samling som innehåller alla erbjudanden för en specifik marknad.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 3a004f6f8f8de8cd398d82c300793e4f196efaaa
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 6f4fd821879545db4e781fe3202c8ee11f167615
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769108"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874252"
 ---
 # <a name="get-a-list-of-offers-for-a-market"></a>Hämta en lista över erbjudanden för en marknad
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Hämtar en samling som innehåller alla erbjudanden för en speciell marknad.
+Hämtar en samling som innehåller alla erbjudanden för en specifik marknad.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en lista över erbjudanden på en specifik marknad använder du din **IAggregatePartner.** samling, Välj marknaden efter land och anropa metoden **Get ()** eller **Get async ()** .
+Om du vill hämta en lista över erbjudanden på en viss marknad använder du **samlingen IAggregatePartner.Offers,** väljer marknad efter land och anropar metoden **Get()** eller **Get Async().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -38,28 +33,28 @@ Om du vill hämta en lista över erbjudanden på en specifik marknad använder d
 ResourceCollection<Offer> offers = partnerOperations.Offers.ByCountry("US").Get();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample- **klass**: offers.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** PartnerSDK.FeatureSample-klass: Offers.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                          |
 |---------|--------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offers? land = {Country-ID} http/1.1   |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offers?country={country-id} HTTP/1.1   |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Den här tabellen innehåller de frågeparametrar som krävs för att hämta erbjudandena.
+I den här tabellen visas de frågeparametrar som krävs för att hämta erbjudandena.
 
 | Namn           | Typ       | Obligatorisk | Beskrivning            |
 |----------------|------------|----------|------------------------|
-| **lands-ID** | **nollängd** | Y        | Land/region-ID. |
+| **country-id** | **sträng** | Y        | Land/region-ID. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-- Ett **språkvariant-ID** som är formaterat som en sträng krävs.
-Mer information finns i [partner Center rest-rubriker](headers.md).
+- Ett **språk-ID** formaterat som en sträng krävs.
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -78,11 +73,11 @@ X-Locale: <locale-id>
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling **erbjudande** resurser i svars texten.
+Om det lyckas returnerar den här metoden en samling **erbjudanderesurser** i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

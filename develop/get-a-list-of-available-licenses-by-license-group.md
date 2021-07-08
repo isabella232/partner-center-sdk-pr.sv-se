@@ -1,37 +1,33 @@
 ---
 title: Hämta en lista över tillgängliga licenser efter licensgrupp
-description: Hämta en lista över licenser för de angivna licens grupperna som är tillgängliga för användare av den angivna kunden.
+description: Så här hämtar du en lista över licenser för de angivna licensgrupperna som är tillgängliga för användare av den angivna kunden.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 5092bc73107231d602c1465c8d157cdf5499c913
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: de59dfccf723c8f2411d9dadc51beb88688d5b02
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769555"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874524"
 ---
 # <a name="get-a-list-of-available-licenses-by-license-group"></a>Hämta en lista över tillgängliga licenser efter licensgrupp
 
-**Gäller för**
-
-- Partnercenter
-
-Hämta en lista över licenser för de angivna licens grupperna som är tillgängliga för användare av den angivna kunden.
+Så här hämtar du en lista över licenser för de angivna licensgrupperna som är tillgängliga för användare av den angivna kunden.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- En lista med en eller flera licens grupps identifierare.
+- En lista över en eller flera licensgruppsidentifierare.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en lista över tillgängliga licenser för de angivna licens grupperna börjar du med att instansiera en [lista](/dotnet/api/system.collections.generic.list-1) med typen [**LicenseGroupId**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid)och sedan lägga till licens grupperna i listan. Använd sedan metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID för att identifiera kunden. Hämta sedan värdet för egenskapen [**SubscribedSkus**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) för att hämta ett gränssnitt till kunden som prenumererar på SKU-samlings åtgärder. Slutligen skickar du listan över licens grupper till [**Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) -eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) -metoden för att hämta listan över de prenumererade SKU: erna med information om tillgängliga licens enheter.
+Om du vill hämta en lista över tillgängliga licenser för [](/dotnet/api/system.collections.generic.list-1) de angivna licensgrupperna börjar du med att skapa en instans av en lista av typen [**LicenseGroupId**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid)och lägger sedan till licensgrupperna i listan. Använd sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Hämta sedan värdet för egenskapen [**SubscribedSkus för att hämta**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) ett gränssnitt för SKU-samlingsåtgärder som kunden prenumererar på. Slutligen skickar du listan över licensgrupper till metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) för att hämta listan över prenumererade SKU:er med information om tillgängliga licensenheter.
 
 ``` csharp
 // string selectedCustomerId;
@@ -52,26 +48,26 @@ var customerUserBothAadAndSfbSubscribedSkus = partnerOperations.Customers.ById(s
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                                                  |
 |---------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/subscribedskus? LicenseGroupIds = Grupp1 http/1.1                        |
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/subscribedskus? LicenseGroupIds = group2 http/1.1                        |
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/subscribedskus? LicenseGroupIds = Grupp1&LicenseGroupIds = group2 http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscribedskus?licenseGroupIds=Group1 HTTP/1.1                        |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscribedskus?licenseGroupIds=Group2 HTTP/1.1                        |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscribedskus?licenseGroupIds=Group1&licenseGroupIds=Group2 HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande sökväg och frågeparametrar för att identifiera kunden och licens grupperna.
+Använd följande sökväg och frågeparametrar för att identifiera kunden och licensgrupperna.
 
 | Namn            | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                                                                                                           |
 |-----------------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| kund-ID     | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.                                                                                                                                                                                                                 |
-| licenseGroupIds | sträng | No       | Ett Enum-värde som anger licens gruppen för de tilldelade licenserna. Giltiga värden: Grupp1, group2 Grupp1 – den här gruppen har alla produkter vars licens kan hanteras i Azure Active Directory (AAD). Group2 – den här gruppen har bara Minecraft produkt licenser. |
+| kund-id     | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.                                                                                                                                                                                                                 |
+| licenseGroupIds | sträng | No       | Ett uppräkningsvärde som anger licensgruppen för de tilldelade licenserna. Giltiga värden: Group1, Group2 Group1 – Den här gruppen har alla produkter vars licens kan hanteras i Azure Active Directory (AAD). Grupp2 – Den här gruppen har bara Minecraft produktlicenser. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -91,11 +87,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en samling [SubscribedSku](license-resources.md#subscribedsku) -resurser.
+Om det lyckas innehåller svarstexten en samling [SubscribedSku-resurser.](license-resources.md#subscribedsku)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 
@@ -231,9 +227,9 @@ Date: Sat, 10 Jun 2017 00:19:44 GMT
 }
 ```
 
-### <a name="response-example-no-matching-skus-found"></a>Svars exempel (inga matchande SKU: er hittades)
+### <a name="response-example-no-matching-skus-found"></a>Svarsexempel (inga matchande SKU:er hittades)
 
-Om det inte går att hitta matchande SKU: er för de angivna licens grupperna innehåller svaret en tom samling med ett totalCount-element vars värde är 0.
+Om det inte går att hitta några matchande prenumerations-SKU:er för de angivna licensgrupperna innehåller svaret en tom samling med ett totalCount-element vars värde är 0.
 
 ```http
 HTTP/1.1 200 OK

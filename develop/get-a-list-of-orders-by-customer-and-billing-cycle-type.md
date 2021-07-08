@@ -1,43 +1,38 @@
 ---
 title: Hämta en lista över beställningar efter kund och faktureringscykeltyp
-description: Hämtar en samling order resurser för den angivna kund-och fakturerings cykel typen.
+description: Hämtar en samling orderresurser för den angivna kund- och faktureringscykeltypen.
 ms.date: 06/19/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 43fe08b0791851f915e2b39a25394db5ffd022ca
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: c52a556887dba065c4ccd1a82d6223624d0ad1f2
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769537"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874235"
 ---
 # <a name="get-a-list-of-orders-by-customer-and-billing-cycle-type"></a>Hämta en lista över beställningar efter kund och faktureringscykeltyp
 
-**Gäller för:**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Hämtar en samling order resurser som motsvarar en angiven kund-och fakturerings cykel typ. Det finns en fördröjning på upp till 15 minuter mellan tiden som en beställning skickas och när den kommer att visas i en samling av en kunds beställningar.
+Hämtar en samling orderresurser som motsvarar en viss kund och faktureringscykeltyp. Det finns en fördröjning på upp till 15 minuter mellan den tidpunkt då en order skickas och när den visas i en samling av en kunds beställningar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Hämta en samling av en kunds beställningar:
+Så här hämtar du en samling av en kunds beställningar:
 
-1. Använd din [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) -samling och anropa [**ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) -metoden med det valda kund-ID: t.
+1. Använd samlingen [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) och anropa [**metoden ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med det valda kund-ID:t.
 
-2. Anropa egenskapen [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) och metoden **ByBillingCycleType ()** med den angivna  [**BillingCycleType**](product-resources.md#billingcycletype).
-3. Anropa metoden [**Get ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) eller [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.getasync) .
+2. Anropa egenskapen [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) och **metoden ByBillingCycleType()** med din angivna  [**BillingCycleType**](product-resources.md#billingcycletype).
+3. Anropa [**metoden Get()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) eller [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -49,24 +44,24 @@ var orders = partnerOperations.Customers.ById(selectedCustomerId).Orders.ByBilli
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                                    |
 |---------|--------------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Orders? billingType = {fakturerings cykel-typ} http/1.1  |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders?billingType={billing-cycle-type} HTTP/1.1  |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Den här tabellen innehåller de frågeparametrar som krävs för att hämta en samling av beställningar efter kund-ID och typ av fakturerings cykel.
+I den här tabellen visas de frågeparametrar som krävs för att hämta en samling beställningar efter kund-ID och faktureringscykeltyp.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                               |
 |------------------------|----------|----------|-----------------------------------------------------------|
-| kund-ID för klient organisation     | sträng   | Yes      | En GUID-formaterad sträng som motsvarar kunden.    |
-| fakturering-cykel-typ     | sträng   | No       | En sträng som motsvarar typen av fakturerings cykel.         |
+| kund-klient-id     | sträng   | Ja      | En GUID-formaterad sträng som motsvarar kunden.    |
+| billing-cycle-type     | sträng   | No       | En sträng som motsvarar faktureringscykeltypen.         |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -85,11 +80,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling av [order](order-resources.md) resurser i svars texten.
+Om det lyckas returnerar den här metoden en samling [Order-resurser](order-resources.md) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

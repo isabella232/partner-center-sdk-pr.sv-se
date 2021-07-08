@@ -4,45 +4,40 @@ description: Läs mer om HTTP REST-begärandehuvuden och REST-svarshuvuden som s
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9f506c8c610c2584912c24453288d0f3578b84e3
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: 3f09ab5808a9751f02e451da2027f6b35877390b
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97769954"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548472"
 ---
-# <a name="partner-center-rest-and-response-headers-supported-by-the-partner-center-rest-api"></a>Partner Center REST-och svars rubriker som stöds av Partner Center REST API 
+# <a name="partner-center-rest-and-response-headers-supported-by-the-partner-center-rest-api"></a>PartnerCenter REST- och svarshuvuden som stöds av Partnercenter-REST API 
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Följande HTTP-begäran och svarshuvuden stöds av Partner Center REST API. Alla API-anrop accepterar inte alla huvuden.
+Följande HTTP-huvuden för begäran och svar stöds av Partnercenter-REST API. Alla API-anrop accepterar inte alla huvuden.
 
 ## <a name="rest-request-headers"></a>REST-begärandehuvuden
 
-Följande rubriker för HTTP-begäran stöds av Partner Center REST API.
+Följande HTTP-begärandehuvuden stöds av Partnercenter-REST API.
 
-| Huvud                       | Description                                                                                                                                                                                                                                                                            | Värdetyp |
+| Huvud                       | Beskrivning                                                                                                                                                                                                                                                                            | Värdetyp |
 |------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| Auktorisering:               | Krävs. Autentiseringstoken i form Bearer- &lt; token &gt; .                                                                                                                                                                                                                    | sträng     |
-| Godkänt                      | Anger begäran och svars typ, "Application/JSON".                                                                                                                                                                                                                           | sträng     |
-| MS-RequestId:                | En unik identifierare för anropet som används för att säkerställa ID-potens. Om det finns en timeout bör återförsöket innehålla samma värde. När ett svar har tagits emot (lyckades eller Miss lyckas) måste värdet återställas för nästa anrop.                                            | GUID       |
-| MS-CorrelationId:            | En unik identifierare för anropet, användbart i loggar och nätverks spår för fel söknings fel. Värdet måste återställas för varje anrop. Alla åtgärder ska innehålla denna rubrik. Mer information finns i korrelations-ID-information i [test-och fel sökning](test-and-debug.md). | GUID       |
-| MS-Contract-version:         | Krävs. Anger versionen för det begärda API: et. allmänt API-version: v1 om inget annat anges i avsnittet [scenarier](scenarios.md) .                                                                                                                                  | sträng     |
-| If-Match:                    | Används för concurrency-kontroll. Vissa API-anrop kräver att ETag skickas via If-Matchs huvudet. ETag är vanligt vis på resursen och kräver därför att du har den senaste versionen. Mer information finns i ETag-informationen i [test-och fel sökning](test-and-debug.md).                | sträng     |
-| MS-PartnerCenter – program | Valfritt. Anger namnet på det program som använder REST API för partner Center.                                                                                                                                                                                             | sträng     |
-| X-språkvariant:                    | Valfritt. Anger det språk som priserna returneras i. Standardvärdet är "en-US". En lista över vilka värden som stöds finns i [support språk som stöds av Partner Center och nationella inställningar](partner-center-supported-languages-and-locales.md).                                                                                                                                                                                                  | sträng     |
+| Auktorisering:               | Krävs. Auktoriseringstoken i formuläret &lt; Bearer-token &gt; .                                                                                                                                                                                                                    | sträng     |
+| Acceptera:                      | Anger begäran och svarstyp, "application/json".                                                                                                                                                                                                                           | sträng     |
+| MS-RequestId:                | En unik identifierare för anropet som används för att säkerställa id-potens. Om det finns en tidsgräns bör återförsöksanropet innehålla samma värde. När du får ett svar (lyckat eller misslyckat företag) ska värdet återställas för nästa anrop.                                            | GUID       |
+| MS-CorrelationId:            | En unik identifierare för anropet som är användbar i loggar och nätverksspårningar för felsökning av fel. Värdet ska återställas för varje anrop. Alla åtgärder bör innehålla det här huvudet. Mer information finns i Informationen om korrelations-ID [i Testa och felsöka](test-and-debug.md). | GUID       |
+| MS-Contract-Version:         | Krävs. Anger vilken version av API:et som begärdes. vanligtvis api-version: v1 om inget annat anges i [avsnittet](scenarios.md) Scenarier.                                                                                                                                  | sträng     |
+| If-Match:                    | Används för samtidighetskontroll. Vissa API-anrop kräver att ETag skickas via If-Match-huvudet. ETag finns vanligtvis på resursen och kräver därför GET-ting den senaste. Mer information finns i ETag-informationen i [Testa och felsöka](test-and-debug.md).                | sträng     |
+| MS-PartnerCenter-Application | Valfritt. Anger namnet på det program som använder PartnerCenter-REST API.                                                                                                                                                                                             | sträng     |
+| X-språk:                    | Valfritt. Anger det språk som priserna returneras på. Standardvärdet är "en-US". En lista över värden som stöds finns i [Språk och språk som stöds i Partnercenter.](partner-center-supported-languages-and-locales.md)                                                                                                                                                                                                  | sträng     |
 
 ## <a name="rest-response-headers"></a>REST-svarshuvuden
 
-Följande HTTP-svarshuvuden kan returneras av Partner Center REST API.
+Följande HTTP-svarshuvuden kan returneras av PartnerCenter-REST API.
 
-| Huvud            | Description                                                                                                                                                                                                                                 | Värdetyp |
+| Huvud            | Beskrivning                                                                                                                                                                                                                                 | Värdetyp |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| Godkänt           | Anger begäran och svars typ, "Application/JSON".                                                                                                                                                                                | sträng     |
-| MS-RequestId:     | En unik identifierare för anropet som används för att säkerställa ID-potens. Om det finns en timeout bör återförsöket innehålla samma värde. När ett svar har tagits emot (lyckades eller Miss lyckas) måste värdet återställas för nästa anrop. | GUID       |
-| MS-CorrelationId: | En unik identifierare för anropet. Det här värdet är användbart för fel sökning av loggar och nätverks spår för att hitta felet. Värdet måste återställas för varje anrop. Alla åtgärder ska innehålla denna rubrik.                                                       | GUID       |
+| Acceptera:           | Anger begäran och svarstyp, "application/json".                                                                                                                                                                                | sträng     |
+| MS-RequestId:     | En unik identifierare för anropet som används för att säkerställa id-potens. Om det finns en tidsgräns bör återförsöksanropet innehålla samma värde. När du får ett svar (lyckat eller misslyckat företag) ska värdet återställas för nästa anrop. | GUID       |
+| MS-CorrelationId: | En unik identifierare för anropet. Det här värdet är användbart för felsökning av loggar och nätverksspårningar för att hitta felet. Värdet ska återställas för varje anrop. Alla åtgärder bör innehålla det här huvudet.                                                       | GUID       |

@@ -1,44 +1,42 @@
 ---
-title: Hämta en lista över alla partner användar förfrågningar
-description: Hämta en lista över alla partner användar förfrågningar som använder partner REST API.
+title: Hämta en lista över alla partneranvändares begäranden
+description: Hämta en lista över alla partneranvändares begäranden med hjälp av partner-REST API.
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 43b1e3d4a6220ac8adba8eed0389395113072288
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 9a367f912669114969f8792a5afcc7020af1112e
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768751"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760512"
 ---
-# <a name="get-app-and-user-api-requests"></a>Hämta API-begäranden för app och användare
+# <a name="get-app-and-user-api-requests"></a>Hämta api-begäranden för appar och användare
 
-Gäller för:
+**Gäller för:** Partner Center API
 
-- Partner Center-API
-
-Den här artikeln förklarar hur du hämtar en lista över alla partner användar förfrågningar inom en klient med hjälp av REST API: er.
+Den här artikeln beskriver hur du hämtar en lista över alla partneranvändares begäranden inom en klientorganisation med hjälp av REST-API:er.
 
  > [!NOTE]
- > Detta API returnerar bara de senaste API-begäranden som gjorts av APP + User Credential med maximal 10 000-gräns.
+ > Det här API:et returnerar endast de senaste API-begäranden som görs av APP + Användar-autentiseringsuppgifter med en maxgräns på 10 000.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                        |
 |---------|--------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/partnerRequests |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/partnerRequests |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-- Mer information finns i [partner Center rest-rubriker](headers.md) .
+- Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -55,11 +53,11 @@ Content-Type: application/json
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling [information om API-begäranden](mfa-resources.md#api-request-details) i svars texten.
+Om det lyckas returnerar den här metoden en samling [API-begäranderesurser](mfa-resources.md#api-request-details) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

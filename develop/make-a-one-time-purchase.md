@@ -1,29 +1,26 @@
 ---
 title: Gör ett engångsköp
-description: Så här gör du ett engångs köp av program varu-och reservations produkter, till exempel program varu prenumerationer, beständig program vara och virtuella Azure-instanser (VM), med hjälp av Partner Center API.
+description: Så här köper du programvara och reservationsprodukter, till exempel programvaruprenumerationer, permanent programvara och VM-instanser (reserverad azure) med hjälp av Partner Center-API:et.
 ms.date: 10/09/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 17a5f5c1e845ba36a94d7ce909df30e0146ba448
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 1ca2d5b7ad6ba1196d74a8cdb748ab808192d569
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768901"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548387"
 ---
 # <a name="make-a-one-time-purchase"></a>Gör ett engångsköp
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Så här gör du ett engångs köp av program varu-och reservations produkter, till exempel program varu prenumerationer, beständig program vara och virtuella Azure-instanser (VM), med hjälp av Partner Center API.
+Så här köper du programvara och reservationsprodukter, till exempel programvaruprenumerationer, permanent programvara och VM-instanser (reserverad azure) med hjälp av Partner Center-API:et.
 
 > [!NOTE]
-> Program varu prenumerationer är inte tillgängliga på följande marknader:
+> Programvaruprenumerationer är inte tillgängliga på följande marknader:
 >
-> | Ej tillgängliga marknader            | Ej tillgängliga marknader (fortsatte...) | Ej tillgängliga marknader (fortsatte...)      |
+> | Otillgängliga marknader            | Otillgängliga marknader (forts...) | Otillgängliga marknader (forts...)      |
 > |--------------------------------|-----------------------------------|------------------------------------------|
 > | Åland                  | Grönland                         | Papua Nya Guinea                         |
 > | Amerikanska Samoa                 | Grenada                           | Pitcairn                         |
@@ -37,7 +34,7 @@ Så här gör du ett engångs köp av program varu-och reservations produkter, t
 > | Bonaire                        | Heard- och McDonaldöarna | Saint Vincent och Grenadinerna         |
 > | Bouvetön                  | Isle of Man                       | Samoa                                    |
 > | Brasilien                         | Jan Mayen                         | San Marino                               |
-> | Brittiska territoriet i Indiska Oceanen | Jersey                            | São Tomé och Príncipe                    |
+> | Brittiska territoriet i Indiska Oceanen | Jersey                            | Séo Tomé och Prñncipe                    |
 > | Brittiska Jungfruöarna         | Kiribati                          | Seychellerna                               |
 > | Burkina Faso                   | Kosovo                            | Sierra Leone                             |
 > | Burundi                        | Laos                              | Sint Eustatius                           |
@@ -46,7 +43,7 @@ Så här gör du ett engångs köp av program varu-och reservations produkter, t
 > | Tchad                           | Madagaskar                        | Somalia                                  |
 > | Kina                          | Malawi                            | Sydgeorgien och Sydsandwichöarna |
 > | Julön               | Maldiverna                          | Sydsudan                              |
-> | Kokosöarna        | Mali                              | Saint Helena, Ascension, Tristan da Cunha   |
+> | Kokosöarna        | Mali                              | StDirigering, Ascension, Tristan da Cunha   |
 > | Komorerna                        | Marshallöarna                  | Surinam                                 |
 > | Kongo                          | Martinique                        | Svalbard                                 |
 > | Kongo (DR)                    | Mauretanien                        | Swaziland                                |
@@ -56,126 +53,126 @@ Så här gör du ett engångs köp av program varu-och reservations produkter, t
 > | Ekvatorialguinea              | Moçambique                        | Tonga                                    |
 > | Eritrea                        | Myanmar                           | Turks- och Caicosöarna                 |
 > | Falklandsöarna               | Nauru                             | Tuvalu                                   |
-> | Franska Guyana                  | Nya Kaledonien                     | Amerikanska öar                    |
+> | Franska Guyana                  | Nya Kaledonien                     | U.S. Outlying Islands                    |
 > | Franska Polynesien               | Niger                             | Vanuatu                                  |
 > | Franska sydterritorierna    | Niue                              | Vatikanstaten                             |
-> | Gabon                          | Norfolkön                    | Wallis och Futuna                        |
+> | Gabon                          | Norfolkön                    | Wallis ochUna                        |
 > | Gambia                         | Nordmarianerna          | Jemen                                    |
 > | Gibraltar                      | Palau                             | &nbsp;                                   |
 >
 &nbsp;
 > [!NOTE]
-> För att kunna köpa beständig program vara måste du ha kvalificerats tidigare. Kontakta supporten om du vill ha mer information.
+> Om du vill köpa permanent programvara måste du ha kvalificerats tidigare. Kontakta supporten om du vill ha mer information.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
-## <a name="making-a-one-time-purchase"></a>Göra ett engångs köp
+## <a name="making-a-one-time-purchase"></a>Göra ett köp en gång
 
-Använd följande steg för att göra ett engångs köp:
+Använd följande steg om du vill göra ett köp en gång:
 
-1. [Aktivering](#enablement) – (endast Azure reserverad VM-instans) registrera en aktiv CSP Azure-prenumeration så att den kan köpa en reservations produkt.
+1. [Aktivera –](#enablement) (endast Azure Reserved VM Instance) Registrera en aktiv CSP Azure-prenumeration så att den kan köpa en reservationsprodukt.
 
-2. [Identifiering](#discovery) – hitta och välj de produkter och SKU: er som du vill köpa och kontrol lera deras tillgänglighet.
+2. [Identifiering](#discovery) – Hitta och välj de produkter och SKU:er som du vill köpa och kontrollera deras tillgänglighet.
 
-3. [Order sändning](#order-submission) – skapa en Shopping vagn med objekten i din beställning och skicka den.
+3. [Skicka order](#order-submission) – Skapa en kundvagn med artiklarna i din beställning och skicka den.
 
-4. [Hämta beställnings information](#get-order-details) – granska information om en order, alla beställningar för en kund eller Visa beställningar efter fakturerings cykel typ.
+4. [Hämta orderinformation](#get-order-details) – Granska information om en order, alla beställningar för en kund eller visa beställningar efter faktureringsperiodstyp.
 
-När du har gjort en engångs köpet visar följande scenarier hur du hanterar livs cykeln för dina produkter genom att hämta information om dina rättigheter och hur du hämtar balans räkningar, fakturor och faktura sammanfattningar.
+När du har gjort ett enda köp visar följande scenarier hur du hanterar livscykeln för dina produkter genom att hämta information om dina rättigheter och hur du hämtar saldoutdrag, fakturor och fakturasammanfattningar.
 
-- [Livs cykel hantering](#lifecycle-management)
+- [Livscykelhantering](#lifecycle-management)
 
 - [Faktura och avstämning](#invoice-and-reconciliation)
 
 ## <a name="enablement"></a>Aktivering
 
-När du har identifierat den aktiva prenumeration som du vill lägga till den reserverade virtuella Azure-instansen i måste du registrera prenumerationen så att den är aktive rad. Om du vill registrera en befintlig [prenumerations](subscription-resources.md) resurs så att den är aktive rad, se [Registrera en prenumeration](register-a-subscription.md).
+När du har identifierat den aktiva prenumeration som du vill lägga till den reserverade Azure VM-instansen i måste du registrera prenumerationen så att den är aktiverad. Information om hur du registrerar [en befintlig](subscription-resources.md) prenumerationsresurs så att den är aktiverad finns i Registrera [en prenumeration.](register-a-subscription.md)
 
-När du har registrerat din prenumeration bör du kontrol lera att registrerings processen har slutförts genom att kontrol lera registrerings statusen. Det här steget finns i [Hämta status för prenumerations registrering](get-subscription-registration-status.md).
+När du har registrerat din prenumeration bör du bekräfta att registreringsprocessen har slutförts genom att kontrollera registreringsstatusen. Om du vill göra det här steget kan [du läsa Hämta prenumerationsregistreringsstatus](get-subscription-registration-status.md).
 
 ## <a name="discovery"></a>Identifiering
 
-När prenumerationen har Aktiver ATS är du redo att välja produkter och SKU: er och kontrol lera deras tillgänglighet med hjälp av följande Partner Center API-modeller:
+När prenumerationen är aktiverad är du redo att välja produkter och SKU:er och kontrollera deras tillgänglighet med hjälp av följande Partner Center API-modeller:
 
-- [Produkt](product-resources.md#product) – en grupperings konstruktion för köpbara-varor eller-tjänster. En produkt som själva är inte ett köpbara-objekt.
+- [Produkt](product-resources.md#product) – En grupperingskonstruktion för köpbara varor eller tjänster. En produkt i sig är inte ett köpbart objekt.
 
-- [SKU](product-resources.md#sku) – en köpbara lagerhållnings enhet (SKU) under en produkt. SKU: er representerar olika former av produkten.
+- [SKU](product-resources.md#sku) – en köpbar lagerhållningsenhet (SKU) under en produkt. SKU:er representerar olika former av produkten.
 
-- [Tillgänglighet](product-resources.md#availability) – en konfiguration där en SKU är tillgänglig för köp (till exempel land, valuta och bransch segment).
+- [Tillgänglighet](product-resources.md#availability) – En konfiguration där en SKU kan köpas (till exempel land, valuta och branschsegment).
 
-Slutför följande steg innan du gör ett engångs köp:
+Utför följande steg innan du genomför ett köp en gång:
 
-1. Identifiera och hämta den produkt och SKU som du vill köpa. Du kan göra det här steget genom att först lista produkterna och SKU: erna, eller om du redan känner till ID: n för produkten och SKU: n, väljer du dem.
+1. Identifiera och hämta den produkt och SKU som du vill köpa. Du kan göra det här steget genom att lista produkterna och SKU:erna först, eller om du redan känner till produkt- och SKU:ns OCH välja dem.
 
    - [Hämta en lista över produkter](get-a-list-of-products.md)
-   - [Hämta en produkt med produkt-ID](get-a-product-by-id.md)
-   - [Hämta en lista över SKU: er för en produkt](get-a-list-of-skus-for-a-product.md)
-   - [Hämta en SKU med SKU-ID](get-a-sku-by-id.md)
+   - [Hämta en produkt med produkt-ID:t](get-a-product-by-id.md)
+   - [Hämta en lista över SKU:er för en produkt](get-a-list-of-skus-for-a-product.md)
+   - [Hämta en SKU med hjälp av SKU-ID:t](get-a-sku-by-id.md)
 
-2. Kontrol lera inventeringen för en SKU. Det här steget behövs bara för SKU: er som är taggade med en **InventoryCheck** -förutsättning.
+2. Kontrollera inventeringen för en SKU. Det här steget behövs bara för SKU:er som är taggade med **krav för InventoryCheck.**
 
    - [Kontrollera lager](check-inventory.md)
 
-3. Hämta [tillgänglighet](product-resources.md#availability) för SKU: [n](product-resources.md#sku). Du behöver **CatalogItemId** av tillgängligheten när du placerar ordern. Använd något av följande API: er för att hämta det här värdet:
+3. Hämta [tillgängligheten](product-resources.md#availability) för [SKU:n](product-resources.md#sku). Du behöver **CatalogItemId för** tillgängligheten när du gör beställningen. Hämta det här värdet genom att använda något av följande API:er:
 
    - [Hämta en lista över tillgänglighet för en SKU](get-a-list-of-availabilities-for-a-sku.md)
-   - [Få en tillgänglighet med tillgänglighets-ID: t](get-an-availability-by-id.md)
+   - [Hämta en tillgänglighet med hjälp av tillgänglighets-ID:t](get-an-availability-by-id.md)
 
-## <a name="order-submission"></a>Order överföring
+## <a name="order-submission"></a>Inskickade order
 
 Följ dessa steg om du vill skicka in din beställning:
 
-1. Skapa en vagn som innehåller den samling av katalog objekt som du vill köpa. När du skapar en [varukorg](cart-resources.md)grupperas [vagnens rad objekt](cart-resources.md#cartlineitem) automatiskt utifrån vad som kan köpas tillsammans i samma [ordning](order-resources.md).
+1. Skapa en kundvagn för den samling katalogobjekt som du tänker köpa. När du skapar [en kundvagn](cart-resources.md) [grupperas kundvagnsradsobjekten](cart-resources.md#cartlineitem) automatiskt baserat på vad som kan köpas tillsammans i samma [order.](order-resources.md)
 
-   - [Skapa en Shopping vagn](create-a-cart.md)
-   - [Uppdatera en Shopping vagn](update-a-cart.md)
+   - [Skapa en kundvagn](create-a-cart.md)
+   - [Uppdatera en kundvagn](update-a-cart.md)
 
-2. Kolla in vagnen. Att checka ut en vagns resultat i skapandet av en [order](order-resources.md).
+2. Kolla in kundvagnen. Om du checkar ut en kundvagn skapas en [order.](order-resources.md)
 
-   - [Checka ut vagnen](checkout-a-cart.md)
+   - [Checka ut kundvagnen](checkout-a-cart.md)
 
-## <a name="get-order-details"></a>Hämta beställnings information
+## <a name="get-order-details"></a>Hämta orderinformation
 
-När du har skapat din beställning kan du hämta information om en enskild order med order-ID: t eller hämta en lista över beställningar för en kund. Det finns en fördröjning på upp till 15 minuter mellan tiden som en beställning skickas och när den visas i en lista över en kunds beställningar.
+När du har skapat din beställning kan du hämta information om en enskild order med hjälp av order-ID:t eller hämta en lista över beställningar för en kund. Det finns en fördröjning på upp till 15 minuter mellan den tidpunkt då en order skickas och när den visas i en lista över en kunds beställningar.
 
-- Så här hämtar du information om en enskild order med order-ID: t. Se, [Hämta en order efter ID](get-an-order-by-id.md).
+- Så här hämtar du information om en enskild order med hjälp av order-ID:t. Se Hämta [en order efter ID.](get-an-order-by-id.md)
 
-- Så här hämtar du en lista över beställningar för en kund med kund-ID. Se, [Hämta alla kund order](get-all-of-a-customer-s-orders.md).
+- Så här hämtar du en lista över beställningar för en kund med hjälp av kund-ID:t. Se [Hämta alla en kunds beställningar.](get-all-of-a-customer-s-orders.md)
 
-- För att hämta en lista över beställningar för en kund efter [fakturerings cykel typ](product-resources.md#billingcycletype) , så att du kan lista beställningar (engångs avgifter) och årliga eller månatliga fakturerade beställningar separat. Se, [Hämta en lista över beställningar efter kund-och fakturerings cykel typ](get-a-list-of-orders-by-customer-and-billing-cycle-type.md).
+- Om du vill hämta en [](product-resources.md#billingcycletype) lista över beställningar för en kund efter faktureringscykeltyp kan du visa beställningar (en gång-avgifter) och årliga eller månatliga fakturerade beställningar separat. Se Hämta [en lista över beställningar efter kund och faktureringscykel.](get-a-list-of-orders-by-customer-and-billing-cycle-type.md)
 
-## <a name="lifecycle-management"></a>Livs cykel hantering
+## <a name="lifecycle-management"></a>Livscykelhantering
 
-Som en del i hanteringen av livs cykeln för dina Engångs köp i Partner Center kan du hämta information om dina [rättigheter](entitlement-resources.md)och få reservations information med hjälp av reservations orderns ID. Exempel på hur du gör detta finns i [Hämta rättigheter](get-a-collection-of-entitlements.md).
+Som en del av att hantera livscykeln för dina köp vid [](entitlement-resources.md)ett tillfälle i Partnercenter kan du hämta information om dina rättigheter och få reservationsinformation med hjälp av reservationsbeställnings-ID:t. Exempel på hur du gör detta finns i [Hämta rättigheter](get-a-collection-of-entitlements.md).
 
 ## <a name="invoice-and-reconciliation"></a>Faktura och avstämning
 
-Följande scenarier visar hur du program mässigt visar din kunds [fakturor](invoice-resources.md)och hur du får dina konto balanser och sammanfattningar som omfattar engångs kostnader.
+Följande scenarier visar hur du programmatiskt visar kundens fakturor [och](invoice-resources.md)hämtar dina kontosaldon och sammanfattningar som inkluderar engångsavgifter.
 
 ### <a name="balance-and-payment"></a>Saldo och betalning
 
-Om du vill hämta aktuellt konto saldo i din standard valuta typ som är en balans mellan både återkommande och engångs kostnad, se [Hämta ditt aktuella konto saldo](get-the-reseller-s-current-account-balance.md)
+Information om hur du hämtar aktuellt kontosaldo i din standardvalutatyp som är ett saldo för både återkommande avgifter och engångsavgifter finns i [Hämta ditt aktuella kontosaldo](get-the-reseller-s-current-account-balance.md)
 
-### <a name="multi-currency-balance-and-payment"></a>Saldo och betalning för flera valutor
+### <a name="multi-currency-balance-and-payment"></a>Saldo och betalning i flera valutor
 
-Om du vill hämta ditt aktuella konto saldo och en samling av faktura sammanfattningar som innehåller en faktura sammanfattning med både återkommande och engångs kostnader för var och en av kundens valuta typer, se [Hämta faktura sammanfattningar](get-invoice-summaries.md).
+Information om hur du hämtar ditt aktuella kontosaldo och en samling fakturasammanfattningar som innehåller en fakturasammanfattning med både återkommande och engångsavgifter för var och en av kundens valutatyper finns i [Hämta fakturasammanfattningar](get-invoice-summaries.md).
 
 ### <a name="invoices"></a>Fakturor
 
-Om du vill hämta en samling fakturor som visar både återkommande och en tids avgift, se [Hämta en samling fakturor](get-a-collection-of-invoices.md).
+Information om hur du hämtar en samling fakturor som visar både återkommande och engångsavgifter finns i [Hämta en samling fakturor.](get-a-collection-of-invoices.md)
 
 ### <a name="single-invoice"></a>Enskild faktura
 
-Information om hur du hämtar en speciell faktura med hjälp av faktura-ID finns i [Hämta en faktura efter ID](get-invoice-by-id.md).
+Information om hur du hämtar en specifik faktura med hjälp av [faktura-ID:t finns i Hämta en faktura efter ID.](get-invoice-by-id.md)
 
-### <a name="reconciliation"></a>Konto
+### <a name="reconciliation"></a>Försoning
 
-Information om hur du hämtar information om faktura rads objekt (avstämnings rad objekt) för ett angivet faktura-ID finns i [Hämta faktura rads objekt](get-invoiceline-items.md).
+Information om hur du hämtar en samling fakturaradsobjekt (avstämningsradsobjekt) för ett specifikt faktura-ID finns i [Hämta fakturaradsobjekt.](get-invoiceline-items.md)
 
-### <a name="download-an-invoice-as-a-pdf"></a>Ladda ned en faktura som en PDF
+### <a name="download-an-invoice-as-a-pdf"></a>Ladda ned en faktura som pdf
 
-Information om hur du hämtar ett faktura uttryck i PDF-formulär med hjälp av ett faktura-ID finns i [Hämta en faktura instruktion](get-invoice-statement.md).
+Information om hur du hämtar ett fakturautdrag i PDF-format med hjälp av ett faktura-ID finns [i Hämta ett fakturautdrag](get-invoice-statement.md).

@@ -1,47 +1,43 @@
 ---
 title: Hämta avtalsmetadata för Microsoft Cloud-avtal
-description: Den här artikeln beskriver hur du får avtals-metadata i Microsoft Cloud avtal.
+description: Den här artikeln förklarar hur du hämtar avtalsmetadata för Microsoft Cloud-avtal.
 ms.date: 02/12/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: c6a404eb38c4c31d3e69bb598872b932d8985529
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 2588327e72a13de75eb9e02675edbd535491adc4
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769261"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760801"
 ---
 # <a name="get-agreement-metadata-for-microsoft-cloud-agreement"></a>Hämta avtalsmetadata för Microsoft Cloud-avtal
 
-**Gäller för**
+**Gäller för:** Partnercenter
 
-- Partnercenter
+**Gäller inte för**: Partner Center som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-> [!NOTE]
-> **AgreementMetaData** -resursen stöds för närvarande endast av Partner Center i det offentliga Microsoft-molnet. Den gäller inte för:
-> - Partner Center som drivs av 21Vianet
-> - Partnercenter för Microsoft Cloud Tyskland
-> - Välkommen till Partnercenter för Microsoft Cloud for US Government
+**AgreementMetaData-resursen** stöds för närvarande endast av PartnerCenter i det offentliga Microsoft-molnet.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Om du använder Partner Center .NET SDK krävs version 1,9 eller senare.
+- Om du använder Partner Center .NET SDK krävs version 1.9 eller senare.
 
-- Om du använder Partner Center Java SDK krävs version 1,8 eller senare.
+- Om du använder Partner Center Java SDK krävs version 1.8 eller senare.
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](./partner-center-authentication.md). Det här scenariot stöder app + användarautentisering..
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](./partner-center-authentication.md) Det här scenariot stöder app - och användarautentisering.
 
-## <a name="net-version-114-or-newer"></a>.NET (version 1,14 eller senare)
+## <a name="net-version-114-or-newer"></a>.NET (version 1.14 eller senare)
 
-Så här hämtar du avtals metadata för Microsoft Cloud avtal:
+Så här hämtar du avtalsmetadata för Microsoft Cloud-avtal:
 
-1. Börja med att hämta samlingen **IAggregatePartner. AgreementDetails** .
+1. Hämta först **samlingen IAggregatePartner.AgreementDetails.**
 
-2. Anropa **ByAgreementType** -metoden för att filtrera samlingen till Microsoft Cloud avtal.
+2. Anropa **metoden ByAgreementType** för att filtrera samlingen till Microsoft Cloud-avtal.
 
-3. Anropa slutligen **Get** -eller **GetAsync** -metoden.
+3. Anropa slutligen **metoden Get** eller **GetAsync.**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -51,13 +47,13 @@ string agreementType = "MicrosoftCloudAgreement";
 var microsoftCloudAgreementDetails = partnerOperations.AgreementDetails.ByAgreementType(agreementType).Get().Items.Single();
 ```
 
-Ett fullständigt exempel finns i [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) -klassen från projektets [test app](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples) -projekt.
+Ett fullständigt exempel finns i klassen [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) från [konsoltestappsprojektet.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
 
-## <a name="net-version-19---113"></a>.NET (version 1,9-1,13)
+## <a name="net-version-19---113"></a>.NET (version 1.9–1.13)
 
-Så här hämtar du avtals metadata för Microsoft Cloud avtalet:
+Så här hämtar du avtalsmetadata för Microsoft Cloud-avtal:
 
-Hämta först **IAggregatePartner. AgreementDetails** -samlingen och anropa sedan metoderna **Get** eller **GetAsync** . Sök sedan efter objektet i samlingen, som motsvarar Microsoft Cloud avtalet:
+Hämta först **samlingen IAggregatePartner.AgreementDetails** och anropa sedan **metoderna Get** eller **GetAsync.** Sök sedan efter objektet i samlingen, vilket motsvarar Microsoft Cloud-avtal:
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -71,9 +67,9 @@ AgreementMetaData microsoftCloudAgreement = agreements.Items.FirstOrDefault (agr
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Så här hämtar du avtals metadata för Microsoft Cloud avtalet:
+Så här hämtar du avtalsmetadata för Microsoft Cloud-avtal:
 
-Anropa först funktionen **IAggregatePartner. getAgreementDetails** och anropa sedan **Get** -funktionen. Sök sedan efter objektet i samlingen, som motsvarar Microsoft Cloud avtalet:
+Anropa först **funktionen IAggregatePartner.getAgreementDetails** och anropa sedan **get-funktionen.** Sök sedan efter objektet i samlingen, vilket motsvarar Microsoft Cloud-avtal:
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -91,15 +87,15 @@ for (AgreementMetaData metadata : agreements)
 }
 ```
 
-Ett fullständigt exempel finns i [GetAgreementDetails](https://github.com/microsoft/Partner-Center-Java-Samples/blob/master/sdk/src/main/java/com/microsoft/store/partnercenter/samples/agreements/GetAgreementDetails.java) -klassen från projektets [test app](https://github.com/Microsoft/Partner-Center-Java-Samples) -projekt.
+Ett fullständigt exempel finns i klassen [GetAgreementDetails](https://github.com/microsoft/Partner-Center-Java-Samples/blob/master/sdk/src/main/java/com/microsoft/store/partnercenter/samples/agreements/GetAgreementDetails.java) från [konsoltestappsprojektet.](https://github.com/Microsoft/Partner-Center-Java-Samples)
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Så här hämtar du avtals metadata för Microsoft Cloud avtalet:
+Så här hämtar du avtalsmetadata för Microsoft Cloud-avtal:
 
-Använd kommandot [**Get-PartnerAgreementDetail**](/powershell/module/partnercenter/get-partneragreementdetail) . Sök sedan efter objektet i samlingen, som motsvarar Microsoft Cloud avtalet:
+Använd kommandot [**Get-PartnerAgreementDetail.**](/powershell/module/partnercenter/get-partneragreementdetail) Sök sedan efter objektet i samlingen, vilket motsvarar Microsoft Cloud-avtal:
 
 ```powershell
 Get-PartnerAgreementDetail | Where-Object {$_.AgreementType -eq 'MicrosoftCloudAgreement'} | Select-Object -First 1
@@ -107,17 +103,17 @@ Get-PartnerAgreementDetail | Where-Object {$_.AgreementType -eq 'MicrosoftCloudA
 
 ## <a name="rest-request"></a>REST-begäran
 
-Om du vill hämta avtals metadata för Microsoft Cloud avtal måste du först skapa en REST-begäran för att hämta **AgreementMetaData** -samlingen. Sök sedan efter objektet i samlingen som motsvarar Microsoft Cloud avtalet.
+Om du vill hämta avtalsmetadata Microsoft Cloud-avtal skapar du först en REST-begäran för att hämta **AgreementMetaData-samlingen.** Sök sedan efter det objekt i samlingen som motsvarar Microsoft Cloud-avtal.
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod | URI för förfrågan                                                         |
 |--------|---------------------------------------------------------------------|
-| GET    | [*\{ BASEURL \}*](partner-center-rest-urls.md)/v1/Agreements http/1.1 |
+| GET    | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/agreements HTTP/1.1 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -135,11 +131,11 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling **AgreementMetaData** -resurser i svars texten.
+Om det lyckas returnerar den här metoden en samling **AgreementMetaData-resurser** i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 
@@ -172,4 +168,4 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 }
 ```
 
-Identifiera resursen i svaret som motsvarar Microsoft Cloud avtalet genom att leta efter resursen vars **agreementType** -egenskap har värdet "MicrosoftCloudAgreement".
+Om du vill identifiera resursen i svaret som motsvarar Microsoft Cloud-avtal letar du efter resursen vars **agreementType-egenskap** har värdet "MicrosoftCloudAgreement".

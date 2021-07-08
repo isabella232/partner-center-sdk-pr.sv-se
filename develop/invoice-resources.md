@@ -1,305 +1,300 @@
 ---
-title: Faktura resurser
-description: 'Flera faktura relaterade resurser är tillgängliga via API: er för partner Center. Dessa resurser är relaterade till information om faktura och rad objekt.'
+title: Fakturaresurser
+description: Flera fakturarelaterade resurser är tillgängliga via Partner Center-API:erna. Dessa resurser är relaterade till information om faktura och radobjekt.
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8977b3b649cd930bb517965572d0efe51d6985a0
-ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
+ms.openlocfilehash: b07b7ad14c136eac988eeb12391c24a6cf996b39
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105730220"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548437"
 ---
-# <a name="invoice-resources"></a>Faktura resurser
+# <a name="invoice-resources"></a>Fakturaresurser
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Följande faktura relaterade resurser är tillgängliga via API: er för partner Center.
+Följande fakturarelaterade resurser är tillgängliga via Partner Center-API:erna.
 
 ## <a name="invoice"></a>Faktura
 
 | Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
-| id | sträng | Faktura-ID. |
-| invoiceDate | sträng i UTC-datum/tid-format | Datumet då fakturan genererades. |
-| billingPeriodStartDate | sträng i UTC-datum/tid-format | Fakturerings periodens start datum i UTC. |
-| billingPeriodEndDate | sträng i UTC-datum/tid-format   | Fakturerings periodens slutdatum i UTC. |
-| totalCharges | antal | De totala kostnaderna. Innehåller avgifter för transaktioner och eventuella justeringar.     |
+| id | sträng | Fakturaidentifieraren. |
+| invoiceDate | sträng i UTC-datum/tid-format | Det datum då fakturan genererades. |
+| billingPeriodStartDate | sträng i UTC-datum/tid-format | Startdatum för faktureringsperiod i UTC. |
+| billingPeriodEndDate | sträng i UTC-datum/tid-format   | Slutdatum för faktureringsperiod i UTC. |
+| totalCharges | antal | De totala avgifterna. Inkluderar avgifter för transaktioner och eventuella justeringar.     |
 | paidAmount | antal  | Det belopp som betalas av partnern. Negativt om en betalning togs emot.  |
-| currencyCode | sträng  | En kod som anger vilken valuta som används för alla faktura objekts belopp och total summor. |
-| currencySymbol  | sträng | Valuta symbolen som används för alla faktura objekts belopp och total summor. |
-| pdfDownloadLink | sträng  | En länk för att ladda ned fakturan i PDF-format. Den här länken returneras inte som en del av Sök resultaten och fylls bara i om fakturan nås av ID. Den här länken upphör att gälla om 30 minuter. |
-| invoiceDetails  | matris med [InvoiceDetail](#invoicedetail) -objekt  | Faktura informationen.  |
-| föreslå      | matris med [faktura](#invoice) objekt   | Ändringarna av den här fakturan.  |
-| documentType    | sträng | Fakturans dokument typ: "kredit anmärkning", "faktura". |
-| amendsOf        | sträng | Referens numret för dokumentet som det här dokumentet är en ändring i.  |
-| invoiceType     | sträng  | Typ av faktura: "återkommande", "en \_ tid".   |
-| Länkar           | [ResourceLinks](utility-resources.md#resourcelinks)  | Resurs länkarna.  |
-| dokumentattribut      | [ResourceAttributes](utility-resources.md#resourceattributes) | Attribut för metadata.  |
+| currencyCode | sträng  | En kod som anger vilken valuta som används för alla fakturaobjektsbelopp och summor. |
+| currencySymbol  | sträng | Valutasymbolen som används för alla fakturaobjektsbelopp och summor. |
+| pdfDownloadLink | sträng  | En länk för att ladda ned fakturan i PDF-format. Den här länken returneras inte som en del av sökresultaten och fylls bara i om fakturan används av ID:t. Den här länken upphör att gälla automatiskt om 30 minuter. |
+| invoiceDetails  | matris med [InvoiceDetail-objekt](#invoicedetail)  | Fakturainformation.  |
+| Ändringsförslag      | matris med [fakturaobjekt](#invoice)   | Ändringarna av den här fakturan.  |
+| documentType    | sträng | Dokumenttypen för fakturan: "Credit Note", "Invoice". |
+| amendsOf        | sträng | Referensnumret för dokumentet som det här dokumentet är en ändring av.  |
+| invoiceType     | sträng  | Typ av faktura: "återkommande", "en \_ gång".   |
+| Länkar           | [ResourceLinks](utility-resources.md#resourcelinks)  | Resurslänkarna.  |
+| Attribut      | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen.  |
 
 ## <a name="invoicedetail"></a>InvoiceDetail
 
-En faktura innehåller en samling av fakturerade artiklar, och varje objekt representeras av en InvoiceDetail-resurs.
+En faktura innehåller en samling fakturerade objekt och varje objekt representeras av en InvoiceDetail-resurs.
 
 | Egenskap            | Typ                                                           | Beskrivning                                                                       |
 |---------------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------|
-| invoiceLineItemType | sträng                                                         | Typ av faktura information: "ingen", "användnings \_ rads \_ objekt", "fakturerings \_ rad \_ objekt". |
-| billingProvider     | sträng                                                         | Fakturerings leverantören: "ingen", "Office", "Azure" eller "Azure \_ data \_ Marketing".         |
-| Länkar               | [ResourceLinks](utility-resources.md#resourcelinks)           | Resurs länkarna.                                                               |
-| dokumentattribut          | [ResourceAttributes](utility-resources.md#resourceattributes) | Attribut för metadata.                                                          |
+| invoiceLineItemType | sträng                                                         | Typ av fakturainformation: "none", "usage \_ line \_ items", "billing \_ line \_ items". |
+| billingProvider     | sträng                                                         | Faktureringsleverantören: "none", "office", "azure" eller "azure \_ data \_ market".         |
+| Länkar               | [ResourceLinks](utility-resources.md#resourcelinks)           | Resurslänkarna.                                                               |
+| Attribut          | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen.                                                          |
 
 ## <a name="invoicelineitem"></a>InvoiceLineItem
 
-Varje enskild avgift i en faktura representeras som en InvoiceLineItem.
+Varje enskild avgift inom en faktura representeras som en InvoiceLineItem.
 
 | Egenskap            | Typ                                                           | Beskrivning                                                                          |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| invoiceLineItemType | sträng                                                         | Typ av faktura rads objekt: "ingen", "användnings \_ rads \_ objekt", "fakturerings \_ rad \_ objekt". |
-| billingProvider     | sträng                                                         | Fakturerings leverantören: "ingen", "Office", "Azure" eller "Azure \_ data \_ Marketing".            |
-| dokumentattribut          | [ResourceAttributes](utility-resources.md#resourceattributes) | Attribut för metadata.                                                             |
+| invoiceLineItemType | sträng                                                         | Typen av fakturarad: "none", "usage \_ line \_ items", "billing \_ line \_ items". |
+| billingProvider     | sträng                                                         | Faktureringsleverantören: "none", "office", "azure" eller "azure \_ data \_ market".            |
+| Attribut          | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen.                                                             |
 
 ## <a name="invoicesummary"></a>InvoiceSummary
 
-Beskriver en översikt över saldot och den totala kostnaden för en faktura.
+Beskriver en sammanfattning av saldot och de totala avgifterna för en faktura.
 
 | Egenskap                 | Typ                                                           | Beskrivning                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| balanceAmount            | antal                                                         | Fakturans saldo. Detta är den totala mängden obetalda fakturor. |
-| currencyCode             | sträng                                                         | En kod som anger valutan som används för saldobeloppet.       |
-| currencySymbol           | sträng                                                         | Valuta symbolen som används.                                             |
+| balanceAmount            | antal                                                         | Saldot på fakturan. Det här är det totala antalet obetalde fakturor. |
+| currencyCode             | sträng                                                         | En kod som anger vilken valuta som används för saldobeloppet.       |
+| currencySymbol           | sträng                                                         | Valutasymbolen som används.                                             |
 | accountingDate           | sträng i UTC-datum/tid-format                                 | Det datum då saldobeloppet senast uppdaterades.                         |
-| firstInvoiceCreationDate | sträng i UTC-datum/tid-format                                 | Datumet då den första fakturan för kunden skapades.              |
-| lastPaymentDate          | sträng i UTC-datum/tid-format                                 | Datumet för den senaste betalningen.                                         |
-| lastPaymentAmount        | antal                                                         | Den senaste Betalningens belopp.                                       |
-| latestInvoiceDate        | sträng i UTC-datum/tid-format                                 | Datumet då den sista fakturan för kunden skapades.               |
-| information                  | matris med [InvoiceSummaryDetail](#invoicesummarydetail) -objekt | Faktura sammanfattnings information.                                           |
-| Länkar                    | [ResourceLinks](utility-resources.md#resourcelinks)            | Resurs länkarna.                                                   |
-| dokumentattribut               | [ResourceAttributes](utility-resources.md#resourceattributes)  | Attribut för metadata.                                              |
+| firstInvoiceCreationDate | sträng i UTC-datum/tid-format                                 | Det datum då den första fakturan för kunden skapades.              |
+| lastPaymentDate          | sträng i UTC-datum/tid-format                                 | Datum för den senaste betalningen.                                         |
+| lastPaymentAmount        | antal                                                         | Beloppet för den senaste betalningen.                                       |
+| latestInvoiceDate        | sträng i UTC-datum/tid-format                                 | Det datum då den sista fakturan för kunden skapades.               |
+| Detaljer                  | matris med [InvoiceSummaryDetail-objekt](#invoicesummarydetail) | Information om fakturasammanfattningen.                                           |
+| Länkar                    | [ResourceLinks](utility-resources.md#resourcelinks)            | Resurslänkarna.                                                   |
+| Attribut               | [ResourceAttributes](utility-resources.md#resourceattributes)  | Metadataattributen.                                              |
 
 ## <a name="invoicesummarydetail"></a>InvoiceSummaryDetail
 
-Visar en sammanfattning av de enskilda detaljerna för en faktura typ (till exempel återkommande, en \_ tid).
+Representerar en sammanfattning av den enskilda informationen för en fakturatyp (till exempel återkommande, en \_ gång).
 
 | Egenskap            | Typ                                                           | Beskrivning                                                                          |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| invoiceType         | sträng                                                         | Typ av faktura: "återkommande", "en \_ tid".                                       |
-| sammanfattning             | [InvoiceSummary](#invoicesummary) -objekt                       | Sammanfattningen av fakturan per faktura typ.                                         |
+| invoiceType         | sträng                                                         | Typ av faktura: "återkommande", "en \_ gång".                                       |
+| sammanfattning             | [InvoiceSummary-objekt](#invoicesummary)                       | Sammanfattning av fakturan per fakturatyp.                                         |
 
 ## <a name="invoicesummaries"></a>InvoiceSummaries
 
-Representera en samling av typen [InvoiceSummary](#invoicesummary) som innehåller de enskilda detaljerna för en faktura typ per valuta.
+Representerar en samling av typen [InvoiceSummary](#invoicesummary) som innehåller enskild information för en fakturatyp per valuta.
 
 | Egenskap            | Typ                                                           | Beskrivning                                                                          |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| collectionOfSummary | matris med [InvoiceSummary](#invoicesummary) -objekt             | Sammanfattningen av fakturan per faktura typ per valuta.                            |
+| collectionOfSummary | matris med [InvoiceSummary-objekt](#invoicesummary)             | Sammanfattning av fakturan per fakturatyp per valuta.                            |
 
 ## <a name="licensebasedlineitem"></a>LicenseBasedLineItem
 
-Representerar ett faktura fakturerings rads objekt för licensierade prenumerationer.
+Representerar ett fakturafaktureringsradobjekt för licensierade prenumerationer.
 
 | Egenskap                 | Typ                                                           | Beskrivning                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| debetbelopp                   | sträng                                                         | Hämtar eller anger den totala mängden. Total belopp = enhets pris * kvantitet.  |
-| dokumentattribut               | sträng                                                         | Hämtar attributen.                                                  |
-| billingCycleType         | sträng                                                         | Hämtar eller anger typen av fakturerings cykel.                                  |
-| billingProvider          | sträng                                                         | Hämtar fakturerings leverantören.                                            |
-| chargeEndDate            | sträng i UTC-datum/tid-format                                 | Hämtar eller anger fakturerings datum.                             |
-| chargeStartDate          | sträng i UTC-datum/tid-format                                 | Hämtar eller anger avgiftens start datum.                           |
-| chargeType               | sträng                                                         | Hämtar eller anger avgifts typen.                                      |
-| currency                 | sträng                                                         | Hämtar eller anger valutan som används för det här rad objektet.                    |
-| customerId               | sträng                                                         | Hämtar eller anger kundens unika identifierare i Microsofts fakturerings plattform.  |
-| customerName             | sträng i UTC-datum/tid-format                                 | Hämtar eller anger kundens namn.                                       |
-| Namn               | sträng                                                         | Hämtar eller anger domän namn.                                             |
-| durableOfferId           | sträng                                                         | Hämtar eller anger den unika identifieraren för det beständiga erbjudandet.                     |
-| invoiceLineItemType      | sträng                                                         | Hämtar typen av faktura rads objekt.                                   |
-| mpnId                    | antal                                                         | Hämtar eller anger det MPN-ID som är kopplat till det här rad objektet. För direkt åter försäljare är detta MPN-ID: t för åter försäljaren. För indirekta åter försäljare är detta MPN-ID för mervärdes åter försäljaren (VAR).                                   |
-| offerId                  | sträng                                                         | Hämtar eller anger unikt ID för erbjudandet.                             |
-| offerName                | sträng                                                         | Hämtar eller anger namnet på erbjudandet.                                          |
-| orderId                  | sträng                                                         | Hämtar eller anger den unika beställnings identifieraren.                             |
-| Partner                | sträng                                                         | Hämtar eller anger partnerns ID för Azure Active Directory-klienten.            |
-| quantity                 | antal                                                         | Hämtar eller anger antalet enheter som är kopplade till det här rad objektet.      |
-| subscriptionDescription  | sträng                                                         | Hämtar eller anger prenumerations beskrivningen.                            |
+| Belopp                   | sträng                                                         | Hämtar eller anger det totala beloppet. Totalt belopp = enhetspris * kvantitet.  |
+| Attribut               | sträng                                                         | Hämtar attributen.                                                  |
+| billingCycleType         | sträng                                                         | Hämtar eller anger faktureringscykeltypen.                                  |
+| billingProvider          | sträng                                                         | Hämtar faktureringsleverantören.                                            |
+| chargeEndDate            | sträng i UTC-datum/tid-format                                 | Hämtar eller anger slutdatumet för avgiften.                             |
+| chargeStartDate          | sträng i UTC-datum/tid-format                                 | Hämtar eller anger startdatumet för avgiften.                           |
+| chargeType               | sträng                                                         | Hämtar eller anger typen av avgift.                                      |
+| currency                 | sträng                                                         | Hämtar eller anger den valuta som används för det här radobjektet.                    |
+| customerId               | sträng                                                         | Hämtar eller anger kundens unika identifierare på Microsofts faktureringsplattform.  |
+| customerName             | sträng i UTC-datum/tid-format                                 | Hämtar eller anger kundnamnet.                                       |
+| Domännamn               | sträng                                                         | Hämtar eller anger domännamn.                                             |
+| durableOfferId           | sträng                                                         | Hämtar eller anger unik identifierare för beständigt erbjudande.                     |
+| invoiceLineItemType      | sträng                                                         | Hämtar typen av fakturaradsobjekt.                                   |
+| mpnId                    | antal                                                         | Hämtar eller anger det MPN-ID som är associerat med det här radobjektet. För direktåterförsäljare är detta MPN-ID:t för återförsäljaren. För indirekta återförsäljare är detta MPN-ID:t för Value Added Reseller (VAR).                                   |
+| offerId                  | sträng                                                         | Hämtar eller anger erbjudandets unika identifierare.                             |
+| offerName                | sträng                                                         | Hämtar eller anger erbjudandets namn.                                          |
+| Ordernr                  | sträng                                                         | Hämtar eller anger den unika orderidentifieraren.                             |
+| partnerId                | sträng                                                         | Hämtar eller anger partnerns Klientorganisations-ID för Azure Active Directory.            |
+| quantity                 | antal                                                         | Hämtar eller anger antalet enheter som är associerade med det här radobjektet.      |
+| subscriptionDescription  | sträng                                                         | Hämtar eller anger prenumerationsbeskrivningen.                            |
 | subscriptionEndDate      | sträng i UTC-datum/tid-format                                 | Hämtar eller anger det datum då prenumerationen upphör att gälla.                      |
 | subscriptionId           | sträng                                                         | Hämtar eller anger prenumerationens unika identifierare.                      |
 | subscriptionName         | sträng                                                         | Hämtar eller anger prenumerationens namn.                                   |
 | subscriptionStartDate    | sträng i UTC-datum/tid-format                                 | Hämtar eller anger det datum då prenumerationen startar.                   |
-| Delsumma                 | antal                                                         | Hämtar eller anger beloppet efter rabatt.                               |
-| syndicationPartnerSubscriptionNumber | sträng                                             | Hämtar eller anger prenumerations numret för syndikerings partnern.             |
-| Tax                      | antal                                                         | Hämtar eller anger de skatter som debiteras.                                       |
-| tier2MpnId               | antal                                                         | Hämtar eller anger MPN-ID: t för nivå 2-partnern som är kopplad till det här rad objektet. |
+| Delsumma                 | antal                                                         | Hämtar eller anger beloppet efter rabatten.                               |
+| syndicationPartnerSubscriptionNumber | sträng                                             | Hämtar eller anger prenumerationsnumret för syndikeringspartnern.             |
+| Skatt                      | antal                                                         | Hämtar eller anger de skatter som debiteras.                                       |
+| tier2MpnId               | antal                                                         | Hämtar eller anger MPN-ID:t för den nivå 2-partner som är associerad med det här radobjektet. |
 | totalForCustomer         | antal                                                         | Hämtar eller anger det totala beloppet efter rabatt och skatt.                 |
-| totalOtherDiscount       | antal                                                         | Hämtar eller anger rabatten som är kopplad till det här köpet.              |
-| unitPrice                | antal                                                         | Hämtar eller anger enhets priset.                                          |
+| totalOtherDiscount       | antal                                                         | Hämtar eller anger rabatten som är associerad med det här köpet.              |
+| unitPrice                | antal                                                         | Hämtar eller anger enhetspriset.                                          |
 
 ## <a name="usagebasedlineitem"></a>UsageBasedLineItem
 
-Representerar ett faktura fakturerings rads objekt för användnings prenumerationer.
+Representerar ett fakturafaktureringsradobjekt för användningsbaserade prenumerationer.
 
 | Egenskap                 | Typ                                                           | Beskrivning                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| dokumentattribut               | sträng                                                         | Hämtar attributen.                                                  |
-| billingCycleType         | sträng                                                         | Hämtar eller anger typen av fakturerings cykel.                                  |
-| billingProvider          | sträng                                                         | Hämtar fakturerings leverantören.                                            |
-| chargeEndDate            | sträng i UTC-datum/tid-format                                 | Hämtar eller anger fakturerings datum.                             |
-| chargeStartDate          | sträng i UTC-datum/tid-format                                 | Hämtar eller anger avgiftens start datum.                           |
-| chargeType               | sträng                                                         | Hämtar eller anger avgifts typen.                                      |
-| consumedQuantity         | antal                                                         | Hämtar eller anger det totala antalet enheter som förbrukas.                                |
+| Attribut               | sträng                                                         | Hämtar attributen.                                                  |
+| billingCycleType         | sträng                                                         | Hämtar eller anger faktureringscykeltypen.                                  |
+| billingProvider          | sträng                                                         | Hämtar faktureringsleverantören.                                            |
+| chargeEndDate            | sträng i UTC-datum/tid-format                                 | Hämtar eller anger slutdatumet för avgiften.                             |
+| chargeStartDate          | sträng i UTC-datum/tid-format                                 | Hämtar eller anger startdatumet för avgiften.                           |
+| chargeType               | sträng                                                         | Hämtar eller anger typen av avgift.                                      |
+| consumedQuantity         | antal                                                         | Hämtar eller anger det totala antalet förbrukade enheter.                                |
 | consumptionDiscount      | sträng                                                         | Hämtar eller anger rabatten för förbrukning.                             |
-| consumptionPrice         | sträng                                                         | Hämtar eller anger priset för Förbrukat antal.                          |
+| consumptionPrice         | sträng                                                         | Hämtar eller anger priset för förbrukad kvantitet.                          |
 | currency                 | sträng                                                         | Hämtar eller anger valutan som är associerad med priserna.                 |
-| customerName             | sträng                                                         | Hämtar eller anger kundens namn.                                       |
+| customerName             | sträng                                                         | Hämtar eller anger kundnamnet.                                       |
 | customerId               | sträng                                                         | Hämtar eller anger kundens unika identifierare.                          |
-| detailLineItemId         | antal                                                         | Hämtar eller anger informations radens objekt-ID. Identifierar rad objekt unikt för de fall där beräkningen skiljer sig från förbrukade enheter. Exempel: totalt förbrukat = 1338, 1024 debiteras med en kostnad, 314 är debiterad med en annan taxa.        |
-| Namn               | sträng                                                         | Hämtar eller anger domän namn.                                             |
-| includedQuantity         | antal                                                         | Hämtar eller anger de enheter som ingår i ordern.                         |
-| invoiceLineItemType      | sträng                                                         | Hämtar typen av faktura rads objekt.                                   |
-| invoiceNumber            | sträng                                                         | Hämtar eller anger faktura numret.                                      |
+| detailLineItemId         | antal                                                         | Hämtar eller anger informationsradobjektets ID. Identifierar unikt radobjekten för fall där beräkningen skiljer sig för förbrukade enheter. Exempel: Totalt förbrukat = 1338, 1 024 debiteras med ett pris, 314 debiteras med ett annat pris.        |
+| Domännamn               | sträng                                                         | Hämtar eller anger domännamn.                                             |
+| includedQuantity         | antal                                                         | Hämtar eller anger de enheter som ingår i ordningen.                         |
+| invoiceLineItemType      | sträng                                                         | Hämtar typen av fakturaradsobjekt.                                   |
+| invoiceNumber            | sträng                                                         | Hämtar eller anger fakturanumret.                                      |
 | listPrice                | antal                                                         | Hämtar eller anger priset för varje enhet.                                  |
-| mpnId                    | antal                                                         | Hämtar eller anger det MPN-ID som är kopplat till det här rad objektet. För direkt åter försäljare är detta MPN-ID: t för åter försäljaren. För indirekta åter försäljare är detta MPN-ID för mervärdes åter försäljaren (VAR).                                   |
-| orderId                  | sträng                                                         | Hämtar eller anger den unika beställnings identifieraren.                             |
-| overageQuantity          | antal                                                         | Hämtar eller anger Förbrukat antal ovan tillåten användning.               |
-| partnerBillableAccountId | sträng                                                         | Hämtar eller anger partnerns konto-ID.                         |
-| Partner                | sträng                                                         | Hämtar eller anger partnerns ID för Azure Active Directory-klienten.            |
+| mpnId                    | antal                                                         | Hämtar eller anger det MPN-ID som är associerat med det här radobjektet. För direktåterförsäljare är detta MPN-ID:t för återförsäljaren. För indirekta återförsäljare är detta MPN-ID för Återförsäljare av mervärde (VAR).                                   |
+| Ordernr                  | sträng                                                         | Hämtar eller anger den unika orderidentifieraren.                             |
+| overageQuantity          | antal                                                         | Hämtar eller anger den kvantitet som förbrukas över tillåten användning.               |
+| partnerBillableAccountId | sträng                                                         | Hämtar eller anger partnerns fakturerbara konto-ID.                         |
+| partnerId                | sträng                                                         | Hämtar eller anger partnerns Klientorganisations-ID för Azure Active Directory.            |
 | partnerName              | sträng                                                         | Hämtar eller anger partnerns namn.                                      |
 | postTaxEffectiveRate     | antal                                                         | Hämtar eller anger det effektiva priset efter skatt.                         |
-| postTaxTotal             | antal                                                         | Hämtar eller anger den totala kostnaden efter skatt. Pretax avgifter + skatte belopp |
-| preTaxCharges            | antal                                                         | Hämtar eller anger priset som debiteras före skatt.                          |
-| preTaxEffectiveRate      | antal                                                         | Hämtar eller anger det effektiva priset före skatt.                        |
-| region                   | sträng                                                         | Hämtar eller anger den region som är kopplad till resurs instansen.        |
-| resourceGuid             | sträng                                                         | Hämtar eller anger resurs-ID.                                 |
-| resourceName             | sträng                                                         | Hämtar eller anger resursens namn. Exempel: databas (GB/månad).         |
-| serviceName              | sträng                                                         | Hämtar eller anger tjänstens namn. Exempel: Azure Data Service.           |
-| serviceType              | sträng                                                         | Hämtar eller anger tjänst typen. Exempel: Azure SQL Azure DB.           |
+| postTaxTotal             | antal                                                         | Hämtar eller anger de totala avgifterna efter skatt. Avgifter före skatt + skattebelopp |
+| preTaxCharges            | antal                                                         | Hämtar eller anger det pris som debiteras före skatter.                          |
+| preTaxEffectiveRate      | antal                                                         | Hämtar eller anger det effektiva priset före skatter.                        |
+| region                   | sträng                                                         | Hämtar eller anger den region som är associerad med resursinstansen.        |
+| resourceGuid             | sträng                                                         | Hämtar eller anger resursidentifieraren.                                 |
+| resourceName             | sträng                                                         | Hämtar eller anger resursnamnet. Exempel: Databas (GB/månad).         |
+| Tjänstnamn              | sträng                                                         | Hämtar eller anger tjänstnamnet. Exempel: Azure Data Service.           |
+| serviceType              | sträng                                                         | Hämtar eller anger tjänsttypen. Exempel: Azure SQL Azure DB.           |
 | sku                      | sträng                                                         | Hämtar eller anger tjänstens SKU.                                         |
-| subscriptionDescription  | sträng                                                         | Hämtar eller anger prenumerations beskrivningen.                            |
-| subscriptionId           | sträng                                                         | Hämtar eller anger prenumerationens unika identifierare.                      |
-| subscriptionName         | sträng                                                         | Hämtar eller anger prenumerationens namn.                                   |
-| taxAmount                | antal                                                         | Hämtar eller anger skatte beloppet.                               |
-| tier2MpnId               | antal                                                         | Hämtar eller anger MPN-ID: t för nivå 2-partnern som är kopplad till det här rad objektet. |
-| unit                     | sträng                                                         | Hämtar eller anger mått enheten för Azure-användning.                     |
+| subscriptionDescription  | sträng                                                         | Hämtar eller anger prenumerationsbeskrivningen.                            |
+| subscriptionId           | sträng                                                         | Hämtar eller anger den unika identifieraren för prenumerationen.                      |
+| subscriptionName         | sträng                                                         | Hämtar eller anger prenumerationsnamnet.                                   |
+| taxAmount                | antal                                                         | Hämtar eller anger hur mycket skatt som debiteras.                               |
+| tier2MpnId               | antal                                                         | Hämtar eller anger MPN-ID:t för den nivå 2-partner som är associerad med det här radobjektet. |
+| unit                     | sträng                                                         | Hämtar eller anger måttenheten för Azure-användning.                     |
 
 ## <a name="invoicestatement"></a>InvoiceStatement
 
-Representerar de åtgärder som är tillgängliga för ett faktura uttryck i program/PDF.
+Representerar de åtgärder som är tillgängliga på ett fakturautdrag i program/pdf.
 
 | Egenskap                 | Typ                                                           | Beskrivning                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| httpResponseMessage      | objekt                                                         | ByteArrayContent med contentType = Application/PDF.                  |
+| httpResponseMessage      | objekt                                                         | ByteArrayContent med contentType = application/pdf.                  |
 
 ## <a name="onetimeinvoicelineitem"></a>OneTimeInvoiceLineItem
 
-Representerar ett faktura fakturerings rads objekt för licensierade prenumerationer.
+Representerar ett fakturafaktureringsradobjekt för licensierade prenumerationer.
 
 | Egenskap | Typ | Beskrivning |
 | --- | --- | --- |
-| Partner | sträng | Hämtar eller anger partnerns klient-ID. |
-| CustomerId | sträng | Hämtar eller anger kundens klient-ID. |
-| CustomerName | sträng | Hämtar eller anger kundens namn. |
-| CustomerDomainName | sträng | Hämtar eller anger kundens domän namn. |
+| PartnerId | sträng | Hämtar eller anger partnerns klientorganisations-ID. |
+| CustomerId | sträng | Hämtar eller anger kundens klientorganisations-ID. |
+| CustomerName | sträng | Hämtar eller anger kundnamnet. |
+| CustomerDomainName | sträng | Hämtar eller anger kundens domännamn. |
 | CustomerCountry | sträng | Hämtar eller anger kundens land. |
-| InvoiceNumber | sträng | Hämtar eller anger faktura numret. |
-| MpnId | sträng | Hämtar eller anger det MPN-ID som är kopplat till det här rad objektet. |
-| ResellerMpnId | int | Hämtar eller anger den unika beställnings identifieraren. |
+| InvoiceNumber | sträng | Hämtar eller anger fakturanumret. |
+| MpnId | sträng | Hämtar eller anger det MPN-ID som är associerat med det här radobjektet. |
+| ResellerMpnId | int | Hämtar eller anger den unika orderidentifieraren. |
 | OrderDate | DateTime | Hämtar eller anger datumet när ordern skapades. |
-| ProductId | sträng | Hämtar eller anger produktens unika identifierare. |
+| ProductId | sträng | Hämtar eller anger den unika identifieraren för produkten. |
 | SkuId | sträng | Hämtar eller anger den unika SKU-identifieraren. |
-| AvailabilityId | sträng | Hämtar eller anger unikt unikt ID för tillgänglighet. |
-| ProductName | sträng | Hämtar eller anger produktens namn. |
+| AvailabilityId | sträng | Hämtar eller anger den unika identifieraren för tillgänglighet. |
+| ProductName | sträng | Hämtar eller anger produktnamnet. |
 | SkuName | sträng | Hämtar eller anger SKU-namnet. |
-| ChargeType | sträng | Hämtar eller anger avgifts typen. |
-| UnitPrice | decimal | Hämtar eller anger enhets priset. |
-| EffectiveUnitPrice | decimal | Hämtar eller anger det effektiva enhets priset. |
-| UnitType | sträng | Hämtar eller anger enhets typen. |
-| Kvantitet | int | Hämtar eller anger antalet enheter som är kopplade till det här rad objektet. |
-| Delsumma | decimal | Hämtar eller anger beloppet efter rabatt. |
+| ChargeType | sträng | Hämtar eller anger typen av avgift. |
+| UnitPrice | decimal | Hämtar eller anger enhetspriset. |
+| EffectiveUnitPrice | decimal | Hämtar eller anger det effektiva enhetspriset. |
+| UnitType | sträng | Hämtar eller anger enhetstyp. |
+| Kvantitet | int | Hämtar eller anger antalet enheter som är associerade med det här radobjektet. |
+| Delsumma | decimal | Hämtar eller anger beloppet efter rabatten. |
 | TaxTotal | decimal | Hämtar eller anger de skatter som debiteras. |
 | TotalForCustomer | decimal | Hämtar eller anger det totala beloppet efter rabatt och skatt. |
-| Valuta | sträng | Hämtar eller anger valutan som används för det här rad objektet. |
-| PublisherName | sträng | Hämtar eller anger utgivar namnet som är associerat med det här köpet. |
-| PublisherId | sträng | Hämtar eller anger det utgivar-ID som är associerat med det här köpet. |
-| SubscriptionDescription | sträng | Hämtar eller anger den prenumerations beskrivning som är associerad med det här köpet. |
-| SubscriptionId | sträng | Hämtar eller anger det prenumerations-ID som är kopplat till det här köpet. |
-| ChargeStartDate | DateTime | Hämtar eller anger det debiterings start datum som är kopplat till det här köpet. |
-| ChargeEndDate | DateTime | Hämtar eller anger det sista debiterings datumet för köpet. |
-| TermAndBillingCycle | sträng | Hämtar eller anger den period och den fakturerings cykel som är kopplad till det här köpet. |
-| AlternateId | sträng | Hämtar eller anger alternativ-ID (offert-ID). |
-| PriceAdjustmentDescription | sträng | Hämtar eller anger pris justerings beskrivningen. |
-| CreditReasonCode | sträng | Hämtar eller anger kredit orsaks koden. |
-| DiscountDetails | sträng |  **Föråldrad**. Hämtar eller anger rabatt information som är associerad med det här köpet. |
-| PricingCurrency | sträng | Hämtar eller anger pris valuta koden. |
-| PCToBCExchangeRate | decimal | Hämtar eller anger pris valutan för fakturerings valutakursen. |
-| PCToBCExchangeRateDate | DateTime | Hämtar eller anger det datum för valutakursen som pris nivån till fakturerings valuta för fakturerings kursen fastställdes för. |
-| BillableQuantity | decimal | Hämtar eller anger de köpta enheterna. För varje design kolumn som heter som **BillableQuantity**. |
-| MeterDescription | sträng | Hämtar eller anger mätar beskrivningen för förbruknings rads objekt. |
-| ReservationOrderId | sträng | Hämtar eller anger reservations ordnings identifieraren för ett Azure RI-köp. |
-| BillingFrequency | sträng | Hämtar eller anger fakturerings frekvensen. |
-| InvoiceLineItemType | InvoiceLineItemType | Returnerar typen av faktura rads objekt. |
-| BillingProvider | BillingProvider | Returnerar fakturerings leverantören. |
+| Valuta | sträng | Hämtar eller anger valutan som används för det här radobjektet. |
+| PublisherName | sträng | Hämtar eller anger det utgivarnamn som är associerat med köpet. |
+| PublisherId | sträng | Hämtar eller anger det utgivar-ID som är associerat med köpet. |
+| SubscriptionDescription | sträng | Hämtar eller anger den prenumerationsbeskrivning som är associerad med det här köpet. |
+| SubscriptionId | sträng | Hämtar eller anger prenumerations-ID:t som är associerat med det här köpet. |
+| ChargeStartDate | DateTime | Hämtar eller anger startdatumet för avgiften som är associerat med det här köpet. |
+| ChargeEndDate | DateTime | Hämtar eller anger slutdatumet för avgiften som är associerat med det här köpet. |
+| TermAndBillingCycle | sträng | Hämtar eller anger den period och faktureringsperiod som är associerad med det här köpet. |
+| AlternateId | sträng | Hämtar eller anger alternativt ID (offert-ID). |
+| PriceAdjustmentDescription | sträng | Hämtar eller anger beskrivningen av prisjusteringen. |
+| CreditReasonCode | sträng | Hämtar eller anger kreditorsakskoden. |
+| DiscountDetails | sträng |  **har föraktats.** Hämtar eller anger den rabattinformation som är associerad med det här köpet. |
+| PricingCurrency | sträng | Hämtar eller anger prisvalutakoden. |
+| PCToBCExchangeRate | decimal | Hämtar eller anger prissättningsvalutan till växlingskursen för faktureringsvalutan. |
+| PCToBCExchangeRateDate | DateTime | Hämtar eller anger det växelkursdatum då prissättningsvalutan till faktureringsvalutakursen fastställdes. |
+| BillableQuantity | decimal | Hämtar eller anger de köpta enheterna. För varje designkolumn med namnet **BillableQuantity**. |
+| MeterDescription | sträng | Hämtar eller anger mätarbeskrivningen för förbrukningsradobjektet. |
+| ReservationOrderId | sträng | Hämtar eller anger reservationsbeställningsidentifieraren för ett Azure RI-köp. |
+| BillingFrequency | sträng | Hämtar eller anger faktureringsfrekvensen. |
+| InvoiceLineItemType | InvoiceLineItemType | Returnerar typen av fakturaradsobjekt. |
+| BillingProvider | BillingProvider | Returnerar faktureringsleverantören. |
 
 ## <a name="dailyratedusagelineitem"></a>DailyRatedUsageLineItem
 
-Representerar ej fakturerade, rad artiklar för fakturerings utjämning för dagligt Beräknad användning.
+Representerar ej fakturerade, fakturerade avstämningsradsobjekt för daglig beräknad användning.
 
 | Egenskap | Typ | Beskrivning |
 | --- | --- | --- |
-| Partner | sträng | Hämtar eller anger partnerns klient-ID. |
-| PartnerName | sträng | Hämtar eller anger partner namnet. |
-| CustomerId | sträng | Hämtar eller anger klient-ID för den kund som användningen tillhör. |
-| CustomerName | sträng | Hämtar eller anger namnet på det kund företag som användningen tillhör. |
-| CustomerDomainName | sträng | Hämtar eller anger domän namnet för den kund som användningen tillhör. |
-| InvoiceNumber | sträng | Hämtar eller anger ID för fakturan som används tillhör. |
-| ProductId | sträng | Hämtar eller anger produktens unika identifierare. |
+| PartnerId | sträng | Hämtar eller anger partnerns klientorganisations-ID. |
+| PartnerName | sträng | Hämtar eller anger partnernamnet. |
+| CustomerId | sträng | Hämtar eller anger klientorganisations-ID:t för den kund som användningen tillhör. |
+| CustomerName | sträng | Hämtar eller anger namnet på det kundföretag som användningen tillhör. |
+| CustomerDomainName | sträng | Hämtar eller anger domännamnet för den kund som användningen tillhör. |
+| InvoiceNumber | sträng | Hämtar eller anger ID:t för fakturan som användningen tillhör. |
+| ProductId | sträng | Hämtar eller anger den unika identifieraren för produkten. |
 | SkuId | sträng | Hämtar eller anger den unika SKU-identifieraren. |
-| AvailabilityId | sträng | Hämtar eller anger unikt unikt ID för tillgänglighet. |
-| SkuName | sträng | Hämtar eller anger tjänstens SKU-namn. |
-| ProductName | sträng | Hämtar eller anger produktens namn. |
-| PublisherName | sträng | Hämtar eller anger utgivarens namn. |
+| AvailabilityId | sträng | Hämtar eller anger den unika identifieraren för tillgänglighet. |
+| SkuName | sträng | Hämtar eller anger SKU-namnet för tjänsten. |
+| ProductName | sträng | Hämtar eller anger namnet på produkten. |
+| PublisherName | sträng | Hämtar eller anger namnet på utgivaren. |
 | PublisherId | sträng | Hämtar eller anger utgivarens ID. |
-| SubscriptionId | sträng | Hämtar eller anger prenumerations-ID. |
-| SubscriptionDescription | sträng | Hämtar eller anger prenumerations beskrivningen. |
-| ChargeStartDate | DateTime | Hämtar eller anger laddningens start datum. |
-| ChargeEndDate | DateTime | Hämtar eller anger avgiftens slutdatum. |
-| UsageDate | DateTime | Hämtar eller anger användnings datumet. |
-| MeterType | sträng | Hämtar eller anger mätar typen. |
-| MeterCategory | sträng | Hämtar eller anger mätar kategorin. |
-| MeterId | sträng | Hämtar eller anger ett mätar-ID (GUID). |
-| MeterSubCategory | sträng | Hämtar eller anger mätar under kategorin. |
-| MeterName | sträng | Hämtar eller anger mätarens namn. |
-| MeterRegion | sträng | Hämtar eller anger mätnings regionen. |
-| UnitOfMeasure | sträng | Hämtar eller anger mått enheten. |
-| ResourceLocation | sträng | Hämtar eller anger resursens plats. |
+| SubscriptionId | sträng | Hämtar eller anger prenumerations-ID:t. |
+| SubscriptionDescription | sträng | Hämtar eller anger prenumerationsbeskrivningen. |
+| ChargeStartDate | DateTime | Hämtar eller anger startdatumet för avgiften. |
+| ChargeEndDate | DateTime | Hämtar eller anger slutdatumet för avgiften. |
+| UsageDate | DateTime | Hämtar eller anger användningsdatum. |
+| MeterType | sträng | Hämtar eller anger mätartypen. |
+| MeterCategory | sträng | Hämtar eller anger mätarkategorin. |
+| MeterId | sträng | Hämtar eller anger mätar-ID (GUID). |
+| MeterSubCategory | sträng | Hämtar eller anger mätarunderkategorin. |
+| MeterName | sträng | Hämtar eller anger mätarnamnet. |
+| MeterRegion | sträng | Hämtar eller anger mätarregionen. |
+| UnitOfMeasure | sträng | Hämtar eller anger måttenheten. |
+| ResourceLocation | sträng | Hämtar eller anger platsen för resursen. |
 | ConsumedService | sträng | Hämtar eller anger namnet på den förbrukade tjänsten. |
-| ResourceGroup | sträng | Hämtar eller anger namnet på resurs gruppen. |
-| ResourceUri | sträng | Hämtar eller anger URI för den resurs instans som används. |
-| Taggar | sträng | Hämtar eller anger kundens tillagda taggar. |
+| ResourceGroup | sträng | Hämtar eller anger namnet på resursgruppen. |
+| ResourceUri | sträng | Hämtar eller anger URI för resursinstansen som användningen gäller. |
+| Taggar | sträng | Hämtar eller anger att kunden har lagt till taggar. |
 | AdditionalInfo | sträng | Hämtar eller anger tjänstspecifika metadata. Det kan till exempel vara en avbildningstyp för en virtuell dator. |
-| ServiceInfo1 | sträng | Hämtar eller anger interna Azure-tjänstemetadata. |
-| ServiceInfo2 | sträng | Hämtar eller anger tjänst information till exempel en avbildnings typ för en virtuell dator och ett ISP-namn för ExpressRoute. |
+| ServiceInfo1 | sträng | Hämtar eller anger interna Metadata för Azure-tjänsten. |
+| ServiceInfo2 | sträng | Hämtar eller anger tjänstinformation, till exempel en avbildningstyp för en virtuell dator och Isp-namn för ExpressRoute. |
 | CustomerCountry | sträng | Hämtar eller anger kundens land. |
-| MpnId | sträng | Hämtar eller anger det MPN-ID som är kopplat till det här rad objektet. |
-| ResellerMpnId | sträng | Hämtar eller anger åter försäljarens MPN-ID för nivå 2-partnern som är kopplad till det här rad objektet. |
-| ChargeType | sträng | Hämtar eller anger avgifts typen. |
+| MpnId | sträng | Hämtar eller anger det MPN-ID som är associerat med det här radobjektet. |
+| ResellerMpnId | sträng | Hämtar eller anger MPN-ID:t för återförsäljaren för den partner på nivå 2 som är associerad med det här radobjektet. |
+| ChargeType | sträng | Hämtar eller anger typen av avgift. |
 | UnitPrice | decimal | Hämtar eller anger priset för enheten. |
-| Kvantitet | decimal | Hämtar eller anger antalet användnings områden. |
-| UnitType | sträng | Hämtar eller anger enhets typen (t. ex. 1 timme). |
-| BillingPreTaxTotal | decimal | Hämtar eller anger den utökade kostnaden eller den totala kostnaden före skatt i lokal valuta för kunden eller fakturerings valutan. |
-| BillingCurrency | sträng | Hämtar eller anger ISO-valutan som mätaren debiteras i i lokal valuta för kunden eller fakturerings valutan. |
-| PricingPreTaxTotal | decimal | Hämtar eller anger den utökade kostnaden eller den totala kostnaden före skatt i USD eller katalog valuta som används för klassificering. |
-| PricingCurrency | sträng | Hämtar eller anger ISO-valutan som mätaren debiteras i USD eller katalog valuta som används för klassificering. |
-| EntitlementId | sträng | Hämtar eller anger behörighets-ID: t (Azure-prenumerationen). |
-| EntitlementDescription | sträng | Hämtar eller anger beskrivningen av rättigheten (Azure-prenumerationen). |
-| PCToBCExchangeRate | sträng | Hämtar eller anger pris valutan för fakturerings valutakursen. |
-| PCToBCExchangeRateDate | DateTime | Hämtar eller anger pris valutan för fakturerings valutans datum. |
-| EffectiveUnitPrice | decimal | Hämtar eller anger det effektiva enhets priset. |
-| RateOfPartnerEarnedCredit | decimal | Hämtar eller anger frekvensen för intjänad kredit för partner. |
-| HasPartnerEarnedCredit | boolesk | Hämtar eller anger den intjänade partner krediten. |
-| RateOfCredit | decimal | Hämtar eller anger kredit priset för den aktuella kredit typen. |
-| CreditType | sträng | Hämtar eller anger kredit typen. |
-| InvoiceLineItemType | InvoiceLineItemType | Returnerar typen av faktura rads objekt. |
-| BillingProvider | BillingProvider | Returnerar fakturerings leverantören. |
+| Kvantitet | decimal | Hämtar eller anger mängden användning. |
+| UnitType | sträng | Hämtar eller anger enhetstyp (till exempel 1 timme). |
+| BillingPreTaxTotal | decimal | Hämtar eller anger den utökade kostnaden eller den totala kostnaden före skatt i lokal valuta för kunden eller faktureringsvalutan. |
+| BillingCurrency | sträng | Hämtar eller anger ISO-valutan där mätaren debiteras i kundens eller faktureringsvalutats lokala valuta. |
+| PricingPreTaxTotal | decimal | Hämtar eller anger den utökade kostnaden eller den totala kostnaden före skatt i USD eller katalogvaluta som används för klassificering. |
+| PricingCurrency | sträng | Hämtar eller anger ISO-valutan där mätaren debiteras i USD eller katalogvalutan som används för omdömet. |
+| EntitlementId | sträng | Hämtar eller anger rättighets-ID :t (Azure-prenumeration). |
+| EntitlementDescription | sträng | Hämtar eller anger rättighetsbeskrivningen (Azure-prenumeration). |
+| PCToBCExchangeRate | sträng | Hämtar eller anger prissättningsvalutan till faktureringsvalutakursen. |
+| PCToBCExchangeRateDate | DateTime | Hämtar eller anger prissättningsvalutan till faktureringsvalutakursens datum. |
+| EffectiveUnitPrice | decimal | Hämtar eller anger det effektiva enhetspriset. |
+| RateOfPartnerEarnedCredit | decimal | Hämtar eller anger priset för partner-intjänad kredit. |
+| HasPartnerEarnedCredit | boolesk | Hämtar eller uppsättningar är partner-intjänad kredit som tillämpas. |
+| RateOfCredit | decimal | Hämtar eller anger kreditfrekvensen för den angivna kredittypen. |
+| CreditType | sträng | Hämtar eller anger typen av kredit. |
+| InvoiceLineItemType | InvoiceLineItemType | Returnerar typen av fakturaradsobjekt. |
+| BillingProvider | BillingProvider | Returnerar faktureringsleverantören. |

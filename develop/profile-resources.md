@@ -1,100 +1,95 @@
 ---
-title: Profil resurser
-description: Beskriver beteendet för en moln lösnings leverantörs profiler.
+title: Profilresurser
+description: Beskriver beteendet för en Molnlösningsleverantör för en enhets profiler.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e0561278995f4f9747320866b51de57efea8f712
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 945cfa141d1e6bde1709da882a177daaa32fba1f
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769663"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547792"
 ---
-# <a name="profile-resources"></a>Profil resurser
+# <a name="profile-resources"></a>Profilresurser
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Beskriver beteendet för en moln lösnings leverantörs profiler.
+Beskriver beteendet för en Molnlösningsleverantör för en enhets profiler.
 
 ## <a name="billingprofile"></a>BillingProfile
 
-Beskriver en partners fakturerings profil.
+Beskriver en partners faktureringsprofil.
 
-| Egenskap            | Typ                                                           | Description                                                 |
+| Egenskap            | Typ                                                           | Beskrivning                                                 |
 |---------------------|----------------------------------------------------------------|-------------------------------------------------------------|
-| companyName         | sträng                                                         | Fakturerings företagets namn.                                   |
-| adress             | [Adress](utility-resources.md#address)                       | Företagets eller organisationens fakturerings adress. |
+| companyName         | sträng                                                         | Faktureringsföretagets namn.                                   |
+| adress             | [Adress](utility-resources.md#address)                       | Faktureringsadressen för företaget eller organisationen. |
 | primaryContact      | [Kontakt](utility-resources.md#contact)                       | Den primära kontakten för företaget eller organisationen.        |
-| purchaseOrderNumber | sträng                                                         | Företagets eller organisationens inköps order nummer.        |
-| taxI               | sträng                                                         | Företaget eller organisationens skatte-ID.                       |
+| purchaseOrderNumber | sträng                                                         | Företagets eller organisationens inköpsordernummer.        |
+| taxId               | sträng                                                         | Företagets eller organisationens skatte-ID.                       |
 | billingCurrency     | sträng                                                         | Valutan som används av företaget eller organisationen.           |
-| Profiltyp         | sträng                                                         | Partnerns profil typ.                                   |
-| Länkar               | [ResourceLinks](utility-resources.md#resourcelinks)           | Resurs länkarna som motsvarar profilen.            |
-| dokumentattribut          | [ResourceAttributes](utility-resources.md#resourceattributes) | De metadata-attribut som motsvarar profilen.       |
+| profileType         | sträng                                                         | Partnerprofiltypen.                                   |
+| Länkar               | [ResourceLinks](utility-resources.md#resourcelinks)           | Resursen länkar som motsvarar profilen.            |
+| Attribut          | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen som motsvarar profilen.       |
 
 ## <a name="legalbusinessprofile"></a>LegalBusinessProfile
 
-Beskriver en partners juridiska företags profil.
+Beskriver en partners juridiska affärsprofil.
 
-| Egenskap               | Typ                                                           | Description                                                                                                                                                          |
+| Egenskap               | Typ                                                           | Beskrivning                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| companyName            | sträng                                                         | Det juridiska företags namnet.                                                                                                                                              |
+| companyName            | sträng                                                         | Företagets juridiska namn.                                                                                                                                              |
 | adress                | [Adress](utility-resources.md#address)                       | Företagets eller organisationens adress.                                                                                                                          |
 | primaryContact         | [Kontakt](utility-resources.md#contact)                       | Den primära kontakten för företaget eller organisationen.                                                                                                                 |
-| companyApproverAddress | [Adress](utility-resources.md#address)                       | Företagets godkännande adress.                                                                                                                                        |
-| companyApproverEmail   | sträng                                                         | Företagets e-postadress för god kännare.                                                                                                                                          |
-| vettingStatus          | sträng                                                         | Status för först konsumentsajter. Det här värdet är sträng representationen av ett av de medlems namn som finns i [**VettingStatus**](/dotnet/api/microsoft.store.partnercenter.models.partners.vettingstatus).           |
-| vettingSubStatus       | sträng                                                         | Först konsumentsajter under status. Det här värdet är sträng representationen av ett av de medlems namn som finns i [**VettingSubStatus**](/dotnet/api/microsoft.store.partnercenter.models.partners.vettingsubstatus). |
-| Profiltyp            | sträng                                                         | Partnerns profil typ.                                                                                                                                            |
-| Länkar                  | [ResourceLinks](utility-resources.md#resourcelinks)           | Resurs länkarna som motsvarar profilen.                                                                                                                     |
-| dokumentattribut             | [ResourceAttributes](utility-resources.md#resourceattributes) | De metadata-attribut som motsvarar profilen.                                                                                                                |
+| companyApproverAddress | [Adress](utility-resources.md#address)                       | Företagets godkännaradress.                                                                                                                                        |
+| companyApproverEmail   | sträng                                                         | Företagets godkännare skickar e-post.                                                                                                                                          |
+| vettingStatus          | sträng                                                         | Status för granskning. Det här värdet är strängrepresentationen för det av medlemsnamnen som finns i [**VettingStatus**](/dotnet/api/microsoft.store.partnercenter.models.partners.vettingstatus).           |
+| vettingSubStatus       | sträng                                                         | Understatus för granskning. Det här värdet är strängrepresentationen av ett av medlemsnamnen som finns i [**VettingSubStatus**](/dotnet/api/microsoft.store.partnercenter.models.partners.vettingsubstatus). |
+| profileType            | sträng                                                         | Partnerprofiltypen.                                                                                                                                            |
+| Länkar                  | [ResourceLinks](utility-resources.md#resourcelinks)           | Resursen länkar som motsvarar profilen.                                                                                                                     |
+| Attribut             | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen som motsvarar profilen.                                                                                                                |
 
 ## <a name="mpnprofile"></a>MpnProfile
 
 Beskriver en partners Microsoft Partner Network profil.
 
-| Egenskap    | Typ                                                           | Description                                           |
+| Egenskap    | Typ                                                           | Beskrivning                                           |
 |-------------|----------------------------------------------------------------|-------------------------------------------------------|
 | partnerName | sträng                                                         | Företagets eller organisationens namn.                     |
-| mpnId       | sträng                                                         | Microsoft Partner Network-ID.                     |
-| Profiltyp | sträng                                                         | Partnerns profil typ.                             |
-| Länkar       | [ResourceLinks](utility-resources.md#resourcelinks)           | Resurs länkarna som motsvarar profilen.      |
-| dokumentattribut  | [ResourceAttributes](utility-resources.md#resourceattributes) | De metadata-attribut som motsvarar profilen. |
+| mpnId       | sträng                                                         | ID Microsoft Partner Network (MPN).                     |
+| profileType | sträng                                                         | Partnerprofiltypen.                             |
+| Länkar       | [ResourceLinks](utility-resources.md#resourcelinks)           | Resursen länkar som motsvarar profilen.      |
+| Attribut  | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen som motsvarar profilen. |
 
 ## <a name="organizationprofile"></a>OrganizationProfile
 
-Beskriver en partner organisations profil.
+Beskriver en partners organisationsprofil.
 
-| Egenskap       | Typ                                                           | Description                                                            |
+| Egenskap       | Typ                                                           | Beskrivning                                                            |
 |----------------|----------------------------------------------------------------|------------------------------------------------------------------------|
 | id             | sträng                                                         | Organisationens ID.                                                 |
 | companyName    | sträng                                                         | Namnet på företaget eller organisationen.                               |
-| defaultAddress | [Adress](utility-resources.md#address)                       | Företagets eller organisationens standard adress.                    |
-| tenantId       | sträng                                                         | Klient-ID.                                                 |
-| domän         | sträng                                                         | Företaget eller organisationens domän.                                  |
+| defaultAddress | [Adress](utility-resources.md#address)                       | Standardadressen för företaget eller organisationen.                    |
+| tenantId       | sträng                                                         | Klientorganisationens identifierare.                                                 |
+| domän         | sträng                                                         | Företagets eller organisationens domän.                                  |
 | e-post          | sträng                                                         | Hämtar eller anger den överordnade prenumerationen.                                  |
 | language       | sträng                                                         | Det föredragna språket för kommunikation.                              |
-| substrat        | sträng                                                         | Den föredragna kulturen för kommunikation och valuta, till exempel "en-US". |
-| Profiltyp    | sträng                                                         | Partnerns profil typ.                                              |
-| Länkar          | [ResourceLinks](utility-resources.md#resourcelinks)           | Resurs länkarna som motsvarar profilen.                       |
-| dokumentattribut     | [ResourceAttributes](utility-resources.md#resourceattributes) | De metadata-attribut som motsvarar profilen.                  |
+| Kultur        | sträng                                                         | Den önskade kulturen för kommunikation och valuta, till exempel "en-us". |
+| profileType    | sträng                                                         | Partnerprofiltypen.                                              |
+| Länkar          | [ResourceLinks](utility-resources.md#resourcelinks)           | Resursen länkar som motsvarar profilen.                       |
+| Attribut     | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen som motsvarar profilen.                  |
 
 ## <a name="supportprofile"></a>SupportProfile
 
-Beskriver en partners support profil.
+Beskriver en partners supportprofil.
 
-| Egenskap    | Typ                                                           | Description                                           |
+| Egenskap    | Typ                                                           | Beskrivning                                           |
 |-------------|----------------------------------------------------------------|-------------------------------------------------------|
-| e-post       | sträng                                                         | Den e-postadress som är kopplad till profilen.        |
-| telefon   | sträng                                                         | Telefonnumret som är kopplat till profilen.         |
-| webbplats     | sträng                                                         | Support webbplatsen.                                  |
-| Profiltyp | sträng                                                         | Partnerns profil typ.                             |
-| Länkar       | [ResourceLinks](utility-resources.md#resourcelinks)           | Resurs länkarna som motsvarar profilen.      |
-| dokumentattribut  | [ResourceAttributes](utility-resources.md#resourceattributes) | De metadata-attribut som motsvarar profilen. |
+| e-post       | sträng                                                         | Den e-postadress som är associerad med profilen.        |
+| telefon   | sträng                                                         | Telefonnumret som är associerat med profilen.         |
+| webbplats     | sträng                                                         | Supportwebbplatsen.                                  |
+| profileType | sträng                                                         | Partnerprofiltypen.                             |
+| Länkar       | [ResourceLinks](utility-resources.md#resourcelinks)           | Resursen länkar som motsvarar profilen.      |
+| Attribut  | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen som motsvarar profilen. |
 

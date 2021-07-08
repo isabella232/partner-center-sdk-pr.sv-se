@@ -1,40 +1,35 @@
 ---
 title: Hämta status för prenumerationsetablering
-description: Så här hämtar du prenumerationens etablerings status för en kund prenumeration.
+description: Så här hämtar du prenumerationens etableringsstatus för en kundprenumeration.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 38544aa380ba0a6a8804ae45f7d8ae7cb431d3ba
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: f8797fa494cd77f11a1179d6406ca021f0d7788c
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769843"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548710"
 ---
 # <a name="get-subscription-provisioning-status"></a>Hämta status för prenumerationsetablering
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Så här hämtar du prenumerationens etablerings status för en kund prenumeration.
+Så här hämtar du prenumerationens etableringsstatus för en kundprenumeration.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Ett prenumerations-ID.
+- En prenumerationsidentifierare.
 
-- Delegerade administratörs behörigheter för prenumerationen krävs för att utföra den här åtgärden.
+- Delegerade administratörsbehörigheter för prenumerationen krävs för att utföra den här åtgärden.
 
 ## <a name="c"></a>C\#
 
-Börja med att använda metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID för att identifiera kunden för att få etablerings statusen för en prenumeration. Hämta sedan ett gränssnitt till prenumerations åtgärder genom att anropa metoden [**Subscriptions. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) med prenumerations-ID: t. Använd sedan egenskapen [**ProvisioningStatus**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.provisioningstatus) för att hämta ett gränssnitt till etablerings status åtgärderna för den aktuella prenumerationen och anropa sedan metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionprovisioningstatus.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionprovisioningstatus.getasync) för att hämta [**SubscriptionProvisioningStatus**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionprovisioningstatus) -objektet.
+Om du vill hämta etableringsstatusen för en prenumeration börjar du med att använda metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Hämta sedan ett gränssnitt för prenumerationsåtgärder genom att anropa metoden [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) med prenumerations-ID:t. Använd sedan egenskapen [**ProvisioningStatus**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.provisioningstatus) för att hämta ett gränssnitt till den aktuella prenumerationens etableringsstatusåtgärder och anropa sedan metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionprovisioningstatus.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionprovisioningstatus.getasync) för att hämta [**objektet SubscriptionProvisioningStatus.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionprovisioningstatus)
 
 ``` csharp
 // IAggregatePartner partnerOperations.
@@ -47,24 +42,24 @@ var provisioningStatus = partnerOperations.Customers.ById(customerId).Subscripti
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                                        |
 |---------|------------------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Subscriptions/{Subscription-ID}/provisioningstatus http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscriptions/{subscription-id}/provisioningstatus HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
-Använd följande Sök vägs parametrar för att identifiera kunden och prenumerationen.
+Använd följande sökvägsparametrar för att identifiera kunden och prenumerationen.
 
 | Namn            | Typ   | Obligatorisk | Beskrivning                                               |
 |-----------------|--------|----------|-----------------------------------------------------------|
-| kund-ID     | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.     |
-| prenumerations-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar prenumerationen. |
+| kund-id     | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.     |
+| prenumerations-id | sträng | Ja      | En GUID-formaterad sträng som identifierar prenumerationen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -84,11 +79,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en [SubscriptionProvisioningStatus](subscription-resources.md#subscriptionprovisioningstatus) -resurs.
+Om det lyckas innehåller svarstexten en [SubscriptionProvisioningStatus-resurs.](subscription-resources.md#subscriptionprovisioningstatus)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 
@@ -115,6 +110,6 @@ Date: Thu, 20 Apr 2017 19:23:39 GMT
 
 ## <a name="remarks"></a>Kommentarer
 
-- Under en licens ändrings tilldelning anges status fältet i [SubscriptionProvisioningStatus](subscription-resources.md#subscriptionprovisioningstatus) till "väntar".
+- Under en licensändringstilldelning anges statusfältet [i SubscriptionProvisioningStatus](subscription-resources.md#subscriptionprovisioningstatus) till "väntande".
 
-- Fältet status uppdateras var femtonde minut.
+- Statusfältet uppdateras var 15:e minut.

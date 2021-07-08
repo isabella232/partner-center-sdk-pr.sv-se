@@ -1,122 +1,117 @@
 ---
-title: Beställ resurser
-description: En partner placerar en order när en kund vill köpa en prenumeration från en lista över erbjudanden.
+title: Beställa resurser
+description: En partner gör en beställning när en kund vill köpa en prenumeration från en lista över erbjudanden.
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9db07337a98214b4aaa93e2c8b43b84702249b77
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: c993317f288568dd687c3b52bf47e4520fcd18c6
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769231"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548064"
 ---
-# <a name="order-resources"></a>Beställ resurser
+# <a name="order-resources"></a>Beställa resurser
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-En partner placerar en order när en kund vill köpa en prenumeration från en lista över erbjudanden.
+En partner gör en beställning när en kund vill köpa en prenumeration från en lista över erbjudanden.
 
 >[!NOTE]
->Order resursen har en hastighets begränsning på 500 förfrågningar per minut per klient-ID.
+>Order-resursen har en hastighetsbegränsning på 500 begäranden per minut per klient-ID.
 
 ## <a name="order"></a>Beställning
 
 Beskriver en partners beställning.
 
-| Egenskap           | Typ                                               | Description                                                 |
+| Egenskap           | Typ                                               | Beskrivning                                                 |
 |--------------------|----------------------------------------------------|-------------------------------------------------------------|
-| id                 | sträng                                             | En beställnings identifierare som anges när beställningen har skapats.                                   |
-| alternateId        | sträng                                             | En egen identifierare för ordern.                                                                          |
-|referenceCustomerId | sträng                                             | Kund-ID. |
-| billingCycle       | sträng                                             | Anger med vilken frekvens partnern faktureras för den här ordern. De värden som stöds är medlems namnen som finns i [BillingCycleType](product-resources.md#billingcycletype). Standardvärdet är "Monthly" eller "Databasmigrering" när ordern skapas. Det här fältet används när beställningen har skapats. |
-| transactionType    | sträng                                             | Skrivskyddad. Transaktions typen för ordern. De värden som stöds är "UserPurchase", "SystemPurchase" eller "SystemBilling" |
-| Rad objekt          | matris med [OrderLineItem](#orderlineitem) -resurser | En lista med specificerade erbjudanden som kunden köper inklusive kvantiteten.        |
-| currencyCode       | sträng                                             | Skrivskyddad. Den valuta som används när ordern placeras. Används när beställningen har skapats.           |
-| currencySymbol     | sträng                                             | Skrivskyddad. Valuta symbolen som är kopplad till valuta koden. |
-| creationDate       | datetime                                           | Skrivskyddad. Datumet då ordern skapades i datum-/tids format. Används när beställningen har skapats.                                   |
-| status             | sträng                                             | Skrivskyddad. Status för ordern.  De värden som stöds är medlems namnen som finns i [**OrderStatus**](#orderstatus).        |
-| Länkar              | [OrderLinks](utility-resources.md#resourcelinks)           | Resurs länkarna som motsvarar beställningen.            |
-| dokumentattribut         | [ResourceAttributes](utility-resources.md#resourceattributes) | De metadata-attribut som motsvarar beställningen.       |
+| id                 | sträng                                             | En orderidentifierare som anges när ordern har skapats.                                   |
+| alternateId        | sträng                                             | En användarvänlig identifierare för beställningen.                                                                          |
+|referenceCustomerId | sträng                                             | Kundidentifieraren. |
+| billingCycle       | sträng                                             | Anger med vilken frekvens partnern faktureras för den här beställningen. Värden som stöds är de medlemsnamn som finns [i BillingCycleType](product-resources.md#billingcycletype). Standardvärdet är "Varje månad" eller "OneTime" när ordern skapas. Det här fältet tillämpas när ordern har skapats. |
+| transactionType    | sträng                                             | Skrivskyddade. Beställningens transaktionstyp. Värden som stöds är "UserPurchase", "SystemPurchase" eller "SystemBilling" |
+| lineItems          | matris med [OrderLineItem-resurser](#orderlineitem) | En specificerad lista över de erbjudanden som kunden köper, inklusive antalet.        |
+| currencyCode       | sträng                                             | Skrivskyddade. Den valuta som används när du gör beställningen. Tillämpas när ordern har skapats.           |
+| currencySymbol     | sträng                                             | Skrivskyddade. Valutasymbolen som är associerad med valutakoden. |
+| creationDate       | datetime                                           | Skrivskyddade. Det datum då ordern skapades i datum/tid-format. Tillämpas när ordern har skapats.                                   |
+| status             | sträng                                             | Skrivskyddade. Status för ordern.  Värden som stöds är de medlemsnamn som finns [**i OrderStatus**](#orderstatus).        |
+| Länkar              | [OrderLinks](utility-resources.md#resourcelinks)           | Resursen länkar som motsvarar ordern.            |
+| Attribut         | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen som motsvarar ordern.       |
 
 ## <a name="orderlineitem"></a>OrderLineItem
 
-En order innehåller en lista över erbjudanden och varje objekt representeras som en OrderLineItem.
+En order innehåller en specificerad lista över erbjudanden och varje objekt representeras som en OrderLineItem.
 
-| Egenskap             | Typ                                      | Description                                                                                                                                                                                                                                |
+| Egenskap             | Typ                                      | Beskrivning                                                                                                                                                                                                                                |
 |----------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| lineItemNumber       | int                                       | Varje rad objekt i samlingen får ett unikt rad nummer, räknat från 0 till count-1.                                                                                                                                                 |
+| lineItemNumber       | int                                       | Varje radobjekt i samlingen får ett unikt radnummer som räknas upp från 0 till count-1.                                                                                                                                                 |
 | offerId              | sträng                                    | ID för erbjudandet.                                                                                                                                                                                                                       |
-| subscriptionId       | sträng                                    | Prenumerationens ID.                                                                                                                                                                                                                |
-| parentSubscriptionId | sträng                                    | Valfritt. ID: t för den överordnade prenumerationen i ett tilläggs erbjudande. Gäller enbart för korrigering.                                                                                                                                                     |
-| friendlyName         | sträng                                    | Valfritt. Det egna namnet på prenumerationen som definieras av partnern för att hjälpa disambiguate.                                                                                                                                              |
+| subscriptionId       | sträng                                    | ID för prenumerationen.                                                                                                                                                                                                                |
+| parentSubscriptionId | sträng                                    | Valfritt. ID:t för den överordnade prenumerationen i ett tilläggserbjudande. Gäller endast PATCH.                                                                                                                                                     |
+| friendlyName         | sträng                                    | Valfritt. Det egna namnet för prenumerationen som definierats av partnern för att undvika tvetydighet.                                                                                                                                              |
 | quantity             | int                                       | Antalet licenser eller instanser.                                                                                                                                                                                |
-| termDuration         | sträng                                    | En ISO 8601-representation av termens varaktighet. De aktuella värdena som stöds är **P1M** (1 månad), **P1Y** (1 år) och **P3Y** (3 år).                               |
-| transactionType      | sträng                                    | Skrivskyddad. Transaktions typen för rad artikeln. De värden som stöds är "New", "renew", "addQuantity", "removeQuantity", "Cancel", "Convert" eller "customerCredit". |
-| partnerIdOnRecord    | sträng                                    | När en indirekt åter försäljare placerar en indirekt åter försäljare, fyller du i det här fältet med MPN-ID: t för den **indirekta åter försäljaren** (aldrig ID: t för den indirekta providern). Detta säkerställer korrekt redovisning av incitament. |
-| provisioningContext  | Ord listans<sträng, sträng>            | Information krävs för etablering av vissa objekt i katalogen. Egenskapen provisioningVariables i en SKU anger vilka egenskaper som krävs för vissa objekt i katalogen.                                                                                                                                               |
-| Länkar                | [OrderLineItemLinks](#orderlineitemlinks) | Skrivskyddad. Resurs länkarna som motsvarar order rads objektet.                                                                                                                                                                                |
-| renewsTo             | [RenewsTo](#renewsto)                         |Varaktighets information för förnyelsens giltighets tid.                                                                           |
+| termDuration         | sträng                                    | En ISO 8601-representation av termens varaktighet. De aktuella värdena som stöds **är P1M** (1 månad), **P1Y** (1 år) och **P3Y** (3 år).                               |
+| transactionType      | sträng                                    | Skrivskyddade. Radobjektets transaktionstyp. Värden som stöds är "new", "renew", "addQuantity", "removeQuantity", "cancel", "convert" eller "customerCredit". |
+| partnerIdOnRecord    | sträng                                    | När en indirekt leverantör gör en beställning åt en indirekt återförsäljare fyller du i det här fältet med MPN-ID:t för den indirekta återförsäljaren **(aldrig** DEN indirekta leverantörens ID). Detta säkerställer korrekt redovisning av incitament. |
+| provisioningContext  | Ordlista<sträng, sträng>            | Information som krävs för etablering för vissa objekt i katalogen. Egenskapen provisioningVariables i en SKU anger vilka egenskaper som krävs för specifika objekt i katalogen.                                                                                                                                               |
+| Länkar                | [OrderLineItemLinks](#orderlineitemlinks) | Skrivskyddade. Resursen länkar som motsvarar orderradsobjektet.                                                                                                                                                                                |
+| renewsTo             | [RenewsTo](#renewsto)                         |Information om varaktighet för förnyelseperiod.                                                                           |
 
 ## <a name="renewsto"></a>RenewsTo
 
-Representerar varaktigheten för förnyelsens giltighets tid.
+Representerar information om förnyelseperiodens varaktighet.
 
 | Egenskap              | Typ             | Obligatorisk        | Beskrivning |
 |-----------------------|------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------|
-| termDuration          | sträng           | No              | En ISO 8601-representation av förnyelse periodens varaktighet. De aktuella värdena som stöds är **P1M** (1 månad) och **P1Y** (1 år). |
+| termDuration          | sträng           | No              | En ISO 8601-representation av förnyelseperiodens varaktighet. De aktuella värdena som stöds **är P1M** (1 månad) och **P1Y** (1 år). |
 
 ## <a name="orderlinks"></a>OrderLinks
 
-Representerar resurs länkarna som motsvarar beställningen.
+Representerar resurslänkarna som motsvarar ordern.
 
-| Egenskap           | Typ                                         | Description                                                                   |
+| Egenskap           | Typ                                         | Beskrivning                                                                   |
 |--------------------|----------------------------------------------|-------------------------------------------------------------------------------|
-| provisioningStatus | [Operationsföljdslänkkod](utility-resources.md#link)            | När du har fyllt i länken kan du hämta etablerings statusen för ordern.       |
-| ständiga               | [Operationsföljdslänkkod](utility-resources.md#link)            | Länken för att hämta order resursen.                                      |
+| provisioningStatus | [Länk](utility-resources.md#link)            | När du har fyllt i länken för att hämta etableringsstatus för ordern.       |
+| Själv               | [Länk](utility-resources.md#link)            | Länken för att hämta orderresursen.                                      |
 
 ## <a name="orderlineitemlinks"></a>OrderLineItemLinks
 
 Representerar den fullständiga prenumeration som är associerad med ordern.
 
-| Egenskap           | Typ                                         | Description                                                                          |
+| Egenskap           | Typ                                         | Beskrivning                                                                          |
 |--------------------|----------------------------------------------|--------------------------------------------------------------------------------------|
-| provisioningStatus | [Operationsföljdslänkkod](utility-resources.md#link)            | När du har fyllt i länken så hämtas [etablerings statusen](#orderlineitemprovisioningstatus) för rad objektet.       |
-| sku                | [Operationsföljdslänkkod](utility-resources.md#link)            | Länken för att hämta SKU-information för det köpta katalogobjektet.                    |
-| prenumeration       | [Operationsföljdslänkkod](utility-resources.md#link)            | När du har fyllt i länken till den fullständiga prenumerations informationen.                       |
-| activationLinks    | [Operationsföljdslänkkod](utility-resources.md#link)            | När du har fyllt i länken Hämta resurs för länkar för att aktivera prenumerationen.             |
+| provisioningStatus | [Länk](utility-resources.md#link)            | När det har fyllts i hämtar länken [etableringsstatusen](#orderlineitemprovisioningstatus) för radobjektet.       |
+| sku                | [Länk](utility-resources.md#link)            | Länken för att hämta SKU-information för katalogobjektet som har köpts.                    |
+| prenumeration       | [Länk](utility-resources.md#link)            | När du har fyllt i länken till den fullständiga prenumerationsinformationen.                       |
+| activationLinks    | [Länk](utility-resources.md#link)            | När den är ifylld innehåller GET-resursen länkar för att aktivera prenumerationen.             |
 
 ## <a name="orderstatus"></a>OrderStatus
 
-En [Enum/dotNet/API/system. Enum) med värden som anger status för ordern.
+En [Enum/dotnet/api/system.enum) med värden som anger ordningens tillstånd.
 
-| Värde              | Position     | Description                                     |
+| Värde              | Position     | Beskrivning                                     |
 |--------------------|--------------|-------------------------------------------------|
-| okänd            | 0            | Uppräknings initierare.                               |
-| ATS          | 1            | Anger att ordern har slutförts.          |
-| Väntar            | 2            | Anger att ordern fortfarande är väntande.      |
-| avbröts          | 3            | Anger att ordern har annullerats.    |
+| okänd            | 0            | Enum-initierare.                               |
+| Avslutade          | 1            | Anger att ordern har slutförts.          |
+| Väntar            | 2            | Anger att ordern fortfarande väntar.      |
+| Annullerat          | 3            | Anger att ordern har avbrutits.    |
 
 ## <a name="orderlineitemprovisioningstatus"></a>OrderLineItemProvisioningStatus
 
-Representerar etablerings statusen för en [OrderLineItem](#orderlineitem).
+Representerar etableringsstatusen för [en OrderLineItem](#orderlineitem).
 
-| Egenskap                        | Typ                                | Description                                                                                |
+| Egenskap                        | Typ                                | Beskrivning                                                                                |
 |------------------------------------|-------------------------------------|--------------------------------------------------------------------------------------------|
-| lineItemNumber                  | int                                 | Det unika rad numret för order rads posten. Värden sträcker sig från 0 till count-1.             |
-| status                          | sträng                              | Etablerings status för order rads objektet. Exempel på värden:</br>"Uppfyllt": beställningen av ordern har slutförts och användaren kommer att kunna använda reservationerna</br>"Ej uppfyllda": inte uppfyllt på grund av annullering</br>"PrefulfillmentPending": din begäran håller fortfarande på att bearbetas är inte slutförd än |
-| quantityProvisioningInformation | Visa<[QuantityProvisioningStatus](#quantityprovisioningstatus)> | En lista med information om kvantitets etablerings status för order rads objektet. |
+| lineItemNumber                  | int                                 | Det unika radnumret för orderradsobjektet. Värdena sträcker sig från 0 till count-1.             |
+| status                          | sträng                              | Etableringsstatus för orderradsobjektet. Exempel på värden:</br>**Uppfyllt:** Slutförande av ordern har slutförts och användaren kommer att kunna använda reservationerna</br>**Unfulfilled:** Inte uppfyllt på grund av annullering</br>**PrefulfillmentPending (Förifyllning** väntar): Din begäran bearbetas fortfarande, slutförande har inte slutförts ännu |
+| quantityProvisioningInformation | Lista<[QuantityProvisioningStatus](#quantityprovisioningstatus)> | En lista med statusinformation för kvantitetsetablering för orderradsartikeln. |
 
 ## <a name="quantityprovisioningstatus"></a>QuantityProvisioningStatus
 
-Representerar etablerings statusen per kvantitet.
+Representerar etableringsstatus efter kvantitet.
 
-| Egenskap                           | Typ                                         | Description                                          |
+| Egenskap                           | Typ                                         | Beskrivning                                          |
 |------------------------------------|----------------------------------------------|------------------------------------------------------|
 | quantity                           | int                                          | Antal objekt.                                 |
 | status                             | sträng                                       | Status för antalet objekt.                   |

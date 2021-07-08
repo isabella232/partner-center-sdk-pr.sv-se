@@ -1,35 +1,31 @@
 ---
 title: Hämta en produkt efter ID
-description: Hämtar den angivna produkt resursen med ett produkt-ID.
+description: Hämtar den angivna produktresursen med hjälp av ett produkt-ID.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 8aca626597e9ec903ebecca7d55577ba636c518e
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 769a4307dc3cebdc7ebbdcf51d9f2b67a9f4b7c2
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769033"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874031"
 ---
 # <a name="get-a-product-by-id"></a>Hämta en produkt efter ID
 
-**Gäller för**
-
-- Partnercenter
-
-Hämtar den angivna produkt resursen med ett produkt-ID.
+Hämtar den angivna produktresursen med hjälp av ett produkt-ID.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 - Ett produkt-ID.
 
 ## <a name="c"></a>C\#
 
-Om du vill hitta en speciell produkt med ID använder du din **IAggregatePartner. Products** -samling, väljer land med hjälp av metoden **ByCountry ()** och anropar sedan metoden **ById ()** . Anropa slutligen metoden **Get ()** eller **GetAsync ()** för att returnera produkten.
+Om du vill hitta en specifik produkt efter ID använder du **samlingen IAggregatePartner.Products,** väljer land med hjälp av **metoden ByCountry()** och anropar **sedan metoden ById().** Anropa slutligen metoden **Get()** eller **GetAsync()** för att returnera produkten.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -41,7 +37,7 @@ Product productDetail = partnerOperations.Products.ByCountry("US").ById("DZH318Z
 
 [!INCLUDE [Partner Center Java SDK support details](<../includes/java-sdk-support.md>)]
 
-Om du vill hitta en speciell produkt efter ID använder du funktionen **IAggregatePartner. getProducts** , väljer land med funktionen **byCountry ()** och anropar sedan funktionen **byId ()** . Slutligen anropar du funktionen **Get ()** för att returnera produkten.
+Om du vill hitta en specifik produkt efter ID använder du funktionen **IAggregatePartner.getProducts,** väljer land med hjälp av funktionen **byCountry()** och anropar **sedan funktionen byId().** Anropa slutligen funktionen **get()** för att returnera produkten.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -53,7 +49,7 @@ Product productDetail = partnerOperations.getProducts().byCountry("US").byId("DZ
 
 [!INCLUDE [Partner Center PowerShell module support details](<../includes/powershell-module-support.md>)]
 
-Om du vill hitta en speciell produkt efter ID kör du kommandot [**Get-PartnerProduct**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProduct.md) och anger parametern **ProductID** . **CountryCode** -parametern är alternativ, om den inte anges, kommer det land som är associerat med åter försäljaren att användas.
+Om du vill hitta en specifik produkt efter ID kör du kommandot [**Get-PartnerProduct**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProduct.md) och anger **parametern ProductId.** Parametern **CountryCode** är alternativ. Om den inte anges används det land som är associerat med återförsäljaren.
 
 ```powershell
 Get-PartnerProduct -ProductId 'DZH318Z0BQ3Q'
@@ -61,24 +57,24 @@ Get-PartnerProduct -ProductId 'DZH318Z0BQ3Q'
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Products/{Product-ID}? land = {Country} http/1.1  |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{product-id}?country={country} HTTP/1.1  |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande Sök vägs parametrar för att hämta den angivna produkten.
+Använd följande sökvägsparametrar för att hämta den angivna produkten.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| produkt-ID             | sträng   | Yes      | En sträng som identifierar produkten.                           |
-| land                | sträng   | Yes      | Ett land/region-ID.                                            |
+| produkt-id             | sträng   | Ja      | En sträng som identifierar produkten.                           |
+| land                | sträng   | Ja      | Ett lands-/regions-ID.                                            |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -96,15 +92,15 @@ MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en [produkt](product-resources.md#product) resurs.
+Om det lyckas innehåller svarstexten en [produktresurs.](product-resources.md#product)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [fel koder för partner Center](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
-Den här metoden returnerar följande fel koder:
+Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Description                                                                |
+| HTTP-statuskod     | Felkod   | Beskrivning                                                                |
 |----------------------|--------------|----------------------------------------------------------------------------|
 | 404                  | 400013       | Det gick inte att hitta produkten.                                                     |
 
