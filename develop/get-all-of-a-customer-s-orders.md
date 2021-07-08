@@ -1,42 +1,37 @@
 ---
 title: Hämta en kunds alla beställningar
-description: Hämtar en samling av alla beställningar för en angiven kund.
+description: Hämtar en samling med alla beställningar för en angiven kund.
 ms.date: 06/19/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 4d71cd138421704d94a55a9fe21e074d92638815
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: e8f23e90cbb5afb45e519e2c58fd0d3b9ea2de6a
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769726"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760308"
 ---
-# <a name="get-all-of-a-customers-orders"></a><span data-ttu-id="2c268-103">Hämta en kunds alla beställningar</span><span class="sxs-lookup"><span data-stu-id="2c268-103">Get all of a customer's orders</span></span>
+# <a name="get-all-of-a-customers-orders"></a><span data-ttu-id="219a5-103">Hämta en kunds alla beställningar</span><span class="sxs-lookup"><span data-stu-id="219a5-103">Get all of a customer's orders</span></span>
 
-<span data-ttu-id="2c268-104">**Gäller för:**</span><span class="sxs-lookup"><span data-stu-id="2c268-104">**Applies to:**</span></span>
+<span data-ttu-id="219a5-104">**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="219a5-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="2c268-105">Partnercenter</span><span class="sxs-lookup"><span data-stu-id="2c268-105">Partner Center</span></span>
-- <span data-ttu-id="2c268-106">Partner Center som drivs av 21Vianet</span><span class="sxs-lookup"><span data-stu-id="2c268-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="2c268-107">Partnercenter för Microsoft Cloud Tyskland</span><span class="sxs-lookup"><span data-stu-id="2c268-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="2c268-108">Välkommen till Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="2c268-108">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="219a5-105">Hämtar en samling med alla beställningar för en angiven kund.</span><span class="sxs-lookup"><span data-stu-id="219a5-105">Gets a collection of all the orders for a specified customer.</span></span> <span data-ttu-id="219a5-106">Det finns en fördröjning på upp till 15 minuter från det att en order skickas tills den visas i en samling av en kunds beställningar.</span><span class="sxs-lookup"><span data-stu-id="219a5-106">There is a delay of up to 15 minutes between the time an order is submitted and when it will appear in a collection of a customer's orders.</span></span>
 
-<span data-ttu-id="2c268-109">Hämtar en samling av alla beställningar för en angiven kund.</span><span class="sxs-lookup"><span data-stu-id="2c268-109">Gets a collection of all the orders for a specified customer.</span></span> <span data-ttu-id="2c268-110">Det finns en fördröjning på upp till 15 minuter mellan tiden som en beställning skickas och när den kommer att visas i en samling av en kunds beställningar.</span><span class="sxs-lookup"><span data-stu-id="2c268-110">There is a delay of up to 15 minutes between the time an order is submitted and when it will appear in a collection of a customer's orders.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="219a5-107">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="219a5-107">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="2c268-111">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="2c268-111">Prerequisites</span></span>
+- <span data-ttu-id="219a5-108">Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="219a5-108">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="219a5-109">Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="219a5-109">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-- <span data-ttu-id="2c268-112">Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="2c268-112">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="2c268-113">Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="2c268-113">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+- <span data-ttu-id="219a5-110">Ett kund-ID ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="219a5-110">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="219a5-111">Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard)</span><span class="sxs-lookup"><span data-stu-id="219a5-111">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="219a5-112">Välj **CSP** på Menyn i Partnercenter följt av **Kunder.**</span><span class="sxs-lookup"><span data-stu-id="219a5-112">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="219a5-113">Välj kunden i kundlistan och välj sedan **Konto.**</span><span class="sxs-lookup"><span data-stu-id="219a5-113">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="219a5-114">På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.**</span><span class="sxs-lookup"><span data-stu-id="219a5-114">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="219a5-115">Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="219a5-115">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
 
-- <span data-ttu-id="2c268-114">Ett kund-ID ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="2c268-114">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="2c268-115">Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center.</span><span class="sxs-lookup"><span data-stu-id="2c268-115">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="2c268-116">Välj **CSP** på menyn Partner Center, följt av **kunder**.</span><span class="sxs-lookup"><span data-stu-id="2c268-116">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="2c268-117">Välj kunden från listan kund och välj sedan **konto**.</span><span class="sxs-lookup"><span data-stu-id="2c268-117">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="2c268-118">På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** .</span><span class="sxs-lookup"><span data-stu-id="2c268-118">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="2c268-119">Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="2c268-119">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
+## <a name="c"></a><span data-ttu-id="219a5-116">C\#</span><span class="sxs-lookup"><span data-stu-id="219a5-116">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="2c268-120">C\#</span><span class="sxs-lookup"><span data-stu-id="2c268-120">C\#</span></span>
+<span data-ttu-id="219a5-117">Så här hämtar du en samling av alla en kunds beställningar:</span><span class="sxs-lookup"><span data-stu-id="219a5-117">To obtain a collection of all of a customer's orders:</span></span>
 
-<span data-ttu-id="2c268-121">Så här hämtar du en samling av alla kund order:</span><span class="sxs-lookup"><span data-stu-id="2c268-121">To obtain a collection of all of a customer's orders:</span></span>
+1. <span data-ttu-id="219a5-118">Använd din [**IAggregatePartner.Customers-samling**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) och anropa [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid)</span><span class="sxs-lookup"><span data-stu-id="219a5-118">Use your [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) collection and call the [**ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) method.</span></span>
 
-1. <span data-ttu-id="2c268-122">Använd din [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) -samling och anropa [**ById ()-**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) metoden.</span><span class="sxs-lookup"><span data-stu-id="2c268-122">Use your [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) collection and call the [**ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) method.</span></span>
-
-2. <span data-ttu-id="2c268-123">Anropa egenskapen [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) följt av metoderna [**Get ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) eller [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.getasync) .</span><span class="sxs-lookup"><span data-stu-id="2c268-123">Call the [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) property, followed by the [**Get()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) or [**GetAsync()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.getasync) methods.</span></span>
+2. <span data-ttu-id="219a5-119">Anropa egenskapen [**Beställningar**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) följt av metoderna [**Get()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) eller [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.getasync)</span><span class="sxs-lookup"><span data-stu-id="219a5-119">Call the [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) property, followed by the [**Get()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) or [**GetAsync()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.getasync) methods.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -45,33 +40,33 @@ ms.locfileid: "97769726"
 var orders = partnerOperations.Customers.ById(selectedCustomerId).Orders.Get();
 ```
 
-<span data-ttu-id="2c268-124">**Exempel**: [konsol test app](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="2c268-124">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="2c268-125">**Projekt**: PartnerSDK. FeatureSamples- **klass**: GetOrders.CS</span><span class="sxs-lookup"><span data-stu-id="2c268-125">**Project**: PartnerSDK.FeatureSamples **Class**: GetOrders.cs</span></span>
+<span data-ttu-id="219a5-120">**Exempel:** [Konsoltestapp](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="219a5-120">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="219a5-121">**Project:** PartnerSDK.FeatureSamples-klass: GetOrders.cs </span><span class="sxs-lookup"><span data-stu-id="219a5-121">**Project**: PartnerSDK.FeatureSamples **Class**: GetOrders.cs</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="2c268-126">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="2c268-126">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="219a5-122">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="219a5-122">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="2c268-127">Syntax för begäran</span><span class="sxs-lookup"><span data-stu-id="2c268-127">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="219a5-123">Begärandesyntax</span><span class="sxs-lookup"><span data-stu-id="219a5-123">Request syntax</span></span>
 
-| <span data-ttu-id="2c268-128">Metod</span><span class="sxs-lookup"><span data-stu-id="2c268-128">Method</span></span>  | <span data-ttu-id="2c268-129">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="2c268-129">Request URI</span></span>                                                                                   |
+| <span data-ttu-id="219a5-124">Metod</span><span class="sxs-lookup"><span data-stu-id="219a5-124">Method</span></span>  | <span data-ttu-id="219a5-125">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="219a5-125">Request URI</span></span>                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| <span data-ttu-id="2c268-130">**TA**</span><span class="sxs-lookup"><span data-stu-id="2c268-130">**GET**</span></span> | <span data-ttu-id="2c268-131">[*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Orders http/1.1</span><span class="sxs-lookup"><span data-stu-id="2c268-131">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders HTTP/1.1</span></span>  |
+| <span data-ttu-id="219a5-126">**Få**</span><span class="sxs-lookup"><span data-stu-id="219a5-126">**GET**</span></span> | <span data-ttu-id="219a5-127">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="219a5-127">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/orders HTTP/1.1</span></span>  |
 
-#### <a name="uri-parameter"></a><span data-ttu-id="2c268-132">URI-parameter</span><span class="sxs-lookup"><span data-stu-id="2c268-132">URI parameter</span></span>
+#### <a name="uri-parameter"></a><span data-ttu-id="219a5-128">URI-parameter</span><span class="sxs-lookup"><span data-stu-id="219a5-128">URI parameter</span></span>
 
-<span data-ttu-id="2c268-133">Använd följande frågeparameter för att hämta alla beställningar.</span><span class="sxs-lookup"><span data-stu-id="2c268-133">Use the following query parameter to get all orders.</span></span>
+<span data-ttu-id="219a5-129">Använd följande frågeparameter för att hämta alla beställningar.</span><span class="sxs-lookup"><span data-stu-id="219a5-129">Use the following query parameter to get all orders.</span></span>
 
-| <span data-ttu-id="2c268-134">Namn</span><span class="sxs-lookup"><span data-stu-id="2c268-134">Name</span></span>                   | <span data-ttu-id="2c268-135">Typ</span><span class="sxs-lookup"><span data-stu-id="2c268-135">Type</span></span>     | <span data-ttu-id="2c268-136">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="2c268-136">Required</span></span> | <span data-ttu-id="2c268-137">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="2c268-137">Description</span></span>                                               |
+| <span data-ttu-id="219a5-130">Namn</span><span class="sxs-lookup"><span data-stu-id="219a5-130">Name</span></span>                   | <span data-ttu-id="219a5-131">Typ</span><span class="sxs-lookup"><span data-stu-id="219a5-131">Type</span></span>     | <span data-ttu-id="219a5-132">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="219a5-132">Required</span></span> | <span data-ttu-id="219a5-133">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="219a5-133">Description</span></span>                                               |
 |------------------------|----------|----------|-----------------------------------------------------------|
-| <span data-ttu-id="2c268-138">kund-ID för klient organisation</span><span class="sxs-lookup"><span data-stu-id="2c268-138">customer-tenant-id</span></span>     | <span data-ttu-id="2c268-139">sträng</span><span class="sxs-lookup"><span data-stu-id="2c268-139">string</span></span>   | <span data-ttu-id="2c268-140">Yes</span><span class="sxs-lookup"><span data-stu-id="2c268-140">Yes</span></span>      | <span data-ttu-id="2c268-141">En GUID-formaterad sträng som motsvarar kunden.</span><span class="sxs-lookup"><span data-stu-id="2c268-141">A GUID formatted string corresponding to the customer.</span></span>    |
+| <span data-ttu-id="219a5-134">kund-klient-id</span><span class="sxs-lookup"><span data-stu-id="219a5-134">customer-tenant-id</span></span>     | <span data-ttu-id="219a5-135">sträng</span><span class="sxs-lookup"><span data-stu-id="219a5-135">string</span></span>   | <span data-ttu-id="219a5-136">Ja</span><span class="sxs-lookup"><span data-stu-id="219a5-136">Yes</span></span>      | <span data-ttu-id="219a5-137">En GUID-formaterad sträng som motsvarar kunden.</span><span class="sxs-lookup"><span data-stu-id="219a5-137">A GUID formatted string corresponding to the customer.</span></span>    |
 
-### <a name="request-headers"></a><span data-ttu-id="2c268-142">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="2c268-142">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="219a5-138">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="219a5-138">Request headers</span></span>
 
-<span data-ttu-id="2c268-143">Mer information finns i [partner Center rest-rubriker](headers.md).</span><span class="sxs-lookup"><span data-stu-id="2c268-143">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="219a5-139">Mer information finns i [Partner Center REST-huvuden.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="219a5-139">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="2c268-144">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="2c268-144">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="219a5-140">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="219a5-140">Request body</span></span>
 
-<span data-ttu-id="2c268-145">Inga.</span><span class="sxs-lookup"><span data-stu-id="2c268-145">None.</span></span>
+<span data-ttu-id="219a5-141">Inga.</span><span class="sxs-lookup"><span data-stu-id="219a5-141">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="2c268-146">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="2c268-146">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="219a5-142">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="219a5-142">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/customers/b0d70a69-4c42-4b27-b17b-91a835d8686a/orders HTTP/1.1
@@ -82,15 +77,15 @@ MS-CorrelationId: 8a53b025-d5be-4d98-ab20-229d1813de76
 Connection: Keep-Alive
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="2c268-147">REST-svar</span><span class="sxs-lookup"><span data-stu-id="2c268-147">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="219a5-143">REST-svar</span><span class="sxs-lookup"><span data-stu-id="219a5-143">REST response</span></span>
 
-<span data-ttu-id="2c268-148">Om det lyckas returnerar den här metoden en samling av [order](order-resources.md) resurser i svars texten.</span><span class="sxs-lookup"><span data-stu-id="2c268-148">If successful, this method returns a collection of [Order](order-resources.md) resources in the response body.</span></span>
+<span data-ttu-id="219a5-144">Om det lyckas returnerar den här metoden en samling [Order-resurser](order-resources.md) i svarstexten.</span><span class="sxs-lookup"><span data-stu-id="219a5-144">If successful, this method returns a collection of [Order](order-resources.md) resources in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="2c268-149">Slutförda svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="2c268-149">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="219a5-145">Lyckade svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="219a5-145">Response success and error codes</span></span>
 
-<span data-ttu-id="2c268-150">Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information.</span><span class="sxs-lookup"><span data-stu-id="2c268-150">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="2c268-151">Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="2c268-151">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="2c268-152">En fullständig lista finns i [felkoder](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="2c268-152">For the full list, see [Error Codes](error-codes.md).</span></span>
+<span data-ttu-id="219a5-146">Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation.</span><span class="sxs-lookup"><span data-stu-id="219a5-146">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="219a5-147">Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="219a5-147">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="219a5-148">En fullständig lista finns i [Felkoder.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="219a5-148">For the full list, see [Error Codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="2c268-153">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="2c268-153">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="219a5-149">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="219a5-149">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

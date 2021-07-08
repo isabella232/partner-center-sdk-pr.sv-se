@@ -1,41 +1,38 @@
 ---
 title: Hämta en lista över en kunds principer
-description: Hämta en samling av den angivna kundens konfigurations principer.
+description: Så här hämtar du en samling av den angivna kundens konfigurationsprinciper.
 ms.date: 07/25/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 16886b1adca393ed2967f2a4fe74a379bef1c1c7
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: bf6ace0d2425e28d80c4f2310878c2d2a9e2a876
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769339"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874592"
 ---
-# <a name="get-a-list-of-a-customers-policies"></a><span data-ttu-id="e8511-103">Hämta en lista över en kunds principer</span><span class="sxs-lookup"><span data-stu-id="e8511-103">Get a list of a customer's policies</span></span>
+# <a name="get-a-list-of-a-customers-policies"></a><span data-ttu-id="d308b-103">Hämta en lista över en kunds principer</span><span class="sxs-lookup"><span data-stu-id="d308b-103">Get a list of a customer's policies</span></span>
 
-<span data-ttu-id="e8511-104">**Gäller för:**</span><span class="sxs-lookup"><span data-stu-id="e8511-104">**Applies to:**</span></span>
+<span data-ttu-id="d308b-104">**Gäller för**: Partner Center-| Partnercenter för Microsoft Cloud Tyskland</span><span class="sxs-lookup"><span data-stu-id="d308b-104">**Applies to**: Partner Center | Partner Center for Microsoft Cloud Germany</span></span>
 
-- <span data-ttu-id="e8511-105">Partnercenter</span><span class="sxs-lookup"><span data-stu-id="e8511-105">Partner Center</span></span>
-- <span data-ttu-id="e8511-106">Partnercenter för Microsoft Cloud Tyskland</span><span class="sxs-lookup"><span data-stu-id="e8511-106">Partner Center for Microsoft Cloud Germany</span></span>
+<span data-ttu-id="d308b-105">Den här artikeln beskriver hur du hämtar en samling av den angivna kundens konfigurationsprinciper.</span><span class="sxs-lookup"><span data-stu-id="d308b-105">This article describes how to retrieve a collection of the specified customer's configuration policies.</span></span>
 
-<span data-ttu-id="e8511-107">Den här artikeln beskriver hur du hämtar en samling av den angivna kundens konfigurations principer.</span><span class="sxs-lookup"><span data-stu-id="e8511-107">This article describes how to retrieve a collection of the specified customer's configuration policies.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="d308b-106">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="d308b-106">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="e8511-108">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="e8511-108">Prerequisites</span></span>
+- <span data-ttu-id="d308b-107">Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="d308b-107">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="d308b-108">Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="d308b-108">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-- <span data-ttu-id="e8511-109">Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="e8511-109">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="e8511-110">Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="e8511-110">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+- <span data-ttu-id="d308b-109">Ett kund-ID ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="d308b-109">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="d308b-110">Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard)</span><span class="sxs-lookup"><span data-stu-id="d308b-110">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="d308b-111">Välj **CSP** på Menyn i Partnercenter följt av **Kunder**.</span><span class="sxs-lookup"><span data-stu-id="d308b-111">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="d308b-112">Välj kunden i kundlistan och välj sedan **Konto.**</span><span class="sxs-lookup"><span data-stu-id="d308b-112">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="d308b-113">På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.**</span><span class="sxs-lookup"><span data-stu-id="d308b-113">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="d308b-114">Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="d308b-114">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
 
-- <span data-ttu-id="e8511-111">Ett kund-ID ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="e8511-111">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="e8511-112">Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center.</span><span class="sxs-lookup"><span data-stu-id="e8511-112">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="e8511-113">Välj **CSP** på menyn Partner Center, följt av **kunder**.</span><span class="sxs-lookup"><span data-stu-id="e8511-113">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="e8511-114">Välj kunden från listan kund och välj sedan **konto**.</span><span class="sxs-lookup"><span data-stu-id="e8511-114">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="e8511-115">På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** .</span><span class="sxs-lookup"><span data-stu-id="e8511-115">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="e8511-116">Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="e8511-116">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
+## <a name="c"></a><span data-ttu-id="d308b-115">C\#</span><span class="sxs-lookup"><span data-stu-id="d308b-115">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="e8511-117">C\#</span><span class="sxs-lookup"><span data-stu-id="e8511-117">C\#</span></span>
+<span data-ttu-id="d308b-116">Så här hämtar du en lista över alla en kunds principer:</span><span class="sxs-lookup"><span data-stu-id="d308b-116">To get a list of all of a customer's policies:</span></span>
 
-<span data-ttu-id="e8511-118">Så här hämtar du en lista över alla kund principer:</span><span class="sxs-lookup"><span data-stu-id="e8511-118">To get a list of all of a customer's policies:</span></span>
+1. <span data-ttu-id="d308b-117">Anropa metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att hämta ett gränssnitt till åtgärder på den angivna kunden.</span><span class="sxs-lookup"><span data-stu-id="d308b-117">Call the [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) method with the customer ID to retrieve an interface to operations on the specified customer.</span></span>
 
-1. <span data-ttu-id="e8511-119">Anropa metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att hämta ett gränssnitt till åtgärder på den angivna kunden.</span><span class="sxs-lookup"><span data-stu-id="e8511-119">Call the [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) method with the customer ID to retrieve an interface to operations on the specified customer.</span></span>
-
-2. <span data-ttu-id="e8511-120">Hämta egenskapen [**ConfigurationPolicies**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.configurationpolicies) för att hämta ett gränssnitt för konfiguration av princip insamlings åtgärder.</span><span class="sxs-lookup"><span data-stu-id="e8511-120">Retrieve the [**ConfigurationPolicies**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.configurationpolicies) property to get an interface to configuration policy collection operations.</span></span>
-3. <span data-ttu-id="e8511-121">Anropa metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.getasync) för att hämta princip samlingen.</span><span class="sxs-lookup"><span data-stu-id="e8511-121">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.getasync) method to retrieve the collection of policies.</span></span>
+2. <span data-ttu-id="d308b-118">Hämta egenskapen [**ConfigurationPolicies för**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.configurationpolicies) att hämta ett gränssnitt för konfigurationsprincipinsamlingsåtgärder.</span><span class="sxs-lookup"><span data-stu-id="d308b-118">Retrieve the [**ConfigurationPolicies**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.configurationpolicies) property to get an interface to configuration policy collection operations.</span></span>
+3. <span data-ttu-id="d308b-119">Anropa metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.getasync) för att hämta samlingen med principer.</span><span class="sxs-lookup"><span data-stu-id="d308b-119">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.getasync) method to retrieve the collection of policies.</span></span>
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -44,37 +41,37 @@ string selectedCustomerId;
 var configPolicies = partnerOperations.Customers.ById(selectedCustomerId).ConfigurationPolicies.Get();
 ```
 
-<span data-ttu-id="e8511-122">Ett exempel finns i följande avsnitt:</span><span class="sxs-lookup"><span data-stu-id="e8511-122">For an example, see the following:</span></span>
+<span data-ttu-id="d308b-120">Ett exempel finns i följande:</span><span class="sxs-lookup"><span data-stu-id="d308b-120">For an example, see the following:</span></span>
 
-- <span data-ttu-id="e8511-123">Exempel: [konsol test app](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="e8511-123">Sample: [Console test app](console-test-app.md)</span></span>
-- <span data-ttu-id="e8511-124">Projekt: **SDK-exempel för partner Center**</span><span class="sxs-lookup"><span data-stu-id="e8511-124">Project: **Partner Center SDK Samples**</span></span>
-- <span data-ttu-id="e8511-125">Klass: **GetAllConfigurationPolicies.cs**</span><span class="sxs-lookup"><span data-stu-id="e8511-125">Class: **GetAllConfigurationPolicies.cs**</span></span>
+- <span data-ttu-id="d308b-121">Exempel: [Konsoltestapp](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="d308b-121">Sample: [Console test app](console-test-app.md)</span></span>
+- <span data-ttu-id="d308b-122">Project: **Partnercenter-SDK exempel**</span><span class="sxs-lookup"><span data-stu-id="d308b-122">Project: **Partner Center SDK Samples**</span></span>
+- <span data-ttu-id="d308b-123">Klass: **GetAllConfigurationPolicies.cs**</span><span class="sxs-lookup"><span data-stu-id="d308b-123">Class: **GetAllConfigurationPolicies.cs**</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="e8511-126">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="e8511-126">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="d308b-124">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="d308b-124">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="e8511-127">Syntax för begäran</span><span class="sxs-lookup"><span data-stu-id="e8511-127">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="d308b-125">Begärandesyntax</span><span class="sxs-lookup"><span data-stu-id="d308b-125">Request syntax</span></span>
 
-| <span data-ttu-id="e8511-128">Metod</span><span class="sxs-lookup"><span data-stu-id="e8511-128">Method</span></span>  | <span data-ttu-id="e8511-129">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="e8511-129">Request URI</span></span>                                                                              |
+| <span data-ttu-id="d308b-126">Metod</span><span class="sxs-lookup"><span data-stu-id="d308b-126">Method</span></span>  | <span data-ttu-id="d308b-127">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="d308b-127">Request URI</span></span>                                                                              |
 |---------|------------------------------------------------------------------------------------------|
-| <span data-ttu-id="e8511-130">**TA**</span><span class="sxs-lookup"><span data-stu-id="e8511-130">**GET**</span></span> | <span data-ttu-id="e8511-131">[*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/policies http/1.1</span><span class="sxs-lookup"><span data-stu-id="e8511-131">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/policies HTTP/1.1</span></span> |
+| <span data-ttu-id="d308b-128">**Få**</span><span class="sxs-lookup"><span data-stu-id="d308b-128">**GET**</span></span> | <span data-ttu-id="d308b-129">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/policies HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="d308b-129">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/policies HTTP/1.1</span></span> |
 
-#### <a name="uri-parameter"></a><span data-ttu-id="e8511-132">URI-parameter</span><span class="sxs-lookup"><span data-stu-id="e8511-132">URI parameter</span></span>
+#### <a name="uri-parameter"></a><span data-ttu-id="d308b-130">URI-parameter</span><span class="sxs-lookup"><span data-stu-id="d308b-130">URI parameter</span></span>
 
-<span data-ttu-id="e8511-133">Använd följande Sök vägs parameter när du skapar begäran:</span><span class="sxs-lookup"><span data-stu-id="e8511-133">Use the following path parameter when creating the request:</span></span>
+<span data-ttu-id="d308b-131">Använd följande sökvägsparameter när du skapar begäran:</span><span class="sxs-lookup"><span data-stu-id="d308b-131">Use the following path parameter when creating the request:</span></span>
 
-| <span data-ttu-id="e8511-134">Namn</span><span class="sxs-lookup"><span data-stu-id="e8511-134">Name</span></span>        | <span data-ttu-id="e8511-135">Typ</span><span class="sxs-lookup"><span data-stu-id="e8511-135">Type</span></span>   | <span data-ttu-id="e8511-136">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="e8511-136">Required</span></span> | <span data-ttu-id="e8511-137">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="e8511-137">Description</span></span>                                           |
+| <span data-ttu-id="d308b-132">Namn</span><span class="sxs-lookup"><span data-stu-id="d308b-132">Name</span></span>        | <span data-ttu-id="d308b-133">Typ</span><span class="sxs-lookup"><span data-stu-id="d308b-133">Type</span></span>   | <span data-ttu-id="d308b-134">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="d308b-134">Required</span></span> | <span data-ttu-id="d308b-135">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="d308b-135">Description</span></span>                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| <span data-ttu-id="e8511-138">kund-ID</span><span class="sxs-lookup"><span data-stu-id="e8511-138">customer-id</span></span> | <span data-ttu-id="e8511-139">sträng</span><span class="sxs-lookup"><span data-stu-id="e8511-139">string</span></span> | <span data-ttu-id="e8511-140">Yes</span><span class="sxs-lookup"><span data-stu-id="e8511-140">Yes</span></span>      | <span data-ttu-id="e8511-141">En GUID-formaterad sträng som identifierar kunden.</span><span class="sxs-lookup"><span data-stu-id="e8511-141">A GUID-formatted string that identifies the customer.</span></span> |
+| <span data-ttu-id="d308b-136">kund-id</span><span class="sxs-lookup"><span data-stu-id="d308b-136">customer-id</span></span> | <span data-ttu-id="d308b-137">sträng</span><span class="sxs-lookup"><span data-stu-id="d308b-137">string</span></span> | <span data-ttu-id="d308b-138">Ja</span><span class="sxs-lookup"><span data-stu-id="d308b-138">Yes</span></span>      | <span data-ttu-id="d308b-139">En GUID-formaterad sträng som identifierar kunden.</span><span class="sxs-lookup"><span data-stu-id="d308b-139">A GUID-formatted string that identifies the customer.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="e8511-142">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="e8511-142">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="d308b-140">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="d308b-140">Request headers</span></span>
 
-<span data-ttu-id="e8511-143">Mer information finns i [partner Center rest-rubriker](headers.md).</span><span class="sxs-lookup"><span data-stu-id="e8511-143">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="d308b-141">Mer information finns i [Partner Center REST-huvuden.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="d308b-141">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="e8511-144">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="e8511-144">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="d308b-142">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="d308b-142">Request body</span></span>
 
-<span data-ttu-id="e8511-145">Inget</span><span class="sxs-lookup"><span data-stu-id="e8511-145">None</span></span>
+<span data-ttu-id="d308b-143">Ingen</span><span class="sxs-lookup"><span data-stu-id="d308b-143">None</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="e8511-146">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="e8511-146">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="d308b-144">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="d308b-144">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/customers/47021739-3426-40bf-9601-61b4b6d7c793/policies HTTP/1.1
@@ -87,15 +84,15 @@ X-Locale: en-US
 Host: api.partnercenter.microsoft.com
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="e8511-147">REST-svar</span><span class="sxs-lookup"><span data-stu-id="e8511-147">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="d308b-145">REST-svar</span><span class="sxs-lookup"><span data-stu-id="d308b-145">REST response</span></span>
 
-<span data-ttu-id="e8511-148">Om det lyckas innehåller svars texten samlingen av [ConfigurationPolicy](device-deployment-resources.md#configurationpolicy) -resurser.</span><span class="sxs-lookup"><span data-stu-id="e8511-148">If successful, the response body contains the collection of [ConfigurationPolicy](device-deployment-resources.md#configurationpolicy) resources.</span></span>
+<span data-ttu-id="d308b-146">Om det lyckas innehåller svarstexten en samling [ConfigurationPolicy-resurser.](device-deployment-resources.md#configurationpolicy)</span><span class="sxs-lookup"><span data-stu-id="d308b-146">If successful, the response body contains the collection of [ConfigurationPolicy](device-deployment-resources.md#configurationpolicy) resources.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="e8511-149">Slutförda svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="e8511-149">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="d308b-147">Lyckade svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="d308b-147">Response success and error codes</span></span>
 
-<span data-ttu-id="e8511-150">Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information.</span><span class="sxs-lookup"><span data-stu-id="e8511-150">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="e8511-151">Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="e8511-151">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="e8511-152">En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="e8511-152">For a full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="d308b-148">Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation.</span><span class="sxs-lookup"><span data-stu-id="d308b-148">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="d308b-149">Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="d308b-149">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="d308b-150">En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="d308b-150">For a full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="e8511-153">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="e8511-153">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="d308b-151">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="d308b-151">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

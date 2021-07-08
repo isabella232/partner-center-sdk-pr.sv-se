@@ -1,40 +1,35 @@
 ---
 title: Hämta en lista över erbjudandekategorier efter marknad
-description: Lär dig hur du hämtar en samling som innehåller alla erbjudande kategorier i ett specifikt land/region och nationella inställningar för alla Microsoft-moln.
+description: Lär dig hur du hämtar en samling som innehåller alla erbjudandekategorier i ett visst land/en viss region och språk för alla Microsoft-moln.
 ms.date: 07/25/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 05aad095c6cb8eaee4cbf7ce976ca1b4b7a408c4
-ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
+ms.openlocfilehash: e699355f07dda3941eafed32f5f635d94000abd1
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106500064"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874286"
 ---
-# <a name="get-a-list-of-offer-categories-by-market"></a><span data-ttu-id="eb7b1-103">Hämta en lista över erbjudandekategorier efter marknad</span><span class="sxs-lookup"><span data-stu-id="eb7b1-103">Get a list of offer categories by market</span></span>
+# <a name="get-a-list-of-offer-categories-by-market"></a><span data-ttu-id="2f000-103">Hämta en lista över erbjudandekategorier efter marknad</span><span class="sxs-lookup"><span data-stu-id="2f000-103">Get a list of offer categories by market</span></span>
 
-<span data-ttu-id="eb7b1-104">**Gäller för:**</span><span class="sxs-lookup"><span data-stu-id="eb7b1-104">**Applies to:**</span></span>
+<span data-ttu-id="2f000-104">**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="2f000-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="eb7b1-105">Partnercenter</span><span class="sxs-lookup"><span data-stu-id="eb7b1-105">Partner Center</span></span>
-- <span data-ttu-id="eb7b1-106">Partnercenter drivs av 21Vianet</span><span class="sxs-lookup"><span data-stu-id="eb7b1-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="eb7b1-107">Partnercenter för Microsoft Cloud Tyskland</span><span class="sxs-lookup"><span data-stu-id="eb7b1-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="eb7b1-108">Välkommen till Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="eb7b1-108">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="2f000-105">Den här artikeln beskriver hur du hämtar en samling som innehåller alla erbjudandekategorier i ett visst land/region och språk.</span><span class="sxs-lookup"><span data-stu-id="2f000-105">This article describes how to get a collection that contains all the offer categories in a given country/region and locale.</span></span>
 
-<span data-ttu-id="eb7b1-109">Den här artikeln beskriver hur du hämtar en samling som innehåller alla erbjudande kategorier i ett specifikt land/region och nationella inställningar.</span><span class="sxs-lookup"><span data-stu-id="eb7b1-109">This article describes how to get a collection that contains all the offer categories in a given country/region and locale.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="2f000-106">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="2f000-106">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="eb7b1-110">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="eb7b1-110">Prerequisites</span></span>
+- <span data-ttu-id="2f000-107">Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="2f000-107">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="2f000-108">Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="2f000-108">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-- <span data-ttu-id="eb7b1-111">Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="eb7b1-111">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="eb7b1-112">Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="eb7b1-112">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+## <a name="c"></a><span data-ttu-id="2f000-109">C\#</span><span class="sxs-lookup"><span data-stu-id="2f000-109">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="eb7b1-113">C\#</span><span class="sxs-lookup"><span data-stu-id="eb7b1-113">C\#</span></span>
+<span data-ttu-id="2f000-110">Så här hämtar du en lista över erbjudandekategorier i ett visst land/region och språk:</span><span class="sxs-lookup"><span data-stu-id="2f000-110">To get a list of offer categories in a given country/region and locale:</span></span>
 
-<span data-ttu-id="eb7b1-114">Så här hämtar du en lista över erbjudande kategorier i ett specifikt land/region och nationella inställningar:</span><span class="sxs-lookup"><span data-stu-id="eb7b1-114">To get a list of offer categories in a given country/region and locale:</span></span>
+1. <span data-ttu-id="2f000-111">Använd din [**IAggregatePartner.Operations-samling**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) för att anropa [**metoden With()**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner.with) i en viss kontext.</span><span class="sxs-lookup"><span data-stu-id="2f000-111">Use your [**IAggregatePartner.Operations**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) collection to call the [**With()**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner.with) method on a given context.</span></span>
 
-1. <span data-ttu-id="eb7b1-115">Använd din [**IAggregatePartner. Operations**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) -samling för att anropa metoden [**with ()**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner.with) i en specifik kontext.</span><span class="sxs-lookup"><span data-stu-id="eb7b1-115">Use your [**IAggregatePartner.Operations**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) collection to call the [**With()**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner.with) method on a given context.</span></span>
-
-2. <span data-ttu-id="eb7b1-116">Kontrol lera egenskapen [**OfferCategories**](/dotnet/api/microsoft.store.partnercenter.ipartner.offercategories) för det resulterande objektet.</span><span class="sxs-lookup"><span data-stu-id="eb7b1-116">Inspect the [**OfferCategories**](/dotnet/api/microsoft.store.partnercenter.ipartner.offercategories) property of the resulting object.</span></span>
+2. <span data-ttu-id="2f000-112">Kontrollera egenskapen [**OfferCategories**](/dotnet/api/microsoft.store.partnercenter.ipartner.offercategories) för det resulterande objektet.</span><span class="sxs-lookup"><span data-stu-id="2f000-112">Inspect the [**OfferCategories**](/dotnet/api/microsoft.store.partnercenter.ipartner.offercategories) property of the resulting object.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,39 +37,39 @@ ms.locfileid: "106500064"
 ResourceCollection<OfferCategory> offerCategoryResults = partnerOperations.With(RequestContextFactory.Instance.Create()).OfferCategories.ByCountry("US").Get();
 ```
 
-<span data-ttu-id="eb7b1-117">Ett exempel finns i följande avsnitt:</span><span class="sxs-lookup"><span data-stu-id="eb7b1-117">For an example, see the following:</span></span>
+<span data-ttu-id="2f000-113">Ett exempel finns i följande:</span><span class="sxs-lookup"><span data-stu-id="2f000-113">For an example, see the following:</span></span>
 
-- <span data-ttu-id="eb7b1-118">Exempel: [konsol test app](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="eb7b1-118">Sample: [Console test app](console-test-app.md)</span></span>
-- <span data-ttu-id="eb7b1-119">Projekt: **PartnerSDK. FeatureSample**</span><span class="sxs-lookup"><span data-stu-id="eb7b1-119">Project: **PartnerSDK.FeatureSample**</span></span>
-- <span data-ttu-id="eb7b1-120">Klass: **PartnerSDK. FeatureSample**</span><span class="sxs-lookup"><span data-stu-id="eb7b1-120">Class: **PartnerSDK.FeatureSample**</span></span>
+- <span data-ttu-id="2f000-114">Exempel: [Konsoltestapp](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="2f000-114">Sample: [Console test app](console-test-app.md)</span></span>
+- <span data-ttu-id="2f000-115">Project: **PartnerSDK.FeatureSample**</span><span class="sxs-lookup"><span data-stu-id="2f000-115">Project: **PartnerSDK.FeatureSample**</span></span>
+- <span data-ttu-id="2f000-116">Klass: **PartnerSDK.FeatureSample**</span><span class="sxs-lookup"><span data-stu-id="2f000-116">Class: **PartnerSDK.FeatureSample**</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="eb7b1-121">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="eb7b1-121">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="2f000-117">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="2f000-117">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="eb7b1-122">Syntax för begäran</span><span class="sxs-lookup"><span data-stu-id="eb7b1-122">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="2f000-118">Begärandesyntax</span><span class="sxs-lookup"><span data-stu-id="2f000-118">Request syntax</span></span>
 
-| <span data-ttu-id="eb7b1-123">Metod</span><span class="sxs-lookup"><span data-stu-id="eb7b1-123">Method</span></span>  | <span data-ttu-id="eb7b1-124">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="eb7b1-124">Request URI</span></span>                                                                                  |
+| <span data-ttu-id="2f000-119">Metod</span><span class="sxs-lookup"><span data-stu-id="2f000-119">Method</span></span>  | <span data-ttu-id="2f000-120">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="2f000-120">Request URI</span></span>                                                                                  |
 |---------|----------------------------------------------------------------------------------------------|
-| <span data-ttu-id="eb7b1-125">**TA**</span><span class="sxs-lookup"><span data-stu-id="eb7b1-125">**GET**</span></span> | <span data-ttu-id="eb7b1-126">[*{baseURL}*](partner-center-rest-urls.md)/v1/offercategories? land = {Country-ID} http/1.1</span><span class="sxs-lookup"><span data-stu-id="eb7b1-126">[*{baseURL}*](partner-center-rest-urls.md)/v1/offercategories?country={country-id} HTTP/1.1</span></span> |
+| <span data-ttu-id="2f000-121">**Få**</span><span class="sxs-lookup"><span data-stu-id="2f000-121">**GET**</span></span> | <span data-ttu-id="2f000-122">[*{baseURL}*](partner-center-rest-urls.md)/v1/offercategories?country={country-id} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="2f000-122">[*{baseURL}*](partner-center-rest-urls.md)/v1/offercategories?country={country-id} HTTP/1.1</span></span> |
 
-#### <a name="uri-parameter"></a><span data-ttu-id="eb7b1-127">URI-parameter</span><span class="sxs-lookup"><span data-stu-id="eb7b1-127">URI parameter</span></span>
+#### <a name="uri-parameter"></a><span data-ttu-id="2f000-123">URI-parameter</span><span class="sxs-lookup"><span data-stu-id="2f000-123">URI parameter</span></span>
 
-<span data-ttu-id="eb7b1-128">Den här tabellen innehåller de frågeparametrar som krävs för att hämta erbjudande kategorier.</span><span class="sxs-lookup"><span data-stu-id="eb7b1-128">This table lists the required query parameters to get the offer categories.</span></span>
+<span data-ttu-id="2f000-124">I den här tabellen visas de frågeparametrar som krävs för att hämta erbjudandekategorierna.</span><span class="sxs-lookup"><span data-stu-id="2f000-124">This table lists the required query parameters to get the offer categories.</span></span>
 
-| <span data-ttu-id="eb7b1-129">Namn</span><span class="sxs-lookup"><span data-stu-id="eb7b1-129">Name</span></span>           | <span data-ttu-id="eb7b1-130">Typ</span><span class="sxs-lookup"><span data-stu-id="eb7b1-130">Type</span></span>       | <span data-ttu-id="eb7b1-131">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="eb7b1-131">Required</span></span> | <span data-ttu-id="eb7b1-132">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="eb7b1-132">Description</span></span>            |
+| <span data-ttu-id="2f000-125">Namn</span><span class="sxs-lookup"><span data-stu-id="2f000-125">Name</span></span>           | <span data-ttu-id="2f000-126">Typ</span><span class="sxs-lookup"><span data-stu-id="2f000-126">Type</span></span>       | <span data-ttu-id="2f000-127">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="2f000-127">Required</span></span> | <span data-ttu-id="2f000-128">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="2f000-128">Description</span></span>            |
 |----------------|------------|----------|------------------------|
-| <span data-ttu-id="eb7b1-133">**lands-ID**</span><span class="sxs-lookup"><span data-stu-id="eb7b1-133">**country-id**</span></span> | <span data-ttu-id="eb7b1-134">**sträng**</span><span class="sxs-lookup"><span data-stu-id="eb7b1-134">**string**</span></span> | <span data-ttu-id="eb7b1-135">Y</span><span class="sxs-lookup"><span data-stu-id="eb7b1-135">Y</span></span>        | <span data-ttu-id="eb7b1-136">Land/region-ID.</span><span class="sxs-lookup"><span data-stu-id="eb7b1-136">The country/region ID.</span></span> |
+| <span data-ttu-id="2f000-129">**lands-id**</span><span class="sxs-lookup"><span data-stu-id="2f000-129">**country-id**</span></span> | <span data-ttu-id="2f000-130">**sträng**</span><span class="sxs-lookup"><span data-stu-id="2f000-130">**string**</span></span> | <span data-ttu-id="2f000-131">Y</span><span class="sxs-lookup"><span data-stu-id="2f000-131">Y</span></span>        | <span data-ttu-id="2f000-132">Land/region-ID.</span><span class="sxs-lookup"><span data-stu-id="2f000-132">The country/region ID.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="eb7b1-137">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="eb7b1-137">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="2f000-133">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="2f000-133">Request headers</span></span>
 
-<span data-ttu-id="eb7b1-138">Ett **språkvariant-ID** som är formaterat som en sträng krävs.</span><span class="sxs-lookup"><span data-stu-id="eb7b1-138">A **locale-id** formatted as a string is required.</span></span>
+<span data-ttu-id="2f000-134">Ett **språk-ID formaterat** som en sträng krävs.</span><span class="sxs-lookup"><span data-stu-id="2f000-134">A **locale-id** formatted as a string is required.</span></span>
 
-<span data-ttu-id="eb7b1-139">Mer information finns i [partner Center rest-rubriker](headers.md).</span><span class="sxs-lookup"><span data-stu-id="eb7b1-139">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="2f000-135">Mer information finns i [Partner Center REST-huvuden.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="2f000-135">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="eb7b1-140">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="eb7b1-140">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="2f000-136">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="2f000-136">Request body</span></span>
 
-<span data-ttu-id="eb7b1-141">Inga.</span><span class="sxs-lookup"><span data-stu-id="eb7b1-141">None.</span></span>
+<span data-ttu-id="2f000-137">Inga.</span><span class="sxs-lookup"><span data-stu-id="2f000-137">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="eb7b1-142">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="eb7b1-142">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="2f000-138">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="2f000-138">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/offercategories?country=<country-id> HTTP/1.1
@@ -86,15 +81,15 @@ X-Locale: <locale-id>
 Connection: Keep-Alive
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="eb7b1-143">REST-svar</span><span class="sxs-lookup"><span data-stu-id="eb7b1-143">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="2f000-139">REST-svar</span><span class="sxs-lookup"><span data-stu-id="2f000-139">REST response</span></span>
 
-<span data-ttu-id="eb7b1-144">Om det lyckas returnerar den här metoden en samling **OfferCategory** -resurser i svars texten.</span><span class="sxs-lookup"><span data-stu-id="eb7b1-144">If successful, this method returns a collection of **OfferCategory** resources in the response body.</span></span>
+<span data-ttu-id="2f000-140">Om det lyckas returnerar den här metoden en samling **OfferCategory-resurser** i svarstexten.</span><span class="sxs-lookup"><span data-stu-id="2f000-140">If successful, this method returns a collection of **OfferCategory** resources in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="eb7b1-145">Slutförda svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="eb7b1-145">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="2f000-141">Lyckade svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="2f000-141">Response success and error codes</span></span>
 
-<span data-ttu-id="eb7b1-146">Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information.</span><span class="sxs-lookup"><span data-stu-id="eb7b1-146">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="eb7b1-147">Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="eb7b1-147">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="eb7b1-148">En fullständig lista finns i [felkoder](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="eb7b1-148">For a full list, see [Error Codes](error-codes.md).</span></span>
+<span data-ttu-id="2f000-142">Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation.</span><span class="sxs-lookup"><span data-stu-id="2f000-142">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="2f000-143">Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="2f000-143">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="2f000-144">En fullständig lista finns i [Felkoder.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="2f000-144">For a full list, see [Error Codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="eb7b1-149">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="eb7b1-149">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="2f000-145">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="2f000-145">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK
