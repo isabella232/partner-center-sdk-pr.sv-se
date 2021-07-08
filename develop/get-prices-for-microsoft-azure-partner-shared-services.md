@@ -1,33 +1,29 @@
 ---
 title: Hämta priser för Microsoft Azure Partner Shared Services
-description: Hur du får ett Azure-pris kort med priser för Microsoft Azure partner delade tjänster.
+description: Så här hämtar du ett Azure-priskort med priser Microsoft Azure delade partnertjänster.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: cd396c35b6b89de4d0f092ba4da738a2ed0ac633
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 0008d7474f7e57bbbd765afdf2487ee279848ac3
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769906"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548812"
 ---
-# <a name="get-prices-for-microsoft-azure-partner-shared-services"></a><span data-ttu-id="27a68-103">Hämta priser för Microsoft Azure Partner Shared Services</span><span class="sxs-lookup"><span data-stu-id="27a68-103">Get prices for Microsoft Azure Partner Shared Services</span></span>
+# <a name="get-prices-for-microsoft-azure-partner-shared-services"></a><span data-ttu-id="0583d-103">Hämta priser för Microsoft Azure Partner Shared Services</span><span class="sxs-lookup"><span data-stu-id="0583d-103">Get prices for Microsoft Azure Partner Shared Services</span></span>
 
-<span data-ttu-id="27a68-104">**Gäller för**</span><span class="sxs-lookup"><span data-stu-id="27a68-104">**Applies To**</span></span>
+<span data-ttu-id="0583d-104">**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="0583d-104">**Applies to**: Partner Center | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="27a68-105">Partnercenter</span><span class="sxs-lookup"><span data-stu-id="27a68-105">Partner Center</span></span>
-- <span data-ttu-id="27a68-106">Partnercenter för Microsoft Cloud Tyskland</span><span class="sxs-lookup"><span data-stu-id="27a68-106">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="27a68-107">Välkommen till Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="27a68-107">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="0583d-105">Så här hämtar du ett [Azure-priskort](azure-rate-card-resources.md) med priser för Microsoft Azure Delade partnertjänster.</span><span class="sxs-lookup"><span data-stu-id="0583d-105">How to get an [Azure Rate Card](azure-rate-card-resources.md) with prices for Microsoft Azure Partner Shared Services.</span></span>
 
-<span data-ttu-id="27a68-108">Hur du får ett [Azure-pris kort](azure-rate-card-resources.md) med priser för Microsoft Azure partner delade tjänster.</span><span class="sxs-lookup"><span data-stu-id="27a68-108">How to get an [Azure Rate Card](azure-rate-card-resources.md) with prices for Microsoft Azure Partner Shared Services.</span></span>
+<span data-ttu-id="0583d-106">Priserna varierar beroende på marknad och valuta, och det här API:et tar hänsyn till platsen.</span><span class="sxs-lookup"><span data-stu-id="0583d-106">Prices differ by market and currency, and this API takes location into consideration.</span></span> <span data-ttu-id="0583d-107">Som standard använder API:et dina partnerprofilinställningar i Partnercenter och ditt webbläsarspråk, och dessa inställningar är anpassningsbara.</span><span class="sxs-lookup"><span data-stu-id="0583d-107">By default, the API uses your partner profile settings in Partner Center and your browser language, and those settings are customizable.</span></span> <span data-ttu-id="0583d-108">Platsmedvetenhet är särskilt relevant om du hanterar försäljning på flera marknader från ett enda centraliserat kontor.</span><span class="sxs-lookup"><span data-stu-id="0583d-108">The location awareness is especially relevant if you manage sales in multiple markets from a single, centralized office.</span></span>
 
-<span data-ttu-id="27a68-109">Priserna skiljer sig mellan marknaden och valutan, och detta API tar hänsyn till.</span><span class="sxs-lookup"><span data-stu-id="27a68-109">Prices differ by market and currency, and this API takes location into consideration.</span></span> <span data-ttu-id="27a68-110">Som standard använder API dina partner profil inställningar i Partner Center och ditt webb läsar språk, och dessa inställningar är anpassningsbara.</span><span class="sxs-lookup"><span data-stu-id="27a68-110">By default, the API uses your partner profile settings in Partner Center and your browser language, and those settings are customizable.</span></span> <span data-ttu-id="27a68-111">Plats medvetenheten är särskilt relevant om du hanterar försäljning på flera marknader från ett enda centraliserat kontor.</span><span class="sxs-lookup"><span data-stu-id="27a68-111">The location awareness is especially relevant if you manage sales in multiple markets from a single, centralized office.</span></span>
+## <a name="example-code"></a><span data-ttu-id="0583d-109">Exempelkod</span><span class="sxs-lookup"><span data-stu-id="0583d-109">Example Code</span></span>
 
-## <a name="example-code"></a><span data-ttu-id="27a68-112">Exempel kod</span><span class="sxs-lookup"><span data-stu-id="27a68-112">Example Code</span></span>
+## <a name="c"></a><span data-ttu-id="0583d-110">C\#</span><span class="sxs-lookup"><span data-stu-id="0583d-110">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="27a68-113">C\#</span><span class="sxs-lookup"><span data-stu-id="27a68-113">C\#</span></span>
-
-<span data-ttu-id="27a68-114">Du skaffar kortet Azure Rate genom att anropa metoden [**IAzureRateCard. GetShared**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.getshared) för att returnera en [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) -resurs som innehåller Azure-priserna.</span><span class="sxs-lookup"><span data-stu-id="27a68-114">To obtain the Azure Rate Card, call the [**IAzureRateCard.GetShared**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.getshared) method to return an [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) resource that contains the Azure prices.</span></span>
+<span data-ttu-id="0583d-111">Hämta Azure-priskortet genom att anropa [**metoden IAzureRateCard.GetShared**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.getshared) för att returnera en [**AzureRateCard-resurs**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) som innehåller Azure-priserna.</span><span class="sxs-lookup"><span data-stu-id="0583d-111">To obtain the Azure Rate Card, call the [**IAzureRateCard.GetShared**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.getshared) method to return an [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) resource that contains the Azure prices.</span></span>
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -35,11 +31,11 @@ ms.locfileid: "97769906"
 var azureRateCard = partner.RateCards.Azure.GetShared();
 ```
 
-## <a name="java"></a><span data-ttu-id="27a68-115">Java</span><span class="sxs-lookup"><span data-stu-id="27a68-115">Java</span></span>
+## <a name="java"></a><span data-ttu-id="0583d-112">Java</span><span class="sxs-lookup"><span data-stu-id="0583d-112">Java</span></span>
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-<span data-ttu-id="27a68-116">Hämta kortet Azure Rate genom att anropa funktionen **IAzureRateCard. getShared** för att returnera kort korts information som innehåller Azure-priserna.</span><span class="sxs-lookup"><span data-stu-id="27a68-116">To obtain the Azure Rate Card, call the **IAzureRateCard.getShared** function to return rate card details that contains the Azure prices.</span></span>
+<span data-ttu-id="0583d-113">Hämta Azure-priskortet genom att anropa **funktionen IAzureRateCard.getShared** för att returnera information om kortet som innehåller Azure-priserna.</span><span class="sxs-lookup"><span data-stu-id="0583d-113">To obtain the Azure Rate Card, call the **IAzureRateCard.getShared** function to return rate card details that contains the Azure prices.</span></span>
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -47,42 +43,42 @@ var azureRateCard = partner.RateCards.Azure.GetShared();
 AzureRateCard azureRateCard = partner.getRateCards().getAzure().getShared();
 ```
 
-## <a name="powershell"></a><span data-ttu-id="27a68-117">PowerShell</span><span class="sxs-lookup"><span data-stu-id="27a68-117">PowerShell</span></span>
+## <a name="powershell"></a><span data-ttu-id="0583d-114">PowerShell</span><span class="sxs-lookup"><span data-stu-id="0583d-114">PowerShell</span></span>
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-<span data-ttu-id="27a68-118">Hämta Azure-kortet genom att köra kommandot [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) och ange parametern **SharedServices** för att returnera avgift korts information som innehåller Azure-priserna.</span><span class="sxs-lookup"><span data-stu-id="27a68-118">To obtain the Azure Card, execute the [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) command and specify the **SharedServices** parameter to return rate card details that contains the Azure prices.</span></span>
+<span data-ttu-id="0583d-115">Hämta Azure-kortet genom att köra kommandot [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) och ange parametern **SharedServices** för att returnera kortinformation som innehåller Azure-priserna.</span><span class="sxs-lookup"><span data-stu-id="0583d-115">To obtain the Azure Card, execute the [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) command and specify the **SharedServices** parameter to return rate card details that contains the Azure prices.</span></span>
 
 ```powershell
 Get-PartnerAzureRateCard -SharedServices
 ```
 
-## <a name="rest-request"></a><span data-ttu-id="27a68-119">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="27a68-119">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="0583d-116">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="0583d-116">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="27a68-120">Syntax för begäran</span><span class="sxs-lookup"><span data-stu-id="27a68-120">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="0583d-117">Begärandesyntax</span><span class="sxs-lookup"><span data-stu-id="0583d-117">Request syntax</span></span>
 
-| <span data-ttu-id="27a68-121">Metod</span><span class="sxs-lookup"><span data-stu-id="27a68-121">Method</span></span>  | <span data-ttu-id="27a68-122">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="27a68-122">Request URI</span></span>                                                               |
+| <span data-ttu-id="0583d-118">Metod</span><span class="sxs-lookup"><span data-stu-id="0583d-118">Method</span></span>  | <span data-ttu-id="0583d-119">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="0583d-119">Request URI</span></span>                                                               |
 |---------|---------------------------------------------------------------------------|
-| <span data-ttu-id="27a68-123">**TA**</span><span class="sxs-lookup"><span data-stu-id="27a68-123">**GET**</span></span> | <span data-ttu-id="27a68-124">*{baseURL}*/v1/ratecards/Azure-Shared? valuta = {currency} &region = {region}</span><span class="sxs-lookup"><span data-stu-id="27a68-124">*{baseURL}*/v1/ratecards/azure-shared?currency={currency}&region={region}</span></span> |
+| <span data-ttu-id="0583d-120">**Få**</span><span class="sxs-lookup"><span data-stu-id="0583d-120">**GET**</span></span> | <span data-ttu-id="0583d-121">*{baseURL}*/v1/ratecards/azure-shared?currency={currency}&region={region}</span><span class="sxs-lookup"><span data-stu-id="0583d-121">*{baseURL}*/v1/ratecards/azure-shared?currency={currency}&region={region}</span></span> |
 
-### <a name="uri-parameters"></a><span data-ttu-id="27a68-125">URI-parametrar</span><span class="sxs-lookup"><span data-stu-id="27a68-125">URI parameters</span></span>
+### <a name="uri-parameters"></a><span data-ttu-id="0583d-122">URI-parametrar</span><span class="sxs-lookup"><span data-stu-id="0583d-122">URI parameters</span></span>
 
-| <span data-ttu-id="27a68-126">Namn</span><span class="sxs-lookup"><span data-stu-id="27a68-126">Name</span></span>     | <span data-ttu-id="27a68-127">Typ</span><span class="sxs-lookup"><span data-stu-id="27a68-127">Type</span></span>   | <span data-ttu-id="27a68-128">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="27a68-128">Required</span></span> | <span data-ttu-id="27a68-129">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="27a68-129">Description</span></span>                                                                                                                                                                               |
+| <span data-ttu-id="0583d-123">Namn</span><span class="sxs-lookup"><span data-stu-id="0583d-123">Name</span></span>     | <span data-ttu-id="0583d-124">Typ</span><span class="sxs-lookup"><span data-stu-id="0583d-124">Type</span></span>   | <span data-ttu-id="0583d-125">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="0583d-125">Required</span></span> | <span data-ttu-id="0583d-126">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="0583d-126">Description</span></span>                                                                                                                                                                               |
 |----------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="27a68-130">currency</span><span class="sxs-lookup"><span data-stu-id="27a68-130">currency</span></span> | <span data-ttu-id="27a68-131">sträng</span><span class="sxs-lookup"><span data-stu-id="27a68-131">string</span></span> | <span data-ttu-id="27a68-132">No</span><span class="sxs-lookup"><span data-stu-id="27a68-132">No</span></span>       | <span data-ttu-id="27a68-133">Tre bokstäver, ISO-kod för den valuta där resurs priserna ska tillhandahållas (till exempel `EUR` ).</span><span class="sxs-lookup"><span data-stu-id="27a68-133">Optional three letter ISO code for the currency in which the resource rates will be provided (for example `EUR`).</span></span> <span data-ttu-id="27a68-134">Standardvärdet är den valuta som är kopplad till marknaden i partner profilen.</span><span class="sxs-lookup"><span data-stu-id="27a68-134">The default is the currency associated with the market in the partner profile.</span></span> |
-| <span data-ttu-id="27a68-135">region</span><span class="sxs-lookup"><span data-stu-id="27a68-135">region</span></span>   | <span data-ttu-id="27a68-136">sträng</span><span class="sxs-lookup"><span data-stu-id="27a68-136">string</span></span> | <span data-ttu-id="27a68-137">No</span><span class="sxs-lookup"><span data-stu-id="27a68-137">No</span></span>       | <span data-ttu-id="27a68-138">Valfria ISO-land/regions kod med två bokstäver som anger på vilken marknad erbjudandet köps (till exempel `FR` ).</span><span class="sxs-lookup"><span data-stu-id="27a68-138">Optional two-letter ISO country/region code that indicates the market where the offer is purchased (for example `FR`).</span></span> <span data-ttu-id="27a68-139">Standardvärdet är lands/regions koden som anges i partner profilen.</span><span class="sxs-lookup"><span data-stu-id="27a68-139">The default is the country/region code set in the partner profile.</span></span>        |
+| <span data-ttu-id="0583d-127">currency</span><span class="sxs-lookup"><span data-stu-id="0583d-127">currency</span></span> | <span data-ttu-id="0583d-128">sträng</span><span class="sxs-lookup"><span data-stu-id="0583d-128">string</span></span> | <span data-ttu-id="0583d-129">No</span><span class="sxs-lookup"><span data-stu-id="0583d-129">No</span></span>       | <span data-ttu-id="0583d-130">Valfri ISO-kod med tre bokstäver för den valuta som resurspriserna ska anges i (till exempel `EUR` ).</span><span class="sxs-lookup"><span data-stu-id="0583d-130">Optional three letter ISO code for the currency in which the resource rates will be provided (for example `EUR`).</span></span> <span data-ttu-id="0583d-131">Standardvärdet är den valuta som är associerad med marknaden i partnerprofilen.</span><span class="sxs-lookup"><span data-stu-id="0583d-131">The default is the currency associated with the market in the partner profile.</span></span> |
+| <span data-ttu-id="0583d-132">region</span><span class="sxs-lookup"><span data-stu-id="0583d-132">region</span></span>   | <span data-ttu-id="0583d-133">sträng</span><span class="sxs-lookup"><span data-stu-id="0583d-133">string</span></span> | <span data-ttu-id="0583d-134">No</span><span class="sxs-lookup"><span data-stu-id="0583d-134">No</span></span>       | <span data-ttu-id="0583d-135">Valfri iso-lands-/regionkod med två bokstäver som anger vilken marknad erbjudandet köps på (till exempel `FR` ).</span><span class="sxs-lookup"><span data-stu-id="0583d-135">Optional two-letter ISO country/region code that indicates the market where the offer is purchased (for example `FR`).</span></span> <span data-ttu-id="0583d-136">Standardvärdet är den lands-/regionskod som angetts i partnerprofilen.</span><span class="sxs-lookup"><span data-stu-id="0583d-136">The default is the country/region code set in the partner profile.</span></span>        |
 
-<span data-ttu-id="27a68-140">Om den valfria X-locale-rubriken ingår i begäran, bestämmer värdet för det språk som används för informationen i svaret.</span><span class="sxs-lookup"><span data-stu-id="27a68-140">If the optional X-Locale header is included in the request, its value determines the language used for the details in the response.</span></span>
+<span data-ttu-id="0583d-137">Om det valfria X-Locale-huvudet ingår i begäran avgör dess värde vilket språk som används för informationen i svaret.</span><span class="sxs-lookup"><span data-stu-id="0583d-137">If the optional X-Locale header is included in the request, its value determines the language used for the details in the response.</span></span>
 
-### <a name="request-headers"></a><span data-ttu-id="27a68-141">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="27a68-141">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="0583d-138">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="0583d-138">Request headers</span></span>
 
-<span data-ttu-id="27a68-142">Mer information finns i [partner Center rest-rubriker](headers.md).</span><span class="sxs-lookup"><span data-stu-id="27a68-142">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="0583d-139">Mer information finns i [Partner Center REST-huvuden.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="0583d-139">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="27a68-143">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="27a68-143">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="0583d-140">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="0583d-140">Request body</span></span>
 
-<span data-ttu-id="27a68-144">Inga.</span><span class="sxs-lookup"><span data-stu-id="27a68-144">None.</span></span>
+<span data-ttu-id="0583d-141">Inga.</span><span class="sxs-lookup"><span data-stu-id="0583d-141">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="27a68-145">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="27a68-145">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="0583d-142">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="0583d-142">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/ratecards/azure-shared HTTP/1.1
@@ -95,15 +91,15 @@ Host: api.partnercenter.microsoft.com
 Connection: Keep-Alive
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="27a68-146">REST-svar</span><span class="sxs-lookup"><span data-stu-id="27a68-146">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="0583d-143">REST-svar</span><span class="sxs-lookup"><span data-stu-id="0583d-143">REST response</span></span>
 
-<span data-ttu-id="27a68-147">Om begäran lyckas returneras en [Azure-priss kort](azure-rate-card-resources.md) resurs.</span><span class="sxs-lookup"><span data-stu-id="27a68-147">If the request is successful, it returns an [Azure Rate Card](azure-rate-card-resources.md) resource.</span></span>
+<span data-ttu-id="0583d-144">Om begäran lyckas returneras en [Azure Rate Card-resurs.](azure-rate-card-resources.md)</span><span class="sxs-lookup"><span data-stu-id="0583d-144">If the request is successful, it returns an [Azure Rate Card](azure-rate-card-resources.md) resource.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="27a68-148">Slutförda svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="27a68-148">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="0583d-145">Lyckade svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="0583d-145">Response success and error codes</span></span>
 
-<span data-ttu-id="27a68-149">Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information.</span><span class="sxs-lookup"><span data-stu-id="27a68-149">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="27a68-150">Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="27a68-150">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="27a68-151">En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="27a68-151">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="0583d-146">Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation.</span><span class="sxs-lookup"><span data-stu-id="0583d-146">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="0583d-147">Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="0583d-147">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="0583d-148">En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="0583d-148">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="27a68-152">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="27a68-152">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="0583d-149">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="0583d-149">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

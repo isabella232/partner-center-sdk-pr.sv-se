@@ -1,38 +1,31 @@
 ---
 title: Hämta fakturautdrag
-description: Hämtar en faktura instruktion med hjälp av faktura-ID.
+description: Hämtar ett fakturautdrag med faktura-ID:t.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 42e5201919eea5644da463dfe2584c8d55002083
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: f0324916eb2efd9244530a53b1d7bb4abc0c8e6e
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769015"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549135"
 ---
-# <a name="get-invoice-statement"></a><span data-ttu-id="44031-103">Hämta fakturautdrag</span><span class="sxs-lookup"><span data-stu-id="44031-103">Get invoice statement</span></span>
+# <a name="get-invoice-statement"></a><span data-ttu-id="dfc0b-103">Hämta fakturautdrag</span><span class="sxs-lookup"><span data-stu-id="dfc0b-103">Get invoice statement</span></span>
 
-<span data-ttu-id="44031-104">**Gäller för**</span><span class="sxs-lookup"><span data-stu-id="44031-104">**Applies To**</span></span>
+<span data-ttu-id="dfc0b-104">**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="dfc0b-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="44031-105">Partnercenter</span><span class="sxs-lookup"><span data-stu-id="44031-105">Partner Center</span></span>
-- <span data-ttu-id="44031-106">Partner Center som drivs av 21Vianet</span><span class="sxs-lookup"><span data-stu-id="44031-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="44031-107">Partnercenter för Microsoft Cloud Tyskland</span><span class="sxs-lookup"><span data-stu-id="44031-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="44031-108">Välkommen till Partnercenter för Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="44031-108">Partner Center for Microsoft Cloud for US Government</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="dfc0b-105">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="dfc0b-105">Prerequisites</span></span>
 
-<span data-ttu-id="44031-109">Hämtar en faktura instruktion med hjälp av faktura-ID.</span><span class="sxs-lookup"><span data-stu-id="44031-109">Retrieves an invoice statement using the invoice ID.</span></span>
+- <span data-ttu-id="dfc0b-106">Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="dfc0b-106">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="dfc0b-107">Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="dfc0b-107">This scenario supports authentication with App+User credentials only.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="44031-110">Förutsättningar</span><span class="sxs-lookup"><span data-stu-id="44031-110">Prerequisites</span></span>
+- <span data-ttu-id="dfc0b-108">Ett giltigt faktura-ID.</span><span class="sxs-lookup"><span data-stu-id="dfc0b-108">A valid Invoice ID.</span></span>
 
-- <span data-ttu-id="44031-111">Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="44031-111">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="44031-112">Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="44031-112">This scenario supports authentication with App+User credentials only.</span></span>
+## <a name="c"></a><span data-ttu-id="dfc0b-109">C\#</span><span class="sxs-lookup"><span data-stu-id="dfc0b-109">C\#</span></span>
 
-- <span data-ttu-id="44031-113">Ett giltigt faktura-ID.</span><span class="sxs-lookup"><span data-stu-id="44031-113">A valid Invoice ID.</span></span>
-
-## <a name="c"></a><span data-ttu-id="44031-114">C\#</span><span class="sxs-lookup"><span data-stu-id="44031-114">C\#</span></span>
-
-<span data-ttu-id="44031-115">Om du vill hämta en faktura rapport per ID använder du din **IPartner. fakturor** -samling och anropar metoden **ById ()** med faktura-ID: t och anropar sedan metoderna **Documents ()** och **statement ()** för att få åtkomst till faktura utdraget.</span><span class="sxs-lookup"><span data-stu-id="44031-115">To get an invoice statement by ID, use your **IPartner.Invoices** collection and call the **ById()** method using the invoice ID, then call the **Documents()** and **Statement()** methods to access the invoice statement.</span></span> <span data-ttu-id="44031-116">Anropa slutligen metoderna **Get ()** eller **GetAsync ()** .</span><span class="sxs-lookup"><span data-stu-id="44031-116">Finally, call the **Get()** or **GetAsync()** methods.</span></span>
+<span data-ttu-id="dfc0b-110">Om du vill hämta ett fakturautdrag efter ID använder du **samlingen IPartner.Invoices** och anropar **Metoden ById()** med faktura-ID:t och anropar sedan metoderna **Documents()** **och Statement()** för att komma åt fakturautdraget.</span><span class="sxs-lookup"><span data-stu-id="dfc0b-110">To get an invoice statement by ID, use your **IPartner.Invoices** collection and call the **ById()** method using the invoice ID, then call the **Documents()** and **Statement()** methods to access the invoice statement.</span></span> <span data-ttu-id="dfc0b-111">Anropa slutligen metoderna **Get()** eller **GetAsync().**</span><span class="sxs-lookup"><span data-stu-id="dfc0b-111">Finally, call the **Get()** or **GetAsync()** methods.</span></span>
 
 ``` csharp
 // IPartner scopedPartnerOperations;
@@ -41,33 +34,33 @@ ms.locfileid: "97769015"
 var invoiceStatement = scopedPartnerOperations.Invoices.ById(selectedInvoiceId).Documents.Statement.Get();
 ```
 
-<span data-ttu-id="44031-117">**Exempel**: [konsol test app](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="44031-117">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="44031-118">**Projekt**: PartnerSDK. FeatureSample- **klass**: GetInvoiceStatement.CS</span><span class="sxs-lookup"><span data-stu-id="44031-118">**Project**: PartnerSDK.FeatureSample **Class**: GetInvoiceStatement.cs</span></span>
+<span data-ttu-id="dfc0b-112">**Exempel:** [Konsoltestapp](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="dfc0b-112">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="dfc0b-113">**Project:** PartnerSDK.FeatureSample-klass: GetInvoiceStatement.cs </span><span class="sxs-lookup"><span data-stu-id="dfc0b-113">**Project**: PartnerSDK.FeatureSample **Class**: GetInvoiceStatement.cs</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="44031-119">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="44031-119">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="dfc0b-114">REST-begäran</span><span class="sxs-lookup"><span data-stu-id="dfc0b-114">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="44031-120">Syntax för begäran</span><span class="sxs-lookup"><span data-stu-id="44031-120">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="dfc0b-115">Begärandesyntax</span><span class="sxs-lookup"><span data-stu-id="dfc0b-115">Request syntax</span></span>
 
-| <span data-ttu-id="44031-121">Metod</span><span class="sxs-lookup"><span data-stu-id="44031-121">Method</span></span>  | <span data-ttu-id="44031-122">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="44031-122">Request URI</span></span>                                                                                       |
+| <span data-ttu-id="dfc0b-116">Metod</span><span class="sxs-lookup"><span data-stu-id="dfc0b-116">Method</span></span>  | <span data-ttu-id="dfc0b-117">URI för förfrågan</span><span class="sxs-lookup"><span data-stu-id="dfc0b-117">Request URI</span></span>                                                                                       |
 |---------|---------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="44031-123">**TA**</span><span class="sxs-lookup"><span data-stu-id="44031-123">**GET**</span></span> | <span data-ttu-id="44031-124">[*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/{Invoice-ID}/Documents/Statement http/1.1</span><span class="sxs-lookup"><span data-stu-id="44031-124">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/documents/statement HTTP/1.1</span></span>  |
+| <span data-ttu-id="dfc0b-118">**Få**</span><span class="sxs-lookup"><span data-stu-id="dfc0b-118">**GET**</span></span> | <span data-ttu-id="dfc0b-119">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/documents/statement HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="dfc0b-119">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/documents/statement HTTP/1.1</span></span>  |
 
-### <a name="uri-parameter"></a><span data-ttu-id="44031-125">URI-parameter</span><span class="sxs-lookup"><span data-stu-id="44031-125">URI parameter</span></span>
+### <a name="uri-parameter"></a><span data-ttu-id="dfc0b-120">URI-parameter</span><span class="sxs-lookup"><span data-stu-id="dfc0b-120">URI parameter</span></span>
 
-<span data-ttu-id="44031-126">Använd följande frågeparameter för att hämta faktura instruktionen.</span><span class="sxs-lookup"><span data-stu-id="44031-126">Use the following query parameter to get the invoice statement.</span></span>
+<span data-ttu-id="dfc0b-121">Använd följande frågeparameter för att hämta fakturautdraget.</span><span class="sxs-lookup"><span data-stu-id="dfc0b-121">Use the following query parameter to get the invoice statement.</span></span>
 
-| <span data-ttu-id="44031-127">Namn</span><span class="sxs-lookup"><span data-stu-id="44031-127">Name</span></span>       | <span data-ttu-id="44031-128">Typ</span><span class="sxs-lookup"><span data-stu-id="44031-128">Type</span></span>       | <span data-ttu-id="44031-129">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="44031-129">Required</span></span> | <span data-ttu-id="44031-130">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="44031-130">Description</span></span>                                                                                        |
+| <span data-ttu-id="dfc0b-122">Namn</span><span class="sxs-lookup"><span data-stu-id="dfc0b-122">Name</span></span>       | <span data-ttu-id="dfc0b-123">Typ</span><span class="sxs-lookup"><span data-stu-id="dfc0b-123">Type</span></span>       | <span data-ttu-id="dfc0b-124">Obligatorisk</span><span class="sxs-lookup"><span data-stu-id="dfc0b-124">Required</span></span> | <span data-ttu-id="dfc0b-125">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="dfc0b-125">Description</span></span>                                                                                        |
 |------------|------------|----------|----------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="44031-131">faktura-ID</span><span class="sxs-lookup"><span data-stu-id="44031-131">invoice-id</span></span> | <span data-ttu-id="44031-132">sträng</span><span class="sxs-lookup"><span data-stu-id="44031-132">string</span></span>     | <span data-ttu-id="44031-133">Yes</span><span class="sxs-lookup"><span data-stu-id="44031-133">Yes</span></span>      | <span data-ttu-id="44031-134">Värdet är ett faktura-ID som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik faktura.</span><span class="sxs-lookup"><span data-stu-id="44031-134">The value is an invoice-id that allows the reseller to filter the results for a given invoice.</span></span> |
+| <span data-ttu-id="dfc0b-126">faktura-id</span><span class="sxs-lookup"><span data-stu-id="dfc0b-126">invoice-id</span></span> | <span data-ttu-id="dfc0b-127">sträng</span><span class="sxs-lookup"><span data-stu-id="dfc0b-127">string</span></span>     | <span data-ttu-id="dfc0b-128">Ja</span><span class="sxs-lookup"><span data-stu-id="dfc0b-128">Yes</span></span>      | <span data-ttu-id="dfc0b-129">Värdet är ett faktura-ID som gör att återförsäljaren kan filtrera resultatet för en viss faktura.</span><span class="sxs-lookup"><span data-stu-id="dfc0b-129">The value is an invoice-id that allows the reseller to filter the results for a given invoice.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="44031-135">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="44031-135">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="dfc0b-130">Begärandehuvuden</span><span class="sxs-lookup"><span data-stu-id="dfc0b-130">Request headers</span></span>
 
-<span data-ttu-id="44031-136">Mer information finns i [partner Center rest-rubriker](headers.md).</span><span class="sxs-lookup"><span data-stu-id="44031-136">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="dfc0b-131">Mer information finns i [Partner Center REST-huvuden.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="dfc0b-131">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="44031-137">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="44031-137">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="dfc0b-132">Begärandetext</span><span class="sxs-lookup"><span data-stu-id="dfc0b-132">Request body</span></span>
 
-<span data-ttu-id="44031-138">Inget</span><span class="sxs-lookup"><span data-stu-id="44031-138">None</span></span>
+<span data-ttu-id="dfc0b-133">Ingen</span><span class="sxs-lookup"><span data-stu-id="dfc0b-133">None</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="44031-139">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="44031-139">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="dfc0b-134">Exempel på begäran</span><span class="sxs-lookup"><span data-stu-id="dfc0b-134">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/<invoice-id>/documents/statement HTTP/1.1
@@ -77,15 +70,15 @@ MS-RequestId: 8ac25aa5-9537-4b6d-b782-aa0c8e979e99
 MS-CorrelationId: 57eb2ca7-755f-450f-9187-eae1e75a0114
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="44031-140">REST-svar</span><span class="sxs-lookup"><span data-stu-id="44031-140">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="dfc0b-135">REST-svar</span><span class="sxs-lookup"><span data-stu-id="dfc0b-135">REST response</span></span>
 
-<span data-ttu-id="44031-141">Om det lyckas returnerar den här metoden en [InvoiceStatement](invoice-resources.md#invoicestatement) -resurs i svars texten.</span><span class="sxs-lookup"><span data-stu-id="44031-141">If successful, this method returns an [InvoiceStatement](invoice-resources.md#invoicestatement) resource in the response body.</span></span>
+<span data-ttu-id="dfc0b-136">Om det lyckas returnerar den här metoden [en InvoiceStatement-resurs](invoice-resources.md#invoicestatement) i svarstexten.</span><span class="sxs-lookup"><span data-stu-id="dfc0b-136">If successful, this method returns an [InvoiceStatement](invoice-resources.md#invoicestatement) resource in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="44031-142">Slutförda svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="44031-142">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="dfc0b-137">Lyckade svar och felkoder</span><span class="sxs-lookup"><span data-stu-id="dfc0b-137">Response success and error codes</span></span>
 
-<span data-ttu-id="44031-143">Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information.</span><span class="sxs-lookup"><span data-stu-id="44031-143">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="44031-144">Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="44031-144">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="44031-145">En fullständig lista finns i [felkoder](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="44031-145">For the full list, see [Error Codes](error-codes.md).</span></span>
+<span data-ttu-id="dfc0b-138">Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation.</span><span class="sxs-lookup"><span data-stu-id="dfc0b-138">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="dfc0b-139">Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar.</span><span class="sxs-lookup"><span data-stu-id="dfc0b-139">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="dfc0b-140">En fullständig lista finns i [Felkoder.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="dfc0b-140">For the full list, see [Error Codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="44031-146">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="44031-146">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="dfc0b-141">Exempel på svar</span><span class="sxs-lookup"><span data-stu-id="dfc0b-141">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK
