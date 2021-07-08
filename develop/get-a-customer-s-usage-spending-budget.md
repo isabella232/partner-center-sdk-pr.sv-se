@@ -1,41 +1,37 @@
 ---
-title: Hämta en kunds förbruknings utgifts budget
-description: Du kan använda en utgifts budget (SpendingBudget-objektet) för att uppdatera en kund användnings Sammanfattning (CustomerUsageSummary-resursen).
+title: Hämta en kunds utgiftsbudget för användning
+description: Du kan använda en utgiftsbudget (objektet SpendingBudget) för att uppdatera en sammanfattning av kundanvändning (resursen CustomerUsageSummary).
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8be9ceaab6b7546de8eacba1e52e8766719e5125
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: b55f59fff7e5d7865811ecab3e901848126d31f7
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769345"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874881"
 ---
-# <a name="get-a-customers-usage-spending-budget"></a>Hämta en kunds förbruknings utgifts budget
+# <a name="get-a-customers-usage-spending-budget"></a>Hämta en kunds utgiftsbudget för användning
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Du kan uppdatera utgifts budgeten ( **SpendingBudget** -objektet) i [Översikt över kund användning ( **CustomerUsageSummary** -resursen)](customer-usage-resources.md#customerusagesummary).
+Du kan uppdatera utgiftsbudgeten **(objektet SpendingBudget)** i sammanfattningen för [kundanvändning (resursen **CustomerUsageSummary).**](customer-usage-resources.md#customerusagesummary)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Så här uppdaterar du en kunds förbruknings utgifts budget:
+Så här uppdaterar du en kunds användningsbudget:
 
-1. Skapa ett nytt [**SpendingBudget**](/dotnet/api/microsoft.store.partnercenter.models.usage.spendingbudget) -objekt med det uppdaterade beloppet.
+1. Skapa ett nytt [**SpendingBudget-objekt**](/dotnet/api/microsoft.store.partnercenter.models.usage.spendingbudget) med det uppdaterade beloppet.
 
-2. Använd [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection) -samlingen för att anropa metoden [**ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med den angivna kundens ID.
+2. Använd [**samlingen IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection) för att anropa [**Metoden ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med den angivna kundens identifierare.
 
-3. Anropa [**Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) -eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) -metoden för att hämta kundens användnings budget.
+3. Anropa [**metoden Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) för att hämta kundens användningsbudget.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -53,23 +49,23 @@ var usageBudget = partnerOperations.Customers.ById(selectedCustomerId).UsageBudg
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod    | URI för förfrågan                                                                                             |
 |-----------|---------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/usagebudget http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/usagebudget HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande frågeparameter för att uppdatera fakturerings profilen.
+Använd följande frågeparameter för att uppdatera faktureringsprofilen.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y        | Värdet är ett GUID-formaterat **kund-Tenant-ID** som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik kund som tillhör åter försäljaren. |
+| **kund-klient-id** | **guid** | Y        | Värdet är ett GUID-formaterat **kundklient-ID** som gör att återförsäljaren kan filtrera resultaten för en viss kund som tillhör återförsäljaren. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -89,11 +85,11 @@ X-Locale: "en-US"
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en användares utgifts budget med den uppdaterade mängden.
+Om det lyckas returnerar den här metoden en användares utgiftsbudget med det uppdaterade beloppet.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

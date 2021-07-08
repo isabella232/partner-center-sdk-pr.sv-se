@@ -1,35 +1,31 @@
 ---
-title: Hämta information om tjänstbegäran per ID.
-description: Hämta information om en befintlig kund service förfrågan per ID.
+title: Hämta information om tjänstbegäran efter ID.
+description: Så här hämtar du information om en befintlig kundtjänstbegäran efter ID.
 ms.date: 02/06/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c79fd3f5e5609a1893891e9b2a8078f8678497b3
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 66488cf9592d630cb1f0237d379e8df5ead6a3a8
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769900"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548778"
 ---
 # <a name="get-service-request-details-by-id"></a>Hämta information om tjänstbegäran efter ID
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Hämta information om en befintlig kund service förfrågan med hjälp av tjänstens förfrågnings-ID.
+Så här hämtar du information om en befintlig kundtjänstbegäran med hjälp av identifieraren för tjänstbegäran.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
 - Ett ID för tjänstbegäran.
 
 ## <a name="c"></a>C\#
 
-Hämta information om en befintlig kund service förfrågan genom att anropa metoden [**IServiceRequestCollection. ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) och skicka i en [**ServiceRequest.ID**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest.id#Microsoft_Store_PartnerCenter_Models_ServiceRequests_ServiceRequest_Id) för att identifiera och returnera ett gränssnitt till det specifika [**ServiceRequest**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest) -objektet.
+Om du vill hämta information om en befintlig kundtjänstbegäran anropar du metoden [**IServiceRequestCollection.ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) och skickar en [**ServiceRequest.Id**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest.id#Microsoft_Store_PartnerCenter_Models_ServiceRequests_ServiceRequest_Id) för att identifiera och returnera ett gränssnitt till det specifika [**ServiceRequest-objektet.**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -46,11 +42,11 @@ Console.WriteLine(string.Format("The primary contact for the service request {0}
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod    | URI för förfrågan                                                                                 |
 |-----------|---------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/servicerequests/{servicerequest-ID} http/1.1  |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/servicerequests/{servicerequest-id} HTTP/1.1  |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -58,11 +54,11 @@ Använd följande URI-parameter för att hämta den angivna tjänstbegäran.
 
 | Namn                  | Typ     | Obligatorisk | Beskrivning                                 |
 |-----------------------|----------|----------|---------------------------------------------|
-| **servicerequest-ID** | **guid** | Y        | Ett GUID som identifierar tjänst förfrågan. |
+| **servicerequest-id** | **guid** | Y        | Ett GUID som identifierar tjänstbegäran. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -84,11 +80,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden **en resurs för tjänstbegäran i** svars texten.
+Om det lyckas returnerar den här metoden en **resurs för** tjänstbegäran i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

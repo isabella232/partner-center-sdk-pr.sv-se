@@ -1,33 +1,29 @@
 ---
 title: Hämta priser för Microsoft Azure Partner Shared Services
-description: Hur du får ett Azure-pris kort med priser för Microsoft Azure partner delade tjänster.
+description: Så här hämtar du ett Azure-priskort med priser Microsoft Azure delade partnertjänster.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: cd396c35b6b89de4d0f092ba4da738a2ed0ac633
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 0008d7474f7e57bbbd765afdf2487ee279848ac3
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769906"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548812"
 ---
 # <a name="get-prices-for-microsoft-azure-partner-shared-services"></a>Hämta priser för Microsoft Azure Partner Shared Services
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+Så här hämtar du ett [Azure-priskort](azure-rate-card-resources.md) med priser för Microsoft Azure Delade partnertjänster.
 
-Hur du får ett [Azure-pris kort](azure-rate-card-resources.md) med priser för Microsoft Azure partner delade tjänster.
+Priserna varierar beroende på marknad och valuta, och det här API:et tar hänsyn till platsen. Som standard använder API:et dina partnerprofilinställningar i Partnercenter och ditt webbläsarspråk, och dessa inställningar är anpassningsbara. Platsmedvetenhet är särskilt relevant om du hanterar försäljning på flera marknader från ett enda centraliserat kontor.
 
-Priserna skiljer sig mellan marknaden och valutan, och detta API tar hänsyn till. Som standard använder API dina partner profil inställningar i Partner Center och ditt webb läsar språk, och dessa inställningar är anpassningsbara. Plats medvetenheten är särskilt relevant om du hanterar försäljning på flera marknader från ett enda centraliserat kontor.
-
-## <a name="example-code"></a>Exempel kod
+## <a name="example-code"></a>Exempelkod
 
 ## <a name="c"></a>C\#
 
-Du skaffar kortet Azure Rate genom att anropa metoden [**IAzureRateCard. GetShared**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.getshared) för att returnera en [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) -resurs som innehåller Azure-priserna.
+Hämta Azure-priskortet genom att anropa [**metoden IAzureRateCard.GetShared**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.getshared) för att returnera en [**AzureRateCard-resurs**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) som innehåller Azure-priserna.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -39,7 +35,7 @@ var azureRateCard = partner.RateCards.Azure.GetShared();
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Hämta kortet Azure Rate genom att anropa funktionen **IAzureRateCard. getShared** för att returnera kort korts information som innehåller Azure-priserna.
+Hämta Azure-priskortet genom att anropa **funktionen IAzureRateCard.getShared** för att returnera information om kortet som innehåller Azure-priserna.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -51,7 +47,7 @@ AzureRateCard azureRateCard = partner.getRateCards().getAzure().getShared();
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Hämta Azure-kortet genom att köra kommandot [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) och ange parametern **SharedServices** för att returnera avgift korts information som innehåller Azure-priserna.
+Hämta Azure-kortet genom att köra kommandot [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) och ange parametern **SharedServices** för att returnera kortinformation som innehåller Azure-priserna.
 
 ```powershell
 Get-PartnerAzureRateCard -SharedServices
@@ -59,24 +55,24 @@ Get-PartnerAzureRateCard -SharedServices
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                               |
 |---------|---------------------------------------------------------------------------|
-| **TA** | *{baseURL}*/v1/ratecards/Azure-Shared? valuta = {currency} &region = {region} |
+| **Få** | *{baseURL}*/v1/ratecards/azure-shared?currency={currency}&region={region} |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
 | Namn     | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                               |
 |----------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| currency | sträng | No       | Tre bokstäver, ISO-kod för den valuta där resurs priserna ska tillhandahållas (till exempel `EUR` ). Standardvärdet är den valuta som är kopplad till marknaden i partner profilen. |
-| region   | sträng | No       | Valfria ISO-land/regions kod med två bokstäver som anger på vilken marknad erbjudandet köps (till exempel `FR` ). Standardvärdet är lands/regions koden som anges i partner profilen.        |
+| currency | sträng | No       | Valfri ISO-kod med tre bokstäver för den valuta som resurspriserna ska anges i (till exempel `EUR` ). Standardvärdet är den valuta som är associerad med marknaden i partnerprofilen. |
+| region   | sträng | No       | Valfri iso-lands-/regionkod med två bokstäver som anger vilken marknad erbjudandet köps på (till exempel `FR` ). Standardvärdet är den lands-/regionskod som angetts i partnerprofilen.        |
 
-Om den valfria X-locale-rubriken ingår i begäran, bestämmer värdet för det språk som används för informationen i svaret.
+Om det valfria X-Locale-huvudet ingår i begäran avgör dess värde vilket språk som används för informationen i svaret.
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -97,11 +93,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om begäran lyckas returneras en [Azure-priss kort](azure-rate-card-resources.md) resurs.
+Om begäran lyckas returneras en [Azure Rate Card-resurs.](azure-rate-card-resources.md)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

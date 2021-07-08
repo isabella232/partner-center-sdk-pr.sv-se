@@ -1,50 +1,45 @@
 ---
 title: Få bekräftelse på kundgodkännande av Microsoft Cloud-avtal
-description: I den här artikeln förklaras hur du får bekräftelse på kund godkännande av Microsoft Cloud avtalet.
+description: Den här artikeln förklarar hur du får en bekräftelse på kundens godkännande av Microsoft Cloud-avtal.
 ms.date: 02/12/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 aauthor: khakiali
 ms.author: alikhaki
-ms.openlocfilehash: d91f70cbd8bc9b8622b8d41ab9e601e2aee2cfab
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 1b1a8cbacb667e579bcd218a29c3f553afce26c2
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769858"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549271"
 ---
 # <a name="get-confirmation-of-customer-acceptance-of-microsoft-cloud-agreement"></a>Få bekräftelse på kundgodkännande av Microsoft Cloud-avtal
 
-**Gäller för**
+**Gäller för:** Partnercenter
 
-- Partnercenter
+**Gäller inte för:** Partner Center som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-> [!NOTE]
-> **Avtals** resursen stöds för närvarande av Partner Center i det offentliga Microsoft-molnet. Den gäller inte för:
->
-> - Partner Center som drivs av 21Vianet
-> - Partnercenter för Microsoft Cloud Tyskland
-> - Välkommen till Partnercenter för Microsoft Cloud for US Government
+**Avtalsresursen** stöds för närvarande endast av Partnercenter i det offentliga Microsoft-molnet.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Om du använder Partner Center .NET SDK krävs version 1,9 eller senare.
+- Om du använder Partner Center .NET SDK krävs version 1.9 eller senare.
 
-- Om du använder Partner Center Java SDK krävs version 1,8 eller senare.
+- Om du använder Partner Center Java SDK krävs version 1.8 eller senare.
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](./partner-center-authentication.md). Det här scenariot stöder endast app + användarautentisering.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](./partner-center-authentication.md). Det här scenariot stöder endast app - och användarautentisering.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-## <a name="net-version-14-or-newer"></a>.NET (version 1,4 eller senare)
+## <a name="net-version-14-or-newer"></a>.NET (version 1.4 eller senare)
 
-För att hämta bekräftelser för kundgodkännande som tidigare har tillhandahållits:
+Så här hämtar du bekräftelser av kundgodkännande som tidigare har angetts:
 
-- Använd **IAggregatePartner. Customers** -samlingen och anropa **ById** -metoden med det angivna kund-ID: n.
+- Använd samlingen **IAggregatePartner.Customers och** anropa **ById-metoden** med den angivna kundidentifieraren.
 
-- Hämta **avtals** egenskapen och filtrera resultaten till Microsoft Cloud avtalet genom att anropa **ByAgreementType** -metoden.
+- Hämta egenskapen **Agreements** och filtrera resultaten för att Microsoft Cloud-avtal **byAgreementType-metoden.**
 
-- Anropa **Get** -eller **GetAsync** -metoden.
+- Anropa **Get-** eller **GetAsync-metoden.**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -55,13 +50,13 @@ string agreementType = "MicrosoftCloudAgreement";
 var cloudAgreements = partnerOperations.Customers.ById(selectedCustomerId).Agreements.ByAgreementType(agreementType).Get();
 ```
 
-Ett fullständigt exempel finns i [GetCustomerAgreements](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetCustomerAgreements.cs) -klassen från projektets [test app](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples) -projekt.
+Ett komplett exempel finns i klassen [GetCustomerAgreements](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetCustomerAgreements.cs) från [konsoltestappsprojektet.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
 
-## <a name="net-version-19---113"></a>.NET (version 1,9-1,13)
+## <a name="net-version-19---113"></a>.NET (version 1.9–1.13)
 
-Så här hämtar du bekräftelse av kundgodkännande som har tillhandahållits tidigare:
+Så här hämtar du bekräftelse på kundgodkännande som angavs tidigare:
 
-Använd **IAggregatePartner. Customers** -samlingen och anropa **ById** -metoden med den angivna kundens ID. Hämta sedan **avtals** egenskapen följt av metoderna **Get** eller **GetAsync** .
+Använd **samlingen IAggregatePartner.Customers** och anropa **ById-metoden** med den angivna kundens identifierare. Hämta sedan egenskapen **Avtal följt** av anrop till **get- eller** **GetAsync-metoderna.**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -74,9 +69,9 @@ var agreements = partnerOperations.Customers.ById(selectedCustomerId).Agreements
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Så här hämtar du bekräftelse av kundgodkännande som har tillhandahållits tidigare:
+Så här hämtar du bekräftelse på kundgodkännande som angavs tidigare:
 
-Använd funktionen **IAggregatePartner. getCustomers** och anropa funktionen **byId** med den angivna kundens identifierare. Hämta sedan funktionen **getAgreements** , följt av anropa funktionen **Get** .
+Använd funktionen **IAggregatePartner.getCustomers** och anropa **byId-funktionen** med den angivna kundens identifierare. Hämta sedan funktionen **getAgreements** följt av att anropa **get-funktionen.**
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -85,15 +80,15 @@ Använd funktionen **IAggregatePartner. getCustomers** och anropa funktionen **b
 ResourceCollection<Agreement> agreements = partnerOperations.getCustomers().byId(selectedCustomerId).getAgreements().get();
 ```
 
-Ett fullständigt exempel finns i [GetCustomerAgreements](https://github.com/microsoft/Partner-Center-Java-Samples/blob/master/sdk/src/main/java/com/microsoft/store/partnercenter/samples/agreements/GetCustomerAgreements.java) -klassen från projektets [test app](https://github.com/Microsoft/Partner-Center-Java-Samples) -projekt.
+Ett komplett exempel finns i klassen [GetCustomerAgreements](https://github.com/microsoft/Partner-Center-Java-Samples/blob/master/sdk/src/main/java/com/microsoft/store/partnercenter/samples/agreements/GetCustomerAgreements.java) från [konsoltestappsprojektet.](https://github.com/Microsoft/Partner-Center-Java-Samples)
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Så här hämtar du bekräftelse av kundgodkännande som har tillhandahållits tidigare:
+Så här hämtar du bekräftelse på kundgodkännande som angavs tidigare:
 
-Använd kommandot [**Get-PartnerCustomerAgreement**](/powershell/module/partnercenter/get-partnercustomeragreement) .
+Använd kommandot [**Get-PartnerCustomerAgreement.**](/powershell/module/partnercenter/get-partnercustomeragreement)
 
 ```powershell
 Get-PartnerCustomerAgreement -CustomerId '14876998-c0dc-46e6-9d0c-65a57a6c32ec'
@@ -101,19 +96,19 @@ Get-PartnerCustomerAgreement -CustomerId '14876998-c0dc-46e6-9d0c-65a57a6c32ec'
 
 ## <a name="rest-request"></a>REST-begäran
 
-Information om hur du hämtar bekräftelse på kundgodkännanden tidigare finns i följande instruktioner.
+Information om hur du hämtar bekräftelse på kundgodkännande som angavs tidigare finns i följande anvisningar.
 
-Skapa en ny **avtals** resurs med relevant certifierings information.
+Skapa en ny **avtalsresurs** med relevant certifieringsinformation.
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod | URI för förfrågan                                                                                      |
 |--------|--------------------------------------------------------------------------------------------------|
-| GET    | [*\{ BASEURL \}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Agreements http/1.1 |
+| GET    | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/agreements HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande frågeparameter för att ange kunden som du bekräftar.
+Använd följande frågeparameter för att ange den kund som du bekräftar.
 
 | Namn             | Typ | Obligatorisk | Beskrivning                                                                               |
 |------------------|------|----------|-------------------------------------------------------------------------------------------|
@@ -121,7 +116,7 @@ Använd följande frågeparameter för att ange kunden som du bekräftar.
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -139,11 +134,11 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling **avtals** resurser i svars texten.
+Om det lyckas returnerar den här metoden en samling **avtalsresurser** i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

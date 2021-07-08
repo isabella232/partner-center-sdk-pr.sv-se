@@ -1,43 +1,39 @@
 ---
 title: Hämta användningsdata för prenumeration efter resurs
-description: Du kan använda ResourceUsageRecord-resursen för att hämta en kunds resurs användnings poster för specifika Azure-tjänster eller resurser under den aktuella fakturerings perioden.
+description: Du kan använda resursen ResourceUsageRecord för att hämta en kunds resursanvändningsposter för specifika Azure-tjänster eller -resurser under den aktuella faktureringsperioden.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e815430730dd7182380e9efd1fea80f9e84d2ce7
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 50edb9de1d09363b242c080a76c683732f05a5de
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769141"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874847"
 ---
 # <a name="get-usage-data-for-subscription-by-resource"></a>Hämta användningsdata för prenumeration efter resurs
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+I den här artikeln beskrivs hur du hämtar **resursen ResourceUsageRecord.** Den här resursen representerar en aggregerad summa för månaden för enskilda resurser som etablerats i din Azure-plan. Du kan använda den här resursen för att hämta en kunds resursanvändningsposter för specifika Azure-tjänster eller -resurser under den aktuella faktureringsperioden. Det här API:et returnerar data som inte var tillgängliga tidigare via Api:er för Azure-utgifter.
 
-Den här artikeln beskriver hur du hämtar **ResourceUsageRecord** -resursen. Den här resursen representerar en sammanställd total summa för månaden för enskilda resurser som har skapats i din Azure-prenumeration. Du kan använda den här resursen för att hämta en kunds resurs användnings poster för specifika Azure-tjänster eller resurser under den aktuella fakturerings perioden. Detta API returnerar data som inte var tillgängliga tidigare via API: er för Azure-utgifter.
-
-*Den här vägen stöder inte Microsoft Azure-prenumerationer (MS-AZR-0145P).*
+*Den här vägen stöder inte Microsoft Azure prenumerationer (MS-AZR-0145P).*
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Ett prenumerations-ID
+- En prenumerationsidentifierare
 
 ## <a name="c"></a>C\#
 
-Så här hämtar du resurs användnings poster för en kund för en specifik Azure-tjänst eller resurs under den aktuella fakturerings perioden:
+Så här hämtar du resursanvändningsposter för en kund för en specifik Azure-tjänst eller -resurs under den aktuella faktureringsperioden:
 
-1. Använd din **IAggregatePartner. Customers** -samling för att anropa metoden **ById ()** .
+1. Använd din **IAggregatePartner.Customers-samling** för att anropa **metoden ById().**
 
-2. Anropa egenskapen Subscriptions, och **UsageRecords**, sedan egenskapen **Resources** . Slutför genom att anropa metoderna Get () eller GetAsync ().
+2. Anropa egenskapen Prenumerationer och **UsageRecords** och sedan **egenskapen** Resurser. Slutför genom att anropa metoderna Get() eller GetAsync().
 
     ``` csharp
     // IAggregatePartner partnerOperations;
@@ -47,32 +43,32 @@ Så här hämtar du resurs användnings poster för en kund för en specifik Azu
     var usageRecords = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscriptionId).UsageRecords.Resources.Get();
     ```
 
-Ett exempel finns i följande avsnitt:
+Ett exempel finns i följande:
 
-- Exempel: [konsol test app](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Exempel: [Konsoltestapp](console-test-app.md)
+- Project: **PartnerSDK.FeatureExempel**
 - Klass: **GetSubscriptionUsageRecordsByResource.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                           |
 |---------|-----------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Subscriptions/{Subscription-ID}/resourceusagerecords http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/resourceusagerecords HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Den här tabellen innehåller de frågeparametrar som krävs för att hämta kundens beräknade användnings information.
+I den här tabellen visas de frågeparametrar som krävs för att hämta kundens klassificerade användningsinformation.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                               |
 |------------------------|----------|----------|-------------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y        | Ett GUID som motsvarar kunden.     |
-| **prenumerations-ID**    | **guid** | Y        | Ett GUID som motsvarar ID: t för en [prenumerations resurs](subscription-resources.md#subscription)för partner Center, som representerar en Microsoft Azure-prenumeration (MS-AZR-0145P) eller en Azure-plan. *För prenumerations resurser i Azure plan anger du **plan-ID** som **prenumerations-ID** i den här vägen.* |
+| **kund-klient-id** | **guid** | Y        | Ett GUID som motsvarar kunden.     |
+| **prenumerations-id**    | **guid** | Y        | Ett GUID som motsvarar identifieraren [](subscription-resources.md#subscription)för en Partner Center-prenumerationsresurs , som representerar en Microsoft Azure-prenumeration (MS-AZR-0145P) eller en Azure-plan. *För prenumerationsresurser för **Azure-prenumeration anger du plan-id som** **prenumerations-ID i** den här vägen.* |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -90,11 +86,11 @@ MS-CorrelationId: 47c36033-af5d-4457-80a4-512c1626fac4
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden **en \<ResourceUsageRecord> PagedResourceCollection** -resurs i svars texten.
+Om det lyckas returnerar den här metoden **en PagedResourceCollection-resurs \<ResourceUsageRecord>** i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

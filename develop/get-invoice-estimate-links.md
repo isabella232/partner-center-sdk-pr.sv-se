@@ -1,39 +1,34 @@
 ---
 title: Hämta länkar för fakturauppskattning
-description: Du kan hämta en samling med uppskattnings Länkar för att skicka information om rad objekt i frågor.
+description: Du kan hämta en samling uppskattningslänkar till information om avstämningsradobjekt.
 ms.date: 09/24/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.assetid: ''
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 10801cdb1f9d4f50a1f8fc86c2d0eaf8610ed68c
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 719becd3fac5605c4ad48ab86d483ba7903d65d8
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769018"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549152"
 ---
 # <a name="get-invoice-estimate-links"></a>Hämta länkar för fakturauppskattning
 
-**Gäller för:**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Du kan få uppskattnings Länkar för att få hjälp med att fråga efter information om ej fakturerade avstämnings rads objekt.
+Du kan få uppskattningslänkar som hjälper dig att fråga efter information om ej fakturerade avstämningsradsobjekt.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett faktura-ID. Detta identifierar fakturan som rad artiklarna ska hämtas för.
+- En fakturaidentifierare. Detta identifierar fakturan som radobjekten ska hämtas för.
 
 ## <a name="c"></a>C\#
 
-Följande exempel kod visar hur du kan få uppskattnings Länkar för att fråga ej fakturerade rad artiklar för en specifik valuta. Svaret innehåller uppskattnings Länkar för varje period (till exempel aktuell och föregående månad).
+Följande exempelkod visar hur du kan hämta uppskattningslänkarna för att fråga efter ej fakturerade radobjekt för en viss valuta. Svaret innehåller uppskattningslänkarna för varje period (till exempel aktuell och föregående månad).
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -46,19 +41,19 @@ Följande exempel kod visar hur du kan få uppskattnings Länkar för att fråga
 var estimateLinks = scopedPartnerOperations.Invoices.Estimates.Links.ByCurrency(curencyCode).Get();
 ```
 
-Ett liknande exempel finns i följande avsnitt:
+Ett liknande exempel finns i följande:
 
-- Exempel: [konsol test app](console-test-app.md)
-- Projekt: **SDK-exempel för partner Center**
+- Exempel: [Konsoltestapp](console-test-app.md)
+- Project: **Partnercenter-SDK exempel**
 - Klass: **GetEstimatesLinks.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                 |
 |---------|-------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/estimates/Links? CurrencyCode = {CURRENCYCODE} http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/estimates/links?currencycode={currencycode} HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
@@ -66,11 +61,11 @@ Använd följande URI och frågeparameter när du skapar begäran.
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| currencyCode           | sträng | Yes      | Valuta koden för de ej fakturerade rad artiklarna.                    |
+| currencyCode           | sträng | Ja      | Valutakoden för de ej fakturerade radobjekten.                    |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -79,7 +74,7 @@ Inga.
 ### <a name="request-example"></a>Exempel på begäran
 
 ```http
-GET https://api.partnercenter.microsoft.com/v1/invoices/estimates/links?currencycode=usd HTTP/1.1
+GET https://api.partnercenter.microsoft.com/v1/invoices/estimates/links?currencycode=usd HTTP/1.1
 Authorization: Bearer <token>
 Accept: application/json
 MS-RequestId: 1234ecb8-37af-45f4-a1a1-358de3ca2b9e
@@ -91,11 +86,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svaret Länkar för att hämta ej fakturerade uppskattningar.
+Om det lyckas innehåller svaret länkar för att hämta ej fakturerade uppskattningar.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

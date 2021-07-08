@@ -4,31 +4,26 @@ description: Hämtar ett objekt som representerar partnerns MPN-profil.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f8f3e74462da05de0be47964beb34228650b1f53
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 38c12a9a9755b9838b7742d9f38c5cbd52b81210
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769912"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548863"
 ---
 # <a name="get-microsoft-partner-network-profile"></a>Hämta Microsoft Partner Network-profil
 
-**Gäller för**
-
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Hämtar ett objekt som representerar partnerns MPN-profil.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Om du vill få en partner nätverks profil använder du din **IAggregatePartner. profiles** -samling och anropar egenskapen **MpnProfile** . Anropa slutligen metoderna [**Get ()**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) eller [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync) .
+Om du vill hämta en partnernätverksprofil använder **du samlingen IAggregatePartner.Profiles** och anropar **egenskapen MpnProfile.** Anropa slutligen metoderna [**Get()**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) eller [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -36,13 +31,13 @@ Om du vill få en partner nätverks profil använder du din **IAggregatePartner.
 var mpnProfile = partnerOperations.Profiles.MpnProfile.Get();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**:P Artnercentersdk. FeaturesSamples- **klass**: GetMPNProfile.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project**:P CenterSDK.FeaturesSamples-klass: GetMPNProfile.cs 
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-För att få en partner nätverks profil använder du din **IAggregatePartner. getProfiles** -funktion och anropar funktionen **getMpnProfile** . Slutligen anropar du funktionen **Get ()** .
+Om du vill hämta en partnernätverksprofil använder du **funktionen IAggregatePartner.getProfiles** och anropar **funktionen getMpnProfile.** Anropa slutligen funktionen **get().**
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -54,7 +49,7 @@ MpnProfile mpnProfile = partnerOperations.getProfiles().getMpnProfile().get();
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Kör kommandot [**Get-PartnerMpnProfile**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerMpnProfile.md) för att få en partner nätverks profil.
+Om du vill hämta en nätverksprofil för partner kör du kommandot [**Get-PartnerMpnProfile.**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerMpnProfile.md)
 
 ```powershell
 Get-PartnerMpnProfile
@@ -62,15 +57,15 @@ Get-PartnerMpnProfile
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                          |
 |---------|----------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Profiles/MPN http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/mpn HTTP/1.1 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -89,11 +84,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden ett **MPNProfile** -objekt i svars texten.
+Om det lyckas returnerar den här metoden **ett MPNProfile-objekt** i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

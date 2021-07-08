@@ -1,34 +1,29 @@
 ---
 title: Hämta partnerfaktureringsprofil
-description: Hämtar ett objekt som representerar partnerns fakturerings profil.
+description: Hämtar ett objekt som representerar partnerns faktureringsprofil.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 94c5ff8fc351282ca3b4721511f02ba6a0cc403c
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 225d8ea2d92933838ae47eaf3308276aa1f1684c
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97769840"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548982"
 ---
 # <a name="get-partner-billing-profile"></a>Hämta partnerfaktureringsprofil
 
-**Gäller för**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Hämtar ett objekt som representerar partnerns fakturerings profil.
+Hämtar ett objekt som representerar partnerns faktureringsprofil.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Använd din **IAggregatePartner. profiles** -samling och anropa **BillingProfile** -egenskapen för att få en partner fakturerings profil. Anropa slutligen metoderna [**Get ()**](/dotnet/api/microsoft.store.partnercenter.profiles.ibillingprofile.get) eller [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.profiles.ibillingprofile.getasync) .
+Om du vill hämta en partnerfaktureringsprofil använder **du samlingen IAggregatePartner.Profiles** och **anropar egenskapen BillingProfile.** Anropa slutligen metoderna [**Get()**](/dotnet/api/microsoft.store.partnercenter.profiles.ibillingprofile.get) eller [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.profiles.ibillingprofile.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -36,19 +31,19 @@ Använd din **IAggregatePartner. profiles** -samling och anropa **BillingProfile
 BillingProfile billingProfile = partnerOperations.Profiles.BillingProfile.Get();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: PartnerCenterSDK. FeaturesSamples- **klass**: GetBillingProfile.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** PartnerCenterSDK.FeaturesSamples-klass: GetBillingProfile.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                              |
 |---------|--------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Profiles/Billing http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/billing HTTP/1.1 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -66,11 +61,11 @@ MS-CorrelationId: 1bb03149-88d2-4bc2-9cc1-d6e83890fa9e
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden ett **BillingProfile** -objekt i svars texten.
+Om det lyckas returnerar den här metoden **ett BillingProfile-objekt** i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

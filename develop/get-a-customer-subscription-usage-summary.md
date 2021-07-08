@@ -1,41 +1,37 @@
 ---
-title: Hämta användnings översikt för kundens prenumeration
-description: Du kan använda SubscriptionUsageSummary-resursen för att få en översikt över en prenumerations användning av en viss Azure-tjänst eller resurs under den aktuella fakturerings perioden.
+title: Hämta användningssammanfattning för kundens prenumeration
+description: Du kan använda resursen SubscriptionUsageSummary för att hämta en prenumerationsanvändningssammanfattning för en specifik Azure-tjänst eller -resurs under den aktuella faktureringsperioden.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 30334b6f08829eccf0693b566c11f94cb3ece976
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 362e72e1b54a62a114564d4dc48a082bcdeea012
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97769138"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874677"
 ---
-# <a name="get-usage-summary-for-customers-subscription"></a>Hämta användnings översikt för kundens prenumeration
+# <a name="get-usage-summary-for-customers-subscription"></a>Hämta användningssammanfattning för kundens prenumeration
 
-**Gäller för:**
+**Gäller för**: Partner Center-| PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Du kan använda **SubscriptionUsageSummary** -resursen för att få en översikt över prenumerations användning för en kund. Den här resursen representerar prenumerations användnings översikten för en viss Azure-tjänst eller resurs under den aktuella fakturerings perioden.
+Du kan använda resursen **SubscriptionUsageSummary för** att hämta en sammanfattning av prenumerationsanvändningen för en kund. Den här resursen representerar prenumerationsanvändningssammanfattningen för en specifik Azure-tjänst eller -resurs under den aktuella faktureringsperioden.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
-- Ett prenumerations-ID
+- En prenumerationsidentifierare
 
 ## <a name="c"></a>C\#
 
-Så här hämtar du en prenumerations användnings översikt för en kunds prenumeration:
+Så här hämtar du en prenumerationsanvändningssammanfattning för en kunds prenumeration:
 
-1. Använd din **IAggregatePartner. Customers** -samling för att anropa metoden **ById ()** .
+1. Använd din **IAggregatePartner.Customers-samling** för att anropa **metoden ById().**
 
-2. Anropa sedan egenskapen Subscriptions och egenskapen **UsageSummary** . Slutför genom att anropa metoderna Get () eller GetAsync ().
+2. Anropa sedan egenskapen Prenumerationer och **egenskapen UsageSummary.** Slutför genom att anropa metoderna Get() eller GetAsync().
 
     ``` csharp
     // IAggregatePartner partnerOperations;
@@ -45,32 +41,32 @@ Så här hämtar du en prenumerations användnings översikt för en kunds prenu
     var subscriptionUsageSummary = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscriptionId).UsageSummary.Get();
     ```
 
-Ett exempel finns i följande avsnitt:
+Ett exempel finns i följande:
 
-- Exempel: [konsol test app](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Exempel: [Konsoltestapp](console-test-app.md)
+- Project: **PartnerSDK.FeatureExempel**
 - Klass: **GetSubscriptionUsageSummary.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                                        |
 |---------|------------------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/Subscriptions/{Subscription-ID}/usagesummary http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/usagesummary HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Den här tabellen innehåller de frågeparametrar som krävs för att hämta kundens beräknade användnings information.
+I den här tabellen visas de frågeparametrar som krävs för att hämta kundens klassificerade användningsinformation.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                               |
 |------------------------|----------|----------|-------------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y        | Ett GUID som motsvarar kunden.     |
-| **prenumerations-ID**    | **guid** | Y        | Ett GUID som motsvarar identifieraren för en prenumeration. För en Azure-plan är detta ID för motsvarande Partner Center [prenumerations resurs](subscription-resources.md#subscription), som representerar Azure-planen. *För prenumerations resurser i Azure plan anger du **plan-ID** som **prenumerations-ID** i den här vägen.* |
+| **kund-klient-id** | **guid** | Y        | Ett GUID som motsvarar kunden.     |
+| **prenumerations-id**    | **guid** | Y        | Ett GUID som motsvarar identifieraren för en prenumeration. För en Azure-plan är detta identifieraren för motsvarande Partner [Center-prenumerationsresurs](subscription-resources.md#subscription), som representerar Azure-planen. *För prenumerationsresurser för Azure-plan anger du **plan-ID:t** som **prenumerations-ID i** den här vägen.* |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -88,17 +84,17 @@ MS-CorrelationId: 47c36033-af5d-4457-80a4-512c1626fac4
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en **SubscriptionUsageSummary** -resurs i svars texten.
+Om det lyckas returnerar den här metoden **en SubscriptionUsageSummary-resurs** i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
-### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Svars exempel för Microsoft Azure (MS-AZR-0145P)-prenumerationer
+### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Svarsexempel Microsoft Azure prenumerationer (MS-AZR-0145P)
 
-I det här exemplet har kunden köpt ett **145P Azure PayG** -erbjudande.
+I det här exemplet köpte kunden ett **145P Azure PayG-erbjudande.**
 
-*För kunder med Microsoft Azure-prenumerationer (MS-AZR-0145P) sker ingen ändring i API-svaret.*
+*För kunder med Microsoft Azure prenumerationer (MS-AZR-0145P) ändras inte API-svaret.*
 
 ```http
 HTTP/1.1 200 OK
@@ -131,13 +127,13 @@ Date: Tue, 17 Sep 2019 20:31:45 GMT
 }
 ```
 
-## <a name="rest-response-example-for-azure-plan"></a>Exempel på REST-svar för Azure-prenumeration
+## <a name="rest-response-example-for-azure-plan"></a>REST-svarsexempel för Azure-plan
 
-I det här exemplet har kunden köpt en Azure-prenumeration.
+I det här exemplet köpte kunden en Azure-plan.
 
-*För kunder med Azure-planer finns följande ändringar i API-svaret:*
+*För kunder med Azure-planer finns följande API-svarsändringar:*
 
-- **currencyLocale** ersätts med **CurrencyCode**
+- **currencyLocale** ersätts med **currencyCode**
 - **usdTotalCost** är ett nytt fält
 
 ```http

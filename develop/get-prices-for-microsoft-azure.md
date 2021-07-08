@@ -1,33 +1,29 @@
 ---
 title: Hämta priser för Microsoft Azure
-description: Hur du får ett Azure-pris kort med real tids priser för ett Azure-erbjudande. Azures priser är helt dynamiska och förändringar ofta.
+description: Så här hämtar du ett Azure-priskort med realtidspriser för ett Azure-erbjudande. Priserna för Azure är ganska dynamiska och ändras ofta.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0716f0428b13604105b435a2ce8287a8b4609fea
-ms.sourcegitcommit: 64c498d3571f2287305968890578bc7396779621
+ms.openlocfilehash: 4f66ab19ef3723fbaa27acff941cf48683a7c25c
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97770294"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548795"
 ---
 # <a name="get-prices-for-microsoft-azure"></a>Hämta priser för Microsoft Azure
 
-**Gäller för**
+**Gäller för**: Partner Center-| PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+Så här hämtar du [ett Azure-priskort](azure-rate-card-resources.md) med realtidspriser för ett Azure-erbjudande. Priserna för Azure är ganska dynamiska och ändras ofta.
 
-Hur du får ett [Azure-pris kort](azure-rate-card-resources.md) med real tids priser för ett Azure-erbjudande. Azures priser är helt dynamiska och förändringar ofta.
+Om du vill spåra användning och hjälpa till att förutsäga din månadsfaktura och fakturorna för enskilda kunder kan du kombinera den här Azure Rate Card-frågan för att hämta priser för Microsoft Azure med en begäran om att hämta en [kunds](get-a-customer-s-utilization-record-for-azure.md)användningsposter för Azure .
 
-Om du vill spåra användningen och hjälpa till att förutsäga din månatliga faktura och fakturor för enskilda kunder kan du kombinera den här Azure Rate Card-frågan för att få priser för Microsoft Azure med en begäran om att [få en kunds användnings poster för Azure](get-a-customer-s-utilization-record-for-azure.md).
-
-Priserna skiljer sig mellan marknaden och valutan, och detta API tar hänsyn till. Som standard använder API dina partner profil inställningar i Partner Center och ditt webb läsar språk, och dessa inställningar är anpassningsbara. Plats medvetenheten är särskilt relevant om du hanterar försäljning på flera marknader från ett enda centraliserat kontor. Mer information finns i [URI-parametrar](#uri-parameters).
+Priserna varierar beroende på marknad och valuta, och det här API:et tar hänsyn till platsen. Som standard använder API:et dina partnerprofilinställningar i Partnercenter och ditt webbläsarspråk, och dessa inställningar är anpassningsbara. Platsmedvetenhet är särskilt relevant om du hanterar försäljning på flera marknader från ett enda centraliserat kontor. Mer information finns i [URI-parametrar](#uri-parameters).
 
 ## <a name="c"></a>C\#
 
-Du skaffar kortet Azure Rate genom att anropa metoden [**IAzureRateCard. get**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.get) för att returnera en [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) -resurs som innehåller Azure-priserna.
+Hämta Azure-priskortet genom att anropa [**metoden IAzureRateCard.Get**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.get) för att returnera en [**AzureRateCard-resurs**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) som innehåller Azure-priserna.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -35,13 +31,13 @@ Du skaffar kortet Azure Rate genom att anropa metoden [**IAzureRateCard. get**](
 var azureRateCard = partner.RateCards.Azure.Get();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: GetAzureRateCard.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: GetAzureRateCard.cs
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Hämta kortet Azure Rate genom att anropa funktionen **IAzureRateCard. get** för att returnera pris information som innehåller Azure-priserna.
+Hämta Azure-priskortet genom att anropa **funktionen IAzureRateCard.get** för att returnera kortinformation som innehåller Azure-priserna.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -53,7 +49,7 @@ AzureRateCard azureRateCard = partner.getRateCards().getAzure().get();
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Hämta Azure-kortet genom att köra kommandot [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) för att returnera avgift korts information som innehåller Azure-priserna.
+Hämta Azure-kortet genom att köra kommandot [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) för att returnera kortinformation som innehåller Azure-priserna.
 
 ```powershell
 Get-PartnerAzureRateCard
@@ -61,28 +57,28 @@ Get-PartnerAzureRateCard
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                        |
 |---------|--------------------------------------------------------------------|
-| **TA** | *{baseURL}*/v1/ratecards/Azure? valuta = {currency} &region = {region} |
+| **Få** | *{baseURL}*/v1/ratecards/azure?currency={currency}&region={region} |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
 | Namn     | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                               |
 |----------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| currency | sträng | No       | Tre bokstäver, ISO-kod för den valuta där resurs priserna ska tillhandahållas (till exempel `EUR` ). Standardvärdet är `USD`. |
-| region   | sträng | No       | Valfria ISO-land/regions kod med två bokstäver som anger på vilken marknad erbjudandet köps (till exempel `FR` ). Standardvärdet är `US`.        |
+| currency | sträng | No       | Valfri ISO-kod med tre bokstäver för den valuta som resurspriserna ska anges i (till exempel `EUR` ). Standardvärdet är `USD`. |
+| region   | sträng | No       | Valfri ISO-lands-/regionkod med två bokstäver som anger vilken marknad erbjudandet köps på (till exempel `FR` ). Standardvärdet är `US`.        |
 
-Du kan inkludera valfria X-locale- [huvud](headers.md#rest-request-headers) i din begäran. Om du inte inkluderar rubriken X-locale, används standardvärdet ("en-US").
+Du kan inkludera det valfria X-Locale-huvudet i din begäran. [](headers.md#rest-request-headers) Om du inte inkluderar huvudet X-Locale används standardvärdet ("en-US").
 
-- Om du anger valuta-och region parametrar i din begäran, används värdet för X-locale för att fastställa svarets språk.
+- Om du anger valuta- och regionparametrar i din begäran används värdet för X-Locale för att fastställa svarets språk.
 
-- Om du inte anger regions-och valuta parametrar i din begäran, används värdet för X-locale för att fastställa svarets region, valuta och språk.
+- Om du inte anger region- och valutaparametrar i din begäran används värdet för X-Locale för att fastställa svarets region, valuta och språk.
 
 ### <a name="request-header"></a>Begärandehuvud
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -103,11 +99,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om begäran lyckas returneras en [Azure-priss kort](azure-rate-card-resources.md) resurs.
+Om begäran lyckas returneras en [Azure Rate Card-resurs.](azure-rate-card-resources.md)
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

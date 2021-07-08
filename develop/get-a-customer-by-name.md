@@ -1,42 +1,37 @@
 ---
 title: Hämta en lista över kunder filtrerade efter ett sökfält
-description: Hämtar en samling kund resurser som matchar ett filter. Du kan också ange en sid storlek. Du kan filtrera efter företags namn, domän, indirekt åter försäljare eller CSP (indirekt Cloud Solution Provider).
+description: Hämtar en samling kundresurser som matchar ett filter. Du kan också ange en sidstorlek. Du kan filtrera efter företagsnamn, domän, indirekt återförsäljare eller indirekt molnlösningsleverantör (CSP).
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: aad9524dbe2c9edbbd7c1d50da7a448f6872fcb9
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 663b8509d8704f9c443796d9fbcf72fb9c5b7fb2
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769375"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874966"
 ---
 # <a name="get-a-list-of-customers-filtered-by-a-search-field"></a>Hämta en lista över kunder filtrerade efter ett sökfält
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Hämtar en samling [kund](customer-resources.md#customer) resurser som matchar ett filter. Du kan också ange en sid storlek. Du kan filtrera efter företags namn, domän, indirekt åter försäljare eller CSP (indirekt Cloud Solution Provider).
+Hämtar en samling [kundresurser](customer-resources.md#customer) som matchar ett filter. Du kan också ange en sidstorlek. Du kan filtrera efter företagsnamn, domän, indirekt återförsäljare eller indirekt molnlösningsleverantör (CSP).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app-och app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett användardefinierat filter.
+- Ett användarkonstruerat filter.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en samling kunder som matchar ett filter måste du först instansiera ett [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) -objekt för att skapa filtret. Du måste skicka en sträng som innehåller [**CustomerSearchField**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield)och ange typ av filter åtgärd som [**FieldFilterOperation. StartsWith**](/dotnet/api/microsoft.store.partnercenter.models.query.fieldfilteroperation). Det är den enda fält filter åtgärd som stöds av slut punkten för kunder. Du måste också ange strängen för att filtrera efter.
+Om du vill hämta en samling kunder som matchar ett filter skapar du först ett [**SimpleFieldFilter-objekt**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) för att skapa filtret. Du måste skicka en sträng som innehåller [**CustomerSearchField**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield)och ange typen av filteråtgärd som [**FieldFilterOperation.StartsWith**](/dotnet/api/microsoft.store.partnercenter.models.query.fieldfilteroperation). Det är den enda fältfilteråtgärden som stöds av kundernas slutpunkt. Du måste också ange strängen att filtrera efter.
 
-Sedan instansierar du ett [**iQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) -objekt för att skicka till frågan genom att anropa metoden [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) och skicka filtret. BuildSimplyQuery är bara en av de frågetyper som stöds av [**QueryFactory**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory) -klassen.
+Skapa sedan en instans av [**ett iQuery-objekt**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) som ska överföras till frågan genom att anropa [**metoden BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) och skicka det till filtret. BuildSimplyQuery är bara en av de frågetyper som stöds av [**queryFactory-klassen.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
 
-Slutligen, om du vill köra filtret och få resultatet, använder du först [**IAggregatePartner. kunder**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) för att få ett gränssnitt till partnerns kund åtgärder. Anropa sedan [**fråge**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) -eller [**QueryAsync**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync) -metoden.
+För att slutligen köra filtret och hämta resultatet använder du först [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) för att hämta ett gränssnitt för partnerns kundåtgärder. Anropa sedan [**metoden Query**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) eller [**QueryAsync.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync)
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -57,15 +52,15 @@ var myQuery = QueryFactory.Instance.BuildSimpleQuery(fieldFilter);
 var customers = partnerOperations.Customers.Query(myQuery);
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: Partner Center SDK-exempel **klass**: FilterCustomers.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Exempelklass:** FilterCustomers.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers? size = {size} &filter = {filter} http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers?size={size}&filter={filter} HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
@@ -73,14 +68,14 @@ Använd följande frågeparametrar.
 
 | Namn   | Typ   | Obligatorisk | Beskrivning                                                                    |
 |--------|--------|----------|--------------------------------------------------------------------------------|
-| ikoner   | int    | No       | Antalet resultat som ska visas samtidigt. Den här parametern är valfri. |
-| filter | filter | Yes      | Filtret som ska användas för kunderna. Detta måste vara en kodad sträng.              |
+| ikoner   | int    | Inga       | Antalet resultat som ska visas samtidigt. Den här parametern är valfri. |
+| filter | filter | Ja      | Filtret som ska tillämpas på kunder. Det här måste vara en kodad sträng.              |
 
-### <a name="filter-syntax"></a>Filter-syntax
+### <a name="filter-syntax"></a>Filtersyntax
 
-Du måste skapa filter parametern som en serie kommaavgränsade par med nyckel/värde-par. Varje nyckel och värde måste anges individuellt och avgränsas med kolon. Hela filtret måste vara kodat.
+Du måste skriva filterparametern som en serie kommaavgränsade nyckel/värde-par. Varje nyckel och värde måste anges individuellt och avgränsas med ett kolon. Hela filtret måste vara kodat.
 
-Ett avkodat exempel ser ut så här:
+Ett okodat exempel ser ut så här:
 
 ```http
 ?filter{"Field":"CompanyName","Value":"cont","Operator":"starts_with"}
@@ -90,13 +85,13 @@ I följande tabell beskrivs de nyckel/värde-par som krävs:
 
 | Tangent      | Värde                                                                                                                    |
 |----------|--------------------------------------------------------------------------------------------------------------------------|
-| Fält    | Det fält som ska filtreras. Du hittar giltiga värden i [**CustomerSearchField**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield). |
-| Värde    | Värdet att filtrera efter. Skift läget för värdet ignoreras.                                                                |
-| Operator | Operatorn som ska användas. Det enda värde som stöds för det här kund scenariot är "börjar \_ med".                            |
+| Fält    | Fältet som ska filtreras. Giltiga värden finns i [**CustomerSearchField**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield). |
+| Värde    | Värdet som ska filtreras efter. Värdets fall ignoreras.                                                                |
+| Operator | Operatorn som ska tillämpas. Det enda värde som stöds för det här kundscenariot är "börjar \_ med".                            |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -117,11 +112,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling matchande [kund](customer-resources.md#customer) resurser i svars texten.
+Om det lyckas returnerar den här metoden en samling matchande [kundresurser](customer-resources.md#customer) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

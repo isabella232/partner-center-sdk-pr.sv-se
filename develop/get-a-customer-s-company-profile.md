@@ -1,38 +1,33 @@
 ---
 title: Hämta en kunds företagsprofil
-description: Hämtar företags profilen för en kund.
+description: Hämtar företagsprofilen för en kund.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: c26a86ecb96e5e7942ba179f8a3cc704abab7df5
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: a1c0c8401207f4b0bb33755a8eabc66de0ad9ff9
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769372"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874983"
 ---
 # <a name="get-a-customers-company-profile"></a>Hämta en kunds företagsprofil
 
-**Gäller för**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Hämtar företags profilen för en kund.
+Hämtar företagsprofilen för en kund.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta företags profilen för en kund anropar du metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att identifiera kunden. Hämta sedan kundens [**ICustomerProfileCollection**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofilecollection) -gränssnitt från [**profil**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.profiles) egenskapen för att få åtkomst till företagets egenskap. Sedan hämtar du [**ICustomerReadonlyProfile**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1) -gränssnittet från egenskapen [**ICustomerProfileCollection. Company**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofilecollection.company) och anropar metoderna [**Get ()**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1.get) eller [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1.getasync) .
+Om du vill hämta företagsprofilen för en kund anropar du [**metoden IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Hämta sedan kundens [**ICustomerProfileCollection-gränssnitt**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofilecollection) från egenskapen [**Profiler**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.profiles) för att få åtkomst till dess företagsegenskap. Hämta sedan [**gränssnittet ICustomerReadonlyProfile**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1) från egenskapen [**ICustomerProfileCollection.Company**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofilecollection.company) och anropa dess [**Get()**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1.get) eller [**GetAsync()-metoder.**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -41,13 +36,13 @@ Om du vill hämta företags profilen för en kund anropar du metoden [**IAggrega
 var companyProfile = partnerOperations.Customers.ById(customerId).Profiles.Company.Get();
 ```
 
-**Exempel**: [Ladda ned SDK för partner Center](https://go.microsoft.com/fwlink/p/?LinkId=746681). **Projekt**: PartnerSdk. FeatureSamples- **klass**: GetCustomerCompanyProfile.CS
+**Exempel:** [Ladda ned Partnercenter-SDK](https://go.microsoft.com/fwlink/p/?LinkId=746681). **Project:** PartnerSdk.FeatureSamples-klass: GetCustomerCompanyProfile.cs 
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Om du vill hämta företags profilen för en kund anropar du funktionen **IAggregatePartner. getCustomers (). byId** med kund-ID: t för att identifiera kunden. Hämta sedan kundens **ICustomerProfileCollection** -gränssnitt från [**getProfiles**]-funktionen för att få åtkomst till företagets egenskap. Hämta sedan **ICustomerReadonlyProfile** -gränssnittet från funktionen **ICustomerProfileCollection. getCompany** och anropa funktionen **Get** .
+Om du vill hämta företagsprofilen för en kund anropar du funktionen **IAggregatePartner.getCustomers().byId** med kundidentifieraren för att identifiera kunden. Hämta sedan kundens **ICustomerProfileCollection-gränssnitt** från funktionen [**getProfiles**] för att få åtkomst till dess företagsegenskap. Hämta sedan **gränssnittet ICustomerReadonlyProfile** från funktionen **ICustomerProfileCollection.getCompany** och anropa **get-funktionen.**
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -58,27 +53,27 @@ CustomerCompanyProfile companyProfile = partnerOperations.getCustomers().byId(cu
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                             |
 |---------|-------------------------------------------------------------------------|
-| **TA** | *{baseURL}*/v1/Customers/{Customer-Tenant-ID}/Profiles/Company http/1.1 |
+| **Få** | *{baseURL}*/v1/customers/{customer-tenant-id}/profiles/company HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande frågeparameter för att hämta företags profilen.
+Använd följande frågeparameter för att hämta företagsprofilen.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **kund-ID för klient organisation** | **guid** | Y        | Värdet är ett GUID-formaterat **kund-Tenant-ID** som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik kund som tillhör åter försäljaren. |
+| **kund-klient-id** | **guid** | Y        | Värdet är ett GUID-formaterat **kundklient-ID** som gör att återförsäljaren kan filtrera resultaten för en viss kund som tillhör återförsäljaren. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Inget
+Ingen
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -95,11 +90,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden information i svars texten.
+Om det lyckas returnerar den här metoden information i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder för Partner Center REST.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

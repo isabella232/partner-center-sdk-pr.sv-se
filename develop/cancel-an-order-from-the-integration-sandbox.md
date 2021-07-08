@@ -4,33 +4,28 @@ description: Lär dig hur du använder Partner Center-API:er för att avbryta ol
 ms.date: 04/28/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c3bf862c62804a56e6f73dd3ec36d2e9eb65f997
-ms.sourcegitcommit: f59a9311c8a37d45695caf74794ec1697426acc9
+ms.openlocfilehash: 4c4b658f406e420d8d3cd425688364fe3d440d3d
+ms.sourcegitcommit: a3a78ec0f5078645b5a4f3b534165eef30f2c822
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108210027"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113104979"
 ---
 # <a name="cancel-an-order-from-the-integration-sandbox-using-partner-center-apis"></a>Avbryta en beställning från sandbox-miljön för integrering med partnercenter-API:er
 
-**Gäller för:**
-
-- Partnercenter
-- Partnercenter drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 I den här artikeln beskrivs hur du använder Partner Center-API:er för att avbryta olika typer av prenumerationsbeställningar från integrations-sandbox-konton. Sådana beställningar kan omfatta reserverade instanser, programvara och saaS-prenumerationsbeställningar (Software as a Service) på den kommersiella marknadsplatsen.
 
->[!NOTE] 
->Observera att annulleringar av reserverade instanser eller SaaS-prenumerationsbeställningar på den kommersiella marknadsplatsen endast är möjliga från integrations-sandbox-konton. Sandbox-beställningar som är äldre än 60 dagar kan inte annulleras från Partnercenter. Kontakta Partnercenter-supporten om du behöver hjälp. 
+> [!NOTE] 
+> Observera att annulleringar av reserverade instanser eller SaaS-prenumerationsbeställningar på den kommersiella marknadsplatsen endast är möjliga från integrations-sandbox-konton. Sandbox-beställningar som är äldre än 60 dagar kan inte annulleras från Partnercenter.
 
 Om du vill avbryta produktionsorder för programvara via API använder [du cancel-software-purchases](cancel-software-purchases.md).
 Du kan också avbryta produktionsorder för programvara via instrumentpanelen med [hjälp av avbryta ett köp.](/partner-center/csp-software-subscriptions)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
 - Ett partnerkonto för sandbox-integrering med en kund som har aktiv reserverad instans/programvara/SaaS-prenumerationsbeställningar från tredje part.
 
@@ -38,7 +33,7 @@ Du kan också avbryta produktionsorder för programvara via instrumentpanelen me
 
 Om du vill avbryta en beställning från sandbox-miljön för integrering skickar du autentiseringsuppgifterna för ditt konto till metoden [**`CreatePartnerOperations`**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) för att hämta ett gränssnitt för att hämta [**`IPartner`**](/dotnet/api/microsoft.store.partnercenter.ipartner) partneråtgärder.
 
-Om du [](order-resources.md#order)vill välja en viss order använder du partneråtgärderna och anropsmetoden med kund-ID:t för att ange kunden, följt av med orderidentifierare för att ange ordern och slutligen metoden eller metoden för [**`Customers.ById()`**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) att hämta **`Orders.ById()`** **`Get`** **`GetAsync`** den.
+Om du vill välja en viss [order](order-resources.md#order)använder du partneråtgärderna och anropar -metoden med kund-ID:t för att ange kunden, följt av med orderidentifierare för att ange ordern och slutligen metoden eller metoden för [**`Customers.ById()`**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) att hämta **`Orders.ById()`** **`Get`** **`GetAsync`** den.
 
 Ange egenskapen [**`Order.Status`**](order-resources.md#order) till och använd metoden för att uppdatera `cancelled` **`Patch()`** ordern.
 

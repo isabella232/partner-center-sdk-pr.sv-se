@@ -1,43 +1,37 @@
 ---
-title: Hämta kundens direkta signerings status för Microsofts kund avtal.
-description: Du kan använda DirectSignedCustomerAgreementStatus-resursen för att hämta statusen för en kunds direkta signering (direkt godkännande) för Microsofts kund avtal.
+title: Hämta kundens direktsigneringsstatus för Microsoft-kundavtal.
+description: Du kan använda resursen DirectSignedCustomerAgreementStatus för att hämta status för en kunds direktsignering (direkt godkännande) av Microsoft-kundavtal.
 ms.date: 02/11/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 267e3aa63a94c5045977ad566eb5061df3b59882
-ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
+ms.openlocfilehash: a17775614b4eb328514b2b32b4cac1e513019cff
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105030578"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549186"
 ---
-# <a name="get-the-status-of-a-customers-direct-signing-direct-acceptance-of-microsoft-customer-agreement"></a>Hämta statusen för en kunds direkta signering (direkt godkännande) för Microsofts kund avtal
+# <a name="get-the-status-of-a-customers-direct-signing-direct-acceptance-of-microsoft-customer-agreement"></a>Hämta status för en kunds direktsignering (direkt godkännande) av Microsoft-kundavtal
 
-**Gäller för:**
+**Gäller för:** Partnercenter
 
-- Partnercenter
+**Gäller inte för**: Partner Center som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-**DirectSignedCustomerAgreementStatus** -resursen stöds för närvarande endast av Partner Center i det offentliga Microsoft-molnet.
+Resursen **DirectSignedCustomerAgreementStatus** stöds för närvarande endast av PartnerCenter i det offentliga Microsoft-molnet.
 
-Den här resursen är *inte tillämplig* för:
-
-- Partnercenter drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Den här artikeln förklarar hur du kan hämta statusen för en kunds direkta godkännande av Microsofts kund avtal.
+Den här artikeln förklarar hur du kan hämta status för en kunds direkta godkännande av Microsoft-kundavtal.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-För att hämta statusen för en kunds direkta godkännande av Microsofts kund avtal, anropa metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID. Använd sedan egenskapen [**Agreements**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.agreements) för att hämta ett [**ICustomerAgreementCollection**](/dotnet/api/microsoft.store.partnercenter.agreements.icustomeragreementcollection) -gränssnitt. Till sist anropa `GetDirectSignedCustomerAgreementStatus()` eller `GetDirectSignedCustomerAgreementStatusAsync()` för att hämta statusen.
+Om du vill hämta status för en kunds direkta godkännande av Microsoft-kundavtal anropar du [**metoden IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kundidentifieraren. Använd sedan egenskapen [**Agreements**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.agreements) för att hämta ett [**ICustomerAgreementCollection-gränssnitt.**](/dotnet/api/microsoft.store.partnercenter.agreements.icustomeragreementcollection) Anropa eller `GetDirectSignedCustomerAgreementStatus()` för att hämta `GetDirectSignedCustomerAgreementStatusAsync()` statusen.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -45,19 +39,19 @@ För att hämta statusen för en kunds direkta godkännande av Microsofts kund a
 var customerDirectSigningStatus = partnerOperations.Customers.ById(selectedCustomerId).Agreements.GetDirectSignedCustomerAgreementStatus();
 ```
 
-**Exempel**: [app för konsol exempel](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: SdkSamples- **klass**: GetDirectSignedCustomerAgreementStatus. CS
+**Exempel:** [Konsolexempelapp](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project:** SdkSamples-klass: GetDirectSignedCustomerAgreementStatus.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
-Om du vill hämta statusen för en kunds direkta godkännande av Microsofts kund avtal, skapar du en REST-begäran för att hämta [DirectSignedCustomerAgreementStatus](./customer-agreement-direct-sign-status-resource.md) för kunden.
+Om du vill hämta status för en kunds direkta godkännande av Microsoft-kundavtal skapar du en REST-begäran för att hämta [DirectSignedCustomerAgreementStatus](./customer-agreement-direct-sign-status-resource.md) för kunden.
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 Använd följande syntax för begäran:
 
 | Metod | URI för förfrågan                                                                                      |
 |--------|--------------------------------------------------------------------------------------------------|
-| GET    | [*\{ BASEURL \}*](partner-center-rest-urls.md)/v1/Customers/{Customer-Tenant-ID}/directSignedMicrosoftCustomerAgreementStatus http/1.1 |
+| GET    | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/directSignedMicrosoftCustomerAgreementStatus HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
@@ -65,11 +59,11 @@ Du kan använda följande URI-parametrar med din begäran:
 
 | Namn             | Typ | Obligatorisk | Beskrivning                                                                               |
 |------------------|------|----------|-------------------------------------------------------------------------------------------|
-| kund-ID för klient organisation | GUID | Ja | Värdet är en GUID-formaterad **CustomerTenantId** som gör att du kan ange klient-ID för en kund. |
+| kund-klient-id | GUID | Ja | Värdet är ett GUID-formaterat **CustomerTenantId** som gör att du kan ange klient-ID för en kund. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -87,19 +81,19 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en [ **DirectSignedCustomerAgreementStatus** -resurs](./customer-agreement-direct-sign-status-resource.md) i svars texten.
+Om det lyckas returnerar den här metoden en [ **DirectSignedCustomerAgreementStatus-resurs**](./customer-agreement-direct-sign-status-resource.md) i svarstexten.
 
-Resursen har en **isSigned** -egenskap som anger kundens direkta signerings status (direkt godkännande).
+Resursen har en **isSigned-egenskap** som anger kundens status för direktsignering (direktgodkännande).
 
-- Värdet **True** anger att avtalet har signerats (accepterats) direkt av kunden.
+- Värdet true **anger** att avtalet har signerats (godkänts) direkt av kunden.
 
-- Värdet **false** anger att avtalet *inte* har signerats (accepterats) direkt av kunden.
+- Värdet false **anger** att avtalet inte har *signerats* (godkänts) direkt av kunden.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information.
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation.
 
-Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

@@ -4,20 +4,16 @@ description: Du kan använda API:et för Azure-användning för att hämta anvä
 ms.date: 04/19/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 23c8d18462081c6d6c95c1d969f269cbb3f8754b
-ms.sourcegitcommit: abefe11421edc421491f14b257b2408b4f29b669
+ms.openlocfilehash: 7024bc65976a9b43a62b66c529d271519181ab23
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107745600"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874932"
 ---
 # <a name="get-a-customers-utilization-records-for-azure"></a>Hämta en kunds användningsposter för Azure
 
-**Gäller för:**
-
-- Partnercenter
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Du kan hämta användningsposter för en kunds Azure-prenumeration under en angiven tidsperiod med hjälp av API:et för Azure-användning.
 
@@ -29,21 +25,21 @@ Du kan hämta användningsposter för en kunds Azure-prenumeration under en angi
 
 - En prenumerationsidentifierare.
 
-Det här API:et returnerar förbrukningen per dag och timme för ett godtyckligt tidsintervall. Det här *API:et stöds dock inte för Azure-planer.* Om du har en Azure-plan kan du läsa artiklarna Get [invoice un-billed consumption line items](get-invoice-unbilled-consumption-lineitems.md) (Hämta faktura, ej fakturerade förbrukningsradsobjekt) och Get invoice billed consumption line items instead (Hämta faktura [fakturerade förbrukningsradobjekt i](get-invoice-billed-consumption-lineitems.md) stället). De här artiklarna beskriver hur du hämtar klassificerad förbrukning på en daglig nivå per mätare per resurs. Den här förbrukningen motsvarar dagliga kornighetsdata som tillhandahålls av API:et för Azure-användning. Du måste använda fakturaidentifieraren för att hämta fakturerade användningsdata. Eller så kan du använda aktuella och tidigare perioder för att få ofakturerade användningsuppskattningar. *Filter för intervall per timme och godtyckliga datumintervall stöds för närvarande inte för Prenumerationsresurser för Azure-plan.*
+Det här API:et returnerar förbrukningen per dag och timme för ett godtyckligt tidsintervall. Det här *API:et stöds dock inte för Azure-planer.* Om du har en Azure-plan kan du läsa artiklarna Get [invoice unbilled consumption line items](get-invoice-unbilled-consumption-lineitems.md) (Hämta faktura, ej fakturerade förbrukningsradsobjekt) och Get invoice billed consumption line items instead (Hämta [fakturerade förbrukningsradobjekt i](get-invoice-billed-consumption-lineitems.md) stället). De här artiklarna beskriver hur du hämtar klassificerad förbrukning på en daglig nivå per mätare per resurs. Den här förbrukningen motsvarar dagliga kornighetsdata som tillhandahålls av API:et för Azure-användning. Du måste använda fakturaidentifieraren för att hämta fakturerade användningsdata. Eller så kan du använda aktuella och tidigare perioder för att få uppskattningar av ej fakturerad användning. *Intervalldata per timme och filter för godtyckligt datumintervall stöds för närvarande inte för Prenumerationsresurser för Azure-plan.*
 
 ## <a name="azure-utilization-api"></a>API för Azure-användning
 
-Det här API:et för Azure-användning ger åtkomst till användningsposter för en tidsperiod som representerar när användningen rapporterades i faktureringssystemet. Den ger åtkomst till samma användningsdata som används för att skapa och beräkna avstämningsfilen. Den har dock ingen kunskap om logik för faktureringssystemavstämningsfiler. Du bör inte förvänta dig att sammanfattningsresultaten för avstämningsfilen matchar resultatet som hämtats från det här API:et exakt under samma tidsperiod.
+Det här API:et för Azure-användning ger åtkomst till användningsposter under en tidsperiod som representerar när användningen rapporterades i faktureringssystemet. Den ger åtkomst till samma användningsdata som används för att skapa och beräkna avstämningsfilen. Den har dock inte kunskap om fillogik för faktureringssystemavstämning. Du bör inte förvänta dig att sammanfattningsresultaten för avstämningsfilen matchar resultatet som hämtats från det här API:et exakt under samma tidsperiod.
 
-Faktureringssystemet använder till exempel samma användningsdata och tillämpar regler för lateness för att fastställa vad som redovisas i en avstämningsfil. När en faktureringsperiod stängs tas all användning fram till slutet av dagen som faktureringsperioden slutar med i avstämningsfilen. Sen användning inom faktureringsperioden som rapporteras inom 24 timmar efter faktureringsperiodens slut redovisas i nästa avstämningsfil. Information om lateness-regler för hur partnern faktureras finns i [Hämta förbrukningsdata för en Azure-prenumeration.](/previous-versions/azure/reference/mt219001(v=azure.100))
+Faktureringssystemet använder till exempel samma användningsdata och tillämpar regler för senhet för att fastställa vad som redovisas i en avstämningsfil. När en faktureringsperiod stängs inkluderas all användning fram till slutet av den dag då faktureringsperioden slutar i avstämningsfilen. Sen användning inom faktureringsperioden som rapporteras inom 24 timmar efter faktureringsperiodens slut redovisas i nästa avstämningsfil. Information om lateness-reglerna för hur partnern faktureras finns i [Hämta förbrukningsdata för en Azure-prenumeration.](/previous-versions/azure/reference/mt219001(v=azure.100))
 
 Den REST API är sidindelade. Om svarsnyttolasten är större än en enda sida måste du följa nästa länk för att hämta nästa sida med användningsposter.
 
-### <a name="scenario--partner-a-has-transferred-billing-ownership-of-azure-legacy-subscription-145p-to-partner-b"></a>Scenario: Partner A har överfört faktureringsägarskapet för den äldre Azure-prenumerationen (145P) till Partner B
+### <a name="scenario-partner-a-has-transferred-billing-ownership-of-azure-legacy-subscription-145p-to-partner-b"></a>Scenario: Partner A har överfört faktureringsägarskapet för den äldre Azure-prenumerationen (145P) till Partner B
 
-Om en partner överför faktureringsägarskapet för en äldre Azure-prenumeration till en annan partner måste den nya partnern, när den nya partnern anropar användnings-API:et för den överförda prenumerationen, använda handelsprenumerationens ID (som visas i partnercenterkontot) i stället för Azure-berättigande-ID:t. Azure-berättigande-ID visas endast för Partner B när de är administratör för (AOBO) till kundens Azure Portal. 
+Om en partner överför faktureringsägarskapet för en äldre Azure-prenumeration till en annan partner måste den nya partnern, när den nya partnern anropar Utilization API för den överförda prenumerationen, använda Commerce Subscription ID (som visas i partnercenterkontot) i stället för Azure-berättigande-ID:t. Azure-berättigande-ID visas endast för Partner B när de är administratör för (AOBO) till kundens Azure Portal. 
 
-För att kunna anropa API:et för utnyttjande för den överförda prenumerationen måste den nya partnern använda handelsprenumerationens ID.
+För att kunna anropa utilization-API:et för den överförda prenumerationen måste den nya partnern använda commerce-prenumerations-ID:t.
 
 ## <a name="c"></a>C\#
 
@@ -56,7 +52,7 @@ Så här hämtar du Azure-användningsposterna:
 3. Hämta en uppräkning av Azure-användningsposten för att bläddra bland användningssidorna. Det här steget krävs eftersom resurssamlingen är sidindelade.
 
 - **Exempel:** [Konsoltestapp](console-test-app.md)
-- **Projekt:** Partnercenter-SDK exempel
+- **Project:** Partnercenter-SDK exempel
 - **Klass:** GetAzureSubscriptionUtilization.cs
 
 ```csharp
@@ -90,7 +86,7 @@ while (utilizationRecordEnumerator.HasValue)
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-För att hämta Azure-användningsposterna behöver du först en kundidentifierare och en prenumerationsidentifierare. Sedan anropar du **funktionen IAzureUtilizationCollection.query** för att returnera **en ResourceCollection** som innehåller användningsposterna. Eftersom resurssamlingen är sidindelade måste du sedan hämta en uppräkning av Azure-användningsposten för att gå igenom användningssidorna.
+För att hämta Azure-användningsposterna behöver du först en kundidentifierare och en prenumerationsidentifierare. Sedan anropar du **funktionen IAzureUtilizationCollection.query** för att returnera **en ResourceCollection** som innehåller användningsposterna. Eftersom resurssamlingen är sidindelade måste du hämta en uppräkning av Azure-användningsposten för att gå igenom användningssidorna.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -125,7 +121,7 @@ while (utilizationRecordEnumerator.hasValue())
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-För att kunna hämta Azure-användningsposterna behöver du först en kundidentifierare och en prenumerationsidentifierare. Sedan anropar du [**Get-PartnerCustomerSubscriptionUtilization**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerSubscriptionUtilization.md). Det här kommandot returnerar alla poster som är tillgängliga under den angivna tidsperioden.
+För att hämta Azure-användningsposterna behöver du först en kundidentifierare och en prenumerationsidentifierare. Sedan anropar du [**Get-PartnerCustomerSubscriptionUtilization**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomerSubscriptionUtilization.md). Det här kommandot returnerar alla poster som är tillgängliga under den angivna tidsperioden.
 
 ```powershell
 # $customerId
@@ -148,13 +144,13 @@ Använd följande sökväg och frågeparametrar för att hämta användningspost
 
 | Namn | Typ | Obligatorisk | Beskrivning |
 | ---- | ---- | -------- | ----------- |
-| kund-klient-id | sträng | Yes | En GUID-formaterad sträng som identifierar kunden. |
-| prenumerations-id | sträng | Yes | En GUID-formaterad sträng som identifierar prenumerationen. |
-| start_time | sträng i UTC-format för datum/tid-förskjutning | Yes | Starttidsintervallet som representerar när användningen rapporterades i faktureringssystemet. |
-| end_time | sträng i UTC-format för datum/tid-förskjutning | Yes | Slutet på det tidsperiod som representerar när användningen rapporterades i faktureringssystemet. |
+| kund-klient-id | sträng | Ja | En GUID-formaterad sträng som identifierar kunden. |
+| prenumerations-id | sträng | Ja | En GUID-formaterad sträng som identifierar prenumerationen. |
+| start_time | sträng i UTC-format för datum/tid-förskjutning | Ja | Starten av det tidsperiod som representerar när användningen rapporterades i faktureringssystemet. |
+| end_time | sträng i UTC-format för datum/tid-förskjutning | Ja | Slutet av det tidsperiod som representerar när användningen rapporterades i faktureringssystemet. |
 | Granularitet | sträng | No | Definierar kornigheten för användningsaggregeringar. Tillgängliga alternativ är: `daily` (standard) och `hourly` .
-| show_details | boolean | No | Anger om du vill hämta användningsinformation på instansnivå. Standardvärdet är `true`. |
-| ikoner | antal | No | Anger antalet aggregeringar som returneras av ett enda API-anrop. Standardvärdet är 1000. Max är 1 000. |
+| show_details | boolean | Inga | Anger om du vill hämta användningsinformation på instansnivå. Standardvärdet är `true`. |
+| ikoner | antal | Inga | Anger antalet aggregeringar som returneras av ett enda API-anrop. Standardvärdet är 1000. Max är 1 000. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -162,7 +158,7 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Inget
+Ingen
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -182,7 +178,7 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en samling [Azure Utilization Record-resurser](azure-utilization-record-resources.md) i svarstexten. Om Azure-användningsdata ännu inte är redo i ett beroende system returnerar den här metoden HTTP-statuskod 204 med Retry-After sidhuvud.
+Om det lyckas returnerar den här metoden en samling [Azure Utilization Record-resurser](azure-utilization-record-resources.md) i svarstexten. Om Azure-användningsdata ännu inte är redo i ett beroende system returnerar den här metoden HTTP-statuskod 204 med ett Retry-After huvud.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 

@@ -1,43 +1,38 @@
 ---
 title: Hämta fakturasammanfattningar
-description: Du kan använda en faktura sammanfattnings resurs för varje valuta typ för att Visa saldot och det totala antalet avgifter för både återkommande och engångs kostnader.
+description: Du kan använda en resurs för fakturasammanfattningar för varje valutatyp för att visa saldot och de totala avgifterna för både återkommande och engångsavgifter.
 ms.date: 09/24/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 82cd669117db72e1819d941f48f8ea69b2eddaec
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: fb6ff839c56c7b0b77a9904abf05d95ca0500b00
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768715"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549118"
 ---
 # <a name="get-invoice-summaries"></a>Hämta fakturasammanfattningar
 
-**Gäller för:**
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Du kan använda **InvoiceSummaries** för att hämta en faktura sammanfattning som visar saldot och den totala kostnaden för både återkommande och engångs kostnader. **InvoiceSummaries** -resursen innehåller en faktura översikt för varje valuta typ.
+Du kan använda **InvoiceSummaries för att** hämta en fakturasammanfattning som visar saldot och de totala avgifterna för både återkommande och engångsavgifter. Resursen **InvoiceSummaries** innehåller en fakturasammanfattning för varje valutatyp.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett giltigt faktura-ID.
+- En giltig fakturaidentifierare.
 
 ## <a name="c"></a>C\#
 
-Hämta en [**InvoiceSummaries**](invoice-resources.md#invoicesummaries) -samling som innehåller en [**InvoiceSummary**](invoice-resources.md#invoicesummary) för varje valuta typ:
+Så här hämtar [**du en InvoiceSummaries-samling**](invoice-resources.md#invoicesummaries) som innehåller [**en InvoiceSummary**](invoice-resources.md#invoicesummary) för varje valutatyp:
 
-1. Använd din **IAggregatePartner. fakturor** -samling för att anropa **sammanfattnings** egenskapen.
+1. Använd din **IAggregatePartner.Invoices-samling** för att anropa **egenskapen Sammanfattningar.**
 
-2. Anropa metoden **Get ()** .
-3. För att få en individuell [**InvoiceSummary**](invoice-resources.md#invoicesummary)kan du komma åt egenskapen **BalanceAmount** för denna medlem i samlingen.
+2. Anropa **metoden Get().**
+3. Om du vill hämta saldot för en [**enskild InvoiceSummary**](invoice-resources.md#invoicesummary)får du åtkomst till **egenskapen BalanceAmount** för den medlemmen i samlingen.
 
 ``` csharp
 // IAggregatePartner scopedPartnerOperations;
@@ -49,19 +44,19 @@ var invoiceSummaries = scopedPartnerOperations.Invoices.Summaries.Get();
 Console.Out.WriteLine("Current Account Balance:  {0:C}", invoiceSummaries[0].BalanceAmount);
 ```
 
-Mer information finns i följande exempel kod:
+Mer information finns i följande exempelkod:
 
-- Exempel: [konsol test app](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSample**
+- Exempel: [Konsoltestapp](console-test-app.md)
+- Project: **PartnerSDK.FeatureSample**
 - Klass: **GetInvoiceSummaries.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/Summaries http/1.1     |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/summaries HTTP/1.1     |
 
 #### <a name="uri-parameter"></a>URI-parameter
 
@@ -69,7 +64,7 @@ Inga.
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -88,11 +83,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en [**InvoiceSummaries**](invoice-resources.md#invoicesummaries) -resurs i svars texten.
+Om det lyckas returnerar den här metoden [**en InvoiceSummaries-resurs**](invoice-resources.md#invoicesummaries) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

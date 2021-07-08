@@ -1,43 +1,39 @@
 ---
 title: Hämta radobjekt för en kunds servicekostnader
-description: Hämtar en kunds service kostnads rads objekt för den angivna fakturerings perioden.
+description: Hämtar kostnadsradsobjekt för en kunds tjänst för den angivna faktureringsperioden.
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c2034eaf11342493797688b44b634b8e9598e2e4
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 1bc2914d7c8d41c6d806131444fdc241aa1feb90
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97769366"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874949"
 ---
 # <a name="get-a-customers-service-costs-line-items"></a>Hämta radobjekt för en kunds servicekostnader
 
-**Gäller för:**
-
-- Partnercenter
-
-Hämtar en kunds service kostnads rads objekt för den angivna fakturerings perioden.
+Hämtar kostnadsradsobjekt för en kunds tjänst för den angivna faktureringsperioden.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- En fakturerings periods indikator ( **`mostrecent`** ).
+- En faktureringsperiodsindikator ( **`mostrecent`** ).
 
 ## <a name="c"></a>C\#
 
-Så här hämtar du en service kostnads Sammanfattning för den angivna kunden:
+Så här hämtar du en sammanfattning av tjänstkostnader för den angivna kunden:
 
-1. Anropa metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID: t för att identifiera kunden.
+1. Anropa metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden.
 
-2. Använd egenskapen [**ServiceCosts**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.servicecosts) för att hämta ett gränssnitt till kund tjänst kostnader för insamlings åtgärder.
+2. Använd egenskapen [**ServiceCosts för**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.servicecosts) att hämta ett gränssnitt till insamlingsåtgärder för kundtjänstkostnader.
 
-3. Anropa metoden [**ByBillingPeriod**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.icustomerservicecostscollection.bybillingperiod) med en medlem i [**ServiceCostsBillingPeriod**](/dotnet/api/microsoft.store.partnercenter.models.servicecosts.servicecostsbillingperiod) -uppräkningen för att returnera en [**IServiceCostsCollection**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.iservicecostscollection).
+3. Anropa metoden [**ByBillingPeriod**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.icustomerservicecostscollection.bybillingperiod) med en medlem i [**ServiceCostsBillingPeriod-uppräkningen**](/dotnet/api/microsoft.store.partnercenter.models.servicecosts.servicecostsbillingperiod) för att returnera [**en IServiceCostsCollection**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.iservicecostscollection).
 
-4. Använd metoden [**IServiceCostsCollection. rad objekt. get**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.iservicecostlineitemscollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.iservicecostlineitemscollection.getasync) för att hämta kundens service kostnads rads objekt.
+4. Använd metoden [**IServiceCostsCollection.LineItems.Get**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.iservicecostlineitemscollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.iservicecostlineitemscollection.getasync) för att hämta kundens tjänstkostnadsradobjekt.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -48,24 +44,24 @@ var serviceCostsSummary = partnerOperations.Customers.ById(selectedCustomerId).S
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                                             |
 |---------|-------------------------------------------------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/servicecosts/{Billing-period}/lineitems http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/servicecosts/{billing-period}/lineitems HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Använd följande Sök vägs parametrar för att identifiera kunden och fakturerings perioden.
+Använd följande sökvägsparametrar för att identifiera kunden och faktureringsperioden.
 
 | Namn           | Typ   | Obligatorisk | Beskrivning                                                                                                                      |
 |----------------|--------|----------|----------------------------------------------------------------------------------------------------------------------------------|
-| kund-ID    | guid   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.                                                                       |
-| fakturerings period | sträng | Yes      | En indikator som representerar fakturerings perioden. Det enda värde som stöds är MostRecent. Skift läge för strängen spelar ingen roll. |
+| kund-ID    | guid   | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden.                                                                       |
+| faktureringsperiod | sträng | Ja      | En indikator som representerar faktureringsperioden. Det enda värde som stöds är MostRecent. Strängens fall spelar ingen roll. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -85,14 +81,14 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svars texten en [ServiceCostLineItem](service-costs-resources.md) -resurs som ger information om tjänste kostnaderna.
+Om det lyckas innehåller svarstexten en [ServiceCostLineItem-resurs](service-costs-resources.md) som innehåller information om tjänstkostnaderna.
 
 > [!IMPORTANT]
-> Följande egenskaper *gäller bara för* service kostnads rad objekt där produkten är ett *Engångs köp*: **productId**, **productName**, **skuId**, **skuName**, **availabilityId**, **publisherId**, **publisherName**, **termAndBillingCycle**, **discountDetails**. Dessa egenskaper *gäller inte för* service rad objekt där produkten är ett *återkommande köp*. Dessa egenskaper gäller till exempel *inte* för prenumerations Office 365-och Azure-datorer.
+> Följande egenskaper  gäller endast för tjänstkostnadsradobjekt där produkten är ett engångsköp:  **productId**, **productName**, **skuId**, **skuName**, **availabilityId**, **publisherId**, **publisherName**, **termAndBillingCycle**, **discountDetails**. Dessa egenskaper *gäller inte för tjänstradobjekt* där produkten är ett *återkommande köp.* Dessa egenskaper gäller till *exempel inte för* prenumerationsbaserade Office 365 och Azure.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [partner Center rest-felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

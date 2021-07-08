@@ -1,32 +1,27 @@
 ---
 title: Hämta faktura efter ID
-description: Hämtar en faktura med hjälp av faktura-ID.
+description: Hämtar en viss faktura med faktura-ID:t.
 ms.date: 06/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 17880265d06e8e5eaacc5470d83c49defd10ad51
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: c888786a6b6ca941629bb7aac95227021c37a7fc
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97768718"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549169"
 ---
 # <a name="get-invoice-by-id"></a>Hämta faktura efter ID
 
-**Gäller för:**
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-- Partnercenter
-- Partner Center som drivs av 21Vianet
-- Partnercenter för Microsoft Cloud Tyskland
-- Välkommen till Partnercenter för Microsoft Cloud for US Government
-
-Hämtar en faktura med hjälp av faktura-ID.
+Hämtar en viss faktura med faktura-ID:t.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
 
 - Ett giltigt faktura-ID.
 
@@ -34,9 +29,9 @@ Hämtar en faktura med hjälp av faktura-ID.
 
 Så här hämtar du en faktura efter ID:
 
-1. Använd din **IPartner. fakturor** -samling och anropa **ById ()-** metoden.
+1. Använd samlingen **IPartner.Invoices** och anropa **metoden ById().**
 
-2. Anropa metoderna **Get ()** eller **GetAsync ()** .
+2. Anropa **metoderna Get()** eller **GetAsync().**
 
 ``` csharp
 // IPartner scopedPartnerOperations;
@@ -45,15 +40,15 @@ Så här hämtar du en faktura efter ID:
 var invoice = scopedPartnerOperations.Invoices.ById(selectedInvoiceId).Get();
 ```
 
-**Exempel**: [konsol test app](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample- **klass**: GetInvoice.CS
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** PartnerSDK.FeatureSample-klass: GetInvoice.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **TA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/INVOICES/{Invoice-ID} http/1.1 |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id} HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>URI-parameter
 
@@ -61,15 +56,15 @@ Använd följande frågeparameter för att hämta fakturan.
 
 | Namn           | Typ       | Obligatorisk | Beskrivning                                                                                        |
 |----------------|------------|----------|----------------------------------------------------------------------------------------------------|
-| **faktura-ID** | **nollängd** | Yes      | Värdet är ett **faktura-ID** som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik faktura. |
+| **faktura-id** | **sträng** | Ja      | Värdet är ett **faktura-ID som** gör att återförsäljaren kan filtrera resultatet för en viss faktura. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Inget
+Ingen
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -83,11 +78,11 @@ MS-CorrelationId: 57eb2ca7-755f-450f-9187-eae1e75a0114
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden en [faktura](invoice-resources.md#invoice) resurs i svars texten.
+Om det lyckas returnerar den här metoden [en fakturaresurs](invoice-resources.md#invoice) i svarstexten.
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 
