@@ -1,41 +1,42 @@
 ---
 title: Uppdatera en kunds kvalificeringar
-description: Uppdaterar en kunds kvalifikationer asynkront, inklusive adressen som är kopplad till profilen.
+description: Uppdaterar en kunds kvalificering asynkront, inklusive adressen som är kopplad till profilen.
 ms.date: 03/23/2021
 ms.service: partner-dashboard
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: 7606eeaac4df158ec0fad6ffd4e565bb250f448e
-ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
+ms.openlocfilehash: d7dd3593894ce91ddc7b96d604b80153d41d3a67
+ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105030614"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113572105"
 ---
-# <a name="update-a-customers-qualifications-asynchronously"></a>Uppdatera en kunds kvalifikationer asynkront
+# <a name="update-a-customers-qualifications-asynchronously"></a>Uppdatera en kunds kvalificeringar asynkront
 
-Uppdaterar en kunds kvalifikationer asynkront.
+Uppdaterar en kunds kvalificeringar asynkront.
 
-En partner kan uppdatera en kunds kvalifikationer asynkront så att de blir "utbildning" eller "GovernmentCommunityCloud". Andra värden, "ingen" och "icke-vinst" kan inte anges.
+En partner kan uppdatera en kunds kompetens asynkront till "Utbildning" eller "GovernmentCommunityCloud". Andra värden, "None" och "Nonprofit", kan inte anges.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app + användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du se det i [instrument panelen](https://partner.microsoft.com/dashboard)för partner Center. Välj **CSP** på menyn Partner Center, följt av **kunder**. Välj kunden från listan kund och välj sedan **konto**. På sidan kund konto letar du upp **Microsoft ID** i avsnittet **kund konto information** . Microsoft-ID: t är detsamma som kund-ID ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Skapa en kunds kvalificering för "utbildning" genom att först skapa ett objekt som representerar kvalificerings typen. Anropa sedan metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID. Använd sedan egenskapen [**kvalificering**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) för att hämta ett [**ICustomerQualification**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) -gränssnitt. Anropa slutligen `CreateQualifications()` eller `CreateQualificationsAsync()` med kvalificerings typ objektet som en indataparameter.
+Om du vill skapa en kunds kvalificering för "Utbildning" skapar du först ett objekt som representerar kvalificeringstypen. Anropa sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kundidentifieraren. Använd sedan egenskapen [**Kvalificering för**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) att hämta ett [**ICustomerQualification-gränssnitt.**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) Anropa eller med `CreateQualifications()` `CreateQualificationsAsync()` objektet för kvalificeringstyp som en indataparameter.
 
 ``` csharp
-var qualificationType = { Qualification = "education" };
+var qualificationToCreate = "education";    // can also be "StateOwnedEntity" or "GovernmentCommunityCloud". See GCC example below.
+var qualificationType = { Qualification = qualificationToCreate };
 var eduCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.CreateQualifications(qualificationType);
 ```
 
-**Exempel**: [app för konsol exempel](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: SdkSamples- **klass**: CreateCustomerQualification. CS
+**Exempel:** [Konsolexempelapp](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project:** SdkSamples-klass: CreateCustomerQualification.cs 
 
-För att kunna uppdatera en kunds kvalificering till **GovernmentCommunityCloud** på en befintlig kund utan kvalificering, måste partnern också inkludera kundens [**ValidationCode**](utility-resources.md#validationcode). Börja med att skapa ett objekt som representerar kvalificerings typen. Anropa sedan metoden [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID. Använd sedan egenskapen [**kvalificering**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) för att hämta ett [**ICustomerQualification**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) -gränssnitt. Anropa slutligen `CreateQualifications()` eller `CreateQualificationsAsync()` med kvalificerings typ objekt och validerings koden som indataparametrar.
+För att uppdatera en kunds kvalificering till **GovernmentCommunityCloud** på en befintlig kund utan kvalificering måste partnern också inkludera kundens [**valideringskod**](utility-resources.md#validationcode). Skapa först ett objekt som representerar kvalificeringstypen. Anropa sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kundidentifieraren. Använd sedan egenskapen [**Kvalificering för**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) att hämta ett [**ICustomerQualification-gränssnitt.**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) Anropa eller med `CreateQualifications()` `CreateQualificationsAsync()` kvalificeringstypobjektet och valideringskoden som indataparametrar.
 
 ``` csharp
 // GCC validation is type ValidationCode
@@ -43,15 +44,15 @@ var qualificationType = { Qualification = "GovernmentCommunityCloud" };
 var gccCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.CreateQualifications(qualificationType, gccValidation);
 ```
 
-**Exempel**: [app för konsol exempel](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: SdkSamples- **klass**: CreateCustomerQualificationWithGCC. CS
+**Exempel:** [Konsolexempelapp](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project:** SdkSamples-klass: CreateCustomerQualificationWithGCC.cs 
 
 ## <a name="rest-request"></a>REST-begäran
 
-### <a name="request-syntax"></a>Syntax för begäran
+### <a name="request-syntax"></a>Begärandesyntax
 
 | Metod  | URI för förfrågan                                                                                             |
 |---------|---------------------------------------------------------------------------------------------------------|
-| **EFTER** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{customer_id}/Qualifications? Code = {VALIDATIONCODE} http/1.1 |
+| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer_id}/kvalificeringar?code={validationCode} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -59,20 +60,20 @@ Använd följande frågeparameter för att uppdatera kvalificeringen.
 
 | Namn                   | Typ | Obligatorisk | Beskrivning                                                                                                                                            |
 |------------------------|------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **kund-ID för klient organisation** | GUID | Ja      | Värdet är ett GUID-formaterat **kund-Tenant-ID** som gör det möjligt för åter försäljaren att filtrera resultaten för en specifik kund som tillhör åter försäljaren. |
-| **validationCode**     | int  | Inga       | Krävs endast för Community-molnet för myndigheter.                                                                                                            |
+| **kund-klient-id** | GUID | Yes      | Värdet är ett GUID-formaterat **kundklient-ID** som gör att återförsäljaren kan filtrera resultaten för en viss kund som tillhör återförsäljaren. |
+| **validationCode**     | int  | No       | Behövs bara för Government Community Cloud.                                                                                                            |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Mer information finns i [partner Center rest-rubriker](headers.md).
+Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-I den här tabellen beskrivs kvalificerings objekt i begär ande texten.
+I den här tabellen beskrivs kvalificeringsobjektet i begärandetexten.
 
 Egenskap | Typ | Obligatorisk | Beskrivning
 -------- | ---- | -------- | -----------
-Kvalificering | sträng | Ja | Strängvärdet från [**CustomerQualification**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerqualification) -uppräkningen.
+Kvalificering | sträng | Yes | Strängvärdet från [**uppräkning av CustomerQualification.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerqualification)
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -91,11 +92,11 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden ett kvalificerings objekt i svars texten. Nedan visas ett exempel på **post** anropet på en kund (med ett tidigare kvalificerings **ingen**) med **utbildnings** kompetensen.
+Om det lyckas returnerar den här metoden ett kvalificeringsobjekt i svarstexten. Nedan visas ett exempel på **POST-anropet** på en kund (med en tidigare kvalificering på **Ingen)** med **utbildningskvalificering.**
 
-### <a name="response-success-and-error-codes"></a>Slutförda svar och felkoder
+### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som indikerar lyckad eller misslyckad och ytterligare felsöknings information. Använd ett verktyg för nätverks spårning för att läsa den här koden, fel typen och ytterligare parametrar. En fullständig lista finns i [felkoder](error-codes.md).
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 
@@ -114,5 +115,5 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="related-articles"></a>Relaterade artiklar
 
-- [Få en kunds kompetens](./get-customer-qualification-asynchronous.md)
+- [Skaffa en kunds kompetens](./get-customer-qualification-asynchronous.md)
 - [Hämta en partners valideringskoder](get-a-partner-s-validation-codes.md)

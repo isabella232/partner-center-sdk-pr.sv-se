@@ -4,12 +4,12 @@ description: I det här avsnittet beskrivs hur Molnlösningsleverantör kan anv�
 ms.date: 02/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 00c0e51dfd6970bd28db2ce88e6b9be15175a76c
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 9f9b8629406a8d66c8ea820205abf73a2fb0cc02
+ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548217"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113571986"
 ---
 # <a name="manage-customers"></a>Hantera kunder
 
@@ -48,8 +48,8 @@ I det här avsnittet beskrivs hur Molnlösningsleverantör kan använda Partnerc
 - [Hämta status för direktsignering (direktgodkännande) för Microsoft-kundavtal](get-direct-sign-status-of-customer-agreement.md)
 - [Bekräfta kundgodkännande av Microsoft-kundavtal](confirm-customer-consent-customer-agreement.md)
 - [Hämta en partners valideringskoder](get-a-partner-s-validation-codes.md)
-- [Hämta en kunds kvalificering](./get-customer-qualification-synchronous.md)
-- [Uppdatera en kunds kvalificering](./update-customer-qualification-synchronous.md)
+- [Skaffa en kunds kompetens](./get-customer-qualification-asynchronous.md)
+- [Uppdatera en kunds kvalificeringar](./update-customer-qualification-asynchronous.md)
 
 ## <a name="manage-user-accounts-and-assign-licenses"></a>Hantera användarkonton och tilldela licenser
 
