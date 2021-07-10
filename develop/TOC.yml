@@ -247,8 +247,6 @@
           items:
             - name: 'Använd asynkrona API:er'
               href: get-customer-qualification-asynchronous.md
-            - name: 'Använd synkrona API:er'
-              href: get-customer-qualification-synchronous.md
         - name: Hämta en kunds alla beställningar
           href: get-all-of-a-customer-s-orders.md
         - name: Hämta en kunds prenumerationer
@@ -295,8 +293,6 @@
           items:
             - name: 'Använd asynkrona API:er'
               href: update-customer-qualification-asynchronous.md
-            - name: 'Använd synkrona API:er'
-              href: update-customer-qualification-synchronous.md
         - name: Uppdatera smeknamnet för en prenumeration
           href: update-the-nickname-for-a-subscription.md
         - name: Återkalla en kunds överföring
