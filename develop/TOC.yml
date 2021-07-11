@@ -406,6 +406,8 @@
           href: update-a-cart.md
         - name: Uppdatera automatisk förnyelse för en prenumeration på kommersiell marknadsplats
           href: update-autorenew-for-an-azure-marketplace-subscription.md
+    - name: Hantera utbetalning
+      href: manage-payouts.md
     - name: Ge support
       href: provide-support.md
       items:
@@ -427,7 +429,7 @@
       href: sandbox-scenario.md
     - name: Testa och felsöka sandbox-miljö
       href: test-and-debug.md
-    - name: CSP Indirect-providerfunktioner i sandbox-miljö
+    - name: Funktioner för indirekt CSP-provider i sandbox-miljö
       href: indirect-provider-sandbox-capabilities.md
     - name: Avbryt en beställning från sandbox-miljön för integrering
       href: cancel-an-order-from-the-integration-sandbox.md
