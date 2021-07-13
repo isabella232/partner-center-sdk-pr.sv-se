@@ -1,31 +1,31 @@
 ---
 title: Validera en adress
 description: Så här verifierar du en adress med hjälp av API:et för adressverifiering.
-ms.date: 09/17/2019
+ms.date: 05/17/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 2eeca91b0e5a507dac6df4ecf61a56aed2d2d921
-ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
+ms.openlocfilehash: 30f5cd526ab038dce400e79822d89b8086ba3799
+ms.sourcegitcommit: 41bf9dca55f4c96d382b327a75b2d2418edfc9bc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113572088"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113655620"
 ---
 # <a name="validate-an-address"></a>Validera en adress
 
-**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Så här verifierar du en adress med hjälp av API:et för adressverifiering.
 
-API:et för adressvalidering bör endast användas för förvalidering av kundprofiluppdateringar. Använd det med förståelsen att om landet är USA, Kanada, Kina eller Mexiko verifieras fältet Delstat mot en lista över giltiga delstater för respektive land. I alla andra länder utförs inte det här testet och API:et kontrollerar endast att tillståndet är en giltig sträng.
+API:et för adressverifiering bör endast användas för förvalidering av kundprofiluppdateringar. Använd den med förståelsen att om landet är USA, Kanada, Kina eller Mexiko verifieras fältet Delstat mot en lista över giltiga delstater för respektive land. I alla andra länder utförs inte det här testet och API:et kontrollerar bara att tillståndet är en giltig sträng.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Verifiera en adress genom att först skapa en instans av ett **nytt address-objekt** och fylla i den med adressen som ska verifieras. Hämta sedan ett gränssnitt till **valideringsåtgärder** från **egenskapen IAggregatePartner.Validations** och anropa **metoden IsAddressValid** med adressobjektet.
+Verifiera en adress genom att först instansiera ett nytt **Address-objekt** och fylla i det med adressen som ska verifieras. Hämta sedan ett gränssnitt till **valideringsåtgärder** från egenskapen **IAggregatePartner.Validations** och anropa **metoden IsAddressValid** med adressobjektet.
 
 ```csharp
 IAggregatePartner partnerOperations;
@@ -90,11 +90,11 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-I den här tabellen beskrivs de obligatoriska egenskaperna i begärandetexten.
+I den här tabellen beskrivs de nödvändiga egenskaperna i begärandetexten.
 
 | Namn         | Typ   | Obligatorisk | Beskrivning                                                |
 |--------------|--------|----------|------------------------------------------------------------|
-| addressline1 | sträng | Y        | Den första raden i adressen.                             |
+| addressline1 | sträng | Y        | Den första adressraden.                             |
 | addressline2 | sträng | N        | Den andra raden i adressen. Den här egenskapen är valfri. |
 | city         | sträng | Y        | Staden.                                                  |
 | state        | sträng | Y        | Tillståndet.                                                 |
@@ -107,14 +107,14 @@ Svaret returnerar något av följande statusmeddelanden:
 
 | Status     | Beskrivning |    Antal föreslagna adresser som returneras |
 |-------|---------------|-------------------|
-|Verifierad leverans | Adressen är verifierad och kan skickas till. | Enkel |
+|Verifierad leveransbar | Adressen är verifierad och kan skickas till. | Enkel |
 |Verifierat | Adressen är verifierad. | Enkel |
 |Interaktion krävs | Den föreslagna adressen har ändrats avsevärt och kräver användarbekräftelse. | Enkel |
-|Partiell gatuadress | Den angivna gatuadressen är delvis och behöver mer information. | Flera – högst tre |
-|Delvis lokal | De angivna lokalerna (byggnadsnummer, svitnummer och andra) är ofullständiga och behöver mer information. | Flera – högst tre |
-|Flera | Det finns flera fält som är partiella i adressen (inklusive delvis gatuadress och delvis lokal). | Flera – högst tre |
+|Gatuadress delvis | Den angivna gatuadressen är delvis och behöver mer information. | Multipel – högst tre |
+|Delvis lokal | De angivna lokalerna (byggnummer, svitnummer och annat) är ofullständiga och behöver mer information. | Multipel – högst tre |
+|Flera | Det finns flera fält som är partiella i adressen (inklusive delvis gatuadress och delvis lokal). | Multipel – högst tre |
 |Ingen | Adressen är felaktig. | Ingen |
-|Inte validerat | Adressen kunde inte skickas via verifieringsprocessen. | Ingen |
+|Inte validerat | Adressen kunde inte skickas via valideringsprocessen. | Ingen |
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -162,11 +162,11 @@ X-Locale: en-US
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar metoden ett **AddressValidationResponse-objekt** i svarstexten med en **HTTP 200-statuskod.** Ett exempel på detta visas nedan.
+Om det lyckas returnerar metoden ett **AddressValidationResponse-objekt** i svarstexten med statuskoden **HTTP 200.** Ett exempel på detta visas nedan.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 
