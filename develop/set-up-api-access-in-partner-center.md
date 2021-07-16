@@ -4,35 +4,35 @@ description: Konfigurera konton för utveckling mot Partnercenter-SDK och testa 
 ms.date: 05/29/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 2c564baa9b626ff6ce21f9bcc517902d7cf99244
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: db7d9bba34abadc907910c68c4a5583ed1f530f4
+ms.sourcegitcommit: de1e68545d37d7fa1862788f7fa8c84a9c4f2795
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547435"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114282098"
 ---
 # <a name="set-up-api-access-in-partner-center"></a>Konfigurera API-åtkomst i Partner Center
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud for US Government | Partnercenter för Microsoft Cloud Tyskland
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud for US Government | Partnercenter för Microsoft Cloud Tyskland
 
-I den här artikeln beskrivs de konton som du behöver utveckla mot Partnercenter-SDK. Den här artikeln förklarar också hur du skapar ett [sandbox-konto för integrering och](#integration-sandbox-account) testar i sandbox-miljön för integrering.
+I den här artikeln beskrivs de konton som du behöver utveckla mot Partnercenter-SDK. Den här artikeln beskriver också hur du skapar ett [sandbox-konto för integrering och](#integration-sandbox-account) testar i sandbox-miljön för integrering.
 
 >[!NOTE]
 >För att få åtkomst till API:er måste din klient vara en CSP-klient och du måste vara antingen en indirekt leverantör eller en partner för direktfakturering.
 
 ## <a name="account-definitions"></a>Kontodefinitioner
 
-Partner Center har stöd för två typer av konton som hjälper dig att integrera och testa API-integreringen:
+Partner Center har stöd för två typer av konton som hjälper dig att integrera och testa DIN API-integrering:
 
 ### <a name="primary-partner-account"></a>Primärt partnerkonto
 
-På det här kontot skapar du verkliga beställningar för verkliga kunder. Om du gör ändringar eller transaktioner när du är inloggad på det primära kontot, med hjälp av antingen Partnercenter-SDK eller partnerinstrumentpanelens användargränssnitt, behandlas de som officiella beställningar för verkliga kunder. De visas på din faktura och ditt företag ansvarar för att betala för dem.
+Det är här du skapar verkliga beställningar för verkliga kunder. Om du gör ändringar eller transaktioner när du är inloggad på det primära kontot, med hjälp av antingen Partnercenter-SDK eller partnerinstrumentpanelens användargränssnitt, behandlas de som officiella beställningar för verkliga kunder. De visas på din faktura och ditt företag ansvarar för att betala för dem.
 
 ### <a name="integration-sandbox-account"></a>Sandbox-konto för integrering
 
-Det här kontot används för att testa din kod och dess integrering med Partner Center-API:erna innan du distribuerar den brett. Ändringar och transaktioner som du gör när du är inloggad på sandbox-kontot för integrering visas på din faktura, men du behöver inte betala fakturabeloppet. Faktura-PDF har en ansvarsfriskrivning som "BETALA INTE. DET HÄR ÄR EN SANDBOX-FAKTURA OCH INGEN ÅTGÄRD KRÄVS."
+Det här kontot används för att testa din kod och dess integrering med Partner Center-API:er innan du distribuerar den brett. Ändringar och transaktioner som du gör när du är inloggad på sandbox-kontot för integrering visas på din faktura, men du behöver inte betala fakturabeloppet. Faktura-PDF har en ansvarsfriskrivning som "BETALA INTE. DET HÄR ÄR EN SANDBOX-FAKTURA OCH INGEN ÅTGÄRD KRÄVS."
 
-Sandbox-kontot för integrering och det primära kontot fungerar oberoende och delar inte administratörskonton, användarkonton, kunder, beställningar, prenumerationer eller andra data.
+Sandbox-kontot för integrering och det primära kontot fungerar oberoende av varandra och delar inte administratörskonton, användarkonton, kunder, beställningar, prenumerationer eller andra data.
 
 Sandbox-miljön för integrering stöder transaktioner med ett begränsat antal kunder, beställningar, prenumerationer, licenser osv.
 
@@ -48,20 +48,20 @@ I det här avsnittet beskrivs hur du ställer in ett primärt partnerkonto och e
 
 1. Logga in på partnerinstrumentpanelen med ett globalt administratörskonto (ditt primära partnerkonto.)
 
-2. På **Inställningar** (kugghjulsikonen) väljer du **Partnerinställningar.**
+2. På **Inställningar** (kugghjulsikonen) väljer **du Kontoinställningar.**
 
 3. Välj **fliken Sandbox-miljö för** integrering.
 
     >[!NOTE]
-    >Om du inte ser alternativet Sandbox-miljö för integrering kanske du inte har något globalt administratörskonto. Du kanske också använder ett sandbox-konto för integrering och en sandbox-miljö för integrering har redan ställts in.
+    >Om du inte ser ett sandbox-alternativ för integrering kanske du inte har något globalt administratörskonto. Du kanske också använder ett sandbox-konto för integrering och en sandbox-miljö för integrering har redan ställts in.
 
-4. Ange kontaktinformationen för administratörskontot för sandbox-integrering. Välj sedan **Skapa konto.** Vänta några minuter på ett bekräftelsemeddelande om att kontot har skapats.
+4. Ange kontaktinformationen för administratörskontot för sandbox-integrering. Välj sedan **Skapa konto.** Vänta några minuter tills du får ett bekräftelsemeddelande om att kontot har skapats.
 
-5. När du ser bekräftelsemeddelandet loggar du ut från Partnerinstrumentpanel.
+5. När du ser bekräftelsemeddelandet loggar du ut från partnerinstrumentpanelen.
 
 6. Logga in igen med ditt nya administratörskonto för sandbox-integrering. Se till att använda formatet för **username@domain** dina autentiseringsuppgifter tillsammans med det lösenord som du har angett.
 
-7. Välj **Konfigurera konto ovanför Aktuella** uppgifter för **att** slutföra konfigurationen av sandbox-kontot.
+7. Välj **Konfigurera konto ovanför Aktuella** aktiviteter för **att** slutföra konfigurationen av sandbox-kontot.
 
 ### <a name="enable-api-access"></a>Aktivera API-åtkomst
 
@@ -69,7 +69,7 @@ När ditt konto har konfigurerats måste du aktivera API-åtkomst innan du kan a
 
 1. Logga in på partnerinstrumentpanelen med ett globalt administratörskonto.
 
-2. På **Inställningar** (kugghjulsikonen) väljer du **Partnerinställningar.**
+2. På **Inställningar** (kugghjulsikonen) väljer **du Kontoinställningar.**
 
 3. På sidan **Kontoinställningar** väljer du **Apphantering.**
 
@@ -87,16 +87,16 @@ Du kan skriva kod och testa kod i sandbox-miljön för integrering. Du behöver 
 
 | Objektnamn | Objektplats |
 | --------- | ------------- |
-| App-ID/klient-ID | På **Inställningar** (kugghjulsikonen) väljer du **Partnerinställningar.** På sidan **Kontoinställningar** väljer du **Apphantering.** App-ID/klient-ID visas som **det registrerade app-ID:t.** |
+| App-ID/klient-ID | På **Inställningar** (kugghjulsikonen) väljer **du Kontoinställningar.** På sidan **Kontoinställningar** väljer du **Apphantering.** App-ID/klient-ID visas som **det registrerade app-ID:t**. |
 | Nyckel | Om du skapade en webbapp i avsnittet [Aktivera API-åtkomst](#enable-api-access)är det här nyckeln som du sparade i steg 5. |
 | Domain | Domänen för sandbox-miljön för integrering. |
 
 ## <a name="run-tested-code"></a>Köra testad kod
 
-Om du vill använda din lösning med verkliga kunddata måste du ändra från dina autentiseringsuppgifter för sandbox-integrering till autentiseringsuppgifterna för ditt primära partnerkonto.
+Om du vill använda din lösning med verkliga kunddata måste du ändra från dina autentiseringsuppgifter för sandbox-integrering till dina primära autentiseringsuppgifter för partnerkontot.
 
-När du är redo att använda din testade kod i ditt primära partnerkonto måste du hämta en Azure AD-säkerhetstoken. Den här säkerhetstoken baseras på din Partner Center-app, nyckel och domän (i stället för din integrerings-sandbox-app, nyckel och domän).
+När du är redo att använda den testade koden i ditt primära partnerkonto måste du hämta en Azure AD-säkerhetstoken. Denna säkerhetstoken baseras på partnercenterappen, nyckeln och domänen (i stället för din integrerings-sandbox-app, nyckel och domän).
 
-1. Följ stegen i Partner [Center-autentisering för att hämta](partner-center-authentication.md) en Azure AD-säkerhetstoken med dina primära Autentiseringsuppgifter för Partnercenter. (Du har tidigare följt de här stegen för att hämta en Azure AD-säkerhetstoken för din sandbox-miljö för integrering.)
+1. Följ stegen i Partner [center-autentisering för att](partner-center-authentication.md) hämta en Azure AD-säkerhetstoken med dina primära partnercenterautentiseringsuppgifter. (Du har tidigare följt de här stegen för att hämta en Azure AD-säkerhetstoken för din sandbox-miljö för integrering.)
 
 2. Ersätt integrationssäkerhetstoken i koden med den nya säkerhetstoken för ditt primära partnerkonto.

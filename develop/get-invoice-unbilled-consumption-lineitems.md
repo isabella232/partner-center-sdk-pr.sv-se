@@ -4,12 +4,12 @@ description: Du kan hämta en samling ofakturerade radobjekt för en angiven fak
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1b7dba3333aaec8df73f0e8147b0bbbc78b9b184
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: f7c74bedfd6412fc5954ed2ddc1388936e418fa3
+ms.sourcegitcommit: 722992eea6f8ea366dc088e5dd1ee63c17d56f61
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446154"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114224776"
 ---
 # <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Hämta fakturaradsobjekt som inte fakturerats för kommersiell förbrukning
 
@@ -23,8 +23,6 @@ Du kan använda följande metoder för att hämta en samling information som int
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
-
-- En fakturaidentifierare. Detta identifierar fakturan som radobjekten ska hämtas för.
 
 ## <a name="c"></a>C\#
 
@@ -125,11 +123,11 @@ Använd följande URI- och frågeparametrar när du skapar begäran.
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                                                                                |
 |------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Leverantör               | sträng | Ja      | Providern: "**OneTime**".                                                                                                                                                                                                               |
-| invoice-line-item-type | sträng | Ja      | Typ av fakturainformation: "**UsageLineItems**", "**UsageLineItems**".                                                                                                                                                                    |
-| currencyCode           | sträng | Ja      | Valutakoden för de ej fakturerade radobjekten.                                                                                                                                                                                             |
-| period                 | sträng | Ja      | Perioden för ej fakturerad rekognosering (till **exempel** aktuell , **tidigare**). Anta att du behöver fråga dina ofakturerade användningsdata för faktureringsperioden (01/01/2020 – 01/31/2020) i januari och välja period **som "Aktuell"** annars **"Föregående".** |
-| ikoner                   | antal | Inga       | Det maximala antalet objekt som ska returneras. Standardstorleken är 2 000.                                                                                                                                                                           |
+| Leverantör               | sträng | Yes      | Providern: "**OneTime**".                                                                                                                                                                                                               |
+| invoice-line-item-type | sträng | Yes      | Typ av fakturainformation: "**UsageLineItems**", "**UsageLineItems**".                                                                                                                                                                    |
+| currencyCode           | sträng | Yes      | Valutakoden för de ej fakturerade radobjekten.                                                                                                                                                                                             |
+| period                 | sträng | Yes      | Perioden för ej fakturerad rekognosering (till **exempel** aktuell , **tidigare**). Anta att du behöver fråga dina ofakturerade användningsdata för faktureringsperioden (01/01/2020 – 01/31/2020) i januari och välja period **som "Aktuell"** annars **"Föregående".** |
+| ikoner                   | antal | No       | Det maximala antalet objekt som ska returneras. Standardstorleken är 2 000.                                                                                                                                                                           |
 | seekOperation          | sträng | No       | Ange `seekOperation=Next` för att hämta nästa sida med avstämningsradsobjekt.                                                                                                                                                                |
 
 ### <a name="request-headers"></a>Begärandehuvuden
