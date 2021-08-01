@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: dba54d4f6b97f3d0a51e2f87b32edca686466b89
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: d23c162b5eddd0fbe91b11faafa5c4debfb7a4a8
+ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973782"
+ms.lasthandoff: 07/31/2021
+ms.locfileid: "115009196"
 ---
 # <a name="create-a-cart-with-a-customer-order"></a>Skapa en kundvagn med en kundorder
 
@@ -23,7 +23,7 @@ Du kan lägga till en order för en kund i en kundvagn. Mer information om vad s
 
 - Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
@@ -31,7 +31,7 @@ Så här skapar du en order för en kund:
 
 1. Skapa en instans av ett kundvagnsobjekt.
 
-2. Skapa en lista över **CartLineItem-objekt** och tilldela listan till kundvagnens LineItems-egenskap. Varje kundvagnsrad innehåller inköpsinformationen för en produkt. Du måste ha minst en kundvagnsrad.
+2. Skapa en lista över **CartLineItem-objekt** och tilldela listan till kundvagnens LineItems-egenskap. Varje artikel i kundvagnsraden innehåller inköpsinformationen för en produkt. Du måste ha minst en kundvagnsrad.
 
 3. Hämta ett gränssnitt för kundvagnsåtgärder genom att anropa metoden **IAggregatePartner.Customers.ById** med kund-ID:t för att identifiera kunden och sedan hämta gränssnittet från **egenskapen Cart.**
 
@@ -129,7 +129,7 @@ Så här skapar du en order för en kund:
 
 1. Skapa en instans av ett kundvagnsobjekt.
 
-2. Skapa en lista över **CartLineItem-objekt** och tilldela listan till kundvagnens radobjekt. Varje kundvagnsrad innehåller inköpsinformationen för en produkt. Du måste ha minst en kundvagnsrad.
+2. Skapa en lista över **CartLineItem-objekt** och tilldela listan till kundvagnens radobjekt. Varje artikel i kundvagnsraden innehåller inköpsinformationen för en produkt. Du måste ha minst en kundvagnsrad.
 
 3. Hämta ett gränssnitt för kundvagnsåtgärder genom att anropa funktionen **IAggregatePartner.getCustomers().byId** med kund-ID:t för att identifiera kunden och sedan hämta gränssnittet från **funktionen getCart.**
 
@@ -175,7 +175,7 @@ Så här skapar du en order för en kund:
 
 1. Skapa en instans av ett kundvagnsobjekt.
 
-2. Skapa en lista över **CartLineItem-objekt** och tilldela listan till kundvagnens radobjekt. Varje kundvagnsrad innehåller inköpsinformationen för en produkt. Du måste ha minst en kundvagnsrad.
+2. Skapa en lista över **CartLineItem-objekt** och tilldela listan till kundvagnens radobjekt. Varje artikel i kundvagnsraden innehåller inköpsinformationen för en produkt. Du måste ha minst en kundvagnsrad.
 
 3. Kör kommandot [**New-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/New-PartnerCustomerCart.md) för att skapa kundvagnen.
 
@@ -236,7 +236,7 @@ I den här tabellen beskrivs [egenskaperna för CartLineItem](cart-resources.md#
 |---------------------|-----------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |         id          |           sträng            |    No    |                                                     En unik identifierare för ett kundvagnsradsobjekt. Tillämpas när kundvagnen har skapats.                                                     |
 |      catalogId      |           sträng            |   Ja    |                                                                                Katalogobjektets identifierare.                                                                                 |
-|    friendlyName     |           sträng            |    No    |                                                    Valfritt. Det egna namnet för objektet som definierats av partnern för att undvika tvetydighet.                                                    |
+|    friendlyName     |           sträng            |    No    |                                                    Valfritt. Det egna namnet för det objekt som definierats av partnern för att undvika tvetydighet.                                                    |
 |      quantity       |             int             |   Ja    |                                                                            Antalet licenser eller instanser.                                                                             |
 |    currencyCode     |           sträng            |    No    |                                                                                     Valutakoden.                                                                                      |
 |    billingCycle     |           Objekt            |   Ja    |                                                                    Den typ av faktureringsperiod som angetts för den aktuella perioden.                                                                    |
@@ -245,6 +245,7 @@ I den här tabellen beskrivs [egenskaperna för CartLineItem](cart-resources.md#
 |     orderGroup      |           sträng            |    No    |                                                                   En grupp som anger vilka objekt som kan placeras tillsammans.                                                                   |
 |        fel        |           Objekt            |    Inga    |                                                                     Tillämpas efter att kundvagnen har skapats om det finns ett fel.                                                                      |
 |     renewsTo        | Matris med objekt            |    Inga    |                                                    En matris med [RenewsTo-resurser.](cart-resources.md#renewsto)                                                                            |
+|     AttestationAccepted        | Boolesk            |    Inga    |                                                   Anger avtal om att erbjuda eller SKU-villkor. Krävs endast för erbjudanden eller SKU:er där SkuAttestationProperties eller OfferAttestationProperties enforceAttestation är True.                                                                             |
 
 I den här tabellen beskrivs [egenskaperna RenewsTo](cart-resources.md#renewsto) i begärandetexten.
 

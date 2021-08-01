@@ -4,12 +4,12 @@ description: Lär dig hur du använder Partner Center-API:er för att skapa en o
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c3a86a99f43bdeec5e4c560ab59e1924b76c0636
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: a2a980634e3887780c9d6dbd4fa3271956978884
+ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973560"
+ms.lasthandoff: 07/31/2021
+ms.locfileid: "115009161"
 ---
 # <a name="create-an-order-for-a-customer-using-partner-center-apis"></a>Skapa en order för en kund med partnercenter-API:er
 
@@ -33,9 +33,9 @@ Information om vad som för närvarande är tillgängligt för försäljning [fi
 
 Så här skapar du en order för en kund:
 
-1. Skapa en instans [**av ett Order-objekt**](order-resources.md) och ange **egenskapen ReferenceCustomerID** till kund-ID:t för att registrera kunden.
+1. Instansiera [**ett Order-objekt**](order-resources.md) och ange **egenskapen ReferenceCustomerID** till kund-ID:t för att registrera kunden.
 
-2. Skapa en lista [**med OrderLineItem-objekt**](order-resources.md#orderlineitem) och tilldela listan till orderns **LineItems-egenskap.** Varje orderradsartikel innehåller inköpsinformationen för ett erbjudande. Du måste ha minst en orderrad.
+2. Skapa en lista med [**OrderLineItem-objekt**](order-resources.md#orderlineitem) och tilldela listan till orderns **LineItems-egenskap.** Varje orderradsartikel innehåller inköpsinformationen för ett erbjudande. Du måste ha minst ett orderradsobjekt.
 
 3. Hämta ett gränssnitt för att ordna åtgärder. Anropa först metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Hämta sedan gränssnittet från [**egenskapen**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) Beställningar.
 
@@ -102,10 +102,10 @@ I den här tabellen beskrivs [orderegenskaperna](order-resources.md) i begärand
 | id                   | sträng                      | No                              | En orderidentifierare som anges när ordern har skapats.   |
 | referenceCustomerId  | sträng                      | No                              | Kundidentifieraren. |
 | billingCycle         | sträng                      | No                              | Anger med vilken frekvens partnern faktureras för den här beställningen. Värden som stöds är de medlemsnamn som finns [i BillingCycleType](product-resources.md#billingcycletype). Standardvärdet är "Varje månad" eller "OneTime" när ordern skapas. Det här fältet tillämpas när ordern har skapats. |
-| lineItems            | matris med [OrderLineItem-resurser](order-resources.md#orderlineitem) | Ja      | En specificerad lista över de erbjudanden som kunden köper, inklusive kvantitet.        |
+| lineItems            | matris med [OrderLineItem-resurser](order-resources.md#orderlineitem) | Ja      | En specificerad lista över de erbjudanden som kunden köper, inklusive antalet.        |
 | currencyCode         | sträng                      | No                              | Skrivskyddade. Den valuta som används när du gör beställningen. Tillämpas när ordern har skapats.           |
 | creationDate         | datetime                    | Inga                              | Skrivskyddade. Det datum då ordern skapades i datum/tid-format. Tillämpas när ordern har skapats.                                   |
-| status               | sträng                      | No                              | Skrivskyddade. Orderstatus.  Värden som stöds är de medlemsnamn som finns i [OrderStatus](order-resources.md#orderstatus).        |
+| status               | sträng                      | No                              | Skrivskyddade. Status för ordern.  Värden som stöds är de medlemsnamn som finns i [OrderStatus](order-resources.md#orderstatus).        |
 | Länkar                | [OrderLinks](utility-resources.md#resourcelinks)              | Inga                              | Resursen länkar som motsvarar ordern. |
 | Attribut           | [ResourceAttributes](utility-resources.md#resourceattributes) | Inga                              | Metadataattributen som motsvarar Order. |
 
@@ -129,6 +129,7 @@ I den här tabellen beskrivs [egenskaperna OrderLineItem](order-resources.md#ord
 | Länkar                | [OrderLineItemLinks](order-resources.md#orderlineitemlinks) | Inga       |  Skrivskyddade. Resursen länkar som motsvarar orderradobjektet.  |
 | Attribut           | [ResourceAttributes](utility-resources.md#resourceattributes) | Inga       | Metadataattributen som motsvarar OrderLineItem. |
 | renewsTo             | Matris med objekt                          | Inga    |En matris med [RenewsTo-resurser.](order-resources.md#renewsto)                                                                            |
+| AttestationAccepted             | boolesk                 | Inga   |  Anger avtal om att erbjuda eller SKU-villkor. Krävs endast för erbjudanden eller SKU:er där SkuAttestationProperties eller OfferAttestationProperties enforceAttestation är True.          |
 
 ##### <a name="renewsto"></a>RenewsTo
 

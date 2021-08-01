@@ -4,16 +4,16 @@ description: En partner lägger en beställning i kundvagn när en kund vill kö
 ms.date: 08/26/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 08085dde1b43f20b6f6bf707120dd87c48816aba
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: ebe6e628d5bb3b66186d5c4f428f69e46415892b
+ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974156"
+ms.lasthandoff: 07/31/2021
+ms.locfileid: "115009162"
 ---
 # <a name="cart-resources"></a>Kundvagnsresurser
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 En partner gör en beställning när en kund vill köpa en prenumeration från en lista över erbjudanden.
 
@@ -24,7 +24,7 @@ Beskriver en kundvagn.
 | Egenskap              | Typ             | Beskrivning                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
 | id                    | sträng           | En kundvagnsidentifierare som anges när kundvagnen har skapats.                               |
-| creationTimeStamp     | DateTime         | Datumet då kundvagnen skapades i datum/tid-format. Tillämpas när kundvagnen har skapats.      |
+| creationTimeStamp     | DateTime         | Det datum då kundvagnen skapades i datum/tid-format. Tillämpas när kundvagnen har skapats.      |
 | lastModifiedTimeStamp | DateTime         | Datum då kundvagnen senast uppdaterades i datum/tid-format. Tillämpas när kundvagnen har skapats. |
 | expirationTimeStamp   | DateTime         | Datumet då kundvagnen upphör att gälla i datum/tid-format. Tillämpas när kundvagnen har skapats.          |
 | lastModifiedUser      | sträng           | Den användare som senast uppdaterade kundvagnen. Tillämpas när kundvagnen har skapats.                          |
@@ -44,12 +44,13 @@ Representerar ett objekt som finns i en kundvagn.
 | currencyCode         | sträng                           | Valutakoden.                                                                                                                                    |
 | billingCycle         | Objekt                           | Den typ av faktureringsperiod som angetts för den aktuella perioden.                                                                                                 |
 | termDuration         | sträng                           | En ISO 8601-representation av termens varaktighet. De aktuella värdena som stöds är P1M (1 månad), P1Y (1 år) och P3Y (3 år).                                |
-| deltagare         | Lista över objektsträngpar      | En samling PartnerId on Record (MPN ID) för köpet.                                                                                          |
+| deltagare         | Lista över objektsträngpar      | En samling PartnerId on Record (MPN-ID) för köpet.                                                                                          |
 | provisioningContext  | Ordlista<sträng, sträng>       | Ytterligare kontext som används vid etablering av det köpta objektet. Information om vilka värden som behövs för ett visst objekt finns i SKU:ns provisioningVariables-egenskap. |
 | orderGroup           | sträng                           | En grupp som anger vilka objekt som kan skickas tillsammans i samma ordning.                                                                          |
-| addonItems           | Lista över **CartLineItem-objekt** | En samling kundvagnsradsobjekt för addons. De här objekten köps mot basprenumerationen som är resultatet av rotkorgsartikelns köp. |
+| addonItems           | Lista över **CartLineItem-objekt** | En samling kundvagnsradsobjekt för addons. Dessa objekt köps mot basprenumerationen som är resultatet av rot kundvagnsartikelns köp. |
 | fel                | Objekt                           | Tillämpas efter att kundvagnen har skapats om ett fel har uppstått.                                                                                                    |
 | renewsTo             | Matris med objekt                 | En matris med [RenewsTo-resurser.](#renewsto)                                                                            |
+| AttestationAccepted             | boolesk                 | Anger avtal om att erbjuda eller SKU-villkor. Krävs endast för erbjudanden eller SKU:er där SkuAttestationProperties eller OfferAttestationProperties enforceAttestation är True.                                                                            |
 
 ## <a name="renewsto"></a>RenewsTo
 
@@ -69,8 +70,29 @@ Representerar ett fel som inträffar när en kundvagn har skapats.
 
 | Egenskap         | Typ                                   | Beskrivning                                                                                   |
 |------------------|----------------------------------------|-----------------------------------------------------------------------------------------------|
-| errorCode        | [Felkoder i Partnercenter](error-codes.md) | Typ av kundvagnsfel.                                                                       |
+| errorCode        | [CareErrorCode](#carterrorcode) | Typ av kundvagnsfel.                                                                       |
 | errorDescription | sträng                                 | Felbeskrivningen, inklusive eventuella anteckningar om värden som stöds, standardvärden eller gränser. |
+
+
+## <a name="carterrorcode"></a>CartErrorCode
+
+Typer av kundvagnsfel.
+
+| Namn                             | Felkod   | Beskrivning
+|----------------------------------|-------------|-----------------------------------------------------------------------------------------------|
+| CurrencyIsNotSupported           | 10000   | Valuta stöds inte för den angivna marknaden  |
+| CatalogItemIdIsNotValid          | 10001   | Katalogobjektets ID är inte giltigt  |
+| QuotaNotAvailable                | 10002   | Det finns inte tillräckligt med tillgänglig kvot  |
+| InventoryNotAvailable            | 10003   | Inventering är inte tillgängligt för valt erbjudande  |
+| DeltagareIsNotSupportedForPartner  | 10004   | Det finns inte stöd för att ställa in deltagare för partner  |
+| UnableToProcessCartLineItem      | 10006   | Det går inte att bearbeta kundvagnsradsobjektet.  |
+| SubscriptionIsNotValid           | 10007   | Prenumerationen är inte giltig.  |
+| SubscriptionIsNotEnabledForRI    | 10008   | Prenumerationen har inte aktiverats för RI-köp.  |
+| SandboxLimitExceeded             | 10009   | Sandbox-gränsen har överskridits.  |
+| InvalidInput                     | 10010   | Allmänna indata är inte giltiga.  |
+| SubscriptionNotRegistered        | 10011   | Prenumerationen är inte giltig.  |
+| AttestationNotAccepted           | 10012   | Attestation har inte godkänts.  |
+| Okänt                          | 0   | Standardvärde   |
 
 ## <a name="cartcheckoutresult"></a>CartCheckoutResult
 
@@ -87,6 +109,6 @@ Representerar ett fel som inträffar under en kundvagnsutcheckning när en order
 
 | Egenskap     | Typ   | Beskrivning                                     |
 |--------------|--------|-------------------------------------------------|
-| orderGroupId | sträng | Ordergruppens ID för ordern med felet . |
+| orderGroupId | sträng | Ordergruppens ID med felet . |
 | kod         | int    | Felkoden.                                 |
-| beskrivning  | sträng | Beskrivning av felet.                   |
+| beskrivning  | sträng | Beskrivningen av felet.                   |

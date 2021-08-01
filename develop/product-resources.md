@@ -4,12 +4,12 @@ description: Resurser som representerar köpbara varor eller tjänster. Innehål
 ms.date: 04/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1d536cb78c070bd06f4ab9434e066e51fb4c008c
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 2e68df1f6955fb7feb9770377621c2d649b74e4a
+ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445892"
+ms.lasthandoff: 07/31/2021
+ms.locfileid: "115009128"
 ---
 # <a name="products-resources"></a>Produktresurser
 
@@ -67,6 +67,7 @@ Representerar en köpbar lagerhållningsenhet (SKU) under en produkt. De represe
 | provisioningVariables  | matris med strängar | Listan över variabler som måste anges i etableringskontexten för ett kundvagnsradsobjekt [när du köper](cart-resources.md#cartlineitem) det här objektet. Värdena som stöds är:<br/> Omfång – Omfånget för ett Azure-reservationsköp: "Enkel", "Delad".<br/> "SubscriptionId" – ID:t för den Azure-prenumeration som ska användas för ett Azure-reservationsköp.<br/> "Varaktighet" – Varaktigheten för Azure-reservationen: "1Year", "3Year".  |
 | dynamicAttributes      | nyckel/värde-par  | Ordlistan med dynamiska egenskaper som gäller för det här objektet. Egenskaperna i den här ordlistan är dynamiska och kan ändras utan föregående meddelande. Du bör inte skapa starka beroenden på vissa nycklar som finns i värdet för den här egenskapen.    |
 | Länkar                  | [ResourceLinks](utility-resources.md#resourcelinks) | Resurslänkarna i SKU:n.                   |
+| AttestationProperties                  | [AttestationProperties](#attestationproperties) | Attestationsegenskaperna för en SKU.                   |
 
 ## <a name="availability"></a>Tillgänglighet
 
@@ -105,7 +106,7 @@ Representerar en begäran om att kontrollera inventeringen mot vissa katalogobje
 |------------------|-----------------------------------------------------|---------------------------------------------------------------------------------------------|
 | targetItems      | matris med [InventoryItem](#inventoryitem)            | Listan över katalogobjekt som inventeringskontrollen kommer att utvärdera.                           |
 | inventoryContext | nyckel/värde-par                                     | Ordlistan med kontextvärden som behövs för att utföra inventeringskontrollerna. Varje [SKU](#sku) för produkterna definierar vilka värden (om det finns några) som krävs för att utföra den här åtgärden.  |
-| Länkar            | [ResourceLinks](utility-resources.md#resourcelinks) | Resurslänkarna i begäran om inventeringskontroll.                            |
+| Länkar            | [ResourceLinks](utility-resources.md#resourcelinks) | Resurslänkarna i inventeringskontrollens begäran.                            |
 
 ## <a name="inventoryitem"></a>InventoryItem
 
@@ -139,3 +140,12 @@ En [Enum/dotnet/api/system.enum) med värden som anger en typ av faktureringsper
 | Årsvis             | 2            | Anger att partnern debiteras per år.                                       |
 | Ingen               | 3            | Anger att partnern inte kommer att debiteras. Det här värdet kan användas för utvärderingsobjekt.    |
 | Onetime            | 4            | Anger att partnern debiteras en gång.                                       |
+
+## <a name="attestationproperties"></a>AttestationProperties
+
+Representerar en attestationstyp och om det krävs för inköp.
+
+| Egenskap              | Typ                                        | Beskrivning                                                                         |
+|-----------------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| attestationType              | sträng                                      | Anger attestationstyp. För Windows 365 är värdet Windows365. Windows 365-attereringstexten är "Jag förstår att varje person som använder Windows 365 Business med Windows Hybrid Benefit också måste ha en giltig kopia av Windows 10/11 Pro installerad på sin primära arbetsenhet." |
+| enforceAttestation           | boolean                                      | Anger om attestation krävs för inköp.           |
