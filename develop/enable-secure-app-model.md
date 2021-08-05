@@ -3,19 +3,19 @@ title: Aktivera säker programmodell
 description: Skydda dina Partnercenter- och kontrollpanelens appar.
 ms.date: 01/20/2020
 ms.service: partner-dashboard
-ms.subservice: partnercenter-csp
+ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 19a1c39576a4f897df2d1205e3501839f6580831
-ms.sourcegitcommit: e0077b2724d128ab20cb05696e5e5b1cde8e5214
+ms.openlocfilehash: 36a81c7b235c68e49bb425b5bd0d4615882f88ef
+ms.sourcegitcommit: 07b9a11f5c615ed1e716081392032cea2124bd98
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113481675"
+ms.lasthandoff: 08/04/2021
+ms.locfileid: "115104218"
 ---
 # <a name="enabling-the-secure-application-model-framework"></a>Aktivera Secure Application Model-ramverket
 
-Microsoft introducerar ett säkert, skalbart ramverk för autentisering av molnlösningsleverantörer (CSP) och leverantörer av kontrollpaneler (CPV) via arkitekturen för Microsoft Azure Active Directory Multi-Factor Authentication (MFA).
+Microsoft introducerar ett säkert, skalbart ramverk för autentisering av molnlösningsleverantörer (CSP) och kontrollpanelsleverantörer (CPV) via MFA-arkitekturen (Microsoft Azure Active Directory Multi-Factor Authentication).
 
 Du kan använda den nya modellen för att höja säkerheten för Partner Center API-integreringssamtal. Detta hjälper alla parter (inklusive Microsoft, CSP-partner och CPV:er) att skydda sin infrastruktur och sina kunddata mot säkerhetsrisker.
 
@@ -94,7 +94,7 @@ Du måste skapa och registrera en webbapp i Partnercenter innan du gör REST-anr
    - Apphemlighet
 
 > [!NOTE]
-> Vi rekommenderar att du [använder ett certifikat som din programhemlighet.](/azure/active-directory/develop/active-directory-certificate-credentials) Du kan dock även skapa en programnyckel i Azure Portal. Exempelkoden i [följande avsnitt använder](#get-authorization-code) en programnyckel.
+> Vi rekommenderar att du [använder ett certifikat som din programhemlighet.](/azure/active-directory/develop/active-directory-certificate-credentials) Du kan dock också skapa en programnyckel i Azure Portal. Exempelkoden i [följande avsnitt använder](#get-authorization-code) en programnyckel.
 
 ### <a name="get-authorization-code"></a>Hämta auktoriseringskod
 
@@ -130,7 +130,7 @@ code=AuthorizationCodeValue&id_token=IdTokenValue&<rest of properties for state>
 
 Du måste sedan använda din auktoriseringskod för att hämta en uppdateringstoken:
 
-1. Gör ett POST-anrop till Azure AD-inloggningsslutpunkten `https://login.microsoftonline.com/CSPTenantID/oauth2/token` med auktoriseringskoden. Ett exempel finns i följande exempel [på anrop .](#sample-refresh-call)
+1. Gör ett POST-anrop till Azure AD-inloggningsslutpunkten `https://login.microsoftonline.com/CSPTenantID/oauth2/token` med auktoriseringskoden. Ett exempel finns i följande exempel [på anrop](#sample-refresh-call).
 
 2. Observera uppdateringstoken som returneras.
 
@@ -254,4 +254,4 @@ Mer information om den här processen finns i [Dokumentationen för Secure Appmo
     $token.RefreshToken | clip
     ```
 
-Du bör lagra värdet för uppdateringstoken i en säker lagringsplats, till exempel Azure Key Vault. Mer information om hur du använder modulen för säkra program med PowerShell finns i artikeln [multifaktorautentisering.](/powershell/partnercenter/multi-factor-auth)
+Du bör lagra värdet för uppdateringstoken i en säker lagringsplats, till exempel Azure Key Vault. Mer information om hur du använder modulen för säkra program med PowerShell finns i artikeln [om multifaktorautentisering.](/powershell/partnercenter/multi-factor-auth)

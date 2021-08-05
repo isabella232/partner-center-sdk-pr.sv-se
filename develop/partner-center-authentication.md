@@ -3,13 +3,13 @@ title: Partner Center-autentisering
 description: Partner center använder Azure AD för autentisering och för att använda Partner Center-API:er måste du konfigurera autentiseringsinställningarna korrekt.
 ms.date: 11/13/2019
 ms.service: partner-dashboard
-ms.subservice: partnercenter-csp
-ms.openlocfilehash: e54feba7ea727bb7f7eff8de76dcdf28c8a453ee
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.subservice: partnercenter-sdk
+ms.openlocfilehash: 75d60ca983cd5b8fe53134ec7481319b153e128a
+ms.sourcegitcommit: 07b9a11f5c615ed1e716081392032cea2124bd98
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548081"
+ms.lasthandoff: 08/04/2021
+ms.locfileid: "115104201"
 ---
 # <a name="partner-center-authentication"></a>Partner Center-autentisering
 
@@ -311,9 +311,9 @@ För att hjälpa partner att förstå hur de utför varje åtgärd som krävs ha
     git clone https://github.com/Microsoft/Partner-Center-DotNet-Samples.git
     ```
 
-3. Öppna `CSPApplication` projektet som finns i `Partner-Center-DotNet-Samples\secure-app-model\keyvault` katalogen .
+3. Öppna projektet `CSPApplication` som finns i katalogen `Partner-Center-DotNet-Samples\secure-app-model\keyvault` .
 
-4. Uppdatera programinställningarna som finns i [App.config](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CSPApplication/App.config) filen.
+4. Uppdatera programinställningarna som [](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CSPApplication/App.config) finns iApp.configfilen.
 
     ```xml
     <!-- AppID that represents CSP application -->
@@ -357,7 +357,7 @@ För att hjälpa partner att förstå hur de utför varje åtgärd som krävs ha
     git clone https://github.com/Microsoft/Partner-Center-Java-Samples.git
     ```
 
-3. Öppna `cspsample` projektet som finns i `Partner-Center-Java-Samples\secure-app-model\keyvault` katalogen .
+3. Öppna projektet `cspsample` som finns i katalogen `Partner-Center-Java-Samples\secure-app-model\keyvault` .
 
 4. Uppdatera programinställningarna som finns i [filen application.properties.](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cspsample/src/main/resources/application.properties)
 
@@ -377,7 +377,7 @@ För att hjälpa partner att förstå hur de utför varje åtgärd som krävs ha
 
 ## <a name="control-panel-provider-authentication"></a>Kontrollpanelen providerautentisering
 
-Kontrollpanelens leverantörer måste ha varje partner som de stöder för att utföra [processen för partnermedgivande.](#partner-consent) När det är klart används den uppdateringstoken som erhållits via den processen för att få åtkomst till PartnerCenter REST API och .NET API.
+Kontrollpanelens leverantörer måste ha varje partner som de stöder för att utföra [processen för partnermedgivande.](#partner-consent) När det är klart används den uppdateringstoken som hämtas via den processen för att få åtkomst till Partner Center REST API och .NET API.
 
 ### <a name="samples-for-cloud-panel-provider-authentication"></a>Exempel för autentisering av molnpanelsprovider
 
@@ -388,7 +388,7 @@ För att hjälpa kontrollpanelens leverantörer att förstå hur de utför varje
 1. Utveckla och distribuera en process för Molnlösningsleverantör partner för att ge lämpligt medgivande. Mer information om ett exempel finns i [Medgivande från partner.](#partner-consent)
 
     > [!IMPORTANT]
-    > Användarautentiseringsuppgifter från Molnlösningsleverantör partner ska inte lagras. Uppdateringstoken som erhålls via processen för partnermedgivande ska lagras och användas för att begära åtkomsttoken för interaktion med Microsoft-API:er.
+    > Användarautentiseringsuppgifter från Molnlösningsleverantör partner ska inte lagras. Uppdateringstoken som erhålls via partnerns medgivandeprocess ska lagras och användas för att begära åtkomsttoken för interaktion med microsoft-API:er.
 
 2. Klona [lagringsplatsen Partner-Center-DotNet-Samples](https://github.com/Microsoft/Partner-Center-DotNet-Samples) med Visual Studio eller följande kommando
 
@@ -396,9 +396,9 @@ För att hjälpa kontrollpanelens leverantörer att förstå hur de utför varje
     git clone https://github.com/Microsoft/Partner-Center-DotNet-Samples.git
     ```
 
-3. Öppna `CPVApplication` projektet som finns i `Partner-Center-DotNet-Samples\secure-app-model\keyvault` katalogen .
+3. Öppna projektet `CPVApplication` som finns i katalogen `Partner-Center-DotNet-Samples\secure-app-model\keyvault` .
 
-4. Uppdatera programinställningarna som finns i [App.config](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CPVApplication/App.config) filen.
+4. Uppdatera programinställningarna som [](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CPVApplication/App.config) finns iApp.configfilen.
 
     ```xml
     <!-- AppID that represents Control panel vendor application -->
@@ -465,14 +465,14 @@ För att hjälpa kontrollpanelens leverantörer att förstå hur de utför varje
         contents.ToString());
     ```
 
-När dessa behörigheter har upprättats utför exemplet åtgärder med hjälp av Azure AD Graph åt kunden.
+När dessa behörigheter har upprättats utför exemplet åtgärder med hjälp av Azure AD Graph för kundens räkning.
 
 ## <a name="java-cpv-authentication"></a>Java (CPV-autentisering)
 
-1. Utveckla och distribuera en process för Molnlösningsleverantör partner för att ge lämpligt medgivande. Mer information och ett exempel finns i [medgivande för partner.](#partner-consent)
+1. Utveckla och distribuera en process för Molnlösningsleverantör partner för att ge lämpligt medgivande. Mer information och ett exempel finns i [medgivande från partnern.](#partner-consent)
 
     > [!IMPORTANT]
-    > Användarautentiseringsuppgifter från Molnlösningsleverantör partner ska inte lagras. Uppdateringstoken som erhålls via processen för partnermedgivande ska lagras och användas för att begära åtkomsttoken för interaktion med Microsoft-API:er.
+    > Användarautentiseringsuppgifter från Molnlösningsleverantör partner ska inte lagras. Uppdateringstoken som erhålls via partnerns medgivandeprocess ska lagras och användas för att begära åtkomsttoken för interaktion med microsoft-API:er.
 
 2. Klona [lagringsplatsen Partner-Center-Java-Samples](https://github.com/Microsoft/Partner-Center-Java-Samples) med följande kommando
 
@@ -480,7 +480,7 @@ När dessa behörigheter har upprättats utför exemplet åtgärder med hjälp a
     git clone https://github.com/Microsoft/Partner-Center-Java-Samples.git
     ```
 
-3. Öppna `cpvsample` projektet som finns i `Partner-Center-Java-Samples\secure-app-model\keyvault` katalogen .
+3. Öppna projektet `cpvsample` som finns i katalogen `Partner-Center-Java-Samples\secure-app-model\keyvault` .
 
 4. Uppdatera programinställningarna som finns i [filen application.properties.](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cpvsample/src/main/resources/application.properties)
 
