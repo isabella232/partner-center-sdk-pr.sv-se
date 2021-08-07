@@ -4,12 +4,12 @@ description: Så här hämtar du distributionsinformation för Office- och Dynam
 ms.date: 10/25/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9eb0dc655affb2216b11635e58e00ed6464d6792
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: c47ab4f839c102c7a7bcab0169bf13955ab49beb97c48800e882598714347e67
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445671"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990723"
 ---
 # <a name="get-licenses-deployment-information"></a>Hämta information om licensdistribution
 
@@ -17,7 +17,7 @@ Så här hämtar du distributionsinformation för Office- och Dynamics-licenser.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
+Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -35,11 +35,11 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 | Parameter         | Typ     | Beskrivning | Krävs |
 |-------------------|----------|-------------|----------|
-| top               | sträng   | Antalet rader med data som ska returneras i begäran. Det högsta värdet och standardvärdet om inget värde anges är 10000. Om det finns fler rader i frågan innehåller svarstexten en nästa länk som du kan använda för att begära nästa sida med data. | Inga |
-| hoppa över              | int      | Antalet rader som ska hoppas över i frågan. Använd den här parametern för att bläddra igenom stora datamängder. Till exempel hämtar top=10000 och skip=0 de första 10 000 raderna med data, top=10000 och skip=10000 hämtar de nästa 10 000 raderna med data och så vidare. | Inga |
-| filter            | sträng   | *Filterparametern* för begäran innehåller en eller flera instruktioner som filtrerar raderna i svaret. Varje -instruktion innehåller ett fält och värde som är associerade med `eq` `ne` operatorerna eller , och -instruktioner kan kombineras med hjälp av `and` eller `or` . Här är några exempel *på filterparametrar:*<br/><br/> *filter=serviceCode eq 'O365'*<br/> *filter=serviceCode eq 'O365'* or (*channel eq 'Reseller'*)<br/><br/> Du kan ange följande fält:<br/><br/>**serviceCode**<br/>**Tjänstnamn**<br/>**Kanal**<br/>**customerTenantId**<br/>**customerName**<br/>**Produktionen**<br/>**Productname**  | Inga |
-| groupby           | sträng   | En instruktion som endast tillämpar dataaggregering på de angivna fälten. Du kan ange följande fält:<br/><br/>**serviceCode**<br/>**Tjänstnamn**<br/>**Kanal**<br/>**customerTenantId**<br/>**customerName**<br/>**Produktionen**<br/>**Productname**<br/><br/> De returnerade dataraderna innehåller de fält som anges i *parametern groupby* och följande:<br/><br/>**licensesDeployed**<br/>**licenserSåld**  | Inga |
-| processedDateTime | DateTime | Du kan ange det datum då användningsdata bearbetades. Standardvärdet är det senaste datumet då data bearbetades | Inga |
+| top               | sträng   | Antalet rader med data som ska returneras i begäran. Maxvärdet och standardvärdet om det inte anges är 10000. Om det finns fler rader i frågan innehåller svarstexten en nästa länk som du kan använda för att begära nästa datasida. | No |
+| hoppa över              | int      | Antalet rader som ska hoppas över i frågan. Använd den här parametern för att bläddra igenom stora datamängder. Till exempel hämtar top=10000 och skip=0 de första 10 000 raderna med data, top=10000 och skip=10000 hämtar nästa 10 000 rader med data och så vidare. | No |
+| filter            | sträng   | *Filterparametern* för begäran innehåller en eller flera instruktioner som filtrerar raderna i svaret. Varje -instruktion innehåller ett fält och värde som är associerade med operatorerna eller , och `eq` `ne` -instruktioner kan kombineras med hjälp av `and` eller `or` . Här är några exempel på *filterparametrar:*<br/><br/> *filter=serviceCode eq 'O365'*<br/> *filter=serviceCode eq 'O365'* or (*channel eq 'Reseller'*)<br/><br/> Du kan ange följande fält:<br/><br/>**serviceCode**<br/>**Tjänstnamn**<br/>**Kanal**<br/>**customerTenantId**<br/>**customerName**<br/>**Produktionen**<br/>**Productname**  | No |
+| groupby           | sträng   | En instruktion som endast tillämpar dataaggregering på de angivna fälten. Du kan ange följande fält:<br/><br/>**serviceCode**<br/>**Tjänstnamn**<br/>**Kanal**<br/>**customerTenantId**<br/>**customerName**<br/>**Produktionen**<br/>**Productname**<br/><br/> De returnerade dataraderna innehåller fälten som anges i *parametern groupby* och följande:<br/><br/>**licensesDeployed**<br/>**licenserSålda**  | No |
+| processedDateTime | DateTime | Du kan ange det datum då användningsdata bearbetades. Standardvärdet är det senaste datumet då data bearbetades | No |
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -55,9 +55,9 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svarstexten följande fält som innehåller data om de distribuerade licenserna.
+Om det lyckas innehåller svarstexten följande fält som innehåller data om de licenser som distribueras.
 
-| Fält             | Typ     | Beskrivning                           |
+| Fält             | Typ     | Description                           |
 |-------------------|----------|---------------------------------------|
 | serviceCode       | sträng   | Tjänstkod                          |
 | Tjänstnamn       | sträng   | Tjänstnamn                          |
@@ -67,7 +67,7 @@ Om det lyckas innehåller svarstexten följande fält som innehåller data om de
 | productId         | sträng   | Unik identifierare för produkten     |
 | Productname       | sträng   | Produktnamn                          |
 | licensesDeployed  | long     | Antal distribuerade licenser           |
-| licenserSåld      | long     | Antal sålda licenser               |
+| licenserSålda      | long     | Antal sålda licenser               |
 | processedDateTime | DateTime | Datum då data senast bearbetades |
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder

@@ -6,12 +6,12 @@ ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 9a367f912669114969f8792a5afcc7020af1112e
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 395b21dde2790739d35e6047fbeaa7477cad50f4d1af9b12ad0b632742d71583
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760512"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990825"
 ---
 # <a name="get-app-and-user-api-requests"></a>Hämta api-begäranden för appar och användare
 

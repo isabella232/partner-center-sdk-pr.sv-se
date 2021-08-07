@@ -6,24 +6,24 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 28af1f568f755ba4c50cfac21529d6c677656c8e
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 77dcab4b26a74cec886e6b654c3abdcb97007ed8e14966873ce43fdcbc1d2809
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874269"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989414"
 ---
 # <a name="get-a-list-of-devices-for-the-specified-batch-and-customer"></a>Hämta en lista över enheter för den angivna batchen och kunden
 
-**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Tyskland
+**Gäller för**: Partner Center-| Partnercenter för Microsoft Cloud Tyskland
 
 Den här artikeln beskriver hur du hämtar en samling enheter i en angiven enhetsbatch för en angiven kund. Varje enhetsresurs innehåller information om enheten.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - En enhets batchidentifierare.
 
@@ -31,9 +31,9 @@ Den här artikeln beskriver hur du hämtar en samling enheter i en angiven enhet
 
 Så här hämtar du en samling enheter i en angiven enhetsbatch för den angivna kunden:
 
-1. Anropa metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att hämta ett gränssnitt för åtgärder på den angivna kunden.
+1. Anropa metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att hämta ett gränssnitt till åtgärder på den angivna kunden.
 
-2. Anropa metoden [**DeviceBatches.ById för**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) att hämta ett gränssnitt till enhetsbatchinsamlingsåtgärder för den angivna batchen.
+2. Anropa metoden [**DeviceBatches.ById för**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) att hämta ett gränssnitt för enhetsbatchinsamlingsåtgärder för den angivna batchen.
 
 3. Hämta egenskapen [**Enheter**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatch.devices) för att hämta ett gränssnitt för enhetssamlingsåtgärder för batchen.
 
@@ -68,8 +68,8 @@ Använd följande sökvägsparametrar när du skapar begäran.
 
 | Namn           | Typ   | Obligatorisk | Beskrivning                                           |
 |----------------|--------|----------|-------------------------------------------------------|
-| kund-ID    | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
-| devicebatch-id | sträng | Ja      | En strängidentifierare som identifierar enhetsbatchen. |
+| kund-id    | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
+| devicebatch-id | sträng | Yes      | En strängidentifierare som identifierar enhetsbatchen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -93,11 +93,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svarstexten [](device-deployment-resources.md#device) en sidad samling enhetsresurser. Samlingen innehåller 100 enheter på en sida. För att hämta nästa sida med 100 enheter måste continuationToken i svarstexten inkluderas i efterföljande begäran som ett MS-ContinuationToken huvud.
+Om det lyckas innehåller svarstexten en sidindelade samling [enhetsresurser.](device-deployment-resources.md#device) Samlingen innehåller 100 enheter på en sida. För att hämta nästa sida med 100 enheter måste continuationToken i svarstexten inkluderas i efterföljande begäran som ett MS-ContinuationToken huvud.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder för Partner Center REST.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

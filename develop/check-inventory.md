@@ -1,31 +1,31 @@
 ---
-title: Kontrollera inventering
+title: Kontrollera inventeringen
 description: Lär dig hur du använder Partner Center-API:er för att kontrollera inventeringen för en specifik uppsättning katalogobjekt. Du kan göra detta för att identifiera en kunds produkter eller SKU:er.
 ms.date: 05/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b982dbd7e5e10d454ef87a1e750546ea50eb8438
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: de931c7dd89f94b6be8fdaf0ad79c8faee268267c35a2c0f8e38d36b97842f3f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974088"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992117"
 ---
 # <a name="check-the-inventory-of-catalog-items-using-partner-center-apis"></a>Kontrollera inventeringen av katalogobjekt med partnercenter-API:er
 
-Så här kontrollerar du lagret för en specifik uppsättning katalogobjekt.
+Så här kontrollerar du inventeringen för en specifik uppsättning katalogobjekt.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 - Ett eller flera produkt-ID:er. Du kan också ange SKU-ID:n.
 
-- Eventuell ytterligare kontext som behövs för att verifiera inventeringen av de SKU:er som refereras av de tillhandahållna produkt-/SKU-ID:erna. Dessa krav kan variera beroende på typ av produkt/SKU och kan fastställas från [SKU:ns](product-resources.md#sku) **egenskap InventoryVariables.**
+- Ytterligare kontext som behövs för att verifiera inventeringen av de SKU:er som refereras av den angivna produkten/SKU-ID:n. Dessa krav kan variera beroende på typ av produkt/SKU och kan fastställas från [SKU:ns](product-resources.md#sku) **InventoryVariables-egenskap.**
 
 ## <a name="c"></a>C\#
 
-Om du vill kontrollera inventeringen skapar du [ett InventoryCheckRequest-objekt](product-resources.md#inventorycheckrequest) med hjälp av [ett InventoryItem-objekt](product-resources.md#inventoryitem) för varje objekt som ska kontrolleras. Använd sedan en **åtkomstor för IAggregatePartner.Extensions,** begränsa den till **Produkt** och välj sedan land med hjälp av **metoden ByCountry().** Anropa slutligen metoden **CheckInventory()** med ditt **InventoryCheckRequest-objekt.**
+Om du vill kontrollera inventeringen skapar du [ett InventoryCheckRequest-objekt](product-resources.md#inventorycheckrequest) med hjälp av [ett InventoryItem-objekt](product-resources.md#inventoryitem) för varje objekt som ska kontrolleras. Använd sedan **åtkomstorn IAggregatePartner.Extensions,** begränsa den till **Produkt** och välj sedan landet med hjälp av **metoden ByCountry().** Anropa slutligen metoden **CheckInventory()** med objektet **InventoryCheckRequest.**
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -64,7 +64,7 @@ Använd följande frågeparameter för att kontrollera inventeringen.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| landskod           | sträng   | Ja      | Ett lands-/regions-ID.                                            |
+| landskod           | sträng   | Yes      | Ett lands-/regions-ID.                                            |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -98,7 +98,7 @@ Om det lyckas innehåller svarstexten en samling [InventoryItem-objekt](product-
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

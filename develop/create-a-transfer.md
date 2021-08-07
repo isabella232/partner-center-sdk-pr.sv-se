@@ -4,20 +4,20 @@ description: Så här skapar du en överföring av prenumerationer för en kund.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d459a0a96912ab27f312bc73af16af2d4fdb518c
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 8414bbcfa0940742339eeba24b3b6a16ddfb6e3424670a4c064cbd995ba50851
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973714"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991590"
 ---
 # <a name="create-a-transfer"></a>Skapa en överföring
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -33,7 +33,7 @@ Använd följande sökvägsparameter för att identifiera kunden.
 
 | Namn            | Typ     | Obligatorisk | Beskrivning                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **kund-ID** | sträng   | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
+| **kund-id** | sträng   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -41,22 +41,22 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-I den här tabellen beskrivs [transferEntity-egenskaperna](transfer-entity-resources.md) i begärandetexten.
+I den här tabellen beskrivs [TransferEntity-egenskaperna](transfer-entity-resources.md) i begärandetexten.
 
 | Egenskap              | Typ          | Obligatorisk  | Beskrivning                                                                                |
 |-----------------------|---------------|-----------|--------------------------------------------------------------------------------------------|
 | id                    | sträng        | No    | En transferEntity-identifierare som anges när transferEntity har skapats.                               |
-| createdTime           | DateTime      | Inga    | Det datum då transferEntity skapades i datum/tid-format. Tillämpas när transferEntity har skapats.      |
-| lastModifiedTime      | DateTime      | Inga    | Det datum då transferEntity senast uppdaterades, i datum/tid-format. Tillämpas när transferEntity har skapats. |
+| createdTime           | DateTime      | No    | Det datum då transferEntity skapades i datum/tid-format. Tillämpas när transferEntity har skapats.      |
+| lastModifiedTime      | DateTime      | No    | Det datum då transferEntity senast uppdaterades, i datum/tid-format. Tillämpas när transferEntity har skapats. |
 | lastModifiedUser      | sträng        | No    | Den användare som senast uppdaterade transferEntity. Tillämpas när transferEntity har skapats.                          |
 | customerName          | sträng        | No    | Valfritt. Namnet på den kund vars prenumerationer överförs.                                              |
 | customerTenantId      | sträng        | No    | Ett GUID-formaterat kund-ID som identifierar kunden. Tillämpas när transferEntity har skapats.         |
 | partnertenantid       | sträng        | No    | Ett GUID-formaterat partner-ID som identifierar partnern.                                                                   |
 | sourcePartnerName     | sträng        | No    | Valfritt. Namnet på den partnerorganisation som initierar överföringen.                                           |
-| sourcePartnerTenantId | sträng        | Ja   | Ett GUID-formaterat partner-ID som identifierar den partner som initierar överföringen.                                           |
-| targetPartnerName     | sträng        | No    | Valfritt. Namnet på den partnerorganisation som överföringen är riktad mot.                                         |
-| targetPartnerTenantId | sträng        | Ja   | Ett GUID-formaterat partner-ID som identifierar den partner som överföringen är riktad mot.                                  |
-| lineItems             | Matris med objekt | Ja| En matris med [TransferLineItem-resurser.](transfer-entity-resources.md#transferlineitem)                                   |
+| sourcePartnerTenantId | sträng        | Yes   | Ett GUID-formaterat partner-ID som identifierar den partner som initierar överföringen.                                           |
+| targetPartnerName     | sträng        | No    | Valfritt. Namnet på partnerns organisation som överföringen är riktad mot.                                         |
+| targetPartnerTenantId | sträng        | Yes   | Ett GUID-formaterat partner-ID som identifierar den partner som överföringen är riktad mot.                                  |
+| lineItems             | Matris med objekt | Yes| En matris med [TransferLineItem-resurser.](transfer-entity-resources.md#transferlineitem)                                   |
 | status                | sträng        | No    | Status för transferEntity. Möjliga värden är "Aktiv" (kan tas bort/skickas) och "Slutförd" (har redan slutförts). Tillämpas när transferEntity har skapats.|
 
 I den här tabellen beskrivs [transferLineItem-egenskaperna](transfer-entity-resources.md#transferlineitem) i begärandetexten.
@@ -64,13 +64,13 @@ I den här tabellen beskrivs [transferLineItem-egenskaperna](transfer-entity-res
 |      Egenskap       |            Typ             | Obligatorisk | Beskrivning                                                                                     |
 |---------------------|-----------------------------|----------|-------------------------------------------------------------------------------------------------|
 | id                   | sträng                     | No       | En unik identifierare för ett överföringsradsobjekt. Tillämpas när transferEntity har skapats.|
-| subscriptionId       | sträng                     | Ja      | Prenumerationsidentifieraren.                                                                         |
-| quantity             | int                        | Inga       | Antalet licenser eller instanser.                                                                 |
-| billingCycle         | Objekt                     | Inga       | Den typ av faktureringsperiod som angetts för den aktuella perioden.                                                |
+| subscriptionId       | sträng                     | Yes      | Prenumerationsidentifieraren.                                                                         |
+| quantity             | int                        | No       | Antalet licenser eller instanser.                                                                 |
+| billingCycle         | Objekt                     | No       | Den typ av faktureringsperiod som angetts för den aktuella perioden.                                                |
 | friendlyName         | sträng                     | No       | Valfritt. Det egna namnet för det objekt som definierats av partnern för att undvika tvetydighet.                |
 | partnerIdOnRecord    | sträng                     | No       | PartnerId på post (MPN-ID) för köpet som inträffar när överföringen godkänns.              |
 | offerId              | sträng                     | No       | Erbjudandeidentifieraren.                                                                                |
-| addonItems           | Lista över **TransferLineItem-objekt** | Inga | En samling transferEntity-radobjekt för addons som ska överföras tillsammans med basprenumerationen som överförs. Tillämpas när transferEntity har skapats.|
+| addonItems           | Lista över **TransferLineItem-objekt** | No | En samling transferEntity-radobjekt för addons som ska överföras tillsammans med basprenumerationen som överförs. Tillämpas när transferEntity har skapats.|
 | transferError        | sträng                     | No       | Tillämpas efter överföringEntity godkänns om det finns ett fel.                                        |
 | status               | sträng                     | No       | Status för lineitem i transferEntity.                                                    |
 

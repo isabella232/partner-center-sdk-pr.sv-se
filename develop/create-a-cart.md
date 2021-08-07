@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: d23c162b5eddd0fbe91b11faafa5c4debfb7a4a8
-ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
+ms.openlocfilehash: 1f5c0ae7693a8ac2a2919c385dc1b8837a9171ed8cc422bba79bb892f9fe837a
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/31/2021
-ms.locfileid: "115009196"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991845"
 ---
 # <a name="create-a-cart-with-a-customer-order"></a>Skapa en kundvagn med en kundorder
 
@@ -211,7 +211,7 @@ Använd följande sökvägsparameter för att identifiera kunden.
 
 | Namn            | Typ     | Obligatorisk | Beskrivning                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **kund-id** | sträng   | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
+| **kund-id** | sträng   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -224,28 +224,28 @@ I den här tabellen beskrivs [egenskaperna för](cart-resources.md) Kundvagn i b
 | Egenskap              | Typ             | Obligatorisk        | Beskrivning |
 |-----------------------|------------------|-----------------|-----------------------------------------------------------------------------------------------------------|
 | id                    | sträng           | No              | En kundvagnsidentifierare som anges när kundvagnen har skapats.                                  |
-| creationTimeStamp     | DateTime         | Inga              | Datumet då kundvagnen skapades i datum/tid-format. Tillämpas när kundvagnen har skapats.         |
-| lastModifiedTimeStamp | DateTime         | Inga              | Datum då kundvagnen senast uppdaterades i datum/tid-format. Tillämpas när kundvagnen har skapats.    |
-| expirationTimeStamp   | DateTime         | Inga              | Datumet då kundvagnen upphör att gälla i datum/tid-format.  Tillämpas när kundvagnen har skapats.            |
+| creationTimeStamp     | DateTime         | No              | Datumet då kundvagnen skapades i datum/tid-format. Tillämpas när kundvagnen har skapats.         |
+| lastModifiedTimeStamp | DateTime         | No              | Datum då kundvagnen senast uppdaterades i datum/tid-format. Tillämpas när kundvagnen har skapats.    |
+| expirationTimeStamp   | DateTime         | No              | Datumet då kundvagnen upphör att gälla i datum/tid-format.  Tillämpas när kundvagnen har skapats.            |
 | lastModifiedUser      | sträng           | No              | Den användare som senast uppdaterade kundvagnen. Tillämpas när kundvagnen har skapats.                             |
-| lineItems             | Matris med objekt | Ja             | En matris med [CartLineItem-resurser.](cart-resources.md#cartlineitem)                                     |
+| lineItems             | Matris med objekt | Yes             | En matris med [CartLineItem-resurser.](cart-resources.md#cartlineitem)                                     |
 
 I den här tabellen beskrivs [egenskaperna för CartLineItem](cart-resources.md#cartlineitem) i begärandetexten.
 
 |      Egenskap       |            Typ             | Obligatorisk |                                                                                         Beskrivning                                                                                         |
 |---------------------|-----------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |         id          |           sträng            |    No    |                                                     En unik identifierare för ett kundvagnsradsobjekt. Tillämpas när kundvagnen har skapats.                                                     |
-|      catalogId      |           sträng            |   Ja    |                                                                                Katalogobjektets identifierare.                                                                                 |
-|    friendlyName     |           sträng            |    No    |                                                    Valfritt. Det egna namnet för det objekt som definierats av partnern för att undvika tvetydighet.                                                    |
-|      quantity       |             int             |   Ja    |                                                                            Antalet licenser eller instanser.                                                                             |
+|      catalogId      |           sträng            |   Yes    |                                                                                Katalogobjektets identifierare.                                                                                 |
+|    friendlyName     |           sträng            |    No    |                                                    Valfritt. Det egna namnet för objektet som definierats av partnern för att undvika tvetydighet.                                                    |
+|      quantity       |             int             |   Yes    |                                                                            Antalet licenser eller instanser.                                                                             |
 |    currencyCode     |           sträng            |    No    |                                                                                     Valutakoden.                                                                                      |
-|    billingCycle     |           Objekt            |   Ja    |                                                                    Den typ av faktureringsperiod som angetts för den aktuella perioden.                                                                    |
-|    deltagare     | Lista över objektsträngpar |    Inga    |                                                                En samling PartnerId on Record (MPNID) för köpet.                                                                 |
-| provisioningContext | Ordlista<sträng, sträng>  |    Inga    | Information som krävs för etablering för vissa objekt i katalogen. Egenskapen provisioningVariables i en SKU anger vilka egenskaper som krävs för specifika objekt i katalogen. |
+|    billingCycle     |           Objekt            |   Yes    |                                                                    Den typ av faktureringsperiod som angetts för den aktuella perioden.                                                                    |
+|    deltagare     | Lista över objektsträngpar |    No    |                                                                En samling PartnerId on Record (MPNID) för köpet.                                                                 |
+| provisioningContext | Ordlista<sträng, sträng>  |    No    | Information som krävs för etablering för vissa objekt i katalogen. Egenskapen provisioningVariables i en SKU anger vilka egenskaper som krävs för specifika objekt i katalogen. |
 |     orderGroup      |           sträng            |    No    |                                                                   En grupp som anger vilka objekt som kan placeras tillsammans.                                                                   |
-|        fel        |           Objekt            |    Inga    |                                                                     Tillämpas efter att kundvagnen har skapats om det finns ett fel.                                                                      |
-|     renewsTo        | Matris med objekt            |    Inga    |                                                    En matris med [RenewsTo-resurser.](cart-resources.md#renewsto)                                                                            |
-|     AttestationAccepted        | Boolesk            |    Inga    |                                                   Anger avtal om att erbjuda eller SKU-villkor. Krävs endast för erbjudanden eller SKU:er där SkuAttestationProperties eller OfferAttestationProperties enforceAttestation är True.                                                                             |
+|        fel        |           Objekt            |    No    |                                                                     Tillämpas när kundvagnen har skapats om det finns ett fel.                                                                      |
+|     renewsTo        | Matris med objekt            |    No    |                                                    En matris med [RenewsTo-resurser.](cart-resources.md#renewsto)                                                                            |
+|     AttestationAccepted        | Boolesk            |    No    |                                                   Anger avtal om att erbjuda eller SKU-villkor. Krävs endast för erbjudanden eller SKU:er där SkuAttestationProperties eller OfferAttestationProperties enforceAttestation är True.                                                                             |
 
 I den här tabellen beskrivs [egenskaperna RenewsTo](cart-resources.md#renewsto) i begärandetexten.
 
@@ -334,11 +334,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden den [ifyllda kundvagnsresursen](cart-resources.md) i svarstexten.
+Om det lyckas returnerar den här metoden den ifyllda [kundvagnsresursen](cart-resources.md) i svarstexten.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

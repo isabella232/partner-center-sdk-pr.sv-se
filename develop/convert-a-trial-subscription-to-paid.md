@@ -4,12 +4,12 @@ description: Lär dig hur du använder Partner Center-API:er för att konvertera
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c1876cfc796b683bfff00b7d137bcfe0b7162c78
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: a805264315e35c7576248630396da1e34a66cc55ac87dd07452f1615edbc0af4
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973867"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991862"
 ---
 # <a name="convert-a-trial-subscription-to-paid-using-partner-center-apis"></a>Konvertera en utvärderingsprenumeration till betald med partnercenter-API:er
 
@@ -17,9 +17,9 @@ Du kan konvertera en utvärderingsprenumeration till betald.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID för en aktiv utvärderingsprenumeration.
 
@@ -32,7 +32,7 @@ Om du vill konvertera en utvärderingsprenumeration till en betald prenumeration
 Konverteringserbjudandena anger en kvantitet som har samma antal licenser som utvärderingsprenumerationen som standard. Du kan ändra den här kvantiteten genom [**att**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion.quantity) ange egenskapen Quantity till det antal licenser som du vill köpa.
 
 > [!NOTE]
-> Oavsett hur många licenser som köpts återanvänds prenumerations-ID:t för utvärderingsversionen för de köpta licenserna. Därför försvinner den utvärderingsversion som används och ersätts av köpet.
+> Oavsett antalet köpta licenser återanvänds prenumerations-ID:t för utvärderingsversionen för de köpta licenserna. Därför försvinner den utvärderingsversion som används och ersätts av köpet.
 
 Använd följande steg för att konvertera en utvärderingsprenumeration via kod:
 
@@ -42,7 +42,7 @@ Använd följande steg för att konvertera en utvärderingsprenumeration via kod
     var subscriptionOperations = partnerOperations.Customers.ById(customerId).Subscriptions.ById(subscriptionId);
     ```
 
-2. Hämta en samling med tillgängliga konverteringserbjudanden. Mer information om begäran/svar för den här metoden finns i Hämta en [lista över utvärderingsversionserbjudanden.](get-a-list-of-trial-conversion-offers.md)
+2. Hämta en samling med tillgängliga konverteringserbjudanden. Mer information om begäran/svar för den här metoden finns i [Hämta en lista över utvärderingskonverteringserbjudanden.](get-a-list-of-trial-conversion-offers.md)
 
     ``` csharp
     var conversions = subscriptionOperations.Conversions.Get();
@@ -76,7 +76,7 @@ Så här konverterar du en utvärderingsprenumeration till en betald prenumerati
 
 3. Använd egenskapen [**Konverteringar**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.conversions) för att hämta ett gränssnitt till de tillgängliga åtgärderna för konverteringar och anropa sedan metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.getasync) för att hämta en samling tillgängliga [**konverteringserbjudanden.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion) Du måste välja en. I följande exempel används som standard den första tillgängliga konverteringen.
 
-4. Använd referensen till det gränssnitt för prenumerationsåtgärder som du sparade i en lokal variabel och egenskapen [**Konverteringar**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.conversions) för att hämta ett gränssnitt för de tillgängliga åtgärderna vid konverteringar.
+4. Använd referensen till [**prenumerationsgränssnittet**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.conversions) som du sparade i en lokal variabel och egenskapen Konverteringar för att hämta ett gränssnitt för de tillgängliga åtgärderna för konverteringar.
 
 5. Skicka det valda konverteringserbjudandet till metoden [**Create**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.create) eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.createasync) för att försöka konvertera utvärderingsversionen.
 
@@ -123,8 +123,8 @@ Använd följande sökvägsparametrar för att identifiera kunden och utvärderi
 
 | Namn            | Typ   | Obligatorisk | Beskrivning                                                     |
 |-----------------|--------|----------|-----------------------------------------------------------------|
-| kund-ID     | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.           |
-| prenumerations-id | sträng | Ja      | En GUID-formaterad sträng som identifierar utvärderingsprenumerationen. |
+| kund-id     | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.           |
+| prenumerations-id | sträng | Yes      | En GUID-formaterad sträng som identifierar utvärderingsprenumerationen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -166,7 +166,7 @@ Om det lyckas innehåller svarstexten en [ConversionResult-resurs.](conversions-
 
 #### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 #### <a name="response-example"></a>Exempel på svar
 

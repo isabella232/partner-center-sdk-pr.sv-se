@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: e1f16c92569a02bc51c96a85ecb642fbeb76a9a7
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 5c93f36491851be11c700388201443f2e951122e4129786abc3e064091605b8d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760257"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992610"
 ---
 # <a name="get-all-subscription-analytics-information"></a>Hämta all information om prenumerationsanalys
 
@@ -35,7 +35,7 @@ Den här artikeln beskriver hur du hämtar all prenumerationsanalysinformation f
 
 I följande tabell visas valfria parametrar och deras beskrivningar:
 
-| Parameter | Typ |  Beskrivning |
+| Parameter | Typ |  Description |
 |-----------|------|--------------|
 | top | int | Antalet rader med data som ska returneras i begäran. Om värdet inte anges är det högsta värdet och standardvärdet `10000` . Om det finns fler rader i frågan innehåller svarstexten en nästa länk som du kan använda för att begära nästa datasida. |
 | hoppa över | int | Antalet rader som ska hoppas över i frågan. Använd den här parametern för att bläddra igenom stora datamängder. Till exempel `top=10000` hämtar och de första 10 000 raderna med data och hämtar de kommande `skip=0` `top=10000` `skip=10000` 10 000 raderna med data. |

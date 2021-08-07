@@ -6,24 +6,24 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 02a6fccc2cf7f3f4dc929b96ec0f17e0f4a31b06
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: bce47adb87111edb998b8dff029f39547f21d8e0a0464a96de7f0c9aa5d4a69d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874507"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991165"
 ---
 # <a name="get-a-list-of-available-licenses"></a>Hämta en lista över tillgängliga licenser
 
 Den här artikeln beskriver hur du hämtar en lista över licenser som är tillgängliga för användare av den angivna kunden.
 
-I följande exempel returneras licenser som är **tillgängliga från group1**, standardlicensgruppen som representerar licenser som hanteras av Azure Active Directory (Azure AD). Information om hur du hämtar tillgängliga licenser för en angiven [licensgrupp finns i Hämta en lista över tillgängliga licenser efter licensgrupp.](get-a-list-of-available-licenses-by-license-group.md)
+I följande exempel returneras licenser som är **tillgängliga från grupp1**, standardlicensgruppen som representerar licenser som hanteras av Azure Active Directory (Azure AD). Information om hur du hämtar tillgängliga licenser för en angiven [licensgrupp finns i Hämta en lista över tillgängliga licenser efter licensgrupp.](get-a-list-of-available-licenses-by-license-group.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
@@ -31,7 +31,7 @@ Så här hämtar du listan över licenser som är tillgängliga från standardli
 
 1. Använd metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden.
 
-2. Hämta värdet för egenskapen [**SubscribedSkus för att**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) hämta ett gränssnitt till SKU-insamlingsåtgärder som kunden prenumererar på.
+2. Hämta värdet för egenskapen [**SubscribedSkus för att**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) hämta ett gränssnitt för SKU-samlingsåtgärder som kunden prenumererar på.
 
 3. Anropa metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) för att hämta listan över licenser.
 
@@ -62,7 +62,7 @@ Använd följande sökvägsparameter för att identifiera kunden.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| kund-ID | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
+| kund-id | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -90,7 +90,7 @@ Om det lyckas innehåller svarstexten en samling [SubscribedSku-resurser.](licen
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder för Partner Center REST.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

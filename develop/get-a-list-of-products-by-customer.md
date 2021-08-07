@@ -1,30 +1,30 @@
 ---
 title: Hämta en lista över produkter (efter kund)
-description: Du kan använda en kundidentifierare för att hämta en samling produkter per kund.
+description: Du kan använda en kundidentifierare för att hämta en samling produkter efter kund.
 ms.assetid: ''
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: a7cb2430aa93beb89e4d1f9b8c89a016d66624ca
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 2f896c16f8f13df795cee14742b00e7d10dbb1812308b20a4d4bc4a8c614471c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874201"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991148"
 ---
 # <a name="get-a-list-of-products-by-customer"></a>Hämta en lista över produkter (efter kund)
 
-**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Du kan använda följande metoder för att hämta en samling produkter för en befintlig kund.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -38,8 +38,8 @@ Du kan använda följande metoder för att hämta en samling produkter för en b
 
 | Namn               | Typ | Obligatorisk | Beskrivning                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
-| **kund-klient-id** | GUID | Ja | Värdet är ett GUID-formaterat **kundklient-id,** vilket är en identifierare som gör att du kan ange en kund. |
-| **targetView** | sträng | Ja | Identifierar målvyn för katalogen. Värdena som stöds är: <br/><br/>**Azure**, som innehåller alla Azure-objekt<br/><br/>**AzureReservations**, som innehåller alla Reservationsobjekt i Azure<br/><br/>**AzureReservationsVM**, som innehåller alla reservationsobjekt för virtuella datorer (VM)<br/><br/>**AzureReservationsSQL**, som innehåller alla SQL reservationsobjekt<br/><br/>**AzureReservationsCosmosDb**, som innehåller alla reservationsobjekt för Cosmos-databasen<br/><br/>**MicrosoftAzure**, som innehåller objekt för Microsoft Azure-prenumerationer **(MS-AZR-0145P)** och Azure-planer<br/><br/>**OnlineServices**, som innehåller alla onlinetjänstobjekt, inklusive produkter på den kommersiella marknadsplatsen<br/><br/>**Programvara**, som innehåller alla programvaruobjekt<br/><br/>**SoftwareSUSELinux**, som innehåller alla SUSE Linux-programobjekt<br/><br/>**SoftwarePerpetual**, som innehåller alla permanenta programvaruobjekt<br/><br/>**SoftwareSubscriptions**, som innehåller alla programprenumerationsobjekt  |
+| **kund-klient-id** | GUID | Yes | Värdet är ett GUID-formaterat **kundklientorganisations-ID,** vilket är en identifierare som gör att du kan ange en kund. |
+| **targetView** | sträng | Yes | Identifierar målvyn för katalogen. Värdena som stöds är: <br/><br/>**Azure**, som innehåller alla Azure-objekt<br/><br/>**AzureReservations**, som innehåller alla Azure-reservationsobjekt<br/><br/>**AzureReservationsVM**, som innehåller alla reservationsobjekt för virtuella datorer (VM)<br/><br/>**AzureReservationsSQL**, som innehåller alla SQL reservationsobjekt<br/><br/>**AzureReservationsCosmosDb**, som innehåller alla reservationsobjekt för Cosmos-databasen<br/><br/>**MicrosoftAzure**, som innehåller objekt för Microsoft Azure prenumerationer **(MS-AZR-0145P)** och Azure-planer<br/><br/>**OnlineServices**, som innehåller alla onlinetjänstobjekt, inklusive produkter från den kommersiella marknadsplatsen<br/><br/>**Programvara**, som innehåller alla programvaruobjekt<br/><br/>**SoftwareSUSELinux**, som innehåller alla SUSE Linux-programobjekt<br/><br/>**SoftwarePerpetual**, som innehåller alla permanenta programvaruobjekt<br/><br/>**SoftwareSubscriptions**, som innehåller alla objekt för programvaruprenumeration  |
 
 ### <a name="request-header"></a>Begärandehuvud
 
@@ -51,7 +51,7 @@ Inga.
 
 ### <a name="request-example"></a>Exempel på begäran
 
-Begäran om en lista över Användningsbaserade Azure-produkter som är tillgängliga för en viss kund. Produkter för både Microsoft Azure (MS-AZR-0145P) och Azure-planer returneras för kunder i det offentliga molnet:
+Begäran om en lista över användningsbaserade Azure-produkter som är tillgängliga för en viss kund. Produkter för både Microsoft Azure (MS-AZR-0145P) och Azure-planer returneras för kunder i det offentliga molnet:
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/customers/65543400-f8b0-4783-8530-6d35ab8c6801/products?targetView=MicrosoftAzure HTTP/1.1
@@ -65,11 +65,11 @@ MS-CorrelationId: b1939cb2-e83d-4fb0-989f-514fb741b734
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod | Felkod   | Beskrivning                     |
+| HTTP-statuskod | Felkod   | Description                     |
 |------------------|--------------|---------------------------------|
 | 403 | 400036 | Åtkomst till begärd targetView tillåts inte. |
 

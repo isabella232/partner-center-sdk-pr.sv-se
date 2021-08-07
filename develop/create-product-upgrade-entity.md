@@ -4,12 +4,12 @@ description: Du kan använda resursen ProductUpgradeRequest för att skapa en pr
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4e346b7f5294a8847047c85115d8c80f34eaca84
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 7515bbce2914142e052349a1bbb4de20416d0931ac886fe9264cc4d3b8c1f734
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973424"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991471"
 ---
 # <a name="create-a-product-upgrade-entity-for-a-customer"></a>Skapa en produktuppgraderingsentitet för en kund
 
@@ -19,13 +19,13 @@ Du kan skapa en produktuppgraderingsentitet för att uppgradera en kund till en 
 
 - Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare. Följ den [säkra appmodellen när du](enable-secure-app-model.md) använder app-/användarautentisering med Partner Center-API:er.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - Den produktfamilj som du vill uppgradera kunden till.
 
 ## <a name="c"></a>C\#
 
-Så här uppgraderar du en kund till en Azure-plan:
+Så här uppgraderar du en kund till En Azure-plan:
 
 1. Skapa ett **ProductUpgradesRequest-objekt** och ange kundidentifieraren och "Azure" som produktfamilj.
 

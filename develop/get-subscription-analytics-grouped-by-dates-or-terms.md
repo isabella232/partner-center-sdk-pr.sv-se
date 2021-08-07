@@ -4,12 +4,12 @@ description: Så här hämtar du prenumerationsanalysinformation grupperad efter
 ms.date: 06/27/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8192a9863d53ec8697a7341cd38c69200614bd4a
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 66336d3e5573598eb4810853ad2704bc8d2c76680292a4f5b4a3da9bb50936b8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548727"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989686"
 ---
 # <a name="get-subscription-analytics-grouped-by-dates-or-terms"></a>Hämta prenumerationsanalys grupperade efter datum eller villkor
 
@@ -35,7 +35,7 @@ Använd följande obligatoriska sökvägsparametrar för att identifiera din org
 
 | Namn | Typ | Obligatorisk | Beskrivning |
 |------|------|----------|-------------|
-| groupby_queries | par med strängar och dateTime | Ja | Termerna och datumen för att filtrera resultatet. |
+| groupby_queries | par med strängar och dateTime | Yes | Termerna och datumen för att filtrera resultatet. |
 
 ### <a name="groupby-syntax"></a>GroupBy-syntax
 
@@ -49,7 +49,7 @@ Ett okodat exempel ser ut så här:
 
 I följande tabell visas en lista över de fält som stöds för gruppera efter.
 
-| Fält | Typ | Beskrivning |
+| Fält | Typ | Description |
 |-------|------|-------------|
 | customerTenantId | sträng | En GUID-formaterad sträng som identifierar kundens klientorganisation. |
 | customerName | sträng | Namnet på kunden. |
@@ -77,7 +77,7 @@ I följande tabell visas en lista över de fält som stöds för gruppera efter.
 
 I följande tabell visas valfria filterfält och deras beskrivningar:
 
-| Fält | Typ |  Beskrivning |
+| Fält | Typ |  Description |
 |-------|------|--------------|
 | top | int | Antalet rader med data som ska returneras i begäran. Om värdet inte anges är det högsta värdet och standardvärdet 10000. Om det finns fler rader i frågan innehåller svarstexten en nästa länk som du kan använda för att begära nästa sida med data. |
 | hoppa över | int | Antalet rader som ska hoppas över i frågan. Använd den här parametern för att bläddra igenom stora datamängder. Till exempel hämtar top=10000 och skip=0 de första 10 000 raderna med data, top=10000 och skip=10000 hämtar de nästa 10 000 raderna med data. |

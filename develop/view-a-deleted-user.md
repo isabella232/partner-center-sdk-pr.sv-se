@@ -4,12 +4,12 @@ description: Hämtar en lista över borttagna CustomerUser-resurser för en kund
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f4fec958a9a6bb580d35de1cf3007e1db3b2b650
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 2f7e94d5e360075378e1895e586690597baaf66237f0b93bb526baee0c5d84ae
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445314"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989822"
 ---
 # <a name="view-deleted-users-for-a-customer"></a>Visa borttagna användare för en kund
 
@@ -17,17 +17,17 @@ Hämtar en lista över borttagna CustomerUser-resurser för en kund efter kund-I
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="what-happens-when-you-delete-a-user-account"></a>Vad händer när du tar bort ett användarkonto?
 
-Användartillståndet är inaktivt när du tar bort ett användarkonto. Det förblir så i 30 dagar, varpå användarkontot och tillhörande data rensas och görs oåterkalleliga. Om du vill återställa ett borttagna användarkonto inom 30-dagarsfönstret kan du gå till [Återställa en borttagna användare för en kund.](restore-a-user-for-a-customer.md) När användarkontot har tagits bort och markerats som "inaktivt" returneras det inte längre som medlem i användarsamlingen (t.ex. genom att använda Hämta en lista över alla användarkonton [för en kund).](get-a-list-of-all-user-accounts-for-a-customer.md) Om du vill hämta en lista över borttagna användare som ännu inte har rensats måste du fråga efter användarkonton som har angetts till inaktiva.
+Användartillståndet är inställt på "inaktiv" när du tar bort ett användarkonto. Det förblir så i 30 dagar, varpå användarkontot och dess associerade data rensas och görs oåterkalleliga. Om du vill återställa ett borttagna användarkonto inom 30-dagarsfönstret kan du se [Återställa en borttagna användare för en kund.](restore-a-user-for-a-customer.md) När användarkontot har tagits bort och markerats som "inaktivt" returneras det inte längre som medlem i användarsamlingen (till exempel med hjälp av Hämta en lista över alla användarkonton [för en kund](get-a-list-of-all-user-accounts-for-a-customer.md)). Om du vill hämta en lista över borttagna användare som ännu inte har rensats måste du fråga efter användarkonton som har angetts till inaktiva.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en lista över borttagna användare skapar du en fråga som filtrerar efter kundanvändare vars status är inställd på inaktiv. Skapa först filtret genom att instansiera ett [**SimpleFieldFilter-objekt**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) med parametrarna som visas i följande kodfragment. Skapa sedan frågan med hjälp av [**metoden BuildIndexedQuery.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildindexedquery) Om du inte vill ha sidindelade resultat kan du använda [**metoden BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) i stället. Använd sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Anropa slutligen [**frågemetoden**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.query) för att skicka begäran.
+Om du vill hämta en lista över borttagna användare skapar du en fråga som filtrerar efter kundanvändare vars status är inställd på inaktiv. Skapa först filtret genom att instansiera ett [**SimpleFieldFilter-objekt**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) med parametrarna enligt följande kodfragment. Skapa sedan frågan med hjälp av [**metoden BuildIndexedQuery.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildindexedquery) Om du inte vill ha sidindelade resultat kan du använda [**metoden BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) i stället. Använd sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Anropa slutligen [**frågemetoden**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.query) för att skicka begäran.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -43,7 +43,7 @@ var simpleQueryWithFilter = QueryFactory.Instance.BuildIndexedQuery(customerUser
 var customerUsers = partnerOperations.Customers.ById(selectedCustomerId).Users.Query(simpleQueryWithFilter);
 ```
 
-**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Exempelklass:** GetCustomerInactiveUsers.cs
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** **Partnercenter-SDK-exempelklass:** GetCustomerInactiveUsers.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -59,9 +59,9 @@ Använd följande sökväg och frågeparametrar när du skapar begäran.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                        |
 |-------------|--------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| kund-id | guid   | Ja      | Värdet är ett GUID-formaterat kund-ID som identifierar kunden.                                                                                                            |
-| ikoner        | int    | Inga       | Antalet resultat som ska visas samtidigt. Den här parametern är valfri.                                                                                                     |
-| filter      | filter | Ja      | Frågan som filtrerar användarsökningen. För att hämta borttagna användare måste du inkludera och koda följande sträng: {"Field":"UserState","Value":"Inactive","Operator":"equals"}. |
+| kund-ID | guid   | Yes      | Värdet är ett GUID-formaterat kund-ID som identifierar kunden.                                                                                                            |
+| ikoner        | int    | No       | Antalet resultat som ska visas samtidigt. Den här parametern är valfri.                                                                                                     |
+| filter      | filter | Yes      | Frågan som filtrerar användarsökningen. Om du vill hämta borttagna användare måste du inkludera och koda följande sträng: {"Field":"UserState","Value":"Inactive","Operator":"equals"}. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -89,7 +89,7 @@ Om det lyckas returnerar den här metoden en samling [CustomerUser-resurser](use
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

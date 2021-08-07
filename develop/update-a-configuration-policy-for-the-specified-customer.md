@@ -1,33 +1,33 @@
 ---
 title: Uppdatera en konfigurationsprincip för den angivna kunden
-description: Så här uppdaterar du den angivna konfigurationsprincipen för den angivna kunden.
+description: Uppdatera den angivna konfigurationsprincipen för den angivna kunden.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 5e008f41a44f2b7cf3ddfd705505175c69bbad38
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 957f2835d08e049e8b77271de5383f5ffc45d4ade6d903b2f42757dd4e707a05
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530249"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990145"
 ---
 # <a name="update-a-configuration-policy-for-the-specified-customer"></a>Uppdatera en konfigurationsprincip för den angivna kunden
 
-**Gäller för**: Partner Center-| Partnercenter för Microsoft Cloud Tyskland
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Tyskland
 
-Så här uppdaterar du den angivna konfigurationsprincipen för den angivna kunden.
+Uppdatera den angivna konfigurationsprincipen för den angivna kunden.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Principidentifieraren.
 
 ## <a name="c"></a>C\#
 
-Om du vill uppdatera en befintlig konfigurationsprincip för den angivna kunden instansierar du ett nytt [**ConfigurationPolicy-objekt**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.configurationpolicy) enligt följande kodfragment. Värdena i det här nya objektet ersätter motsvarande värden i det befintliga objektet. Anropa sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att hämta ett gränssnitt till åtgärder på den angivna kunden. Anropa sedan metoden [**ConfigurationPolicies.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.byid) med princip-ID:t för att hämta ett gränssnitt för konfigurationsprincipåtgärder för den angivna principen. Anropa slutligen metoden [**Patch**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.patch) eller [**PatchAsync för**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.patchasync) att uppdatera konfigurationsprincipen.
+Om du vill uppdatera en befintlig konfigurationsprincip för den angivna kunden instansierar du ett nytt [**ConfigurationPolicy-objekt**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.configurationpolicy) enligt följande kodfragment. Värdena i det här nya objektet ersätter motsvarande värden i det befintliga objektet. Anropa sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att hämta ett gränssnitt till åtgärder på den angivna kunden. Anropa sedan metoden [**ConfigurationPolicies.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.byid) med princip-ID:t för att hämta ett gränssnitt till konfigurationsprincipens åtgärder för den angivna principen. Anropa slutligen metoden [**Patch**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.patch) eller [**PatchAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.patchasync) för att uppdatera konfigurationsprincipen.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -47,7 +47,7 @@ ConfigurationPolicy updatedConfigurationPolicy =
     partnerOperations.Customers.ById(selectedCustomerId).ConfigurationPolicies.ById(selectedConfigurationPolicyId).Patch(configPolicyToBeUpdated);
 ```
 
-**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **exempelklass:** UpdateConfigurationPolicy.cs
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** **Partnercenter-SDK-exempelklass:** UpdateConfigurationPolicy.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -63,8 +63,8 @@ Använd följande sökvägsparametrar när du skapar begäran.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                                   |
 |-------------|--------|----------|---------------------------------------------------------------|
-| kund-id | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.         |
-| policy-id   | sträng | Ja      | En GUID-formaterad sträng som identifierar principen som ska uppdateras. |
+| kund-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.         |
+| policy-id   | sträng | Yes      | En GUID-formaterad sträng som identifierar principen som ska uppdateras. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -74,12 +74,12 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 Begärandetexten måste innehålla ett -objekt som tillhandahåller principinformationen.
 
-| Namn            | Typ             | Obligatorisk | Uppdateringsbar | Beskrivning                                                                                                                                              |
+| Namn            | Typ             | Obligatorisk | Uppdateringsbar | Description                                                                                                                                              |
 |-----------------|------------------|----------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id              | sträng           | Ja      | Inga        | Den GUID-formaterade sträng som identifierar principen.                                                                                                    |
 | name            | sträng           | Ja      | Ja       | Principens egna namn.                                                                                                                         |
 | category        | sträng           | Ja      | Inga        | Principkategorin.                                                                                                                                     |
-| beskrivning     | sträng           | Inga       | Ja       | Principbeskrivningen.                                                                                                                                  |
+| beskrivning     | sträng           | No       | Ja       | Principbeskrivningen.                                                                                                                                  |
 | devicesAssigned | antal           | Inga       | Inga        | Antalet enheter.                                                                                                                                   |
 | policySettings  | matris med strängar | Ja      | Ja       | Principinställningarna: "none","remove \_ oem \_ preinstalls","oobe \_ user not local \_ \_ \_ admin","skip \_ express \_ settings","skip \_ oem \_ registration,"skip \_ eula". |
 
@@ -112,7 +112,7 @@ Om det lyckas innehåller svarstexten [ConfigurationPolicy-resursen](device-depl
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

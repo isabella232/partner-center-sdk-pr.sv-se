@@ -4,12 +4,12 @@ description: Så här laddar du upp en lista med information om enheter för att
 ms.date: 08/08/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 285af12034562262c99b2aa3b139e948b0fdd462
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 104c240ef9a1afefd36fbb558e79ac30a3a66920b802fdc9c6b65023a038af8c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111529740"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990383"
 ---
 # <a name="upload-a-list-of-devices-to-create-a-new-batch-for-the-specified-customer"></a>Ladda upp en lista över enheter för att skapa en ny batch för den angivna kunden
 
@@ -21,7 +21,7 @@ Så här laddar du upp en lista med information om enheter för att skapa en ny 
 
 - Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare. Följ den [säkra appmodellen när du](enable-secure-app-model.md) använder app-/användarautentisering med Partner Center-API:er.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - Listan över enhetsresurser som innehåller information om de enskilda enheterna.
 
@@ -85,7 +85,7 @@ Använd följande sökvägsparametrar när du skapar begäran.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| kund-id | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
+| kund-id | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

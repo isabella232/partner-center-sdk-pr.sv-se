@@ -4,30 +4,30 @@ description: Så här uppdaterar du en befintlig kundtjänstbegäran som en Moln
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: efa7b2a98b6f95a763ca6e3811c43cc655c18e2b
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 2fdfda256e873d772f300dfa29b17779c192f158c82d3e42467021b8f9f3fcdb
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530097"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990043"
 ---
 # <a name="update-a-service-request"></a>Uppdatera en tjänstbegäran
 
-**Gäller för**: Partner Center-| PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Så här uppdaterar du en befintlig kundtjänstbegäran som en Molnlösningsleverantör har arkiverat hos Microsoft för kundens räkning.
 
-På instrumentpanelen i Partnercenter kan du utföra den här åtgärden genom att först [välja en kund.](get-a-customer-by-name.md) Välj sedan **Tjänsthantering** i det vänstra sidofältet. Under rubriken **Supportbegäranden** väljer du den tjänstbegäran som är i fråga. Slutför genom att göra önskade ändringar i tjänstbegäran och sedan välja **Skicka.**
+På instrumentpanelen i Partnercenter kan den här åtgärden utföras genom att först [välja en kund.](get-a-customer-by-name.md) Välj sedan **Tjänsthantering** i det vänstra sidofältet. Under rubriken **Supportförfrågningar** väljer du den tjänstbegäran som är i fråga. Slutför genom att göra önskade ändringar i tjänstbegäran och sedan välja **Skicka.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
 - Ett ID för tjänstbegäran.
 
 ## <a name="c"></a>C\#
 
-Om du vill uppdatera en kunds tjänstbegäran anropar du [**metoden IServiceRequestCollection.ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) med id:t för tjänstbegäran för att identifiera och returnera gränssnittet för tjänstbegäran. Anropa sedan metoden [**IServiceRequest.Patch eller**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patch) [**PatchAsync**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patchasync) för att uppdatera tjänstbegäran. Om du vill ange de uppdaterade värdena skapar du ett nytt, tomt [**ServiceRequest-objekt**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest) och anger endast de egenskapsvärden som du vill ändra. Skicka sedan objektet i anropet till metoden Patch eller PatchAsync.
+Om du vill uppdatera en kunds tjänstbegäran anropar du metoden [**IServiceRequestCollection.ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) med id:t för tjänstbegäran för att identifiera och returnera gränssnittet för tjänstbegäran. Anropa sedan [**metoden IServiceRequest.Patch**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patch) eller [**PatchAsync**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patchasync) för att uppdatera tjänstbegäran. Om du vill ange de uppdaterade värdena skapar du ett nytt, tomt [**ServiceRequest-objekt**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest) och anger endast de egenskapsvärden som du vill ändra. Skicka sedan objektet i anropet till metoden Patch eller PatchAsync.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -115,7 +115,7 @@ Om det lyckas returnerar den här metoden **en resurs för tjänstbegäran** med
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder för Partner Center REST.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

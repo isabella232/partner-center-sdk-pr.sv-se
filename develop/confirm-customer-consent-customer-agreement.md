@@ -4,20 +4,20 @@ description: Lär dig hur du bekräftar kundens godkännande av Microsoft-kundav
 ms.date: 02/08/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 002508109191ede53cd06f25efc38286647fd67c
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 374a9670f5d4c05209e5cec07afe766bcf57f255f9266138b7aaf0e85f90f0ed
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974020"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991930"
 ---
 # <a name="confirm-customer-acceptance-of-the-microsoft-customer-agreement-using-partner-center-apis"></a>Bekräfta kundens godkännande av Microsoft-kundavtal partnercenter-API:er
 
 **Gäller för:** Partnercenter
 
-**Gäller inte för**: Partner Center som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller inte för:** Partner Center som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-Partnercenter stöder för närvarande bekräftelse av kundgodkännande av Microsoft-kundavtal endast i Microsofts offentliga moln.
+Partnercenter stöder för närvarande endast bekräftelse av kundens godkännande Microsoft-kundavtal i Microsofts offentliga moln.
 
 Den här artikeln beskriver hur du bekräftar eller bekräftar kundens godkännande av Microsoft-kundavtal.
 
@@ -25,9 +25,9 @@ Den här artikeln beskriver hur du bekräftar eller bekräftar kundens godkänna
 
 - Om du använder Partner Center .NET SDK krävs version 1.14 eller senare.
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](./partner-center-authentication.md) *Det här scenariot stöder endast app- och användarautentisering.*
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](./partner-center-authentication.md). *Det här scenariot stöder endast app- och användarautentisering.*
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - Datumet (**dateAgreed**) när kunden godkände Microsoft-kundavtal.
 
@@ -36,7 +36,7 @@ Den här artikeln beskriver hur du bekräftar eller bekräftar kundens godkänna
   - Efternamn
   - E-postadress
   - Telefon (valfritt)
-- Om följande värden ändras för en kund tillåter Partnercenter att ett annat avtal skapas för kunden: Förnamn e-postadress Telefon-nummer Annars får partner följande felkod på grund av att en duplicerad kund skapas
+- Om följande värden ändras för en kund tillåter Partnercenter att ett annat avtal skapas för kunden: Förnamn Efternamn E-postadress Telefon-nummer Annars får partner följande felkod på grund av att en dubblett av kunden skapas
 
 
 ```
@@ -55,7 +55,7 @@ Den här artikeln beskriver hur du bekräftar eller bekräftar kundens godkänna
 
 Bekräfta eller bekräfta kundens godkännande av Microsoft-kundavtal:
 
-1. Hämta avtalsmetadata för Microsoft-kundavtal. Du måste hämta **templateId för** Microsoft-kundavtal. Mer information finns i Hämta [avtalsmetadata för Microsoft-kundavtal](get-customer-agreement-metadata.md).
+1. Hämta avtalets metadata för Microsoft-kundavtal. Du måste hämta **templateId för** Microsoft-kundavtal. Mer information finns i Hämta [avtalsmetadata för Microsoft-kundavtal](get-customer-agreement-metadata.md).
 
    ```csharp
    // IAggregatePartner partnerOperations;
@@ -67,9 +67,9 @@ Bekräfta eller bekräfta kundens godkännande av Microsoft-kundavtal:
 
 2. Skapa ett nytt **avtalsobjekt** som innehåller information om bekräftelsen.
 
-3. Använd **samlingen IAgreggatePartner.Customers** och anropa **ById-metoden** med det **angivna kund-klient-ID:t**.
+3. Använd **samlingen IAgreggatePartner.Customers** och anropa **ById-metoden** med det angivna **kundklient-ID:t**.
 
-4. Använd egenskapen **Avtal** följt av anropet **Create** eller **CreateAsync**.
+4. Använd egenskapen **Avtal** följt av att anropa **Create** eller **CreateAsync**.
 
    ```csharp
    // string selectedCustomerId;
@@ -90,15 +90,15 @@ Bekräfta eller bekräfta kundens godkännande av Microsoft-kundavtal:
    Agreement agreement = partnerOperations.Customers.ById(selectedCustomerId).Agreements.Create(agreementToCreate);
    ```
 
-Ett fullständigt exempel finns i klassen [CreateCustomerAgreement från](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/CreateCustomerAgreement.cs) [konsoltestappprojektet.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
+Ett fullständigt exempel finns i klassen [CreateCustomerAgreement](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/CreateCustomerAgreement.cs) från [konsoltestappsprojektet.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
 
 ## <a name="rest-request"></a>REST-begäran
 
 Bekräfta eller bekräfta kundens godkännande av Microsoft-kundavtal:
 
-1. Hämta avtalsmetadata för Microsoft-kundavtal. Du måste hämta **templateId för** Microsoft-kundavtal. Mer information finns i Hämta [avtalsmetadata för Microsoft-kundavtal](get-customer-agreement-metadata.md).
+1. Hämta avtalets metadata för Microsoft-kundavtal. Du måste hämta **templateId för** Microsoft-kundavtal. Mer information finns i Hämta [avtalsmetadata för Microsoft-kundavtal](get-customer-agreement-metadata.md).
 
-2. Skapa en ny [ **avtalsresurs**](agreement-resources.md) för att bekräfta att en kund har accepterat Microsoft-kundavtal. Använd följande [REST-begärandesyntax](#request-syntax).
+2. Skapa en ny [ **avtalsresurs**](agreement-resources.md) för att bekräfta att en kund har godkänt Microsoft-kundavtal. Använd följande [REST-begärandesyntax](#request-syntax).
 
 ### <a name="request-syntax"></a>Begärandesyntax
 
@@ -112,7 +112,7 @@ Använd följande frågeparameter för att ange den kund som du bekräftar.
 
 | Namn               | Typ | Obligatorisk | Beskrivning                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
-| kund-klient-id | GUID | Ja | Värdet är ett GUID-formaterat **kundklient-id,** vilket är en identifierare som gör att du kan ange en kund. |
+| kund-klient-id | GUID | Yes | Värdet är ett GUID-formaterat **kundklientorganisations-ID,** vilket är en identifierare som gör att du kan ange en kund. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -120,22 +120,22 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-I den här tabellen beskrivs de obligatoriska egenskaperna i REST-begärandetexten.
+I den här tabellen beskrivs de nödvändiga egenskaperna i REST-begärandetexten.
 
-| Namn      | Typ   | Beskrivning                                                                                  |
+| Namn      | Typ   | Description                                                                                  |
 |-----------|--------|----------------------------------------------------------------------------------------------|
 | Avtal | objekt | Information som tillhandahålls av partnern för att bekräfta kundens godkännande av Microsoft-kundavtal. |
 
 #### <a name="agreement"></a>Avtal
 
-I den här tabellen beskrivs de minsta obligatoriska fälten för att skapa en [ **avtalsresurs**](agreement-resources.md).
+I den här tabellen beskrivs de minsta obligatoriska fälten för att skapa en [ **avtalsresurs.**](agreement-resources.md)
 
-| Egenskap       | Typ   | Beskrivning                              |
+| Egenskap       | Typ   | Description                              |
 |----------------|--------|------------------------------------------|
-| primaryContact | [Kontakt](./utility-resources.md#contact) | Information om användaren från kundorganisationen som godkände Microsoft-kundavtal, inklusive:  **firstName**, **lastName,** **email** och **phoneNumber** (valfritt) |
+| primaryContact | [Kontakt](./utility-resources.md#contact) | Information om användaren från kundorganisationen som godkände Microsoft-kundavtal, inklusive:  **firstName,** **lastName,** **email** och **phoneNumber** (valfritt) |
 | dateAgreed     | sträng i UTC-datum/tid-format |Det datum då kunden godkände avtalet. |
 | templateId     | sträng | Unik identifierare för den avtalstyp som accepteras av kunden. Du kan hämta **templateId för** Microsoft-kundavtal genom att hämta avtalets metadata för Microsoft-kundavtal. Mer [information finns i Hämta avtalsmetadata Microsoft-kundavtal](./get-customer-agreement-metadata.md) information. |
-| typ           | sträng | Avtalstyp som accepteras av kunden. Använd "MicrosoftCustomerAgreement" om kunden har accepterat Microsoft-kundavtal. |
+| typ           | sträng | Avtalstyp som accepteras av kunden. Använd "MicrosoftCustomerAgreement" om kunden har godkänt Microsoft-kundavtal. |
 
 #### <a name="request-example"></a>Exempel på begäran
 
@@ -164,7 +164,7 @@ Om det lyckas returnerar den här metoden en [ **avtalsresurs**](./agreement-res
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation.
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation.
 
 Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 

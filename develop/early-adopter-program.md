@@ -4,12 +4,12 @@ description: Partner kan samarbeta med Microsoft för att utveckla partnerfunkti
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8bb46a84aaab41b8e65376ce580a40ce4bc1d188
-ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
+ms.openlocfilehash: 4d921e2f5be604dff1354c162acb90f6c8636c671d7c267d38157b8a8e42c5a1
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111906379"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989465"
 ---
 # <a name="join-the-partner-center-api-and-sdk-early-adopter-program"></a>Gå med i Partnercenter-programmet för tidiga API- och SDK-användare
 

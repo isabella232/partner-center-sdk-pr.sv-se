@@ -4,16 +4,16 @@ description: Den här konsoltestappen innehåller exempelkod för alla scenarier
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b35167104deeede50107d59fca6112c10dc7b4bf
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 53a014608303e432be251de0845857547170a5464a1952bb4fde9ff7beb8ae95
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974037"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991964"
 ---
 # <a name="console-test-app"></a>Konsoltestapp
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Konsoltestappen finns i C# och Java. Den innehåller exempelkoder för alla scenarier som stöds av Partner Center-API:erna. Du kan också använda den för testning.
 
@@ -26,11 +26,11 @@ Ladda ned exempelkoden för konsoltestappen.
 [Ladda ned exempelkoden](https://go.microsoft.com/fwlink/p/?LinkId=746682) och ändra den efter behov.
 
 > [!IMPORTANT]
-> Innan du skapar programmet uppdaterar du värdena i filen *App.config* för att återspegla den Azure AD-autentiseringsinformation som du skapade i [Partnercenter-autentisering](partner-center-authentication.md). Mer specifikt bör du använda inställningarna för sandbox-integrationskontot under tidig utveckling eller för testning i produktion.
+> Innan du skapar programmet uppdaterar du värdena i filen *App.config* för att återspegla den Azure AD-autentiseringsinformation som du skapade i [Partnercenter-autentisering.](partner-center-authentication.md) Mer specifikt bör du använda inställningarna för sandbox-integreringskontot under tidig utveckling eller för testning i produktion.
 
 Under **ScenarioInställningar** i *App.config* kan du ange parametrar som skickas automatiskt till de scenarier som du kör.
 
-Om du vill ändra listan över scenarier som körs kommenterar du ut rader **i IPartnerScenario \[ \] mainScenarios** eller i en enskild **metod** för att hämta scenarier som finns *i filen Program.cs.*
+Om du vill ändra listan över scenarier som körs kommenterar du ut rader **i IPartnerScenario \[ \] mainScenarios** eller i en enskild **Metod** för att hämta scenarier som finns i *filen Program.cs.*
 
 ## <a name="java"></a>Java
 
@@ -39,11 +39,11 @@ Om du vill ändra listan över scenarier som körs kommenterar du ut rader **i I
 [Ladda ned exempelkoden](https://go.microsoft.com/fwlink/p/?LinkId=2026887) och ändra den efter behov.
 
 > [!IMPORTANT]
-> Innan du skapar programmet uppdaterar du värdena i filen *SamplesConfigurations.jsför* att återspegla den Azure AD-autentiseringsinformation som du skapade i [Partnercenter-autentisering .](partner-center-authentication.md) Mer specifikt bör du använda inställningarna för sandbox-integrationskontot under tidig utveckling eller för testning i produktion.
+> Innan du skapar programmet uppdaterar du värdena i filen *SamplesConfigurations.jsför* att återspegla den Azure AD-autentiseringsinformation som du skapade i [Partnercenter-autentisering.](partner-center-authentication.md) Mer specifikt bör du använda inställningarna för sandbox-integreringskontot under tidig utveckling eller för testning i produktion.
 
 Under **ScenarioInställningar i** SamplesConfiguration.js *på* filen kan du ange parametrar som skickas automatiskt till de scenarier som du kör.
 
-Om du vill ändra listan över scenarier som körs kommenterar du ut rader **i IPartnerScenario \[ \] mainScenarios** eller i en enskild **metod** för att hämta scenarier som finns i *filen Program.java.*
+Om du vill ändra listan över scenarier som körs kommenterar du ut rader **i IPartnerScenario \[ \] mainScenarios** eller i en enskild Metod för **att** hämta scenarier som finns i *filen Program.java.*
 
 ## <a name="what-to-change"></a>Vad som ska ändras
 
@@ -58,14 +58,14 @@ För **PartnerServiceSettings** ändrar du inte:
 - **GraphEndpoint**
 - **CommonDomain**
 
-Alla dessa inställningar är nödvändiga för att exempel-API-anropen ska fungera korrekt.
+Alla dessa inställningar är nödvändiga för att exempel-API-anrop ska fungera korrekt.
 
 ### <a name="userauthentication"></a>UserAuthentication
 
 För **UserAuthentication** måste du ändra:
 
 - **ApplicationId** (ditt Azure Active Directory-ID som används för inloggning)
-- **UserName** (ditt active directory-användarnamn)
+- **UserName** (ditt Active Directory-användarnamn)
 - **Lösenord** (ditt Active Directory-lösenord).
 
 Ändra inte:
@@ -85,21 +85,21 @@ För **AppAuthentication** måste du ändra:
 
 För **ScenarioSettings** ändrar du inte:
 
-- **CustomerDomainSuffix** (domänsuffixet som används när du skapar en ny kund)
+- **CustomerDomainSuffix** (domänsuffixet som används när en ny kund skapas)
 
-Valfria inställningar. Om den lämnas tom måste den här informationen matas in när du kör ett scenario där det behövs):
+Valfria inställningar. Om det lämnas tomt måste den här informationen matas in när du kör ett scenario där det behövs):
 
-- **CustomerIdToDelete** (ID:t för kunden som användes för borttagning)
+- **CustomerIdToDelete** (ID:t för den kund som användes för borttagning)
 - **DefaultCustomerId** (det kund-ID som ska användas i kundrelaterade scenarier)
 - **DefaultInvoiceID (det** faktura-ID som ska användas i fakturascenarier)
 - **PartnerMpnId** (partnerns MPN-ID som ska användas i indirekta partnerscenarier)
 - **DefaultServiceRequestId (det** tjänstbegärande-ID som ska användas i scenarier med tjänstbegäran)
 - **DefaultSupportTopicID** (supportämnes-ID som ska användas i scenarier med tjänstbegäran)
 - **DefaultOfferID (det** erbjudande-ID som ska användas i erbjudandescenarier)
-- **DefaultOrderID** (order-ID:t som ska användas i ordningsscenarier)
-- **DefaultSubscriptionID** (prenumerations-ID:t som ska användas i prenumerationsscenarier)
+- **DefaultOrderID** (det order-ID som ska användas i ordningsscenarier)
+- **DefaultSubscriptionID (det** prenumerations-ID som ska användas i prenumerationsscenarier)
 
-Valfritt att ändra. Alla dessa inställningar anger hur många poster per sida som ska hämtas vid hämtning av sidindelade innehåll:
+Valfritt att ändra. Alla dessa inställningar anger antalet poster per sida vid hämtning av sidindelade innehåll:
 
 - **CustomerPageSize**
 - **InvoicePageSize**

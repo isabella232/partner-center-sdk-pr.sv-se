@@ -4,32 +4,32 @@ description: Lär dig hur du använder Partner Center-API:er för att ändra ant
 ms.date: 06/05/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d57ece4dd19ef2852f39130916222c54a9ccc85a
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: f13f4c73e085d2bf323a4260674d0dfa50631b692340a99bb67925a6480d044c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974105"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992151"
 ---
 # <a name="change-the-quantity-of-licenses-in-a-customer-subscription"></a>Ändra antalet licenser i en kundprenumeration
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Uppdaterar en [prenumeration](subscription-resources.md) för att öka eller minska antalet licenser.
 
-På instrumentpanelen i Partnercenter kan du utföra den här åtgärden genom att först [välja en kund.](get-a-customer-by-name.md) Välj sedan den prenumeration som du vill byta namn på. Slutför genom att ändra värdet i **fältet Kvantitet** och sedan välja **Skicka.**
+På instrumentpanelen i Partnercenter kan den här åtgärden utföras genom att först [välja en kund.](get-a-customer-by-name.md) Välj sedan den prenumeration som du vill byta namn på. För att slutföra detta ändrar du värdet i **fältet** Kvantitet och väljer sedan **Skicka.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID.
 
 ## <a name="c"></a>C\#
 
-Om du vill ändra kvantiteten för en kunds prenumeration hämtar du [först prenumerationen](get-a-subscription-by-id.md)och ändrar sedan prenumerationens [**egenskap Quantity.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.quantity) När ändringen har gjorts använder du samlingen **IAggregatePartner.Customers** och anropar **metoden ById().** Anropa sedan egenskapen [**Prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Avsluta sedan med att anropa **metoden Patch().**
+Om du vill ändra kvantiteten för en kunds prenumeration hämtar [du först](get-a-subscription-by-id.md)prenumerationen och ändrar sedan prenumerationens [**egenskap Quantity.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.quantity) När ändringen har gjorts använder du samlingen **IAggregatePartner.Customers** och anropar **metoden ById().** Anropa sedan egenskapen [**Prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Avsluta sedan med att anropa **metoden Patch().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -114,9 +114,9 @@ Om det lyckas returnerar den här metoden **en HTTP-statuskod 200** och uppdater
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar returnerar en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa statuskod, feltyp och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar returnerar en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa statuskod, feltyp och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
-När korrigeringsåtgärden tar längre tid än förväntat skickar Partnercenter statuskoden **HTTP-status 202** och ett platshuvud som pekar på var prenumerationen ska hämtas. Du kan köra frågor mot prenumerationen regelbundet för att övervaka status- och kvantitetsändringar.
+När korrigeringsåtgärden tar längre tid än förväntat skickar Partnercenter statuskoden **HTTP-status 202** och en platsrubrik som pekar på var prenumerationen ska hämtas. Du kan köra frågor mot prenumerationen med jämna mellanrum för att övervaka status- och kvantitetsändringar.
 
 ### <a name="response-examples"></a>Svarsexempel
 

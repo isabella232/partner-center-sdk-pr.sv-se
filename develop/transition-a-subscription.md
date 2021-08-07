@@ -4,30 +4,30 @@ description: Uppgraderar en kunds prenumeration till en angiven målprenumeratio
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 01455315825cad026830268b6bbd55509e964bb5
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 2989f1db4259ce43583baf8acf20b2b5204ab72e3725cdd7fa9f75db1db12510
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530248"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990179"
 ---
 # <a name="transition-a-subscription"></a>Överför en prenumeration
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Uppgraderar en kunds prenumeration till en angiven målprenumeration.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
-- Två prenumerations-ID:er, ett för den första prenumerationen och ett för målprenumerationen.
+- Två prenumerations-ID: en för den första prenumerationen och en för målprenumerationen.
 
 ## <a name="c"></a>C\#
 
-Om du vill uppgradera en kunds [prenumeration hämtar du först kundens prenumeration.](get-a-subscription-by-id.md) Hämta sedan en lista över uppgraderingar för prenumerationen genom att anropa **uppgraderingar-egenskapen** följt av **metoderna Get()** eller **GetAsync().** Välj en måluppgradering i listan över uppgraderingar och anropa sedan egenskapen **Uppgraderingar** för den första prenumerationen, följt av **metoden Create().**
+Om du vill uppgradera en kunds [prenumeration hämtar du först kundens prenumeration.](get-a-subscription-by-id.md) Hämta sedan en lista över uppgraderingar för prenumerationen genom att anropa **egenskapen Upgrades** följt av metoderna **Get()** eller **GetAsync().** Välj en måluppgradering i listan över uppgraderingar och anropa sedan egenskapen **Uppgraderingar** för den första prenumerationen följt av **metoden Create().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -56,7 +56,7 @@ Använd följande frågeparameter för att övergå till prenumerationen.
 | Namn                    | Typ     | Obligatorisk | Beskrivning                                       |
 |-------------------------|----------|----------|---------------------------------------------------|
 | **kund-klient-id**  | **guid** | Y        | Ett GUID som motsvarar kunden.             |
-| **id-for-subscription** | **guid** | Y        | Ett GUID som motsvarar den första prenumerationen. |
+| **id-for-subscription** | **guid** | Y        | Ett GUID som motsvarar den ursprungliga prenumerationen. |
 | **id-for-target**       | **guid** | Y        | Ett GUID som motsvarar målprenumerationen.  |
 
 ### <a name="request-headers"></a>Begärandehuvuden
@@ -146,7 +146,7 @@ Om det lyckas returnerar den här metoden **en uppgraderingsresultatresurs** i s
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

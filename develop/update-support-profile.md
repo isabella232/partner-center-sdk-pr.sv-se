@@ -4,12 +4,12 @@ description: Uppdaterar en användares supportprofil.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 143328c5501f525d52911eead805d420f79b78ff
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: f312f7da76d47282c5caa27b3158249b3d3e8a35e739d60fd74525705c0e7cf3
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530352"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990400"
 ---
 # <a name="update-support-profile"></a>Uppdatera supportprofil
 
@@ -19,7 +19,7 @@ Uppdaterar en användares supportprofil.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 

@@ -4,12 +4,12 @@ description: Du kan använda resurssamlingen CustomerMonthlyUsageRecord för att
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6b3fb0e1989336810f2afcc2a5bfc3a1d2849b7f
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 2ac71bdcbbeb36462f543a024727980922baf7dff5e37a3e7997ced881a51f94
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874898"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992916"
 ---
 # <a name="get-usage-records-for-all-customers"></a>Hämta användningsposter för alla kunder
 

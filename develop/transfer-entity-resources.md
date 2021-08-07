@@ -4,12 +4,12 @@ description: En partner skapar en överföring när en kund vill att deras prenu
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 544b9682bb0e1428fad088c818a62492198897b2
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 3103c0e9f8e6850336d663a5a38274ce7391e30edd433d08f44071de31b5fc5e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530148"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990213"
 ---
 # <a name="transferentity-resources"></a>TransferEntity-resurser
 
@@ -19,7 +19,7 @@ En partner skapar en överföring när en kund vill att deras prenumeration med 
 
 Beskriver en transferEntity.
 
-| Egenskap              | Typ             | Beskrivning                                                                                            |
+| Egenskap              | Typ             | Description                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
 | id                    | sträng           | En transferEntity-identifierare som anges när transferEntity har skapats.                               |
 | createdTime           | DateTime         | Det datum då transferEntity skapades i datum/tid-format. Tillämpas när transferEntity har skapats.      |
@@ -39,7 +39,7 @@ Beskriver en transferEntity.
 
 Representerar ett objekt som finns i en transferEntity.
 
-| Egenskap             | Typ                             | Beskrivning                                                                                             |
+| Egenskap             | Typ                             | Description                                                                                             |
 |----------------------|----------------------------------|---------------------------------------------------------------------------------------------------------|
 | id                   | sträng                           | En unik identifierare för ett överföringsradsobjekt. Tillämpas när transferEntity har skapats.   |
 | subscriptionId       | sträng                           | Prenumerationsidentifieraren.                                                                            |
@@ -56,29 +56,29 @@ Representerar ett objekt som finns i en transferEntity.
 
 Representerar resultatet av en överförings accept.
 
-| Egenskap          | Typ                                                  | Beskrivning                        |
+| Egenskap          | Typ                                                  | Description                        |
 |-------------------|-------------------------------------------------------|------------------------------------|
 | beställningar            | Lista över [orderobjekt.](order-resources.md#order)    | Samlingen med beställningar.          |
 | transferErrors    | Lista över [TransferError-objekt.](#transfererror)      | Insamling av överföringsfel. |
 
 ## <a name="transfererror"></a>TransferError
 
-Representerar ett fel som inträffar när en överföring accepteras.
+Representerar ett fel som inträffar när en överföring godkänns.
 
-| Egenskap          | Typ   | Beskrivning                                     |
+| Egenskap          | Typ   | Description                                     |
 |-------------------|--------|-------------------------------------------------|
-| transferGroupId   | sträng | Ordergruppens ID med felet . |
+| transferGroupId   | sträng | Ordergruppens ID för ordern med felet . |
 | kod              | int    | Felkoden.                                 |
-| beskrivning       | sträng | Beskrivningen av felet.                   |
-| lineItems         | Lista över **TransferLineItem-objekt** | En samling med transferEntity-radobjekt som ingår i överföringsfelet.|
+| beskrivning       | sträng | Beskrivning av felet.                   |
+| lineItems         | Lista över **TransferLineItem-objekt** | En samling transferEntity-radobjekt som ingår i överföringsfelet.|
 
 ## <a name="transfererrorcode"></a>TransferErrorCode
 
 En [Enum/dotnet/api/system.enum) med värden som anger en typ av orderfel.
 
-| Värde | Position | Beskrivning |
+| Värde | Position | Description |
 | --- | --- | --- |
-| PartnerTokenMissing | 800001 | Partnertoken saknas i begärandekontexten. |
+| PartnerTokenMissing | 800001 | Partnertoken saknas i begäranskontext. |
 | InvalidInput | 800002 | Ogiltiga indata för begäran. |
 | ServiceException | 800003 | Oväntat tjänstfel. |
 | InvalidOfferId | 800004 | Ogiltigt erbjudande-ID. |
@@ -87,6 +87,6 @@ En [Enum/dotnet/api/system.enum) med värden som anger en typ av orderfel.
 | NotValidIndirectResellerMpnId | 800016 | MPN-ID är inte en giltig indirekt återförsäljare. |
 | TransferIdNotFound | 900100   | Överföringsbegäran hittades inte.   |
 | TransferNotAllowedIfStatusIsInProgress | 900101 | Överföringsbegäran pågår redan.|
-| TransferNotAllowedIfStatusIsCompleted | 900102 | Överföringsbegäran är redan klar.|
+| TransferNotAllowedIfStatusIsCompleted | 900102 | Överföringsbegäran har redan slutförts.|
 | TransferCreateOrderError | 900103 | Överföringsordningen lyckas inte.|
 | TransferProcessedByAnotherRequest | 900104 | Överföringen bearbetas av en annan begäran.|

@@ -4,12 +4,12 @@ description: Så här hämtar du användningsinformation om licenser på arbetsb
 ms.date: 10/25/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ea3658089ce7eb5c1ad7cc65c3db34f9b6353cdd
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: a93c59c8c2a4c82ad7f3e81e814386e1ac0c046c3b0bada80eaaac40d9179d93
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445991"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990434"
 ---
 # <a name="get-licenses-usage-information"></a>Hämta information om licensanvändning
 
@@ -35,11 +35,11 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 | Parameter         | Typ     | Beskrivning | Krävs |
 |-------------------|----------|-------------|----------|
-| top               | sträng   | Antalet rader med data som ska returneras i begäran. Det högsta värdet och standardvärdet om inget värde anges är 10000. Om det finns fler rader i frågan innehåller svarstexten en nästa länk som du kan använda för att begära nästa sida med data. | Inga |
-| hoppa över              | int      | Antalet rader som ska hoppas över i frågan. Använd den här parametern för att bläddra igenom stora datamängder. Till exempel hämtar top=10000 och skip=0 de första 10 000 raderna med data, top=10000 och skip=10000 hämtar de nästa 10 000 raderna med data och så vidare. | Inga |
-| filter            | sträng   | *Filterparametern* för begäran innehåller en eller flera instruktioner som filtrerar raderna i svaret. Varje -instruktion innehåller ett fält och värde som är associerade med **`eq`** **`ne`** operatorerna eller , och -instruktioner kan kombineras med hjälp av **`and`** eller **`or`** . Här är några exempel *på filterparametrar:*<br/><br/>*filter=workloadCode eq 'SFB'*<br/><br/>*filter=workloadCode eq 'SFB'* or (*channel eq 'Reseller'*)<br/><br/>Du kan ange följande fält:<br/><br/>**workloadCode**<br/>**workloadName**<br/>**serviceCode**<br/>**Tjänstnamn**<br/>**Kanal**<br/>**customerTenantId**<br/>**customerName**<br/>**Produktionen**<br/>**Productname** | Inga |
-| groupby           | sträng   | En instruktion som endast tillämpar dataaggregering på de angivna fälten. Du kan ange följande fält:<br/><br/>**workloadCode**<br/>**workloadName**<br/>**serviceCode**<br/>**Tjänstnamn**<br/>**channelcustomerTenantId**<br/>**customerName**<br/>**Produktionen**<br/>**Productname**<br/><br/>De returnerade dataraderna innehåller de fält som anges i *parametern groupby* och följande:<br/><br/>**licensesActive**<br/>**licensesQualified** | Inga |
-| processedDateTime | DateTime | Du kan ange det datum då användningsdata bearbetades. Standardvärdet är det senaste datumet då data bearbetades | Inga |
+| top               | sträng   | Antalet rader med data som ska returneras i begäran. Det högsta värdet och standardvärdet om inget värde anges är 10000. Om det finns fler rader i frågan innehåller svarstexten en nästa länk som du kan använda för att begära nästa sida med data. | No |
+| hoppa över              | int      | Antalet rader som ska hoppas över i frågan. Använd den här parametern för att bläddra igenom stora datamängder. Till exempel hämtar top=10000 och skip=0 de första 10 000 raderna med data, top=10000 och skip=10000 hämtar de nästa 10 000 raderna med data och så vidare. | No |
+| filter            | sträng   | *Filterparametern* för begäran innehåller en eller flera instruktioner som filtrerar raderna i svaret. Varje -instruktion innehåller ett fält och värde som är associerade med **`eq`** **`ne`** operatorerna eller , och -instruktioner kan kombineras med hjälp av **`and`** eller **`or`** . Här är några exempel *på filterparametrar:*<br/><br/>*filter=workloadCode eq 'SFB'*<br/><br/>*filter=workloadCode eq 'SFB'* or (*channel eq 'Reseller'*)<br/><br/>Du kan ange följande fält:<br/><br/>**workloadCode**<br/>**workloadName**<br/>**serviceCode**<br/>**Tjänstnamn**<br/>**Kanal**<br/>**customerTenantId**<br/>**customerName**<br/>**Produktionen**<br/>**Productname** | No |
+| groupby           | sträng   | En instruktion som endast tillämpar dataaggregering på de angivna fälten. Du kan ange följande fält:<br/><br/>**workloadCode**<br/>**workloadName**<br/>**serviceCode**<br/>**Tjänstnamn**<br/>**channelcustomerTenantId**<br/>**customerName**<br/>**Produktionen**<br/>**Productname**<br/><br/>De returnerade dataraderna innehåller de fält som anges i *parametern groupby* och följande:<br/><br/>**licensesActive**<br/>**licensesQualified** | No |
+| processedDateTime | DateTime | Du kan ange det datum då användningsdata bearbetades. Standardvärdet är det senaste datumet då data bearbetades | No |
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -57,7 +57,7 @@ Host: api.partnercenter.microsoft.com
 
 Om det lyckas innehåller svarstexten följande fält som innehåller data om licensanvändningen.
 
-| Fält             | Typ     | Beskrivning                                   |
+| Fält             | Typ     | Description                                   |
 |-------------------|----------|-----------------------------------------------|
 | workloadCode      | sträng   | Arbetsbelastningskod                                 |
 | workloadName      | sträng   | Namn på arbetsbelastning                                 |

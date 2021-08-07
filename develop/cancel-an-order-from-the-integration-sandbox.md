@@ -4,16 +4,16 @@ description: Lär dig hur du använder Partner Center-API:er för att avbryta ol
 ms.date: 04/28/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4c4b658f406e420d8d3cd425688364fe3d440d3d
-ms.sourcegitcommit: a3a78ec0f5078645b5a4f3b534165eef30f2c822
+ms.openlocfilehash: 9c4843dc4626c2bb2cd1b2784f3df1c323e2eceea2edbb6330a9bd9dbcea4dc1
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113104979"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992219"
 ---
 # <a name="cancel-an-order-from-the-integration-sandbox-using-partner-center-apis"></a>Avbryta en beställning från sandbox-miljön för integrering med partnercenter-API:er
 
-**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 I den här artikeln beskrivs hur du använder Partner Center-API:er för att avbryta olika typer av prenumerationsbeställningar från integrations-sandbox-konton. Sådana beställningar kan omfatta reserverade instanser, programvara och saaS-prenumerationsbeställningar (Software as a Service) på den kommersiella marknadsplatsen.
 
@@ -25,7 +25,7 @@ Du kan också avbryta produktionsorder för programvara via instrumentpanelen me
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 - Ett partnerkonto för sandbox-integrering med en kund som har aktiv reserverad instans/programvara/SaaS-prenumerationsbeställningar från tredje part.
 
@@ -33,7 +33,7 @@ Du kan också avbryta produktionsorder för programvara via instrumentpanelen me
 
 Om du vill avbryta en beställning från sandbox-miljön för integrering skickar du autentiseringsuppgifterna för ditt konto till metoden [**`CreatePartnerOperations`**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) för att hämta ett gränssnitt för att hämta [**`IPartner`**](/dotnet/api/microsoft.store.partnercenter.ipartner) partneråtgärder.
 
-Om du vill välja en viss [order](order-resources.md#order)använder du partneråtgärderna och anropar -metoden med kund-ID:t för att ange kunden, följt av med orderidentifierare för att ange ordern och slutligen metoden eller metoden för [**`Customers.ById()`**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) att hämta **`Orders.ById()`** **`Get`** **`GetAsync`** den.
+Om du [](order-resources.md#order)vill välja en viss order använder du partneråtgärderna och anropsmetoden med kundidentifieraren för att ange kunden, följt av order-ID för att ange ordern och slutligen metoden eller metoden för [**`Customers.ById()`**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) att hämta **`Orders.ById()`** **`Get`** **`GetAsync`** den.
 
 Ange egenskapen [**`Order.Status`**](order-resources.md#order) till och använd metoden för att uppdatera `cancelled` **`Patch()`** ordern.
 
@@ -101,7 +101,7 @@ Om det lyckas returnerar den här metoden den annullerade ordern.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

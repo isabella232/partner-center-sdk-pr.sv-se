@@ -4,12 +4,12 @@ description: Så här uppdaterar du en order för en kund i en kundvagn.
 ms.date: 10/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8954d4dad39f9b1a1b9a2f213e0231f01856fcd2
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 79dcd58e5a967aad9160777805102683087becc74c655b2de990cd1bfd4ef3c8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446691"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990162"
 ---
 # <a name="update-a-cart"></a>Uppdatera en kundvagn
 
@@ -19,7 +19,7 @@ Så här uppdaterar du en order för en kund i en kundvagn.
 
 - Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - Ett kundvagns-ID för en befintlig kundvagn.
 
@@ -55,8 +55,8 @@ Använd följande sökvägsparametrar för att identifiera kunden och ange vilke
 
 | Namn            | Typ     | Obligatorisk | Beskrivning                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **kund-id** | sträng   | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
-| **cart-id**     | sträng   | Ja      | Ett GUID-formaterat kundvagns-ID som identifierar kundvagnen.                     |
+| **kund-id** | sträng   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
+| **cart-id**     | sträng   | Yes      | Ett GUID-formaterat kundvagns-ID som identifierar kundvagnen.                     |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -69,26 +69,26 @@ I den här tabellen beskrivs [egenskaperna för](cart-resources.md) Kundvagn i b
 | Egenskap              | Typ             | Obligatorisk        | Beskrivning                                                                                               |
 |-----------------------|------------------|-----------------|-----------------------------------------------------------------------------------------------------------|
 | id                    | sträng           | No              | En kundvagnsidentifierare som anges när kundvagnen har skapats.                                  |
-| creationTimeStamp     | DateTime         | Inga              | Datumet då kundvagnen skapades i datum/tid-format. Tillämpas när kundvagnen har skapats.        |
-| lastModifiedTimeStamp | DateTime         | Inga              | Datum då kundvagnen senast uppdaterades i datum/tid-format. Tillämpas när kundvagnen har skapats.    |
-| expirationTimeStamp   | DateTime         | Inga              | Datumet då kundvagnen upphör att gälla i datum/tid-format.  Tillämpas när kundvagnen har skapats.            |
+| creationTimeStamp     | DateTime         | No              | Datumet då kundvagnen skapades i datum/tid-format. Tillämpas när kundvagnen har skapats.        |
+| lastModifiedTimeStamp | DateTime         | No              | Datum då kundvagnen senast uppdaterades i datum/tid-format. Tillämpas när kundvagnen har skapats.    |
+| expirationTimeStamp   | DateTime         | No              | Datumet då kundvagnen upphör att gälla i datum/tid-format.  Tillämpas när kundvagnen har skapats.            |
 | lastModifiedUser      | sträng           | No              | Den användare som senast uppdaterade kundvagnen. Tillämpas när kundvagnen har skapats.                             |
-| lineItems             | Matris med objekt | Ja             | En matris med [CartLineItem-resurser.](cart-resources.md#cartlineitem)                                               |
+| lineItems             | Matris med objekt | Yes             | En matris med [CartLineItem-resurser.](cart-resources.md#cartlineitem)                                               |
 
 I den här tabellen beskrivs [egenskaperna för CartLineItem](cart-resources.md#cartlineitem) i begärandetexten.
 
 | Egenskap             | Typ                        | Obligatorisk     | Beskrivning                                                                                        |
 |----------------------|-----------------------------|--------------|----------------------------------------------------------------------------------------------------|
 | id                   | sträng                      | No           | En unik identifierare för ett kundvagnsradsobjekt. Tillämpas när kundvagnen har skapats.                |
-| catalogId            | sträng                      | Ja          | Katalogobjektets identifierare.                                                                       |
+| catalogId            | sträng                      | Yes          | Katalogobjektets identifierare.                                                                       |
 | friendlyName         | sträng                      | No           | Valfritt. Det egna namnet för det objekt som definierats av partnern för att undvika tvetydighet.              |
-| quantity             | int                         | Ja          | Antalet licenser eller instanser.     |
+| quantity             | int                         | Yes          | Antalet licenser eller instanser.     |
 | currencyCode         | sträng                      | No           | Valutakoden.                                                                                 |
-| billingCycle         | Objekt                      | Ja          | Den typ av faktureringsperiod som angetts för den aktuella perioden.                                              |
-| deltagare         | Lista över objektsträngpar | Inga           | En samling deltagare i köpet.                                                      |
-| provisioningContext  | Ordlista<sträng, sträng>  | Inga           | En kontext som används för etablering av erbjudande.                                                          |
+| billingCycle         | Objekt                      | Yes          | Den typ av faktureringsperiod som angetts för den aktuella perioden.                                              |
+| deltagare         | Lista över objektsträngpar | No           | En samling deltagare i köpet.                                                      |
+| provisioningContext  | Ordlista<sträng, sträng>  | No           | En kontext som används för etablering av erbjudande.                                                          |
 | orderGroup           | sträng                      | No           | En grupp som anger vilka objekt som kan placeras tillsammans.                                            |
-| fel                | Objekt                      | Inga           | Tillämpas när kundvagnen har skapats i händelse av ett fel.                                                 |
+| fel                | Objekt                      | No           | Tillämpas när kundvagnen har skapats i händelse av ett fel.                                                 |
 
 ### <a name="request-example"></a>Exempel på begäran
 

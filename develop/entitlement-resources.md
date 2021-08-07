@@ -4,16 +4,16 @@ description: Beskriver resurser relaterade till berättigande.
 ms.date: 01/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 929004fff804675218e267bb928b432f7b1209bf
-ms.sourcegitcommit: 84a6f701190f46d2adcf6edcaeaafa32d58fbaba
+ms.openlocfilehash: 9582bb0d886078062ae14d0461accb8e0179bed2e33e9a264cc1da8b06383706
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113510116"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989159"
 ---
 # <a name="entitlement-resources"></a>Berättiganderesurser
 
-**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 ## <a name="entitlement"></a>Berättigande
 
@@ -24,11 +24,11 @@ Den här resursen representerar de produkter som kunden har rätt att använda p
 | referenceOrder | [ReferenceOrder](#referenceorder) | Orderreferensen som resulterade i rättigheten. |
 | productId | sträng | ID för produkten. |
 | skuID | sträng | ID för SKU:n. |
-| quantity | int | Antalet berättiganden (exkluderar ej ifyllda/överflyttningsberättiganden). |
-| quantityDetails | IEnumerable<[QuantityDetail](#quantitydetail)> | Listan med information om berättigandekvantitet (antalet objekt och status för varje kvantitet). |
-| entitlementType | sträng | Typ av berättigande. (Uppdaterat till sträng från [EntitlementType](#entitlementtype) i SDK 1.8.) |
+| quantity | int | Antalet berättiganden (utesluter ej ifyllda/överflyttningsberättiganden). |
+| quantityDetails | IEnumerable<[QuantityDetail](#quantitydetail)> | Listan över information om berättigandekvantitet (antalet objekt och status för varje kvantitet). |
+| entitlementType | sträng | Typ av berättigande. (Har uppdaterats till sträng [från EntitlementType](#entitlementtype) i SDK 1.8.) |
 | entitledArtifacts | IEnumerable<[Artifact](#artifact)> | Listan över artefakter som är associerade med rättigheten. |
-| IncludedEntitlements | IEnumerable<[Entitlement](#artifact)> | Listan över rättigheter, som implicit ingår som ett resultat av productId/SkuId-köpet från katalogen. |
+| IncludedEntitlements | IEnumerable<[Entitlement](#artifact)> | Listan över rättigheter, som ingår implicit som ett resultat av ProductId/SkuId-köpet från katalogen. |
 | ExpiryDate | sträng i UTC-datum/tid-format  | Förfallodatum för rättigheten (om tillämpligt). |
 
 ## <a name="referenceorder"></a>ReferenceOrder
@@ -55,12 +55,12 @@ Representerar information om en berättigandekvantitet.
 > [!IMPORTANT]
 > Inaktuell i SDK v1.9
 
-En [Uppräkning](/dotnet/api/system.enum) med värden som anger typen av berättigande.
+En [Uppräkning](/dotnet/api/system.enum) med värden som anger typ av berättigande.
 
 | Värde | Beskrivning |
 |-------|-------------|
 | Programvara | Anger typ av berättigande som är relaterad till programvara. |
-| VirtualMachineReservedInstance | Anger typ av berättigande som är Azure Reserved Virtual Machine Instances. |
+| VirtualMachineReservedInstance | Anger typ av berättigande som är relaterad Azure Reserved Virtual Machine Instances. |
 
 ## <a name="artifact"></a>Artefakt
 
@@ -68,23 +68,23 @@ Artefakten som är associerad med rättigheten.
 
 | Egenskap | Typ | Description |
 |----------|------|-------------|
-| artifactType | sträng | Typ av artefakt. (Uppdaterat till sträng från [ArtifactType](#artifacttype) i SDK V1.8) |
-| dynamicAttributes | &lt;Ordlistesträng, objekt&gt; | Dynamiska attribut som innehåller artefakttypspecifika värden. Till exempel när artifactType = "reservedinstance" innehåller den här egenskapen "reservationType" = "virtualmachines" eller "reservationType" = "sqldatabases" som anger reserverad instans för virtuell dator eller reserverad Azure SQL-instans. (Tillgängligt från och med SDK v1.9) |
+| artifactType | sträng | Typ av artefakt. (Uppdaterad till sträng från [ArtifactType](#artifacttype) i SDK V1.8) |
+| dynamicAttributes | &lt;Ordlistesträng, objekt&gt; | Dynamiska attribut som innehåller artefakttypsspecifika värden. Till exempel när artifactType = "reservedinstance" innehåller den här egenskapen "reservationType" = "virtualmachines" eller "reservationType" = "sqldatabases" som anger reserverad instans för virtuell dator eller reserverad Azure SQL-instans. (Tillgängligt från och med SDK v1.9) |
 
 ## <a name="artifacttype"></a>ArtifactType
 
 > [!IMPORTANT]
 > Inaktuell i SDK v1.9
 
-En [Uppräkning med](/dotnet/api/system.enum) värden som anger typen av berättigandeartefakt.
+En [Uppräkning](/dotnet/api/system.enum) med värden som anger typen av berättigandeartefakt.
 
 | Värde                          | Beskrivning                                                                             |
 |--------------------------------| ----------------------------------------------------------------------------------------|
-| VirtualMachineReservedInstance | Anger artefakthjälpmedel med hämtning av Azure Reserved Virtual Machine Instances. |
+| VirtualMachineReservedInstance | Anger artefakten underlättar hämtningen av Azure Reserved Virtual Machine Instances. |
 
 ## <a name="reservedinstanceartifact"></a>ReservedInstanceArtifact
 
-Artefakten som är associerad med en rättighet för en reserverad Azure-instans. Den ärver från [klassen Artifact.](#artifact)
+Artefakten som är associerad med en reserverad Azure-instans-rättighet. Den ärver från [klassen Artifact.](#artifact)
 
 | Egenskap   | Typ                           | Description                                        |
 |------------|--------------------------------|----------------------------------------------------|
@@ -107,7 +107,7 @@ Representerar en enskild reservation.
 | Egenskap          | Typ                           | Description                                                        |
 |-------------------|--------------------------------|--------------------------------------------------------------------|
 | reservationId     | sträng                         | RESERVATIONENS ID.                                         |
-| scopeType         | sträng                         | Den typ av omfång som är associerad med reservationen av virtuella datorer. |
+| scopeType         | sträng                         | Den typ av omfång som associeras med reservationen av den virtuella datorn. |
 | displayName       | sträng                         | Reservationens visningsnamn.                               |
 | appliedScopes     | Ienumerable                    | Listan över tillämpade omfång som är associerade med reservationen. (Endast tillgängligt när scopeType inte delas.) |
 | quantity          | int                            | Antalet virtuella datorer i reservationen.                 |
@@ -149,7 +149,7 @@ Representerar en enskild reservation av virtuell dator.
 |     Egenskap      |              Typ              |                                                Description                                                 |
 |-------------------|--------------------------------|------------------------------------------------------------------------------------------------------------|
 |   reservationId   |             sträng             |                                         RESERVATIONENS ID.                                         |
-|     scopeType     |             sträng             |                     Den typ av omfång som är associerad med reservationen av virtuella datorer.                     |
+|     scopeType     |             sträng             |                     Den typ av omfång som associeras med reservationen av den virtuella datorn.                     |
 |    displayName    |             sträng             |                                    Reservationens visningsnamn.                                    |
 |   appliedScopes   |      `IEnumerable<string>`       | Listan över tillämpade omfång som är associerade med reservationen. (Endast tillgängligt när scopeType inte delas.) |
 |     quantity      |              int               |                             Antalet virtuella datorer i reservationen.                             |

@@ -1,29 +1,29 @@
 ---
 title: Hämta användarroller för en kund
-description: Hämta en lista över alla roller/behörigheter som är kopplade till ett användarkonto. Varianter inkluderar att hämta en lista över alla behörigheter för alla användarkonton för en kund och hämta en lista över användare som har en viss roll.
+description: Hämta en lista över alla roller/behörigheter som är kopplade till ett användarkonto. Variationer omfattar att hämta en lista över alla behörigheter för alla användarkonton för en kund och hämta en lista över användare som har en viss roll.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8f58e8b7eae5bb47265bb1ac83fcdcd160f735d2
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: b139ee69ae5148896b1a438b061907e022175f318956667cebb91ead15b863f6
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445926"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989346"
 ---
 # <a name="get-user-roles-for-a-customer"></a>Hämta användarroller för en kund
 
-Hämta en lista över alla roller/behörigheter som är kopplade till ett användarkonto. Varianter inkluderar att hämta en lista över alla behörigheter för alla användarkonton för en kund och hämta en lista över användare som har en viss roll.
+Hämta en lista över alla roller/behörigheter som är kopplade till ett användarkonto. Variationer omfattar att hämta en lista över alla behörigheter för alla användarkonton för en kund och hämta en lista över användare som har en viss roll.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta alla katalogroller för en angiven kund hämtar du först det angivna kund-ID:t. Använd sedan din **IAggregatePartner.Customers-samling** och anropa **metoden ById().** Anropa sedan egenskapen **DirectoryRoles** följt av metoden **Get()** eller **GetAsync().**
+Om du vill hämta alla katalogroller för en angiven kund hämtar du först det angivna kund-ID:t. Använd sedan samlingen **IAggregatePartner.Customers** och anropa **metoden ById().** Anropa sedan egenskapen **DirectoryRoles** följt av metoden **Get()** eller **GetAsync().**
 
 ``` csharp
 // string selectedCustomerId;
@@ -32,9 +32,9 @@ Om du vill hämta alla katalogroller för en angiven kund hämtar du först det 
 var directoryRoles = partnerOperations.Customers.ById(selectedCustomerId).DirectoryRoles.Get();
 ```
 
-**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: GetCustomerDirectoryRoles.cs
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Samples-klass:** GetCustomerDirectoryRoles.cs
 
-Om du vill hämta en lista över kundanvändare som har en viss roll hämtar du först det angivna kund-ID:t och katalogrolls-ID:t. Använd sedan din **IAggregatePartner.Customers-samling** och anropa **metoden ById().** Anropa sedan **egenskapen DirectoryRoles,** sedan **metoden ById()** och sedan egenskapen **UserMembers** följt av metoden **Get()** eller **GetAsync().**
+Om du vill hämta en lista över kundanvändare som har en viss roll hämtar du först det angivna kund-ID:t och katalogrolls-ID:t. Använd sedan samlingen **IAggregatePartner.Customers** och anropa **metoden ById().** Anropa sedan **egenskapen DirectoryRoles,** sedan **metoden ById()** och sedan egenskapen **UserMembers** följt av **metoden Get()** **eller GetAsync().**
 
 ``` csharp
 // string selectedCustomerId;
@@ -88,7 +88,7 @@ Om det lyckas returnerar den här metoden en lista över de roller som är assoc
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 1605c3e8cb050717209cb482d2299e2a42b9b186
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 17a41e498a650eb8a59397a5f4e2614999228c75e39f5f49a0b73c9dae728389
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530046"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990128"
 ---
 # <a name="update-a-customers-billing-profile"></a>Uppdatera en kunds faktureringsprofil
 

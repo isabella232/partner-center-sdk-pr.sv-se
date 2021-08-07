@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 857caa667245503f111b27379a5c8f93aa1fb0b0
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: ebc3dc1bf557f502468f43076663b7ca1b55e7d1d8fc9ae12a8e0b2a27a21b02
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760665"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990876"
 ---
 # <a name="get-a-customers-subscriptions-by-partner-mpn-id"></a>Hämta en kunds prenumerationer efter partner-MPN-ID
 
@@ -82,8 +82,8 @@ Använd följande sökväg och frågeparametrar för att identifiera kunden och 
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                                 |
 |-------------|--------|----------|-------------------------------------------------------------|
-| kund-ID | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.       |
-| mpn-id      | int    | Ja      | Ett Microsoft Partner Network-ID som identifierar partnern. |
+| kund-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.       |
+| mpn-id      | int    | Yes      | Ett Microsoft Partner Network-ID som identifierar partnern. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

@@ -4,12 +4,12 @@ description: Så här hämtar du en lista över erbjudanden för utvärderingsko
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 981910560faf7b7957b28e643c09a003826b9cff
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 23c676ae8120a5b156b8af6b18154fcbc921e52e126f0f611988a1d75d880f4d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111873929"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991313"
 ---
 # <a name="get-a-list-of-trial-conversion-offers"></a>Hämta en lista över erbjudanden för utvärderingskonvertering
 
@@ -51,8 +51,8 @@ Använd följande sökvägsparametrar för att identifiera kunden och utvärderi
 
 | Namn            | Typ   | Obligatorisk | Beskrivning                                                     |
 |-----------------|--------|----------|-----------------------------------------------------------------|
-| kund-ID     | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.           |
-| prenumerations-id | sträng | Ja      | En GUID-formaterad sträng som identifierar utvärderingsprenumerationen. |
+| kund-ID     | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.           |
+| prenumerations-id | sträng | Yes      | En GUID-formaterad sträng som identifierar utvärderingsprenumerationen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

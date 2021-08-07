@@ -1,17 +1,17 @@
 ---
-title: Hämta MFA-implementeringsstatus
+title: Hämta implementeringsstatus för MFA
 description: Hämta en lista över implementeringsstatus för multifaktorautentisering för varje partner med hjälp av partner-REST API.
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 9b8848c2a4531dd6609f86aae6876cec436eeea9
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: e4b55122a6f723d8a877c2688c425fda52cb1c56110c47ee81ddce24e4923e99
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760529"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992542"
 ---
 # <a name="get-mfa-adoption-status"></a>Hämta MFA-implementeringsstatus
 
@@ -21,7 +21,7 @@ Den här artikeln förklarar hur du hämtar implementeringsstatusen för multifa
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -54,7 +54,7 @@ Om det lyckas returnerar den här metoden en samling [API-begäran som sammanfat
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

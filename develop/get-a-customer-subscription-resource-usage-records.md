@@ -4,16 +4,16 @@ description: Du kan använda resursen ResourceUsageRecord för att hämta en kun
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 50edb9de1d09363b242c080a76c683732f05a5de
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 81c8fcb868f7d4d50e23d69579138a6c03e9ea4ae93058d141a029c103489dcb
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874847"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992848"
 ---
 # <a name="get-usage-data-for-subscription-by-resource"></a>Hämta användningsdata för prenumeration efter resurs
 
-**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 I den här artikeln beskrivs hur du hämtar **resursen ResourceUsageRecord.** Den här resursen representerar en aggregerad summa för månaden för enskilda resurser som etablerats i din Azure-plan. Du kan använda den här resursen för att hämta en kunds resursanvändningsposter för specifika Azure-tjänster eller -resurser under den aktuella faktureringsperioden. Det här API:et returnerar data som inte var tillgängliga tidigare via Api:er för Azure-utgifter.
 
@@ -21,9 +21,9 @@ I den här artikeln beskrivs hur du hämtar **resursen ResourceUsageRecord.** De
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - En prenumerationsidentifierare
 
@@ -46,7 +46,7 @@ Så här hämtar du resursanvändningsposter för en kund för en specifik Azure
 Ett exempel finns i följande:
 
 - Exempel: [Konsoltestapp](console-test-app.md)
-- Project: **PartnerSDK.FeatureExempel**
+- Project: **PartnerSDK.FeatureSamples**
 - Klass: **GetSubscriptionUsageRecordsByResource.cs**
 
 ## <a name="rest-request"></a>REST-begäran
@@ -59,12 +59,12 @@ Ett exempel finns i följande:
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-I den här tabellen visas de frågeparametrar som krävs för att hämta kundens klassificerade användningsinformation.
+Den här tabellen innehåller de frågeparametrar som krävs för att hämta kundens klassificerade användningsinformation.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                               |
 |------------------------|----------|----------|-------------------------------------------|
 | **kund-klient-id** | **guid** | Y        | Ett GUID som motsvarar kunden.     |
-| **prenumerations-id**    | **guid** | Y        | Ett GUID som motsvarar identifieraren [](subscription-resources.md#subscription)för en Partner Center-prenumerationsresurs , som representerar en Microsoft Azure-prenumeration (MS-AZR-0145P) eller en Azure-plan. *För prenumerationsresurser för **Azure-prenumeration anger du plan-id som** **prenumerations-ID i** den här vägen.* |
+| **prenumerations-id**    | **guid** | Y        | Ett GUID som motsvarar identifieraren [](subscription-resources.md#subscription)för en Partner Center-prenumerationsresurs , som representerar en Microsoft Azure-prenumeration (MS-AZR-0145P) eller en Azure-plan. *För prenumerationsresurser för Azure-plan anger du **plan-ID:t** som **prenumerations-ID i** den här vägen.* |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -90,7 +90,7 @@ Om det lyckas returnerar den här metoden **en PagedResourceCollection-resurs \<
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: e05248b16b803529258de806c25b117f3104ad2a
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: e0b3a45c8cf63334ac53e673fbe88734d3692dfca00c5fe8458695cc28c34f64
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446334"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990519"
 ---
 # <a name="get-customers-of-an-indirect-reseller"></a>Hämta kunder till en indirekt återförsäljare
 
@@ -82,8 +82,8 @@ Använd följande frågeparametrar för att skapa begäran.
 
 | Namn   | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                                                                                                                                   |
 |--------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ikoner   | int    | Inga       | Antalet resultat som ska visas samtidigt. Den här parametern är valfri.                                                                                                                                                                                                                |
-| filter | filter | Ja      | Frågan som filtrerar sökningen. Om du vill hämta kunder för en angiven indirekt återförsäljare måste du infoga den indirekta återförsäljaridentifieraren och inkludera och koda följande sträng: {"Field":"IndirectReseller","Value":"{indirect reseller identifier}","Operator":"starts \_ with"}. |
+| ikoner   | int    | No       | Antalet resultat som ska visas samtidigt. Den här parametern är valfri.                                                                                                                                                                                                                |
+| filter | filter | Yes      | Frågan som filtrerar sökningen. Om du vill hämta kunder för en angiven indirekt återförsäljare måste du infoga den indirekta återförsäljaridentifieraren och inkludera och koda följande sträng: {"Field":"IndirectReseller","Value":"{indirect reseller identifier}","Operator":"starts \_ with"}. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

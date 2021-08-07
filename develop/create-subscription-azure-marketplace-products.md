@@ -4,45 +4,45 @@ description: Utvecklare kan skapa och hantera en prenumeration för produkter p�
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ae2e4b0a1ffa2e63e68864887093673e32079d9f
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 7e7a4b96f509ae99cd4933963c04b0f660d7d76410ee86c31256c62b290f122f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973374"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991386"
 ---
 # <a name="create-a-subscription-for-commercial-marketplace-products"></a>Skapa en prenumeration för produkter på den kommersiella marknadsplatsen
 
-Du kan skapa en prenumeration för produkter på den kommersiella marknadsplatsen med hjälp av PartnerCenter-API:er. Du måste [hämta en lista över erbjudanden för en marknad,](#get-a-list-of-offers-for-a-market)skapa och skicka en [beställning](#create-and-submit-an-order) för en prenumeration på den kommersiella marknadsplatsen och sedan hämta [en aktiveringslänk.](#get-activation-link)
+Du kan skapa en prenumeration för produkter på den kommersiella marknadsplatsen med partnercenter-API:er. Du måste [hämta en lista över erbjudanden för en marknad,](#get-a-list-of-offers-for-a-market)skapa och skicka en [order](#create-and-submit-an-order) för en prenumeration på den kommersiella marknadsplatsen och sedan hämta [en aktiveringslänk](#get-activation-link).
 
 Du kan också [utföra livscykelhantering och](#lifecycle-management) [hantera fakturor för](#invoice-and-reconciliation) dessa prenumerationer.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [Autentiseringsuppgifter för Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+* [Autentiseringsuppgifter för Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 * Kundidentifieraren. Om du inte har en kunds identifierare följer du stegen i [Hämta en lista över kunder.](get-a-list-of-customers.md) Du kan också logga in på Partnercenter, välja kunden i listan över kunder, välja **Konto** och sedan spara sitt **Microsoft-ID.**
 
 ## <a name="get-a-list-of-offers-for-a-market"></a>Hämta en lista över erbjudanden för en marknad
 
-Du kan kontrollera de tillgängliga erbjudandena för en marknad med hjälp av följande Partner Center API-modeller:
+Du kan kontrollera tillgängliga erbjudanden för en marknad med hjälp av följande Partner Center API-modeller:
 
-* **[Produkt:](product-resources.md#product)** En grupperingskonstruktion för köpbara varor eller tjänster. Själva produkten är inte ett köpbart objekt.
-* **[SKU:](product-resources.md#sku)** En köpbar lagerhållningsenhet (SKU) under en produkt. Dessa representerar olika former av produkten.
-* **[Tillgänglighet:](product-resources.md#availability)** En konfiguration där en SKU kan köpas (till exempel land, valuta eller branschsegment).
+* **[Produkt](product-resources.md#product)**: En grupperingskonstruktion för köpbara varor eller tjänster. Själva produkten är inte ett köpbart objekt.
+* **[SKU:](product-resources.md#sku)** En köpbar lagerhållningsenhet (SKU) under en produkt. De representerar olika former av produkten.
+* **[Tillgänglighet:](product-resources.md#availability)** En konfiguration där en SKU är tillgänglig för inköp (till exempel land, valuta eller branschsegment).
 
-Slutför följande steg innan du köper en Azure-reservation:
+Innan du köper en Azure-reservation utför du följande steg:
 
 1. Identifiera och hämta den produkt och SKU som du vill köpa. Om du redan känner till produkt-ID och SKU-ID väljer du dem.
 
     * [Hämta en lista över produkter](get-a-list-of-products.md)
-    * [Hämta en produkt med produkt-ID:t](get-a-product-by-id.md)
+    * [Hämta en produkt med hjälp av produkt-ID:t](get-a-product-by-id.md)
     * [Hämta en lista över SKU:er för en produkt](get-a-list-of-skus-for-a-product.md)
     * [Hämta en SKU med hjälp av SKU-ID:t](get-a-sku-by-id.md)
 
     > [!NOTE]
-    > Du kan identifiera produkter på den kommersiella marknadsplatsen med deras **ProductType-egenskap** **"Azure"** och deras **SubType-egenskap** **"SaaS".**
+    > Du kan identifiera produkter på den kommersiella marknadsplatsen efter **deras ProductType-egenskap** **"Azure"** och deras **SubType-egenskap** **"SaaS".**
 
-2. Om SKU:erna är taggade med **en InventoryCheck-förutsättning** [kontrollerar du inventeringen för en SKU.](check-inventory.md)
+2. Om SKU:erna är taggade med **en InventoryCheck-förutsättning** kontrollerar [du inventeringen för en SKU.](check-inventory.md)
 
     > [!NOTE]
     > För stunden finns det inga produkter från den kommersiella marknadsplatsen som stöder inventeringskontroll eller taggas med krav **för InventoryCheck.**
@@ -56,10 +56,10 @@ Slutför följande steg innan du köper en Azure-reservation:
 
 Följ dessa steg om du vill skicka din Azure-reservationsbeställning:
 
-1. [Skapa en kundvagn](create-a-cart.md) för den samling katalogobjekt som du tänker köpa. När du skapar [en kundvagn](cart-resources.md#cart) [grupperas kundvagnsradsobjekten](cart-resources.md#cartlineitem) automatiskt baserat på vad som kan köpas tillsammans i samma [order.](order-resources.md#order) (Du kan också [uppdatera en kundvagn](update-a-cart.md).)
+1. [Skapa en kundvagn](create-a-cart.md) för den samling katalogobjekt som du tänker köpa. När du skapar [en kundvagn](cart-resources.md#cart) [grupperas kundvagnsraderna](cart-resources.md#cartlineitem) automatiskt baserat på vad som kan köpas tillsammans i samma [order.](order-resources.md#order) (Du kan också [uppdatera en kundvagn](update-a-cart.md).)
 2. [Checka ut kundvagnen](checkout-a-cart.md), vilket resulterar i att en [order skapas.](order-resources.md#order)
 
-### <a name="get-order-details"></a>Hämta orderinformation
+### <a name="get-order-details"></a>Hämta beställningsinformation
 
 Du kan [hämta information om en enskild order med hjälp av order-ID:t](get-an-order-by-id.md). Du kan också [hämta en lista över alla beställningar för en specifik kund](get-all-of-a-customer-s-orders.md).
 
@@ -68,33 +68,33 @@ Du kan [hämta information om en enskild order med hjälp av order-ID:t](get-an-
 
 ## <a name="get-activation-link"></a>Hämta aktiveringslänk
 
-Partnern eller kunden måste aktivera prenumerationer för att Azure Marketplace produkter. Du kan [få en aktiveringslänk via orderradobjektet](get-activation-link-by-order-line-item.md). Du kan också [hämta en prenumeration per ID](get-a-subscription-by-id.md)och sedan räkna upp dess Egenskap **Länkar** för att skapa en aktiveringslänk.
+Partnern eller kunden måste aktivera prenumerationer för att Azure Marketplace produkter. Du kan [få en aktiveringslänk via orderradsposten](get-activation-link-by-order-line-item.md). Du kan också [hämta en prenumeration per ID](get-a-subscription-by-id.md)och sedan räkna upp dess Egenskap Länkar **för** att skapa en aktiveringslänk.
 
 ## <a name="lifecycle-management"></a>Livscykelhantering
 
-Du kan hantera livscykeln för dina prenumerationer på produkter från den kommersiella marknadsplatsen med hjälp av följande metoder:
+Du kan hantera livscykeln för dina prenumerationer på kommersiella marknadsplatsprodukter med hjälp av följande metoder:
 
 * [Avbryta en prenumeration på kommersiell marknadsplats](cancel-an-azure-marketplace-subscription.md)
 * [Aktivera eller inaktivera automatisk förnyelse för en prenumeration på den kommersiella marknadsplatsen](update-autorenew-for-an-azure-marketplace-subscription.md)
 
 ## <a name="quantity-management"></a>Kvantitetshantering
 
-Kvantiteten för en prenumeration på den kommersiella marknadsplatsen måste vara inom de gränser som definieras av dess associerade [SKU](product-resources.md#sku) (se **attributen minimumQuantity** och **maximumQuantity).** Om du vill uppdatera kvantiteten för en prenumeration på den kommersiella marknadsplatsen använder du följande metod:
+Kvantiteten för en prenumeration på den kommersiella marknadsplatsen måste vara inom de gränser som definierats av dess associerade [SKU](product-resources.md#sku) (se **attributen minimumQuantity** och **maximumQuantity).** Om du vill uppdatera kvantiteten för en prenumeration på den kommersiella marknadsplatsen använder du följande metod:
 
 * [Ändra kvantiteten för en prenumeration](change-the-quantity-of-a-subscription.md)
 
 ## <a name="invoice-and-reconciliation"></a>Faktura och avstämning
 
-Du kan hantera [kundfakturor](invoice-resources.md) (inklusive avgifter för prenumerationer på produkter på den kommersiella marknadsplatsen) med hjälp av följande metoder:
+Du kan hantera [kundfakturor](invoice-resources.md) (inklusive avgifter för prenumerationer på produkter på den kommersiella marknadsplatsen) på följande sätt:
 
 * [Hämta fakturafakturerade förbrukningsradsobjekt på den kommersiella marknadsplatsen](get-invoice-billed-consumption-lineitems.md)
 * [Hämta länkar för fakturauppskattning](get-invoice-estimate-links.md)
-* [Hämta förbrukningsradartiklar för faktura som inte fakturerats på den kommersiella marknadsplatsen](get-invoice-unbilled-consumption-lineitems.md)
-* [Hämta ej fakturerade avstämningsradsobjekt](get-invoice-unbilled-recon-lineitems.md)
+* [Hämta fakturaradsobjekt som inte fakturerats på den kommersiella marknadsplatsen](get-invoice-unbilled-consumption-lineitems.md)
+* [Hämta fakturaavstämningsradobjekt som inte fakturerats](get-invoice-unbilled-recon-lineitems.md)
 
-## <a name="test-using-integration-sandbox-account"></a>Testa med hjälp av sandbox-integrationskonto
+## <a name="test-using-integration-sandbox-account"></a>Testa med sandbox-integrationskonto
 
-När du har skapat en prenumeration på SaaS-produkter på den kommersiella marknadsplatsen i produktion måste du hämta en anpassad aktiveringslänk från Partnercenter och besöka utgivarens webbplats för att slutföra installationen. Prenumerationsfakturering börjar först när installationen är klar.
+När du har skapat en prenumeration på Den kommersiella marknadsplatsen för SaaS-produkter i produktion måste du hämta en anpassad aktiveringslänk från Partnercenter och besöka utgivarens webbplats för att slutföra installationen. Prenumerationsfakturering börjar först när installationen är klar.
 
 I CSP-sandbox-miljön finns det ingen integrering med ISV:er. Om du försöker hämta en aktiveringslänk från Partnercenter returneras en dummylänk. Du kan inte använda den här dummylänken för att slutföra installationen på utgivarens webbplats. Om du vill använda sandbox-kontot för integrering för att testa faktureringen för prenumerationer på SaaS-produkter på den kommersiella marknadsplatsen använder du följande metod för att aktivera prenumerationen i stället. Prenumerationsfakturering börjar efter aktiveringen:
 

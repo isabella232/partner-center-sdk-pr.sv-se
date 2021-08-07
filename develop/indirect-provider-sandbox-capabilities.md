@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: vinayks-ms
 ms.author: vinayks
-ms.openlocfilehash: da35dadd4e13247e923259a1cf3a67852f4b9e00
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 07608fb5f2d2a3ffc418188e0ac1ff367e3c5691aa241554a4a954de8c4f2005
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445909"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990682"
 ---
 # <a name="csp-indirect-provider-sandbox-capabilities-for-creating-indirect-reseller-accounts"></a>CSP Indirect provider sandbox-funktioner för att skapa konton för indirekta återförsäljare 
 

@@ -429,13 +429,13 @@
       href: sandbox-scenario.md
     - name: Testa och felsöka sandbox-miljö
       href: test-and-debug.md
-    - name: Funktioner för indirekt CSP-provider i sandbox-miljö
+    - name: Sandbox-funktioner för CSP Indirect Provider
       href: indirect-provider-sandbox-capabilities.md
     - name: Avbryt en beställning från sandbox-miljön för integrering
       href: cancel-an-order-from-the-integration-sandbox.md
     - name: Aktivera prenumeration på sandbox-miljö
       href: activate-sandbox-subscription-azure-marketplace-products.md
-    - name: Skapa indirekt återförsäljare i sandbox-miljö
+    - name: Skapa indirekt återförsäljare i Sandbox
       href: create-indirect-reseller-in-sandbox.md
     - name: Ta bort indirekt återförsäljare i sandbox-miljö
       href: delete-indirect-reseller-in-sandbox.md

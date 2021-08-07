@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: ce0770568d9532e6bfa8f3092d479e5d0a2597ea
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 3768319a05a474d7602639195b8946bf1050a7258906d15bc610771253539864
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548149"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989584"
 ---
 # <a name="manage-accounts-and-profiles"></a>Hantera konton och profiler
 

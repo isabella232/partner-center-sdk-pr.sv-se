@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 1258727ecbe7c5cc332624577fa8a355e28e3717
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 6ec3a642006a100ef85c0af9eeddd9daf00cc1cd981eabd5dddb77e60e15111f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874218"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989448"
 ---
 # <a name="get-a-list-of-products-by-country"></a>Hämta en lista över produkter (efter land)
 
@@ -108,8 +108,8 @@ Använd följande sökväg och frågeparametrar för att hämta en lista över p
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                             |
 |------------------------|----------|----------|-------------------------------------------------------------------------|
-| land                | sträng   | Ja      | Land/region-ID.                                                  |
-| targetView             | sträng   | Ja      | Identifierar målvyn för katalogen. Värdena som stöds är: <br/><br/>**Azure**, som innehåller alla Azure-objekt<br/><br/>**AzureReservations**, som innehåller alla Reservationsobjekt i Azure<br/><br/>**AzureReservationsVM**, som innehåller alla reservationsobjekt för virtuella datorer (VM)<br/><br/>**AzureReservationsSQL**, som innehåller alla SQL reservationsobjekt<br/><br/>**AzureReservationsCosmosDb**, som innehåller alla reservationsobjekt för Cosmos-databasen<br/><br/>**MicrosoftAzure**, som innehåller objekt för Microsoft Azure-prenumerationer **(MS-AZR-0145P)** och Azure-planer<br/><br/>**OnlineServices**, som innehåller alla onlinetjänstobjekt (inklusive produkter från den kommersiella marknadsplatsen)<br/><br/>**Programvara**, som innehåller alla programvaruobjekt<br/><br/>**SoftwareSUSELinux**, som innehåller alla SUSE Linux-programobjekt<br/><br/>**SoftwarePerpetual**, som innehåller alla permanenta programvaruobjekt<br/><br/>**SoftwareSubscriptions**, som innehåller alla programprenumerationsobjekt    |
+| land                | sträng   | Yes      | Land/region-ID.                                                  |
+| targetView             | sträng   | Yes      | Identifierar målvyn för katalogen. Värdena som stöds är: <br/><br/>**Azure**, som innehåller alla Azure-objekt<br/><br/>**AzureReservations**, som innehåller alla Reservationsobjekt i Azure<br/><br/>**AzureReservationsVM**, som innehåller alla reservationsobjekt för virtuella datorer (VM)<br/><br/>**AzureReservationsSQL**, som innehåller alla SQL reservationsobjekt<br/><br/>**AzureReservationsCosmosDb**, som innehåller alla reservationsobjekt för Cosmos-databasen<br/><br/>**MicrosoftAzure**, som innehåller objekt för Microsoft Azure-prenumerationer **(MS-AZR-0145P)** och Azure-planer<br/><br/>**OnlineServices**, som innehåller alla onlinetjänstobjekt (inklusive produkter från den kommersiella marknadsplatsen)<br/><br/>**Programvara**, som innehåller alla programvaruobjekt<br/><br/>**SoftwareSUSELinux**, som innehåller alla SUSE Linux-programobjekt<br/><br/>**SoftwarePerpetual**, som innehåller alla permanenta programvaruobjekt<br/><br/>**SoftwareSubscriptions**, som innehåller alla programprenumerationsobjekt    |
 | targetSegment          | sträng   | No       | Identifierar målsegmentet. Vyn för olika målgrupper. Värdena som stöds är: <br/><br/>**Kommersiella**<br/>**Utbildning**<br/>**Regeringen**<br/>**Ideell**  |
 | reservationScope | sträng   | No | När du frågar efter en lista över produkter för Azure-reservationer anger du för att hämta en lista över `reservationScope=AzurePlan` produkter som gäller för Azure-planer. Undanta den här parametern för att hämta en lista över produkter för Azure-reservationer, som gäller för Microsoft Azure-prenumerationer **(MS-AZR-0145P).**  |
 
@@ -169,7 +169,7 @@ Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad sam
 
 Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Beskrivning                                                                                               |
+| HTTP-statuskod     | Felkod   | Description                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 403                  | 400030       | Åtkomst till det begärda targetSegment tillåts inte.                                                     |
 | 403                  | 400036       | Åtkomst till begärd targetView tillåts inte.                                                        |

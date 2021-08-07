@@ -4,12 +4,12 @@ description: Beskriver en enskild Partnercenter-användare, deras personliga inf
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 26bb202db3eefd9be8fe57ed2cc4dc220c8807d4
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 8c91e3509d86c8817da30c8ad0d96a2b1b6eec7697e43b47d3dfb96055cac632
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111529689"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989227"
 ---
 # <a name="user-resources"></a>Användarresurser
 
@@ -21,7 +21,7 @@ Beskriver en enskild Partnercenter-användare, deras personliga information och 
 
 Beskriver en enskild användare.
 
-| Egenskap              | Typ                                                           | Beskrivning                                                                                                                                                                                                                |
+| Egenskap              | Typ                                                           | Description                                                                                                                                                                                                                |
 |-----------------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id                    | sträng                                                         | Användaridentifieraren.                                                                                                                                                                                                       |
 | userPrincipalName     | sträng                                                         | Användarens huvudnamnsidentifierare.                                                                                                                                                                                             |
@@ -41,7 +41,7 @@ Beskriver en enskild användare.
 
 Beskriver en kundanvändare.
 
-| Egenskap              | Typ                                                           | Beskrivning                                                                                                                                                                                                                |
+| Egenskap              | Typ                                                           | Description                                                                                                                                                                                                                |
 |-----------------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | usageLocation         | sträng                                                         | Den plats där användaren har för avsikt att använda licensen.                                                                                                                                                                    |
 | id                    | sträng                                                         | Användaridentifieraren.                                                                                                                                                                                                       |
@@ -63,7 +63,7 @@ Beskriver en kundanvändare.
 
 Beskriver en användares inloggningsuppgifter.
 
-| Egenskap | Typ                                               | Beskrivning                          |
+| Egenskap | Typ                                               | Description                          |
 |----------|----------------------------------------------------|--------------------------------------|
 | userName | sträng                                             | Användarens namn.                |
 | password | [SecureString](utility-resources.md#securestring) | Användarens lösenord lagras på ett säkert sätt. |
@@ -72,7 +72,7 @@ Beskriver en användares inloggningsuppgifter.
 
 Beskriver en användares medlemsinformation.
 
-| Egenskap          | Typ                                                           | Beskrivning                        |
+| Egenskap          | Typ                                                           | Description                        |
 |-------------------|----------------------------------------------------------------|------------------------------------|
 | displayName       | sträng                                                         | Användarens namn som visas.   |
 | userPrincipalName | sträng                                                         | Namnet på användarens huvudnamn.    |

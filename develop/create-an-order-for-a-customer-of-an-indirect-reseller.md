@@ -4,12 +4,12 @@ description: Lär dig hur du använder Partner Center-API:er för att skapa en o
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6253ba2289ea1f58e7d8eaa960d7d0daaa887f0d
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: ba46b151e423df27f1378ac8441a23702e47746911b4e05e370bbf0aa7b53233
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973559"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991556"
 ---
 # <a name="create-an-order-for-a-customer-of-an-indirect-reseller"></a>Skapa en beställning för en kund till en indirekt återförsäljare
 
@@ -93,7 +93,7 @@ Använd följande sökvägsparameter för att identifiera kunden.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| kund-ID | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
+| kund-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -108,11 +108,11 @@ I den här tabellen beskrivs **orderegenskaperna** i begärandetexten.
 | Namn | Typ | Obligatorisk | Beskrivning |
 | ---- | ---- | -------- | ----------- |
 | id | sträng | No | En orderidentifierare som anges när ordern har skapats. |
-| referenceCustomerId | sträng | Ja | Kundidentifieraren. |
+| referenceCustomerId | sträng | Yes | Kundidentifieraren. |
 | billingCycle | sträng | No | Frekvensen som partnern debiteras med för den här beställningen. Standardvärdet är &quot; Varje månad och tillämpas när &quot; ordern har skapats. Värden som stöds är de medlemsnamn som finns [**i BillingCycleType**](/dotnet/api/microsoft.store.partnercenter.models.offers.billingcycletype). Obs! Den årliga faktureringsfunktionen är ännu inte allmänt tillgänglig. Stöd för årlig fakturering kommer snart. |
-| lineItems | matris med objekt | Ja | En matris med [**OrderLineItem-resurser.**](#orderlineitem) |
+| lineItems | matris med objekt | Yes | En matris med [**OrderLineItem-resurser.**](#orderlineitem) |
 | creationDate | sträng | No | Det datum då ordern skapades i datum/tid-format. Tillämpas när ordern har skapats. |
-| Attribut | objekt | Inga | Innehåller "ObjectType": "Order". |
+| Attribut | objekt | No | Innehåller "ObjectType": "Order". |
 
 #### <a name="orderlineitem"></a>OrderLineItem
 
@@ -120,14 +120,14 @@ I den här tabellen beskrivs **egenskaperna OrderLineItem** i begärandetexten.
 
 | Namn | Typ | Obligatorisk | Beskrivning |
 | ---- | ---- | -------- | ----------- |
-| lineItemNumber | int | Ja | Varje radobjekt i samlingen får ett unikt radnummer som räknas upp från 0 till count-1. |
-| offerId | sträng | Ja | Erbjudandeidentifieraren. |
+| lineItemNumber | int | Yes | Varje radobjekt i samlingen får ett unikt radnummer som räknas upp från 0 till count-1. |
+| offerId | sträng | Yes | Erbjudandeidentifieraren. |
 | subscriptionId | sträng | No | Prenumerationsidentifieraren. |
 | parentSubscriptionId | sträng | No | Valfritt. ID:t för den överordnade prenumerationen i ett tilläggserbjudande. Gäller endast PATCH. |
 | friendlyName | sträng | No | Valfritt. Det egna namnet för prenumerationen som definierats av partnern för att undvika tvetydighet. |
-| quantity | int | Ja | Antalet licenser för en licensbaserad prenumeration. |
-| partnerIdOnRecord | sträng | No | När en indirekt leverantör gör en beställning åt en indirekt återförsäljare fyller du i det här fältet med mpn-ID:t för den indirekta **återförsäljaren** (aldrig ID för den indirekta leverantören). Detta säkerställer korrekt redovisning av incitament. **Om du inte anger återförsäljarens MPN-ID misslyckas inte beställningen. Återförsäljaren registreras dock inte och därför kanske inte försäljningen ingår i incitamentberäkningarna.** |
-| Attribut | objekt | Inga | Innehåller "ObjectType":"OrderLineItem". |
+| quantity | int | Yes | Antalet licenser för en licensbaserad prenumeration. |
+| partnerIdOnRecord | sträng | No | När en indirekt leverantör gör en beställning åt en indirekt återförsäljare fyller du i det här fältet med MPN-ID:t för den indirekta återförsäljaren **(aldrig** DEN indirekta leverantörens ID). Detta säkerställer korrekt redovisning av incitament. **Om du inte anger återförsäljarens MPN-ID misslyckas inte beställningen. Återförsäljaren registreras dock inte och därför kan det hända att incitamentberäkningar inte inkluderar försäljningen.** |
+| Attribut | objekt | No | Innehåller "ObjectType":"OrderLineItem". |
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -173,7 +173,7 @@ Om det lyckas innehåller svarstexten den ifyllda [orderresursen.](order-resourc
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

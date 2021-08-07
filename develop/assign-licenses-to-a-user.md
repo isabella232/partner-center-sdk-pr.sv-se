@@ -1,15 +1,15 @@
 ---
 title: Tilldela licenser till en användare
-description: Lär dig hur du tilldelar licenser till en kundanvändare via Partner Center-API:er, till exempel användning av C \# eller REST API:er.
+description: Lär dig hur du tilldelar licenser till en kundanvändare via Partner Center-API:er, till exempel användning av \# C- eller REST-API:er.
 ms.date: 10/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 88ce0f185b0b043c4a7862b7f9808fb8805d40b9
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 8263f7f274e453603305324cc7ac6e8b25820561ade3136b873c65ffa21e94fc
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974377"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989074"
 ---
 # <a name="assign-licenses-to-a-user-via-partner-center-apis"></a>Tilldela licenser till en användare via Partner Center-API:er
 
@@ -17,11 +17,11 @@ Så här tilldelar du licenser till en kundanvändare.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
-- En kundanvändares identifierare. Det här ID:t identifierar den användare som licensen ska tilldelas till.
+- En användaridentifierare för kunden. Det här ID:t identifierar den användare som licensen ska tilldelas till.
 
 - En produkt-SKU-identifierare som identifierar produkten för licensen.
 
@@ -29,7 +29,7 @@ Så här tilldelar du licenser till en kundanvändare.
 
 När du tilldelar licenser till en användare måste du välja från kundens samling med prenumerations-SKU:er. När du sedan har identifierat de produkter som du vill tilldela måste du hämta produktens SKU-ID för varje produkt för att kunna göra tilldelningarna. Varje [**SubscribedSku-instans**](/dotnet/api/microsoft.store.partnercenter.models.licenses.subscribedsku) innehåller en [**ProductSku-egenskap**](/dotnet/api/microsoft.store.partnercenter.models.licenses.subscribedsku.productsku) som du kan referera till [**ProductSku-objektet**](/dotnet/api/microsoft.store.partnercenter.models.licenses.productsku) från och hämta [**ID:t .**](/dotnet/api/microsoft.store.partnercenter.models.licenses.productsku.id)
 
-En licenstilldelningsbegäran måste innehålla licenser från en enda licensgrupp. Du kan till exempel inte tilldela licenser från [**Group1**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid) **och Group2** i samma begäran. Ett försök att tilldela licenser från mer än en grupp i en enskild begäran misslyckas med ett lämpligt fel. Information om vilka licenser som är tillgängliga efter licensgrupp finns i [Hämta en lista över tillgängliga licenser efter licensgrupp.](get-a-list-of-available-licenses-by-license-group.md)
+En licenstilldelningsbegäran måste innehålla licenser från en enda licensgrupp. Du kan till exempel inte tilldela licenser [**från Group1**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid) **och Group2** i samma begäran. Ett försök att tilldela licenser från mer än en grupp i en enskild begäran misslyckas med ett lämpligt fel. Information om vilka licenser som är tillgängliga efter licensgrupp finns i [Hämta en lista över tillgängliga licenser efter licensgrupp.](get-a-list-of-available-licenses-by-license-group.md)
 
 Här är stegen för att tilldela licenser via kod:
 
@@ -39,14 +39,14 @@ Här är stegen för att tilldela licenser via kod:
     LicenseAssignment license = new LicenseAssignment();
     ```
 
-2. Fyll i objektegenskaperna enligt nedan. Den här koden förutsätter att du redan har produktens SKU-ID och att alla tillgängliga tjänstplaner kommer att tilldelas (d.v.s. inga kommer att undantas).
+2. Fyll i objektegenskaperna enligt nedan. Den här koden förutsätter att du redan har produktens SKU-ID och att alla tillgängliga tjänstplaner kommer att tilldelas (det vill säga att ingen kommer att undantas).
 
     ```csharp
     license.SkuId = selectedProductSkuId;
     license.ExcludedPlans = null;
     ```
 
-3. Om du inte har produktens SKU-ID måste du hämta samlingen med prenumerations-SKU:er och hämta produktens SKU-ID från en av dem. Här är ett exempel om du känner till produktens SKU-namn.
+3. Om du inte har produkt-SKU-ID:t måste du hämta samlingen med prenumerations-SKU:er och hämta produktens SKU-ID från en av dem. Här är ett exempel om du känner till produktens SKU-namn.
 
     ```csharp
     var customerSubscribedSkus = partnerOperations.Customers.ById(selectedCustomerId).SubscribedSkus.Get();
@@ -79,7 +79,7 @@ Här är stegen för att tilldela licenser via kod:
 
 Om du vill tilldela en licens till en kundanvändare instansierar du först ett [**LicenseAssignment-objekt**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseassignment) och fyller i [**egenskaperna Skuid**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseassignment.skuid) [**och ExcludedPlans.**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseassignment.excludedplans) Du använder det här objektet för att ange vilken produkt-SKU som ska tilldelas och vilka tjänstplaner som ska undantas. Skapa sedan en instans av en ny lista av **typen LicenseAssignment** och lägg till licensobjektet i listan. Skapa sedan en [**LicenseUpdate-instans**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseupdate) och tilldela listan över licenstilldelningar till egenskapen [**LicensesToAssign.**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licenseupdate.licensestoassign)
 
-Använd sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden och metoden [**Users.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) med användar-ID:t för att identifiera användaren. Hämta sedan ett gränssnitt för åtgärder för uppdatering av kundanvändarlicens från egenskapen [**LicenseUpdates.**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.licenseupdates)
+Använd sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden och [**metoden Users.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) med användar-ID:t för att identifiera användaren. Hämta sedan ett gränssnitt för uppdateringsåtgärder för kundanvändarlicens från egenskapen [**LicenseUpdates.**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.licenseupdates)
 
 Anropa slutligen metoden [**Create**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicenseupdates.create) eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicenseupdates.createasync) och skicka licensuppdateringsobjektet för att tilldela licensen.
 
@@ -106,7 +106,7 @@ updateLicense.LicensesToAssign = licenseList;
 var assignLicense = partnerOperations.Customers.ById(selectedCustomerId).Users.ById(selectedCustomerUserId).LicenseUpdates.Create(updateLicense);
 ```
 
-**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** **Partnercenter-SDK-exempelklass:** CustomerUserAssignLicenses.cs
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Exempelklass:** CustomerUserAssignLicenses.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -122,8 +122,8 @@ Använd följande sökvägsparametrar för att identifiera kunden och användare
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                       |
 |-------------|--------|----------|---------------------------------------------------|
-| kund-ID | sträng | Ja      | Ett GUID-formaterat ID som identifierar kunden. |
-| användar-id     | sträng | Ja      | Ett GUID-formaterat ID som identifierar användaren.     |
+| kund-id | sträng | Yes      | Ett GUID-formaterat ID som identifierar kunden. |
+| användar-id     | sträng | Yes      | Ett GUID-formaterat ID som identifierar användaren.     |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -168,7 +168,7 @@ Om det lyckas returneras en HTTP-svarsstatuskod 201 och svarstexten innehåller 
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example-success"></a>Svarsexempel (lyckades)
 

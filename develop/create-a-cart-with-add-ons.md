@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 513a9607b9194c36253630c91de9622325317c3a
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: ed4b8be5171493f83aefef08253c748a7bfd90dc5f2b1e325e5ceba78e36bdc2
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973765"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991811"
 ---
 # <a name="create-a-cart-with-add-ons-to-a-customer-order"></a>Skapa en kundvagn med tillägg till en kundbeställning
 
@@ -21,7 +21,7 @@ Du kan köpa tillägg via en kundvagn. Mer information om vad som för närvaran
 
 - Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
@@ -31,9 +31,9 @@ Med en kundvagn kan du köpa ett baserbjudande och motsvarande tillägg. Följ d
 
 2. Skapa en lista över [**CartLineItem-objekt**](/dotnet/api/microsoft.store.partnercenter.models.carts.cartlineitem) som representerar baserbjudandet och tilldela listan till kundvagnens [**lineItems-egenskap.**](/dotnet/api/microsoft.store.partnercenter.models.carts.cart.lineitems)
 
-3. Under varje baserbjudandes kundvagnsradsobjekt fyller du i listan **med AddOnItems** med andra **CartLineItem-objekt** som var och en representerar ett tillägg som ska köpas mot baserbjudandet.
+3. Under varje baserbjudandes kundvagnsradsobjekt fyller du i listan **med AddOnItems** med andra **CartLineItem-objekt** som vart och ett representerar ett tillägg som ska köpas mot baserbjudandet.
 
-4. Hämta ett gränssnitt för kundvagnsåtgärder med [**hjälp av IAggregatePartner**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) för att anropa [**metoden ICustomerCollection.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden och hämta sedan gränssnittet från **egenskapen Cart.**
+4. Hämta ett gränssnitt för kundvagnsåtgärder med [**hjälp av IAggregatePartner**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) för att anropa [**metoden ICustomerCollection.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden och hämta sedan gränssnittet från egenskapen **Cart.**
 
 5. Anropa slutligen metoden [**Create**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.create) eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.createasync) för att skapa kundvagnen.
 
@@ -125,7 +125,7 @@ Använd följande sökvägsparameter för att identifiera kunden.
 
 | Namn            | Typ     | Obligatorisk | Beskrivning                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **kund-id** | sträng   | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
+| **kund-id** | sträng   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -138,15 +138,15 @@ I den här tabellen beskrivs [egenskaperna för](cart-resources.md) Kundvagn i b
 | Egenskap              | Typ             | Obligatorisk        | Beskrivning |
 |-----------------------|------------------|-----------------|-----------------------------------------------------------------------------------------------------------|
 | id                    | sträng           | No              | En kundvagnsidentifierare som anges när kundvagnen har skapats.                                  |
-| creationTimeStamp     | DateTime         | Inga              | Datumet då kundvagnen skapades i datum/tid-format. Tillämpas när kundvagnen har skapats.         |
-| lastModifiedTimeStamp | DateTime         | Inga              | Datum då kundvagnen senast uppdaterades i datum/tid-format. Tillämpas när kundvagnen har skapats.    |
-| expirationTimeStamp   | DateTime         | Inga              | Datumet då kundvagnen upphör att gälla i datum/tid-format.  Tillämpas när kundvagnen har skapats.            |
+| creationTimeStamp     | DateTime         | No              | Datumet då kundvagnen skapades i datum/tid-format. Tillämpas när kundvagnen har skapats.         |
+| lastModifiedTimeStamp | DateTime         | No              | Datum då kundvagnen senast uppdaterades i datum/tid-format. Tillämpas när kundvagnen har skapats.    |
+| expirationTimeStamp   | DateTime         | No              | Datumet då kundvagnen upphör att gälla i datum/tid-format.  Tillämpas när kundvagnen har skapats.            |
 | lastModifiedUser      | sträng           | No              | Den användare som senast uppdaterade kundvagnen. Tillämpas när kundvagnen har skapats.                             |
-| lineItems             | Matris med objekt | Ja             | En matris med [CartLineItem-resurser.](cart-resources.md#cartlineitem)                                             |
+| lineItems             | Matris med objekt | Yes             | En matris med [CartLineItem-resurser.](cart-resources.md#cartlineitem)                                             |
 
 I den här tabellen beskrivs [egenskaperna för CartLineItem](cart-resources.md#cartlineitem) i begärandetexten.
 
-| Egenskap             | Typ                             | Beskrivning                                                                                                                                           |
+| Egenskap             | Typ                             | Description                                                                                                                                           |
 |----------------------|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id                   | sträng                           | En unik identifierare för ett kundvagnsradsobjekt. Tillämpas när kundvagnen har skapats.                                                                   |
 | catalogId            | sträng                           | Katalogobjektets identifierare.                                                                                                                          |
@@ -154,11 +154,11 @@ I den här tabellen beskrivs [egenskaperna för CartLineItem](cart-resources.md#
 | quantity             | int                              | Antalet licenser eller instanser.                                                                                                                  |
 | currencyCode         | sträng                           | Valutakoden.                                                                                                                                    |
 | billingCycle         | Objekt                           | Den typ av faktureringsperiod som angetts för den aktuella perioden.                                                                                                 |
-| deltagare         | Lista över objektsträngpar      | En samling PartnerId on Record (MPN ID) för köpet.                                                                                          |
+| deltagare         | Lista över objektsträngpar      | En samling PartnerId on Record (MPN-ID) för köpet.                                                                                          |
 | provisioningContext  | Ordlista<sträng, sträng>       | En kontext som används för etablering av erbjudande.                                                                                                             |
 | orderGroup           | sträng                           | En grupp som anger vilka objekt som kan placeras tillsammans.                                                                                               |
-| addonItems           | Lista över **CartLineItem-objekt** | En samling kundvagnsradsobjekt för tillägg som ska köpas mot basprenumerationen som är resultatet av den överordnade kundvagnsradens köp. |
-| fel                | Objekt                           | Tillämpas efter att kundvagnen har skapats om det finns ett fel.                                                                                                    |
+| addonItems           | Lista över **CartLineItem-objekt** | En samling med kundvagnsradsartiklar för tillägg som ska köpas mot basprenumerationen som är resultatet av den överordnade kundvagnsradens köp. |
+| fel                | Objekt                           | Tillämpas när kundvagnen har skapats om det finns ett fel.                                                                                                    |
 
 ### <a name="request-example-new-base-subscription"></a>Exempel på begäran (ny basprenumeration)
 
@@ -224,11 +224,11 @@ MS-CorrelationId: 182474ba-7303-4d0f-870a-8c7fba5ccc4b
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden den [ifyllda kundvagnsresursen](cart-resources.md) i svarstexten.
+Om det lyckas returnerar den här metoden den ifyllda [kundvagnsresursen](cart-resources.md) i svarstexten.
 
 #### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 #### <a name="response-example-new-base-subscription"></a>Svarsexempel (ny basprenumeration)
 

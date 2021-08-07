@@ -4,12 +4,12 @@ description: Du kan använda resursen CustomerUsageSummary för att få en kunds
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 88c69637c94b9263ede6924cf2dd09513aa00f70
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 668176c772ac89cf87189aa00514119340b28963e3abb6ada1717e52536f436b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874626"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992627"
 ---
 # <a name="get-a-usage-summary-for-all-of-a-customers-subscriptions"></a>Hämta en användningssammanfattning för alla en kunds prenumerationer
 

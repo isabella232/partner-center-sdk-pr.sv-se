@@ -1,25 +1,25 @@
 ---
 title: Avbryta en prenumeration på kommersiell marknadsplats
-description: Lär dig hur du använder Partner Center-API:er för att avbryta en prenumerationsresurs på den kommersiella marknadsplatsen som matchar en kund och ett prenumerations-ID.
+description: Lär dig hur du använder Partner Center-API:er för att avbryta en prenumerationsresurs på den kommersiella marknadsplatsen som matchar ett kund- och prenumerations-ID.
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 95fa265a3c103d1ec55066f12a3ede7fdb2d0170
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: e73810bb62ecc8487ff0d57c051a1201fc558d13b01529bb8ff5a3f2ac223f2b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974292"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992270"
 ---
 # <a name="cancel-a-commercial-marketplace-subscription-using-partner-center-apis"></a>Avbryta en prenumeration på den kommersiella marknadsplatsen med partnercenter-API:er
 
-I den här artikeln beskrivs hur du kan [](subscription-resources.md) använda Partnercenter-API:et för att avbryta en prenumerationsresurs på den kommersiella marknadsplatsen som matchar kund- och prenumerations-ID:t.
+I den här artikeln beskrivs hur du kan använda Partnercenter-API:et för att avbryta en prenumerationsresurs [på](subscription-resources.md) den kommersiella marknadsplatsen som matchar kund- och prenumerations-ID:t.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID.
 
@@ -39,11 +39,11 @@ Så här avbryter du en kunds prenumeration:
 
 1. [Hämta prenumerationen efter ID](get-a-subscription-by-id.md).
 
-2. Ändra prenumerationens [**statusegenskap.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) Information om **statuskoder** finns i [SubscriptionStatus-uppräkning.](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus)
+2. Ändra prenumerationens [**statusegenskap.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) Information om **statuskoder** finns i [SubscriptionStatus-uppräkning](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus).
 
 3. När ändringen har gjorts använder du din **`IAggregatePartner.Customers`** samling och anropar **metoden ById().**
 
-4. Anropa egenskapen [**Prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid)
+4. Anropa egenskapen [**Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid)
 
 5. Anropa **metoden Patch().**
 
@@ -70,7 +70,7 @@ var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).S
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-I den här tabellen visas frågeparametern som krävs för att pausa prenumerationen.
+I den här tabellen visas den frågeparameter som krävs för att pausa prenumerationen.
 
 | Namn                    | Typ     | Obligatorisk | Beskrivning                               |
 |-------------------------|----------|----------|-------------------------------------------|
@@ -135,7 +135,7 @@ Om det lyckas returnerar den här metoden [borttagna](subscription-resources.md)
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

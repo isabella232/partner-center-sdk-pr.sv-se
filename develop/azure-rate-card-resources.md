@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: e0b1bc9d764e2132315205653f46cef73b25e02f
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 52b9a9bea59690a8185a381647498de69a1476b1a4d4e8d632c5d13382776114
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974343"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991227"
 ---
 # <a name="azure-rate-card-resources-to-get-real-time-current-azure-prices-on-azure-offers-in-your-region"></a>Kortresurser med Azure-priser för att få aktuella Azure-priser på Azure-erbjudanden i din region
 
@@ -27,7 +27,7 @@ Priserna varierar beroende på marknad och valuta, och det här API:et tar häns
 
 Beskriver egenskaperna för en Azure Rate Card-resurs.
 
-| Egenskap      | Typ                                      | Beskrivning                                                       |
+| Egenskap      | Typ                                      | Description                                                       |
 |---------------|-------------------------------------------|-------------------------------------------------------------------|
 | currency      | sträng                                    | Valutan som kurserna tillhandahålls i.                     |
 | isTaxIncluded | boolean                                   | Alla priser är före skatt, så den här egenskapen returneras som `false` . |
@@ -42,7 +42,7 @@ Beskriver egenskaperna för en Azure Rate Card-resurs.
 
 ## <a name="azuremeter"></a>AzureMeter
 
-| Egenskap         | Typ             | Beskrivning                                                                                   |
+| Egenskap         | Typ             | Description                                                                                   |
 |------------------|------------------|-----------------------------------------------------------------------------------------------|
 | id               | sträng           | Mätarens unika identifierare.                                                                    |
 | name             | sträng           | Eget namn på mätaren.                                                                   |
@@ -57,7 +57,7 @@ Beskriver egenskaperna för en Azure Rate Card-resurs.
 
 ## <a name="azureofferterm"></a>AzureOfferTerm
 
-| Egenskap         | Typ             | Beskrivning                             |
+| Egenskap         | Typ             | Description                             |
 |------------------|------------------|-----------------------------------------|
 | name             | sträng           | Eget namn på erbjudandetermen.        |
 | discount         | antal           | Den tillämpade rabatten, om en eventuell.           |

@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: mowrim
 ms.author: mowrim
-ms.openlocfilehash: b77b067c7eb150ab1ad9904915e87c3fc55c104a
-ms.sourcegitcommit: 1fce45e6cafbc4c228042523ae28aac651a73757
+ms.openlocfilehash: 5083f7aa8ea274b5210d88085d26376dadbc0c4d1a0dd6e1babe59c94d7a6f9c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114483066"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991488"
 ---
 # <a name="create-an-azure-plan"></a>Skapa en Azure-plan
 

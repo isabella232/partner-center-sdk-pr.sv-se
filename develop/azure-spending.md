@@ -4,12 +4,12 @@ description: Lär dig hur CSP-partner kan använda Partner Center-API:er för at
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 472554de1c354559d5bc4b21959c109467891806
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 8b51ccbcdaee18b6d5b3bd1b9531a64b22c8bac5a9d95e6cf94291ee802ed5d9
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974326"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992406"
 ---
 # <a name="azure-spending-api-resources-to-manage-partner-or-customer-spending-and-usage-against-a-budget"></a>API-resurser för Azure-utgifter för att hantera partner- eller kundutgifter och användning mot en budget 
 

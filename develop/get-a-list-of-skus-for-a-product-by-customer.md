@@ -7,12 +7,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: b76526d97ba9027897fc88954ba45186d58aefb8
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: a7ee543281fd65785561641ca448f78e374aad7683aa1b95c65845dabfc44f07
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874167"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989873"
 ---
 # <a name="get-a-list-of-skus-for-a-product-by-customer"></a>Hämta en lista över SKU:er för en produkt (efter kund)
 
@@ -40,8 +40,8 @@ Hämtar en samling SKU:er för en viss produkt som är tillgänglig för en befi
 
 | Namn               | Typ | Obligatorisk | Beskrivning                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
-| kund-klient-id | GUID | Ja | Värdet är ett GUID-formaterat **kundklientorganisations-ID,** vilket är en identifierare som gör att du kan ange en kund. |
-| produkt-id | sträng | Ja | En sträng som identifierar produkten. |
+| kund-klient-id | GUID | Yes | Värdet är ett GUID-formaterat **kundklientorganisations-ID,** vilket är en identifierare som gör att du kan ange en kund. |
+| produkt-id | sträng | Yes | En sträng som identifierar produkten. |
 
 ### <a name="request-header"></a>Begärandehuvud
 
@@ -69,9 +69,9 @@ Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat sam
 
 Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod | Felkod | Beskrivning |
+| HTTP-statuskod | Felkod | Description |
 |------------------|------------|-------------|
-| 404 | 400013 | Den överordnade produkten hittades inte. |
+| 404 | 400013 | Det gick inte att hitta den överordnade produkten. |
 
 ### <a name="response-example"></a>Exempel på svar
 

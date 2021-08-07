@@ -4,28 +4,28 @@ description: Lär dig hur du använder Partner Center-API:er för att hämta en 
 ms.date: 05/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a51fc4493e2476107206b03be66004d030e2aa47
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 0743c8eb4059a05e4a98ddb95d95659c22ad00976e5a2f867b93d5e0296371bb
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974071"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992066"
 ---
-# <a name="get-licenses-assigned-to-a-user-within-a-customer-account"></a>Hämta licenser som tilldelats en användare inom ett kundkonto
+# <a name="get-licenses-assigned-to-a-user-within-a-customer-account"></a>Hämta licenser som tilldelats till en användare inom ett kundkonto
 
-Så här hämtar du en lista över licenser som tilldelats en användare i ett kundkonto. Exemplen som visas här returnerar licenser som tilldelats från group1, standardlicensgruppen som representerar licenser som hanteras av Azure Active Directory. Information om hur du hämtar licenser som tilldelats från angivna licensgrupper finns i [Hämta licenser som tilldelats till en användare efter licensgrupp.](get-licenses-assigned-to-a-user-by-license-group.md)
+Så här hämtar du en lista över licenser som tilldelats till en användare i ett kundkonto. Exemplen som visas här returnerar licenser som tilldelats från group1, standardlicensgruppen som representerar licenser som hanteras av Azure Active Directory. Information om hur du hämtar licenser som tilldelats från angivna licensgrupper finns i Hämta [licenser som tilldelats till en användare efter licensgrupp.](get-licenses-assigned-to-a-user-by-license-group.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - En användaridentifierare.
 
 ## <a name="c"></a>C\#
 
-Om du vill kontrollera vilka licenser som har tilldelats till en användare från standardlicensgruppen group1 använder du först [**metoden IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Anropa sedan metoden [**Users.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) med användar-ID:t för att identifiera användaren. Hämta sedan ett gränssnitt för åtgärder för kundanvändarlicenser från [**egenskapen**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.licenses) Licenser. Anropa slutligen metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.get) eller [**GetAsync för**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.getasync) att hämta samlingen med licenser som tilldelats användaren.
+Om du vill kontrollera vilka licenser som har tilldelats till en användare från standardlicensgruppen group1 använder du först [**metoden IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Anropa sedan [**metoden Users.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) med användar-ID:t för att identifiera användaren. Hämta sedan ett gränssnitt för åtgärder för kundanvändarlicenser från [**egenskapen**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.licenses) Licenser. Anropa slutligen metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.getasync) för att hämta samlingen licenser som tilldelats användaren.
 
 ``` csharp
 // string selectedCustomerUserId;
@@ -35,7 +35,7 @@ Om du vill kontrollera vilka licenser som har tilldelats till en användare frå
 var customerUserAssignedLicenses = partnerOperations.Customers.ById(selectedCustomerId).Users.ById(selectedCustomerUserId).Licenses.Get();
 ```
 
-**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Exempelklass:** CustomerUserAssignedLicenses.cs
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: CustomerUserAssignedLicenses.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -51,8 +51,8 @@ Använd följande sökvägsparametrar för att identifiera kunden och användare
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| kund-id | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
-| användar-id     | sträng | Ja      | En GUID-formaterad sträng som identifierar användaren.     |
+| kund-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
+| användar-id     | sträng | Yes      | En GUID-formaterad sträng som identifierar användaren.     |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -80,7 +80,7 @@ Om det lyckas innehåller svarstexten samlingen [licensresurser.](license-resour
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

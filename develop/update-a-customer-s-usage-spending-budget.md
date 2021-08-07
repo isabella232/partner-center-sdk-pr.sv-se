@@ -4,12 +4,12 @@ description: Uppdatera utgiftsbudgeten som allokerats för en kunds användning.
 ms.date: 02/05/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 043bd442266d081105e5e8767b6d597e89fc9e8b
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 8826834c6c53e587a33b63ea4f8c7f9dd5bcf4cb3d95ee7c964ea7ca00d4f89e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111529723"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990077"
 ---
 # <a name="update-a-customers-usage-spending-budget"></a>Uppdatera en kunds utgiftsbudget för användning
 

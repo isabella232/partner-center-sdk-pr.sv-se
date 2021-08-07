@@ -4,12 +4,12 @@ description: Lär dig hur Molnlösningsleverantör-programpartner kan använda P
 ms.date: 10/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d74400a975323d5f0f276dbdece3621d8b47a609
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: a5aac400e115ef0e58452e41edd9846d683d0b6912a9f651ea49d75d5f15bbf7
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547486"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989499"
 ---
 # <a name="partner-center-api-scenarios-that-let-you-programmatically-manage-customer-accounts"></a>Partner Center API-scenarier som gör att du kan hantera kundkonton programmatiskt
 

@@ -4,12 +4,12 @@ description: Så här skapar du en ny självbetjäningsprincip.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 14f46e22fbd294c765b745204cf62474250cbfbd
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 0ef67efc08d188a5e3566295d0d2cd3add154dc0957d87bb6e85e5f74dfa5297
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973697"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991607"
 ---
 # <a name="create-a-selfservepolicy"></a>Skapa en SelfServePolicy
 
@@ -80,9 +80,9 @@ Ett exempel finns i följande:
 
 ### <a name="request-body"></a>Begärandetext
 
-I den här tabellen beskrivs de obligatoriska egenskaperna i begärandetexten.
+I den här tabellen beskrivs de nödvändiga egenskaperna i begärandetexten.
 
-| Namn                              | Typ   | Beskrivning                                 |
+| Namn                              | Typ   | Description                                 |
 |------------------------------------------------------------------|--------|---------------------------------------------|
 | [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy)| objekt | Information om självbetjäningsprincipen. |
 
@@ -90,7 +90,7 @@ I den här tabellen beskrivs de obligatoriska egenskaperna i begärandetexten.
 
 I den här tabellen beskrivs de minsta obligatoriska fälten från [SelfServePolicy-resursen](self-serve-policy-resources.md#selfservepolicy) som behövs för att skapa en ny självbetjäningsprincip.
 
-| Egenskap              | Typ             | Beskrivning                                                                                            |
+| Egenskap              | Typ             | Description                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
 | SelfServeEntity       | SelfServeEntity  | Entiteten med självbetjäning som beviljas åtkomst.                                                     |
 | Beviljaren               | Beviljaren          | Den beviljande som beviljar åtkomst.                                                                    |
@@ -138,7 +138,7 @@ Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat sam
 
 Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Beskrivning                                                                |
+| HTTP-statuskod     | Felkod   | Description                                                                |
 |----------------------|--------------|----------------------------------------------------------------------------|
 | 409                  | 600041       | Självbetjäningsprincipen finns redan.                                                     |
 

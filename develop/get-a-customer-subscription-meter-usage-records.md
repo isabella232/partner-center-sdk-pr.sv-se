@@ -4,28 +4,28 @@ description: Du kan använda resurssamlingen MeterUsageRecord för att hämta m�
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0bd6143c80059bd140a4c4332ab4ec19c54d99f1
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 2d2f13c9f944a0a5297c61c70606517c4426957f86066fe4469a7543b14d3bf9
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874864"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992831"
 ---
 # <a name="get-usage-data-for-subscription-by-meter"></a>Hämta användningsdata för prenumeration efter mätare
 
-**Gäller för**: Partner Center-| PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Du kan använda **resurssamlingen MeterUsageRecord** för att hämta mätaranvändningsposter för en kund för specifika Azure-tjänster eller -resurser under den aktuella faktureringsperioden. Den här resurssamlingen representerar en aggregerad summa för varje mätare för den aktuella faktureringsperioden i hela din Azure-plan.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID
 
-*Den här nya vägen motsvarar , som fortsätter att fungera endast `subscriptions/{subscription-id}/usagerecords/resources` för Microsoft Azure prenumerationer (MS-AZR-0145P).* Den här nya vägen stöder både Microsoft Azure prenumerationer (MS-AZR-0145P) och Azure-planer. För att få den här informationen för din Azure-plan måste du växla till den här nya vägen. Förutom de egenskaper som anges i följande avsnitt är svaret detsamma som den gamla vägen.
+*Den här nya vägen motsvarar , som fortsätter att fungera endast `subscriptions/{subscription-id}/usagerecords/resources` för Microsoft Azure prenumerationer (MS-AZR-0145P).* Den här nya vägen har stöd för både Microsoft Azure-prenumerationer (MS-AZR-0145P) och Azure-planer. För att få den här informationen för din Azure-plan måste du växla till den nya vägen. Förutom de egenskaper som anges i följande avsnitt är svaret detsamma som den gamla vägen.
 
 ## <a name="c"></a>C\#
 
@@ -33,7 +33,7 @@ Så här hämtar du mätaranvändningsposter för en kund för en specifik Azure
 
 1. Använd din **IAggregatePartner.Customers-samling** för att anropa **metoden ById().**
 
-2. Anropa egenskapen Subscriptions och **UsageRecords** och sedan **egenskapen Meter.** Slutför genom att anropa metoderna Get() eller GetAsync().
+2. Anropa egenskapen Prenumerationer och **UsageRecords** och sedan **egenskapen Meter.** Slutför genom att anropa metoderna Get() eller GetAsync().
 
     ``` csharp
     // IAggregatePartner partnerOperations;
@@ -46,7 +46,7 @@ Så här hämtar du mätaranvändningsposter för en kund för en specifik Azure
 Ett exempel finns i följande exempel:
 
 - Exempel: [Konsoltestapp](console-test-app.md)
-- Project: **PartnerSDK.FeatureSamples**
+- Project: **PartnerSDK.FeatureExempel**
 - Klass: **GetSubscriptionUsageRecordsByMeter.cs**
 
 ## <a name="rest-request"></a>REST-begäran
@@ -64,7 +64,7 @@ I den här tabellen visas de frågeparametrar som krävs för att hämta kundens
 | Namn                   | Typ     | Obligatorisk | Beskrivning                               |
 |------------------------|----------|----------|-------------------------------------------|
 | **kund-klient-id** | **guid** | Y        | Ett GUID som motsvarar kunden.     |
-| **prenumerations-id**    | **guid** | Y        | Ett GUID som motsvarar identifieraren [](subscription-resources.md#subscription)för en Partner Center-prenumerationsresurs , som representerar en Microsoft Azure-prenumeration (MS-AZR-0145P) eller en Azure-plan. *För prenumerationsresurser för Azure-plan anger du **plan-ID:t** som **prenumerations-ID i** den här vägen.* |
+| **prenumerations-id**    | **guid** | Y        | Ett GUID som motsvarar identifieraren [](subscription-resources.md#subscription)för en Partner Center-prenumerationsresurs , som representerar en Microsoft Azure-prenumeration (MS-AZR-0145P) eller en Azure-plan. *För prenumerationsresurser för **Azure-prenumeration anger du plan-id som** **prenumerations-ID i** den här vägen.* |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -90,13 +90,13 @@ Om det lyckas returnerar den här metoden **en PagedResourceCollection-resurs \<
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
-### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Svarsexempel Microsoft Azure prenumerationer (MS-AZR-0145P)
+### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Exempel på svar Microsoft Azure prenumerationer (MS-AZR-0145P)
 
-I det här exemplet köpte kunden **145P Azure PayG**.
+I det här exemplet köpte kunden **Azure PayG med 145P.**
 
-*För kunder med en prenumeration Microsoft Azure (MS-AZR-0145P) ändras inte API-svaret.*
+*För kunder med en Microsoft Azure-prenumeration (MS-AZR-0145P) ändras inte API-svaret.*
 
 ```http
 HTTP/1.1 200 OK

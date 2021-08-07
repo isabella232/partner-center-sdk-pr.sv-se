@@ -7,12 +7,12 @@ MS-HAID:
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 93d46a17bc26e9586e5e773bdf934653a571367f
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: bd9df37b83ced71c88da93ccaf52e7f3a970318a552c246997eb1334def9ff81
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973459"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991522"
 ---
 # <a name="register-app-details-for-partner-center-for-microsoft-national-cloud-through-the-azure-portal"></a>Registrera appinformation för Partner Center for Microsoft National Cloud via Azure Portal
 
@@ -24,7 +24,7 @@ För Partnercenter för Microsoft Cloud for US Government måste du för närvar
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Tänk på följande ytterligare krav när du skapar en app för Partner center för Microsoft Cloud Tyskland eller Partnercenter för Microsoft Cloud for US Government.
+Tänk på följande ytterligare krav när du skapar en app för PartnerCenter för Microsoft Cloud Tyskland eller Partnercenter för Microsoft Cloud for US Government.
 
 ## <a name="web-apps"></a>Webbappar
 
@@ -38,7 +38,7 @@ För webbappar använder du följande procedurer för att registrera ditt progra
 
 ### <a name="configure-api-access-permissions-for-web-app"></a>Konfigurera API-åtkomstbehörigheter för webbapp
 
-1. Välj din app. Gå **till Inställningar** av webbappen.
+1. Välj din app. Gå till **Inställningar** av webbappen.
 
 2. I **avsnittet API-åtkomst** väljer du **Nödvändiga behörigheter**
 
@@ -69,7 +69,7 @@ Du bör ha följande information från webbappskonfigurationen:
 
 1. Logga in på [https://partnercenter.microsoft.com](https://partnercenter.microsoft.com).
 
-2. Välj **Instrumentpanel,** välj **sedan Konto Inställningar** och välj sedan **Apphantering.**
+2. Välj **Instrumentpanel,** välj **Inställningar** konto och välj sedan **Apphantering.**
 
 3. I avsnittet **Webbapp** väljer du **Registrera befintlig app.**
 
@@ -115,13 +115,13 @@ Inbyggda appar behöver inte vara registrerade i Partnercenter. Men de här appa
 
 7. Välj **Välj behörigheter**.
 
-    1. Välj **Access Partner Center PPE.**
+    1. Välj **Access Partner Center PPE**.
     
     2. Välj **Välj**.
 
 8. Välj alternativet som anger att du är **klar**.
 
 >[!IMPORTANT]
-> Observera program-ID:t i Egenskaper för din app.
+> Observera program-ID:t i egenskaper för din app.
 
-Du behöver inte registrera inbyggda appar i Partnercenter, men den interna appen måste godkännas av administratören. Observera program-ID:t för din interna app.
+Du behöver inte registrera inbyggda appar i Partnercenter, men den interna appen måste vara administratörsmedgivande. Observera program-ID:t för din interna app.

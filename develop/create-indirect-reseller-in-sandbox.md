@@ -1,22 +1,22 @@
 ---
-title: Skapa indirekt återförsäljare i sandbox-miljö
+title: Skapa indirekt återförsäljare i Sandbox
 description: Innehåller information för indirekta sandbox-leverantörer om hur du aktiverar testning från slutet till slut med hjälp av API:er.
 ms.date: 5/24/2021
 ms.author: vijvala
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 93e26792b66e447a0047bd550f4302c7fca4e87b
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 970b7ba49f6bb4b842f0f7d96e689856b0362c03949e14c9cf5a0e205573277b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973442"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991454"
 ---
-# <a name="create-indirect-reseller-in-sandbox"></a>Skapa indirekt återförsäljare i sandbox-miljö
+# <a name="create-indirect-reseller-in-sandbox"></a>Skapa indirekt återförsäljare i Sandbox
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Tyskland
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Tyskland
 
-Det här dokumentet visar hur du skapar indirekta sandbox-providers och aktiverar testning från slutet till slut med hjälp av API:er.
+Det här dokumentet visar hur du skapar indirekta sandbox-leverantörer och aktiverar testning från slutet till slut med hjälp av API:er.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -31,27 +31,27 @@ Det här dokumentet visar hur du skapar indirekta sandbox-providers och aktivera
 | Begära ett samarbete med återförsäljarna | Stöds |
 | Visa kunder efter återförsäljare | Stöds |
 | Lägga till nya kunder efter återförsäljare | Stöds |
-| Bjud in kunder | Begäran om kundrelationer stöds inte i sandbox-miljön |
-| Indirekt sandbox-provider kan välja Sandbox IR (MPN ID) som LEVERANTÖR när transaktionen placeras | Stöds |
-| Stöds inte i produktion | Sandbox Indirect Provider kan skapa indirekt Sandbox-återförsäljare |
+| Bjud in kunder | Kundrelationsbegäran stöds inte i sandbox-miljön |
+| Indirekt sandbox-provider kan välja Sandbox-IR (MPN-ID) som LEVERANTÖR när transaktionen placeras | Stöds |
+| Stöds inte i produktion | Sandbox Indirect Provider kan skapa en indirekt Sandbox-återförsäljare |
 | MPN-ID för sandbox-miljö ska anges. Produktens MPN-ID fungerar inte | Stöds inte i produktion |
-| Stöds inte i produktion | Sandbox Indirect Provider kan ta bort Sandbox Indirect Reseller |
+| Stöds inte i produktion | Sandbox Indirect Provider kan ta bort indirekt Sandbox-återförsäljare |
 
 ## <a name="sandbox-indirect-provider--create-sandbox-indirect-reseller"></a>Sandbox Indirect Provider – Skapa indirekt Sandbox-återförsäljare
 
-Den här funktionen är bara tillgänglig i sandbox-miljön och ger indirekta sandbox-leverantörer möjlighet att skapa indirekta sandbox-återförsäljare.
+Den här funktionen är bara tillgänglig i sandbox-miljön och ger indirekta sandbox-leverantörer möjlighet att skapa indirekta Sandbox-återförsäljare.
 
-1. Gräns på fem indirekta sandbox-återförsäljare som tillåts per indirekt sandbox-provider
-2. Indirekta sandbox-leverantörer kan skapa kunder med `associatedPartnerId` sandbox-återförsäljare
-3. Ange [MPN-ID för](/partner-center/mpn-create-a-partner-center-account) en viss region när du skapar en indirekt Sandbox-återförsäljare. Flera indirekta sandbox-återförsäljare kan skapas med samma MPN-ID för sandbox-miljö.
+1. Gräns på fem indirekta Sandbox-återförsäljare per indirekt Sandbox-leverantör
+2. Indirekta sandbox-leverantörer kan skapa kunder med `associatedPartnerId` en indirekt Sandbox-återförsäljare
+3. Ange [MPN-ID för](/partner-center/mpn-create-a-partner-center-account) en specifik region när du skapar en indirekt Sandbox-återförsäljare. Flera indirekta Sandbox-återförsäljare kan skapas med samma MPN-ID för sandbox-miljö.
 4. Endast 75 kunder tillåts per indirekt sandbox-provider
 
 ## <a name="sandbox-indirect-resellers--view-customers"></a>Sandbox Indirect Resellers – Visa kunder
 
-1. Sandbox Indirect Resellers kan visa listan över sandbox-kunder av sandbox-leverantörer.
-2. Indirekta sandbox-återförsäljare kan hantera kundkontot med hjälp av delegerade administratörsbehörigheter.
+1. Indirekta Sandbox-återförsäljare kan visa en lista över sandbox-kunder av indirekta Sandbox-leverantörer.
+2. Sandbox Indirect Resellers kan hantera kundkontot med hjälp av delegerade administratörsbehörigheter.
 
-## <a name="create-sandbox-indirect-reseller-through-api"></a>Skapa indirekt sandbox-återförsäljare via API
+## <a name="create-sandbox-indirect-reseller-through-api"></a>Skapa indirekt Sandbox-återförsäljare via API
 
 ### <a name="rest-request"></a>REST-begäran
 
@@ -71,18 +71,18 @@ Den här funktionen är bara tillgänglig i sandbox-miljön och ger indirekta sa
 
 I den här tabellen beskrivs de obligatoriska egenskaperna i begärandetexten.
 
-| Egenskap             | Typ           | Beskrivning                                      |
+| Egenskap             | Typ           | Description                                      |
 |----------------------|----------------|--------------------------------------------------|
 | mpnId                | sträng         | MPN-ID för IR i en viss region         |
 | tenant               | &lt;Ordlistesträng, sträng&gt; | Samling grundläggande information som definierar ett konto som ska skapas |
 | legalBusinessProfile | &lt;Ordlistesträng, sträng&gt; | Insamling av information som representerar den juridiska enheten, till exempel kontakt, adress och namn |
-| organizationProfileLanguage | &lt;Ordlistesträng, sträng&gt; | Organisationsspråksidentifieraren |
+| organizationProfileLanguage | &lt;Ordlistesträng, sträng&gt; | Organisationens språkidentifierare |
 
-I den här tabellen beskrivs de nödvändiga egenskaperna i **klientattributet.**
+I den här tabellen beskrivs de obligatoriska egenskaperna i **klientattributet.**
 
-| Egenskap           | Typ           | Beskrivning                         |
+| Egenskap           | Typ           | Description                         |
 |--------------------|----------------|-------------------------------------|
-| domainPrefix       | Sträng; Unik | Domän för klientkontot       |
+| domainPrefix       | String; Unik | Domän för klientkontot       |
 | name               | sträng         | Eget namn på klientorganisationen         |
 | displayName        | sträng         | Visningsnamn för kontot        |
 | adminUserName      | sträng         | Användarnamn för kontot för inloggning |
@@ -94,7 +94,7 @@ I den här tabellen beskrivs de nödvändiga egenskaperna i **klientattributet.*
 
 I den här tabellen beskrivs de obligatoriska egenskaperna i **attributet legalBusinessProfile.**
 
-| Egenskap       | Typ                             | Beskrivning                          |
+| Egenskap       | Typ                             | Description                          |
 |----------------|----------------------------------|--------------------------------------|
 | companyName    | sträng                           | Företagsnamn för juridisk person        |
 | adress        | &lt;Ordlistesträng, sträng&gt; | Adress för den juridiska personens plats |

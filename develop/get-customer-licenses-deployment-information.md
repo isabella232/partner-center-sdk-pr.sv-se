@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 91fe9da185aa59025d4dc8263257b207edb4a5be
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 83a27b49054f0cb33531dfd8a028ab2d3d4d7bee23be4e99c45a0b383880c5d4
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446470"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992525"
 ---
 # <a name="get-customer-licenses-deployment-information"></a>Hämta information om kundlicensdistribution
 
@@ -49,7 +49,7 @@ Använd följande sökvägsparameter för att identifiera kunden.
 
 | Namn        | Typ | Obligatorisk | Beskrivning                                                |
 |-------------|------|----------|------------------------------------------------------------|
-| kund-ID | guid | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden. |
+| kund-ID | guid | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

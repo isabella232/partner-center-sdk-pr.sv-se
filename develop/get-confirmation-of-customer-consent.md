@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 aauthor: khakiali
 ms.author: alikhaki
-ms.openlocfilehash: 1b1a8cbacb667e579bcd218a29c3f553afce26c2
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: eb1f9ec5a7e96984f9c458419268fb305cf13ffd44d92fd01823ad94c2fb1798
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111549271"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990808"
 ---
 # <a name="get-confirmation-of-customer-acceptance-of-microsoft-cloud-agreement"></a>Få bekräftelse på kundgodkännande av Microsoft Cloud-avtal
 
@@ -29,7 +29,7 @@ ms.locfileid: "111549271"
 
 - Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](./partner-center-authentication.md). Det här scenariot stöder endast app - och användarautentisering.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="net-version-14-or-newer"></a>.NET (version 1.4 eller senare)
 
@@ -37,7 +37,7 @@ Så här hämtar du bekräftelser av kundgodkännande som tidigare har angetts:
 
 - Använd samlingen **IAggregatePartner.Customers och** anropa **ById-metoden** med den angivna kundidentifieraren.
 
-- Hämta egenskapen **Agreements** och filtrera resultaten för att Microsoft Cloud-avtal **byAgreementType-metoden.**
+- Hämta egenskapen **Agreements** och filtrera resultaten så att de Microsoft Cloud-avtal **byAgreementType-metoden.**
 
 - Anropa **Get-** eller **GetAsync-metoden.**
 

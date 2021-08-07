@@ -1,15 +1,15 @@
 ---
 title: Acceptera en överföring av prenumerationer
-description: Lär dig hur du använder Partnercenter REST API för att acceptera en överföring av prenumerationer för en kund. Innehåller syntax för REST-begäran, rubriker och REST-svar.
+description: Lär dig hur du använder Partnercenter REST API för att acceptera en överföring av prenumerationer för en kund. Innehåller syntax för REST-begäran, huvuden och REST-svar.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 762f2106d6173e352bec11936c96bc3a9c9f89cb
-ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
+ms.openlocfilehash: c56979e407e472b6ea1a50b3acec675f0cd8831eb1d398e02e81518286b5a250
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112025759"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990570"
 ---
 # <a name="accept-a-transfer-of-subscriptions-for-a-customer-using-partner-center-rest-apis"></a>Acceptera en överföring av prenumerationer för en kund med hjälp av Partner Center REST API:er
 
@@ -17,9 +17,9 @@ Den här artikeln beskriver hur du använder REST API i Partnercenter för att a
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - En överföringsidentifierare för en befintlig överföring.
 
@@ -37,8 +37,8 @@ Använd följande sökvägsparameter för att identifiera kunden och ange vilken
 
 | Namn            | Typ     | Obligatorisk | Beskrivning                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **kund-ID** | sträng   | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
-| **transfer-id** | sträng   | Ja      | Ett GUID-formaterat överförings-ID som identifierar överföringen.             |
+| **kund-id** | sträng   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
+| **transfer-id** | sträng   | Yes      | Ett GUID-formaterat överförings-ID som identifierar överföringen.             |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -65,7 +65,7 @@ Om det lyckas returnerar den här metoden den [ifyllda TransferSubmitResult-resu
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

@@ -1,23 +1,23 @@
 ---
 title: Skapa en kund
-description: Lär dig hur en Molnlösningsleverantör(CSP)-partner kan använda Partner Center-API:er för att skapa en ny kund. I artikeln beskrivs förutsättningar och vad som händer mer.
+description: Lär dig hur en Molnlösningsleverantör (CSP)-partner kan använda Partner Center-API:er för att skapa en ny kund. I artikeln beskrivs förutsättningar och vad mer som händer.
 ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 6232ca77d057f2f5168b73d81ec551669d540246
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 49df47441276c7e79074e1bf7f8d50cd72054b42acd93938de088046b68b6d98
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973731"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991777"
 ---
 # <a name="create-a-customer-using-partner-center-apis"></a>Skapa en kund med partnercenter-API:er
 
-**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud for US Government
 
-Den här artikeln beskriver hur du skapar en ny kund.
+Den här artikeln förklarar hur du skapar en ny kund.
 
 > [!IMPORTANT]
 > Om du är en indirekt leverantör och vill skapa en kund för en indirekt återförsäljare kan du se [Skapa en kund för en indirekt återförsäljare.](create-a-customer-for-an-indirect-reseller.md)
@@ -26,26 +26,26 @@ Som CSP-partner (molnlösningsleverantör) kan du, när du skapar en kund, göra
 
 - Ett Azure Active Directory (AD)-klientobjekt för kunden.
 
-- En relation mellan återförsäljaren och kunden som används för delegerade administratörsbehörigheter.
+- En relation mellan återförsäljaren och kunden, som används för delegerade administratörsbehörigheter.
 
 - Ett användarnamn och lösenord för att logga in som administratör för kunden.
 
-När kunden har skapats ska du spara kund-ID och Azure AD-information för framtida användning med Partnercenter-SDK (till exempel kontohantering).
+När kunden har skapats ska du spara kund-ID:t och Azure AD-informationen för framtida användning med Partnercenter-SDK (till exempel kontohantering).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 > [!IMPORTANT]
-> Om du vill skapa en kundklientorganisation måste du ange en giltig fysisk adress under skapandeprocessen. En adress kan verifieras genom att följa stegen i scenariot [Verifiera en](validate-an-address.md) adress. Om du skapar en kund med en ogiltig adress i sandbox-miljön kan du inte ta bort den kundklientorganisationen.
+> Om du vill skapa en kundklientorganisation måste du ange en giltig fysisk adress under skapandeprocessen. En adress kan verifieras genom att följa stegen som beskrivs i [scenariot Verifiera en](validate-an-address.md) adress. Om du skapar en kund med en ogiltig adress i sandbox-miljön kan du inte ta bort den kundklientorganisationen.
 
 ## <a name="c"></a>C\#
 
 Så här lägger du till en kund:
 
-1. Instansiera ett nytt [**kundobjekt.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer) Se till att fylla i [**BillingProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile) och [**CompanyProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customercompanyprofile).
+1. Skapa en instans av ett nytt [**kundobjekt.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer) Se till att fylla i [**BillingProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile) och [**CompanyProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customercompanyprofile).
 
-2. Lägg till den nya kunden i din [**IAggregatePartner.Customers-samling**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) genom att [**anropa Create**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.create) eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.createasync).
+2. Lägg till den nya kunden i samlingen [**IAggregatePartner.Customers genom**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) att anropa [**Create**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.create) eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.createasync).
 
 ### <a name="c-example"></a>\#C-exempel
 
@@ -88,7 +88,7 @@ var customerToCreate = new Customer()
 var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 ```
 
-**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: CreateCustomer.cs
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Samples-klass:** CreateCustomer.cs
 
 ## <a name="java"></a>Java
 
@@ -164,9 +164,9 @@ New-PartnerCustomer -BillingAddressLine1 '1 Microsoft Way' -BillingAddressCity '
 
 ### <a name="request-body"></a>Begärandetext
 
-I den här tabellen beskrivs de obligatoriska egenskaperna i begärandetexten.
+I den här tabellen beskrivs de nödvändiga egenskaperna i begärandetexten.
 
-| Namn                              | Typ   | Beskrivning                                 |
+| Namn                              | Typ   | Description                                 |
 |-----------------------------------|--------|---------------------------------------------|
 | [BillingProfile](#billing-profile) | objekt | Kundens faktureringsprofilinformation. |
 | [CompanyProfile](#company-profile) | objekt | Kundens företagsinformation. |
@@ -175,10 +175,10 @@ I den här tabellen beskrivs de obligatoriska egenskaperna i begärandetexten.
 
 I den här tabellen beskrivs de minsta obligatoriska fälten från [resursen CustomerBillingProfile](customer-resources.md#customerbillingprofile) som krävs för att skapa en ny kund.
 
-| Namn             | Typ                                     | Beskrivning                                                                                                                                                                                                     |
+| Namn             | Typ                                     | Description                                                                                                                                                                                                     |
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | e-post            | sträng                                   | Kundens e-postadress.                                                                                                                                                                                   |
-| Kultur          | sträng                                   | Deras önskade kultur för kommunikation och valuta, till exempel "en-US". Se [Partnercenter– språk och språk som stöds](partner-center-supported-languages-and-locales.md) för de kulturer som stöds. |
+| Kultur          | sträng                                   | Deras önskade kultur för kommunikation och valuta, till exempel "en-US". Se [Språk och språk som stöds i Partnercenter för](partner-center-supported-languages-and-locales.md) de kulturer som stöds. |
 | language         | sträng                                   | Standardspråket. Två teckenspråkkoder (till `en` exempel `fr` eller ) stöds.                                                                                                                                |
 | \_företagsnamn    | sträng                                   | Det registrerade företags-/organisationsnamnet.                                                                                                                                                                       |
 | \_standardadress | [Adress](utility-resources.md#address) | Den registrerade adressen för kundens företag/organisation. Se [Adressresurs](utility-resources.md#address) för information om eventuella längdbegränsningar.                                             |
@@ -187,10 +187,10 @@ I den här tabellen beskrivs de minsta obligatoriska fälten från [resursen Cus
 
 I den här tabellen beskrivs de minsta obligatoriska fälten från [resursen CustomerCompanyProfile](customer-resources.md#customercompanyprofile) som krävs för att skapa en ny kund.
 
-| Namn   | Typ   | Beskrivning                                                  |
+| Namn   | Typ   | Description                                                  |
 |--------|--------|--------------------------------------------------------------|
 | domän | sträng | Kundens domännamn, till exempel contoso.onmicrosoft.com. |
-|organizationRegistrationNumber|Sträng|Kundens organisationsregistreringsnummer (kallas även INN-nummer i vissa länder). Krävs endast för kundens företag/organisation som finns i följande länder: DoS(AM), DoS (AZ), Hubs(BY), För kunden(HU), För e-post i KZ, Kyrgyzstan(KG), För att få hjälp med det, För att göra det kan du till exempel skriva en lista över frågor som inte kan användas. För kundens företag/organisation som finns i andra länder är detta ett valfritt fält.|
+|organizationRegistrationNumber|Sträng|Kundens organisationsregistreringsnummer (kallas även INN-nummer i vissa länder). Krävs endast för kundens företag/organisation som finns i följande länder: Förargiga(AM), Förargiga(AM), För kunden(BY), För kunden(HU), För kundens företag/organisation som finns i följande länder: Förargande(AM), Arabiska(RU), Hubar(HU), TUR(AR), Kyrgyzstan(KG), India, South Africa,Frika, United Arabemiraten, Förenade Arabemiraten, Förenade Arabemiraten, Sydafrika, Tyskland, Tyskland, Vietnam, Kataly, Andre, Sydsudan, Andre Och Kataly. För kundens företag/organisation som finns i andra länder är detta ett valfritt fält.|
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -231,11 +231,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar detta API [en kundresurs](customer-resources.md#customer) för den nya kunden. Spara kund-ID och Azure AD-information för framtida användning med Partnercenter-SDK. Du behöver dem till exempel för användning med kontohantering.
+Om det lyckas returnerar detta API en [kundresurs](customer-resources.md#customer) för den nya kunden. Spara kund-ID och Azure AD-information för framtida användning med Partnercenter-SDK. Du behöver dem till exempel för användning med kontohantering.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Svar har en HTTP-statuskod som anger att det lyckats eller misslyckats samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Svar har en HTTP-statuskod som anger att det lyckats eller misslyckats och ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

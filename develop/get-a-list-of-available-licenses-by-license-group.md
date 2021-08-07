@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: de59dfccf723c8f2411d9dadc51beb88688d5b02
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: fb2beecef8ad4821ad251ee6d532b6b280bd49e110f7e6dde3f39dfe2693d8f5
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874524"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991182"
 ---
 # <a name="get-a-list-of-available-licenses-by-license-group"></a>Hämta en lista över tillgängliga licenser efter licensgrupp
 
@@ -19,9 +19,9 @@ Så här hämtar du en lista över licenser för de angivna licensgrupperna som 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - En lista över en eller flera licensgruppsidentifierare.
 
@@ -62,7 +62,7 @@ Använd följande sökväg och frågeparametrar för att identifiera kunden och 
 
 | Namn            | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                                                                                                           |
 |-----------------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| kund-id     | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.                                                                                                                                                                                                                 |
+| kund-id     | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.                                                                                                                                                                                                                 |
 | licenseGroupIds | sträng | No       | Ett uppräkningsvärde som anger licensgruppen för de tilldelade licenserna. Giltiga värden: Group1, Group2 Group1 – Den här gruppen har alla produkter vars licens kan hanteras i Azure Active Directory (AAD). Grupp2 – Den här gruppen har bara Minecraft produktlicenser. |
 
 ### <a name="request-headers"></a>Begärandehuvuden

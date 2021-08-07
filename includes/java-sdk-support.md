@@ -1,13 +1,13 @@
 ---
-title: Java SDK-Support omfattar
+title: Stöd för Java SDK omfattar
 ms.date: 04/23/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7765e5783cc123e328bf2320d8b3c6ba8000493d
-ms.sourcegitcommit: 45094b6fb1437bca51f97e193ac2957747dbea27
+ms.openlocfilehash: c997e7d1d7c5110f2065bd2760ae53a1b431a6c1f82daed1b43e3dfc93aab1d8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "97768700"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989120"
 ---
-[Partner Center Java SDK](https://github.com/microsoft/partner-center-java) används ofta av partner för att hantera Partner Center-resurser. Det är ett projekt med öppen källkod som underhålls av partner samhället. Eftersom den här modulen upprätthålls av partner samhället stöds den inte officiellt av Microsoft. Du kan [få hjälp av communityn](https://stackoverflow.com/questions/tagged/partner+center) eller [öppna ett problem på GitHub](https://github.com/microsoft/partner-center-java/issues) om det uppstår problem.
+[Partner Center Java SDK](https://github.com/microsoft/partner-center-java) används ofta av partner för att hantera sina Partner Center-resurser. Det är ett projekt med öppen källkod som underhålls av partner-communityn. Eftersom den här modulen underhålls av partner-communityn stöds den inte officiellt av Microsoft. Du kan [få hjälp från communityn](https://stackoverflow.com/questions/tagged/partner+center) eller [öppna ett ärende på GitHub](https://github.com/microsoft/partner-center-java/issues) om du får problem.

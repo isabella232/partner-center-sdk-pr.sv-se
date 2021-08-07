@@ -4,12 +4,12 @@ description: Lär dig hur du använder Partner Center-API:er för att skapa en n
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 530ff72862204bda093385252450f4eb81b63160
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: b3637b6d482934d894a5807734b541cc73dea3f265b5460ba807c7fad6834a82
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973681"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991624"
 ---
 # <a name="create-a-new-configuration-policy-for-the-specified-customer"></a>Skapa en ny konfigurationsprincip för den angivna kunden
 
@@ -68,7 +68,7 @@ Använd följande sökvägsparametrar när du skapar begäran.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| kund-ID | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
+| kund-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -80,10 +80,10 @@ Begärandetexten måste innehålla ett -objekt med konfigurationsprincipens info
 
 | Namn           | Typ             | Obligatorisk | Beskrivning                      |
 |----------------|------------------|----------|----------------------------------|
-| name           | sträng           | Ja      | Principens egna namn. |
-| category       | sträng           | Ja      | Principkategorin.             |
+| name           | sträng           | Yes      | Principens egna namn. |
+| category       | sträng           | Yes      | Principkategorin.             |
 | beskrivning    | sträng           | No       | Principbeskrivningen.          |
-| policySettings | matris med strängar | Ja      | Principinställningarna.             |
+| policySettings | matris med strängar | Yes      | Principinställningarna.             |
 
 ### <a name="request-example"></a>Exempel på begäran
 

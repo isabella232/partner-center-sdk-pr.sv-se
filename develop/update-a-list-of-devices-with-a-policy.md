@@ -4,12 +4,12 @@ description: Uppdatera en lista över enheter med en konfigurationsprincip för 
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 35b35873eb253b0929bfc01662b0beb9b31d0c6b
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: b028c84ae513131d1c754dc59020e40aaf09ce31113cd3964b9144bf155300f8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530080"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990060"
 ---
 # <a name="update-a-list-of-devices-with-a-policy"></a>Uppdatera en lista över enheter med en princip
 
@@ -87,7 +87,7 @@ Använd följande sökvägsparametrar när du skapar begäran.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| kund-ID | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
+| kund-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
