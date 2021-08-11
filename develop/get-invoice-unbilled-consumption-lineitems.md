@@ -4,12 +4,12 @@ description: Du kan hämta en samling ofakturerade radobjekt för en angiven fak
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f7c74bedfd6412fc5954ed2ddc1388936e418fa3
-ms.sourcegitcommit: 722992eea6f8ea366dc088e5dd1ee63c17d56f61
+ms.openlocfilehash: 32944f7e1d30cec2e898d68619b882f3fe5c17124ae90e69b01761dbac459189
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114224776"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994752"
 ---
 # <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Hämta fakturaradsobjekt som inte fakturerats för kommersiell förbrukning
 

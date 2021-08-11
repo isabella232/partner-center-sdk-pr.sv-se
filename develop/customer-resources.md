@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 7d76de33c9a0d28e9d3fb0b0821cbd37ad67e7af
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 10798ae0bfae8c1a4e38777096861427992b8aee3799ee2dd9154c6f0e0c0799
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973153"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995177"
 ---
 # <a name="customer-resources"></a>Kundresurser
 
@@ -24,7 +24,7 @@ Resursen **Kund** representerar en kund eller återförsäljare. Oftast kan en k
 >[!NOTE]
 >**Kundresursen** har en hastighetsgräns på 500 begäranden per minut per klient-ID.
 
-| Egenskap              | Typ                                                             | Beskrivning                                                                                                                                  |
+| Egenskap              | Typ                                                             | Description                                                                                                                                  |
 |-----------------------|------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | id                    | sträng                                                           | Kund-ID:t.                                                                                                                             |
 | commerceId            | sträng                                                           | Handels-ID: t.                                                                                                                             |
@@ -42,7 +42,7 @@ Resursen **Kund** representerar en kund eller återförsäljare. Oftast kan en k
 
 Resursen **CustomerCompanyProfile** är ytterligare information om företaget eller organisationen.
 
-| Egenskap    | Typ                                                           | Beskrivning                                                                       |
+| Egenskap    | Typ                                                           | Description                                                                       |
 |-------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------|
 | tenantId    | sträng                                                         | Kundens klientorganisations-ID för Azure AD. Detta kallas även för ett MicrosoftID. |
 | domän      | sträng                                                         | Kundens namn, till exempel contoso.onmicrosoft.com.                             |
@@ -56,7 +56,7 @@ Resursen **CustomerCompanyProfile** är ytterligare information om företaget el
 
 Resursen **CustomerBillingProfile** är ytterligare information som används för att fakturera kunden.
 
-| Egenskap       | Typ                                                           | Beskrivning                                                                                                                                            |
+| Egenskap       | Typ                                                           | Description                                                                                                                                            |
 |----------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id             | sträng                                                         | Profilidentifieraren.                                                                                                                                |
 | firstName      | sträng                                                         | Förnamnet på faktureringskontakten på kundens företag. Det här är den person som fakturor och annan faktureringskommunikation kommer att dirigeras till. |
@@ -73,7 +73,7 @@ Resursen **CustomerBillingProfile** är ytterligare information som används fö
 
 Resursen **CustomerRelationshipRequest** innehåller den URL som används av kunden för att upprätta en återförsäljarrelation med en partner.
 
-| Egenskap   | Typ                                                           | Beskrivning                                                              |
+| Egenskap   | Typ                                                           | Description                                                              |
 |------------|----------------------------------------------------------------|--------------------------------------------------------------------------|
 | url        | sträng                                                         | Den URL som används av kunden för att upprätta en relation med en partner. |
 | Attribut | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen som motsvarar relationsbegäran.       |

@@ -4,30 +4,30 @@ description: Uppdatera egenskapen autorenew för en prenumerationsresurs som mat
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: cc0b4c4bff5e8762ffcc2552b2e9e36bcf93686c
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: b83c225a8b6fa11bdd5db5bcca9dd277fcfc4ed56769f1a7a272a388a1c93ab5
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446674"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996605"
 ---
 # <a name="update-autorenew-for-a-commercial-marketplace-subscription"></a>Uppdatera automatisk förnyelse för en prenumeration på kommersiell marknadsplats
 
-Uppdatera egenskapen autorenew för en prenumerationsresurs [på](subscription-resources.md) den kommersiella marknadsplatsen som matchar kund- och prenumerations-ID:t.
+Uppdatera egenskapen autorenew för en prenumerationsresurs på den [kommersiella](subscription-resources.md) marknadsplatsen som matchar kundens och prenumerations-ID:t.
 
-I instrumentpanelen i Partnercenter utförs den här åtgärden genom att först [välja en kund](get-a-customer-by-name.md). Välj sedan den prenumeration som du vill uppdatera. Växla slutligen alternativet **Förnya automatiskt och** välj sedan **Skicka**.
+På instrumentpanelen i Partnercenter utförs den här åtgärden genom att först [välja en kund](get-a-customer-by-name.md). Välj sedan den prenumeration som du vill uppdatera. Växla slutligen alternativet **Förnya automatiskt och** välj sedan **Skicka.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID.
 
 ## <a name="c"></a>C\#
 
-Om du vill uppdatera en kunds prenumeration hämtar du [först](get-a-subscription-by-id.md)prenumerationen och anger sedan prenumerationens [**egenskap autoRenewEnabled.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.autoRenewEnabled) När ändringen har gjorts använder du samlingen **IAggregatePartner.Customers** och anropar **metoden ById().** Anropa sedan egenskapen [**Prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Avsluta sedan med att anropa **metoden Patch().**
+Om du vill uppdatera en kunds prenumeration hämtar du [först prenumerationen](get-a-subscription-by-id.md)och anger sedan prenumerationens [**egenskap autoRenewEnabled.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.autoRenewEnabled) När ändringen har gjorts använder du samlingen **IAggregatePartner.Customers** och anropar **metoden ById().** Anropa sedan egenskapen [**Prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Avsluta sedan med att anropa **metoden Patch().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -51,7 +51,7 @@ var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).S
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-I den här tabellen visas frågeparametern som krävs för att pausa prenumerationen.
+I den här tabellen visas den frågeparameter som krävs för att pausa prenumerationen.
 
 | Namn                    | Typ     | Obligatorisk | Beskrivning                               |
 |-------------------------|----------|----------|-------------------------------------------|
@@ -112,11 +112,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden [uppdaterade prenumerationsresursegenskaper](subscription-resources.md) i svarstexten.
+Om det lyckas returnerar den här metoden uppdaterade [prenumerationsresursegenskaper](subscription-resources.md) i svarstexten.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

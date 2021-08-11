@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: jasongroce
 ms.author: sabaja
-ms.openlocfilehash: 014a1e6a14b538b7557d58710b9132dd9e37de21
-ms.sourcegitcommit: 7e2d2805c4cdd61785b1cdcca99cad10d5683153
+ms.openlocfilehash: b9bdc6da64a79f4f35466fb62662b086a8e1ab3cadc99c7ca685303752f9d166
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113592483"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996409"
 ---
 # <a name="manage-payouts-using-the-payout-service-api"></a>Hantera utbetalningar med hjälp av API:et för utbetalningstjänsten
 

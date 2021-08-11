@@ -1,21 +1,21 @@
 ---
 title: Hantera beställningar
-description: I det här avsnittet beskrivs hur Molnlösningsleverantör kan använda Partnercenter för att programmatiskt hantera kundorder och prenumerationer.
+description: I det här avsnittet beskrivs hur Molnlösningsleverantör partner kan använda Partnercenter för att programmatiskt hantera kundorder och prenumerationer.
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 390baa87c96706e60582811774b74fcf11567058
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 8bbcb5a5c8d5b61c0a1deb07952c4b8abf1ad37c047e867662bea044edf66ef3
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548166"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994412"
 ---
 # <a name="manage-orders"></a>Hantera beställningar
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud for US Government
 
-I det här avsnittet beskrivs hur Molnlösningsleverantör kan använda Partnercenter för att programmatiskt hantera kundorder och prenumerationer.
+I det här avsnittet beskrivs hur Molnlösningsleverantör partner kan använda Partnercenter för att programmatiskt hantera kundorder och prenumerationer.
 
 ## <a name="purchase-azure-reserved-vm-instances"></a>Köp Azure Reserved VM Instances
 

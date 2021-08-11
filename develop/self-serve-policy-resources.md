@@ -4,12 +4,12 @@ description: En partner anger självbetjäningsprinciper för en kund.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e44581b805e076132984b67280699314e274ca94
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: ffca78481572e201d3ef9f488e7d594a9c1176249b4415a347b488f4b9b81c51
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446725"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996775"
 ---
 # <a name="selfservepolicy-resource"></a>SelfServePolicy-resurs
 
@@ -19,7 +19,7 @@ En partner anger självbetjäningsprinciper för en kund.
 
 Beskriver en kundvagn.
 
-| Egenskap              | Typ             | Beskrivning                                                                                            |
+| Egenskap              | Typ             | Description                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
 | id                    | sträng           | En principidentifierare med självbetjäning som tillhandahålls när självbetjäningsprincipen har skapats.     |
 | SelfServeEntity       | SelfServeEntity  | Entiteten med självbetjäning som beviljas åtkomst.                                                     |
@@ -30,7 +30,7 @@ Beskriver en kundvagn.
 
 Representerar den entitet som beviljas behörigheter.
 
-| Egenskap             | Typ|Beskrivning|
+| Egenskap             | Typ|Description|
 |----------------------|----------------------------------|--------------------------------------------------------------------------------------------|
 | SelfServeEntityType  | sträng                           | Entiteten beviljas åtkomst, godkända värden: Kund.                                 |
 | TenantID             | sträng                           | Klient-ID för den entitet som beviljas åtkomst.                                   |
@@ -39,7 +39,7 @@ Representerar den entitet som beviljas behörigheter.
 
 Representerar den beviljande som beviljar behörigheterna.
 
-| Egenskap             | Typ|Beskrivning|
+| Egenskap             | Typ|Description|
 |----------------------|----------------------------------|--------------------------------------------------------------------------------------------|
 | GrantorType          | sträng                           | Den beviljande som beviljar åtkomst, godkända värden: BillToPartner.                               |
 | TenantID             | sträng                           | Klient-ID för den entitet som beviljar åtkomst.                                       |
@@ -49,7 +49,7 @@ Representerar den beviljande som beviljar behörigheterna.
 
 Representerar en behörighet i självbetjäningsprincipen.
 
-| Egenskap             | Typ|Beskrivning|
+| Egenskap             | Typ|Description|
 |----------------------|----------------------------------|--------------------------------------------------------------------------------------------|
 | Resurs             | sträng                           | Resursåtkomsten beviljas också: AzureReservedInstances.                          |
-| Action               | sträng                           | Åtgärdsåtkomst beviljas för: Köp                                           |
+| Åtgärd               | sträng                           | Åtgärdsåtkomst beviljas för: Köp                                           |

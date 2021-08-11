@@ -4,12 +4,12 @@ description: Ta bort en princip för självbetjäning.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 063cf98d4c78e82622e486427baeb1a5721715e5
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: c638054e7d2b2eb6083c771bc6bdbee56af206907213c9b389176144d5230199
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973102"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995007"
 ---
 # <a name="delete-a-selfservepolicy"></a>Ta bort en SelfServePolicy
 
@@ -17,7 +17,7 @@ Den här artikeln förklarar hur du uppdaterar en självbetjäningsprincip.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för program+användare.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för program och användare.
 
 ## <a name="c"></a>C\#
 
@@ -41,7 +41,7 @@ partnerOperations.SelfServePolicies.ById(policyId).Delete();
 Ett exempel finns i följande:
 
 - Exempel: [Konsoltestapp](console-test-app.md)
-- Project: **PartnerSDK.FeatureExempel**
+- Project: **PartnerSDK.FeatureSamples**
 - Klass: **DeleteSelfServePolicies.cs**
 
 ## <a name="rest-request"></a>REST-begäran
@@ -58,7 +58,7 @@ Använd följande sökvägsparametrar för att hämta den angivna produkten.
 
 | Namn                       | Typ         | Obligatorisk | Beskrivning                                                     |
 |----------------------------|--------------|----------|-----------------------------------------------------------------|
-| **SelfServePolicy-id**     | **sträng**   | Ja      | En sträng som identifierar självbetjäningsprincipen.                 |
+| **SelfServePolicy-id**     | **sträng**   | Yes      | En sträng som identifierar självbetjäningsprincipen.                 |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

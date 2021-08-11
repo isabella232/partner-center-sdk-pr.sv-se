@@ -1,28 +1,28 @@
 ---
 title: Hämta länkar för fakturauppskattning
-description: Du kan hämta en samling uppskattningslänkar till information om avstämningsradobjekt.
+description: Du kan hämta en samling uppskattningslänkar för att fråga information om avstämningsradobjekt.
 ms.date: 09/24/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.assetid: ''
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 719becd3fac5605c4ad48ab86d483ba7903d65d8
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 9bbfc7bf239535ac44879827118eba274bf3cb784e5b8de34f879fe3445a414d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111549152"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994480"
 ---
 # <a name="get-invoice-estimate-links"></a>Hämta länkar för fakturauppskattning
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-Du kan få uppskattningslänkar som hjälper dig att fråga efter information om ej fakturerade avstämningsradsobjekt.
+Du kan hämta uppskattningslänkar för att få hjälp med att fråga efter information om ej fakturerade avstämningsradsobjekt.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
 - En fakturaidentifierare. Detta identifierar fakturan som radobjekten ska hämtas för.
 
@@ -61,7 +61,7 @@ Använd följande URI och frågeparameter när du skapar begäran.
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| currencyCode           | sträng | Ja      | Valutakoden för de ej fakturerade radobjekten.                    |
+| currencyCode           | sträng | Yes      | Valutakoden för de ej fakturerade radobjekten.                    |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -90,7 +90,7 @@ Om det lyckas innehåller svaret länkar för att hämta ej fakturerade uppskatt
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

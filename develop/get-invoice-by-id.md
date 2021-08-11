@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: c888786a6b6ca941629bb7aac95227021c37a7fc
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 79327879614de521224606b69a5b6d1e8e4192f0df085f5fce61230c91e774e5
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111549169"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994514"
 ---
 # <a name="get-invoice-by-id"></a>Hämta faktura efter ID
 
@@ -21,7 +21,7 @@ Hämtar en viss faktura med faktura-ID:t.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
 - Ett giltigt faktura-ID.
 
@@ -56,7 +56,7 @@ Använd följande frågeparameter för att hämta fakturan.
 
 | Namn           | Typ       | Obligatorisk | Beskrivning                                                                                        |
 |----------------|------------|----------|----------------------------------------------------------------------------------------------------|
-| **faktura-id** | **sträng** | Ja      | Värdet är ett **faktura-ID som** gör att återförsäljaren kan filtrera resultatet för en viss faktura. |
+| **faktura-id** | **sträng** | Yes      | Värdet är ett **faktura-ID som** gör att återförsäljaren kan filtrera resultatet för en viss faktura. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

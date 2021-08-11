@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 769a4307dc3cebdc7ebbdcf51d9f2b67a9f4b7c2
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 0e8abc8cf33d12140a084e83580f20bb0b9d295eda7ab8cc7279c89043c81992
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874031"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994548"
 ---
 # <a name="get-a-product-by-id"></a>Hämta en produkt efter ID
 
@@ -69,8 +69,8 @@ Använd följande sökvägsparametrar för att hämta den angivna produkten.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| produkt-id             | sträng   | Ja      | En sträng som identifierar produkten.                           |
-| land                | sträng   | Ja      | Ett lands-/regions-ID.                                            |
+| produkt-id             | sträng   | Yes      | En sträng som identifierar produkten.                           |
+| land                | sträng   | Yes      | Ett lands-/regions-ID.                                            |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -100,7 +100,7 @@ Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat sam
 
 Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Beskrivning                                                                |
+| HTTP-statuskod     | Felkod   | Description                                                                |
 |----------------------|--------------|----------------------------------------------------------------------------|
 | 404                  | 400013       | Det gick inte att hitta produkten.                                                     |
 

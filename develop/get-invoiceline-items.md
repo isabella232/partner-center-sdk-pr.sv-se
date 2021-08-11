@@ -4,12 +4,12 @@ description: Du kan hämta en samling fakturaradsobjekt (stängt faktureringsrad
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 944dddef64ec980d92c292a7f5b9f5eb4e7cecb6
-ms.sourcegitcommit: 15c6cfe72284cf5d4ea3535120e83e473c33f5ec
+ms.openlocfilehash: 10e43127e5f44f76ed9be8b9aa638e982259602ad57709ecee55cb62d8d7d59e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112443180"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996043"
 ---
 # <a name="get-invoice-line-items"></a>Hämta radobjekt för faktura
 
@@ -152,13 +152,13 @@ Använd följande URI- och frågeparametrar när du skapar begäran.
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| invoice-id             | sträng | Ja      | En sträng som identifierar fakturan.                             |
-| faktureringsprovider       | sträng | Ja      | Faktureringsprovidern: "Office", "Azure", "OneTime". I det äldre har vi separata datamodeller för Office & Azure-transaktioner. Det moderna har dock en enda datamodell för alla transaktioner som filtrerats genom värdet "OneTime".            |
-| invoice-line-item-type | sträng | Ja      | Typ av fakturainformation: "BillingLineItems", "UsageLineItems". |
-| ikoner                   | antal | Inga       | Det maximala antalet objekt som ska returneras. Maximal standardstorlek = 2 000    |
-| offset                 | antal | Inga       | Det nollbaserade indexet för det första radobjektet som ska returneras.            |
+| invoice-id             | sträng | Yes      | En sträng som identifierar fakturan.                             |
+| faktureringsprovider       | sträng | Yes      | Faktureringsprovidern: "Office", "Azure", "OneTime". I det äldre har vi separata datamodeller för Office & Azure-transaktioner. Det moderna har dock en enda datamodell för alla transaktioner som filtrerats genom värdet "OneTime".            |
+| invoice-line-item-type | sträng | Yes      | Typ av fakturainformation: "BillingLineItems", "UsageLineItems". |
+| ikoner                   | antal | No       | Det maximala antalet objekt som ska returneras. Maximal standardstorlek = 2 000    |
+| offset                 | antal | No       | Det nollbaserade indexet för det första radobjektet som ska returneras.            |
 | seekOperation          | sträng | No       | Om **billing-provider** är lika **med OneTime** anger **du seekOperation** lika med **Nästa** för att hämta nästa sida med fakturaradsobjekt. |
-| hasPartnerEarnedCredit | boolesk | Inga | Det värde som anger om radobjekten ska returneras med partners intjänade kredit tillämpad. Obs! Den här parametern tillämpas endast när faktureringsprovidertypen är OneTime och InvoiceLineItemType är UsageLineItems. |
+| hasPartnerEarnedCredit | boolesk | No | Det värde som anger om radobjekten ska returneras med partners intjänade kredit tillämpad. Obs! Den här parametern tillämpas endast när faktureringsprovidertypen är OneTime och InvoiceLineItemType är UsageLineItems. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

@@ -4,12 +4,12 @@ description: Hämtar en kunds tjänstkostnader för den angivna faktureringsperi
 ms.date: 06/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1cab23238b5f62a02a5f7368f626648d5b1b5b7e
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 7f8af66601ea576552e9302ac327fea5a598d54460567bce4db099d669afba4f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874915"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992950"
 ---
 # <a name="get-a-customers-service-costs-summary"></a>Hämta sammanfattningen av en kunds servicekostnader
 
@@ -19,7 +19,7 @@ Hämtar en kunds tjänstkostnader för den angivna faktureringsperioden.
 
 - Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - En faktureringsperiodindikator ( **`mostrecent`** ).
 
@@ -56,8 +56,8 @@ Använd följande sökvägsparametrar för att identifiera kunden och fakturerin
 
 | Namn           | Typ   | Obligatorisk | Beskrivning                                                                                                                      |
 |----------------|--------|----------|----------------------------------------------------------------------------------------------------------------------------------|
-| kund-id    | guid   | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden.                                                                       |
-| faktureringsperiod | sträng | Ja      | En indikator som representerar faktureringsperioden. Det enda värde som stöds är MostRecent. Strängens fall spelar ingen roll. |
+| kund-id    | guid   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.                                                                       |
+| faktureringsperiod | sträng | Yes      | En indikator som representerar faktureringsperioden. Det enda värde som stöds är MostRecent. Strängens fall spelar ingen roll. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

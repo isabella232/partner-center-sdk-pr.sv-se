@@ -4,12 +4,12 @@ description: Ta bort en konfigurationsprincip för en angiven kund och principid
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 2d6a7d392bd6af6850eb7716528e6745943bb7bb
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: ac9f369ee7b2ba6c6b643bf6ec8d49e99755935181c7db58b616bef427a5a314
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973034"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995126"
 ---
 # <a name="delete-a-configuration-policy-for-the-specified-customer"></a>Ta bort en konfigurationsprincip för den angivna kunden
 
@@ -59,8 +59,8 @@ Använd följande sökvägsparametrar när du skapar begäran.
 
 | Namn        | Typ   | Obligatorisk | Beskrivning                                                   |
 |-------------|--------|----------|---------------------------------------------------------------|
-| kund-ID | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.         |
-| policy-id   | sträng | Ja      | En GUID-formaterad sträng som identifierar den princip som ska tas bort. |
+| kund-ID | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.         |
+| policy-id   | sträng | Yes      | En GUID-formaterad sträng som identifierar den princip som ska tas bort. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

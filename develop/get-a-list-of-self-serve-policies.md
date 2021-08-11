@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: b18fde8a11d3ed3dd31e50fdba746dd6b0bf3f97
-ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
+ms.openlocfilehash: ce217e34090d589c07a49cd51abef3f5cfc010631088890324a63bdef1480f65
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112025741"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995534"
 ---
 # <a name="get-a-list-of-self-serve-policies"></a>Hämta en lista över självbetjäningsprinciper
 
@@ -19,7 +19,7 @@ Hämtar en samling resurser som representerar självbetjäningsprinciper för en
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med autentiseringsuppgifter för program och användare.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för program och användare.
 
 ## <a name="c"></a>C\#
 
@@ -40,7 +40,7 @@ var SelfServePolicies = scopedPartnerOperations.SelfServePolicies.Get(customerId
 Ett exempel finns i följande:
 
 - Exempel: [Konsoltestapp](console-test-app.md)
-- Project: **PartnerSDK.FeatureExempel**
+- Project: **PartnerSDK.FeatureSamples**
 - Klass: **GetSelfServePolicies.cs**
 
 ## <a name="rest-request"></a>REST-begäran
@@ -57,7 +57,7 @@ Använd följande frågeparameter för att hämta en lista över kunder.
 
 | Namn          | Typ       | Obligatorisk | Beskrivning                                        |
 |---------------|------------|----------|----------------------------------------------------|
-| **entity_id** | **sträng** | Y        | Den entitetsidentifierare som begär åtkomst. Detta är kundens klientorganisations-ID. |
+| **entity_id** | **sträng** | Y        | Entitetsidentifieraren som begär åtkomst. Detta är kundens klientorganisations-ID. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -83,7 +83,7 @@ Om det lyckas returnerar den här metoden en samling [SelfServePolicy-resurser](
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

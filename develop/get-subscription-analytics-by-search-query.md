@@ -4,22 +4,22 @@ description: Så här hämtar du information om prenumerationsanalys filtrerad e
 ms.date: 05/10/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8df777b9a88206f8b22579f0f445c54d80f7cd64
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: dc6ef8d2136c5ffac3278a372980e9a601ef49bb485ef54187865fc9431b3404
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548744"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995687"
 ---
 # <a name="get-subscription-analytics-information-filtered-by-a-search-query"></a>Hämta information om prenumerationsanalys filtrerad efter en sökfråga
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-Så här hämtar du prenumerationsanalysinformation för dina kunder filtrerade efter en sökfråga.
+Så här hämtar du information om prenumerationsanalys för dina kunder filtrerade efter en sökfråga.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering endast med användarautentiseringsuppgifter.
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -35,7 +35,7 @@ Använd följande obligatoriska sökvägsparameter för att identifiera din orga
 
 | Namn | Typ | Obligatorisk | Beskrivning |
 |------|------|----------|-------------|
-| filter_string | sträng | Ja | Filtret som ska tillämpas på prenumerationsanalysen. Se avsnitten Filtersyntax och Filterfält för syntax, fält och operatorer som ska användas i den här parametern. |
+| filter_string | sträng | Yes | Filtret som ska tillämpas på prenumerationsanalysen. Se avsnitten Filtersyntax och Filterfält för syntax, fält och operatorer som ska användas i den här parametern. |
 
 ### <a name="filter-syntax"></a>Filtersyntax
 
@@ -49,7 +49,7 @@ Ett okodat exempel ser ut så här:
 
 ### <a name="filter-fields"></a>Filterfält
 
-Filterparametern för begäran innehåller en eller flera instruktioner som filtrerar raderna i svaret. Varje -instruktion innehåller ett fält och värde som är associerade med **`eq`** **`ne`** operatorerna eller . Vissa fält stöder också **`contains`** operatorerna **`gt`** , , , och **`lt`** **`ge`** **`le`** . Instruktioner kan kombineras med **`and`** operatorerna **`or`** eller .
+Filterparametern för begäran innehåller en eller flera instruktioner som filtrerar raderna i svaret. Varje instruktion innehåller ett fält och värde som är associerade med **`eq`** **`ne`** operatorerna eller . Vissa fält stöder också **`contains`** operatorerna **`gt`** , , , **`lt`** och **`ge`** **`le`** . Instruktioner kan kombineras med operatorerna **`and`** **`or`** eller .
 
 Följande är exempel på filtersträngar:
 
@@ -61,29 +61,29 @@ autoRenewEnabled eq true and customerMarket eq 'US'
 
 I följande tabell visas en lista över de fält som stöds och stödoperatorer för filterparametern. Strängvärden måste omges av enkla citattecken.
 
-| Parameter | Operatorer som stöds | Beskrivning |
+| Parameter | Operatorer som stöds | Description |
 |-----------|---------------------|-------------|
 | autoRenewEnabled | `eq`, `ne` | Ett värde som anger om prenumerationen förnyas automatiskt. |
 | commitmentEndDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le`  | Det datum då prenumerationen upphör. |
 | creationDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le`  | Det datum då prenumerationen skapades. |
 | currentStateEndDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Det datum då prenumerationens aktuella status ändras. |
-| customerMarket | `eq`, `ne` | Land/region som kunden gör affärer i. |
+| customerMarket | `eq`, `ne` | Landet/regionen som kunden gör affärer i. |
 | customerName | `contains` | Namnet på kunden. |
 | customerTenantId | `eq`, `ne` | En GUID-formaterad sträng som identifierar kundens klientorganisation. |
 | deprovisionedDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Det datum då prenumerationen avetableades. Standardvärdet är null. |
 | effectiveStartDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Det datum då prenumerationen startar. |
 | friendlyName | `contains` | Namnet på prenumerationen. |
 | id | `eq`, `ne` | En GUID-formaterad sträng som identifierar prenumerationen. |
-| lastRenewalDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Det datum då prenumerationen senast förnyades. Standardvärdet är null. |
+| lastRenewalDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Det datum då prenumerationen förnyades senast. Standardvärdet är null. |
 | lastUsageDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Det datum då prenumerationen senast användes. Standardvärdet är null. |
-| partnerId | `eq`, `ne` | MPN-ID: t. För en direktåterförsäljare är det här värdet PARTNERns MPN-ID. För en indirekt återförsäljare blir det här värdet MPN-ID:t för den indirekta återförsäljaren. |
-| partnerName | sträng | Namnet på den partner som prenumerationen köptes för |
+| partnerId | `eq`, `ne` | MPN-ID: t. För en direktåterförsäljare är det här värdet MPN-ID:t för partnern. För en indirekt återförsäljare är det här värdet MPN-ID:t för den indirekta återförsäljaren. |
+| partnerName | sträng | Namnet på partnern som prenumerationen köptes för |
 | Productname | `contains`, `eq`, `ne` | Namnet på produkten. |
 | providerName | sträng | När prenumerationstransaktionen är för den indirekta återförsäljaren är providernamnet den indirekta leverantör som köpte prenumerationen.|
 | status | `eq`, `ne` | Prenumerationsstatus. Värden som stöds är: "ACTIVE", "SUSPENDED" eller "DEPROVISIONED". |
-| subscriptionType | `eq`, `ne` | Prenumerationstyp. **Obs!** Det här fältet är case-sensitive. Värden som stöds är: "Office", "Azure", "Microsoft365", "Dynamics", "EMS". |
+| subscriptionType | `eq`, `ne` | Prenumerationstyp. **Obs!** Det här fältet är fallkänsligt. Värden som stöds är: "Office", "Azure", "Microsoft365", "Dynamics", "EMS". |
 | trialStartDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Det datum då utvärderingsperioden för prenumerationen startade. Standardvärdet är null. |
-| trialToDateConversionDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le`  | Det datum då prenumerationen konverteras från utvärderingsversion till betald. Standardvärdet är null. |
+| trialTo EntitetskonversionDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le`  | Det datum då prenumerationen konverteras från utvärderingsversion till betald. Standardvärdet är null. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -111,7 +111,7 @@ Om det lyckas innehåller svarstexten en samling [prenumerationsresurser](partne
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

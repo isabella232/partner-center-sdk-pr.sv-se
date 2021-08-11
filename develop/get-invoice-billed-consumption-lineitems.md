@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 285b6fbda774c9396dee8947550ed774d52bf901
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 915a6b40a835b0b8d8ded6d49244aede8bbf079334890ccc8b3ef50782dec2dd
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446232"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994531"
 ---
 # <a name="get-invoice-billed-commercial-consumption-line-items"></a>Hämta fakturafakturerade radobjekt för kommersiell förbrukning
 
@@ -124,12 +124,12 @@ Använd följande URI och frågeparametrar när du skapar begäran.
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| faktura-id             | sträng | Ja      | En sträng som identifierar fakturan.                             |
-| Leverantör               | sträng | Ja      | Providern: "OneTime".                                  |
-| invoice-line-item-type | sträng | Ja      | Typ av fakturainformation: "UsageLineItems". |
-| currencyCode           | sträng | Ja      | Valutakoden för de fakturerade radobjekten.                    |
-| period                 | sträng | Ja      | Perioden för fakturerad rekognosering. exempel: aktuell, tidigare.        |
-| ikoner                   | antal | Inga       | Det maximala antalet objekt som ska returneras. Standardstorleken är 2 000       |
+| faktura-id             | sträng | Yes      | En sträng som identifierar fakturan.                             |
+| Leverantör               | sträng | Yes      | Providern: "OneTime".                                  |
+| invoice-line-item-type | sträng | Yes      | Typ av fakturainformation: "UsageLineItems". |
+| currencyCode           | sträng | Yes      | Valutakoden för de fakturerade radobjekten.                    |
+| period                 | sträng | Yes      | Perioden för fakturerad rekognosering. exempel: aktuell, tidigare.        |
+| ikoner                   | antal | No       | Det maximala antalet objekt som ska returneras. Standardstorleken är 2 000       |
 | seekOperation          | sträng | No       | Ange seekOperation= Nästa för att hämta nästa sida med rekognoseringsradobjekt. |
 
 ### <a name="request-headers"></a>Begärandehuvuden

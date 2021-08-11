@@ -4,12 +4,12 @@ description: Skapa en marknadsplats online för att sälja erbjudanden för moln
 ms.date: 05/29/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8550492c7a4201a955c7b051b453103628612f3e
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 69fe30b61d7260e4c3365d2486cec5ffadd2a3fbb39bb50158a44d8716ff2d71
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973357"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995228"
 ---
 # <a name="csp-customer-storefront-builder-quick-start-guide"></a>Snabbstartsguide för butiksbyggare för CSP-kunder
 
@@ -17,16 +17,16 @@ Skapa en marknadsplats online för att sälja erbjudanden för molnlösningsleve
 
 ## <a name="introduction-to-the-csp-customer-storefront-builder"></a>Introduktion till CSP Customer Storefront Builder
 
-CSP Customer Storefront Builder hjälper partner att enkelt skapa en onlinemarknadsplats för att sälja CSP-erbjudanden till sina kunder. De flesta partner och små säljorganisationer vill fokusera på att sälja i stället för att utveckla en marknadsplats online. Exempelappen Partnercenter-SDK kräver kunskaper i programvaruutveckling för att skapa och distribuera en webbplats. Med CSP Customer Storefront Builder kan du snabbt och enkelt skapa din egen webbplats. Du kan också ladda ned webbplatsen som exempelkod eller distribuera direkt till din Azure-prenumeration med en Ready to Transact-webbplats.
+CSP Customer Storefront Builder hjälper partner att enkelt skapa en onlinemarknadsplats för att sälja CSP-erbjudanden till sina kunder. De flesta partner och små säljorganisationer vill fokusera på försäljning i stället för att utveckla en marknadsplats online. Den Partnercenter-SDK exempelappen kräver kunskaper i programvaruutveckling för att skapa och distribuera en webbplats. Med CSP Customer Storefront Builder kan du snabbt och enkelt skapa din egen webbplats. Du kan också ladda ned webbplatsen som exempelkod eller distribuera direkt till din Azure-prenumeration med en Ready to Transact-webbplats.
 
-Den här webbplatsen är helt ägd, stöds och underhålls av partner och Microsoft samlar inte in några data eller telemetri från webbplatsen. CSP Customer Storefront Builder skapar en webbplats för partnern som är helt kompatibel med [Payment Card Industry Data Security Standard](https://www.pcisecuritystandards.org/) (PCI DSS).
+Den här webbplatsen ägs, stöds och underhålls av partner och Microsoft samlar inte in några data eller telemetri från webbplatsen. CSP Customer Storefront Builder skapar en webbplats för partnern som är helt kompatibel med [Payment Card Industry Data Security Standard](https://www.pcisecuritystandards.org/) (PCI DSS).
 
-CSP Customer Storefront Builder-koden är föremål för den licens som är tillgänglig [i Partnercenter-SDK EULA](/legal/partner-center/eula-partner-center-sdk).
+CSP Customer Storefront Builder-koden är föremål för licensen som är tillgänglig i [Partnercenter-SDK EULA](/legal/partner-center/eula-partner-center-sdk).
 
 >[!NOTE]
 >Du ansvarar för butikswebbplatshantering, underhåll och eventuella problem som kan uppstå när webbplatsen skapas. Läs och förstå termerna i [Partnercenter-SDK EULA](/legal/partner-center/eula-partner-center-sdk).
 
-Mer information finns också i följande artiklar: [CSP customer web storefront and](csp-customer-web-storefront.md) [console test app](console-test-app.md).
+Mer information finns också i följande artiklar: CSP customer web storefront and console test app ( [CSP-kundwebbbutik och](csp-customer-web-storefront.md) [konsoltestapp).](console-test-app.md)
 
 ## <a name="considerations"></a>Överväganden
 
@@ -36,15 +36,15 @@ CSP Customer Storefront Builder är avsett som ett snabbt sätt att skapa en web
 
 - Partnercenter kan bara distribuera en CSP Customer Storefront-webbplats till en partners Azure-prenumerationer.
 
-- Den här webbplatsen, när den har distribuerats, är helt ägd och hanteras av partnern. Microsoft har inte åtkomst till den här webbplatsen eller data som är relaterade till webbplatsen. Partner ansvarar för underhåll och hantering av webbplatsen. Microsoft tillhandahåller inte någon live-webbplats eller annan support som rör CSP Customer Storefront Builder eller någon webbplats som skapats med hjälp av CSP Customer Storefront Builder.
+- När den här webbplatsen har distribuerats ägs den helt och hanteras av partnern. Microsoft har inte åtkomst till den här webbplatsen eller några data som rör webbplatsen. Partner ansvarar för underhåll och hantering av webbplatsen. Microsoft kommer inte att tillhandahålla någon live-webbplats eller annan support relaterad till CSP Customer Storefront Builder eller någon webbplats som skapats med hjälp av CSP Customer Storefront Builder.
 
-- PartnerCenter kan inte direkt komma åt eller uppgradera den här webbplatsen med nya eller ändrade SDK- eller API-funktioner. Alla nya funktioner eller förbättringar måste ägas, utvecklas och hanteras av partner, inklusive att lägga till nya Partnercenter-SDK api-funktioner.
+- Partnercenter kan inte direkt komma åt eller uppgradera den här webbplatsen med nya eller ändrade SDK- eller API-funktioner. Alla nya funktioner eller förbättringar måste ägas, utvecklas och hanteras av partner, inklusive att lägga till nya Partnercenter-SDK eller API-funktioner.
 
 - Detta CSP Customer Storefront Builder ger för närvarande möjlighet att konfigurera betalning till ett PayPal Pro-/PayU Money-konto (för Indien). Om partner behöver ändra betalningsprocessorn måste de ändra koden för att stödja den betalningsmetod som de föredrar.
 
-- Betalningsrelaterad information som läggs till i CSP Customer Storefront Builder lagras eller underhålls inte i Partnercenter.
+- Eventuell betalningsrelaterad information som läggs till i CSP Customer Storefront Builder lagras eller underhålls inte i Partnercenter.
 
-- PayPal betalningskonfigurationen fungerar i alla geografiska områden där PayPal är tillgänglig. PayPal tillgänglighet och support styrs endast av PayPal och kan när som helst avbrytas av PayPal.
+- PayPal här betalningskonfigurationen fungerar i alla geografiska områden där PayPal är tillgänglig. PayPal tillgänglighet och support styrs endast av PayPal och kan när som helst upphöra av PayPal.
 
 - Betalningskonfigurationen för PayU fungerar för närvarande endast i Indien. PayU:s tillgänglighet och support styrs endast av PayU och kan när som helst upphöra av PayU.
 
@@ -52,7 +52,7 @@ CSP Customer Storefront Builder är avsett som ett snabbt sätt att skapa en web
 
 ## <a name="using-the-csp-customer-storefront-builder"></a>Använda CSP Customer Storefront Builder
 
-CSP-partneradministratörer på Partnercenter kan distribuera en CSP Customer Storefront direkt från Partnercenter. Med minimal ansträngning kan en ny webbplats distribueras på partnerns klientorganisation. När de har distribuerats kan partner använda webbplatsen för att konfigurera varumärke, erbjudanden och betalningsrelaterad information och sedan dela webbadressen med kunder.
+CSP-partneradministratörer i Partnercenter kan distribuera en CSP Customer Storefront direkt från Partnercenter. Med minimal ansträngning kan en ny webbplats distribueras på partnerns klientorganisation. När den har distribuerats kan partner använda webbplatsen för att konfigurera varumärke, erbjudanden och betalningsrelaterad information och sedan dela webbadressen med kunder.
 
 Processen för att skapa en butikswebbplats är att:
 
@@ -68,7 +68,7 @@ Distributionsalternativ:
 
 - Ladda ned [exempelkoden för Partnercenter-butiken](https://github.com/Microsoft/Partner-Center-Storefront) från GitHub
 - Integrera med Azure för att distribuera den konfigurerade webbplatsen
-- Distribuera på en befintlig prenumeration eller ta med din egen prenumeration
+- Distribuera i en befintlig prenumeration eller ta med din egen prenumeration
 
 ### <a name="configure"></a>Konfigurera
 
@@ -78,15 +78,15 @@ Logga in med dina administratörsautentiseringsuppgifter för Partnercenter för
 
 - **Profilering:** företagsnamn, logotyp, kontakter med mera.
 
-- **Erbjudanden:** Visa alla CSP-erbjudanden. Du kan välja vilka erbjudanden som dina kunder kan visa och köpa. Du kan också anpassa erbjudandeinformation och lägga till ditt pris.
+- **Erbjudanden:** Visa alla CSP-erbjudanden. Du kan välja vilka erbjudanden som kunderna kan visa och köpa. Du kan också anpassa erbjudandeinformation och lägga till ditt pris.
 
-- **PayPal: Lägg** till din PayPal information om ditt betalningskonto. Om du inte har ett PayPal konto kan du gå till [https://www.paypal.com](https://www.paypal.com) och skapa ett nytt konto. Det här kontot används för att PayPal kreditera de betalningar som görs av kunder. *Microsoft ansvarar inte för relationen mellan partner och PayPal. Användning av PayPal kan kräva att partnern eller partnerns kunder godkänner ytterligare villkor.*
+- **PayPal: Lägg** till information PayPal ditt betalningskonto. Om du inte har ett PayPal konto kan du gå till [https://www.paypal.com](https://www.paypal.com) och skapa ett nytt konto. Det här kontot används för att PayPal kreditera betalningar som görs av kunder. *Microsoft ansvarar inte för relationen mellan partner och PayPal. Användning av PayPal kan kräva att partnern eller partnerns kunder godkänner ytterligare villkor.*
 
-- (*För Indien*) **Betalningskonfiguration för PayU:** Lägg till information om ditt PayU Money-betalningskonto. Om du inte har något PayU Money-konto kan du gå till [https://www.payumoney.com/](https://www.payumoney.com/) och skapa ett nytt konto. Det här kontot används för PayU för att kreditera de betalningar som görs av kunder. *Microsoft ansvarar inte för relationen mellan partner och PayU. Användning av PayU kan kräva att partnerns eller partnerns kunder godkänner ytterligare villkor.*
+- (*För Indien*) **Betalningskonfiguration för PayU:** Lägg till information om ditt payU Money-betalningskonto. Om du inte har något PayU Money-konto kan du gå till [https://www.payumoney.com/](https://www.payumoney.com/) och skapa ett nytt konto. Det här kontot används för PayU för att kreditera betalningar som görs av kunder. *Microsoft ansvarar inte för relationen mellan partner och PayU. Användning av PayU kan kräva att partnerns eller partnerns kunder godkänner ytterligare villkor.*
 
 ### <a name="transact"></a>Transaktion
 
-- Efter distributionen kan kunder köpa och handla direkt.
+- Efter distributionen kan kunder köpa och göra köp direkt.
 
 - Kunder kan köpa direkt från partnerportalen som är integrerad med Partnercenter-SDK.
 
@@ -210,7 +210,7 @@ Så här distribuerar du en förbättrad eller anpassad CSP Customer Storefront:
 
 - En kundklient skapas för den här kunden. När klientbeställningen har skapats får kunderna kontoinformation om användarnamn, lösenord och prenumeration.
   - Kunder kan spara användarnamnet och lösenordet för att vara inloggade för ytterligare köp.
-  - Varje prenumeration köps för ett år och kunder kan förnya inom 30 dagar före prenumerationens slutdatum.
+  - Varje prenumeration köps under ett år och kunder kan förnya inom 30 dagar före prenumerationens slutdatum.
 
 ### <a name="view-prior-purchases-scenario"></a>Visa tidigare köpscenario
 

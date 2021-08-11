@@ -4,12 +4,12 @@ description: Så här uppdaterar du en självbetjäningsprincip.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d94382e73fd2a79751fe5f8f8414df2befde584f
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 8e1330de6655e7a4dbe2d7432ece208b4600f3659266e20199e729400a917771
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445263"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996639"
 ---
 # <a name="update-a-selfservepolicy"></a>Uppdatera en SelfServePolicy
 
@@ -55,7 +55,7 @@ partnerOperations.SelfServePolicies.ById(policy.id).Put(policy);
 
 I den här tabellen beskrivs de obligatoriska egenskaperna i begärandetexten.
 
-| Namn                              | Typ   | Beskrivning                                 |
+| Namn                              | Typ   | Description                                 |
 |------------------------------------------------------------------|--------|---------------------------------------------|
 | [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy)| objekt | Information om självbetjäningsprincipen. |
 
@@ -63,7 +63,7 @@ I den här tabellen beskrivs de obligatoriska egenskaperna i begärandetexten.
 
 I den här tabellen beskrivs de minsta obligatoriska fälten från [SelfServePolicy-resursen](self-serve-policy-resources.md#selfservepolicy) som krävs för att skapa en ny självbetjäningsprincip.
 
-| Egenskap              | Typ             | Beskrivning                                                                                            |
+| Egenskap              | Typ             | Description                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
 | id                    | sträng           | En principidentifierare med självbetjäning som tillhandahålls när självbetjäningsprincipen har skapats.     |
 | SelfServeEntity       | SelfServeEntity  | Entiteten med självbetjäning som beviljas åtkomst.                                                     |
@@ -114,7 +114,7 @@ Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad sam
 
 Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Beskrivning                                                                |
+| HTTP-statuskod     | Felkod   | Description                                                                |
 |----------------------|--------------|----------------------------------------------------------------------------|
 | 404                  | 600039       | Självbetjäningsprincipen hittades inte                                            |
 | 404                  | 600040       | Principidentifieraren för självbetjäning är felaktig                                  |

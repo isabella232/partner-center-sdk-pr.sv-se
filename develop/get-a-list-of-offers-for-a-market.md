@@ -6,26 +6,26 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 6f4fd821879545db4e781fe3202c8ee11f167615
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 4b417c310230e1ca6caa490166aa5dad48f858a71455496359e3b562ad2629a4
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874252"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996078"
 ---
 # <a name="get-a-list-of-offers-for-a-market"></a>Hämta en lista över erbjudanden för en marknad
 
-**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Hämtar en samling som innehåller alla erbjudanden för en specifik marknad.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en lista över erbjudanden på en viss marknad använder du **samlingen IAggregatePartner.Offers,** väljer marknad efter land och anropar metoden **Get()** eller **Get Async().**
+Om du vill hämta en lista över erbjudanden på en viss marknad använder du **samlingen IAggregatePartner.Offers,** väljer marknaden efter land och anropar metoden **Get()** **eller Get Async().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -49,11 +49,11 @@ I den här tabellen visas de frågeparametrar som krävs för att hämta erbjuda
 
 | Namn           | Typ       | Obligatorisk | Beskrivning            |
 |----------------|------------|----------|------------------------|
-| **country-id** | **sträng** | Y        | Land/region-ID. |
+| **lands-id** | **sträng** | Y        | Land/region-ID. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-- Ett **språk-ID** formaterat som en sträng krävs.
+- Ett **språk-ID formaterat** som en sträng krävs.
 Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
@@ -77,7 +77,7 @@ Om det lyckas returnerar den här metoden en samling **erbjudanderesurser** i sv
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

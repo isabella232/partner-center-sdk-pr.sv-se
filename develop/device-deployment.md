@@ -4,12 +4,12 @@ description: Partner center API-enhetsdistributionsfunktioner omfattar konfigura
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 46fd8b53d6d42816d498103192122a81b5f6564f
-ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
+ms.openlocfilehash: 0bdec847fb5273242d9d1ca58d5e8f149452551f8264cfc5a72465d66d2506e4
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111906494"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994837"
 ---
 # <a name="device-deployment"></a>Enhetsdistribution
 

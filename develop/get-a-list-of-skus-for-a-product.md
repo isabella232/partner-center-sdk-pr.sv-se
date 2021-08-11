@@ -1,17 +1,17 @@
 ---
 title: Hämta en lista över SKU:er för en produkt (efter land)
-description: Du kan hämta och filtrera en samling SKU:er efter land för en produkt med hjälp av Partner Center-API:erna.
+description: Du kan hämta och filtrera en samling SKU:er efter land för en produkt med hjälp av Partner Center-API:er.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 27a2391a22a9439461fb53764b87c1cafa68b875
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 1f15ecaa7d84f4c68c6221e459d9977a79cffd9fa19d32ccbd7e6bec6444a93c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111873895"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995449"
 ---
 # <a name="get-a-list-of-skus-for-a-product-by-country"></a>Hämta en lista över SKU:er för en produkt (efter land)
 
@@ -19,7 +19,7 @@ Du kan hämta en samling SKU:er som är tillgängliga i ett land för en specifi
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
 - En produktidentifierare.
 
@@ -69,7 +69,7 @@ Så här hämtar du listan över SKU:er för en produkt:
 
 2. Från gränssnittet väljer du funktionen **getSkus för att hämta** ett gränssnitt med tillgängliga åtgärder för SKU:er.
 
-3. Anropa **funktionen get()** för att hämta en samling tillgängliga SKU:er för produkten.
+3. Anropa funktionen **get()** för att hämta en samling tillgängliga SKU:er för produkten.
 
 4. (Valfritt) Använd funktionen **byTargetSegment()** för att filtrera SKU:er efter målsegment innan du anropar **funktionen get().**
 
@@ -95,7 +95,7 @@ Så här hämtar du listan över SKU:er för en produkt:
 
 1. Kör kommandot [**Get-PartnerProductSku.**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProductSku.md)
 
-2. (Valfritt) Ange **parametern Segment** för att filtrera SKU:erna efter målsegment.
+2. (Valfritt) Ange **parametern Segment** för att filtrera SKU:er efter målsegment.
 
 ```powershell
 # $productId
@@ -122,8 +122,8 @@ Använd följande sökväg och frågeparametrar för att hämta en lista över S
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| produkt-id             | sträng   | Ja      | En sträng som identifierar produkten.                           |
-| landskod           | sträng   | Ja      | Ett lands-/regions-ID.                                            |
+| produkt-id             | sträng   | Yes      | En sträng som identifierar produkten.                           |
+| landskod           | sträng   | Yes      | Ett lands-/regions-ID.                                            |
 | målsegment         | sträng   | No       | En sträng som identifierar målsegmentet som används för filtrering. |
 | reservationScope | sträng   | No | När du frågar efter en lista över SKU:er för en Azure-reservationsprodukt anger du för att hämta en lista över `reservationScope=AzurePlan` SKU:er som gäller för AzurePlan. Undanta den här parametern för att hämta en lista över SKU:er för Azure-reservationsprodukter som gäller för Microsoft Azure-prenumerationer (MS-AZR-0145P).  |
 
@@ -135,7 +135,7 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 Inga.
 
-### <a name="request-examples"></a>Begärandeexempel
+### <a name="request-examples"></a>Exempel på begäran
 
 Hämta en lista över SKU:er för en viss produkt:
 
@@ -173,11 +173,11 @@ Om det lyckas innehåller svarstexten en samling [SKU-resurser.](product-resourc
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Beskrivning                                                                                               |
+| HTTP-statuskod     | Felkod   | Description                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 403                  | 400030       | Åtkomst till det begärda targetSegment tillåts inte.                                                     |
 | 404                  | 400013       | Den överordnade produkten hittades inte.                                                                         |

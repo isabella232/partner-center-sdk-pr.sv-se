@@ -4,12 +4,12 @@ description: I det här avsnittet beskrivs hur Molnlösningsleverantör kan anv�
 ms.date: 02/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9f9b8629406a8d66c8ea820205abf73a2fb0cc02
-ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
+ms.openlocfilehash: 4c20e1eb37b1722daa98f2b26b21cc660c4ac3b2c7be964afa7b8565966ff825
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113571986"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996095"
 ---
 # <a name="manage-customers"></a>Hantera kunder
 

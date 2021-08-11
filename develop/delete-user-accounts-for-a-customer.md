@@ -4,12 +4,12 @@ description: Så här tar du bort ett befintligt användarkonto för en kund.
 ms.date: 06/20/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c45646da43b8926f911942374de5da07f318c526
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 64e9175a2a4545022175b326a2d765ecd6a1106242b8926fe19e32c7e2ab6ec2
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973068"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994888"
 ---
 # <a name="delete-a-user-account-for-a-customer"></a>Ta bort ett användarkonto för en kund
 
@@ -17,9 +17,9 @@ Den här artikeln beskriver hur du tar bort ett befintligt användarkonto för e
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - Ett användar-ID. Om du inte har användar-ID:t kan [du se Hämta en lista över alla användarkonton för en kund.](get-a-list-of-all-user-accounts-for-a-customer.md)
 
@@ -63,7 +63,7 @@ Använd följande frågeparametrar för att identifiera kunden och användaren.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                                                                               |
 |------------------------|----------|----------|---------------------------------------------------------------------------------------------------------------------------|
-| kund-klient-id     | GUID     | Y        | Värdet är ett GUID-formaterat **kundklient-ID** som gör att återförsäljaren kan filtrera resultatet för en viss kund. |
+| kund-klient-id     | GUID     | Y        | Värdet är ett GUID-formaterat **kundklientorganisations-ID** som gör att återförsäljaren kan filtrera resultatet för en viss kund. |
 | användar-id                | GUID     | Y        | Värdet är ett GUID-formaterat **användar-ID** som tillhör ett enda användarkonto.                                          |
 
 ### <a name="request-headers"></a>Begärandehuvuden

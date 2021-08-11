@@ -4,12 +4,12 @@ description: Beskriver resurser relaterade till licenser.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 27d44f89ac89f365e77e073c425ca45ab3638c68
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: e6d91110dcec8a873e77cb02bdb77f6335e27989201ea68eebf904c5159964c5
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548404"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996588"
 ---
 # <a name="license-resources"></a>Licensresurser
 
@@ -24,7 +24,7 @@ Beskriver en användarlicens.
 >[!NOTE]
 >Stöds inte på Partner Center som drivs av 21Vianet.
 
-| Egenskap     | Typ                                                           | Beskrivning                                                    |
+| Egenskap     | Typ                                                           | Description                                                    |
 |--------------|----------------------------------------------------------------|----------------------------------------------------------------|
 | servicePlans | matris med ServicePlan-resurser                                 | En samling tjänstplaner som motsvarar licensen |
 | productSKU   | ProductSku                                                     | SKU:n för den produkt som motsvarar licensen.        |
@@ -34,7 +34,7 @@ Beskriver en användarlicens.
 
 Innehåller information som används för att tilldela eller ta bort licenser från en användare.
 
-| Egenskap         | Typ                                                           | Beskrivning                                               |
+| Egenskap         | Typ                                                           | Description                                               |
 |------------------|----------------------------------------------------------------|-----------------------------------------------------------|
 | licensestoAssign | matris med objekt                                               | Matris med [LicenseAssignment-objekt.](#licenseassignment) |
 | licensesToRemove | matris med strängar                                               | Produktens SKU-identifierare för de licenser som ska tas bort.    |
@@ -45,7 +45,7 @@ Innehåller information som används för att tilldela eller ta bort licenser fr
 
 Innehåller information som behövs för en licensuppdateringsåtgärd.
 
-| Egenskap      | Typ             | Beskrivning                                                                |
+| Egenskap      | Typ             | Description                                                                |
 |---------------|------------------|----------------------------------------------------------------------------|
 | excludedPlans | matris med strängar | De tjänstplansidentifierare som ska undantas från tillgängligheten för användaren. |
 | skuId         | sträng           | Produktens SKU-identifierare för licensen.                                |
@@ -54,7 +54,7 @@ Innehåller information som behövs för en licensuppdateringsåtgärd.
 
 Innehåller varningsinformation som inträffade under en licensuppdateringsåtgärd.
 
-| Egenskap     | Typ             | Beskrivning                                         |
+| Egenskap     | Typ             | Description                                         |
 |--------------|------------------|-----------------------------------------------------|
 | kod         | sträng           | Varningskoden.                                   |
 | meddelande      | sträng           | Varningsmeddelandet.                                |
@@ -64,7 +64,7 @@ Innehåller varningsinformation som inträffade under en licensuppdateringsåtg�
 
 Beskriver produktinformation.
 
-| Egenskap       | Typ             | Beskrivning                                         |
+| Egenskap       | Typ             | Description                                         |
 |----------------|------------------|-----------------------------------------------------|
 | id             | sträng           | Produktidentifieraren.                             |
 | name           | sträng           | Användarens huvudnamnsidentifierare.                      |
@@ -76,7 +76,7 @@ Beskriver produktinformation.
 
 Identifierar en distribuerad tjänst i en produkt-SKU. En produkt kan ha många tjänstplaner.
 
-| Egenskap         | Typ   | Beskrivning                                                                                                       |
+| Egenskap         | Typ   | Description                                                                                                       |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------|
 | id               | sträng | Identifierare för tjänstplan.                                                                                      |
 | displayName      | sträng | Det lokaliserade visningsnamnet för tjänstplanen.                                                                  |
@@ -88,7 +88,7 @@ Identifierar en distribuerad tjänst i en produkt-SKU. En produkt kan ha många 
 
 Beskriver en prenumererad produkt som ägs av en klientorganisation.
 
-| Egenskap         | Typ                                                           | Beskrivning                                                                                       |
+| Egenskap         | Typ                                                           | Description                                                                                       |
 |------------------|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
 | availableUnits   | heltal                                                        | Antalet enheter som är tillgängliga för tilldelning. Det här värdet beräknas som totalt antal enheter – förbrukade enheter. |
 | activeUnits      | heltal                                                        | Antalet enheter som är aktiva för tilldelning.                                                        |

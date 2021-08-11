@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: d086d7ba72c9d9e42dc88684ddeafc9a597bfd7c
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 30e294223d30ca3ac9d6f774884001c83338c09a174aff698702d5834bbbb9e3
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973391"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995330"
 ---
 # <a name="create-user-accounts-for-a-customer"></a>Skapa användarkonton för en kund
 

@@ -4,12 +4,12 @@ description: Så här hämtar du en lista över den inloggade partnerns indirekt
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 58f5c3378b5b941fdc9dafcf28f5efbc58c29c7c
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 901bf045d1de29744114bb58ed445f9eb17f70a4744786fd4617da9697e7c683
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446572"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996928"
 ---
 # <a name="retrieve-a-list-of-indirect-resellers"></a>Hämta en lista över indirekta återförsäljare
 
@@ -17,11 +17,11 @@ Så här hämtar du en lista över den inloggade partnerns indirekta återförs�
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en lista över indirekta återförsäljare som den inloggade partnern har en relation med hämtar du först ett gränssnitt för åtgärder för relationssamling från [**egenskapen partnerOperations.Relationships.**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) Anropa sedan metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) eller [**Get \_ Async**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) och skicka en medlem i [**Uppräkningen PartnerRelationshipType**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) för att identifiera relationstypen. Om du vill hämta indirekta återförsäljare måste du använda IsIndirectCloudSolutionProviderOf.
+Om du vill hämta en lista över indirekta återförsäljare med vilka den inloggade partnern har en relation hämtar du först ett gränssnitt till åtgärder för relationssamling från egenskapen [**partnerOperations.Relationships.**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) Anropa sedan metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) eller [**Get \_ Async**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) och skicka en medlem i [**Uppräkningen PartnerRelationshipType**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) för att identifiera relationstypen. Om du vill hämta indirekta återförsäljare måste du använda IsIndirectCloudSolutionProviderOf.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -29,7 +29,7 @@ Om du vill hämta en lista över indirekta återförsäljare som den inloggade p
 var indirectResellers = partnerOperations.Relationships.Get(PartnerRelationshipType.IsIndirectCloudSolutionProviderOf);
 ```
 
-**Exempel:** [Konsoltestapp med](console-test-app.md)**Project:** Partnercenter-SDK **Exempelklass:** GetIndirectResellers.cs
+**Exempel:** [Konsoltestappen](console-test-app.md)**är Project:** Partnercenter-SDK **Exempelklass:** GetIndirectResellers.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -45,7 +45,7 @@ Använd följande frågeparameter för att identifiera relationstypen.
 
 | Namn               | Typ    | Obligatorisk  | Beskrivning                         |
 |--------------------|---------|-----------|-------------------------------------|
-| relationship_type  | sträng  | Ja       | Värdet är strängrepresentationen av ett av medlemsnamnen som finns i [PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).<br/><br/> Om partnern är inloggad som leverantör och du vill hämta en lista över de indirekta återförsäljare som de har upprättat en relation med använder du IsIndirectCloudSolutionProviderOf.<br/><br/> Om partnern är inloggad som återförsäljare och du vill hämta en lista över de indirekta leverantörer som de har upprättat en relation med använder du IsIndirectResellerOf.    |
+| relationship_type  | sträng  | Yes       | Värdet är strängrepresentationen av ett av medlemsnamnen i [PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).<br/><br/> Om partnern är inloggad som en provider och du vill hämta en lista över de indirekta återförsäljare som de har upprättat en relation med använder du IsIndirectCloudSolutionProviderOf.<br/><br/> Om partnern är inloggad som återförsäljare och du vill hämta en lista över de indirekta leverantörer som de har upprättat en relation med använder du IsIndirectResellerOf.    |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -73,7 +73,7 @@ Om det lyckas innehåller svarstexten en samling [PartnerRelationship-resurser](
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

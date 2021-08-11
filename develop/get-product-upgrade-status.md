@@ -4,12 +4,12 @@ description: Du kan använda resursen ProductUpgradeRequest för att fastställa
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 03d925dd0fae987226ad1f8e71fad380ba144b83
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: e33ac61d77fc4e14ff6f7801e2c15a968cf9f1a667087df612c0f76b216f891a
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445569"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995755"
 ---
 # <a name="get-the-product-upgrade-status-for-a-customer"></a>Hämta produktuppgraderingsstatus för en kund
 
@@ -19,7 +19,7 @@ Du kan använda [**resursen ProductUpgradeRequest**](product-upgrade-resources.m
 
 - Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare. Följ den [säkra appmodellen när du](enable-secure-app-model.md) använder app-/användarautentisering med Partner Center-API:er.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - Produktfamiljen.
 
@@ -73,7 +73,7 @@ Använd följande frågeparameter för att ange den kund som du får en produktu
 
 | Namn               | Typ | Obligatorisk | Beskrivning                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
-| **upgrade-id** | GUID | Ja | Värdet är en GUID-formaterad uppgraderingsidentifierare. Du kan använda den här identifieraren för att ange en uppgradering som ska spåras. |
+| **upgrade-id** | GUID | Yes | Värdet är en GUID-formaterad uppgraderingsidentifierare. Du kan använda den här identifieraren för att ange en uppgradering som ska spåras. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

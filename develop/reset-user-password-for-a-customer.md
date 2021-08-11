@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: f3661a588f566485cbd58035c63ae9f8e5d383af
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 7ba8dadccf8159a9c55b2a4bb53f881f0ac732ce6c14dc7d5feb3a0c668c8a19
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445688"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996962"
 ---
 # <a name="reset-user-password-for-a-customer"></a>Återställ användarlösenord för en kund
 
@@ -19,13 +19,13 @@ Att återställa ett lösenord liknar att uppdatera annan information i ett befi
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Om du vill återställa ett lösenord för en angiven kundanvändare hämtar du först det angivna kund-ID:t och målanvändaren. Skapa sedan ett nytt **CustomerUser-objekt** som innehåller informationen för den befintliga kunden, men med ett nytt **PasswordProfile-objekt.** Använd sedan din **IAggregatePartner.Customers-samling** och anropa **metoden ById().** Anropa sedan **egenskapen** Användare, **metoden ById()** och sedan **metoden Patch.**
+Om du vill återställa ett lösenord för en angiven kundanvändare hämtar du först det angivna kund-ID:t och målanvändaren. Skapa sedan ett nytt **CustomerUser-objekt** som innehåller informationen för den befintliga kunden, men med ett nytt **PasswordProfile-objekt.** Använd sedan samlingen **IAggregatePartner.Customers** och anropa **metoden ById().** Anropa sedan **egenskapen Användare,** **metoden ById()** och sedan **metoden Patch.**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -99,7 +99,7 @@ Om det lyckas returnerar den här metoden användarinformationen tillsammans med
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

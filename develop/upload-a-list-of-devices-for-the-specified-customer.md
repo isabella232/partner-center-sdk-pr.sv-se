@@ -4,24 +4,24 @@ description: Så här laddar du upp en lista med information om enheter till en 
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 3fa9cff39113130c54cecfaef1f8ca28e0ac5adf
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: d83812f32312d5742fd69c43456cb3ba64dca56bc0c81fe6eedb14d2c010a7fc
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530318"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995483"
 ---
 # <a name="upload-a-list-of-devices-to-an-existing-batch-for-the-specified-customer"></a>Ladda upp en lista över enheter till en befintlig batch för den angivna kunden
 
-**Gäller för**: Partner Center-| Partnercenter för Microsoft Cloud Tyskland
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Tyskland
 
 Så här laddar du upp en lista med information om enheter till en befintlig batch för den angivna kunden. Detta associerar enheterna med en enhetsbatch som redan har skapats.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Enhetsbatchidentifieraren.
 
@@ -43,7 +43,7 @@ Om du vill ladda upp en lista över enheter till en befintlig enhetsbatch ska du
 
 - [**SerialNumber**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.serialnumber)  +  [**OemManufacturerName**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.oemmanufacturername)  +  [**ModelName**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.modelname).
 
-Anropa sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kundidentifieraren för att hämta ett gränssnitt till åtgärder på den angivna kunden. Anropa sedan metoden [**DeviceBatches.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) med enhetsbatchidentifieraren för att hämta ett gränssnitt för åtgärder för den angivna batchen. Anropa slutligen metoden [**Devices.Create**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.create) eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.createasync) med listan över enheter för att lägga till enheterna i enhetsbatchen.
+Anropa sedan metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kundidentifieraren för att hämta ett gränssnitt till åtgärder på den angivna kunden. Anropa sedan metoden [**DeviceBatches.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) med enhetens batch-ID för att hämta ett gränssnitt till åtgärder för den angivna batchen. Anropa slutligen metoden [**Devices.Create**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.create) eller [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.createasync) med listan över enheter för att lägga till enheterna i enhetsbatchen.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -71,7 +71,7 @@ var trackingLocation =
     partnerOperations.Customers.ById(selectedCustomerId).DeviceBatches.ById(selectedDeviceBatchId).Devices.Create(devicesToBeUploaded);
 ```
 
-**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Exempelklass:** CreateDevices.cs
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: CreateDevices.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -87,8 +87,8 @@ Använd följande sökväg och frågeparametrar när du skapar begäran.
 
 | Namn           | Typ   | Obligatorisk | Beskrivning                                           |
 |----------------|--------|----------|-------------------------------------------------------|
-| kund-id    | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
-| devicebatch-id | sträng | Ja      | En strängidentifierare som identifierar enhetsbatchen. |
+| kund-ID    | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
+| devicebatch-id | sträng | Yes      | En strängidentifierare som identifierar enhetsbatchen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -150,11 +150,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svaret ett **Platshuvud** som har en URI som kan användas för att hämta enhetens uppladdningsstatus. Spara den här URI:en för användning med andra relaterade REST-API:er.
+Om det lyckas innehåller svaret ett **Location-huvud** som har en URI som kan användas för att hämta enhetens uppladdningsstatus. Spara den här URI:en för användning med andra relaterade REST API:er.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

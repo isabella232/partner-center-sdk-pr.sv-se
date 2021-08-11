@@ -4,12 +4,12 @@ description: Du kan använda resursen MeterUsageRecord för att beskriva den upp
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9eb9eea856d6adb59577bdc694e8fb5f0e5a3a0a
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 1df4ceda801b93d2716028c515e0978ca3cbc39e37a3eafd20b8123cf81d795b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446640"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994344"
 ---
 # <a name="meter-usage-record-resource"></a>Postresurs för mätaranvändning
 
@@ -17,7 +17,7 @@ Du kan använda **resursen MeterUsageRecord** för att beskriva den uppskattade 
 
 ## <a name="meterusagerecord"></a>MeterUsageRecord
 
-| Egenskap         | Typ               | Beskrivning                                                                                                                                                                                                                                                                                                                                                                                         |
+| Egenskap         | Typ               | Description                                                                                                                                                                                                                                                                                                                                                                                         |
 |------------------|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | SubscriptionId   | sträng             | Ett GUID som motsvarar identifieraren [](subscription-resources.md#subscription)för en Partner Center-prenumerationsresurs , som representerar en Microsoft Azure-prenumeration (MS-AZR-0145P) eller en Azure-plan. För Microsoft Azure prenumerationer (MS-AZR-0145P) är det här värdet identifieraren för handelsprenumerationen. För azure-planprenumerationsresurser är det här värdet Identifieraren för Azure-planen. |
 | MeterId          | sträng             | Hämtar eller anger mätaridentifieraren.                                                                                                                                                                                                                                                                                                                                                                  |

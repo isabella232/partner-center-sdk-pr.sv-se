@@ -4,12 +4,12 @@ description: Så här hämtar du status för en enhets batchuppladdning för en 
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fd8726af41fe4399797f39a0790cf962fde64acc
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 6c84e3e9f8717a0ecfb75c19291ca397c48e2435864d2c22d3dac893a1007f7f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548489"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996112"
 ---
 # <a name="get-the-status-of-a-device-batch-upload"></a>Hämta status för en uppladdning av enhetsbatch
 
@@ -27,7 +27,7 @@ Så här hämtar du status för en enhets batchuppladdning för en angiven kund.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta statusen för en enhets batchuppladdning anropar du först metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att hämta ett gränssnitt till åtgärder på den angivna kunden. Anropa sedan metoden [**BatchUploadStatus.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.ibatchjobstatuscollection.byid) med batchspårnings-ID:t för att hämta ett gränssnitt för batchuppladdningsstatusåtgärder. Anropa slutligen metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.ibatchjobstatus.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.ibatchjobstatus.getasync) för att hämta statusen.
+Om du vill hämta statusen för en enhets batchuppladdning anropar du först [**metoden IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att hämta ett gränssnitt till åtgärder på den angivna kunden. Anropa sedan metoden [**BatchUploadStatus.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.ibatchjobstatuscollection.byid) med batchspårnings-ID:t för att hämta ett gränssnitt för statusåtgärder för batchuppladdning. Anropa slutligen metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.ibatchjobstatus.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.ibatchjobstatus.getasync) för att hämta statusen.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -54,8 +54,8 @@ Använd följande sökvägsparametrar när du skapar begäran.
 
 | Namn             | Typ   | Obligatorisk | Beskrivning                                                                                                                                                                    |
 |------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| kund-id      | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.                                                                                                                          |
-| batchtracking-id | sträng | Ja      | En GUID-formaterad identifierare som används för att hämta en enhets batchuppladdningsstatus. Det här ID:t returneras i platshuvudet när enhetsbatchen har skickats. |
+| kund-id      | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.                                                                                                                          |
+| batchtracking-id | sträng | Yes      | En GUID-formaterad identifierare som används för att hämta en enhets batchuppladdningsstatus. Det här ID:t returneras i platshuvudet när enhetsbatchen har skickats. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

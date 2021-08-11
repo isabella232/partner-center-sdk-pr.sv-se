@@ -6,28 +6,28 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: fccb9e3d4a837f3e8043f8c7ae1e3911d819afd7
-ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
+ms.openlocfilehash: 7757cd6a92c168e4209d2d3ac49746e4a0907021d260a7b49603a3706e8cfa5c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111906527"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994820"
 ---
 # <a name="get-a-download-link-for-the-microsoft-customer-agreement-template"></a>Hämta en nedladdningslänk för Microsoft-kundavtal mallen
 
 **Gäller för:** Partnercenter
 
-**Gäller inte för:** Partner Center som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller inte för**: Partner Center som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-**AgreementDocument-resursen** stöds för närvarande endast av PartnerCenter i Det offentliga Microsoft-molnet.
+**AgreementDocument-resursen** stöds för närvarande endast av PartnerCenter i det offentliga Microsoft-molnet.
 
-Den här artikeln beskriver hur du hämtar en länk för Microsoft-kundavtal mallen, baserat på kundens land och språk.
+Den här artikeln beskriver hur du hämtar en länk för att Microsoft-kundavtal mallen, baserat på kundens land och språk.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Om du använder Partner Center .NET SDK krävs version 1.14 eller senare.
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](./partner-center-authentication.md). Det här scenariot stöder endast app- och användarautentisering.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](./partner-center-authentication.md) Det här scenariot stöder endast app- och användarautentisering.
 
 - Kundens land som mallen Microsoft-kundavtal gäller.
 
@@ -37,14 +37,14 @@ Den här artikeln beskriver hur du hämtar en länk för Microsoft-kundavtal mal
 >
 > - Den Microsoft-kundavtal är landsspecifik. När du begär en länk för att Microsoft-kundavtal mallen måste du ange rätt land baserat på kundens plats. eller lista över länder som stöds, se [Lista över länder och språk som stöds.](#list-of-supported-countries-and-languages)
 >
-> - För vissa länder är Microsoft-kundavtal tillgängliga på flera språk. För bästa kundupplevelse väljer du det språk som bäst matchar kundens behov. En lista över språk som stöds finns i [Lista över länder och språk som stöds.](#list-of-supported-countries-and-languages)
+> - I vissa länder är Microsoft-kundavtal tillgängliga på flera språk. För bästa kundupplevelse väljer du det språk som bäst passar kundens behov. En lista över språk som stöds finns i [Lista över länder och språk som stöds.](#list-of-supported-countries-and-languages)
 > - Den här metoden stöds endast med Microsoft-kundavtal.
 
 ## <a name="net"></a>.NET
 
 Så här hämtar du en länk för att Microsoft-kundavtal mallen:
 
-1. Hämta avtalets metadata för Microsoft-kundavtal. Du måste hämta **templateId för** Microsoft-kundavtal. Mer information finns i Hämta [avtalsmetadata för Microsoft-kundavtal](get-customer-agreement-metadata.md).
+1. Hämta avtalsmetadata för Microsoft-kundavtal. Du måste hämta **templateId för** Microsoft-kundavtal. Mer information finns i Hämta [avtalsmetadata för Microsoft-kundavtal](get-customer-agreement-metadata.md).
 
    ```csharp
    // IAggregatePartner partnerOperations;
@@ -56,13 +56,13 @@ Så här hämtar du en länk för att Microsoft-kundavtal mallen:
 
 2. Använd samlingen IAggregatePartner.AgreementTemplates.
 
-3. Anropa **metoden ById** och ange **templateId för** Microsoft-kundavtal.
+3. Anropa **byId-metoden** och ange **templateId** för Microsoft-kundavtal.
 
-4. Hämta **egenskapen** Document.
+4. Hämta **egenskapen** Dokument.
 
-5. Anropa **metoden ByCountry** och ange kundens land som avtalsmallen gäller för. Frågan är som standard *USA* om metoden inte har angetts. En lista över landskoder som stöds finns i [Lista över länder och språk som stöds.](#list-of-supported-countries-and-languages) Den här metoden är **fallkänslig**.
+5. Anropa **byCountry-metoden** och ange kundens land som avtalsmallen gäller för. Frågan är som standard *USA* om metoden inte har angetts. En lista över landskoder som stöds finns i [Lista över länder och språk som stöds.](#list-of-supported-countries-and-languages) Den här metoden är **fallkänslig**.
 
-6. Anropa **metoden ByLanguage** och ange det språk som avtalsmallen ska lokaliseras till. Frågan är som standard *en-US* om metoden inte har angetts eller om den angivna landskoden inte stöds för det angivna landet. En lista över språkkoder som stöds finns i [Lista över länder och språk som stöds.](#list-of-supported-countries-and-languages)
+6. Anropa **metoden ByLanguage** och ange det språk som avtalsmallen ska lokaliseras till. Frågan är som standard *en-US* om metoden inte anges eller om den angivna landskoden inte stöds för det angivna landet. En lista över språkkoder som stöds finns i [Lista över länder och språk som stöds.](#list-of-supported-countries-and-languages)
 
 7. Anropa metoden **Get** eller **GetAsync.**
 
@@ -76,13 +76,13 @@ Så här hämtar du en länk för att Microsoft-kundavtal mallen:
    var agreementDocument = partnerOperations.   AgreementTemplates.ById   (microsoftCustomerAgreementDetails.   TemplateId).Document.ByCountry   (customerCountry).ByLanguage   (languageForLocalization).Get();
    ```
 
-Ett komplett exempel finns i klassen [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) från [konsoltestappsprojektet.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
+Ett fullständigt exempel finns i klassen [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) från [konsoltestappsprojektet.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
 
 ## <a name="rest-request"></a>REST-begäran
 
 Så här hämtar du en länk för att Microsoft-kundavtal mallen:
 
-1. Hämta avtalets metadata för Microsoft-kundavtal. Du måste hämta **templateId för** Microsoft-kundavtal. Mer information finns i Hämta [avtalsmetadata för Microsoft-kundavtal](get-customer-agreement-metadata.md).
+1. Hämta avtalsmetadata för Microsoft-kundavtal. Du måste hämta **templateId för** Microsoft-kundavtal. Mer information finns i Hämta [avtalsmetadata för Microsoft-kundavtal](get-customer-agreement-metadata.md).
 
 2. Skapa en REST-begäran för att hämta [ **en AgreementDocument-resurs**](./agreement-document-resources.md). Ett exempel finns i exemplet med [syntax för begäran.](#request-syntax) Du måste ange följande information:
 
@@ -104,7 +104,7 @@ Du kan använda följande URI-parametrar med din begäran:
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                 |
 |------------------------|--------|----------|---------------------------------------------|
-| agreement-template-id  | sträng | Ja      | Unik identifierare för avtalstypen. Du kan hämta templateId för Microsoft-kundavtal genom att hämta avtalets metadata för Microsoft-kundavtal. Mer information finns i Hämta [avtalsmetadata för Microsoft-kundavtal](./get-customer-agreement-metadata.md). Den här parametern **är fallkänslig**.|
+| agreement-template-id  | sträng | Yes      | Unik identifierare för avtalstypen. Du kan hämta templateId för Microsoft-kundavtal genom att hämta avtalets metadata för Microsoft-kundavtal. Mer information finns i Hämta [avtalsmetadata för Microsoft-kundavtal](./get-customer-agreement-metadata.md). Den här parametern **är fallkänslig**.|
 | land                | sträng | No       | Anger det land som avtalsmallen gäller för. Frågan är som standard *USA* om parametern inte har angetts. En lista över landskoder som stöds finns i [Lista över länder och språk som stöds.](#list-of-supported-countries-and-languages)|
 | language               | sträng | No       | Anger det språk som avtalsmallen ska lokaliseras till. Frågan är som standard *en-US* om parametern inte har angetts eller om landskoden som anges i inte stöds för det angivna landet. En lista över landskoder som stöds finns i [Lista över länder och språk som stöds.](#list-of-supported-countries-and-languages)|
 
@@ -134,7 +134,7 @@ Resursen har en **downloadUri-egenskap** som innehåller en URL-sträng som kan 
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation.
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation.
 
 Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
@@ -403,7 +403,7 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 | Vatikanstaten | VA | sv-SE |
 | Venezuela | VE | en-US, es-ES |
 | Vietnam | VN | en-US, vi-VN |
-| Wallis och Spanuna | WF | sv-SE |
+| Wallis ochUna | WF | sv-SE |
 | Jemen | Ni | en-US, ar-SA |
 | Zambia | ZM | sv-SE |
 | Zimbabwe | ZW | sv-SE |

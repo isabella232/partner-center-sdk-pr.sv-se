@@ -7,12 +7,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: b237bbd17a6108bbcb4e23529cf476a6b8306f68
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 682f4ece9098817f25e7709f3a8b9010d661fd1042589785778f5c434c37ed8e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874558"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995466"
 ---
 # <a name="get-a-list-of-availabilities-for-a-sku-by-customer"></a>Hämta en lista över tillgängliga för en SKU (efter kund)
 
@@ -24,7 +24,7 @@ Du kan använda följande metoder för att få en samling tillgänglighet för e
 
 - Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - En produktidentifierare (**product-id**).
 
@@ -42,9 +42,9 @@ Du kan använda följande metoder för att få en samling tillgänglighet för e
 
 | Namn               | Typ | Obligatorisk | Beskrivning                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
-| kund-klient-id | GUID | Ja | Värdet är ett GUID-formaterat **kundklientorganisations-ID,** vilket är en identifierare som gör att du kan ange en kund. |
-| produkt-id | sträng | Ja | En sträng som identifierar produkten. |
-| sku-id | sträng | Ja | En sträng som identifierar SKU:n. |
+| kund-klient-id | GUID | Yes | Värdet är ett GUID-formaterat **kundklientorganisations-ID,** vilket är en identifierare som gör att du kan ange en kund. |
+| produkt-id | sträng | Yes | En sträng som identifierar produkten. |
+| sku-id | sträng | Yes | En sträng som identifierar SKU:n. |
 
 ### <a name="request-header"></a>Begärandehuvud
 
@@ -72,9 +72,9 @@ Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat sam
 
 Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod | Felkod | Beskrivning |
+| HTTP-statuskod | Felkod | Description |
 |------------------|------------|-------------|
-| 404 | 400013 | Den överordnade produkten hittades inte. |
+| 404 | 400013 | Det gick inte att hitta den överordnade produkten. |
 
 ### <a name="response-example"></a>Exempel på svar
 

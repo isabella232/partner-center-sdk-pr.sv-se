@@ -4,12 +4,12 @@ description: Hämtar ett objekt som representerar partnerns faktureringsprofil.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 225d8ea2d92933838ae47eaf3308276aa1f1684c
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 5b3d2bb9d1d9f5c3003fdb8b031aaff17ecb80f03afc4c5aea87a838063c73d1
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548982"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995908"
 ---
 # <a name="get-partner-billing-profile"></a>Hämta partnerfaktureringsprofil
 

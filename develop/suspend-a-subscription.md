@@ -1,35 +1,35 @@
 ---
 title: Inaktivera en prenumeration
-description: Pausar en prenumerationsresurs som matchar kunden och prenumerations-ID:t på grund av bedrägeri eller utebliven betalning. På instrumentpanelen i Partnercenter kan du utföra den här åtgärden genom att först välja en kund.
+description: Inaktiverar en prenumerationsresurs som matchar kunden och prenumerations-ID:t på grund av bedrägeri eller utebliven betalning. På instrumentpanelen i Partnercenter kan du utföra den här åtgärden genom att först välja en kund.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7dae7c3422a403c48a2b10424c4ae5dbdbc498ea
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: a64a6e806abd7ee91f11c799dcc14ed856337633f2e7b08558995755a01f6535
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547350"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996741"
 ---
 # <a name="suspend-a-subscription"></a>Inaktivera en prenumeration
 
-**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-Pausar en [prenumerationsresurs](subscription-resources.md) som matchar kunden och prenumerations-ID:t på grund av bedrägeri eller utebliven betalning.
+Inaktiverar en [prenumerationsresurs](subscription-resources.md) som matchar kunden och prenumerations-ID:t på grund av bedrägeri eller utebliven betalning.
 
-På instrumentpanelen i Partnercenter kan den här åtgärden utföras genom att först [välja en kund.](get-a-customer-by-name.md) Välj sedan den prenumeration som du vill byta namn på. Slutför genom att välja knappen **Pausad** och sedan **Skicka.**
+På instrumentpanelen i Partnercenter kan du utföra den här åtgärden genom att först [välja en kund.](get-a-customer-by-name.md) Välj sedan den prenumeration som du vill byta namn på. Slutför genom att klicka på **knappen Pausad** och sedan välja **Skicka.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID.
 
 ## <a name="c"></a>C\#
 
-Om du vill pausa en kunds prenumeration [hämtar du först prenumerationen](get-a-subscription-by-id.md)och ändrar sedan prenumerationens [**statusegenskap.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) Information om **statuskoder** finns i [SubscriptionStatus-uppräkning/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus). När ändringen har gjorts använder du samlingen **IAggregatePartner.Customers** och anropar **metoden ById().** Anropa sedan egenskapen [**Prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Avsluta sedan med att anropa **metoden Patch().**
+Om du vill inaktivera en kunds prenumeration hämtar [du först prenumerationen](get-a-subscription-by-id.md)och ändrar sedan prenumerationens [**statusegenskap.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) Information om **statuskoder** finns i [SubscriptionStatus-uppräkning/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus). När ändringen har gjorts använder du samlingen **IAggregatePartner.Customers** och anropar **metoden ById().** Anropa sedan egenskapen [**Prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Avsluta sedan med att anropa **metoden Patch().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -55,7 +55,7 @@ updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subsc
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-I den här tabellen visas frågeparametern som krävs för att pausa prenumerationen.
+I den här tabellen visas den frågeparameter som krävs för att pausa prenumerationen.
 
 | Namn                    | Typ     | Obligatorisk | Beskrivning                               |
 |-------------------------|----------|----------|-------------------------------------------|
@@ -108,11 +108,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden [uppdaterade prenumerationsresursegenskaper](subscription-resources.md) i svarstexten.
+Om det lyckas returnerar den här metoden uppdaterade [prenumerationsresursegenskaper](subscription-resources.md) i svarstexten.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

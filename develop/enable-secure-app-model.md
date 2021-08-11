@@ -1,21 +1,21 @@
 ---
 title: Aktivera säker programmodell
-description: Skydda dina Partnercenter- och kontrollpanelens appar.
+description: Skydda dina partnercenter- och kontrollpanelsappar.
 ms.date: 01/20/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 36a81c7b235c68e49bb425b5bd0d4615882f88ef
-ms.sourcegitcommit: 07b9a11f5c615ed1e716081392032cea2124bd98
+ms.openlocfilehash: 9974237f7d4234b782a5b17a65fd52b9024315f848b721c73f4e1d59b69b2930
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/04/2021
-ms.locfileid: "115104218"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994803"
 ---
 # <a name="enabling-the-secure-application-model-framework"></a>Aktivera Secure Application Model-ramverket
 
-Microsoft introducerar ett säkert, skalbart ramverk för autentisering av molnlösningsleverantörer (CSP) och kontrollpanelsleverantörer (CPV) via MFA-arkitekturen (Microsoft Azure Active Directory Multi-Factor Authentication).
+Microsoft introducerar ett säkert, skalbart ramverk för autentisering av molnlösningsleverantörer (CSP) och leverantörer av kontrollpanelen (CPV) via MFA-arkitekturen (Microsoft Azure Active Directory Multi-Factor Authentication).
 
 Du kan använda den nya modellen för att höja säkerheten för Partner Center API-integreringssamtal. Detta hjälper alla parter (inklusive Microsoft, CSP-partner och CPV:er) att skydda sin infrastruktur och sina kunddata mot säkerhetsrisker.
 
@@ -35,9 +35,9 @@ Mer information om säkerhetskrav finns i [Säkerhetskrav för partner.](/partne
 
 ## <a name="secure-application-model"></a>Modell för säkra program
 
-Marketplace-program måste personifiera CSP-partnerbehörigheter för att anropa Microsoft-API:er. Säkerhetsattacker mot dessa känsliga program kan leda till att kunddata kompromettens.
+Marketplace-program måste personifiera CSP-partnerprivilegier för att anropa Microsoft-API:er. Säkerhetsattacker mot dessa känsliga program kan leda till att kunddata kompromettens.
 
-Om du vill ha en översikt och information om det nya autentiseringsramverket [kan du Modell för säkra program dokumentet om ramverket](https://assetsprod.microsoft.com/secure-application-model-guide.pdf) för autentisering. Det här dokumentet beskriver principer och metodtips för att göra marketplace-program hållbara och robusta från säkerhetskompromettering.
+Om du vill ha en översikt och information om det nya autentiseringsramverket kan [du Modell för säkra program dokumentet om ramverket](https://assetsprod.microsoft.com/secure-application-model-guide.pdf) för autentisering. Det här dokumentet beskriver principer och metodtips för att göra marketplace-program hållbara och robusta från säkerhetsriskerna.
 
 ## <a name="samples"></a>Exempel
 
@@ -78,15 +78,15 @@ Du måste skapa och registrera en webbapp i Partnercenter innan du gör REST-anr
 
 2. Skapa en Azure Active Directory (Azure AD).
 
-3. Ge delegerade programbehörigheter till följande *resurser, beroende på programmets krav*. Om det behövs kan du lägga till fler delegerade behörigheter för programresurser.
+3. Ge delegerade programbehörigheter till följande *resurser, beroende på programmets krav.* Om det behövs kan du lägga till fler delegerade behörigheter för programresurser.
 
-   1. **Microsoft Partner Center** (vissa klienter visar detta som **SampleBECApp**)
+   1. **Microsoft Partner Center** (vissa klienter visar detta som **SampleBECApp)**
 
    2. **Azure Management-API:er** (om du planerar att anropa Azure-API:er)
 
    3. **Windows Azure Active Directory**
 
-4. Kontrollera att appens hem-URL är inställd på en slutpunkt där en live-webbapp körs. Den här appen måste godkänna [auktoriseringskoden från](#get-authorization-code) Azure AD-inloggningssamtalet. I exempelkoden i följande avsnitt [körs](#get-authorization-code)till exempel webbappen på `https://localhost:44395/` .
+4. Kontrollera att appens hem-URL är inställd på en slutpunkt där en live-webbapp körs. Den här appen måste godkänna [auktoriseringskoden från](#get-authorization-code) Azure AD-inloggningssamtalet. I exempelkoden i följande avsnitt [körs](#get-authorization-code)webbappen på `https://localhost:44395/` .
 
 5. Observera följande information från webbappens inställningar i Azure AD:
 
@@ -100,15 +100,15 @@ Du måste skapa och registrera en webbapp i Partnercenter innan du gör REST-anr
 
 Du måste få en auktoriseringskod som din webbapp kan godkänna från Azure AD-inloggningssamtalet:
 
-1. Logga in på Azure AD på följande URL: [https://login.microsoftonline.com/common/oauth2/authorize?client_id=Application-Id&response_mode=form_post&response_type=code%20id_token&scope=openid%20profile&nonce=1](https://login.microsoftonline.com/common/oauth2/authorize?client_id=Application-Id&response_mode=form_post&response_type=code%20id_token&scope=openid%20profile&nonce=1) . Se till att logga in med det användarkonto som du ska göra API-anrop från i Partnercenter (till exempel en administratörsagent eller ett agentkonto för försäljning).
+1. Logga in på Azure AD på följande URL: [https://login.microsoftonline.com/common/oauth2/authorize?client_id=Application-Id&response_mode=form_post&response_type=code%20id_token&scope=openid%20profile&nonce=1](https://login.microsoftonline.com/common/oauth2/authorize?client_id=Application-Id&response_mode=form_post&response_type=code%20id_token&scope=openid%20profile&nonce=1) . Se till att logga in med det användarkonto som du ska göra API-anrop från i Partnercenter (till exempel en administratörsagent eller ett försäljningsagentkonto).
 
 2. Ersätt **Program-ID med** ditt Azure AD-app-ID (GUID).
 
 3. När du uppmanas till det loggar du in med ditt användarkonto med MFA konfigurerat.
 
-4. När du uppmanas till det anger du ytterligare MFA-information (telefonnummer eller e-postadress) för att verifiera inloggningen.
+4. När du uppmanas till det anger du ytterligare MFA-information (telefonnummer eller e-postadress) för att verifiera din inloggning.
 
-5. När du har loggat in omdirigerar webbläsaren anropet till slutpunkten för webbappen med din auktoriseringskod. Följande exempelkod omdirigerar till exempel till `https://localhost:44395/` .
+5. När du har loggat in omdirigerar webbläsaren anropet till webbappens slutpunkt med din auktoriseringskod. Följande exempelkod omdirigerar till exempel till `https://localhost:44395/` .
 
 #### <a name="authorization-code-call-trace"></a>Anropsspårning för auktoriseringskod
 
@@ -134,7 +134,7 @@ Du måste sedan använda din auktoriseringskod för att hämta en uppdateringsto
 
 2. Observera uppdateringstoken som returneras.
 
-3. Lagra uppdateringstoken i Azure Key Vault. Mer information finns i [API Key Vault dokumentationen](/rest/api/keyvault/).
+3. Lagra uppdateringstoken i Azure Key Vault. Mer information finns i dokumentationen [Key Vault API.](/rest/api/keyvault/)
 
 > [!IMPORTANT]
 > Uppdateringstoken måste [lagras som en hemlighet](/rest/api/keyvault/setsecret/setsecret) i Key Vault.
@@ -205,7 +205,7 @@ Svarstext:
 {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3600","ext_expires_in":"3600","expires_on":"1547581389","not_before":"1547577489","resource":"https://api.partnercenter.microsoft.com","access_token":"AccessTokenValue","id_token":"IDTokenValue"}
 ```
 
-### <a name="make-partner-center-api-calls"></a>Göra PARTNER Center API-anrop
+### <a name="make-partner-center-api-calls"></a>Göra API-anrop i Partnercenter
 
 Du måste använda din åtkomsttoken för att anropa Partner Center-API:erna. Se följande exempel på anrop.
 
@@ -225,7 +225,7 @@ Host: api.partnercenter.microsoft.com
 
 Du kan använda [Partner Center PowerShell-modulen för att](https://www.powershellgallery.com/packages/PartnerCenter) minska den infrastruktur som krävs för att utbyta en auktoriseringskod för en åtkomsttoken. Den här metoden är valfri för att göra [Partner Center REST-anrop](#rest).
 
-Mer information om den här processen finns i [Dokumentationen för Secure Appmodell](/powershell/partnercenter/secure-app-model) PowerShell.
+Mer information om den här processen finns i [Secure Appmodell](/powershell/partnercenter/secure-app-model) PowerShell-dokumentationen.
 
 1. Installera PowerShell-modulerna för Azure AD och Partner Center.
 
@@ -237,7 +237,7 @@ Mer information om den här processen finns i [Dokumentationen för Secure Appmo
     Install-Module PartnerCenter
     ```
 
-2. Använd kommandot **[New-PartnerAccessToken för](/powershell/module/partnercenter/new-partneraccesstoken)** att utföra medgivandeprocessen och samla in nödvändig uppdateringstoken.
+2. Använd kommandot **[New-PartnerAccessToken för](/powershell/module/partnercenter/new-partneraccesstoken)** att utföra medgivandeprocessen och avbilda den nödvändiga uppdateringstoken.
 
     ```powershell
     $credential = Get-Credential
@@ -246,7 +246,7 @@ Mer information om den här processen finns i [Dokumentationen för Secure Appmo
     ```
 
     > [!NOTE]
-    > Parametern **ServicePrincipal** används med kommandot **New-PartnerAccessToken** eftersom en Azure AD-app med en typ av **webb/API** används. Den här typen av app kräver att en klientidentifierare och en hemlighet ingår i begäran om åtkomsttoken. När **kommandot Get-Credential** anropas uppmanas du att ange ett användarnamn och lösenord. Ange programidentifieraren som användarnamn. Ange programhemligheten som lösenord. När kommandot **New-PartnerAccessToken** anropas uppmanas du att ange autentiseringsuppgifter igen. Ange autentiseringsuppgifterna för det tjänstkonto som du använder. Det här tjänstkontot ska vara ett partnerkonto med rätt behörigheter.
+    > Parametern **ServicePrincipal** används med kommandot **New-PartnerAccessToken** eftersom en Azure AD-app med en typ av **webb/API** används. Den här typen av app kräver att en klientidentifierare och en hemlighet inkluderas i begäran om åtkomsttoken. När **kommandot Get-Credential** anropas uppmanas du att ange ett användarnamn och lösenord. Ange programidentifieraren som användarnamn. Ange programhemligheten som lösenord. När kommandot **New-PartnerAccessToken** anropas uppmanas du att ange autentiseringsuppgifter igen. Ange autentiseringsuppgifterna för det tjänstkonto som du använder. Det här tjänstkontot ska vara ett partnerkonto med rätt behörighet.
 
 3. Kopiera värdet för uppdateringstoken.
 
