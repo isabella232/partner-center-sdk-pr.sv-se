@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 2588327e72a13de75eb9e02675edbd535491adc4
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 55a09752844f74caaf878f1e2dcfe3d8a70a283c5e0e9daefba89c558405690a
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760801"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994123"
 ---
 # <a name="get-agreement-metadata-for-microsoft-cloud-agreement"></a>Hämta avtalsmetadata för Microsoft Cloud-avtal
 

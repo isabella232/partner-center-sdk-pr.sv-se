@@ -6,28 +6,28 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 196d653c789c4b4e1327f0c6e5d2531a18681a71
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 8dd812ba1a233254c0cb952da592362e40650ee409d1f0217c85ecf4e4b2aedf
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111875000"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993137"
 ---
 # <a name="get-a-customer-by-id"></a>Hämta en kund efter ID
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Hämtar en **kundresurs** som motsvarar ett kund-ID.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentiseringsuppgifter för app+användare eller appbaserad autentisering.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder app+användarautentiseringsuppgifter eller appbaserad autentisering.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en kund via ID använder du [**samlingen IAggregatePartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) anropar [**metoden ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) och anropar sedan [**metoderna Get()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.get) [**eller GetAsync().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.getasync)
+Om du vill hämta en kund per ID använder du [**samlingen IAggregatePartner.Customers,**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) anropar [**metoden ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) och anropar sedan [**metoderna Get()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.get) eller [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -55,7 +55,7 @@ Customer customerInfo = partnerOperations.getCustomers().byId(customerIdToRetrie
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Om du vill hämta en kund efter ID kör du [**kommandot Get-PartnerCustomer**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomer.md) och anger **parametern CustomerId.**
+Om du vill hämta en kund per ID kör du [**kommandot Get-PartnerCustomer**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerCustomer.md) och anger **parametern CustomerId.**
 
 ```powershell
 Get-PartnerCustomer -CustomerId '2ca7de6c-c05c-46b5-b689-32e53573a97a'
@@ -97,11 +97,11 @@ MS-RequestId: 74ca1db9-df92-41c6-a362-a16433b0542b
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden [en kundresurs](customer-resources.md#customer) i svarstexten.
+Om det lyckas returnerar den här metoden [en Kund-resurs](customer-resources.md#customer) i svarstexten.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

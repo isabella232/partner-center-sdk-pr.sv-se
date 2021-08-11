@@ -4,12 +4,12 @@ description: Beskriver en produkt som anges i återförsäljarkatalogen och som 
 ms.date: 03/15/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9a7a0dd2dccc59536797c3ce533d9d8829a04f96
-ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
+ms.openlocfilehash: bcc5b60b7d1e3e13c38bd4014a81c2af254daa1d01ef33351b680463c3fee4a6
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/31/2021
-ms.locfileid: "115009230"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997914"
 ---
 # <a name="offer-resources"></a>Erbjudanderesurser
 
@@ -19,7 +19,7 @@ Beskriver en produkt som anges i återförsäljarkatalogen och som de kan erbjud
 
 ## <a name="offer"></a>Erbjudande
 
-| Egenskap                    | Typ                      | Beskrivning                                                                                                                                                                |
+| Egenskap                    | Typ                      | Description                                                                                                                                                                |
 |-----------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id                          | sträng                    | Erbjudandeidentifieraren.                                                                                           |
 | name                        | sträng                    | Erbjudandets namn.                                                                                                 |
@@ -56,12 +56,12 @@ Beskriver en produkt som anges i återförsäljarkatalogen och som de kan erbjud
 
 Beskriver kategorisering av ett erbjudande. Detta inkluderar rangordningen eller prioriteten för den här erbjudandekategorin jämfört med andra i samma produktrad.
 
-| Egenskap   | Typ                                                           | Beskrivning                                                                                                                                                                |
+| Egenskap   | Typ                                                           | Description                                                                                                                                                                |
 |------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id         | sträng                                                         | Kategoriidentifieraren.                                                                                                                                                   |
 | name       | sträng                                                         | Kategorinamnet.                                                                                                                                                         |
-| rangordning       | int                                                            | Kategorirankning eller prioritet jämfört med andra kategorier i samma erbjudande. Den här egenskapen ska bara anges om det finns fler än en erbjudandekategori för ett visst erbjudande. |
-| locale     | sträng                                                         | Det språk som erbjudandet gäller i.                                                                                                                        |
+| rangordning       | int                                                            | Kategorirankning eller prioritet jämfört med andra kategorier i samma erbjudande. Den här egenskapen ska endast anges om det finns fler än en erbjudandekategori för ett visst erbjudande. |
+| locale     | sträng                                                         | Det språk som erbjudandet gäller för.                                                                                                                        |
 | land    | sträng                                                         | Land/region där erbjudandet gäller.                                                                                                                   |
 | Länkar      | [ResourceLinks](utility-resources.md#resourcelinks)           | Resursen länkar som motsvarar OfferCategory.                                                                                                                     |
 | Attribut | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen som motsvarar OfferCategory.                                                                                                                |
@@ -70,7 +70,7 @@ Beskriver kategorisering av ett erbjudande. Detta inkluderar rangordningen eller
 
 Innehåller länkar för att lära dig mer om erbjudandet.
 
-| Egenskap  | Typ | Beskrivning                 |
+| Egenskap  | Typ | Description                 |
 |-----------|------|-----------------------------|
 | learnMore | Länk | Länken "Läs mer".      |
 | Själv      | Länk | Själv-URI                |
@@ -79,20 +79,20 @@ Innehåller länkar för att lära dig mer om erbjudandet.
 
 ## <a name="offerproduct"></a>OfferProduct
 
-En produkt eller tjänst som kan ha fler än ett erbjudande kopplat till sig, var och en med olika uppsättningar funktioner och som är riktad mot olika kundbehov.
+En produkt eller tjänst som kan ha fler än ett associerat erbjudande, var och en med olika uppsättningar av funktioner och som är avsedda för olika kundbehov.
 
-| Egenskap | Typ   | Beskrivning              |
+| Egenskap | Typ   | Description              |
 |----------|--------|--------------------------|
 | Id       | sträng | Kategoriidentifieraren. |
-| Namn     | sträng | Kategorinamnet.       |
+| Name     | sträng | Kategorinamnet.       |
 | Enhet     | sträng | Produktenheten.        |
 
 ## <a name="attestationproperties"></a>AttestationProperties
 
 Representerar en attestationstyp och om det krävs för inköp.
 
-| Egenskap              | Typ                                        | Beskrivning                                                                         |
+| Egenskap              | Typ                                        | Description                                                                         |
 |-----------------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-| attestationType              | sträng                                      | Anger attestationstyp. För Windows 365 är värdet Windows365. Windows 365-attestationstexten är "Jag förstår att varje person som använder Windows 365 Business med Windows Hybrid Benefit också måste ha en giltig kopia av Windows 10/11 Pro installerad på sin primära arbetsenhet." |
+| attestationType              | sträng                                      | Anger attestationstyp. För Windows 365 är värdet Windows365. Windows 365-attereringstexten är "Jag förstår att varje person som använder Windows 365 Business med Windows Hybrid Benefit också måste ha en giltig kopia av Windows 10/11 Pro installerad på sin primära arbetsenhet." |
 | enforceAttestation           | boolean                                      | Anger om attestation krävs för inköp.           |
 

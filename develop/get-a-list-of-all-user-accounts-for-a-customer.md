@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: f3d5fcc610eae8c1bff056c1e4a9e7a74093c87d
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 5b937d165a76a0dfbf4bfc44a5e155607b74ea9fab6a5db5c71df44e22f19d27
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874575"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994225"
 ---
 # <a name="get-a-list-of-all-user-accounts-for-a-customer"></a>Hämta en lista över alla användarkonton för en kund
 

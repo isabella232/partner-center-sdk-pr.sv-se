@@ -4,12 +4,12 @@ description: Så här köper du katalogobjekt med partnercenter-API:et.
 ms.date: 07/12/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d3e0deedff194b1c836d9266c2201a2b3a52cc1b
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 34560ceff2721a805d50cd4bf0702f6e7cf6f473db3f38ee52ea439b7355b786
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445365"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997352"
 ---
 # <a name="purchase-catalog-items"></a>Köp katalogobjekt
 

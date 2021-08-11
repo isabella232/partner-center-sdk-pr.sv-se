@@ -6,22 +6,22 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 715ec7dda252cf096b2ec2bd1745d8afee7c8310
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 56da318398dbd7fadbfa9f4a13cc3a3be1c7ab8072cfe8920192b5d04c2b9583
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547860"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997625"
 ---
-# <a name="different-partner-center-rest-url-end-points-for-use-in-certain-countries-or-regions"></a>Olika partnercenter-REST-URL-slutpunkter för användning i vissa länder eller regioner
+# <a name="different-partner-center-rest-url-end-points-for-use-in-certain-countries-or-regions"></a>Olika partnercenter för REST-URL:er för användning i vissa länder eller regioner
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-PartnerCenter är tillgängligt i olika länder och regioner runtom i världen. Vissa versioner av Partnercenter kan kräva olika slutpunkter för att dina appar ska fungera korrekt.
+Partnercenter är tillgängligt i olika länder och regioner runtom i världen. Vissa versioner av Partnercenter kan kräva olika slutpunkter för att dina appar ska fungera korrekt.
 
-I följande tabell beskrivs de grundläggande URL:er som ska användas med de olika versionerna av PartnerCenter:
+I följande tabell beskrivs de grundläggande URL:er som ska användas med de olika versionerna av Partnercenter:
 
-| Partner Center-version  | Grundläggande URL  |
+| PartnerCenter-version  | Grundläggande URL  |
 |---------|---------|
 |Partnercenter</br>Partnercenter för Microsoft Cloud Tyskland</br>Välkommen till Partnercenter för Microsoft Cloud for US Government     | `https://api.partnercenter.microsoft.com`        |
 |Partnercenter drivs av 21Vianet  |  `https://partner.partnercenterapi.microsoftonline.cn`       |

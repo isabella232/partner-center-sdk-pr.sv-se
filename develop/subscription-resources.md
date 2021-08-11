@@ -4,12 +4,12 @@ description: Prenumerationsresurser kan ge ytterligare information om prenumerat
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 35d8c86ab061797109b3c152eff02f354b7ea23a
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: e48927b9d8606f8d78ed8e4b5eb12da61f7a7d27f16316bca124f896a24a6638
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547468"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997982"
 ---
 # <a name="subscription-resources"></a>Prenumerationsresurser
 
@@ -24,7 +24,7 @@ Med en prenumeration kan en kund använda en tjänst under en viss tidsperiod. A
 
 **Prenumerationsresursen** representerar livscykeln för en prenumeration och innehåller egenskaper som definierar tillstånden under prenumerationens livscykel.
 
-| Egenskap             | Typ                                                          | Beskrivning                                                                                                                                                                   |
+| Egenskap             | Typ                                                          | Description                                                                                                                                                                   |
 |----------------------|---------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id                   | sträng                                                        | Prenumerationsidentifieraren.                                                                                                                                                  |
 | offerId              | sträng                                                        | Erbjudandeidentifieraren.                                                                                                                                                         |
@@ -60,7 +60,7 @@ Med en prenumeration kan en kund använda en tjänst under en viss tidsperiod. A
 
 Resursen **SubscriptionLinks** beskriver samlingen med länkar som är kopplade till en prenumerationsresurs.
 
-| Egenskap           | Typ                               | Beskrivning                           |
+| Egenskap           | Typ                               | Description                           |
 |--------------------|------------------------------------|---------------------------------------|
 | offer              | [Länk](utility-resources.md#link) | Hämtar eller anger erbjudandet.               |
 | parentSubscription | [Länk](utility-resources.md#link) | Hämtar eller anger den överordnade prenumerationen. |
@@ -76,7 +76,7 @@ Resursen **SubscriptionLinks** beskriver samlingen med länkar som är kopplade 
 
 Resursen **SubscriptionProvisioningStatus** innehåller information om etableringsstatusen för en prenumeration.
 
-| Egenskap   | Typ                                                           | Beskrivning                                                          |
+| Egenskap   | Typ                                                           | Description                                                          |
 |------------|----------------------------------------------------------------|----------------------------------------------------------------------|
 | skuId      | sträng                                                         | En GUID-formaterad sträng som identifierar produktens SKU.             |
 | status     | sträng                                                         | Anger etableringsstatus: "lyckades", "väntar" eller "misslyckades". |
@@ -88,7 +88,7 @@ Resursen **SubscriptionProvisioningStatus** innehåller information om etablerin
 
 Resursen **SubscriptionRegistrationStatus** beskriver samlingen med länkar som är kopplade till en prenumerationsresurs.
 
-| Egenskap           | Typ                               | Beskrivning                                                                           |
+| Egenskap           | Typ                               | Description                                                                           |
 |--------------------|------------------------------------|---------------------------------------------------------------------------------------|
 | subscriptionId     | sträng                             | Prenumerationsidentifieraren.                                                          |
 | status             | sträng                             | Anger registreringsstatus: "registered", "registering" eller "notregistered".    |
@@ -97,7 +97,7 @@ Resursen **SubscriptionRegistrationStatus** beskriver samlingen med länkar som 
 
 **SupportContact-resursen** representerar en supportkontakt för en kunds prenumeration.
 
-| Egenskap        | Typ                                                           | Beskrivning                                                                     |
+| Egenskap        | Typ                                                           | Description                                                                     |
 |-----------------|----------------------------------------------------------------|---------------------------------------------------------------------------------|
 | supportTenantId | sträng                                                         | En GUID-formaterad sträng som anger supportkontaktens klientorganisations-ID. |
 | supportMpnId    | sträng                                                         | Kontaktens ID Microsoft Partner Network (MPN).                       |
@@ -109,7 +109,7 @@ Resursen **SubscriptionRegistrationStatus** beskriver samlingen med länkar som 
 
 **RegisterSubscription-resursen** returnerar en länk som kan användas för att fråga registreringsstatusen för en prenumeration. Registreringsstatusen returneras i svarstexten för en godkänd begäran om att registrera en Azure-prenumeration.
 
-| Egenskap                | Typ                               | Beskrivning                                                                           |
+| Egenskap                | Typ                               | Description                                                                           |
 |-------------------------|------------------------------------|---------------------------------------------------------------------------------------|
 | httpResponseMessage     | objekt                             | Returnerar HTTP-statuskod 202 "Accepted", med ett Location-huvud som innehåller en länk för att fråga registreringsstatusen. Till exempel `"/customers/{customer-id}/subscriptions/{subscription-id}/registrationstatus"` |
 
@@ -117,7 +117,7 @@ Resursen **SubscriptionRegistrationStatus** beskriver samlingen med länkar som 
 
 Resursen **RefundOption** representerar ett möjligt återbetalningsalternativ för prenumerationen.
 
-| Egenskap          | Typ | Beskrivning                                                                         |
+| Egenskap          | Typ | Description                                                                         |
 |-------------------|--------|-------------------------------------------------------------------------------------|
 | typ | sträng | Typ av återbetalning. Värdena som stöds är "Partiell" och "Fullständig" |
 | expiresAfter      | sträng i UTC-datum/tid-format | Tidsstämpeln när det här alternativet upphör att gälla. Om det är null innebär det att det inte har någon förfallotid. |
@@ -126,7 +126,7 @@ Resursen **RefundOption** representerar ett möjligt återbetalningsalternativ f
 
 Resursen **AzureEntitlement** representerar Azure-rättigheterna för prenumerationen.
 
-| Egenskap          | Typ | Beskrivning                                                                         |
+| Egenskap          | Typ | Description                                                                         |
 |-------------------|--------|-------------------------------------------------------------------------------------|
 | id | sträng | Berättigandeidentifieraren |
 | friendlyName      | sträng | Det egna namnet på rättigheten. |

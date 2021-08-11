@@ -4,12 +4,12 @@ description: En partner gör en beställning när en kund vill köpa en prenumer
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 128c9e041cacc1c15f6187c4d99690d5c5fa4183
-ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
+ms.openlocfilehash: c2b841b73921c9727180e5649ec6a6213081442a8047c6b088e5f9fc6428ef0b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/31/2021
-ms.locfileid: "115009177"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997863"
 ---
 # <a name="order-resources"></a>Beställa resurser
 
@@ -24,7 +24,7 @@ En partner gör en beställning när en kund vill köpa en prenumeration från e
 
 Beskriver en partners beställning.
 
-| Egenskap           | Typ                                               | Beskrivning                                                 |
+| Egenskap           | Typ                                               | Description                                                 |
 |--------------------|----------------------------------------------------|-------------------------------------------------------------|
 | id                 | sträng                                             | En orderidentifierare som anges när ordern har skapats.                                   |
 | alternateId        | sträng                                             | En användarvänlig identifierare för beställningen.                                                                          |
@@ -43,7 +43,7 @@ Beskriver en partners beställning.
 
 En order innehåller en specificerad lista över erbjudanden och varje objekt representeras som en OrderLineItem.
 
-| Egenskap             | Typ                                      | Beskrivning                                                                                                                                                                                                                                |
+| Egenskap             | Typ                                      | Description                                                                                                                                                                                                                                |
 |----------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | lineItemNumber       | int                                       | Varje radobjekt i samlingen får ett unikt radnummer som räknas upp från 0 till count-1.                                                                                                                                                 |
 | offerId              | sträng                                    | ID för erbjudandet.                                                                                                                                                                                                                       |
@@ -55,7 +55,7 @@ En order innehåller en specificerad lista över erbjudanden och varje objekt re
 | transactionType      | sträng                                    | Skrivskyddade. Radobjektets transaktionstyp. Värden som stöds är "new", "renew", "addQuantity", "removeQuantity", "cancel", "convert" eller "customerCredit". |
 | partnerIdOnRecord    | sträng                                    | När en indirekt leverantör gör en beställning åt en indirekt återförsäljare fyller du i det här fältet med MPN-ID:t för den indirekta återförsäljaren **(aldrig** DEN indirekta leverantörens ID). Detta säkerställer korrekt redovisning av incitament. |
 | provisioningContext  | Ordlista<sträng, sträng>            | Information som krävs för etablering för vissa objekt i katalogen. Egenskapen provisioningVariables i en SKU anger vilka egenskaper som krävs för specifika objekt i katalogen.                                                                                                                                               |
-| Länkar                | [OrderLineItemLinks](#orderlineitemlinks) | Skrivskyddade. Resursen länkar som motsvarar orderradobjektet.                                                                                                                                                                                |
+| Länkar                | [OrderLineItemLinks](#orderlineitemlinks) | Skrivskyddade. Resursen länkar som motsvarar orderradsobjektet.                                                                                                                                                                                |
 | renewsTo             | [RenewsTo](#renewsto)                         |Information om varaktighet för förnyelseperiod.                                                                           |
 | AttestationAccepted             | boolesk                 | Anger avtal om att erbjuda eller SKU-villkor. Krävs endast för erbjudanden eller SKU:er där SkuAttestationProperties eller OfferAttestationProperties enforceAttestation är True.                                                                            |
 
@@ -71,7 +71,7 @@ Representerar information om förnyelseperiodens varaktighet.
 
 Representerar resurslänkarna som motsvarar ordern.
 
-| Egenskap           | Typ                                         | Beskrivning                                                                   |
+| Egenskap           | Typ                                         | Description                                                                   |
 |--------------------|----------------------------------------------|-------------------------------------------------------------------------------|
 | provisioningStatus | [Länk](utility-resources.md#link)            | När du har fyllt i länken för att hämta etableringsstatus för ordern.       |
 | Själv               | [Länk](utility-resources.md#link)            | Länken för att hämta orderresursen.                                      |
@@ -80,39 +80,39 @@ Representerar resurslänkarna som motsvarar ordern.
 
 Representerar den fullständiga prenumeration som är associerad med ordern.
 
-| Egenskap           | Typ                                         | Beskrivning                                                                          |
+| Egenskap           | Typ                                         | Description                                                                          |
 |--------------------|----------------------------------------------|--------------------------------------------------------------------------------------|
-| provisioningStatus | [Länk](utility-resources.md#link)            | När du har fyllt i länken för att [hämta etableringsstatusen](#orderlineitemprovisioningstatus) för radobjektet.       |
+| provisioningStatus | [Länk](utility-resources.md#link)            | När det har fyllts i hämtar länken [etableringsstatusen](#orderlineitemprovisioningstatus) för radobjektet.       |
 | sku                | [Länk](utility-resources.md#link)            | Länken för att hämta SKU-information för katalogobjektet som har köpts.                    |
 | prenumeration       | [Länk](utility-resources.md#link)            | När du har fyllt i länken till den fullständiga prenumerationsinformationen.                       |
-| activationLinks    | [Länk](utility-resources.md#link)            | När den har fyllts i innehåller GET-resursen länkar för att aktivera prenumerationen.             |
+| activationLinks    | [Länk](utility-resources.md#link)            | När den är ifylld innehåller GET-resursen länkar för att aktivera prenumerationen.             |
 
 ## <a name="orderstatus"></a>OrderStatus
 
 En [Enum/dotnet/api/system.enum) med värden som anger ordningens tillstånd.
 
-| Värde              | Position     | Beskrivning                                     |
+| Värde              | Position     | Description                                     |
 |--------------------|--------------|-------------------------------------------------|
 | okänd            | 0            | Enum-initierare.                               |
 | Avslutade          | 1            | Anger att ordern har slutförts.          |
 | Väntar            | 2            | Anger att ordern fortfarande väntar.      |
-| Annullerat          | 3            | Anger att ordern har annullerats.    |
+| Annullerat          | 3            | Anger att ordern har avbrutits.    |
 
 ## <a name="orderlineitemprovisioningstatus"></a>OrderLineItemProvisioningStatus
 
 Representerar etableringsstatusen för [en OrderLineItem](#orderlineitem).
 
-| Egenskap                        | Typ                                | Beskrivning                                                                                |
+| Egenskap                        | Typ                                | Description                                                                                |
 |------------------------------------|-------------------------------------|--------------------------------------------------------------------------------------------|
 | lineItemNumber                  | int                                 | Det unika radnumret för orderradsobjektet. Värdena sträcker sig från 0 till count-1.             |
-| status                          | sträng                              | Etableringsstatus för orderradsobjektet. Exempel på värden:</br>**Uppfyllt:** Ordern har uppfyllts och användaren kommer att kunna använda reservationerna</br>**Unfulfilled:** Inte uppfyllt på grund av annullering</br>**PrefulfillmentPending (Ifyllning** väntar): Din begäran bearbetas fortfarande och slutförande har ännu inte slutförts |
+| status                          | sträng                              | Etableringsstatus för orderradsobjektet. Exempel på värden:</br>**Uppfyllt:** Slutförande av ordern har slutförts och användaren kommer att kunna använda reservationerna</br>**Unfulfilled:** Inte uppfyllt på grund av annullering</br>**PrefulfillmentPending (Förifyllning** väntar): Din begäran bearbetas fortfarande, slutförande har inte slutförts ännu |
 | quantityProvisioningInformation | Lista<[QuantityProvisioningStatus](#quantityprovisioningstatus)> | En lista med statusinformation för kvantitetsetablering för orderradsartikeln. |
 
 ## <a name="quantityprovisioningstatus"></a>QuantityProvisioningStatus
 
 Representerar etableringsstatus efter kvantitet.
 
-| Egenskap                           | Typ                                         | Beskrivning                                          |
+| Egenskap                           | Typ                                         | Description                                          |
 |------------------------------------|----------------------------------------------|------------------------------------------------------|
 | quantity                           | int                                          | Antal objekt.                                 |
 | status                             | sträng                                       | Status för antalet objekt.                   |

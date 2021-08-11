@@ -1,29 +1,29 @@
 ---
 title: Hämta en samling berättiganden
-description: Så här hämtar du en samling rättigheter.
+description: Hur du hämtar en samling rättigheter.
 ms.date: 01/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7bb8d3aefb11fae0af4bce790b41598d935de57c
-ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
+ms.openlocfilehash: 9248f2ef97afe7a2cefff5759028da12dc9c3936f2e14cee18063c0428699c81
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111906416"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993681"
 ---
 # <a name="get-a-collection-of-entitlements"></a>Hämta en samling berättiganden
 
-Så här hämtar du en samling rättigheter.
+Hur du hämtar en samling rättigheter.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en berättigandesamling [](entitlement-resources.md#entitlement) för en kund hämtar du ett gränssnitt för berättigandeåtgärder genom att anropa [**metoden IAggregatePartner.Customers.ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Hämta sedan gränssnittet från egenskapen **Entitlements** och anropa metoden **Get()** eller **GetAsync()** för att hämta samlingen med rättigheter.
+Om du vill hämta en rättighetssamling [](entitlement-resources.md#entitlement) för en kund hämtar du ett gränssnitt för berättigandeåtgärder genom att anropa [**metoden IAggregatePartner.Customers.ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Hämta sedan gränssnittet från egenskapen **Entitlements** och anropa metoden **Get()** eller **GetAsync()** för att hämta samlingen med rättigheter.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -33,7 +33,7 @@ string customerId;
 var entitlements = partnerOperations.Customers.ById(customerId).Entitlements.Get();
 ```
 
-Om du vill fylla i förfallodatum för de rättigheter som ska hämtas anropar du samma metoder ovan och anger den valfria booleska parametern **showExpiry** till true **Get(true)** eller **GetAsync(true).** Detta anger att förfallodatum för rättigheter krävs (i förekommande fall).
+Om du vill fylla i förfallodatum för de rättigheter som ska hämtas anropar du samma metoder ovan och anger den valfria booleska **parametern showExpiry** till true **Get(true)** eller **GetAsync(true).** Detta anger att förfallodatum för rättigheter krävs (i förekommande fall).
 
 > [!IMPORTANT]
 > Lokala berättigandetyper har inga förfallodatum.
@@ -44,7 +44,7 @@ Om du vill fylla i förfallodatum för de rättigheter som ska hämtas anropar d
 
 | Metod | URI för förfrågan |
 |--------|-------------|
-| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customerId}/rättigheter HTTP/1.1                            |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customerId}/berättiganden HTTP/1.1                            |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
@@ -52,9 +52,9 @@ Använd följande sökväg och frågeparametrar när du skapar begäran.
 
 | Namn | Typ | Obligatorisk | Beskrivning |
 |------|------|----------|-------------|
-| customerId | sträng | Ja | Ett GUID-formaterat customerId som identifierar kunden. |
+| customerId | sträng | Yes | Ett GUID-formaterat customerId som identifierar kunden. |
 | entitlementType | sträng | No | Kan användas för att ange vilken typ av rättigheter som ska hämtas (**programvara** eller **reservedInstance** ). Om detta inte anges hämtas alla typer |
-| showExpiry | boolean | Inga | Valfri flagga som anger om förfallodatum för rättigheter krävs. |
+| showExpiry | boolean | No | Valfri flagga som anger om förfallodatum för rättigheter krävs. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -82,7 +82,7 @@ Om det lyckas innehåller svarstexten en samling [berättiganderesurser.](entitl
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 
@@ -175,7 +175,7 @@ I följande exempel visas hur du hämtar en specifik typ av rättigheter tillsam
 
 ### <a name="c-example"></a>\#C-exempel
 
-Om du vill hämta en specifik typ av rättigheter hämtar du **gränssnittet ByEntitlementType** från gränssnittet **Entitlements** och använder **metoderna Get()** eller **GetAsync().**
+Om du vill hämta en specifik typ av rättigheter hämtar du **byEntitlementType-gränssnittet** från **gränssnittet Entitlements** och använder **metoderna Get()** eller **GetAsync().**
 
 ``` csharp
 ResourceCollection<Entitlement> entitlements = partnerOperations.Customers.ById(selectedCustomerId).Entitlements.ByEntitlementType("software").Get(true);
@@ -299,11 +299,11 @@ Date: Mon, 28 Jan 2019 18:31:43 GMT
 
 I följande exempel visas hur du hämtar information om produkter och reservationer från en berättigande.
 
-### <a name="retrieve-virtual-machine-reservation-details-from-an-entitlement-by-using-sdk-v18"></a>Hämta information om virtuell datorreservation från ett berättigande med hjälp av SDK V1.8
+### <a name="retrieve-virtual-machine-reservation-details-from-an-entitlement-by-using-sdk-v18"></a>Hämta information om virtuell datorreservation från en berättigande med hjälp av SDK V1.8
 
 ### <a name="c-example"></a>\#C-exempel
 
-Om du vill hämta mer information som rör reservationer för virtuella datorer från en rättighet anropar du den URI som exponeras under entitledArtifacts.link med artifactType = virtual_machine_reserved_instance.
+Om du vill hämta mer information relaterad till reservationer för virtuella datorer från en rättighet anropar du den URI som visas under entitledArtifacts.link med artifactType = virtual_machine_reserved_instance.
 
 ``` csharp
 ResourceCollection<Entitlement> entitlements = partnerOperations.Customers.ById(selectedCustomerId).Entitlements.ByEntitlementType("VirtualMachineReservedInstance").Get();
@@ -351,11 +351,11 @@ Date: Mon, 19 Mar 2018 07:45:14 GMT
 }
 ```
 
-### <a name="retrieve-reservation-details-from-an-entitlement-by-using-sdk-v19"></a>Hämta reservationsinformation från en rättighet med hjälp av SDK V1.9
+### <a name="retrieve-reservation-details-from-an-entitlement-by-using-sdk-v19"></a>Hämta reservationsinformation från en berättigande med hjälp av SDK V1.9
 
 ### <a name="c-example"></a>\#C-exempel
 
-Om du vill hämta mer information om reservationerna från en reserverad instansrättighet anropar du den URI som exponeras under ```entitledArtifacts.link``` med ```artifactType = reservedinstance``` .
+Om du vill hämta mer information om reservationerna från en reserverad instans-rättighet anropar du den URI som exponeras under ```entitledArtifacts.link``` med ```artifactType = reservedinstance``` .
 
 ``` csharp
 ResourceCollection<Entitlement> entitlements = partnerOperations.Customers.ById(selectedCustomerId).Entitlements.ByEntitlementType("ReservedInstance").Get();
@@ -405,4 +405,4 @@ Date: Mon, 19 Mar 2018 07:45:14 GMT
 
 ### <a name="api-consumers"></a>API-konsumenter
 
-Partner som använder API:et för att fråga berättiganden för reserverade instanser för virtuella datorer – Uppdatera begärande-URI:n från **/customers/{customerId}/entitlements till /customers/{customerId}/entitlements?entitlementType=virtualmachinereservedinstance** för att upprätthålla bakåtkompatibilitet. Om du vill använda en virtuell dator eller Azure SQL med ett utökat kontrakt uppdaterar du begärande-URI:n till **/customers/{customerId}/entitlements?entitlementType=reservedinstance**.
+Partner som använder API:et för att fråga berättiganden till reserverade instanser för virtuella datorer – Uppdatera begärans-URI från **/customers/{customerId}/entitlements till /customers/{customerId}/entitlements?entitlementType=virtualmachinereservedinstance** för att upprätthålla bakåtkompatibilitet. Om du vill använda en virtuell dator eller Azure SQL med utökat kontrakt uppdaterar du begärans-URI till **/customers/{customerId}/entitlements?entitlementType=reservedinstance**.

@@ -4,12 +4,12 @@ description: Så här hämtar du en URL för relationsbegäran som ska skickas t
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 07804b36dfe0892cf8b531e0731188260c014f49
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 62cf06de327f8f31e908a0cc38cff52ad5c62b036b95d195e0a8040c53a4e110
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547466"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996979"
 ---
 # <a name="retrieve-a-relationship-request-url"></a>Hämta en URL för relationsbegäran
 

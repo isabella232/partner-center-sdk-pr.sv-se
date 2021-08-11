@@ -4,12 +4,12 @@ description: Hämtar kostnadsradsobjekt för en kunds tjänst för den angivna f
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1bc2914d7c8d41c6d806131444fdc241aa1feb90
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 66ede79958e7e218ba59492ea9019d209a5d00dfae331622eceba78963048491
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874949"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992967"
 ---
 # <a name="get-a-customers-service-costs-line-items"></a>Hämta radobjekt för en kunds servicekostnader
 
@@ -17,11 +17,11 @@ Hämtar kostnadsradsobjekt för en kunds tjänst för den angivna faktureringspe
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med autentiseringsuppgifter för App+Användare.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
-- En faktureringsperiodsindikator ( **`mostrecent`** ).
+- En faktureringsperiodindikator ( **`mostrecent`** ).
 
 ## <a name="c"></a>C\#
 
@@ -29,7 +29,7 @@ Så här hämtar du en sammanfattning av tjänstkostnader för den angivna kunde
 
 1. Anropa metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden.
 
-2. Använd egenskapen [**ServiceCosts för**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.servicecosts) att hämta ett gränssnitt till insamlingsåtgärder för kundtjänstkostnader.
+2. Använd egenskapen [**ServiceCosts för**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.servicecosts) att hämta ett gränssnitt för insamlingsåtgärder för kundtjänstkostnader.
 
 3. Anropa metoden [**ByBillingPeriod**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.icustomerservicecostscollection.bybillingperiod) med en medlem i [**ServiceCostsBillingPeriod-uppräkningen**](/dotnet/api/microsoft.store.partnercenter.models.servicecosts.servicecostsbillingperiod) för att returnera [**en IServiceCostsCollection**](/dotnet/api/microsoft.store.partnercenter.customers.servicecosts.iservicecostscollection).
 
@@ -56,8 +56,8 @@ Använd följande sökvägsparametrar för att identifiera kunden och fakturerin
 
 | Namn           | Typ   | Obligatorisk | Beskrivning                                                                                                                      |
 |----------------|--------|----------|----------------------------------------------------------------------------------------------------------------------------------|
-| kund-ID    | guid   | Ja      | Ett GUID-formaterat kund-ID som identifierar kunden.                                                                       |
-| faktureringsperiod | sträng | Ja      | En indikator som representerar faktureringsperioden. Det enda värde som stöds är MostRecent. Strängens fall spelar ingen roll. |
+| kund-id    | guid   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.                                                                       |
+| faktureringsperiod | sträng | Yes      | En indikator som representerar faktureringsperioden. Det enda värde som stöds är MostRecent. Strängens fall spelar ingen roll. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -84,11 +84,11 @@ Host: api.partnercenter.microsoft.com
 Om det lyckas innehåller svarstexten en [ServiceCostLineItem-resurs](service-costs-resources.md) som innehåller information om tjänstkostnaderna.
 
 > [!IMPORTANT]
-> Följande egenskaper  gäller endast för tjänstkostnadsradobjekt där produkten är ett engångsköp:  **productId**, **productName**, **skuId**, **skuName**, **availabilityId**, **publisherId**, **publisherName**, **termAndBillingCycle**, **discountDetails**. Dessa egenskaper *gäller inte för tjänstradobjekt* där produkten är ett *återkommande köp.* Dessa egenskaper gäller till *exempel inte för* prenumerationsbaserade Office 365 och Azure.
+> Följande egenskaper  gäller endast för tjänstkostnadsradobjekt där produkten är ett engångsköp:  **productId**, **productName**, **skuId**, **skuName**, **availabilityId**, **publisherId**, **publisherName**, **termAndBillingCycle**, **discountDetails**. De här *egenskaperna gäller inte för tjänstradsobjekt* där produkten är ett *återkommande köp.* Dessa egenskaper gäller till *exempel inte för prenumerationsbaserade* Office 365 och Azure.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

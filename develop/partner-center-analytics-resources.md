@@ -4,12 +4,12 @@ description: Dokumentation om det offentliga API:et för Partnercenter Analytics
 ms.date: 06/11/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 03d7d252a415524c6573c1bf62b8b9c1518a1b9f
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 9028d5e2bdeb2637e35133b2c6dda739e0024ccc2838368a5276b1482af78d7f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548098"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997846"
 ---
 # <a name="partner-center-analytics---resources"></a>Partnercenter-analys – resurser
 
@@ -33,7 +33,7 @@ Det här scenariot returnerar din analysinformation i en samling [Azure-användn
 
 Representerar alla analytiska data för Azure-användning.
 
-| Egenskap | Typ | Beskrivning |
+| Egenskap | Typ | Description |
 |----------|------|-------------|
 | CustomerTenantId | sträng | Kundens klientorganisations-ID. |
 | customerName | sträng | Kundens namn. |
@@ -61,7 +61,7 @@ Det här scenariot returnerar din analysinformation i en samling [indirekta åte
 
 Representerar alla analytiska data för indirekta återförsäljare.
 
-| Egenskap | Typ | Beskrivning |
+| Egenskap | Typ | Description |
 |----------|------|-------------|
 | partnerTenantId | sträng | Klientorganisations-ID för den partner som du vill hämta indirekta återförsäljares data för. |
 | id | sträng | Id för indirekt återförsäljare. |
@@ -93,7 +93,7 @@ Alla dessa scenarier returnerar din analysinformation i en samling [prenumeratio
 
 Representerar alla analysdata för en prenumeration.
 
-|         Egenskap          |              Typ              |                                                                      Beskrivning                                                                       |
+|         Egenskap          |              Typ              |                                                                      Description                                                                       |
 |---------------------------|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |     customerTenantId      |             sträng             |                                              En GUID-formaterad sträng som identifierar kundens klientorganisation.                                              |
 |       customerName        |             sträng             |                                                               Namnet på kunden.                                                                |
@@ -117,7 +117,7 @@ Representerar alla analysdata för en prenumeration.
 |     deprovisionedDate     | sträng i UTC-datum/tid-format |                                      Det datum då prenumerationen avetableades. Standardvärdet är null.                                      |
 |      lastRenewalDate      | sträng i UTC-datum/tid-format |                                       Det datum då prenumerationen senast förnyades. Standardvärdet är null.                                       |
 |       licenseCount        |             antal             |                                                             Det totala antalet licenser.                                                              |
-|     subscriptionCount     |             antal             |                        Antalet prenumerationer. Obs! Det här värdet visas bara i svaret på en aggregeringsfråga.                         |
+|     subscriptionCount     |             antal             |                        Antalet prenumerationer. Obs! Det här värdet visas bara som svar på en sammansättningsfråga.                         |
 
 ## <a name="search-analytics"></a>Sökanalys
 
@@ -134,17 +134,17 @@ Det här scenariot returnerar din analysinformation i en samling [sökresurser.]
 
 Representerar alla analytiska data för en sökning.
 
-| Egenskap | Typ | Beskrivning |
+| Egenskap | Typ | Description |
 |----------|------|-------------|
 | companyName | sträng | Faktureringsföretagets namn. |
-| contactButtonClicked | Boolesk | Anger om kontaktknappen klickades. |
-| keywordCountry | sträng | Det land som anges i sökningen. |
-| detailsViewed | Boolesk | Anger om sökinformation visades. |
+| contactButtonClicked | Boolesk | Anger om du klickade på kontaktknappen. |
+| keywordCountry | sträng | Landet som anges i sökningen. |
+| detailsViewed | Boolesk | Anger om sökinformationen visades. |
 | keywordIndustryFocus | sträng | Branschen att söka inom, till exempel sjukvård. |
-| mpnId | sträng | ID Microsoft Partner Network (MPN). För en direktåterförsäljare är den här parametern MPN-ID för partnern. För en indirekt återförsäljare är den här parametern MPN-ID:t för den indirekta återförsäljaren. |
-| partnerMarket | sträng | Språk där partnern utför sin verksamhet. |
+| mpnId | sträng | ID Microsoft Partner Network (MPN). För en direktåterförsäljare är den här parametern MPN-ID för partnern. För en indirekt återförsäljare blir den här parametern MPN-ID:t för den indirekta återförsäljaren. |
+| partnerMarket | sträng | Språk för att se var partnern utför sin verksamhet. |
 | keywordProduct | sträng | Den produkt som anges i sökningen. |
-| referralSubmitted | Boolesk | Anger om en hänvisning har skickats. |
+| referralSubmitted | Boolesk | Anger om en referens har skickats. |
 | searchDate | sträng i UTC-datum/tid-format | Datum då sökfrågan uppstod. |
 | keywordSearchText | sträng | Den text som anges i sökningen. |
 | searchResultPageViews | long | Antal gånger som partnern kom upp i sökresultatet. En del av ett svar endast på aggregering.
@@ -157,7 +157,7 @@ Representerar alla analytiska data för en sökning.
 > [!NOTE]
 > CSP-programmedlemskap krävs inte för att få referensanalys.
 
-I följande scenario visas hur du använder Analytics-API:et för att hämta all information om referensanalysen i Partnercenter.
+Följande scenario visar hur du använder Analytics-API:et för att hämta all referensanalysinformation i Partnercenter.
 
 - [Hämta all information om hänvisningsanalys](get-all-referrals-analytics.md)
 
@@ -170,11 +170,11 @@ Det här scenariot returnerar din analysinformation i en samling [referensresurs
 
 Representerar alla analytiska data för en referens.
 
-| Egenskap | Typ | Beskrivning |
+| Egenskap | Typ | Description |
 |----------|------|-------------|
 | id | sträng | Kundens klientorganisations-ID.  |
 | status | sträng | Anger om hänvisningen ledde till en kund.  |
-| customerMarket | sträng | Land/region som kunden gör affärer i. |
+| customerMarket | sträng | Landet/regionen som kunden gör affärer i. |
 | customerName | sträng | Namnet på kunden. |
 | customerOrgSize | sträng | Ett intervall som anger antalet anställda i kundens organisation. Till exempel "10to50employees". |
 | acceptedDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen godkändes. |
@@ -184,7 +184,7 @@ Representerar alla analytiska data för en referens.
 | expiredDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen upphörde att gälla. |
 | lostDate | sträng i UTC-datum/tid-format | Datumet då hänvisningen förlorades. |
 | missedDate | sträng i UTC-datum/tid-format | Datumet då hänvisningen missades. |
-| createdDate | sträng i UTC-datum/tid-format | Datumet då referensen skapades. |
+| createdDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen skapades. |
 | skippedDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen överhoppades. |
-| wonDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen vann. |
-| partnerMarket | sträng |  Landet/regionen som partnern gör affärer i. |
+| wonDate | sträng i UTC-datum/tid-format | Det datum då hänvisningen vanns. |
+| partnerMarket | sträng |  Land/region som partnern gör affärer i. |

@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: fe8af76d1e1456754dec79291ec0853fb253d108
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: bbb34a2fb9e808cd475f175688f2b1c1c0feb2de4060a9143df50f9ae5ad13e7
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446300"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993460"
 ---
 # <a name="get-a-customers-subscriptions-transfer-eligibility"></a>Hämta en kunds prenumerationers överföringsberättigande
 
@@ -37,8 +37,8 @@ I den här tabellen visas den frågeparameter som krävs för att hämta alla pr
 
 | Namn               | Typ   | Obligatorisk | Beskrivning                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| kund-klient-id | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
-| överföringstyp      | sträng | Ja      | Den typ av överföring som är avsedd.                |
+| kund-klient-id | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
+| överföringstyp      | sträng | Yes      | Den typ av överföring som är avsedd.                |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

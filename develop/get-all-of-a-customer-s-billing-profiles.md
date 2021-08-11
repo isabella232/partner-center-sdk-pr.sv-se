@@ -6,30 +6,30 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: d22be53a5be4efcda76a568578468615495febb6
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 2f5c1cbdf059c4277a8a15d500b54f7fdf2c8e211c4c4f583e71d44b8cfca571
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760597"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993953"
 ---
 # <a name="get-a-customers-billing-profile"></a>Hämta en kunds faktureringsprofil
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Hämtar faktureringsprofilen för en kund.
 
-På instrumentpanelen i Partnercenter kan du utföra den här åtgärden genom att först [välja en kund.](get-a-customer-by-name.md) Välj Sedan Konto under kundens namn i det vänstra **sidofältet.** Faktureringsprofilen finns under **rubriken Faktureringsinformation.**
+På instrumentpanelen i Partnercenter kan den här åtgärden utföras genom att först [välja en kund.](get-a-customer-by-name.md) Välj Sedan Konto under kundens namn i det vänstra **sidofältet.** Faktureringsprofilen finns under rubriken **Faktureringsinformation.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en kunds faktureringsprofil använder du [**samlingen IPartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) och [**anropar metoden ById().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) Anropa sedan egenskapen [**Profiler**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.profiles) följt av [**egenskapen**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofilecollection.billing) Fakturering. Anropa slutligen metoderna [**Get()**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1.get) eller [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1.getasync)
+Om du vill hämta en kunds faktureringsprofil använder du [**din IPartner.Customers-samling**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) och [**anropar metoden ById().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) Anropa sedan egenskapen [**Profiler**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.profiles) följt av [**egenskapen**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerprofilecollection.billing) Fakturering. Anropa slutligen metoderna [**Get()**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1.get) eller [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.customers.profiles.icustomerreadonlyprofile-1.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -80,7 +80,7 @@ Om det lyckas returnerar den här metoden en samling [profilresurser](profile-re
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

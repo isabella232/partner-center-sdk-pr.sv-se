@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 36d1c74e12ae680facef1414ce35ac2d6fb5322c
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 34e269b1a0e711f82144898441c75d731b8613f70512517e12b6705990b35622
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547843"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997608"
 ---
 # <a name="partner-center-samples"></a>Partnercenter-exempel
 

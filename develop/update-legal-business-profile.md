@@ -6,26 +6,26 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: cb9f5815e0019c5e9b648dfd865e9752f0afdf05
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 9be3bf1a5072140cc5f8c1e5b2f9ddaa939d1e682942addcc8d36cec3bf9d494
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530335"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997948"
 ---
 # <a name="update-the-partner-legal-business-profile"></a>Uppdatera partnerns juridiska företagsprofil
 
-**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Så här uppdaterar du partnerns juridiska affärsprofil.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
-Om du vill uppdatera partnerns juridiska affärsprofil instansierar du först **ett LegalBusinessProfile-objekt** och fyller det med den befintliga profilen. Mer information finns i Hämta [partnerns juridiska företagsprofil](get-legal-business-profile.md). Uppdatera sedan de egenskaper som du behöver ändra. I följande kodexempel visas hur du ändrar adress- och primära kontakttelefonnummer.
+Om du vill uppdatera partnerns juridiska affärsprofil instansierar du först **ett LegalBusinessProfile-objekt** och fyller det med den befintliga profilen. Mer information finns i Hämta [partnerns juridiska företagsprofil](get-legal-business-profile.md). Uppdatera sedan de egenskaper som du behöver ändra. I följande kodexempel visas hur du ändrar adressen och de primära kontakttelefonnumren.
 
 Hämta sedan ett gränssnitt till partnerprofilens driftsamling från egenskapen **IAggregatePartner.Profiles.** Hämta sedan värdet för egenskapen **LegalBusinessProfile** för att hämta ett gränssnitt för juridiska affärsprofilåtgärder. Anropa slutligen metoden [**Update**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.update) eller [**UpdateAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.ilegalbusinessprofile.updateasync) med det ändrade objektet för att uppdatera profilen.
 
@@ -56,7 +56,7 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-Resursen för juridisk företagsprofil.
+Den juridiska affärsprofilresursen.
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -126,7 +126,7 @@ Om det lyckas innehåller svarstexten den uppdaterade **LegalBusinessProfile**
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

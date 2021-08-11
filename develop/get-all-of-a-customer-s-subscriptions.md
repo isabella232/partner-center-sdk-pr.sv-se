@@ -4,12 +4,12 @@ description: Så här hämtar du en samling av en kunds prenumerationer.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 01ac9e5169258d0ac263d5bbe8cff567c76f98ed
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: e249628838a0726b4d9d670a7d7f71b745ef66cafaebd79d6aeb14746616bf82
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760631"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993868"
 ---
 # <a name="get-a-customers-subscriptions"></a>Hämta en kunds prenumerationer
 
@@ -50,7 +50,7 @@ Den här tabellen innehåller frågeparametern som krävs för att hämta alla p
 
 | Namn               | Typ   | Obligatorisk | Beskrivning                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| kund-klient-id | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden. |
+| kund-klient-id | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

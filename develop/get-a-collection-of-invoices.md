@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 7698d85df3341ae4cbff0377bd0a1bb47cd36740
-ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
+ms.openlocfilehash: 7a423b5061ecfcf6faf191c75a7e665642620cc2add171b27864e11516bec16d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111906437"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993171"
 ---
 # <a name="get-a-collection-of-invoices"></a>Hämta en samling fakturor
 
@@ -25,9 +25,9 @@ Så här hämtar du en samling av partnerns fakturor.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta en samling med alla tillgängliga fakturor använder du egenskapen [**Fakturor**](/dotnet/api/microsoft.store.partnercenter.ipartner.invoices) för att hämta ett gränssnitt för fakturaåtgärder och anropar sedan metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.getasync) för att hämta samlingen.
+Om du vill hämta en samling med alla tillgängliga fakturor använder du egenskapen [**Invoices**](/dotnet/api/microsoft.store.partnercenter.ipartner.invoices) för att hämta ett gränssnitt för fakturaåtgärder och anropar sedan metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.getasync) för att hämta samlingen.
 
-Om du vill hämta en sidad samling fakturor anropar du först [**metoden BuildIndexedQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildindexedquery) och skickar sidstorleken för att skapa ett [**IQuery-objekt.**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) Använd sedan egenskapen [**Invoices**](/dotnet/api/microsoft.store.partnercenter.ipartner.invoices) för att hämta ett gränssnitt för fakturaåtgärder och skicka sedan IQuery-objektet till [**query-**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.query) eller [**QueryAsync-metoden**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.queryasync) för att skicka begäran och hämta den första sidan.
+Om du vill hämta en sidad samling fakturor anropar du först [**metoden BuildIndexedQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildindexedquery) och skickar sidstorleken för att skapa ett [**IQuery-objekt.**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) Använd sedan egenskapen [**Fakturor**](/dotnet/api/microsoft.store.partnercenter.ipartner.invoices) för att hämta ett gränssnitt för fakturaåtgärder och skicka sedan IQuery-objektet till metoden [**Query**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.query) eller [**QueryAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.queryasync) för att skicka begäran och hämta den första sidan.
 
 Använd sedan egenskapen [**Uppräkningar**](/dotnet/api/microsoft.store.partnercenter.ipartner.enumerators) för att hämta ett gränssnitt till samlingen med uppräkningar av resurssamlingar som stöds och anropa sedan [**Invoices.Create**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create) för att skapa en uppräkning för att gå igenom insamlingen av fakturor. Använd slutligen uppräkningsatorn för att hämta och arbeta med varje sida med fakturor enligt följande kodexempel. Varje anrop till [**metoden**](/dotnet/api/microsoft.store.partnercenter.enumerators.iresourcecollectionenumerator-1.next) Nästa skickar en begäran om nästa sida med fakturor baserat på sidstorleken.
 
@@ -89,8 +89,8 @@ Använd följande frågeparametrar när du skapar begäran.
 
 | Namn   | Typ | Obligatorisk | Beskrivning                                                                            |
 |--------|------|----------|----------------------------------------------------------------------------------------|
-| ikoner   | int  | Inga       | Antalet fakturaresurser som ska returneras i svaret. Den här parametern är valfri. |
-| offset | int  | Inga       | Det nollbaserade indexet för den första fakturan som ska returneras.                                   |
+| ikoner   | int  | No       | Antalet fakturaresurser som ska returneras i svaret. Den här parametern är valfri. |
+| offset | int  | No       | Det nollbaserade indexet för den första fakturan som ska returneras.                                   |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

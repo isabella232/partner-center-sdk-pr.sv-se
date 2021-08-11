@@ -1,33 +1,33 @@
 ---
 title: Hämta tillägg för ett erbjudande-ID
-description: Hur du hämtar tillägg för ett erbjudande-ID.
+description: Så här hämtar du tillägg för ett erbjudande-ID.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: e3b0ab8007d3affa6912479b960f6dae3bc0bd28
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 5567a04f9b9770022fe1b824d0a473af2ca8e073072cb33014b597cc594d0654
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760342"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994106"
 ---
 # <a name="get-add-ons-for-an-offer-id"></a>Hämta tillägg för ett erbjudande-ID
 
-**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-Hur du hämtar tillägg för ett erbjudande-ID.
+Så här hämtar du tillägg för ett erbjudande-ID.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 - Ett erbjudande-ID. Om du inte har erbjudande-ID:t kan du [se Hämta en lista över erbjudanden för en marknad.](get-a-list-of-offers-for-a-market.md)
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta tilläggen för ett erbjudande efter ID anropar du först metoden [**IAggregatePartner.Offers.ByCountry**](/dotnet/api/microsoft.store.partnercenter.genericoperations.icountryselector-1.bycountry) med landskoden för att få ett gränssnitt för att erbjuda åtgärder baserat på det angivna landet. Anropa sedan [**ByID-metoden**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) med erbjudande-ID:t för att identifiera erbjudandet vars tillägg du vill hämta. Använd sedan egenskapen [**AddOns för**](/dotnet/api/microsoft.store.partnercenter.offers.ioffer.addons) att hämta ett gränssnitt för tilläggsåtgärder för det aktuella erbjudandet. Anropa slutligen metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.getasync) för att hämta en samling med alla tillägg för det angivna erbjudandet.
+Om du vill hämta tilläggen för ett erbjudande per ID anropar du först [**metoden IAggregatePartner.Offers.ByCountry**](/dotnet/api/microsoft.store.partnercenter.genericoperations.icountryselector-1.bycountry) med landskoden för att få ett gränssnitt för att erbjuda åtgärder baserat på det angivna landet. Anropa sedan [**ByID-metoden**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) med erbjudande-ID:t för att identifiera erbjudandet vars tillägg du vill hämta. Använd sedan egenskapen [**AddOns**](/dotnet/api/microsoft.store.partnercenter.offers.ioffer.addons) för att hämta ett gränssnitt för tilläggsåtgärder för det aktuella erbjudandet. Anropa slutligen metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.getasync) för att hämta en samling med alla tillägg för det angivna erbjudandet.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -37,7 +37,7 @@ Om du vill hämta tilläggen för ett erbjudande efter ID anropar du först meto
 var offerAddOns = partnerOperations.Offers.ByCountry(countryCode).ById(offerId).AddOns.Get();
 ```
 
-**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: GetOffer.cs
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Exempelklass:** GetOffer.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -82,7 +82,7 @@ Om det lyckas returnerar den här metoden en samling [erbjudandeobjekt](offer-re
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

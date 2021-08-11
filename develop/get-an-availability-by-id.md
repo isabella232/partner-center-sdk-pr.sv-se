@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: c31bc12d8d484cc8042f36aa865145600d9e6738
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: fccd566e83dab8994280fdee072c0d6f27b690d5292ed3973427088f46b30d6b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760206"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993562"
 ---
 # <a name="get-the-availability-by-id"></a>Hämta tillgängligheten efter ID
 
@@ -46,7 +46,7 @@ var availability = partnerOperations.Products.ByCountry(countryCode).ById(produc
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Om du vill [](product-resources.md#availability)ha information om en specifik tillgänglighet börjar du med att följa stegen i Hämta en [SKU](get-a-sku-by-id.md) efter ID för att hämta gränssnittet för en [specifik SKU:ns](product-resources.md#sku) åtgärder. Från det resulterande gränssnittet väljer du funktionen **getAvailabilities** för att hämta ett gränssnitt med tillgängliga åtgärder för tillgänglighet. Därefter skickar du tillgänglighets-ID:t till **funktionen byId()** för att hämta åtgärderna för den specifika tillgängligheten och anropar **sedan funktionen get()** för att hämta tillgänglighetsinformationen.
+Om du vill [](product-resources.md#availability)ha information om en specifik tillgänglighet börjar du med att följa stegen i Hämta en [SKU](get-a-sku-by-id.md) efter ID för att hämta gränssnittet för en [specifik SKU:ns](product-resources.md#sku) åtgärder. Från det resulterande gränssnittet väljer du **funktionen getAvailabilities** för att hämta ett gränssnitt med tillgängliga åtgärder för tillgänglighet. Därefter skickar du tillgänglighets-ID:t till **funktionen byId()** för att hämta åtgärderna för den specifika tillgängligheten och anropar sedan **funktionen get()** för att hämta tillgänglighetsinformationen.
 
 ```java
 IAggregatePartner partnerOperations;
@@ -83,10 +83,10 @@ Använd följande sökväg och frågeparametrar för att få en specifik tillgä
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| produkt-id             | sträng   | Ja      | En GUID-formaterad sträng som identifierar produkten.            |
-| sku-id                 | sträng   | Ja      | En GUID-formaterad sträng som identifierar SKU:n.                |
-| tillgänglighets-id        | sträng   | Ja      | En GUID-formaterad sträng som identifierar tillgängligheten.       |
-| landskod           | sträng   | Ja      | Ett lands-/regions-ID.                                            |
+| produkt-id             | sträng   | Yes      | En GUID-formaterad sträng som identifierar produkten.            |
+| sku-id                 | sträng   | Yes      | En GUID-formaterad sträng som identifierar SKU:n.                |
+| tillgänglighets-ID        | sträng   | Yes      | En GUID-formaterad sträng som identifierar tillgängligheten.       |
+| landskod           | sträng   | Yes      | Ett lands-/regions-ID.                                            |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -119,7 +119,7 @@ Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat sam
 
 Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Beskrivning                                                                                               |
+| HTTP-statuskod     | Felkod   | Description                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 404                  | 400013       | Det gick inte att hitta produkten.                                                                                    |
 | 404                  | 400018       | SKU hittades inte.                                                                                        |

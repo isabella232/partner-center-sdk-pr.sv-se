@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 74d5981436ba29ea4f6f93a5693ec6da82777eb4
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: cf063579b447601fa1050d6b03e0c46f6ef64abef9bb500598a047ac40ddaa1d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547758"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997557"
 ---
 # <a name="partner-center-webhooks"></a>Partnercenter – webhooks
 
@@ -342,7 +342,7 @@ X-Locale: en-US
 
 ### <a name="verify-that-the-event-was-delivered"></a>Kontrollera att händelsen har levererats
 
-Returnerar det aktuella tillståndet för valideringshändelsen. Den här verifieringen kan vara användbar vid felsökning av problem med händelseleverans. Svaret innehåller ett resultat för varje försök att leverera händelsen.
+Returnerar det aktuella tillståndet för valideringshändelsen. Den här verifieringen kan vara till hjälp vid felsökning av problem med händelseleverans. Svaret innehåller ett resultat för varje försök som görs att leverera händelsen.
 
 #### <a name="resource-url"></a>Resurs-URL
 

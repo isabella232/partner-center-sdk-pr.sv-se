@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: ffcbbb9cf14b1b2a5b3becab541d3042c3cad508
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 75e54124c947224ab25f825736ad7d0dec43b44ee8fcb8eb1c01f147ab2cf515
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760682"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993596"
 ---
 # <a name="get-all-service-requests-for-a-customer"></a>Hämta alla tjänstbegäranden för en kund
 
@@ -19,7 +19,7 @@ ms.locfileid: "111760682"
 
 Hämtar alla en kunds tjänstbegäranden.
 
-På instrumentpanelen i Partnercenter kan du utföra den här åtgärden genom att först [välja en kund.](get-a-customer-by-name.md) Välj sedan **Tjänsthantering** i det vänstra sidofältet. Kundens tjänstbegäranden visas under **Supportbegäranden.**
+På instrumentpanelen i Partnercenter kan du utföra den här åtgärden genom att först [välja en kund.](get-a-customer-by-name.md) Välj sedan **Tjänsthantering** i det vänstra sidofältet. Kundens tjänstbegäranden visas under **Supportärenden.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 

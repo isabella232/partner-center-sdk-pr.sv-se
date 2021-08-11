@@ -4,30 +4,30 @@ description: Så här hämtar du en prenumerations supportkontakt.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b6c98e5ed96f2ca4787e93504c9e094bd46ae783
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 448a60db236ddfbb090cd376bb0dc98e93d4c87342febbcc1958ccd6033fa900
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760767"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994174"
 ---
 # <a name="get-a-subscriptions-support-contact"></a>Hämta en prenumerations supportkontakt
 
-**Gäller för**: Partner Center-| PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Så här hämtar du en prenumerations supportkontakt.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - En prenumerationsidentifierare.
 
 ## <a name="c"></a>C\#
 
-Om du vill hämta supportkontakten för en prenumeration börjar du med att använda metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Hämta sedan ett gränssnitt för prenumerationsåtgärder genom att anropa metoden [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) med prenumerations-ID:t. Använd sedan egenskapen [**SupportContact**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.supportcontact) för att hämta ett gränssnitt som stöder kontaktåtgärder och anropa sedan metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.getasync) för att hämta [**SupportContact-objektet.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.supportcontact)
+För att få en prenumerations supportkontakt börjar du med att använda metoden [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) med kund-ID:t för att identifiera kunden. Hämta sedan ett gränssnitt för prenumerationsåtgärder genom att anropa metoden [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) med prenumerations-ID:t. Använd sedan egenskapen [**SupportContact**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.supportcontact) för att hämta ett gränssnitt som stöder kontaktåtgärder och anropa sedan metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.getasync) för att hämta [**Objektet SupportContact.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.supportcontact)
 
 ``` csharp
 // IAggregatePartner partnerOperations.
@@ -38,7 +38,7 @@ Om du vill hämta supportkontakten för en prenumeration börjar du med att anv�
 var supportContact = partnerOperations.Customers.ById(customerId).Subscriptions.ById(subscriptionId).SupportContact.Get();
 ```
 
-**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Exempelklass:** GetSubscriptionSupportContact.cs
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: GetSubscriptionSupportContact.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -54,8 +54,8 @@ Använd följande sökvägsparametrar för att identifiera kunden och prenumerat
 
 | Namn            | Typ   | Obligatorisk | Beskrivning                                                     |
 |-----------------|--------|----------|-----------------------------------------------------------------|
-| kund-id     | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.           |
-| prenumerations-id | sträng | Ja      | En GUID-formaterad sträng som identifierar utvärderingsprenumerationen. |
+| kund-ID     | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.           |
+| prenumerations-id | sträng | Yes      | En GUID-formaterad sträng som identifierar utvärderingsprenumerationen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -83,7 +83,7 @@ Om det lyckas innehåller svarstexten [SupportContact-resursen.](subscription-re
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

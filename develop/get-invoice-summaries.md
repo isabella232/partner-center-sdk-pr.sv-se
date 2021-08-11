@@ -6,22 +6,22 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: fb6ff839c56c7b0b77a9904abf05d95ca0500b00
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 8bc01ba57571dec2b9e8fb84452e0dd2485efc06483ba2cf6964a42543334fc5
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111549118"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993256"
 ---
 # <a name="get-invoice-summaries"></a>Hämta fakturasammanfattningar
 
-**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Du kan använda **InvoiceSummaries för att** hämta en fakturasammanfattning som visar saldot och de totala avgifterna för både återkommande och engångsavgifter. Resursen **InvoiceSummaries** innehåller en fakturasammanfattning för varje valutatyp.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
 - En giltig fakturaidentifierare.
 
@@ -29,10 +29,10 @@ Du kan använda **InvoiceSummaries för att** hämta en fakturasammanfattning so
 
 Så här hämtar [**du en InvoiceSummaries-samling**](invoice-resources.md#invoicesummaries) som innehåller [**en InvoiceSummary**](invoice-resources.md#invoicesummary) för varje valutatyp:
 
-1. Använd din **IAggregatePartner.Invoices-samling** för att anropa **egenskapen Sammanfattningar.**
+1. Använd samlingen **IAggregatePartner.Invoices för** att anropa **egenskapen Sammanfattningar.**
 
 2. Anropa **metoden Get().**
-3. Om du vill hämta saldot för en [**enskild InvoiceSummary**](invoice-resources.md#invoicesummary)får du åtkomst till **egenskapen BalanceAmount** för den medlemmen i samlingen.
+3. Om du vill hämta saldot för en [**enskild InvoiceSummary**](invoice-resources.md#invoicesummary)får du åtkomst till **balanceAmount-egenskapen** för den medlemmen i samlingen.
 
 ``` csharp
 // IAggregatePartner scopedPartnerOperations;
@@ -83,11 +83,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden [**en InvoiceSummaries-resurs**](invoice-resources.md#invoicesummaries) i svarstexten.
+Om det lyckas returnerar den här [**metoden en InvoiceSummaries-resurs**](invoice-resources.md#invoicesummaries) i svarstexten.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

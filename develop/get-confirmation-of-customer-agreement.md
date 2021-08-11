@@ -6,20 +6,20 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 3668a5e510effb533cade311f52513b9a81d40af
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: f5e71f2660c6db638193deec02e9ba4f25a35be6aabdc1c4219f63b1f3295908
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760546"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993511"
 ---
 # <a name="get-confirmation-of-customer-acceptance-of-microsoft-customer-agreement"></a>Få bekräftelse på kundgodkännande av Microsoft-kundavtal
 
 **Gäller för:** Partnercenter
 
-**Gäller inte för**: Partner Center som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller inte för:** Partner Center som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-**Avtalsresursen** stöds för närvarande endast av PartnerCenter i det offentliga Microsoft-molnet.
+**Avtalsresursen** stöds för närvarande endast av Partnercenter i det offentliga Microsoft-molnet.
 
 Den här artikeln förklarar hur du kan hämta bekräftelser av en kunds godkännande av Microsoft-kundavtal.
 
@@ -27,17 +27,17 @@ Den här artikeln förklarar hur du kan hämta bekräftelser av en kunds godkän
 
 - Om du använder Partner Center .NET SDK krävs version 1.14 eller senare.
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](./partner-center-authentication.md) Det här scenariot stöder endast app- och användarautentisering.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](./partner-center-authentication.md). Det här scenariot stöder endast app- och användarautentisering.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="net"></a>.NET
 
-Så här hämtar du bekräftelser av kundgodkännande som angavs tidigare:
+Så här hämtar du bekräftelser av kundgodkännande som tidigare har angetts:
 
-- Använd **samlingen IAggregatePartner.Customers och** anropa **ById-metoden** med den angivna kundidentifieraren.
+- Använd samlingen **IAggregatePartner.Customers och** anropa **ById-metoden** med den angivna kundidentifieraren.
 
-- Hämta egenskapen **Agreements** och filtrera resultaten för att Microsoft-kundavtal by calling **ByAgreementType method (ByAgreementType-metod).**
+- Hämta egenskapen **Agreements** och filtrera resultaten så att de Microsoft-kundavtal genom att anropa **metoden ByAgreementType.**
 
 - Anropa **Get-** eller **GetAsync-metoden.**
 
@@ -50,19 +50,19 @@ string agreementType = "MicrosoftCustomerAgreement";
 var customerAgreements = partnerOperations.Customers.ById(selectedCustomerId).Agreements.ByAgreementType(agreementType).Get();
 ```
 
-Ett fullständigt exempel finns i klassen [GetCustomerAgreements](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetCustomerAgreements.cs) från [konsoltestappprojektet.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
+Ett komplett exempel finns i klassen [GetCustomerAgreements](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetCustomerAgreements.cs) från [konsoltestappsprojektet.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
 
 ## <a name="rest-request"></a>REST-begäran
 
-Så här hämtar du en bekräftelse på kundgodkännande som angavs tidigare:
+Så här hämtar du bekräftelse på kundgodkännande som tidigare har angetts:
 
-1. Skapa en REST-begäran för att [hämta avtalssamlingen](./agreement-resources.md) för kunden.
+1. Skapa en REST-begäran för att [hämta samlingen](./agreement-resources.md) Avtal för kunden.
 
 2. Använd **frågeparametern agreementType** för att begränsa resultatet till endast Microsoft-kundavtal.
 
 ### <a name="request-syntax"></a>Begärandesyntax
 
-Använd följande syntax för begäran:
+Använd följande begärandesyntax:
 
 | Metod | URI för förfrågan                                                                                      |
 |--------|--------------------------------------------------------------------------------------------------|
@@ -74,8 +74,8 @@ Du kan använda följande URI-parametrar med din begäran:
 
 | Namn             | Typ | Obligatorisk | Beskrivning                                                                               |
 |------------------|------|----------|-------------------------------------------------------------------------------------------|
-| kund-klient-id | GUID | Ja | Värdet är ett GUID-formaterat **CustomerTenantId** som gör att du kan ange en kund. |
-| avtalstyp | sträng | No | Den här parametern returnerar alla avtalsmetadata. Använd den här parametern för att begränsa frågesvaret till specifik avtalstyp. Värdena som stöds är: <br/><br/> **MicrosoftCloudAgreement** som endast innehåller avtalsmetadata av typen *MicrosoftCloudAgreement*.<br/><br/> **MicrosoftCustomerAgreement** som endast innehåller avtalsmetadata av typen *MicrosoftCustomerAgreement*.<br/><br/> **\**_ som returnerar alla avtalsmetadata. (Använd inte _* \* *_ såvida inte koden har den logik som krävs för att hantera oväntade avtalstyper.) <br/> <br/> _* Obs!** Om URI-parametern inte anges används **MicrosoftCloudAgreement** som standard för bakåtkompatibilitet. Microsoft kan när som helst införa avtalsmetadata med nya avtalstyper.  |
+| kund-klient-id | GUID | Yes | Värdet är ett GUID-formaterat **CustomerTenantId** som gör att du kan ange en kund. |
+| avtalstyp | sträng | No | Den här parametern returnerar alla avtalsmetadata. Använd den här parametern för att begränsa frågesvaret till en specifik avtalstyp. Värdena som stöds är: <br/><br/> **MicrosoftCloudAgreement** som endast innehåller avtalsmetadata av typen *MicrosoftCloudAgreement*.<br/><br/> **MicrosoftCustomerAgreement** som endast innehåller avtalsmetadata av typen *MicrosoftCustomerAgreement*.<br/><br/> **\**_ som returnerar alla avtalsmetadata. (Använd inte _* \* *_ såvida inte koden har den logik som krävs för att hantera oväntade avtalstyper.) <br/> <br/> _* Obs!** Om URI-parametern inte anges får frågan som standard **MicrosoftCloudAgreement** för bakåtkompatibilitet. Microsoft kan när som helst införa avtalsmetadata med nya avtalstyper.  |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -101,7 +101,7 @@ Om det lyckas returnerar den här metoden en samling **avtalsresurser** i svarst
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation.
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation.
 
 Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 

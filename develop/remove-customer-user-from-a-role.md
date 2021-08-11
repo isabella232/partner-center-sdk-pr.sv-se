@@ -4,12 +4,12 @@ description: Ta bort en användare från en katalogroll i ett kundkonto.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 36dc742c4f713131b4996d7dc945b6dd008a3ef5
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 985b80a35182aefe283a8e9bbff75a1ff7bd9790157147fb943d8b18eb5c5079
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445654"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996996"
 ---
 # <a name="remove-a-customer-user-from-a-role"></a>Ta bort en kundanvändare från en roll
 
@@ -17,13 +17,13 @@ Ta bort en användare från en katalogroll i ett kundkonto.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Om du vill ta bort en användare från en katalogroll väljer du kunden med användaren som ska ändras med ett anrop till metoden [**IAggregatePartner.Customers.ById.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) Därifrån anger du rollen med hjälp av metoden [**DirectoryRoles.ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.idirectoryrolecollection.byid) med katalogrolls-ID:t. Öppna sedan metoden [**UserMembers.ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermembercollection.byid) för att identifiera användaren [](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermember.delete) som ska tas bort och ta bort metoden för att ta bort användaren från rollen.
+Om du vill ta bort en användare från en katalogroll väljer du kunden med användaren som ska ändras med ett anrop till metoden [**IAggregatePartner.Customers.ById.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) Därifrån anger du rollen med hjälp av metoden [**DirectoryRoles.ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.idirectoryrolecollection.byid) med katalogrollens ID. Gå sedan till [**metoden UserMembers.ById**](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermembercollection.byid) för att identifiera [](/dotnet/api/microsoft.store.partnercenter.customerdirectoryroles.iusermember.delete) användaren som ska tas bort och ta bort metoden för att ta bort användaren från rollen.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -34,7 +34,7 @@ Om du vill ta bort en användare från en katalogroll väljer du kunden med anv�
 partnerOperations.Customers.ById(selectedCustomerId).DirectoryRoles.ById(selectedRoleId).UserMembers.ById(selectedUserMemberId).Delete();
 ```
 
-**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Samples-klass:** RemoveCustomerUserMemberFromDirectoryRole.cs
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: RemoveCustomerUserMemberFromDirectoryRole.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -50,7 +50,7 @@ Använd följande URI-parametrar för att identifiera rätt kund, roll och anvä
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                                        |
 |------------------------|----------|----------|------------------------------------------------------------------------------------|
-| **kund-klient-id** | **guid** | Y        | Värdet är ett GUID-formaterat **kundklient-ID** som identifierar kunden. |
+| **kund-klient-id** | **guid** | Y        | Värdet är ett GUID-formaterat **kundklient-id** som identifierar kunden. |
 | **roll-id**            | **guid** | Y        | Värdet är ett GUID-formaterat **roll-ID** som identifierar rollen.                |
 | **användar-id**            | **guid** | Y        | Värdet är ett GUID-formaterat **användar-ID** som identifierar ett enda användarkonto.   |
 
@@ -82,7 +82,7 @@ Om användaren tas bort från rollen är svarstexten tom.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

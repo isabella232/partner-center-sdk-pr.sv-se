@@ -6,22 +6,22 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: e699355f07dda3941eafed32f5f635d94000abd1
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 4b5c2bd2279631c5bf27f5a07f732ddaa079aafa5b8d2ead571c3c609d65edf0
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874286"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993647"
 ---
 # <a name="get-a-list-of-offer-categories-by-market"></a>Hämta en lista över erbjudandekategorier efter marknad
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Den här artikeln beskriver hur du hämtar en samling som innehåller alla erbjudandekategorier i ett visst land/region och språk.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 
@@ -57,11 +57,11 @@ I den här tabellen visas de frågeparametrar som krävs för att hämta erbjuda
 
 | Namn           | Typ       | Obligatorisk | Beskrivning            |
 |----------------|------------|----------|------------------------|
-| **lands-id** | **sträng** | Y        | Land/region-ID. |
+| **country-id** | **sträng** | Y        | Land/region-ID. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
-Ett **språk-ID formaterat** som en sträng krävs.
+Ett **språk-ID** formaterat som en sträng krävs.
 
 Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
@@ -87,7 +87,7 @@ Om det lyckas returnerar den här metoden en samling **OfferCategory-resurser** 
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

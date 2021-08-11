@@ -4,12 +4,12 @@ description: Partner kan skicka tjänstbegäranden åt sina partner för att rap
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 02a02e6a873ad8785150368f3d4b89af2b588529
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: f919b3c34ff179a7a6cd0541f34c53737ec4148e44791419d2252fae64b0658d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547367"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993239"
 ---
 # <a name="service-request-resources"></a>Resurser för tjänstbegäran
 
@@ -21,7 +21,7 @@ Partner kan skicka tjänstbegäranden åt sina partner för att rapportera avbro
 
 Beskriver en tjänstbegäran som har arkiverats av en partner, inklusive hur begäran fortskrider.
 
-| Egenskap         | Typ                                                          | Beskrivning                                                                          |
+| Egenskap         | Typ                                                          | Description                                                                          |
 |------------------|---------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | Rubrik            | sträng                                                        | Rubriken för tjänstbegäran.                                                           |
 | Description      | sträng                                                        | Beskrivningen.                                                                     |
@@ -48,7 +48,7 @@ Beskriver en tjänstbegäran som har arkiverats av en partner, inklusive hur beg
 
 Beskriver en kontakt som skapar eller ändrar en tjänstbegäran.
 
-| Egenskap     | Typ                                                      | Beskrivning                                            |
+| Egenskap     | Typ                                                      | Description                                            |
 |--------------|-----------------------------------------------------------|--------------------------------------------------------|
 | Organisation | [ServiceRequestOrganization](#servicerequestorganization) | Organisation som tjänstbegäran skapas för. |
 | ContactId    | sträng                                                    | Kontaktens unika ID.                               |
@@ -61,7 +61,7 @@ Beskriver en kontakt som skapar eller ändrar en tjänstbegäran.
 
 Beskriver en anteckning som är kopplad till en tjänstbegäran.
 
-| Egenskap      | Typ   | Beskrivning                                  |
+| Egenskap      | Typ   | Description                                  |
 |---------------|--------|----------------------------------------------|
 | CreatedByName | sträng | Namnet på anteckningens skapare.         |
 | CreatedDate   | date   | Datum och tid då anteckningen skapades. |
@@ -71,7 +71,7 @@ Beskriver en anteckning som är kopplad till en tjänstbegäran.
 
 Beskriver den organisation som tjänstbegäran skapas för.
 
-| Egenskap    | Typ   | Beskrivning                           |
+| Egenskap    | Typ   | Description                           |
 |-------------|--------|---------------------------------------|
 | Id          | sträng | Organisationens unika ID.    |
 | Name        | sträng | Organisationens namn.         |

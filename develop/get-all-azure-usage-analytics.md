@@ -1,27 +1,27 @@
 ---
 title: Hämta all information om Azure-användningsanalys
-description: Så här hämtar du all information om Azure-användningsanalys.
+description: Så här hämtar du all användningsanalysinformation i Azure.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 7fe987c7dc50d55b26cd72d5aead52963eb1cfbe
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 1d671c07185f92a36055af12d9de2e39adeab129bfcb2497da66d35807db270e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760223"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994089"
 ---
 # <a name="get-all-azure-usage-analytics-information"></a>Hämta all information om Azure-användningsanalys
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Så här hämtar du all information om Azure-användningsanalys för dina kunder.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering endast med användarautentiseringsuppgifter.
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -33,14 +33,14 @@ Så här hämtar du all information om Azure-användningsanalys för dina kunder
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
-|Parameter        |Typ                        |Beskrivning               |
+|Parameter        |Typ                        |Description               |
 |:----------------|:---------------------------|:-------------------------|
-|top              | sträng                     | Antalet rader med data som ska returneras i begäran. Det högsta värdet och standardvärdet om inget värde anges är 10000. Om det finns fler rader i frågan innehåller svarstexten en nästa länk som du kan använda för att begära nästa sida med data.                        |
-|hoppa över             | int                        | Antalet rader som ska hoppas över i frågan. Använd den här parametern för att bläddra igenom stora datamängder. Hämtar till exempel de första `top=10000 and skip=0` 10 000 raderna med data, hämtar de `top=10000 and skip=10000` kommande 10 000 raderna med data och så vidare.                       |
-|filter           | sträng                     | *Filterparametern* för begäran innehåller en eller flera instruktioner som filtrerar raderna i svaret. Varje -instruktion innehåller ett fält och värde som är associerade med `eq` `ne` operatorerna eller , och -instruktioner kan kombineras med hjälp av `and` eller `or` . Du kan ange följande strängar:<br/><br/>                                                       `customerTenantId`<br/> `customerName`<br/> `subscriptionId`<br/> `subscriptionName`<br/> `usageDate` <br/> `resourceLocation` <br/> `meterCategory` <br/> `meterSubcategory` <br/> `meterUnit`<br/> `reservationOrderId` <br/> `reservationId`<br/> `consumptionMeterId` <br/> `serviceType` <br/><br/>**Exempel:**<br/> `.../usage/azure?filter=meterCategory eq 'Data Management'`<br/><br/> **Exempel:**<br/>`.../usage/azure?filter=meterCategory eq 'Data Management' or (usageDate le cast('2018-01-01', Edm.DateTimeOffset) and usageDate le cast('2018-04-01', Edm.DateTimeOffset))`                        |
+|top              | sträng                     | Antalet rader med data som ska returneras i begäran. Maxvärdet och standardvärdet om det inte anges är 10000. Om det finns fler rader i frågan innehåller svarstexten en nästa länk som du kan använda för att begära nästa datasida.                        |
+|hoppa över             | int                        | Antalet rader som ska hoppas över i frågan. Använd den här parametern för att bläddra igenom stora datamängder. Hämtar till exempel de första `top=10000 and skip=0` 1 0000 raderna med data, hämtar de `top=10000 and skip=10000` kommande 10 000 raderna med data och så vidare.                       |
+|filter           | sträng                     | *Filterparametern* för begäran innehåller en eller flera instruktioner som filtrerar raderna i svaret. Varje -instruktion innehåller ett fält och värde som är associerade med operatorerna eller , och `eq` `ne` -instruktioner kan kombineras med hjälp av `and` eller `or` . Du kan ange följande strängar:<br/><br/>                                                       `customerTenantId`<br/> `customerName`<br/> `subscriptionId`<br/> `subscriptionName`<br/> `usageDate` <br/> `resourceLocation` <br/> `meterCategory` <br/> `meterSubcategory` <br/> `meterUnit`<br/> `reservationOrderId` <br/> `reservationId`<br/> `consumptionMeterId` <br/> `serviceType` <br/><br/>**Exempel:**<br/> `.../usage/azure?filter=meterCategory eq 'Data Management'`<br/><br/> **Exempel:**<br/>`.../usage/azure?filter=meterCategory eq 'Data Management' or (usageDate le cast('2018-01-01', Edm.DateTimeOffset) and usageDate le cast('2018-04-01', Edm.DateTimeOffset))`                        |
 |aggregationLevel | sträng                    | Anger det tidsperiod som aggregerade data ska hämtas för. Kan vara någon av följande strängar: `day` , `week` eller `month` . Om det inte anges är standardvärdet `day` .<br/><br/>                                              Parametern `aggregationLevel` stöds inte utan `groupby` . Parametern `aggregationLevel` gäller för alla datumfält som finns i `groupby` .                                                      |
-|Orderby          |sträng                     | En instruktion som beställer resultatdatavärdena för varje installation. Syntax: `...&orderby=field [order],field [order],...`. Parametern `field` kan vara en av följande strängar:<br/><br/>                    `customerTenantId`<br/>`customerName`<br/>`subscriptionId`<br/>`subscriptionName`<br/>`usageDate`<br/>`resourceLocation`<br/>`meterCategory`<br/>`meterSubcategory`<br/>`meterUnit`<br/> `reservationOrderId` <br/> `reservationId`<br/> `consumptionMeterId` <br/> `serviceType` <br/><br/> *Orderparametern* är valfri och kan vara eller för att ange stigande eller fallande ordning för respektive `asc` `desc` fält. Standardvärdet är `asc`.<br/><br/>**Exempel:**<br/> `...&orderby=meterCategory,meterUnit`                                                                                           |
-|groupby          |sträng                    | En instruktion som endast tillämpar dataaggregering på de angivna fälten. Du kan ange följande fält:<br/><br/>                                                                                                                     `customerTenantId`<br/>`customerName`<br/> `subscriptionId` <br/> `subscriptionName` <br/> `usageDate` <br/> `resourceLocation` <br/> `meterCategory` <br/> `meterSubcategory` <br/> `meterUnit` <br/> `reservationOrderId` <br/> `reservationId` <br/> `consumptionMeterId` <br/> `serviceType` <br/><br/>De returnerade dataraderna innehåller de fält som anges i `groupby`  parametern och *Quantity*.<br/><br/>Parametern `groupby` kan användas med `aggregationLevel` parametern .<br/><br/>**Exempel:**<br/>`...&groupby=meterCategory,meterUnit` |
+|Orderby          |sträng                     | En instruktion som beställer resultatdatavärdena för varje installation. Syntax: `...&orderby=field [order],field [order],...`. Parametern `field` kan vara någon av följande strängar:<br/><br/>                    `customerTenantId`<br/>`customerName`<br/>`subscriptionId`<br/>`subscriptionName`<br/>`usageDate`<br/>`resourceLocation`<br/>`meterCategory`<br/>`meterSubcategory`<br/>`meterUnit`<br/> `reservationOrderId` <br/> `reservationId`<br/> `consumptionMeterId` <br/> `serviceType` <br/><br/> *Orderparametern* är valfri och kan vara eller för att ange stigande eller fallande ordning för respektive `asc` `desc` fält. Standardvärdet är `asc`.<br/><br/>**Exempel:**<br/> `...&orderby=meterCategory,meterUnit`                                                                                           |
+|groupby          |sträng                    | En instruktion som endast tillämpar dataaggregering på de angivna fälten. Du kan ange följande fält:<br/><br/>                                                                                                                     `customerTenantId`<br/>`customerName`<br/> `subscriptionId` <br/> `subscriptionName` <br/> `usageDate` <br/> `resourceLocation` <br/> `meterCategory` <br/> `meterSubcategory` <br/> `meterUnit` <br/> `reservationOrderId` <br/> `reservationId` <br/> `consumptionMeterId` <br/> `serviceType` <br/><br/>De returnerade dataraderna innehåller fälten som anges i `groupby`  parametern och *Quantity*.<br/><br/>Parametern `groupby` kan användas med `aggregationLevel` parametern .<br/><br/>**Exempel:**<br/>`...&groupby=meterCategory,meterUnit` |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -66,7 +66,7 @@ Om det lyckas innehåller svarstexten en samling [Azure-användningsresurser.](p
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

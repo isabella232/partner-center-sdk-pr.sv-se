@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: e5e363a2f928dd38304887547bdc0e5d652728d6
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: f329f7aa59ee5127c8275c7c9d8c59e5ea2cf12e9c888419f1ce35e2db3604d1
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547748"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997574"
 ---
 # <a name="partner-center-webhook-events"></a>Webhook-händelser i Partnercenter
 
@@ -34,7 +34,7 @@ Med den här händelsen kan du registrera dig själv och testa registreringen ge
 
 #### <a name="properties"></a>Egenskaper
 
-| Egenskap                  | Typ                               | Beskrivning                                                                                                  |
+| Egenskap                  | Typ                               | Description                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | EventName                 | sträng                             | Namnet på händelsen. I formuläret {resource}-{action}. För den här händelsen är värdet "test-created".                                          |
 | ResourceUri               | URI                                | URI:en för att hämta resursen. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/registration/validationEvents/{{CorrelationId}}" |
@@ -63,7 +63,7 @@ Den här händelsen utlöses när den angivna prenumerationen ändras. En hände
 
 #### <a name="properties"></a>Egenskaper
 
-| Egenskap                  | Typ                               | Beskrivning                                                                                                  |
+| Egenskap                  | Typ                               | Description                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | EventName                 | sträng                             | Namnet på händelsen. I formuläret {resource}-{action}. För den här händelsen är värdet "subscription-updated".                                  |
 | ResourceUri               | URI                                | URI:en för att hämta resursen. Använder syntaxen:[*"{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/customers/{{CustomerId}}/subscriptions/{{SubscriptionId}}" |
@@ -89,7 +89,7 @@ Den här händelsen utlöses när mängden Microsoft Azure för en kund överskr
 
 #### <a name="properties"></a>Egenskaper
 
-| Egenskap                  | Typ                               | Beskrivning                                                                                                  |
+| Egenskap                  | Typ                               | Description                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | EventName                 | sträng                             | Namnet på händelsen. I formuläret {resource}-{action}. För den här händelsen är värdet "usagerecords-thresholdExceeded".                                  |
 | ResourceUri               | URI                                | URI:en för att hämta resursen. Använder syntaxen:[*"{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/customers/usagerecords" |
@@ -115,7 +115,7 @@ Den här händelsen utlöses när hänvisningen skapas.
 
 #### <a name="properties"></a>Egenskaper
 
-| Egenskap                  | Typ                               | Beskrivning                                                                                                  |
+| Egenskap                  | Typ                               | Description                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | EventName                 | sträng                             | Namnet på händelsen. I formuläret {resource}-{action}. För den här händelsen är värdet "referral-created".                                  |
 | ResourceUri               | URI                                | URI:en för att hämta resursen. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/engagements/v1/referrals/{{ReferralID}}" |
@@ -141,7 +141,7 @@ Den här händelsen utlöses när hänvisningen uppdateras.
 
 #### <a name="properties"></a>Egenskaper
 
-| Egenskap                  | Typ                               | Beskrivning                                                                                                  |
+| Egenskap                  | Typ                               | Description                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | EventName                 | sträng                             | Namnet på händelsen. I formuläret {resource}-{action}. För den här händelsen är värdet "referral-updated".                                  |
 | ResourceUri               | URI                                | URI:en för att hämta resursen. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/engagements/v1/referrals/{{ReferralID}}" |
@@ -165,7 +165,7 @@ Den här händelsen utlöses när hänvisningen uppdateras.
 
 Den här händelsen utlöses när den nya fakturan är klar.
 
-| Egenskap                  | Typ                               | Beskrivning                                                                                                  |
+| Egenskap                  | Typ                               | Description                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | EventName | sträng | Namnet på händelsen. I formuläret {resource}-{action}. För den här händelsen är värdet "fakturaklart". |
 | ResourceUri | URI | URI:en för att hämta resursen. Använder syntaxen: "[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{{InvoiceId}}" |

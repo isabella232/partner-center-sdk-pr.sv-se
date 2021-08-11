@@ -1,34 +1,34 @@
 ---
 title: Profilresurser
-description: Beskriver beteendet för en Molnlösningsleverantör för en enhets profiler.
+description: Beskriver beteendet för Molnlösningsleverantör en enhets profiler.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 945cfa141d1e6bde1709da882a177daaa32fba1f
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 8d4c091e186b7a3ad13aee7202b3d992af95db8db50acd40a5ade496d7087359
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547792"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997319"
 ---
 # <a name="profile-resources"></a>Profilresurser
 
-**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-Beskriver beteendet för en Molnlösningsleverantör för en enhets profiler.
+Beskriver beteendet för Molnlösningsleverantör en enhets profiler.
 
 ## <a name="billingprofile"></a>BillingProfile
 
 Beskriver en partners faktureringsprofil.
 
-| Egenskap            | Typ                                                           | Beskrivning                                                 |
+| Egenskap            | Typ                                                           | Description                                                 |
 |---------------------|----------------------------------------------------------------|-------------------------------------------------------------|
 | companyName         | sträng                                                         | Faktureringsföretagets namn.                                   |
-| adress             | [Adress](utility-resources.md#address)                       | Faktureringsadressen för företaget eller organisationen. |
+| adress             | [Adress](utility-resources.md#address)                       | Företagets eller organisationens faktureringsadress. |
 | primaryContact      | [Kontakt](utility-resources.md#contact)                       | Den primära kontakten för företaget eller organisationen.        |
 | purchaseOrderNumber | sträng                                                         | Företagets eller organisationens inköpsordernummer.        |
 | taxId               | sträng                                                         | Företagets eller organisationens skatte-ID.                       |
-| billingCurrency     | sträng                                                         | Valutan som används av företaget eller organisationen.           |
+| billingCurrency     | sträng                                                         | Den valuta som används av företaget eller organisationen.           |
 | profileType         | sträng                                                         | Partnerprofiltypen.                                   |
 | Länkar               | [ResourceLinks](utility-resources.md#resourcelinks)           | Resursen länkar som motsvarar profilen.            |
 | Attribut          | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen som motsvarar profilen.       |
@@ -37,15 +37,15 @@ Beskriver en partners faktureringsprofil.
 
 Beskriver en partners juridiska affärsprofil.
 
-| Egenskap               | Typ                                                           | Beskrivning                                                                                                                                                          |
+| Egenskap               | Typ                                                           | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | companyName            | sträng                                                         | Företagets juridiska namn.                                                                                                                                              |
 | adress                | [Adress](utility-resources.md#address)                       | Företagets eller organisationens adress.                                                                                                                          |
 | primaryContact         | [Kontakt](utility-resources.md#contact)                       | Den primära kontakten för företaget eller organisationen.                                                                                                                 |
 | companyApproverAddress | [Adress](utility-resources.md#address)                       | Företagets godkännaradress.                                                                                                                                        |
 | companyApproverEmail   | sträng                                                         | Företagets godkännare skickar e-post.                                                                                                                                          |
-| vettingStatus          | sträng                                                         | Status för granskning. Det här värdet är strängrepresentationen för det av medlemsnamnen som finns i [**VettingStatus**](/dotnet/api/microsoft.store.partnercenter.models.partners.vettingstatus).           |
-| vettingSubStatus       | sträng                                                         | Understatus för granskning. Det här värdet är strängrepresentationen av ett av medlemsnamnen som finns i [**VettingSubStatus**](/dotnet/api/microsoft.store.partnercenter.models.partners.vettingsubstatus). |
+| vettingStatus          | sträng                                                         | Granskningsstatus. Det här värdet är strängrepresentationen av ett av medlemsnamnen som finns i [**VettingStatus**](/dotnet/api/microsoft.store.partnercenter.models.partners.vettingstatus).           |
+| vettingSubStatus       | sträng                                                         | Understatusen för granskning. Det här värdet är strängrepresentationen av ett av medlemsnamnen som finns i [**VettingSubStatus**](/dotnet/api/microsoft.store.partnercenter.models.partners.vettingsubstatus). |
 | profileType            | sträng                                                         | Partnerprofiltypen.                                                                                                                                            |
 | Länkar                  | [ResourceLinks](utility-resources.md#resourcelinks)           | Resursen länkar som motsvarar profilen.                                                                                                                     |
 | Attribut             | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen som motsvarar profilen.                                                                                                                |
@@ -54,7 +54,7 @@ Beskriver en partners juridiska affärsprofil.
 
 Beskriver en partners Microsoft Partner Network profil.
 
-| Egenskap    | Typ                                                           | Beskrivning                                           |
+| Egenskap    | Typ                                                           | Description                                           |
 |-------------|----------------------------------------------------------------|-------------------------------------------------------|
 | partnerName | sträng                                                         | Företagets eller organisationens namn.                     |
 | mpnId       | sträng                                                         | ID Microsoft Partner Network (MPN).                     |
@@ -66,7 +66,7 @@ Beskriver en partners Microsoft Partner Network profil.
 
 Beskriver en partners organisationsprofil.
 
-| Egenskap       | Typ                                                           | Beskrivning                                                            |
+| Egenskap       | Typ                                                           | Description                                                            |
 |----------------|----------------------------------------------------------------|------------------------------------------------------------------------|
 | id             | sträng                                                         | Organisationens ID.                                                 |
 | companyName    | sträng                                                         | Namnet på företaget eller organisationen.                               |
@@ -84,7 +84,7 @@ Beskriver en partners organisationsprofil.
 
 Beskriver en partners supportprofil.
 
-| Egenskap    | Typ                                                           | Beskrivning                                           |
+| Egenskap    | Typ                                                           | Description                                           |
 |-------------|----------------------------------------------------------------|-------------------------------------------------------|
 | e-post       | sträng                                                         | Den e-postadress som är associerad med profilen.        |
 | telefon   | sträng                                                         | Telefonnumret som är associerat med profilen.         |

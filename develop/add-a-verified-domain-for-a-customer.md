@@ -4,12 +4,12 @@ description: Lär dig hur du lägger till en verifierad domän i listan över go
 ms.date: 05/21/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fc24335aff6fe83b58ad2cb178d03db00614dd8ae24ee83d20b607b56a4bc51d
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 570008c955ce3242b02c1df4c87df52aea3627abb6c86a069cc7c4c0d1d6f799
+ms.sourcegitcommit: ac8f5f8bedaddba5110dd4e562fbd9a2b24837df
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115989142"
+ms.lasthandoff: 08/08/2021
+ms.locfileid: "116885585"
 ---
 # <a name="add-a-verified-domain-to-the-list-of-approved-domains-for-an-existing-customer"></a>Lägga till en verifierad domän i listan över godkända domäner för en befintlig kund 
 
@@ -78,9 +78,9 @@ I den här tabellen beskrivs de obligatoriska och **valfria domänegenskaperna**
 | Status                                                | sträng           | Yes      | Domänstatus. Till exempel `Verified`. Värden som stöds:  `Unverified` , `Verified` , `PendingDeletion` .                               |
 | VerificationMethod                                    | sträng           | Yes      | Typ av domänverifieringsmetod. Värden som stöds: `None` , `DnsRecord` , `Email` .                                    |
 
-### <a name="domain-federation-settings"></a>Domänfederationsinställningar
+### <a name="domain-federation-settings"></a>Inställningar för domänfederation
 
-I den här tabellen beskrivs de obligatoriska och **valfria egenskaperna DomainFederationSettings** i begärandetexten.
+I den här tabellen beskrivs egenskaperna obligatoriska och **valfria DomainFederationSettings** i begärandetexten.
 
 | Namn   | Typ   | Obligatorisk | Beskrivning                                                  |
 |--------|--------|----------|--------------------------------------------------------------|
@@ -88,11 +88,11 @@ I den här tabellen beskrivs de obligatoriska och **valfria egenskaperna DomainF
 | DefaultInteractiveAuthenticationMethod | sträng           | No      | Anger standardautentiseringsmetoden som ska användas när ett program kräver att användaren har interaktiv inloggning. |
 | FederationBrandName                    | sträng           | No      | Federationsnamnet.        |
 | IssuerUri                              | sträng           | Yes     | Namnet på certifikatutfärdaren.                        |
-| LogOffUri                              | sträng           | Yes     | Utloggnings-URI. Den här egenskapen beskriver den federerade URI:n för domänin logga ut.        |
-| MetadataExchangeUri                    | sträng           | No      | DEN URL som anger slutpunkten för metadatautbyte som används för autentisering från avancerade klientprogram. |
+| LogOffUri                              | sträng           | Yes     | Utloggnings-URI:en. Den här egenskapen beskriver URI:n för ut logga ut federerad domän.        |
+| MetadataExchangeUri                    | sträng           | No      | Den URL som anger slutpunkten för metadatautbyte som används för autentisering från rich-klientprogram. |
 | NextSigningCertificate                 | sträng           | No      | Certifikatet som används för den kommande framtiden av ADFS V2 STS för att signera anspråk. Den här egenskapen är en base64-kodad representation av certifikatet. |
-| OpenIdConnectDiscoveryEndpoint         | sträng           | No      | OpenID-Anslut identifieringsslutpunkt för den federerade IDP STS. |
-| PassiveLogOnUri                        | sträng           | Yes     | Inloggnings-URI som används av äldre passiva klienter. Den här egenskapen är adressen för att skicka federerade inloggningsbegäranden. |
+| OpenIdConnectDiscoveryEndpoint         | sträng           | No      | OpenID-Anslut identifieringsslutpunkt för federerad IDP STS. |
+| PassiveLogOnUri                        | sträng           | Yes     | Den inloggnings-URI som används av äldre passiva klienter. Den här egenskapen är adressen för att skicka federerade inloggningsbegäranden. |
 | PreferredAuthenticationProtocol        | sträng           | Yes     | Formatet för autentiseringstoken. Till exempel `WsFed`. Värden som stöds: `WsFed` , `Samlp` |
 | PromptLoginBehavior                    | sträng           | Yes     | Beteendetypen för inloggning vid prompt.  Till exempel `TranslateToFreshPasswordAuth`. Värden som stöds: `TranslateToFreshPasswordAuth` , `NativeSupport` , `Disabled` |
 | SigningCertificate                     | sträng           | Yes     | Certifikatet som för närvarande används av ADFS V2 STS för att signera anspråk. Den här egenskapen är en base64-kodad representation av certifikatet. |
@@ -147,7 +147,7 @@ Om det lyckas returnerar detta API en [domänresurs](#domain) för den nya verif
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

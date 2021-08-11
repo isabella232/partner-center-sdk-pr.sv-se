@@ -4,12 +4,12 @@ description: Registrera en befintlig prenumeration så att den är aktiverad fö
 ms.date: 07/27/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d26a7c77f60e6ef817cde80b9e97c88bd8bdc786
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 4ea2183ab0c2367c7772bdf40b5988c2b7eff7c539686760332bec4addda8bbe
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446623"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997200"
 ---
 # <a name="register-a-subscription"></a>Registrera en prenumeration
 
@@ -54,8 +54,8 @@ Använd följande sökvägsparametrar för att identifiera kunden och prenumerat
 
 | Namn                    | Typ       | Obligatorisk | Beskrivning                                                   |
 |-------------------------|------------|----------|---------------------------------------------------------------|
-| kund-ID             | sträng     | Ja      | En GUID-formaterad sträng som identifierar kunden.         |
-| prenumerations-id         | sträng     | Ja      | En GUID-formaterad sträng som identifierar prenumerationen.     |
+| kund-ID             | sträng     | Yes      | En GUID-formaterad sträng som identifierar kunden.         |
+| prenumerations-id         | sträng     | Yes      | En GUID-formaterad sträng som identifierar prenumerationen.     |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

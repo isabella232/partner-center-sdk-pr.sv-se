@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 9516a87a438a0a84a6f6069c1f9b2a2e97e90fba
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 3be496b694d9e0e34619807e85ed8fe63879f3561a404ebc7361dcedc4479612
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111873861"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994191"
 ---
 # <a name="get-a-sku-by-id"></a>Hämta en SKU efter ID
 
@@ -19,7 +19,7 @@ Hämtar en SKU för den angivna produkten med det angivna SKU-ID:t.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 - Ett produkt-ID.
 
@@ -27,7 +27,7 @@ Hämtar en SKU för den angivna produkten med det angivna SKU-ID:t.
 
 ## <a name="c"></a>C\#
 
-Börja med att följa stegen i Hämta en produkt efter [ID](get-a-product-by-id.md) för att hämta gränssnittet för en specifik produkts åtgärder för att hämta information om en specifik SKU. Från det resulterande gränssnittet väljer du egenskapen **SKU:er** för att hämta ett gränssnitt med tillgängliga åtgärder för SKU:er. Skicka SKU-ID:t till **metoden ById()** och anropa **Get()** eller **GetAsync()** för att hämta SKU-informationen.
+Om du vill hämta information om en specifik SKU börjar du med att följa stegen i Hämta en produkt efter [ID](get-a-product-by-id.md) för att hämta gränssnittet för en specifik produkts åtgärder. Från det resulterande gränssnittet väljer du egenskapen **SKU:er** för att hämta ett gränssnitt med tillgängliga åtgärder för SKU:er. Skicka SKU-ID:t till **metoden ById()** och anropa **Get()** eller **GetAsync()** för att hämta SKU-informationen.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -49,13 +49,13 @@ var sku = partnerOperations.Products.ByCountry(countryCode).ById(productId).Skus
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-Använd följande sökväg och frågeparametrar för att hämta en SKU för den angivna produkten med hjälp av det angivna SKU-ID:t.
+Använd följande sökväg och frågeparametrar för att hämta en SKU för den angivna produkten med det angivna SKU-ID:t.
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| produkt-id             | sträng   | Ja      | En sträng som identifierar produkten.                           |
-| sku-id                 | sträng   | Ja      | En sträng som identifierar SKU:n.                               |
-| landskod           | sträng   | Ja      | Ett lands-/regions-ID.                                            |
+| produkt-id             | sträng   | Yes      | En sträng som identifierar produkten.                           |
+| sku-id                 | sträng   | Yes      | En sträng som identifierar SKU:n.                               |
+| landskod           | sträng   | Yes      | Ett lands-/regions-ID.                                            |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -85,14 +85,14 @@ Om det lyckas innehåller svarstexten en [SKU-resurs.](product-resources.md#sku)
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Beskrivning                                                                                               |
+| HTTP-statuskod     | Felkod   | Description                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 404                  | 400013       | Det gick inte att hitta produkten.                                                                                    |
-| 404                  | 400018       | Det gick inte att hitta SKU:n.                                                                                        |
+| 404                  | 400018       | SKU hittades inte.                                                                                        |
 
 ### <a name="response-example"></a>Exempel på svar
 

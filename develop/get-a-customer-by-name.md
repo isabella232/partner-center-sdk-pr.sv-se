@@ -6,22 +6,22 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 663b8509d8704f9c443796d9fbcf72fb9c5b7fb2
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 4e77edd3e7d94711ad18796c0afb4db30c50abf0bc9636335b413a5d41dff9c8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874966"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993103"
 ---
 # <a name="get-a-list-of-customers-filtered-by-a-search-field"></a>Hämta en lista över kunder filtrerade efter ett sökfält
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Hämtar en samling [kundresurser](customer-resources.md#customer) som matchar ett filter. Du kan också ange en sidstorlek. Du kan filtrera efter företagsnamn, domän, indirekt återförsäljare eller indirekt molnlösningsleverantör (CSP).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
 - Ett användarkonstruerat filter.
 
@@ -31,7 +31,7 @@ Om du vill hämta en samling kunder som matchar ett filter skapar du först ett 
 
 Skapa sedan en instans av [**ett iQuery-objekt**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) som ska överföras till frågan genom att anropa [**metoden BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) och skicka det till filtret. BuildSimplyQuery är bara en av de frågetyper som stöds av [**queryFactory-klassen.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
 
-För att slutligen köra filtret och hämta resultatet använder du först [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) för att hämta ett gränssnitt för partnerns kundåtgärder. Anropa sedan [**metoden Query**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) eller [**QueryAsync.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync)
+Slutligen kör du filtret och hämtar resultatet genom att först använda [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) för att hämta ett gränssnitt till partnerns kundåtgärder. Anropa sedan metoden [**Query**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) eller [**QueryAsync.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync)
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -52,7 +52,7 @@ var myQuery = QueryFactory.Instance.BuildSimpleQuery(fieldFilter);
 var customers = partnerOperations.Customers.Query(myQuery);
 ```
 
-**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Exempelklass:** FilterCustomers.cs
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK Samples **Class**: FilterCustomers.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -68,8 +68,8 @@ Använd följande frågeparametrar.
 
 | Namn   | Typ   | Obligatorisk | Beskrivning                                                                    |
 |--------|--------|----------|--------------------------------------------------------------------------------|
-| ikoner   | int    | Inga       | Antalet resultat som ska visas samtidigt. Den här parametern är valfri. |
-| filter | filter | Ja      | Filtret som ska tillämpas på kunder. Det här måste vara en kodad sträng.              |
+| ikoner   | int    | No       | Antalet resultat som ska visas samtidigt. Den här parametern är valfri. |
+| filter | filter | Yes      | Filtret som ska tillämpas på kunder. Det här måste vara en kodad sträng.              |
 
 ### <a name="filter-syntax"></a>Filtersyntax
 
@@ -116,7 +116,7 @@ Om det lyckas returnerar den här metoden en samling matchande [kundresurser](cu
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

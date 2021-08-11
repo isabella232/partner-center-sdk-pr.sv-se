@@ -1,37 +1,37 @@
 ---
 title: Partner Center-autentisering
-description: Partner center använder Azure AD för autentisering och för att använda Partner Center-API:er måste du konfigurera autentiseringsinställningarna korrekt.
+description: Partnercenter använder Azure AD för autentisering och för att använda Partner Center-API:er måste du konfigurera autentiseringsinställningarna korrekt.
 ms.date: 11/13/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 75d60ca983cd5b8fe53134ec7481319b153e128a
-ms.sourcegitcommit: 07b9a11f5c615ed1e716081392032cea2124bd98
+ms.openlocfilehash: 077fe108c6f9278011e5c3a8634fe221705d040708990d7aff6bb671d8bfd000
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/04/2021
-ms.locfileid: "115104201"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997761"
 ---
 # <a name="partner-center-authentication"></a>Partner Center-autentisering
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-Partnercenter använder Azure Active Directory för autentisering. När du interagerar med Partnercenter-API, SDK eller PowerShell-modulen måste du konfigurera ett Azure AD-program korrekt och sedan begära en åtkomsttoken. Åtkomsttoken som hämtas med endast appen eller app - och användarautentisering kan användas med Partnercenter. Det finns dock två viktiga objekt som måste beaktas
+Partnercenter använder Azure Active Directory för autentisering. När du interagerar med Partnercenter-API, SDK eller PowerShell-modulen måste du konfigurera ett Azure AD-program korrekt och sedan begära en åtkomsttoken. Åtkomsttoken som hämtas med endast appen eller app + användarautentisering kan användas med Partnercenter. Det finns dock två viktiga objekt som måste övervägas
 
 - Använd multifaktorautentisering vid åtkomst till Partner center-API:et med hjälp av app - och användarautentisering. Mer information om den här ändringen finns i [Aktivera säker programmodell.](enable-secure-app-model.md)
 
-- Inte alla åtgärder som Partner Center-API:et stöder endast appautentisering. Det finns vissa scenarier där du måste använda app - och användarautentisering. Under rubriken *Förutsättningar i* varje artikel [hittar](scenarios.md)du dokumentation som anger om endast appautentisering, app + användarautentisering eller båda stöds.
+- Alla åtgärder som partnercenter-API:et stöder endast appautentisering är inte alla. Det finns vissa scenarier där du måste använda app - och användarautentisering. Under rubriken *Förutsättningar* i [](scenarios.md)varje artikel hittar du dokumentation som anger om endast appautentisering, app + användarautentisering eller båda stöds.
 
-## <a name="initial-setup"></a>Inledande konfiguration
+## <a name="initial-setup"></a>Inledande installation
 
-1. För att börja måste du se till att du har både ett primärt PartnerCenter-konto och ett PartnerCenter-konto för sandbox-integrering. Mer information finns i Konfigurera [Partner Center-konton för API-åtkomst.](set-up-api-access-in-partner-center.md) Anteckna registrerings-ID:t och hemligheten för Azure AAD-appen (klienthemlighet krävs endast för identifiering av appar) för både ditt primära konto och ditt sandbox-konto för integrering.
+1. För att komma igång måste du se till att du har både ett primärt Partnercenter-konto och ett Partnercenter-konto för sandbox-integrering. Mer information finns i Konfigurera [Partner Center-konton för API-åtkomst.](set-up-api-access-in-partner-center.md) Anteckna registrerings-ID:t och hemligheten för Azure AAD-appen (klienthemlighet krävs endast för identifiering av appar) för både ditt primära konto och ditt sandbox-konto för integrering.
 
 2. Logga in på Azure AD från Azure Portal. I **behörigheter till andra program** anger du behörigheter för **Windows Azure Active Directory** delegerade behörigheter **och** väljer både Access the directory as **the signed-in user** (Åtkomst till katalogen som den inloggade användaren) och Sign in and read user profile (Logga in och läs **användarprofil).**
 
-3. I Azure Portal Lägg **till program**. Sök efter "Microsoft Partner Center", som är Microsoft Partner Center-programmet. Ange **delegerade behörigheter för** åtkomst **till Partner Center API.** Om du använder Partnercenter för Microsoft Cloud Tyskland eller Partnercenter för Microsoft Cloud for US Government är det här steget obligatoriskt. Om du använder global instans i Partnercenter är det här steget valfritt. CSP-partner kan använda apphanteringsfunktionen i Partnercenter-portalen för att kringgå det här steget för global Partner Center-instans.
+3. I Azure Portal lägg **till program**. Sök efter "Microsoft Partner Center", som är Microsoft Partner Center-programmet. Ange **Delegerade behörigheter för** åtkomst **till Partner Center API.** Om du använder Partnercenter för Microsoft Cloud Tyskland eller Partnercenter för Microsoft Cloud for US Government är det här steget obligatoriskt. Om du använder global instans i Partnercenter är det här steget valfritt. CSP-partner kan använda apphanteringsfunktionen i Partnercenter-portalen för att kringgå det här steget för global Partner Center-instans.
 
 ## <a name="app-only-authentication"></a>Appbaserad autentisering
 
-Om du vill använda appbaserad autentisering för att få åtkomst till Partner Center-modulen REST API, .NET API, Java API eller PowerShell kan du göra det med hjälp av följande anvisningar.
+Om du vill använda appbaserad autentisering för att få åtkomst till Partner Center REST API-, .NET API-, Java API- eller PowerShell-modulen kan du göra det med hjälp av följande anvisningar.
 
 ## <a name="net-app-only-authentication"></a>.NET (appbaserad autentisering)
 
@@ -66,7 +66,7 @@ public IAggregatePartner getAppPartnerOperations()
 }
 ```
 
-## <a name="rest-app-only-authentication"></a>REST (appbaserad autentisering)
+## <a name="rest-app-only-authentication"></a>REST (endast appautentisering)
 
 ### <a name="rest-request"></a>REST-begäran
 
@@ -97,14 +97,14 @@ Content-Length: 1406
 
 ## <a name="app--user-authentication"></a>App + användarautentisering
 
-Tidigare har [](https://tools.ietf.org/html/rfc6749#section-4.3) beviljandet av autentiseringsuppgifter för resursägares lösenord använts för att begära en åtkomsttoken för användning med partnercenter-REST API-, .NET-API-, Java API- eller PowerShell-modulen. Den metoden användes för att begära en åtkomsttoken från Azure Active Directory med en klientidentifierare och användarautentiseringsuppgifter. Den här metoden fungerar dock inte längre eftersom Partnercenter kräver multifaktorautentisering när du använder app - och användarautentisering. För att uppfylla detta krav har Microsoft infört ett säkert, skalbart ramverk för autentisering av Molnlösningsleverantör-partner (CSP) och kontrollpanelens leverantörer (CPV) med hjälp av multifaktorautentisering. Det här ramverket kallas för Modell för säkra program och består av en medgivandeprocess och en begäran om en åtkomsttoken med hjälp av en uppdateringstoken.
+Tidigare har [](https://tools.ietf.org/html/rfc6749#section-4.3) beviljandet av autentiseringsuppgifter för resursägares lösenord använts för att begära en åtkomsttoken för användning med PartnerCenter-modulen REST API, .NET API, Java API eller PowerShell. Den metoden användes för att begära en åtkomsttoken från Azure Active Directory med hjälp av en klientidentifierare och användarautentiseringsuppgifter. Den här metoden fungerar dock inte längre eftersom Partnercenter kräver multifaktorautentisering när du använder app- och användarautentisering. För att uppfylla detta krav har Microsoft infört ett säkert, skalbart ramverk för autentisering av Molnlösningsleverantör-partner (CSP) och kontrollpanelens leverantörer (CPV) med hjälp av multifaktorautentisering. Det här ramverket kallas för Modell för säkra program och består av en medgivandeprocess och en begäran om en åtkomsttoken med hjälp av en uppdateringstoken.
 
 ### <a name="partner-consent"></a>Partnermedgivande
 
-Processen för partnermedgivande är en interaktiv process där partnern autentiseras med hjälp av multifaktorautentisering, medgivanden till programmet och en uppdateringstoken lagras på en säker lagringsplats, till exempel Azure Key Vault. Vi rekommenderar att du använder ett dedikerat konto för integrering i den här processen.
+Processen för partnermedgivande är en interaktiv process där partnern autentiserar med hjälp av multifaktorautentisering, medgivanden till programmet och en uppdateringstoken lagras på en säker lagringsplats, till exempel Azure Key Vault. Vi rekommenderar att du använder ett dedikerat konto för integrering i den här processen.
 
 > [!IMPORTANT]
-> Lämplig multifaktorautentiseringslösning ska aktiveras för det tjänstkonto som används i partnerns medgivandeprocess. Om den inte är det kommer den resulterande uppdateringstoken inte att vara kompatibel med säkerhetskraven.
+> Lämplig multifaktorautentiseringslösning ska vara aktiverad för tjänstkontot som används i processen för partnermedgivande. Om den inte är det kommer den resulterande uppdateringstoken inte att vara kompatibel med säkerhetskraven.
 
 ### <a name="samples-for-app--user-authentication"></a>Exempel för app - och användarautentisering
 
@@ -125,9 +125,9 @@ Exempelprojektet [för partnermedgivande](https://github.com/Microsoft/Partner-C
     New-AzureRmKeyVault -Name 'Contoso-Vault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
     ```
 
-    Mer information om hur du skapar en Azure Key Vault finns i [Snabbstart:](/azure/key-vault/quick-create-portal) Ange och hämta en hemlighet från Azure Key Vault med hjälp av Azure Portal eller [Snabbstart: Ange](/azure/key-vault/quick-create-powershell)och hämta en hemlighet från Azure Key Vault med Hjälp av PowerShell . Ange och hämta sedan en hemlighet.
+    Mer information om hur du skapar en Azure Key Vault finns i [Snabbstart:](/azure/key-vault/quick-create-portal) Ange och hämta en hemlighet från Azure Key Vault med hjälp av Azure Portal eller [Snabbstart:](/azure/key-vault/quick-create-powershell)Ange och hämta en hemlighet från Azure Key Vault med hjälp av PowerShell . Ange och hämta sedan en hemlighet.
 
-2. Skapa ett Azure AD-program och en nyckel med Azure Portal eller följande kommandon.
+2. Skapa ett Azure AD-program och en nyckel med hjälp Azure Portal eller följande kommandon.
 
     ```azurepowershell-interactive
     Connect-AzureAD
@@ -141,9 +141,9 @@ Exempelprojektet [för partnermedgivande](https://github.com/Microsoft/Partner-C
     Write-Host "ApplicationSecret   = $($password.Value)"
     ```
 
-    Se till att anteckna värdena för programidentifierare och hemligheter eftersom de kommer att användas i stegen nedan.
+    Se till att anteckna programidentifieraren och de hemliga värdena eftersom de kommer att användas i stegen nedan.
 
-3. Ge det nyligen skapade Azure AD-programmet läshemlighetsbehörigheter med hjälp Azure Portal eller följande kommandon.
+3. Ge det nyligen skapade Azure AD-programmet läshemlighetsbehörighet med hjälp Azure Portal eller följande kommandon.
 
     ```azurepowershell-interactive
     $app = Get-AzureADApplication -Filter {AppId -eq 'ENTER-APP-ID-HERE'}
@@ -201,7 +201,7 @@ Exempelprojektet [för partnermedgivande](https://github.com/Microsoft/Partner-C
 
 ## <a name="java-appuser-authentication"></a>Java (app+användarautentisering)
 
-Exempelprojektet [för partnermedgivande](https://github.com/Microsoft/Partner-Center-Java-Samples/tree/master/secure-app-model/keyvault) visar hur du använder en webbplats som utvecklats med JSP för att samla in medgivande, begära en uppdateringstoken och skydda lagring i Azure Key Vault. Utför följande för att skapa de nödvändiga förutsättningarna för det här exemplet.
+Exempelprojektet [för partnermedgivande](https://github.com/Microsoft/Partner-Center-Java-Samples/tree/master/secure-app-model/keyvault) visar hur du använder en webbplats som utvecklats med JSP för att samla in medgivande, begära en uppdateringstoken och skydda lagringen i Azure Key Vault. Utför följande för att skapa de nödvändiga förutsättningarna för det här exemplet.
 
 1. Skapa en instans av Azure Key Vault med hjälp Azure Portal eller följande PowerShell-kommandon. Innan du kör kommandot måste du ändra parametervärdena därefter. Valvnamnet måste vara unikt.
 
@@ -214,9 +214,9 @@ Exempelprojektet [för partnermedgivande](https://github.com/Microsoft/Partner-C
     New-AzureRmKeyVault -Name 'Contoso-Vault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
     ```
 
-    Mer information om hur du skapar en Azure Key Vault finns i [Snabbstart:](/azure/key-vault/quick-create-portal) Ange och hämta en hemlighet från Azure Key Vault med hjälp av Azure Portal eller [Snabbstart: Ange](/azure/key-vault/quick-create-powershell)och hämta en hemlighet från Azure Key Vault med Hjälp av PowerShell .
+    Mer information om hur du skapar en Azure Key Vault finns i [Snabbstart:](/azure/key-vault/quick-create-portal) Ange och hämta en hemlighet från Azure Key Vault med hjälp av Azure Portal eller [Snabbstart:](/azure/key-vault/quick-create-powershell)Ange och hämta en hemlighet från Azure Key Vault med hjälp av PowerShell .
 
-2. Skapa ett Azure AD-program och en nyckel med Azure Portal eller följande kommandon.
+2. Skapa ett Azure AD-program och en nyckel med hjälp Azure Portal eller följande kommandon.
 
     ```azurepowershell-interactive
     Connect-AzureAD
@@ -230,7 +230,7 @@ Exempelprojektet [för partnermedgivande](https://github.com/Microsoft/Partner-C
     Write-Host "ApplicationSecret   = $($password.Value)"
     ```
 
-    Se till att dokumentera värdena för programidentifierare och hemligheter eftersom de kommer att användas i stegen nedan.
+    Se till att dokumentera programidentifierare och hemliga värden eftersom de kommer att användas i stegen nedan.
 
 3. Ge det nyligen skapade Azure AD-programmet läshemlighetsbehörighet med hjälp Azure Portal eller följande kommandon.
 
@@ -295,7 +295,7 @@ Exempelprojektet [för partnermedgivande](https://github.com/Microsoft/Partner-C
 
 ## <a name="cloud-solution-provider-authentication"></a>Molnlösningsleverantör autentisering
 
-Molnlösningsleverantör partner kan använda den uppdateringstoken som erhållits via [processen för partnermedgivande.](#partner-consent)
+Molnlösningsleverantör kan använda den uppdateringstoken som erhålls via [processen för partnermedgivande.](#partner-consent)
 
 ### <a name="samples-for-cloud-solution-provider-authentication"></a>Exempel för Molnlösningsleverantör autentisering
 

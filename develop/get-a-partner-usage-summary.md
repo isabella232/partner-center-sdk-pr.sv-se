@@ -6,24 +6,24 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: f003980f1b521ad0ac26dbfd0d4821b9096fdd27
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: e82c2220768b211b37fad4bbc675e347a25a59217aa881f4e4db2e4d586eb354
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111873912"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993630"
 ---
 # <a name="get-a-usage-summary-for-a-partner"></a>Hämta en användningssammanfattning för en partner
 
 **Gäller för**: Partner Center-| PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-Du kan använda resursen **PartnerUsageSummary** för att få en partneranvändningssammanfattning för alla kunder som har köpt en specifik Azure-tjänst eller -resurs under den aktuella faktureringsperioden.
+Du kan använda resursen **PartnerUsageSummary** för att hämta en partneranvändningssammanfattning för alla kunder som har köpt en specifik Azure-tjänst eller -resurs under den aktuella faktureringsperioden.
 
 *Summan som returneras av det här API:et returnerar inte förbrukning för kunder som har en Azure-plan.* Planerat för utfasning i framtiden.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
 
 ## <a name="c"></a>C\#
 

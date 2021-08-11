@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khakiali
 ms.author: alikhaki
-ms.openlocfilehash: 04bccf587628337004a5825b534048945f791839
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 1514e9a684b003f5650e9256743ea7e669de04629fd0c3db1c7dfa677e96a752
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111873878"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993613"
 ---
 # <a name="get-a-partners-validation-codes"></a>Hämta en partners valideringskoder
 

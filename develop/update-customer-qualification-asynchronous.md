@@ -5,12 +5,12 @@ ms.date: 03/23/2021
 ms.service: partner-dashboard
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: d7dd3593894ce91ddc7b96d604b80153d41d3a67
-ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
+ms.openlocfilehash: 6d46d6a170e4ebcd441e678c482469c4041b2435bf7ee946dc91db554ec4932a
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113572105"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997965"
 ---
 # <a name="update-a-customers-qualifications-asynchronously"></a>Uppdatera en kunds kvalificeringar asynkront
 

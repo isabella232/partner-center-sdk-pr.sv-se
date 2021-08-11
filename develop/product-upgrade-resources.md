@@ -4,12 +4,12 @@ description: Du kan använda flera resurser relaterade till Partner Center-produ
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c995ac44dbe22000f7bc86991cb973ed31a5c018
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: a251168dbe1e153365beec212feca6fafddaef1700ad8651ec9d459aebf24600
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445348"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997404"
 ---
 # <a name="product-upgrade-resources"></a>Produktuppgraderingsresurser
 
@@ -19,7 +19,7 @@ Du kan använda följande resurser för information om produktuppgraderingar i P
 
 Resursen **ProductUpgradesRequest innehåller** information om objektet för begäran om produktuppgraderingar.
 
-| Egenskap      | Typ                                                          | Beskrivning                                                |
+| Egenskap      | Typ                                                          | Description                                                |
 |---------------|---------------------------------------------------------------|------------------------------------------------------------|
 | customerId    | sträng                                                        | En GUID-formaterad sträng som identifierar kunden.      |
 | productFamily | sträng                                                        | Den produktfamilj som uppgraderingen begärs för. |
@@ -29,7 +29,7 @@ Resursen **ProductUpgradesRequest innehåller** information om objektet för beg
 
 Resursen **ProductUpgradesEligibility** innehåller information om kundens behörighet att uppgradera en produkt.
 
-| Egenskap      | Typ                                                          | Beskrivning                                                                      |
+| Egenskap      | Typ                                                          | Description                                                                      |
 |---------------|---------------------------------------------------------------|----------------------------------------------------------------------------------|
 | customerId    | sträng                                                        | En GUID-formaterad sträng som identifierar kunden.                            |
 | productFamily | sträng                                                        | Den produktfamilj som uppgraderingen begärs för.                       |
@@ -43,7 +43,7 @@ Resursen **ProductUpgradesEligibility** innehåller information om kundens behö
 
 Resursen **ProductUpgradesStatus** innehåller information om statusen för en produktuppgradering.
 
-| Egenskap | Typ   | Beskrivning                                          |
+| Egenskap | Typ   | Description                                          |
 |----------|--------|------------------------------------------------------|
 | Id       | sträng | En GUID-formaterad sträng som identifierar uppgraderingen. |
 | productFamily       | sträng                                                         | Den produktfamilj som uppgraderingen begärs för.
@@ -56,7 +56,7 @@ Resursen **ProductUpgradesStatus** innehåller information om statusen för en p
 
 Resursen **UpgradesLineItem** beskriver statusen för produktuppgraderingsinformationen för varje radobjekt i begäran.
 
-| Egenskap      | Typ                                                          | Beskrivning                                       |
+| Egenskap      | Typ                                                          | Description                                       |
 |---------------|---------------------------------------------------------------|---------------------------------------------------|
 | sourceProduct | [UpgradeProduct-objekt](#upgradeproduct)                      | Information om källprodukten som uppgraderas. |
 | targetProduct | [UpgradeProduct-objekt](#upgradeproduct)                      | Information om målprodukten efter uppgraderingen.   |
@@ -69,7 +69,7 @@ Resursen **UpgradesLineItem** beskriver statusen för produktuppgraderingsinform
 
 Resursen **UpgradeProduct** innehåller information om den produkt som uppgraderas.
 
-| Egenskap   | Typ                                                          | Beskrivning                                          |
+| Egenskap   | Typ                                                          | Description                                          |
 |------------|---------------------------------------------------------------|------------------------------------------------------|
 | id         | sträng                                                        | En GUID-formaterad sträng som identifierar produkten. |
 | name       | sträng                                                        | Det egna namnet på den produkt som uppgraderas.         |
@@ -79,7 +79,7 @@ Resursen **UpgradeProduct** innehåller information om den produkt som uppgrader
 
 **ErrorDetails-resursen** innehåller information om fel under uppgraderingsprocessen.
 
-| Egenskap   | Typ                                                          | Beskrivning                                       |
+| Egenskap   | Typ                                                          | Description                                       |
 |------------|---------------------------------------------------------------|---------------------------------------------------|
 | kod       | sträng                                                        | En felkod när produktuppgraderingen misslyckas.      |
 | meddelande    | sträng                                                        | Felmeddelandet när produktuppgraderingen misslyckas. |

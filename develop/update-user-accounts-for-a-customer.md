@@ -4,12 +4,12 @@ description: Uppdatera informationen i ett befintligt användarkonto för din ku
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6ebfdbb5df1d56416835af771fd6b70190776012
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: e652e8dcbf9075fe22507230029c9703f88abef179337b8958d219c996c6e6cd
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445280"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115998016"
 ---
 # <a name="update-user-accounts-for-a-customer"></a>Uppdatera användarkonton för en kund
 

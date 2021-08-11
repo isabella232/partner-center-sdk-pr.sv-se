@@ -4,12 +4,12 @@ description: Du kan köpa Azure-reservationer för en kund med partnercenter-API
 ms.date: 11/01/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0b9ce4a808ac12c32bd67888fc92808baeb0e575
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: ed8aa12117e9f13f84f39c97fc87e2c8844b223bd913cbaebf870d7022959dbd
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547775"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997302"
 ---
 # <a name="purchase-azure-reservations"></a>Köp Azure-reservationer
 

@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 5ab7dde0d78e8ff15bb1a960b16c8c925b0478ce
-ms.sourcegitcommit: c5acfb373aa012eb3b6c17182f7ca56883502c6b
+ms.openlocfilehash: 3e461367eb41c180dd1004ab2548ca24c4b891976ef53d852bb7933ff23fae65
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112391299"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993885"
 ---
 # <a name="get-invoices-unbilled-reconciliation-line-items"></a>Hämta fakturans ej fakturerade avstämningsradsobjekt
 
@@ -129,13 +129,13 @@ Använd följande URI och frågeparametrar när du skapar begäran.
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                                     |
 |------------------------|--------|----------|---------------------------------------------------------------------------------|
-| faktura-id             | sträng | Ja      | En sträng som identifierar fakturan. Använd "ej fakturerad" för att hämta ej fakturerade uppskattningar. |
-| Leverantör               | sträng | Ja      | Providern: "OneTime".                                                |
-| invoice-line-item-type | sträng | Ja      | Typ av fakturainformation: "BillingLineItems".               |
-| hasPartnerEarnedCredit | boolesk   | Inga       | Värdet som anger om radobjekten ska returneras med partners intjänade kredit tillämpad. Obs! Den här parametern tillämpas endast när providertypen är OneTime och InvoiceLineItemType är UsageLineItems.
-| currencyCode           | sträng | Ja      | Valutakoden för de ej fakturerade radobjekten.                                  |
-| period                 | sträng | Ja      | Perioden för ej fakturerad rekognosering. exempel: aktuell, tidigare.                      |
-| ikoner                   | antal | Inga       | Det maximala antalet objekt som ska returneras. Standardstorleken är 2 000                     |
+| faktura-id             | sträng | Yes      | En sträng som identifierar fakturan. Använd "ej fakturerad" för att hämta ej fakturerade uppskattningar. |
+| Leverantör               | sträng | Yes      | Providern: "OneTime".                                                |
+| invoice-line-item-type | sträng | Yes      | Typ av fakturainformation: "BillingLineItems".               |
+| hasPartnerEarnedCredit | boolesk   | No       | Värdet som anger om radobjekten ska returneras med partners intjänade kredit tillämpad. Obs! Den här parametern tillämpas endast när providertypen är OneTime och InvoiceLineItemType är UsageLineItems.
+| currencyCode           | sträng | Yes      | Valutakoden för de ej fakturerade radobjekten.                                  |
+| period                 | sträng | Yes      | Perioden för ej fakturerad rekognosering. exempel: aktuell, tidigare.                      |
+| ikoner                   | antal | No       | Det maximala antalet objekt som ska returneras. Standardstorleken är 2 000                     |
 | seekOperation          | sträng | No       | Ange seekOperation= Nästa för att hämta nästa sida med rekognoseringsradobjekt.                |
 
 ### <a name="request-headers"></a>Begärandehuvuden

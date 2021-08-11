@@ -4,12 +4,12 @@ description: Förstå REST-API:erna som hjälper dig att framtvinga multifaktora
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
-ms.openlocfilehash: cbdf081f7d9424280e778364b130c7ac1c26f0e3
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: bce9a69efd380db3ea9ec96dc712c5ac85ed4f88ff80e0b7af45b333e2ebc2b2
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445331"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997540"
 ---
 # <a name="partner-security-requirements-status"></a>Status för partnersäkerhetskrav
 
