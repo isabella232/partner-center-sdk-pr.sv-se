@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: b29c005e74ad8a4da547a888b78e4599e74ebd02
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 2bc7ec0609fa03f91427df2944c39e4c0401d11b27370d812d96e4fd0eb1ee6a
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874541"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993664"
 ---
 # <a name="get-a-list-of-availabilities-for-a-sku-by-country"></a>Hämta en lista över tillgängliga för en SKU (efter land)
 
@@ -76,9 +76,9 @@ Använd följande sökväg och frågeparametrar för att hämta en lista över t
 
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| produkt-id             | sträng   | Ja      | En sträng som identifierar produkten.                           |
-| sku-id                 | sträng   | Ja      | En sträng som identifierar SKU:n.                               |
-| landskod           | sträng   | Ja      | Ett lands-/regions-ID.                                            |
+| produkt-id             | sträng   | Yes      | En sträng som identifierar produkten.                           |
+| sku-id                 | sträng   | Yes      | En sträng som identifierar SKU:n.                               |
+| landskod           | sträng   | Yes      | Ett lands-/regions-ID.                                            |
 | målsegment         | sträng   | No       | En sträng som identifierar målsegmentet som används för filtrering. |
 | reservationScope | sträng   | No | När du frågar efter en lista över tillgänglighet för en Azure-reservations-SKU anger du för att hämta en lista över tillgänglighet som `reservationScope=AzurePlan` gäller för AzurePlan. Undanta den här parametern för att hämta en lista över tillgänglighet som gäller för Microsoft Azure-prenumerationer (MS-AZR-0145P).  |
 
@@ -138,7 +138,7 @@ Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad sam
 
 Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Beskrivning                                                                                               |
+| HTTP-statuskod     | Felkod   | Description                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 403                  | 400030       | Åtkomst till det begärda **targetSegment** tillåts inte.                                                     |
 
