@@ -4,12 +4,12 @@ description: Lär dig hur du lägger till en verifierad domän i listan över go
 ms.date: 05/21/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 570008c955ce3242b02c1df4c87df52aea3627abb6c86a069cc7c4c0d1d6f799
-ms.sourcegitcommit: ac8f5f8bedaddba5110dd4e562fbd9a2b24837df
+ms.openlocfilehash: b634e7e3276fdabeac8175e09a6ae8d12732f409
+ms.sourcegitcommit: b0534995c36d644cc5f7bdf31b2afd5355cf7149
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/08/2021
-ms.locfileid: "116885585"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122208100"
 ---
 # <a name="add-a-verified-domain-to-the-list-of-approved-domains-for-an-existing-customer"></a>Lägga till en verifierad domän i listan över godkända domäner för en befintlig kund 
 
@@ -31,7 +31,7 @@ Om du är en partner som är domänregistrator kan du använda API:et för att p
 
 ### <a name="custom-verified-domains"></a>Anpassade verifierade domäner
 
-När du lägger till en anpassad verifierad domän, en domän som inte är registrerad på **onmicrosoft.com,** måste du ange egenskapen [CustomerUser.immutableId](user-resources.md#customeruser) till ett unikt ID-värde för kunden som du lägger till domänen för. Den här unika identifieraren krävs under verifieringsprocessen när domänen verifieras. Mer information om kundanvändarkonton finns i [Skapa användarkonton för en kund.](create-user-accounts-for-a-customer.md)
+När du lägger till en anpassad verifierad domän, en domän som inte är registrerad på **onmicrosoft.com**, måste du ange egenskapen [CustomerUser.immutableId](user-resources.md#customeruser) till ett unikt ID-värde för kunden som du lägger till domänen för. Den här unika identifieraren krävs under verifieringsprocessen när domänen verifieras. Mer information om kundanvändarkonton finns i [Skapa användarkonton för en kund.](create-user-accounts-for-a-customer.md)
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -71,16 +71,16 @@ I den här tabellen beskrivs de obligatoriska och **valfria domänegenskaperna**
 |--------------------|------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | AuthenticationType                                    | sträng           | Yes      | Definierar om domänen är en `Managed` domän eller en `Federated` domän. Värden som stöds: `Managed` , `Federated` .|
 | Funktion                                            | sträng           | Yes      | Anger domänkapaciteten. Till exempel `Email`.                  |
-| IsDefault                                             | nullbar boolesk | No       | Anger om domänen är standarddomänen för klienten. Värden som stöds: `True` , `False` , `Null` .        |
+| IsDefault                                             | nullbar boolesk | No       | Anger om domänen är standarddomänen för klientorganisationen. Värden som stöds: `True` , `False` , `Null` .        |
 | IsInitial                                             | nullbar boolesk | No       | Anger om domänen är en inledande domän. Värden som stöds: `True` , `False` , `Null` .                       |
 | Name                                                  | sträng           | Yes      | Domännamnet.                                                          |
 | RootDomain                                            | sträng           | No       | Namnet på rotdomänen.                                              |
 | Status                                                | sträng           | Yes      | Domänstatus. Till exempel `Verified`. Värden som stöds:  `Unverified` , `Verified` , `PendingDeletion` .                               |
 | VerificationMethod                                    | sträng           | Yes      | Typ av domänverifieringsmetod. Värden som stöds: `None` , `DnsRecord` , `Email` .                                    |
 
-### <a name="domain-federation-settings"></a>Inställningar för domänfederation
+### <a name="domain-federation-settings"></a>Domänfederationsinställningar
 
-I den här tabellen beskrivs egenskaperna obligatoriska och **valfria DomainFederationSettings** i begärandetexten.
+I den här tabellen beskrivs de obligatoriska och **valfria egenskaperna DomainFederationSettings** i begärandetexten.
 
 | Namn   | Typ   | Obligatorisk | Beskrivning                                                  |
 |--------|--------|----------|--------------------------------------------------------------|
@@ -88,11 +88,11 @@ I den här tabellen beskrivs egenskaperna obligatoriska och **valfria DomainFede
 | DefaultInteractiveAuthenticationMethod | sträng           | No      | Anger standardautentiseringsmetoden som ska användas när ett program kräver att användaren har interaktiv inloggning. |
 | FederationBrandName                    | sträng           | No      | Federationsnamnet.        |
 | IssuerUri                              | sträng           | Yes     | Namnet på certifikatutfärdaren.                        |
-| LogOffUri                              | sträng           | Yes     | Utloggnings-URI:en. Den här egenskapen beskriver URI:n för ut logga ut federerad domän.        |
-| MetadataExchangeUri                    | sträng           | No      | Den URL som anger slutpunkten för metadatautbyte som används för autentisering från rich-klientprogram. |
+| LogOffUri                              | sträng           | Yes     | Utloggnings-URI. Den här egenskapen beskriver den federerade URI:n för domänin logga ut.        |
+| MetadataExchangeUri                    | sträng           | No      | DEN URL som anger slutpunkten för metadatautbyte som används för autentisering från avancerade klientprogram. |
 | NextSigningCertificate                 | sträng           | No      | Certifikatet som används för den kommande framtiden av ADFS V2 STS för att signera anspråk. Den här egenskapen är en base64-kodad representation av certifikatet. |
-| OpenIdConnectDiscoveryEndpoint         | sträng           | No      | OpenID-Anslut identifieringsslutpunkt för federerad IDP STS. |
-| PassiveLogOnUri                        | sträng           | Yes     | Den inloggnings-URI som används av äldre passiva klienter. Den här egenskapen är adressen för att skicka federerade inloggningsbegäranden. |
+| OpenIdConnectDiscoveryEndpoint         | sträng           | No      | OpenID-Anslut identifieringsslutpunkt för den federerade IDP STS. |
+| PassiveLogOnUri                        | sträng           | Yes     | Inloggnings-URI som används av äldre passiva klienter. Den här egenskapen är adressen för att skicka federerade inloggningsbegäranden. |
 | PreferredAuthenticationProtocol        | sträng           | Yes     | Formatet för autentiseringstoken. Till exempel `WsFed`. Värden som stöds: `WsFed` , `Samlp` |
 | PromptLoginBehavior                    | sträng           | Yes     | Beteendetypen för inloggning vid prompt.  Till exempel `TranslateToFreshPasswordAuth`. Värden som stöds: `TranslateToFreshPasswordAuth` , `NativeSupport` , `Disabled` |
 | SigningCertificate                     | sträng           | Yes     | Certifikatet som för närvarande används av ADFS V2 STS för att signera anspråk. Den här egenskapen är en base64-kodad representation av certifikatet. |
@@ -147,7 +147,7 @@ Om det lyckas returnerar detta API en [domänresurs](#domain) för den nya verif
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

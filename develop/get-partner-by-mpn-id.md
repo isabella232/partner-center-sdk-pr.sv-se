@@ -1,33 +1,33 @@
 ---
 title: Verifiera ett partner-MPN-ID
-description: Lär dig hur du verifierar en partners Microsoft Partner Network-ID (MPN-ID) genom att begära partnerns MPN-profil via C eller \# partnercenter-REST API.
+description: Lär dig hur du verifierar en partners Microsoft Partner Network-ID (MPN-ID) genom att begära partnerns MPN-profil via C eller \# REST API.
 ms.date: 09/29/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 223f0da94f5a1c12b4f6de32184296b88ab5f443a69feac89152acc1aa9ccbd6
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 471a94153ab4baffe45d43bee473bf68230106ad
+ms.sourcegitcommit: b0534995c36d644cc5f7bdf31b2afd5355cf7149
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115995925"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122208066"
 ---
 # <a name="verify-a-partner-mpn-id-via-c-or-the-partner-center-rest-api"></a>Verifiera ett PARTNER-MPN-ID via C \# eller partnercenter-REST API
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-Så här verifierar du en partners Microsoft Partner Network (MPN-ID).
+Så här verifierar du en partners Microsoft Partner Network ID (MPN-ID).
 
 Tekniken som visas här verifierar partnerns Microsoft Partner Network identifierare genom att begära partnerns MPN-profil från Partnercenter. Identifieraren anses vara giltig om begäran lyckas.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot har endast stöd för autentisering med app- och användarautentiseringsuppgifter.
 
 - Partnerns MPN-ID som ska verifieras. Om du utelämnar det här värdet hämtar begäran MPN-profilen för den inloggade partnern.
 
 ## <a name="c"></a>C\#
 
-Om du vill verifiera en partners MPN-ID hämtar du först ett gränssnitt för insamlingsåtgärder för partnerprofiler [**från egenskapen IAggregatePartner.Profiles.**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) Hämta sedan ett gränssnitt för MPN-profilåtgärder från [**egenskapen MpnProfile.**](/dotnet/api/microsoft.store.partnercenter.profiles.ipartnerprofilecollection.mpnprofile) Anropa slutligen metoderna [**Get**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) eller [**GetAsync med**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync) MPN-ID:t för att hämta MPN-profilen. Om du utelämnar MPN-ID från anropet Get eller GetAsync försöker begäran hämta MPN-profilen för den inloggade partnern.
+Om du vill verifiera en partners MPN-ID hämtar du först ett gränssnitt för insamlingsåtgärder för partnerprofiler [**från egenskapen IAggregatePartner.Profiles.**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) Hämta sedan ett gränssnitt för MPN-profilåtgärder från [**egenskapen MpnProfile.**](/dotnet/api/microsoft.store.partnercenter.profiles.ipartnerprofilecollection.mpnprofile) Anropa slutligen metoderna [**Get**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync) med MPN-ID:t för att hämta MPN-profilen. Om du utelämnar MPN-ID:t från Get- eller GetAsync-anropet försöker begäran hämta MPN-profilen för den inloggade partnern.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -36,7 +36,7 @@ Om du vill verifiera en partners MPN-ID hämtar du först ett gränssnitt för i
 var partnerProfile = partnerOperations.Profiles.MpnProfile.Get(partnerMpnId);
 ```
 
-**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **exempelklass:** VerifyPartnerMpnId.cs
+**Exempel:** [Konsoltestapp](console-test-app.md). **Project:** Partnercenter-SDK **Exempelklass:** VerifyPartnerMpnId.cs
 
 ## <a name="rest-request"></a>REST-begäran
 
@@ -82,7 +82,7 @@ Om det lyckas innehåller svarstexten [MpnProfile-resursen](profile-resources.md
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-example-success"></a>Svarsexempel (lyckades)
 

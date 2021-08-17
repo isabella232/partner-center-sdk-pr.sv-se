@@ -1,17 +1,17 @@
 ---
 title: Hämta en lista över tillgängliga för en SKU (efter land)
-description: Så här hämtar du en samling tillgänglighet för den angivna produkten och SKU:n efter kundland.
+description: Hur du hämtar en samling tillgänglighet för den angivna produkten och SKU efter kundland.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 89ffa4156490bd321055f12a1c8c385800b65d8d9e5a460df0cc41edda5c1a27
-ms.sourcegitcommit: f5e2d3e2ad5447b99d339662e00b2ac3a03d7d04
+ms.openlocfilehash: 8e5fe9bae436d8b7f237b9039c66b369f0e32109
+ms.sourcegitcommit: b0534995c36d644cc5f7bdf31b2afd5355cf7149
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/10/2021
-ms.locfileid: "116998507"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122208083"
 ---
 # <a name="get-a-list-of-availabilities-for-a-sku-by-country"></a>Hämta en lista över tillgängliga för en SKU (efter land)
 
@@ -19,7 +19,7 @@ Den här artikeln beskriver hur du hämtar en samling tillgänglighet i ett viss
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 - En produktidentifierare.
 
@@ -29,15 +29,15 @@ Den här artikeln beskriver hur du hämtar en samling tillgänglighet i ett viss
 
 ## <a name="c"></a>C\#
 
-Hämta listan över [tillgänglighet för en](product-resources.md#availability) [SKU:](product-resources.md#sku)
+Så här hämtar du listan [över tillgänglighet för](product-resources.md#availability) en [SKU:](product-resources.md#sku)
 
-1. Följ stegen i Hämta [en SKU efter ID för](get-a-sku-by-id.md) att hämta gränssnittet för en specifik SKU:s åtgärder.
+1. Följ stegen i Hämta [en SKU efter ID för](get-a-sku-by-id.md) att hämta gränssnittet för en specifik SKU:ns åtgärder.
 
 2. Från SKU-gränssnittet väljer du **egenskapen Availabilities** (Tillgänglighet) för att hämta ett gränssnitt med åtgärderna för tillgänglighet.
 
-3. (Valfritt) Använd metoden **ByTargetSegment()** för att filtrera tillgängligheten efter målsegment.
+3. (Valfritt) Använd **metoden ByTargetSegment()** för att filtrera tillgängligheten efter målsegment.
 
-4. Anropa **Get()** eller **GetAsync()** för att hämta en samling tillgänglighet för denna SKU.
+4. Anropa **Get()** eller **GetAsync()** för att hämta en samling av tillgängligheten för denna SKU.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -90,7 +90,7 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 Inga.
 
-### <a name="request-examples"></a>Exempel på begäran
+### <a name="request-examples"></a>Begärandeexempel
 
 #### <a name="availabilities-for-sku-by-country"></a>Tillgänglighet för SKU efter land
 
@@ -106,7 +106,7 @@ MS-CorrelationId: 83b644b5-e54a-4bdc-b354-f96c525b3c58
 
 #### <a name="availabilities-for-vm-reservations-azure-plan"></a>Tillgänglighet för VM-reservationer (Azure-plan)
 
-Följ det här exemplet för att hämta en lista över tillgänglighet per land för AZURE VM-reservations-SKU:er. Det här exemplet är för SKU:er som gäller för Azure-planer:
+Följ det här exemplet för att hämta en lista över tillgänglighet per land för Azure VM-reservations-SKU:er. Det här exemplet är för SKU:er som gäller för Azure-planer:
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ3Q/skus/0001/availabilities?country=US&targetView=AzureReservationsVM&reservationScope=AzurePlan HTTP/1.1
@@ -134,11 +134,11 @@ Om det lyckas innehåller svarstexten en samling [**tillgänglighetsresurser.**]
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Description                                                                                               |
+| HTTP-statuskod     | Felkod   | Beskrivning                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 403                  | 400030       | Åtkomst till det begärda **targetSegment** tillåts inte.                                                     |
 
