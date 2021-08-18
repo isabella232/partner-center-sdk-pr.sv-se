@@ -1,27 +1,27 @@
 ---
 title: Hämta fakturans ej fakturerade avstämningsradsobjekt
-description: Du kan hämta en samling information om ej fakturerade avstämningsradsobjekt för en angiven period med hjälp av Partner Center-API:erna.
+description: Du kan hämta en samling ofakturerade avstämningsradobjekt för en angiven period med hjälp av Partner Center-API:erna.
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 3e461367eb41c180dd1004ab2548ca24c4b891976ef53d852bb7933ff23fae65
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 846d2fb0009dd39ed232569a9c8f41104afece1b
+ms.sourcegitcommit: 00d5b934048fcec95efc70f5063e86426636d244
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115993885"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228452"
 ---
 # <a name="get-invoices-unbilled-reconciliation-line-items"></a>Hämta fakturans ej fakturerade avstämningsradsobjekt
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-Du kan använda följande metoder för att hämta en samling information för ej fakturerade fakturaradsobjekt (kallas även öppna faktureringsradsobjekt).
+Du kan använda följande metoder för att hämta en samling information för fakturaradsobjekt som inte fakturerats (kallas även öppna faktureringsradsobjekt).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app+användarautentiseringsuppgifter.
 
 - En fakturaidentifierare. Detta identifierar fakturan som radobjekten ska hämtas för.
 
@@ -29,7 +29,7 @@ Du kan använda följande metoder för att hämta en samling information för ej
 
 Hämta radobjekten för den angivna fakturan genom att hämta fakturaobjektet:
 
-1. Anropa [**ById-metoden**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) för att hämta ett gränssnitt för fakturaåtgärder för den angivna fakturan.
+1. Anropa [**ById-metoden**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) för att hämta ett gränssnitt till fakturaåtgärder för den angivna fakturan.
 
 2. Anropa metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) för att hämta fakturaobjektet.
 
@@ -47,7 +47,7 @@ Så här hämtar du en samling radobjekt som motsvarar en **InvoiceDetail-instan
 
 3. Skapa en uppräkning för att bläddra i samlingen. Ett exempel finns i följande exempelkod.
 
-I följande exempelkod används en **foreach-loop** för att bearbeta **InvoiceLineItems-samlingen.** En separat samling radobjekt hämtas för varje **InvoiceLineItemType**.
+Följande exempelkod använder en **foreach-loop** för att bearbeta **samlingen InvoiceLineItems.** En separat samling radobjekt hämtas för varje **InvoiceLineItemType**.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -108,33 +108,32 @@ while (fetchNext)
 Ett liknande exempel finns i:
 
 - Exempel: [Konsoltestapp](console-test-app.md)
-- Project: **Partnercenter-SDK exempel**
+- Project: Partnercenter-SDK **exempel**
 - Klass: **GetUnBilledReconLineItemsPaging.cs**
 
 ## <a name="rest-request"></a>REST-begäran
 
 ### <a name="request-syntax"></a>Begärandesyntax
 
-Du kan använda följande syntaxer för din REST-begäran, beroende på ditt användningsfall. Mer information finns i beskrivningarna för varje syntax.
+Du kan använda följande syntaxer för DIN REST-begäran, beroende på ditt användningsfall. Mer information finns i beskrivningarna för varje syntax.
 
  | Metod  | URI för förfrågan            | Beskrivning av syntaxanvändningsfall                                                                                |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=billinglineitems&currencycode={currencycode}&period={period} HTTP/1.1                              | Använd den här syntaxen för att returnera en fullständig lista över varje radobjekt för den angivna fakturan. |
-| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=billinglineitems&currencycode={currencycode}&period={period}&size={size} HTTP/1.1  | För stora fakturor använder du den här syntaxen med en angiven storlek och 0-baserad förskjutning för att returnera en sidad lista med radobjekt. |
-| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=billinglineitems&currencycode={currencycode}&period={period}&size={size}&seekOperation=Next                               | Använd den här syntaxen för att hämta nästa sida med avstämningsradobjekt med hjälp av `seekOperation = "Next"` . |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=billinglineitems&currencycode={currencycode}&period={period} HTTP/1.1                              | Använd den här syntaxen för att returnera en fullständig lista över varje radobjekt för den angivna fakturan. |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=billinglineitems&currencycode={currencycode}&period={period}&size={size} HTTP/1.1  | För stora fakturor använder du den här syntaxen med en angiven storlek och 0-baserad förskjutning för att returnera en sidad lista med radobjekt. |
+| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=billinglineitems&currencycode={currencycode}&period={period}&size={size}&seekOperation=Next                               | Använd den här syntaxen för att hämta nästa sida med avstämningsradobjekt med hjälp av `seekOperation = "Next"` . |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
-Använd följande URI och frågeparametrar när du skapar begäran.
+Använd följande URI- och frågeparametrar när du skapar begäran.
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                                     |
 |------------------------|--------|----------|---------------------------------------------------------------------------------|
-| faktura-id             | sträng | Yes      | En sträng som identifierar fakturan. Använd "ej fakturerad" för att hämta ej fakturerade uppskattningar. |
 | Leverantör               | sträng | Yes      | Providern: "OneTime".                                                |
 | invoice-line-item-type | sträng | Yes      | Typ av fakturainformation: "BillingLineItems".               |
 | hasPartnerEarnedCredit | boolesk   | No       | Värdet som anger om radobjekten ska returneras med partners intjänade kredit tillämpad. Obs! Den här parametern tillämpas endast när providertypen är OneTime och InvoiceLineItemType är UsageLineItems.
 | currencyCode           | sträng | Yes      | Valutakoden för de ej fakturerade radobjekten.                                  |
-| period                 | sträng | Yes      | Perioden för ej fakturerad rekognosering. exempel: aktuell, tidigare.                      |
+| period                 | sträng | Yes      | Perioden för ej fakturerad rekognosering. example: current, previous.                      |
 | ikoner                   | antal | No       | Det maximala antalet objekt som ska returneras. Standardstorleken är 2 000                     |
 | seekOperation          | sträng | No       | Ange seekOperation= Nästa för att hämta nästa sida med rekognoseringsradobjekt.                |
 
@@ -148,13 +147,13 @@ Inga.
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svaret en samling information om radobjekt.
+Om det lyckas innehåller svaret information om samlingen med radobjekt.
 
 *För radobjektet **ChargeType** mappas värdet **Purchase** till **New (Nytt)** och värdet **Refund (Återbetalning)** mappas till **Cancel (Avbryt).***
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="request-response-examples"></a>Exempel på begäran-svar
 
