@@ -1,31 +1,31 @@
 ---
 title: Hämta radobjekt för faktura
-description: Du kan hämta en samling fakturaradsobjekt (stängt faktureringsradsobjekt) för en angiven faktura med hjälp av Partner Center-API:erna.
-ms.date: 01/27/2020
+description: Du kan hämta information om en samling fakturaradsobjekt (stängt faktureringsradobjekt) för en angiven faktura med hjälp av Api:er för Partnercenter.
+ms.date: 02/18/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 10e43127e5f44f76ed9be8b9aa638e982259602ad57709ecee55cb62d8d7d59e
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 8d76a451971548f59d1b818b10db5f3c6d7b0ef3
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115996043"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123455752"
 ---
 # <a name="get-invoice-line-items"></a>Hämta radobjekt för faktura
 
-**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center | Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-Du kan använda följande metoder för att hämta samlingsinformation för fakturaradsobjekt (kallas även stängda faktureringsradsobjekt) för en angiven faktura.
+Du kan använda följande metoder för att hämta insamlingsinformation för fakturaradsobjekt (kallas även stängda faktureringsradsobjekt) för en angiven faktura.
 
 *Förutom felkorrigeringar uppdateras inte det här API:et längre.* Du bör uppdatera dina program så att de anropar **onetime-API:et** i stället för **Marketplace**. Onetime-API:et innehåller ytterligare funktioner och fortsätter att uppdateras. 
 
-Du bör använda **en gång för att** köra frågor mot alla radobjekt för kommersiell förbrukning i stället för **marketplace**. Eller så kan du följa länkarna i anropet för uppskattningslänkar.
+Du bör använda **engångs för att köra** frågor mot alla radobjekt för kommersiell förbrukning i stället för **marketplace**. Eller så kan du följa länkarna i anropet för uppskattningslänkar.
 
-Det här API:et stöder även **providertyperna** **azure** och **office** för prenumerationer Microsoft Azure (MS-AZR-0145P) och Office-erbjudanden, vilket gör API-funktionen bakåtkompatibel.
+Det här API:et stöder även **providertyperna** **Azure** och **Office** för prenumerationer Microsoft Azure (MS-AZR-0145P) och Office-erbjudanden, vilket gör API-funktionen bakåtkompatibel.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
 - En fakturaidentifierare. Detta identifierar fakturan som radobjekten ska hämtas för.
 
@@ -33,10 +33,10 @@ Det här API:et stöder även **providertyperna** **azure** och **office** för 
 
 Så här hämtar du radobjekten för den angivna fakturan:
 
-1. Anropa [**ById-metoden**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) för att få ett gränssnitt till fakturaåtgärder för den angivna fakturan.
+1. Anropa [**ById-metoden**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) för att hämta ett gränssnitt för fakturaåtgärder för den angivna fakturan.
 
 2. Anropa metoden [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) eller [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) för att hämta fakturaobjektet. Fakturaobjektet innehåller all information för den angivna fakturan.
-3. Använd fakturaobjektets [**InvoiceDetails-egenskap**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoice.invoicedetails) för att få åtkomst till en samling [**InvoiceDetail-objekt,**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail) som var och en innehåller en [**BillingProvider**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.billingprovider) och [**en InvoiceLineItemType**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.invoicelineitemtype). **BillingProvider** identifierar källan för fakturainformationen (till exempel **Office**, **Azure**, **OneTime**) och **InvoiceLineItemType** anger typen (till exempel **BillingLineItem**).
+3. Använd fakturaobjektets [**egenskap InvoiceDetails**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoice.invoicedetails) för att få åtkomst till en samling [**InvoiceDetail-objekt,**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail) som var och en innehåller en [**BillingProvider**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.billingprovider) och [**en InvoiceLineItemType.**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.invoicelineitemtype) **BillingProvider** identifierar källan för fakturainformationen (till exempel **Office**, **Azure**, **OneTime**), och **InvoiceLineItemType** anger typen (till exempel **BillingLineItem**).
 
 I följande exempelkod används en **foreach-loop** för att bearbeta **InvoiceDetails-samlingen.** En separat samling radobjekt hämtas för varje **InvoiceDetail-instans.**
 
@@ -104,7 +104,7 @@ Ett liknande exempel finns i följande:
 
 ### <a name="request-syntax"></a>Begärandesyntax
 
-Skicka din begäran med lämplig syntax för faktureringsleverantören i ditt scenario.
+Gör din begäran med lämplig syntax för faktureringsleverantören i ditt scenario.
 
 #### <a name="office"></a>Office
 
@@ -112,25 +112,25 @@ Följande syntax gäller när faktureringsleverantören är **Office**.
 
 | Metod  | URI för förfrågan                                                                                                                                                     |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=office&invoicelineitemtype=billinglineitems&size={size}&offset={offset} HTTP/1.1                               |
+| **FÅ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=office&invoicelineitemtype=billinglineitems&size={size}&offset={offset} HTTP/1.1                               |
 
-#### <a name="microsoft-azure-ms-azr-0145p-subscription"></a>Microsoft Azure -prenumeration (MS-AZR-0145P)
+#### <a name="microsoft-azure-ms-azr-0145p-subscription"></a>Microsoft Azure (MS-AZR-0145P)
 
-Följande syntax gäller när faktureringsleverantören har en Microsoft Azure-prenumeration (MS-AZR-0145P).
+Följande syntax gäller när faktureringsleverantören har en prenumeration Microsoft Azure (MS-AZR-0145P).
 
 | Metod  | URI för förfrågan                                                                                                                                                     |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=azure&invoicelineitemtype=billinglineitems&size={size}&offset={offset} HTTP/1.1  |
-| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=azure&invoicelineitemtype=usagelineitems&size={size}&offset={offset} HTTP/1.1  |
+| **FÅ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=azure&invoicelineitemtype=billinglineitems&size={size}&offset={offset} HTTP/1.1  |
+| **FÅ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=azure&invoicelineitemtype=usagelineitems&size={size}&offset={offset} HTTP/1.1  |
 
 ##### <a name="onetime"></a>Onetime
 
-Följande syntax gäller när faktureringsprovidern är **OneTime**. Detta inkluderar avgifter för Azure-reservationer, programvara, Azure-planer och produkter på den kommersiella marknadsplatsen.
+Följande syntax gäller när faktureringsleverantören är **OneTime**. Detta inkluderar avgifter för Azure-reservationer, programvara, Azure-planer, kommersiell marknadsplats och M365/D365-produkter.
 
 | Metod  | URI för förfrågan                                                                                                                                                     |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=billinglineitems&size={size} HTTP/1.1  |
-| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/onetime/billinglineitems&size={size}?seekOperation=Next                           |
+| **FÅ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=billinglineitems&size={size} HTTP/1.1  |
+| **FÅ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/onetime/billinglineitems&size={size}?seekOperation=Next                           |
 
 #### <a name="previous-syntaxes"></a>Tidigare syntaxer
 
@@ -138,27 +138,27 @@ Om du använder följande syntaxer måste du använda rätt syntax för ditt anv
 
 *Förutom felkorrigeringar uppdateras inte det här API:et längre.* Du bör uppdatera dina program så att de anropar **onetime-API:et** i stället för **Marketplace**. Onetime-API:et innehåller ytterligare funktioner och fortsätter att uppdateras. 
 
-Du bör använda **en gång för att** köra frågor mot alla radobjekt för kommersiell förbrukning i stället för **marketplace**. Eller så kan du följa länkarna i anropet för uppskattningslänkar.
+Du bör använda **engångs för att köra** frågor mot alla radobjekt för kommersiell förbrukning i stället för **marketplace**. Eller så kan du följa länkarna i anropet för uppskattningslänkar.
 
 | Metod | URI för förfrågan | Beskrivning av syntaxanvändningsfall |
 | ------ | ----------- | -------------------------------- |
 | GET | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/{billing-provider}/{invoice-line-item-type} HTTP/1.1                              | Du kan använda den här syntaxen för att returnera en fullständig lista över varje radobjekt för den angivna fakturan. |
 | GET | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/{billing-provider}/{invoice-line-item-type}?size={size}&offset={offset} HTTP/1.1  | För stora fakturor kan du använda den här syntaxen med en angiven storlek och 0-baserad förskjutning för att returnera en sidad lista med radobjekt. |
-| GET | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/OneTime/{invoice-line-item-type}?seekOperation=Next                               | Du kan använda den här syntaxen för en faktura med faktureringsprovidervärdet **OneTime** och ange **seekOperation** till **Nästa** för att hämta nästa sida med fakturaradsobjekt. |
+| GET | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/OneTime/{invoice-line-item-type}?seekOperation=Next                               | Du kan använda den här syntaxen för en faktura med värdet **OneTime** för faktureringsprovidern och ange **seekOperation** till **Nästa** för att hämta nästa sida med fakturaradsobjekt. |
 
 ##### <a name="uri-parameters"></a>URI-parametrar
 
-Använd följande URI- och frågeparametrar när du skapar begäran.
+Använd följande URI och frågeparametrar när du skapar begäran.
 
 | Namn                   | Typ   | Obligatorisk | Beskrivning                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| invoice-id             | sträng | Yes      | En sträng som identifierar fakturan.                             |
-| faktureringsprovider       | sträng | Yes      | Faktureringsprovidern: "Office", "Azure", "OneTime". I det äldre har vi separata datamodeller för Office & Azure-transaktioner. Det moderna har dock en enda datamodell för alla transaktioner som filtrerats genom värdet "OneTime".            |
+| faktura-id             | sträng | Yes      | En sträng som identifierar fakturan.                             |
+| faktureringsprovider       | sträng | Yes      | Faktureringsleverantören: "Office", "Azure", "OneTime". I det äldre har vi separata datamodeller för Office & Azure-transaktioner. Men i det moderna har vi en enda datamodell för alla produkter som filtrerats genom värdet "OneTime".            |
 | invoice-line-item-type | sträng | Yes      | Typ av fakturainformation: "BillingLineItems", "UsageLineItems". |
 | ikoner                   | antal | No       | Det maximala antalet objekt som ska returneras. Maximal standardstorlek = 2 000    |
 | offset                 | antal | No       | Det nollbaserade indexet för det första radobjektet som ska returneras.            |
-| seekOperation          | sträng | No       | Om **billing-provider** är lika **med OneTime** anger **du seekOperation** lika med **Nästa** för att hämta nästa sida med fakturaradsobjekt. |
-| hasPartnerEarnedCredit | boolesk | No | Det värde som anger om radobjekten ska returneras med partners intjänade kredit tillämpad. Obs! Den här parametern tillämpas endast när faktureringsprovidertypen är OneTime och InvoiceLineItemType är UsageLineItems. |
+| seekOperation          | sträng | No       | Om **billing-provider är** lika **med OneTime** anger **du seekOperation** lika med **Nästa** för att hämta nästa sida med fakturaradsobjekt. |
+| hasPartnerEarnedCredit | boolesk | No | Värdet som anger om radobjekten ska returneras med partners intjänade kredit tillämpad. Obs! Den här parametern tillämpas endast när faktureringsprovidertypen är OneTime och InvoiceLineItemType är UsageLineItems. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -170,9 +170,9 @@ Inga.
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas innehåller svaret information om samlingen med radobjekt.
+Om det lyckas innehåller svaret information om radobjektet.
 
-*För radobjektet **ChargeType** mappas **värdet Purchase** till **Ny**. Värdet Återbetalning **mappas** till **Avbryt.***
+*För radobjektet **ChargeType** mappas **värdet Purchase** till **Ny**. Värdet Återbetalning **mappas** till **Avbryt**.*
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
@@ -593,7 +593,6 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
  {
     "continuationToken": "d19617b8-fbe5-4684-a5d8-0230972fb0cf,0705c4a9-39f7-4261-ba6d-53e24a9ce47d_a4ayc/80/OGda4BO/1o/V0etpOqiLx1JwB5S3beHW0s=,0d81c700-98b4-4b13-9129-ffd5620f72e7",
     {
-    {
     "totalCount": 3,
     "items": [
         {
@@ -753,9 +752,54 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
             "attributes": {
                 "objectType": "OneTimeInvoiceLineItem"
             }
-        }
-    ]
-}
+        },
+        {
+           "partnerId": "6480d686-cfb4-424d-a945-6b9b9f4badc2",
+            "customerId": "org:9060d13d-c5ed-482e-b059-a15a38cbb28e",
+            "customerName": "recipientCustomerName",
+            "customerDomainName": "recipientCustomerDomain",
+            "customerCountry": "US",
+            "invoiceNumber": "1234000000",
+            "mpnId": "4870137",
+            "resellerMpnId": 0,
+            "orderId": "VdqkP11Bu4DlcjP5rLeQabcdefg-1234",
+            "orderDate": "2021-01-29T19:50:13.9869095Z",
+            "productId": "CFQ7TTC01234",
+            "skuId": "0001",
+            "availabilityId": "CFQ7TTC0ABCD",
+            "productName": "Office 365 E3",
+            "skuName": "Office 365 E3",
+            "chargeType": "new",
+            "unitPrice": 16,
+            "effectiveUnitPrice": 16,
+            "unitType": "",
+            "quantity": 1,
+            "subtotal": 16,
+            "taxTotal": 1.61,
+            "totalForCustomer": 17.61,
+            "currency": "USD",
+            "publisherName": "Microsoft Corporation",
+            "publisherId": "",
+            "subscriptionDescription": "",
+            "subscriptionId": "2ae795eb-f76d-ce69-cba0-123456789000",
+            "chargeStartDate": "2021-01-29T00:00:00Z",
+            "chargeEndDate": "2021-02-27T00:00:00Z",
+            "termAndBillingCycle": "One-Year commitment for monthly/yearly billing",
+            "priceAdjustmentDescription": "[\"1 month billing\",\"You are getting a discount for being a partner.\",\"You are getting a price guarantee for your price.\",\"Yearly Duration\"]",
+            "discountDetails": "",
+            "pricingCurrency": "USD",
+            "pcToBCExchangeRate": 1,
+            "pcToBCExchangeRateDate": "0001-01-01T00:00:00",
+            "billableQuantity": 1,
+            "meterDescription": "",
+            "billingFrequency": "Monthly",
+            "reservationOrderId": "e770c049-89c7-4ec1-b366-123456789000",
+            "invoiceLineItemType": "billing_line_items",
+            "billingProvider": "one_time" ,
+            "attributes": {
+                "objectType": "OneTimeInvoiceLineItem"
+            }
+      }
     ],
     "links": {
         "self": {
@@ -815,9 +859,7 @@ MS-ServerId: 202010406
 Date: Thu, 07 Sep 2017 23:31:09 GMT
 
 {
-    {
-    {
-    "totalCount": 3,
+    "totalCount": 2,
     "items": [
         {
             "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
@@ -976,9 +1018,54 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
             "attributes": {
                 "objectType": "OneTimeInvoiceLineItem"
             }
-        }
-    ]
-}
+        },
+        {
+           "partnerId": "6480d686-cfb4-424d-a945-6b9b9f4badc2",
+            "customerId": "org:9060d13d-c5ed-482e-b059-a15a38cbb28e",
+            "customerName": "recipientCustomerName",
+            "customerDomainName": "recipientCustomerDomain",
+            "customerCountry": "US",
+            "invoiceNumber": "1234000000",
+            "mpnId": "4870137",
+            "resellerMpnId": 0,
+            "orderId": "VdqkP11Bu4DlcjP5rLeQabcdefg-1234",
+            "orderDate": "2021-01-29T19:50:13.9869095Z",
+            "productId": "CFQ7TTC01234",
+            "skuId": "0001",
+            "availabilityId": "CFQ7TTC0ABCD",
+            "productName": "Office 365 E3",
+            "skuName": "Office 365 E3",
+            "chargeType": "new",
+            "unitPrice": 16,
+            "effectiveUnitPrice": 16,
+            "unitType": "",
+            "quantity": 1,
+            "subtotal": 16,
+            "taxTotal": 1.61,
+            "totalForCustomer": 17.61,
+            "currency": "USD",
+            "publisherName": "Microsoft Corporation",
+            "publisherId": "",
+            "subscriptionDescription": "",
+            "subscriptionId": "2ae795eb-f76d-ce69-cba0-123456789000",
+            "chargeStartDate": "2021-01-29T00:00:00Z",
+            "chargeEndDate": "2021-02-27T00:00:00Z",
+            "termAndBillingCycle": "One-Year commitment for monthly/yearly billing",
+            "priceAdjustmentDescription": "[\"1 month billing\",\"You are getting a discount for being a partner.\",\"You are getting a price guarantee for your price.\",\"Yearly Duration\"]",
+            "discountDetails": "",
+            "pricingCurrency": "USD",
+            "pcToBCExchangeRate": 1,
+            "pcToBCExchangeRateDate": "0001-01-01T00:00:00",
+            "billableQuantity": 1,
+            "meterDescription": "",
+            "billingFrequency": "Monthly",
+            "reservationOrderId": "e770c049-89c7-4ec1-b366-123456789000",
+            "invoiceLineItemType": "billing_line_items",
+            "billingProvider": "one_time" ,
+            "attributes": {
+                "objectType": "OneTimeInvoiceLineItem"
+            }
+      }
     ],
     "links": {
         "self": {

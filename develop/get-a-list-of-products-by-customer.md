@@ -2,21 +2,21 @@
 title: Hämta en lista över produkter (efter kund)
 description: Du kan använda en kundidentifierare för att hämta en samling produkter efter kund.
 ms.assetid: ''
-ms.date: 11/01/2019
+ms.date: 02/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 2f896c16f8f13df795cee14742b00e7d10dbb1812308b20a4d4bc4a8c614471c
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 1f3f38271b97ceba143c819ec03758ad1b9c0d3b
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115991148"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123455769"
 ---
 # <a name="get-a-list-of-products-by-customer"></a>Hämta en lista över produkter (efter kund)
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center | Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Du kan använda följande metoder för att hämta en samling produkter för en befintlig kund.
 
@@ -39,7 +39,7 @@ Du kan använda följande metoder för att hämta en samling produkter för en b
 | Namn               | Typ | Obligatorisk | Beskrivning                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
 | **kund-klient-id** | GUID | Yes | Värdet är ett GUID-formaterat **kundklientorganisations-ID,** vilket är en identifierare som gör att du kan ange en kund. |
-| **targetView** | sträng | Yes | Identifierar målvyn för katalogen. Värdena som stöds är: <br/><br/>**Azure**, som innehåller alla Azure-objekt<br/><br/>**AzureReservations**, som innehåller alla Azure-reservationsobjekt<br/><br/>**AzureReservationsVM**, som innehåller alla reservationsobjekt för virtuella datorer (VM)<br/><br/>**AzureReservationsSQL**, som innehåller alla SQL reservationsobjekt<br/><br/>**AzureReservationsCosmosDb**, som innehåller alla reservationsobjekt för Cosmos-databasen<br/><br/>**MicrosoftAzure**, som innehåller objekt för Microsoft Azure prenumerationer **(MS-AZR-0145P)** och Azure-planer<br/><br/>**OnlineServices**, som innehåller alla onlinetjänstobjekt, inklusive produkter från den kommersiella marknadsplatsen<br/><br/>**Programvara**, som innehåller alla programvaruobjekt<br/><br/>**SoftwareSUSELinux**, som innehåller alla SUSE Linux-programobjekt<br/><br/>**SoftwarePerpetual**, som innehåller alla permanenta programvaruobjekt<br/><br/>**SoftwareSubscriptions**, som innehåller alla objekt för programvaruprenumeration  |
+| **targetView** | sträng | Yes | Identifierar målvyn för katalogen. Värdena som stöds är: <br/><br/>**Azure**, som innehåller alla Azure-objekt<br/><br/>**AzureReservations**, som innehåller alla Azure-reservationsobjekt<br/><br/>**AzureReservationsVM**, som innehåller alla reservationsobjekt för virtuella datorer (VM)<br/><br/>**AzureReservationsSQL**, som innehåller alla SQL reservationsobjekt<br/><br/>**AzureReservationsCosmosDb**, som innehåller alla reservationsobjekt för Cosmos-databasen<br/><br/>**MicrosoftAzure**, som innehåller objekt för Microsoft Azure-prenumerationer **(MS-AZR-0145P)** och Azure-planer<br/><br/>**OnlineServices**, som innehåller alla onlinetjänstobjekt. Denna targetView innehåller kommersiell marknadsplats, tranditionella licensbaserade tjänster och nya handelslicensbaserade tjänster<br/><br/>**Programvara**, som innehåller alla programvaruobjekt<br/><br/>**SoftwareSUSELinux**, som innehåller alla SUSE Linux-programobjekt<br/><br/>**SoftwarePerpetual**, som innehåller alla permanenta programvaruobjekt<br/><br/>**SoftwareSubscriptions**, som innehåller alla objekt för programvaruprenumeration  |
 
 ### <a name="request-header"></a>Begärandehuvud
 
@@ -60,6 +60,20 @@ Accept: application/json
 MS-RequestId: 83643f5e-5dfd-4375-88ed-054412460dc8
 MS-CorrelationId: b1939cb2-e83d-4fb0-989f-514fb741b734
 ```
+#### <a name="new-commerce-license-based-services"></a>Nya licensbaserade tjänster för handel
+
+> [!Note] 
+> Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365
+
+Följ det här exemplet för att hämta en lista över produkter efter land för nya handelslicensbaserade tjänster som en del av den nya tekniska förhandsversionen av handelsupplevelsen. Nya handelslicensbaserade tjänster kommer att identiferas efter id- och displayNames-värden för **OnlineServicesNCE**. Se svarsexempel nedan.
+
+```http
+GET https://api.partnercenter.microsoft.com/v1/customers/65543400-f8b0-4783-8530-6d35ab8c6801/products?targetView=OnlineServices HTTP/1.1
+Authorization: Bearer
+Accept: application/json
+MS-RequestId: 031160b2-b0b0-4d40-b2b1-aaa9bb84211d
+MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
+```
 
 ## <a name="rest-response"></a>Rest-svar
 
@@ -73,7 +87,7 @@ Den här metoden returnerar följande felkoder:
 |------------------|--------------|---------------------------------|
 | 403 | 400036 | Åtkomst till begärd targetView tillåts inte. |
 
-### <a name="response-example"></a>Exempel på svar
+### <a name="response-example-for-microsoft-azure-and-azure-plan"></a>Svarsexempel för Microsoft Azure och Azure-plan
 
 ```http
 HTTP/1.1 200 OK
@@ -179,5 +193,50 @@ MS-RequestId: ae7288e2-2673-4ad4-8c12-7aad818d5949
     "attributes": {
         "objectType": "Collection"
     }
+}
+```
+### <a name="response-example-for-new-commerce-license-based-services"></a>Svarsexempel för nya handelslicensbaserade tjänster
+
+> [!Note] 
+> Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365
+
+```http
+{
+  "totalCount": 19,
+  "items": [{
+      "id": "CFQ7TTC0LH18",
+      "title": "Microsoft 365 Business Basic",
+      "description": "Best for businesses that need professional email, cloud file storage, and online meetings & chat. Desktop versions of Office apps like Excel, Word, and PowerPoint not included. For businesses with up to 300 employees.",
+      "productType": {
+        "id": "OnlineServicesNCE",
+        "displayName": "OnlineServicesNCE"
+      },
+      "isMicrosoftProduct": true,
+      "publisherName": "Microsoft Corporation",
+      "links": {
+        "skus": {
+          "uri": "/products/CFQ7TTC0LH18/skus?country=US",
+          "method": "GET",
+          "headers": []
+        },
+        "self": {
+          "uri": "/products/CFQ7TTC0LH18?country=US",
+          "method": "GET",
+          "headers": []
+        }
+      }
+    },
+    ...
+  ],
+  "links": {
+    "self": {
+      "uri": "/products?country=US&targetView=OnlineServices",
+      "method": "GET",
+      "headers": []
+    }
+  },
+  "attributes": {
+    "objectType": "Collection"
+  }
 }
 ```

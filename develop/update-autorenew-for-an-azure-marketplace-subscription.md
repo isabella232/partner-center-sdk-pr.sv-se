@@ -1,19 +1,24 @@
 ---
-title: Uppdatera automatisk förnyelse för en prenumeration på kommersiell marknadsplats
+title: Uppdatera automatiskt för en kommersiell marknadsplats och nya handelsprenumerationer
 description: Uppdatera egenskapen autorenew för en prenumerationsresurs som matchar kunden och prenumerations-ID:t.
-ms.date: 08/16/2019
+ms.date: 02/23/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b83c225a8b6fa11bdd5db5bcca9dd277fcfc4ed56769f1a7a272a388a1c93ab5
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 6d533a41c58b05ec449b76394466dd4608abc65a
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115996605"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123455735"
 ---
-# <a name="update-autorenew-for-a-commercial-marketplace-subscription"></a>Uppdatera automatisk förnyelse för en prenumeration på kommersiell marknadsplats
+# <a name="update-autorenew-for-a-commercial-marketplace-subscription-or-new-commerce-subscriptions"></a>Uppdatera automatiskt för en prenumeration på den kommersiella marknadsplatsen eller nya handelsprenumerationer
 
-Uppdatera egenskapen autorenew för en prenumerationsresurs på den [kommersiella](subscription-resources.md) marknadsplatsen som matchar kundens och prenumerations-ID:t.
+**Gäller för:** Partnercenter
+
+> [!Note] 
+> Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365.
+
+Uppdatera egenskapen autorenew för en kommersiell marknadsplats eller en ny prenumerationsresurs [för](subscription-resources.md) handel som matchar kund- och prenumerations-ID:t.
 
 På instrumentpanelen i Partnercenter utförs den här åtgärden genom att först [välja en kund](get-a-customer-by-name.md). Välj sedan den prenumeration som du vill uppdatera. Växla slutligen alternativet **Förnya automatiskt och** välj sedan **Skicka.**
 
@@ -47,7 +52,7 @@ var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).S
 
 | Metod    | URI för förfrågan                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
+| **PATCH** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -55,8 +60,8 @@ I den här tabellen visas den frågeparameter som krävs för att pausa prenumer
 
 | Namn                    | Typ     | Obligatorisk | Beskrivning                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **kund-klient-id**  | **Guid** | Y        | Ett GUID som motsvarar kunden.     |
-| **id-for-subscription** | **Guid** | Y        | Ett GUID som motsvarar prenumerationen. |
+| **kund-klient-id**  | **GUID** | Y        | Ett GUID som motsvarar kunden.     |
+| **id-for-subscription** | **GUID** | Y        | Ett GUID som motsvarar prenumerationen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -64,9 +69,9 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-En fullständig prenumerationsresurs **för** den kommersiella marknadsplatsen krävs i begärandetexten. Kontrollera att egenskapen **AutoRenewEnabled** har uppdaterats.
+En fullständig **prenumerationsresurs för** den kommersiella marknadsplatsen krävs i begärandetexten. Kontrollera att egenskapen **AutoRenewEnabled** har uppdaterats.
 
-### <a name="request-example"></a>Exempel på begäran
+### <a name="request-example-for-commercial-marketplace-subscription"></a>Exempel på begäran för commercial marketplace-prenumeration
 
 ```http
 PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<id-for-subscription> HTTP/1.1
@@ -107,6 +112,86 @@ Connection: Keep-Alive
     "publisherName": "publisher Name",
     "orderId": "ImxjLNL4_fOc-2KoyOxGTZcrlIquzls11",
     "attributes": {"objectType": "Subscription"},
+}
+```
+
+### <a name="request-example-for-new-commerce-subscription"></a>Exempel på begäran för ny handelsprenumeration
+
+> [!Note] 
+> Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365.
+
+```http
+PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<id-for-subscription> HTTP/1.1
+Authorization: Bearer <token>
+Accept: application/json
+MS-RequestId: ca7c39f7-1a80-43bc-90d8-ee7d1cad3831
+MS-CorrelationId: ec8f62e5-1d92-47e9-8d5d-1924af105f2c
+If-Match: <etag>
+Content-Type: application/json
+Content-Length: 1029
+Expect: 100-continue
+Connection: Keep-Alive
+
+ {
+    "id": "a4c1340d-6911-4758-bba3-0c4c6007d161",
+    "offerId": "CFQ7TTC0LH18:0001:CFQ7TTC0K971",
+    "offerName": "Microsoft 365 Business Basic",
+    "friendlyName": "Microsoft 365 Business Basic",
+    "productType": {
+        "id": "OnlineServicesNCE",
+        "displayName": "OnlineServicesNCE"
+    },
+    "quantity": 1, 
+    "unitType": "Licenses",
+    "hasPurchasableAddons": false,
+    "creationDate": "2021-01-14T16:57:15.0966728Z",
+    "effectiveStartDate": "2021-01-14T16:57:14.498252Z",
+    "commitmentEndDate": "2022-01-13T00:00:00Z",
+    "status": "active",
+    "autoRenewEnabled": false, // original value = true
+    "isTrial": false,
+    "billingType": "license",
+    "billingCycle": "monthly",
+    "termDuration": "P1Y",
+    "renewalTermDuration": "",
+    "refundOptions": [
+        {
+            "type": "Full",
+            "expiresAt": "2021-01-15T00:00:00Z"
+        }
+    ],
+    "isMicrosoftProduct": true,
+    "partnerId": "",
+    "attentionNeeded": false,
+    "actionTaken": false,
+    "contractType": "subscription",
+    "links": {
+        "product": {
+            "uri": "/products/CFQ7TTC0LH18?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "sku": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "availability": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001/availabilities/CFQ7TTC0K971?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "self": {
+            "uri": "/customers/d8202a51-69f9-4228-b900-d0e081af17d7/subscriptions/a4c1340d-6911-4758-bba3-0c4c6007d161",
+            "method": "GET",
+            "headers": []
+        }
+    },
+    "publisherName": "Microsoft Corporation",
+    "orderId": "34b37d7340cc",
+    "attributes": {
+        "objectType": "Subscription"
+    }
 }
 ```
 

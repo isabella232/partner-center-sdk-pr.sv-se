@@ -1,17 +1,17 @@
 ---
 title: Hämta en lista över tillgängliga för en SKU (efter land)
 description: Hur du hämtar en samling tillgänglighet för den angivna produkten och SKU efter kundland.
-ms.date: 11/01/2019
+ms.date: 02/16/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 8e5fe9bae436d8b7f237b9039c66b369f0e32109
-ms.sourcegitcommit: b0534995c36d644cc5f7bdf31b2afd5355cf7149
+ms.openlocfilehash: 763a116cf120aaeeea7fddc1be7b2931f4a513e6
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122208083"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456009"
 ---
 # <a name="get-a-list-of-availabilities-for-a-sku-by-country"></a>Hämta en lista över tillgängliga för en SKU (efter land)
 
@@ -19,7 +19,7 @@ Den här artikeln beskriver hur du hämtar en samling tillgänglighet i ett viss
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app+användarautentiseringsuppgifter.
 
 - En produktidentifierare.
 
@@ -29,15 +29,15 @@ Den här artikeln beskriver hur du hämtar en samling tillgänglighet i ett viss
 
 ## <a name="c"></a>C\#
 
-Så här hämtar du listan [över tillgänglighet för](product-resources.md#availability) en [SKU:](product-resources.md#sku)
+Hämta listan över [tillgänglighet för en](product-resources.md#availability) [SKU:](product-resources.md#sku)
 
-1. Följ stegen i Hämta [en SKU efter ID för](get-a-sku-by-id.md) att hämta gränssnittet för en specifik SKU:ns åtgärder.
+1. Följ stegen i Hämta [en SKU efter ID för](get-a-sku-by-id.md) att hämta gränssnittet för en specifik SKU:s åtgärder.
 
-2. Från SKU-gränssnittet väljer du **egenskapen Availabilities** (Tillgänglighet) för att hämta ett gränssnitt med åtgärderna för tillgänglighet.
+2. Från SKU-gränssnittet väljer du **egenskapen Tillgänglighet för** att hämta ett gränssnitt med åtgärderna för tillgänglighet.
 
-3. (Valfritt) Använd **metoden ByTargetSegment()** för att filtrera tillgängligheten efter målsegment.
+3. (Valfritt) Använd metoden **ByTargetSegment()** för att filtrera tillgängligheten efter målsegment.
 
-4. Anropa **Get()** eller **GetAsync()** för att hämta en samling av tillgängligheten för denna SKU.
+4. Anropa **Get()** eller **GetAsync()** för att hämta en samling tillgänglighet för denna SKU.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -68,7 +68,7 @@ var availabilities = partnerOperations.Products.ByCountry(countryCode).ById(prod
 
 | Metod  | URI för förfrågan                                                                                                                              |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------|
-| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{product-id}/skus/{sku-id}/availabilities?country={country-code}&targetSegment={target-segment} HTTP/1.1     |
+| **FÅ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{product-id}/skus/{sku-id}/availabilities?country={country-code}&targetSegment={target-segment} HTTP/1.1     |
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
@@ -80,7 +80,7 @@ Använd följande sökväg och frågeparametrar för att hämta en lista över t
 | sku-id                 | sträng   | Yes      | En sträng som identifierar SKU:n.                               |
 | landskod           | sträng   | Yes      | Ett lands-/regions-ID.                                            |
 | målsegment         | sträng   | No       | En sträng som identifierar målsegmentet som används för filtrering. |
-| reservationScope | sträng   | No | När du frågar efter en lista över tillgänglighet för en Azure-reservations-SKU anger du för att hämta en lista över tillgänglighet som `reservationScope=AzurePlan` gäller för AzurePlan. Undanta den här parametern för att hämta en lista över tillgänglighet som gäller för Microsoft Azure-prenumerationer (MS-AZR-0145P).  |
+| reservationScope | sträng   | No | När du frågar efter en lista över tillgänglighet för en Azure-reservations-SKU anger du för att hämta en lista över tillgänglighet som `reservationScope=AzurePlan` gäller för AzurePlan. Undanta den här parametern för att hämta en lista över tillgänglighet som kan Microsoft Azure prenumerationer (MS-AZR-0145P).  |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -90,7 +90,7 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 Inga.
 
-### <a name="request-examples"></a>Begärandeexempel
+### <a name="request-examples"></a>Exempel på begäran
 
 #### <a name="availabilities-for-sku-by-country"></a>Tillgänglighet för SKU efter land
 
@@ -106,7 +106,7 @@ MS-CorrelationId: 83b644b5-e54a-4bdc-b354-f96c525b3c58
 
 #### <a name="availabilities-for-vm-reservations-azure-plan"></a>Tillgänglighet för VM-reservationer (Azure-plan)
 
-Följ det här exemplet för att hämta en lista över tillgänglighet per land för Azure VM-reservations-SKU:er. Det här exemplet är för SKU:er som gäller för Azure-planer:
+Följ det här exemplet för att hämta en lista över tillgänglighet per land för AZURE VM-reservations-SKU:er. Det här exemplet är för SKU:er som gäller för Azure-planer:
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ3Q/skus/0001/availabilities?country=US&targetView=AzureReservationsVM&reservationScope=AzurePlan HTTP/1.1
@@ -116,7 +116,7 @@ MS-RequestId: 031160b2-b0b0-4d40-b2b1-aaa9bb84211d
 MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 ```
 
-#### <a name="availabilities-for-vm-reservations-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Tillgänglighet för VM-reservationer för Microsoft Azure prenumerationer (MS-AZR-0145P)
+#### <a name="availabilities-for-vm-reservations-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Tillgänglighet för VM-reservationer för Microsoft Azure-prenumerationer (MS-AZR-0145P)
 
 Följ det här exemplet för att hämta en lista över tillgänglighet per land för Azure VM-reservationer som gäller för Microsoft Azure-prenumerationer (MS-AZR-0145P).
 
@@ -134,15 +134,15 @@ Om det lyckas innehåller svarstexten en samling [**tillgänglighetsresurser.**]
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder i Partnercenter.](error-codes.md)
 
 Den här metoden returnerar följande felkoder:
 
-| HTTP-statuskod     | Felkod   | Beskrivning                                                                                               |
+| HTTP-statuskod     | Felkod   | Description                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 403                  | 400030       | Åtkomst till det begärda **targetSegment** tillåts inte.                                                     |
 
-### <a name="response-example"></a>Exempel på svar
+### <a name="response-example-for-azure-vm-reservations-azure-plan"></a>Svarsexempel för Azure VM-reservationer (Azure-plan)
 
 ```http
 HTTP/1.1 200 OK
@@ -196,6 +196,93 @@ Content-Length: 808
     },
     "attributes": {
         "objectType": "Collection"
+    }
+}
+```
+
+### <a name="response-example-for-new-commerce-license-based-services"></a>Svarsexempel för nya handelslicensbaserade tjänster
+
+> [!Note] 
+> Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Server: Microsoft-IIS/10.0
+MS-CorrelationId: 83b644b5-e54a-4bdc-b354-f96c525b3c58,83b644b5-e54a-4bdc-b354-f96c525b3c58
+MS-RequestId: 70324727-62d8-4195-8f99-70ea25058d02,70324727-62d8-4195-8f99-70ea25058d02
+X-Locale: en-US,en-US
+X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcbWFtZW5kZVxkZXZcZHBzLXJwZVxSUEUuUGFydG5lci5TZXJ2aWNlLkNhdGFsb2dcV2ViQXBpc1xDYXRhbG9nU2VydmljZS5WMi5XZWJcdjFccHJvZHVjdHNcRFpIMzE4WjBCUTNRXHNrdXNcMDAwMVxhdmFpbGFiaWxpdGllcw==?=
+X-Powered-By: ASP.NET
+Date: Wed, 14 Mar 2018 22:19:37 GMT
+Content-Length: 808
+
+{
+    "id": "CFQ7TTC0K971",
+    "productId": "CFQ7TTC0LH18",
+    "skuId": "0001",
+    "catalogItemId": "CFQ7TTC0LH18:0001:CFQ7TTC0K971",
+    "defaultCurrency": {
+        "code": "USD",
+        "symbol": "$"
+    },
+    "segment": "commercial",
+    "country": "US",
+    "isPurchasable": true,
+    "isRenewable": true, 
+    "renewalInstructions": [
+        {
+            "applicableTermIds": [
+                "5aeco6mffyxo"
+            ],
+            "renewalOptions": [
+                {
+                    "renewToId": "CFQ7TTC0LH18:0001",
+                    "isAutoRenewable": true
+                }
+            ]
+        },
+     …
+    ],
+    "terms": [
+        {
+            "id": "5aeco6mffyxo",
+            "duration": "P1Y",
+            "description": "One-Year commitment for monthly/yearly billing",
+            "billingCycle": "Annual",
+            "cancellationPolicies": [
+                {
+                    "refundOptions": [
+                        {
+                            "sequenceId": 0,
+                            "type": "Full",
+                            "expiresAfter": "P1D"
+                        }
+                    ]
+                }
+            ]
+        },
+       …
+    ],
+    "links": {
+        "self": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001/availabilities/CFQ7TTC0K971?country=US",
+            "method": "GET",
+            "headers": []
+        }
+    },
+        "links": {
+            "availabilities": {
+                "uri": "/products/CFQ7TTC0LH18/skus/0001/availabilities?country=US",
+                "method": "GET",
+                "headers": []
+            },
+            "self": {
+                "uri": "/products/CFQ7TTC0LH18/skus/0001?country=US",
+                "method": "GET",
+                "headers": []
+            }
+        }
     }
 }
 ```

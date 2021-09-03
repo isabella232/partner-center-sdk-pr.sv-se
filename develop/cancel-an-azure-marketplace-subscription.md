@@ -1,25 +1,30 @@
 ---
-title: Avbryta en prenumeration på kommersiell marknadsplats
-description: Lär dig hur du använder Partner Center-API:er för att avbryta en prenumerationsresurs på den kommersiella marknadsplatsen som matchar ett kund- och prenumerations-ID.
-ms.date: 08/16/2019
+title: Avbryta en kommersiell marknadsplats eller en ny handelsprenumeration
+description: Lär dig hur du använder Partner Center-API:er för att avbryta en kommersiell marknadsplats eller en ny prenumerationsresurs för handel som matchar en kund och ett prenumerations-ID.
+ms.date: 02/23/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e73810bb62ecc8487ff0d57c051a1201fc558d13b01529bb8ff5a3f2ac223f2b
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: cbfe17ba4880c303c3f3ba01db5955a557eb04e2
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115992270"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456145"
 ---
-# <a name="cancel-a-commercial-marketplace-subscription-using-partner-center-apis"></a>Avbryta en prenumeration på den kommersiella marknadsplatsen med partnercenter-API:er
+# <a name="cancel-a-commercial-marketplace-or-new-commerce-subscription-using-partner-center-apis"></a>Avbryta en kommersiell marknadsplats eller en ny handelsprenumeration med partnercenter-API:er
 
-I den här artikeln beskrivs hur du kan använda Partnercenter-API:et för att avbryta en prenumerationsresurs [på](subscription-resources.md) den kommersiella marknadsplatsen som matchar kund- och prenumerations-ID:t.
+**Gäller för:** Partnercenter
+
+I den här artikeln beskrivs hur du kan använda Partnercenter-API:et för att avbryta en kommersiell marknadsplats eller en ny prenumerationsresurs för handel som matchar kunden och prenumerations-ID:t. [](subscription-resources.md)
+
+> [!Note] 
+> Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID.
 
@@ -39,11 +44,11 @@ Så här avbryter du en kunds prenumeration:
 
 1. [Hämta prenumerationen efter ID](get-a-subscription-by-id.md).
 
-2. Ändra prenumerationens [**statusegenskap.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) Information om **statuskoder** finns i [SubscriptionStatus-uppräkning](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus).
+2. Ändra prenumerationens [**statusegenskap.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) Information om **statuskoder** finns i [SubscriptionStatus-uppräkning.](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus)
 
 3. När ändringen har gjorts använder du din **`IAggregatePartner.Customers`** samling och anropar **metoden ById().**
 
-4. Anropa egenskapen [**Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid)
+4. Anropa egenskapen [**Prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid)
 
 5. Anropa **metoden Patch().**
 
@@ -66,11 +71,11 @@ var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).S
 
 | Metod    | URI för förfrågan                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **Patch** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
+| **PATCH** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
-I den här tabellen visas den frågeparameter som krävs för att pausa prenumerationen.
+I den här tabellen visas frågeparametern som krävs för att pausa prenumerationen.
 
 | Namn                    | Typ     | Obligatorisk | Beskrivning                               |
 |-------------------------|----------|----------|-------------------------------------------|
@@ -85,7 +90,7 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 En fullständig **prenumerationsresurs** krävs i begärandetexten. Kontrollera att **egenskapen Status** har uppdaterats.
 
-### <a name="request-example"></a>Exempel på begäran
+### <a name="request-example-for-a-commercial-marketplace-subscription"></a>Exempel på begäran för en prenumeration på den kommersiella marknadsplatsen
 
 ```http
 PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<id-for-subscription> HTTP/1.1
@@ -129,13 +134,93 @@ Connection: Keep-Alive
 }
 ```
 
+### <a name="request-example-for-a-new-commerce-subscription"></a>Exempel på begäran för en ny handelsprenumeration
+
+> [!Note] 
+> Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365.
+
+```http
+PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<id-for-subscription> HTTP/1.1
+Authorization: Bearer <token>
+Accept: application/json
+MS-RequestId: ca7c39f7-1a80-43bc-90d8-ee7d1cad3831
+MS-CorrelationId: ec8f62e5-1d92-47e9-8d5d-1924af105f2c
+If-Match: <etag>
+Content-Type: application/json
+Content-Length: 1029
+Expect: 100-continue
+Connection: Keep-Alive
+
+{
+    "id": "a4c1340d-6911-4758-bba3-0c4c6007d161",
+    "offerId": "CFQ7TTC0LH18:0001:CFQ7TTC0K971",
+    "offerName": "Microsoft 365 Business Basic",
+    "friendlyName": "Microsoft 365 Business Basic",
+    "productType": {
+        "id": "OnlineServicesNCE",
+        "displayName": "OnlineServicesNCE"
+    },
+    "quantity": 1, 
+    "unitType": "Licenses",
+    "hasPurchasableAddons": false,
+    "creationDate": "2021-01-14T16:57:15.0966728Z",
+    "effectiveStartDate": "2021-01-14T16:57:14.498252Z",
+    "commitmentEndDate": "2022-01-13T00:00:00Z",
+    "status": "deleted", // original value = “active”
+    "autoRenewEnabled": true, 
+    "isTrial": false,
+    "billingType": "license",
+    "billingCycle": "monthly",
+    "termDuration": "P1Y",
+    "renewalTermDuration": "",
+    "refundOptions": [
+        {
+            "type": "Full",
+            "expiresAt": "2021-01-15T00:00:00Z"
+        }
+    ],
+    "isMicrosoftProduct": true,
+    "partnerId": "",
+    "attentionNeeded": false,
+    "actionTaken": false,
+    "contractType": "subscription",
+    "links": {
+        "product": {
+            "uri": "/products/CFQ7TTC0LH18?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "sku": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "availability": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001/availabilities/CFQ7TTC0K971?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "self": {
+            "uri": "/customers/d8202a51-69f9-4228-b900-d0e081af17d7/subscriptions/a4c1340d-6911-4758-bba3-0c4c6007d161",
+            "method": "GET",
+            "headers": []
+        }
+    },
+    "publisherName": "Microsoft Corporation",
+    "orderId": "34b37d7340cc",
+    "attributes": {
+        "objectType": "Subscription"
+    }
+}
+```
+
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden [borttagna](subscription-resources.md) prenumerationsresursegenskaper i svarstexten.
+Om det lyckas returnerar den här metoden egenskaperna [för den](subscription-resources.md) borttagna prenumerationsresursen i svarstexten.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 

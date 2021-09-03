@@ -1,17 +1,17 @@
 ---
 title: Hämta en lista över produkter (efter land)
 description: Du kan använda produktresursen för att hämta en samling produkter efter kundland.
-ms.date: 11/01/2019
+ms.date: 02/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 6ec3a642006a100ef85c0af9eeddd9daf00cc1cd981eabd5dddb77e60e15111f
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 601fc2c8012d92d6964f0aaa29a3a46d732df300
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115989448"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456060"
 ---
 # <a name="get-a-list-of-products-by-country"></a>Hämta en lista över produkter (efter land)
 
@@ -21,7 +21,7 @@ Du kan använda följande metoder för att hämta en samling produkter som är t
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app+användarautentiseringsuppgifter.
 
 - Ett land.
 
@@ -100,7 +100,7 @@ Get-PartnerProduct -Catalog 'Azure' -Segment 'commercial'
 
 | Metod  | URI för förfrågan                                                                                                                                    |
 |---------|----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products?country={country}&targetView={targetView}&targetSegment={targetSegment} HTTP/1.1 |
+| **FÅ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products?country={country}&targetView={targetView}&targetSegment={targetSegment} HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
@@ -109,7 +109,7 @@ Använd följande sökväg och frågeparametrar för att hämta en lista över p
 | Namn                   | Typ     | Obligatorisk | Beskrivning                                                             |
 |------------------------|----------|----------|-------------------------------------------------------------------------|
 | land                | sträng   | Yes      | Land/region-ID.                                                  |
-| targetView             | sträng   | Yes      | Identifierar målvyn för katalogen. Värdena som stöds är: <br/><br/>**Azure**, som innehåller alla Azure-objekt<br/><br/>**AzureReservations**, som innehåller alla Reservationsobjekt i Azure<br/><br/>**AzureReservationsVM**, som innehåller alla reservationsobjekt för virtuella datorer (VM)<br/><br/>**AzureReservationsSQL**, som innehåller alla SQL reservationsobjekt<br/><br/>**AzureReservationsCosmosDb**, som innehåller alla reservationsobjekt för Cosmos-databasen<br/><br/>**MicrosoftAzure**, som innehåller objekt för Microsoft Azure-prenumerationer **(MS-AZR-0145P)** och Azure-planer<br/><br/>**OnlineServices**, som innehåller alla onlinetjänstobjekt (inklusive produkter från den kommersiella marknadsplatsen)<br/><br/>**Programvara**, som innehåller alla programvaruobjekt<br/><br/>**SoftwareSUSELinux**, som innehåller alla SUSE Linux-programobjekt<br/><br/>**SoftwarePerpetual**, som innehåller alla permanenta programvaruobjekt<br/><br/>**SoftwareSubscriptions**, som innehåller alla programprenumerationsobjekt    |
+| targetView             | sträng   | Yes      | Identifierar målvyn för katalogen. Värdena som stöds är: <br/><br/>**Azure**, som innehåller alla Azure-objekt<br/><br/>**AzureReservations**, som innehåller alla Reservationsobjekt i Azure<br/><br/>**AzureReservationsVM**, som innehåller alla reservationsobjekt för virtuella datorer (VM)<br/><br/>**AzureReservationsSQL**, som innehåller alla SQL reservationsobjekt<br/><br/>**AzureReservationsCosmosDb**, som innehåller alla reservationsobjekt för Cosmos-databasen<br/><br/>**MicrosoftAzure**, som innehåller objekt för Microsoft Azure-prenumerationer **(MS-AZR-0145P)** och Azure-planer<br/><br/>**OnlineServices**, som innehåller alla onlinetjänstobjekt. Denna targetView innehåller kommersiell marknadsplats, traditionella licensbaserade tjänster och licensbaserade tjänster för ny handel<br/><br/>**Programvara**, som innehåller alla programvaruobjekt<br/><br/>**SoftwareSUSELinux**, som innehåller alla SUSE Linux-programobjekt<br/><br/>**SoftwarePerpetual**, som innehåller alla permanenta programvaruobjekt<br/><br/>**SoftwareSubscriptions**, som innehåller alla programprenumerationsobjekt    |
 | targetSegment          | sträng   | No       | Identifierar målsegmentet. Vyn för olika målgrupper. Värdena som stöds är: <br/><br/>**Kommersiella**<br/>**Utbildning**<br/>**Regeringen**<br/>**Ideell**  |
 | reservationScope | sträng   | No | När du frågar efter en lista över produkter för Azure-reservationer anger du för att hämta en lista över `reservationScope=AzurePlan` produkter som gäller för Azure-planer. Undanta den här parametern för att hämta en lista över produkter för Azure-reservationer, som gäller för Microsoft Azure-prenumerationer **(MS-AZR-0145P).**  |
 
@@ -159,6 +159,21 @@ MS-RequestId: 031160b2-b0b0-4d40-b2b1-aaa9bb84211d
 MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 ```
 
+#### <a name="new-commerce-license-based-services"></a>Nya licensbaserade tjänster för handel
+
+> [!Note] 
+> Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365
+
+Följ det här exemplet för att hämta en lista över produkter efter land för nya handelslicensbaserade tjänster som en del av den nya tekniska förhandsversionen av handelsupplevelsen. Nya handelslicensbaserade tjänster identifieras med ID och displayNames-värden för **OnlineServicesNCE**. Se svarsexempel nedan.
+
+```http
+GET https://api.partnercenter.microsoft.com/v1/products?country=US&targetView=OnlineServices HTTP/1.1
+Authorization: Bearer
+Accept: application/json
+MS-RequestId: 031160b2-b0b0-4d40-b2b1-aaa9bb84211d
+MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
+```
+
 ## <a name="rest-response"></a>REST-svar
 
 Om det lyckas innehåller svarstexten en samling [**produktresurser.**](product-resources.md#product)
@@ -174,7 +189,7 @@ Den här metoden returnerar följande felkoder:
 | 403                  | 400030       | Åtkomst till det begärda targetSegment tillåts inte.                                                     |
 | 403                  | 400036       | Åtkomst till begärd targetView tillåts inte.                                                        |
 
-### <a name="response-example"></a>Exempel på svar
+### <a name="response-example-for-azure-vm-reservations-azure-plan"></a>Svarsexempel för Azure VM-reservationer (Azure-plan)
 
 ```http
 {
@@ -221,3 +236,50 @@ Den här metoden returnerar följande felkoder:
     }
 }
 ```
+
+### <a name="response-example-for-new-commerce-license-based-services"></a>Svarsexempel för nya handelslicensbaserade tjänster
+
+> [!Note] 
+> Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365
+
+```http
+{
+  "totalCount": 19,
+  "items": [{
+      "id": "CFQ7TTC0LH18",
+      "title": "Microsoft 365 Business Basic",
+      "description": "Best for businesses that need professional email, cloud file storage, and online meetings & chat. Desktop versions of Office apps like Excel, Word, and PowerPoint not included. For businesses with up to 300 employees.",
+      "productType": {
+        "id": "OnlineServicesNCE",
+        "displayName": "OnlineServicesNCE"
+      },
+      "isMicrosoftProduct": true,
+      "publisherName": "Microsoft Corporation",
+      "links": {
+        "skus": {
+          "uri": "/products/CFQ7TTC0LH18/skus?country=US",
+          "method": "GET",
+          "headers": []
+        },
+        "self": {
+          "uri": "/products/CFQ7TTC0LH18?country=US",
+          "method": "GET",
+          "headers": []
+        }
+      }
+    },
+    ...
+  ],
+  "links": {
+    "self": {
+      "uri": "/products?country=US&targetView=OnlineServices",
+      "method": "GET",
+      "headers": []
+    }
+  },
+  "attributes": {
+    "objectType": "Collection"
+  }
+}
+```
+

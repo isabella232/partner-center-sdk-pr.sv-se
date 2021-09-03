@@ -1,17 +1,17 @@
 ---
 title: Hämta tillgängligheten efter ID
 description: Hämtar tillgängligheten för den angivna produkten och SKU:n med hjälp av ett tillgänglighets-ID.
-ms.date: 09/17/2019
+ms.date: 02/16/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: fccd566e83dab8994280fdee072c0d6f27b690d5292ed3973427088f46b30d6b
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 5bbbfdfeb81a915e5399bf2a89f99a70b509476d
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115993562"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456162"
 ---
 # <a name="get-the-availability-by-id"></a>Hämta tillgängligheten efter ID
 
@@ -29,7 +29,7 @@ Hämtar tillgängligheten för den angivna produkten och SKU:n med hjälp av ett
 
 ## <a name="c"></a>C\#
 
-Om du vill [](product-resources.md#availability)ha information om en specifik tillgänglighet börjar du med att följa stegen i Hämta en [SKU](get-a-sku-by-id.md) efter ID för att hämta gränssnittet för en [specifik SKU:ns](product-resources.md#sku) åtgärder. Från det resulterande gränssnittet väljer du **egenskapen Availabilities (Tillgänglighet)** för att hämta ett gränssnitt med tillgängliga åtgärder för Tillgänglighet. Därefter skickar du tillgänglighets-ID:t till **metoden ById()** för att hämta åtgärderna för den specifika tillgängligheten och anropar **sedan Get()** eller **GetAsync()** för att hämta tillgänglighetsinformationen.
+Om du vill [](product-resources.md#availability)ha information om en specifik tillgänglighet börjar du med att följa stegen i Hämta en [SKU](get-a-sku-by-id.md) efter ID för att hämta gränssnittet för en [specifik SKU:ns](product-resources.md#sku) åtgärder. Från det resulterande gränssnittet väljer du **egenskapen Tillgänglighet för** att hämta ett gränssnitt med tillgängliga åtgärder för Tillgänglighet. Därefter skickar du tillgänglighets-ID:t till **metoden ById()** för att hämta åtgärderna för den specifika tillgängligheten och anropar **sedan Get()** eller **GetAsync()** för att hämta tillgänglighetsinformationen.
 
 ```csharp
 IAggregatePartner partnerOperations;
@@ -75,7 +75,7 @@ Get-PartnerProductAvailability -Product $productId -SkuId $skuId -AvailabilityId
 
 | Metod  | URI för förfrågan |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{product-id}/skus/{sku-id}/availabilities/{availability-id}?country={country-code} HTTP/1.1         |
+| **FÅ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{product-id}/skus/{sku-id}/availabilities/{availability-id}?country={country-code} HTTP/1.1         |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -125,7 +125,7 @@ Den här metoden returnerar följande felkoder:
 | 404                  | 400018       | SKU hittades inte.                                                                                        |
 | 404                  | 400019       | Det går inte att hitta tillgängligheten.                                                                                   |
 
-### <a name="response-example"></a>Exempel på svar
+### <a name="response-example-for-azure-vm-reservations-azure-plan"></a>Svarsexempel för Azure VM-reservationer (Azure-plan)
 
 ```http
 HTTP/1.1 200 OK
@@ -161,6 +161,82 @@ Content-Length: 440
     "links": {
         "self": {
             "uri": "/products/DZH318Z0BQ3Q/skus/0001/availabilities/DZH318XZXPHL?country=US",
+            "method": "GET",
+            "headers": []
+        }
+    }
+}
+```
+
+### <a name="response-example-for-new-commerce-license-based-services"></a>Svarsexempel för nya handelslicensbaserade tjänster
+
+> [!Note] 
+> Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Server: Microsoft-IIS/10.0
+MS-CorrelationId: 83b644b5-e54a-4bdc-b354-f96c525b3c58,83b644b5-e54a-4bdc-b354-f96c525b3c58
+MS-RequestId: 70324727-62d8-4195-8f99-70ea25058d02,70324727-62d8-4195-8f99-70ea25058d02
+X-Locale: en-US,en-US
+X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcbWFtZW5kZVxkZXZcZHBzLXJwZVxSUEUuUGFydG5lci5TZXJ2aWNlLkNhdGFsb2dcV2ViQXBpc1xDYXRhbG9nU2VydmljZS5WMi5XZWJcdjFccHJvZHVjdHNcRFpIMzE4WjBCUTNRXHNrdXNcMDAwMVxhdmFpbGFiaWxpdGllcw==?=
+X-Powered-By: ASP.NET
+Date: Wed, 14 Mar 2018 22:19:37 GMT
+Content-Length: 808
+
+{
+    "id": "CFQ7TTC0K971",
+    "productId": "CFQ7TTC0LH18",
+    "skuId": "0001",
+    "catalogItemId": "CFQ7TTC0LH18:0001:CFQ7TTC0K971",
+    "defaultCurrency": {
+        "code": "USD",
+        "symbol": "$"
+    },
+    "segment": "commercial",
+    "country": "US",
+    "isPurchasable": true,
+    "isRenewable": true, 
+    "renewalInstructions": [
+        {
+            "applicableTermIds": [
+                "5aeco6mffyxo"
+            ],
+            "renewalOptions": [
+                {
+                    "renewToId": "CFQ7TTC0LH18:0001",
+                    "isAutoRenewable": true
+                }
+            ]
+        },
+     …
+    ],
+    "terms": [
+        {
+            "id": "5aeco6mffyxo",
+            "duration": "P1Y",
+            "description": "One-Year commitment for monthly/yearly billing",
+            "billingCycle": "Annual",
+            "cancellationPolicies": [
+                {
+                    "refundOptions": [
+                        {
+                            "sequenceId": 0,
+                            "type": "Full",
+                            "expiresAfter": "P1D"
+                        }
+                    ]
+                }
+            ]
+        },
+       …
+    ],
+    "product": { ... },
+    "sku": { ... },
+    "links": {
+        "self": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001/availabilities/CFQ7TTC0K971?country=US",
             "method": "GET",
             "headers": []
         }

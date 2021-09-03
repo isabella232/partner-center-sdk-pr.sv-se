@@ -1,17 +1,17 @@
 ---
 title: Hämta en lista över SKU:er för en produkt (efter land)
-description: Du kan hämta och filtrera en samling SKU:er efter land för en produkt med hjälp av Partner Center-API:er.
-ms.date: 11/01/2019
+description: Du kan hämta och filtrera en samling SKU:er efter land för en produkt med hjälp av Partner Center-API:erna.
+ms.date: 02/16/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 1f15ecaa7d84f4c68c6221e459d9977a79cffd9fa19d32ccbd7e6bec6444a93c
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: d86254c2fefb8d1c60a8ba4ccb66a1cc5f88d4cb
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115995449"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456179"
 ---
 # <a name="get-a-list-of-skus-for-a-product-by-country"></a>Hämta en lista över SKU:er för en produkt (efter land)
 
@@ -69,7 +69,7 @@ Så här hämtar du listan över SKU:er för en produkt:
 
 2. Från gränssnittet väljer du funktionen **getSkus för att hämta** ett gränssnitt med tillgängliga åtgärder för SKU:er.
 
-3. Anropa funktionen **get()** för att hämta en samling tillgängliga SKU:er för produkten.
+3. Anropa **funktionen get()** för att hämta en samling tillgängliga SKU:er för produkten.
 
 4. (Valfritt) Använd funktionen **byTargetSegment()** för att filtrera SKU:er efter målsegment innan du anropar **funktionen get().**
 
@@ -114,7 +114,7 @@ Get-PartnerProductSku -ProductId $productId -Segment $targetSegment
 
 | Metod  | URI för förfrågan                                                                                                                              |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------|
-| **Få** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{product-id}/skus?country={country-code}&targetSegment={target-segment} HTTP/1.1  |
+| **FÅ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{product-id}/skus?country={country-code}&targetSegment={target-segment} HTTP/1.1  |
 
 #### <a name="uri-parameters"></a>URI-parametrar
 
@@ -182,7 +182,7 @@ Den här metoden returnerar följande felkoder:
 | 403                  | 400030       | Åtkomst till det begärda targetSegment tillåts inte.                                                     |
 | 404                  | 400013       | Den överordnade produkten hittades inte.                                                                         |
 
-### <a name="response-example"></a>Exempel på svar
+### <a name="response-example-for-azure-vm-reservations-azure-plan"></a>Svarsexempel för Azure VM-reservationer (Azure-plan)
 
 ```http
 HTTP/1.1 200 OK
@@ -299,3 +299,86 @@ Content-Length: 50917
     }
 }
 ```
+
+### <a name="response-example-for-new-commerce-license-based-services"></a>Svarsexempel för nya handelslicensbaserade tjänster
+
+> [!Note] 
+> Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Server: Microsoft-IIS/10.0
+MS-CorrelationId: e75c1060-852e-4b49-92b0-cd15167a0d51,e75c1060-852e-4b49-92b0-cd15167a0d51
+MS-RequestId: 18b41adf-29b5-48eb-b14f-c9683a4e5b7d,18b41adf-29b5-48eb-b14f-c9683a4e5b7d
+X-Locale: en-US,en-US
+X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcbWFtZW5kZVxkZXZcZHBzLXJwZVxSUEUuUGFydG5lci5TZXJ2aWNlLkNhdGFsb2dcV2ViQXBpc1xDYXRhbG9nU2VydmljZS5WMi5XZWJcdjFccHJvZHVjdHNcRFpIMzE4WjBCUTVTXHNrdXM=?=
+X-Powered-By: ASP.NET
+Date: Thu, 15 Mar 2018 21:06:03 GMT
+Content-Length: 50917
+
+{
+    "totalCount": 40,
+    "items": [
+        {
+{
+    "id": "0001",
+    "productId": "CFQ7TTC0LH18",
+    "title": "Microsoft 365 Business Basic",
+    "description": "Best for businesses that need professional email, cloud file storage, and online meetings & chat. Desktop versions of Office apps like Excel, Word, and PowerPoint not included. For businesses with up to 300 employees.",
+    "minimumQuantity": 1,
+    "maximumQuantity": 300,
+    "isTrial": false,
+    "supportedBillingCycles": [
+        "annual",
+        "monthly"
+    ],
+    "purchasePrerequisites": [
+        "MicrosoftCloudAgreement"
+    ],
+    "inventoryVariables": [],
+    "provisioningVariables": [],
+    "actions": [
+        "Refund"
+    ],
+    "dynamicAttributes": {
+        "isMicrosoftProduct": true,
+        "hasConstraints": true,
+        "isAddon": false,
+        "prerequisiteSkus": [],
+        "isSoftwareAssuranceApplicable": false,
+        "upgradeTargetOffers": [
+            "CFQ7TTC0LDPB:0001",
+            "CFQ7TTC0LF8Q:0001"
+…
+        ],
+        "provisioningId": "3b555118-da6a-4418-894f-7df1e2096870",
+        "internal": false
+    },
+    "links": {
+        "availabilities": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001/availabilities?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "self": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001?country=US",
+            "method": "GET",
+            "headers": []
+        }
+    }
+}        [...]
+    ],
+    "links": {
+        "self": {
+            "uri": "/products/DZH318Z0BQ5S/skus?country=US",
+            "method": "GET",
+            "headers": []
+        }
+    },
+    "attributes": {
+        "objectType": "Collection"
+    }
+}
+```
+
