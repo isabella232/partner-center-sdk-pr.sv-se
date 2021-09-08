@@ -1,41 +1,149 @@
 ---
 title: Skapa en kundvagn
-description: Lär dig hur du använder Partner Center-API:er för att lägga till en order för en kund i en kundvagn. Avsnittet innehåller information om hur du skapar en kundvagn och eventuella krav.
-ms.date: 09/17/2019
+description: Lär dig hur du använder Partner Center-API:er för att lägga till en order för en kund i en kundvagn. Ämnet innehåller information om hur du skapar en kundvagn och eventuella krav.
+ms.date: 09/06/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: abe7a0842b0ecf52b217b277cf61603d5c86a368
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+ms.openlocfilehash: 2827a2de7dc1c136fe4ea8735e12dc4b88e5e9bf
+ms.sourcegitcommit: 5f27733d7c984c29f71c8b9c8ba5f89753eeabc4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123456100"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123557277"
 ---
 # <a name="create-a-cart-with-a-customer-order"></a>Skapa en kundvagn med en kundorder
 
-**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Tyskland-| Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center | Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-Du kan lägga till en order för en kund i en kundvagn. Mer information om vad som för närvarande är tillgängligt för försäljning finns [i Partnererbjudanden i Molnlösningsleverantör program](/partner-center/csp-offers).
+Du kan lägga till en order för en kund i en kundvagn. Mer information om vad som för närvarande är tillgängligt för försäljning [finns i Partnererbjudanden i Molnlösningsleverantör program](/partner-center/csp-offers).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
 Så här skapar du en order för en kund:
 
-1. Instansiera ett kundvagnsobjekt.
+1. Skapa en instans av ett kundvagnsobjekt.
 
-2. Skapa en lista över **CartLineItem-objekt** och tilldela listan till kundvagnens egenskap LineItems. Varje kundvagnsrad innehåller inköpsinformationen för en produkt. Du måste ha minst en kundvagnsrad.
+2. Skapa en lista över **CartLineItem-objekt** och tilldela listan till kundvagnens LineItems-egenskap. Varje artikel i kundvagnsraden innehåller inköpsinformationen för en produkt. Du måste ha minst en kundvagnsrad.
 
 3. Hämta ett gränssnitt för kundvagnsåtgärder genom att anropa metoden **IAggregatePartner.Customers.ById** med kund-ID:t för att identifiera kunden och sedan hämta gränssnittet från **egenskapen Cart.**
 
 4. Anropa metoden **Create** eller **CreateAsync** för att skapa kundvagnen.
+
+5. Om du vill slutföra atterering och inkludera ytterligare återförsäljare kan du se följande exempel på begäran och svarsexempel:
+
+### <a name="request-sample"></a>Exempel på begäran
+
+```csharp
+
+{
+    "PartnerOnRecordAttestationAccepted":true,     "lineItems": [
+        {
+            "id": 0,
+            "catalogItemId": "CFQ7TTC0LH0Z:0001:CFQ7TTC0K18P",
+            "quantity": 1,
+            "billingCycle": "monthly",
+            "termDuration": "P1M",
+            "renewsTo": null,
+            "provisioningContext": {},
+            "coterminousSubscriptionId": null
+        },
+        {
+            "id": 1,
+            "catalogItemId": "CFQ7TTC0LFLS:0002:CFQ7TTC0KDLJ",
+            "quantity": 2,
+            "billingCycle": "monthly",
+            "termDuration": "P1Y",
+            "participants": [
+                {
+                    "key": "transaction_reseller",
+                    "value": "5357564"
+                },
+                 {
+                    "key": "additional_transaction_reseller",                     
+                    "value": "517285"
+                },
+                 {
+                    "key": "additional_transaction_reseller", 
+                    "value": "5357563"
+                }
+            ]
+        }
+    ]
+}
+
+
+```
+
+### <a name="response-sample"></a>Svarsexempel
+
+```csharp
+
+{
+    "id": "3e22b548-647d-4223-9675-1fcb6cb57665",
+    "creationTimestamp": "2021-08-18T17:29:52.3517492Z",
+    "lastModifiedTimestamp": "2021-08-18T17:29:52.3517553Z",
+    "expirationTimestamp": "2021-08-25T17:30:11.2406416Z",
+    "lastModifiedUser": "da62a0dc-35e9-4601-b48e-a047bd3ec7c1",
+    "status": "Active",
+    "lineItems": [
+        {
+            "id": 0,
+            "catalogItemId": "CFQ7TTC0LH0Z:0001:CFQ7TTC0K18P",
+            "quantity": 1,
+            "currencyCode": "USD",
+            "billingCycle": "monthly",
+            "termDuration": "P1M",
+            "provisioningContext": {},
+            "orderGroup": "0"
+        },
+        {
+            "id": 1,
+            "catalogItemId": "CFQ7TTC0LFLS:0002:CFQ7TTC0KDLJ",
+            "quantity": 2,
+            "currencyCode": "USD",
+            "billingCycle": "monthly",
+            "termDuration": "P1Y",
+            "participants": [
+                {
+                    "key": "transaction_reseller",
+                    "value": "5357564"
+                },
+                {
+                    "key": "additional_transaction_reseller", 
+                    "value": "517285"
+                },
+                {
+                    "key": "additional_transaction_reseller", 
+                    "value": "5357563"
+                }
+            ],
+            "provisioningContext": {},
+            "orderGroup": "0"
+        }
+    ],
+    "links": {
+        "self": {
+            "uri": "/customers/f81d98dd-c2f4-499e-a194-5619e260344e/carts/3e22b548-647d-4223-9675-1fcb6cb57665",
+            "method": "GET",
+            "headers": []
+        }
+    },
+    "attributes": {
+        "objectType": "Cart"
+    }
+}
+
+
+```
+
 
 ### <a name="c-example"></a>\#C-exempel
 
@@ -127,9 +235,9 @@ cart = partnerOperations.Customers.ById(customerId).Carts.Create(cart);
 
 Så här skapar du en order för en kund:
 
-1. Instansiera ett kundvagnsobjekt.
+1. Skapa en instans av ett kundvagnsobjekt.
 
-2. Skapa en lista över **CartLineItem-objekt** och tilldela listan till kundvagnens radobjekt. Varje kundvagnsrad innehåller inköpsinformationen för en produkt. Du måste ha minst en kundvagnsrad.
+2. Skapa en lista över **CartLineItem-objekt** och tilldela listan till kundvagnens radobjekt. Varje artikel i kundvagnsraden innehåller inköpsinformationen för en produkt. Du måste ha minst en kundvagnsrad.
 
 3. Hämta ett gränssnitt för kundvagnsåtgärder genom att anropa funktionen **IAggregatePartner.getCustomers().byId** med kund-ID:t för att identifiera kunden och sedan hämta gränssnittet från **funktionen getCart.**
 
@@ -173,9 +281,9 @@ Cart cartCreated = partnerOperations.getCustomers().byId(customerId).getCarts().
 
 Så här skapar du en order för en kund:
 
-1. Instansiera ett kundvagnsobjekt.
+1. Skapa en instans av ett kundvagnsobjekt.
 
-2. Skapa en lista över **CartLineItem-objekt** och tilldela listan till kundvagnens radobjekt. Varje kundvagnsrad innehåller inköpsinformationen för en produkt. Du måste ha minst en kundvagnsrad.
+2. Skapa en lista över **CartLineItem-objekt** och tilldela listan till kundvagnens radobjekt. Varje artikel i kundvagnsraden innehåller inköpsinformationen för en produkt. Du måste ha minst en kundvagnsrad.
 
 3. Kör kommandot [**New-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/New-PartnerCustomerCart.md) för att skapa kundvagnen.
 
@@ -211,7 +319,7 @@ Använd följande sökvägsparameter för att identifiera kunden.
 
 | Namn            | Typ     | Obligatorisk | Beskrivning                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **kund-ID** | sträng   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
+| **kund-id** | sträng   | Yes      | Ett GUID-formaterat kund-ID som identifierar kunden.             |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -224,28 +332,31 @@ I den här tabellen beskrivs [egenskaperna för](cart-resources.md) Kundvagn i b
 | Egenskap              | Typ             | Obligatorisk        | Beskrivning |
 |-----------------------|------------------|-----------------|-----------------------------------------------------------------------------------------------------------|
 | id                    | sträng           | No              | En kundvagnsidentifierare som anges när kundvagnen har skapats.                                  |
-| creationTimeStamp     | DateTime         | No              | Det datum då kundvagnen skapades i datum/tid-format. Tillämpas när kundvagnen har skapats.         |
+| creationTimeStamp     | DateTime         | No              | Datumet då kundvagnen skapades i datum/tid-format. Tillämpas när kundvagnen har skapats.         |
 | lastModifiedTimeStamp | DateTime         | No              | Datum då kundvagnen senast uppdaterades i datum/tid-format. Tillämpas när kundvagnen har skapats.    |
 | expirationTimeStamp   | DateTime         | No              | Datumet då kundvagnen upphör att gälla i datum/tid-format.  Tillämpas när kundvagnen har skapats.            |
 | lastModifiedUser      | sträng           | No              | Den användare som senast uppdaterade kundvagnen. Tillämpas när kundvagnen har skapats.                             |
 | lineItems             | Matris med objekt | Yes             | En matris med [CartLineItem-resurser.](cart-resources.md#cartlineitem)                                     |
+| PartnerOnRecordAttestationAccepted | Boolesk | Yes | Bekräftar att attentering har slutförts |
 
 I den här tabellen beskrivs [egenskaperna för CartLineItem](cart-resources.md#cartlineitem) i begärandetexten.
 
 |      Egenskap       |            Typ             | Obligatorisk |                                                                                         Beskrivning                                                                                         |
 |---------------------|-----------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|         id          |           sträng            |    No    |                                                     En unik identifierare för ett radobjekt i kundvagnen. Tillämpas när kundvagnen har skapats.                                                     |
+|         id          |           sträng            |    No    |                                                     En unik identifierare för ett kundvagnsradsobjekt. Tillämpas när kundvagnen har skapats.                                                     |
 |      catalogId      |           sträng            |   Yes    |                                                                                Katalogobjektets identifierare.                                                                                 |
-|    friendlyName     |           sträng            |    No    |                                                    Valfritt. Det egna namnet för objektet som definierats av partnern för att undvika tvetydighet.                                                    |
+|    friendlyName     |           sträng            |    No    |                                                    Valfritt. Det egna namnet för det objekt som definierats av partnern för att undvika tvetydighet.                                                    |
 |      quantity       |             int             |   Yes    |                                                                            Antalet licenser eller instanser.                                                                             |
 |    currencyCode     |           sträng            |    No    |                                                                                     Valutakoden.                                                                                      |
 |    billingCycle     |           Objekt            |   Yes    |                                                                    Den typ av faktureringsperiod som angetts för den aktuella perioden.                                                                    |
 |    deltagare     | Lista över objektsträngpar |    No    |                                                                En samling PartnerId on Record (MPNID) för köpet.                                                                 |
 | provisioningContext | Ordlista<sträng, sträng>  |    No    | Information som krävs för etablering för vissa objekt i katalogen. Egenskapen provisioningVariables i en SKU anger vilka egenskaper som krävs för specifika objekt i katalogen. |
 |     orderGroup      |           sträng            |    No    |                                                                   En grupp som anger vilka objekt som kan placeras tillsammans.                                                                   |
-|        fel        |           Objekt            |    No    |                                                                     Tillämpas när kundvagnen har skapats om det finns ett fel.                                                                      |
+|        fel        |           Objekt            |    No    |                                                                     Tillämpas efter att kundvagnen har skapats om det finns ett fel.                                                                      |
 |     renewsTo        | Matris med objekt            |    No    |                                                    En matris med [RenewsTo-resurser.](cart-resources.md#renewsto)                                                                            |
-|     AttestationAccepted        | Boolesk            |    No    |                                                   Anger avtal för att erbjuda eller SKU-villkor. Krävs endast för erbjudanden eller SKU:er där SkuAttestationProperties eller OfferAttestationProperties enforceAttestation är True.                                                                             |
+|     AttestationAccepted        | Boolesk            |    No    |                                                   Anger avtal om att erbjuda eller SKU-villkor. Krävs endast för erbjudanden eller SKU:er där SkuAttestationProperties eller OfferAttestationProperties enforceAttestation är True.                                                                             |
+|  transaction_reseller | Sträng | No | När en indirekt leverantör gör en beställning åt en indirekt återförsäljare fyller du i det här fältet med endast den indirekta återförsäljarens MPN-ID **(aldrig** DEN indirekta leverantörens ID). Detta säkerställer korrekt redovisning av incitament. |
+| additional_transaction_reseller | Sträng | No | När en indirekt leverantör gör en beställning åt en indirekt återförsäljare fyller du i det här fältet med MPN-ID:t för den ytterligare indirekta **återförsäljaren** (aldrig ID för den indirekta leverantören). Incitament gäller inte för dessa ytterligare återförsäljare. Endast högst 5 indirekta återförsäljare kan anges. Detta är endast tillämpliga partner som handlar i EU-/EFTA-länder. |
 
 I den här tabellen beskrivs [egenskaperna RenewsTo](cart-resources.md#renewsto) i begärandetexten.
 
@@ -334,11 +445,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden den ifyllda [kundvagnsresursen](cart-resources.md) i svarstexten.
+Om det lyckas returnerar den här metoden den [ifyllda kundvagnsresursen](cart-resources.md) i svarstexten.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 
@@ -439,7 +550,7 @@ Date: Thu, 15 Mar 2018 17:15:01 GMT
 ```
 
 
-## <a name="example-for-new-commerce-license-based-services"></a>Exempel för licensbaserade tjänster för ny handel
+## <a name="example-for-new-commerce-license-based-services"></a>Exempel för nya handelslicensbaserade tjänster
 
 > [!Note] 
 > Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365
@@ -467,11 +578,11 @@ Content-Length: 165
 
 ### <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden den ifyllda [kundvagnsresursen](cart-resources.md) i svarstexten.
+Om det lyckas returnerar den här metoden den [ifyllda kundvagnsresursen](cart-resources.md) i svarstexten.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
 ### <a name="response-example"></a>Exempel på svar
 
