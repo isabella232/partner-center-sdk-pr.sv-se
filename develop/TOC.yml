@@ -324,7 +324,7 @@
           href: create-azure-plan.md
         - name: Köp Azure-reservationer
           href: purchase-azure-reservations.md
-        - name: Köpa nya handelslicensbaserade tjänster
+        - name: Köpa licensbaserade tjänster för ny handel
           href: purchase-new-commerce-license-based.md
         - name: Köp en prenumeration på produkter från kommersiell marknadsplats
           href: create-subscription-azure-marketplace-products.md
@@ -362,6 +362,8 @@
           href: get-a-list-of-products.md
         - name: Hämta en lista över produkter (efter kund)
           href: get-a-list-of-products-by-customer.md
+        - name: Hämta en lista över kampanjer
+          href: get-promotions.md
         - name: 'Hämta en lista över SKU:er för en produkt (efter land)'
           href: get-a-list-of-skus-for-a-product.md
         - name: 'Hämta en lista över SKU:er för en produkt (efter kund)'
@@ -372,6 +374,8 @@
           href: get-a-list-of-trial-conversion-offers.md
         - name: Hämta en produkt efter ID
           href: get-a-product-by-id.md
+        - name: Hämta en befordran efter ID
+          href: get-promotion-by-id.md
         - name: Hämta en SKU efter ID
           href: get-a-sku-by-id.md
         - name: Hämta en prenumeration efter ID
@@ -412,6 +416,8 @@
           href: update-a-cart.md
         - name: Uppdatera automatisk förnyelse för en prenumeration på kommersiell marknadsplats
           href: update-autorenew-for-an-azure-marketplace-subscription.md
+        - name: Verifiera berättigande till befordran
+          href: verify-promotion-eligibility.md
     - name: Hantera utbetalning
       href: manage-payouts.md
     - name: Ge support
@@ -533,6 +539,8 @@
           href: profile-resources.md
         - name: Produkter
           href: product-resources.md
+        - name: Kampanjer
+          href: promotion-resources.md
         - name: Relationer
           href: relationships-resources.md
         - name: Självbetjäningsprincip
