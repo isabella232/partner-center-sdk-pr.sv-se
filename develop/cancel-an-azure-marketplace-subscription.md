@@ -4,12 +4,12 @@ description: Lär dig hur du använder Partner Center-API:er för att avbryta en
 ms.date: 02/23/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: cbfe17ba4880c303c3f3ba01db5955a557eb04e2
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+ms.openlocfilehash: ed01a26e22fd814b269b6c8d1769da97e8160619
+ms.sourcegitcommit: 3ee00d9fe9da6b9df0fb7027ae506e2abe722770
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123456145"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129417261"
 ---
 # <a name="cancel-a-commercial-marketplace-or-new-commerce-subscription-using-partner-center-apis"></a>Avbryta en kommersiell marknadsplats eller en ny handelsprenumeration med partnercenter-API:er
 
@@ -22,7 +22,7 @@ I den här artikeln beskrivs hur du kan använda Partnercenter-API:et för att a
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
 - Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
@@ -71,7 +71,7 @@ var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).S
 
 | Metod    | URI för förfrågan                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **PATCH** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
+| **PATCH** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -80,7 +80,7 @@ I den här tabellen visas frågeparametern som krävs för att pausa prenumerati
 | Namn                    | Typ     | Obligatorisk | Beskrivning                               |
 |-------------------------|----------|----------|-------------------------------------------|
 | **kund-klient-id**  | **guid** | Y        | Ett GUID som motsvarar kunden.     |
-| **id-for-subscription** | **guid** | Y        | Ett GUID som motsvarar prenumerationen. |
+| **prenumerations-id** | **guid** | Y        | Ett GUID som motsvarar prenumerationen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -93,7 +93,7 @@ En fullständig **prenumerationsresurs** krävs i begärandetexten. Kontrollera 
 ### <a name="request-example-for-a-commercial-marketplace-subscription"></a>Exempel på begäran för en prenumeration på den kommersiella marknadsplatsen
 
 ```http
-PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<id-for-subscription> HTTP/1.1
+PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<subscription-id> HTTP/1.1
 Authorization: Bearer <token>
 Accept: application/json
 MS-RequestId: ca7c39f7-1a80-43bc-90d8-ee7d1cad3831
@@ -136,11 +136,14 @@ Connection: Keep-Alive
 
 ### <a name="request-example-for-a-new-commerce-subscription"></a>Exempel på begäran för en ny handelsprenumeration
 
+Nya handelsprenumerationer kan avbrytas inom 72 timmar efter köp eller förnyelse. Efter 72 timmar kan prenumerationer inte längre avbrytas och API:et 200 000 000 000 000 000.
+
+
 > [!Note] 
 > Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365.
 
 ```http
-PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<id-for-subscription> HTTP/1.1
+PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<subscription-id> HTTP/1.1
 Authorization: Bearer <token>
 Accept: application/json
 MS-RequestId: ca7c39f7-1a80-43bc-90d8-ee7d1cad3831
@@ -216,7 +219,7 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden egenskaperna [för den](subscription-resources.md) borttagna prenumerationsresursen i svarstexten.
+Om begäran lyckas returnerar den [](subscription-resources.md) här metoden borttagna prenumerationsresursegenskaper i svarstexten.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 

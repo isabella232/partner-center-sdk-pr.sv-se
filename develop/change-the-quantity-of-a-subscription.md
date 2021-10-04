@@ -4,32 +4,32 @@ description: Lär dig hur du använder Partner Center-API:er för att ändra ant
 ms.date: 02/23/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b4bf40bf6ec2875b7091c34a2629331dfe240c95
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+ms.openlocfilehash: 85048dbbdc605f46c12c00484961fbb3068c4f16
+ms.sourcegitcommit: 3ee00d9fe9da6b9df0fb7027ae506e2abe722770
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123456850"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129417244"
 ---
 # <a name="change-the-quantity-of-licenses-in-a-customer-subscription"></a>Ändra antalet licenser i en kundprenumeration
 
-**Gäller för:** Partner Center | Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
 Uppdaterar en [prenumeration](subscription-resources.md) för att öka eller minska antalet licenser.
 
-På instrumentpanelen i Partnercenter kan du utföra den här åtgärden genom att först [välja en kund.](get-a-customer-by-name.md) Välj sedan den prenumeration som du vill byta namn på. Slutför genom att ändra värdet i fältet **Kvantitet** och sedan välja **Skicka.**
+I instrumentpanelen i Partnercenter kan den här åtgärden utföras genom att först [välja en kund.](get-a-customer-by-name.md) Välj sedan den prenumeration som du vill byta namn på. För att slutföra detta ändrar du värdet i **fältet** Kvantitet och väljer sedan **Skicka.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID.
 
 ## <a name="c"></a>C\#
 
-Om du vill ändra kvantiteten för en kunds prenumeration hämtar du [först prenumerationen](get-a-subscription-by-id.md)och ändrar sedan prenumerationens [**egenskap Quantity.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.quantity) När ändringen har gjorts använder du samlingen **IAggregatePartner.Customers** och anropar **metoden ById().** Anropa sedan egenskapen [**Prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Avsluta sedan med att anropa **metoden Patch().**
+Om du vill ändra kvantiteten för en kunds prenumeration hämtar du [först](get-a-subscription-by-id.md)prenumerationen och ändrar sedan prenumerationens [**egenskap Quantity.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.quantity) När ändringen har gjorts använder du samlingen **IAggregatePartner.Customers** och anropar **metoden ById().** Anropa sedan egenskapen [**Prenumerationer**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) följt av [**metoden ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Avsluta sedan med att anropa **metoden Patch().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -54,7 +54,7 @@ var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).S
 
 | Metod    | URI för förfrågan                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **PATCH** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{id-for-subscription} HTTP/1.1 |
+| **PATCH** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -63,7 +63,7 @@ I den här tabellen visas den frågeparameter som krävs för att ändra antalet
 | Namn                    | Typ     | Obligatorisk | Beskrivning                               |
 |-------------------------|----------|----------|-------------------------------------------|
 | **kund-klient-id**  | **guid** | Y        | Ett GUID som motsvarar kunden.     |
-| **id-for-subscription** | **guid** | Y        | Ett GUID som motsvarar prenumerationen. |
+| **prenumerations-id** | **guid** | Y        | Ett GUID som motsvarar prenumerationen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 
@@ -113,8 +113,10 @@ Connection: Keep-Alive
 > [!Note] 
 > Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365.
 
+Licenskvantiteten kan bara minskas inom 72 timmar efter inköp eller förnyelse av en prenumeration. Licenser som läggs till efter halva tiden kan också bara minskas inom 72 timmar, endast via kundsupport.
+
 ```http
-PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<id-for-subscription> HTTP/1.1
+PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<subscription-id> HTTP/1.1
 Authorization: Bearer <token>
 Accept: application/json
 MS-RequestId: ca7c39f7-1a80-43bc-90d8-ee7d1cad3831
@@ -189,17 +191,17 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>REST-svar
 
-Om det lyckas returnerar den här metoden **en HTTP-statuskod 200** och uppdaterade [prenumerationsresursegenskaper](subscription-resources.md)  i svarstexten.
+Om det lyckas returnerar den här metoden **statuskoden HTTP-status 200** och uppdaterade [prenumerationsresursegenskaper](subscription-resources.md)  i svarstexten.
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar returnerar en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa statuskod, feltyp och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
+Varje svar returnerar en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa statuskod, feltyp och ytterligare parametrar. En fullständig lista finns i [Felkoder.](error-codes.md)
 
-När korrigeringsåtgärden tar längre tid än förväntat skickar Partnercenter statuskoden **HTTP-status 202** och ett platshuvud som pekar på var prenumerationen ska hämtas. Du kan köra frågor mot prenumerationen regelbundet för att övervaka status- och kvantitetsändringar.
+När korrigeringsåtgärden tar längre tid än förväntat skickar Partnercenter statuskoden **HTTP-status 202** och ett platshuvud som pekar på var prenumerationen ska hämtas. Du kan köra frågor mot prenumerationen med jämna mellanrum för att övervaka status- och kvantitetsändringar.
 
 ### <a name="response-examples"></a>Svarsexempel
 
-#### <a name="response-example-1"></a>Svarsexempel 1
+#### <a name="response-example-1"></a>Exempel på svar #1
 
 Lyckad begäran med **statuskoden HTTP-status 200:**
 
@@ -254,7 +256,7 @@ Connection: Keep-Alive
 }
 ```
 
-#### <a name="response-example-2"></a>Svarsexempel 2
+#### <a name="response-example-2"></a>Exempel på svar #2
 
 Lyckad begäran med **statuskoden HTTP-status 202:**
 
@@ -270,12 +272,12 @@ Connection: Keep-Alive
 Location: /customers/<customer-tenant-id>/subscriptions/<subscriptionID>
 ```
 
-#### <a name="response-example-for-new-commerce-reduce-seat-counts"></a>Svarsexempel för reduce-antal platser för ny handel
+#### <a name="response-example-for-new-commerce-license-reduction"></a>Svarsexempel för minskning av ny handelslicens
 
 > [!Note] 
 > Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365.
 
-Svar vid försök att minska antalet för nya handelsprenumerationer.
+Exempel på API-svar vid försök att minska licensantalet för nya handelsprenumerationer utanför 72-timmars annulleringsfönstret.
 
 ```http
 {
