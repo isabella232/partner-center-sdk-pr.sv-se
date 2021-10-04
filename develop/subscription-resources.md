@@ -1,15 +1,17 @@
 ---
 title: Prenumerationsresurser
 description: Prenumerationsresurser kan ge ytterligare information om prenumerationer under hela livscykeln, till exempel support, återbetalningar och Azure-rättigheter.
-ms.date: 02/23/2021
+ms.date: 10/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c898f9673525cf0ba32619b7c7b16f91311a81c7
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+author: BrentSerbus
+ms.author: brserbus
+ms.openlocfilehash: e1b95165eeb335c5426df876cbade3190dd447ac
+ms.sourcegitcommit: 856c14b6b351697e3b3d33f1fe376adbb80517c5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123456816"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129378752"
 ---
 # <a name="subscription-resources"></a>Prenumerationsresurser
 
@@ -24,14 +26,14 @@ Med en prenumeration kan en kund använda en tjänst under en viss tidsperiod. A
 
 **Prenumerationsresursen** representerar livscykeln för en prenumeration och innehåller egenskaper som definierar tillstånden under prenumerationens livscykel.
 
-| Egenskap             | Typ                                                          | Description                                                                                                                                                                   |
+| Egenskap             | Typ                                                          | Beskrivning                                                                                                                                                                   |
 |----------------------|---------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id                   | sträng                                                        | Prenumerationsidentifieraren.                                                                                                                                                  |
 | offerId              | sträng                                                        | Erbjudandeidentifieraren.                                                                                                                                                         |
 | entitlementId        | sträng                                                        | Berättigandeidentifieraren (ett Azure-prenumerations-ID).                                                                                                                        |
 | offerName            | sträng                                                        | Erbjudandets namn.                                                                                                                                                               |
 | friendlyName         | sträng                                                        | Det egna namnet för prenumerationen som definierats av partnern för att undvika tvetydighet.                                                                                           |
-| quantity             | antal                                                        | Kvantitet. Om det till exempel gäller licensbaserad fakturering anges den här egenskapen till antalet licenser.                                                            |
+| quantity             | antal                                                        | Kvantitet. Om det till exempel gäller licensbaserad fakturering anges den här egenskapen till licensantalet.                                                            |
 | unitType             | sträng                                                        | Enheter som definierar kvantitet för prenumerationen.                                                                                                                             |
 | parentSubscriptionId | sträng                                                        | Hämtar eller anger identifieraren för den överordnade prenumerationen.                                                                                                                              |
 | creationDate         | sträng                                                        | Hämtar eller anger skapandedatumet i datum/tid-format.                                                                                                                          |
@@ -46,7 +48,7 @@ Med en prenumeration kan en kund använda en tjänst under en viss tidsperiod. A
 | isMicrosoftProduct   | boolean                                                       | Ett värde som anger om det här är en Microsoft-produkt.                                                                                                                       |
 | publisherName        | sträng                                                        | Utgivarens namn.                                                                                                                                                           |
 | åtgärder              | matris med strängar                                              | Hämtar eller anger de åtgärder som tillåts. Möjliga värden: "edit", "cancel"                                                                                                  |
-| partnerId            | sträng                                                        | MPN-ID:t för den registrerande återförsäljaren, som används i den indirekta partnermodellen.                                                                                                     |
+| partnerId            | sträng                                                        | MPN-ID:t för poståterförsäljaren, som används i den indirekta partnermodellen.                                                                                                     |
 | suspendReasons    | matris med strängar                                              | Skrivskyddade. Om prenumerationen har pausats anger du varför.                                                                                                                  |
 | contractType         | sträng                                                        | Skrivskyddade. Kontrakttypen: "subscription", "productKey" eller "redemptionCode".                                                                                           |
 | refundOptions        | matris med [RefundOption-resurser](#refundoption)   | Skrivskyddade. Den uppsättning återbetalningsalternativ som är tillgängliga för den här prenumerationen.                                                                                              |
@@ -55,13 +57,14 @@ Med en prenumeration kan en kund använda en tjänst under en viss tidsperiod. A
 | termDuration         | sträng                                                        | En ISO 8601-representation av termens varaktighet. De aktuella värdena som stöds **är P1M** (1 månad), **P1Y** (1 år) och **P3Y** (3 år).                                                        |
 | Attribut           | [ResourceAttributes](utility-resources.md#resourceattributes) | Metadataattributen som motsvarar prenumerationen.                                                                                                                    |
 | renewalTermDuration  | sträng                                                        | En ISO 8601-representation av termens varaktighet. De aktuella värdena som stöds **är P1M** (1 månad) och **P1Y** (1 år).                                                        |
-| ProductType  | [ItemType](product-resources.md#itemtype)                             | Skrivskyddade. Typen av produkt som prenumerationen är till för.     |
+| ProductType  | [ItemType](product-resources.md#itemtype)                             | Skrivskyddade. Den typ av produkt som prenumerationen är till för.     |
+| consumptionType  | matris med [överanvändningsresurser](subscription-resources.md#overage)   | Hämtar eller anger överage för en viss kund.     |
 
 ## <a name="subscriptionlinks"></a>SubscriptionLinks
 
 Resursen **SubscriptionLinks** beskriver samlingen med länkar som är kopplade till en prenumerationsresurs.
 
-| Egenskap           | Typ                               | Description                           |
+| Egenskap           | Typ                               | Beskrivning                           |
 |--------------------|------------------------------------|---------------------------------------|
 | offer              | [Länk](utility-resources.md#link) | Hämtar eller anger erbjudandet.               |
 | parentSubscription | [Länk](utility-resources.md#link) | Hämtar eller anger den överordnade prenumerationen. |
@@ -75,9 +78,9 @@ Resursen **SubscriptionLinks** beskriver samlingen med länkar som är kopplade 
 
 ## <a name="subscriptionprovisioningstatus"></a>SubscriptionProvisioningStatus
 
-Resursen **SubscriptionProvisioningStatus** innehåller information om etableringsstatus för en prenumeration.
+Resursen **SubscriptionProvisioningStatus** innehåller information om etableringsstatusen för en prenumeration.
 
-| Egenskap   | Typ                                                           | Description                                                          |
+| Egenskap   | Typ                                                           | Beskrivning                                                          |
 |------------|----------------------------------------------------------------|----------------------------------------------------------------------|
 | skuId      | sträng                                                         | En GUID-formaterad sträng som identifierar produktens SKU.             |
 | status     | sträng                                                         | Anger etableringsstatus: "lyckades", "väntar" eller "misslyckades". |
@@ -89,47 +92,62 @@ Resursen **SubscriptionProvisioningStatus** innehåller information om etablerin
 
 Resursen **SubscriptionRegistrationStatus** beskriver samlingen med länkar som är kopplade till en prenumerationsresurs.
 
-| Egenskap           | Typ                               | Description                                                                           |
+| Egenskap           | Typ                               | Beskrivning                                                                           |
 |--------------------|------------------------------------|---------------------------------------------------------------------------------------|
 | subscriptionId     | sträng                             | Prenumerationsidentifieraren.                                                          |
-| status             | sträng                             | Anger registreringsstatus: "registrerad", "registrerar" eller "notregistered".    |
+| status             | sträng                             | Anger registreringsstatus: "registered", "registering" eller "notregistered".    |
 
 ## <a name="supportcontact"></a>SupportContact
 
-Resursen **SupportContact** representerar en supportkontakt för en kunds prenumeration.
+**SupportContact-resursen** representerar en supportkontakt för en kunds prenumeration.
 
-| Egenskap        | Typ                                                           | Description                                                                     |
+| Egenskap        | Typ                                                           | Beskrivning                                                                     |
 |-----------------|----------------------------------------------------------------|---------------------------------------------------------------------------------|
 | supportTenantId | sträng                                                         | En GUID-formaterad sträng som anger supportkontaktens klientorganisations-ID. |
 | supportMpnId    | sträng                                                         | Kontaktens ID Microsoft Partner Network (MPN).                       |
 | name            | sträng                                                         | Namnet på supportkontakten.                                                |
-| Länkar           | [ResourceLinks](utility-resources.md#resourcelinks)            | Länkarna till supportkontakten.                                              |
+| Länkar           | [ResourceLinks](utility-resources.md#resourcelinks)            | Länkarna som är relaterade till supportkontakten.                                              |
 | Attribut      | [ResourceAttributes](utility-resources.md#resourceattributes)  | Metadataattributen. Innehåller "objectType": " SupportContact".              |
+
+## <a name="overage"></a>Överanvändning
+
+**Överförbrukningsresursen** representerar den överförbrukningsprenumeration som överförbrukning kan tilldelas, oavsett om den har tilldelats och tilldelats återförsäljaren.
+
+| Egenskap        | Typ               | Beskrivning                                                                     |
+|-----------------|--------------------|---------------------------------------------------------------------------------|
+| azureEntitlementId | sträng       | En GUID-formaterad sträng som anger prenumerations-ID för förbrukning. |
+| partnerId    | sträng            | Id Microsoft Partner Network (MPN) för återförsäljaren som är associerad med prenumerationen.        |
+| typ    | sträng       | Typen av övergrupp kan vara "PhoneServices"       |
+| Översatsning            | boolean      | Ett värde som anger om det här är en utvärderingsprenumeration.       |
+| Länkar           | [ResourceLinks](utility-resources.md#resourcelinks)            | Länkarna till supportkontakten.                          |
+| Attribut      | [ResourceAttributes](utility-resources.md#resourceattributes)  | Metadataattributen. Innehåller "objectType": "Overage".  |
+
+
 
 ## <a name="registersubscription"></a>Registreraprenumeration
 
 **RegisterSubscription-resursen** returnerar en länk som kan användas för att fråga registreringsstatus för en prenumeration. Registreringsstatusen returneras i svarstexten för en godkänd begäran om att registrera en Azure-prenumeration.
 
-| Egenskap                | Typ                               | Description                                                                           |
+| Egenskap                | Typ                               | Beskrivning                                                                           |
 |-------------------------|------------------------------------|---------------------------------------------------------------------------------------|
-| httpResponseMessage     | objekt                             | Returnerar HTTP-statuskod 202 "Accepted", med en platsrubrik som innehåller en länk för att fråga registreringsstatusen. Till exempel `"/customers/{customer-id}/subscriptions/{subscription-id}/registrationstatus"` |
+| httpResponseMessage     | objekt                             | Returnerar HTTP-statuskod 202 "Accepted", med ett platshuvud som innehåller en länk för att fråga registreringsstatusen. Till exempel `"/customers/{customer-id}/subscriptions/{subscription-id}/registrationstatus"` |
 
 ## <a name="refundoption"></a>RefundOption
 
 Resursen **RefundOption** representerar ett möjligt återbetalningsalternativ för prenumerationen.
 
-| Egenskap          | Typ | Description                                                                         |
+| Egenskap          | Typ | Beskrivning                                                                         |
 |-------------------|--------|-------------------------------------------------------------------------------------|
-| typ | sträng | Typ av återbetalning. De värden som stöds är "Partiell" och "Fullständig" |
-| expiresAfter      | sträng i UTC-datum/tid-format | Tidsstämpeln när det här alternativet upphör att gälla. Om värdet är null innebär det att det inte har någon förfallotid. |
+| typ | sträng | Typ av återbetalning. Värdena som stöds är "Partiell" och "Fullständig" |
+| expiresAfter      | sträng i UTC-datum/tid-format | Tidsstämpeln när det här alternativet upphör att gälla. Om det är null innebär det att det inte har någon förfallotid. |
 
 ## <a name="azureentitlement"></a>AzureEntitlement
 
 Resursen **AzureEntitlement** representerar Azure-rättigheterna för prenumerationen.
 
-| Egenskap          | Typ | Description                                                                         |
+| Egenskap          | Typ | Beskrivning                                                                         |
 |-------------------|--------|-------------------------------------------------------------------------------------|
 | id | sträng | Berättigandeidentifieraren |
 | friendlyName      | sträng | Det egna namnet på rättigheten. |
 | status | sträng | Status för rättigheten. |
-| subscriptionId | sträng | Prenumerations-ID:t som rättigheten tillhör. |
+| subscriptionId | sträng | Prenumerationsidentifieraren som rättigheten tillhör. |
