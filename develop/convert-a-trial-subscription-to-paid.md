@@ -4,22 +4,25 @@ description: Lär dig hur du använder Partner Center-API:er för att konvertera
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a805264315e35c7576248630396da1e34a66cc55ac87dd07452f1615edbc0af4
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 7cee9b9afddb12137bb66b57250a9487bd4902f5
+ms.sourcegitcommit: f112efee7344d739bdbf385adba0c554ea2a63e3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115991862"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129439335"
 ---
 # <a name="convert-a-trial-subscription-to-paid-using-partner-center-apis"></a>Konvertera en utvärderingsprenumeration till betald med partnercenter-API:er
+
+> [!NOTE]
+> De här stegen gäller inte för nya handelsprodukter. Se **Övergångsdokumentation för en ny handelsprenumeration** för konvertering av nya handelsversioner till betalda prenumerationer
 
 Du kan konvertera en utvärderingsprenumeration till betald.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app- och användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder endast autentisering med app+användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
 
 - Ett prenumerations-ID för en aktiv utvärderingsprenumeration.
 
@@ -29,7 +32,7 @@ Du kan konvertera en utvärderingsprenumeration till betald.
 
 Om du vill konvertera en utvärderingsprenumeration till en betald prenumeration måste du först skaffa en samling med tillgängliga utvärderingskonverteringar. Sedan måste du välja det konverteringserbjudande som du vill köpa.
 
-Konverteringserbjudandena anger en kvantitet som har samma antal licenser som utvärderingsprenumerationen som standard. Du kan ändra den här kvantiteten genom [**att**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion.quantity) ange egenskapen Quantity till det antal licenser som du vill köpa.
+Konverteringserbjudandena anger en kvantitet som har samma antal licenser som utvärderingsprenumerationen som standard. Du kan ändra den här kvantiteten genom [**att ange**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion.quantity) egenskapen Quantity till det antal licenser som du vill köpa.
 
 > [!NOTE]
 > Oavsett antalet köpta licenser återanvänds prenumerations-ID:t för utvärderingsversionen för de köpta licenserna. Därför försvinner den utvärderingsversion som används och ersätts av köpet.
@@ -115,7 +118,7 @@ else
 
 | Metod   | URI för förfrågan                                                                                                                 |
 |----------|-----------------------------------------------------------------------------------------------------------------------------|
-| **Inlägg** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscriptions/{subscription-id}/conversions HTTP/1.1 |
+| **INLÄGG** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-id}/subscriptions/{subscription-id}/conversions HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>URI-parameter
 
@@ -123,8 +126,8 @@ Använd följande sökvägsparametrar för att identifiera kunden och utvärderi
 
 | Namn            | Typ   | Obligatorisk | Beskrivning                                                     |
 |-----------------|--------|----------|-----------------------------------------------------------------|
-| kund-id     | sträng | Yes      | En GUID-formaterad sträng som identifierar kunden.           |
-| prenumerations-id | sträng | Yes      | En GUID-formaterad sträng som identifierar utvärderingsprenumerationen. |
+| kund-id     | sträng | Ja      | En GUID-formaterad sträng som identifierar kunden.           |
+| prenumerations-id | sträng | Ja      | En GUID-formaterad sträng som identifierar utvärderingsprenumerationen. |
 
 ### <a name="request-headers"></a>Begärandehuvuden
 

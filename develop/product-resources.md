@@ -4,12 +4,12 @@ description: Resurser som representerar inköpbara varor eller tjänster. Inneh�
 ms.date: 02/16/2016
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 3790d8f5ef154c637dfd3f3d014322d314757f26
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+ms.openlocfilehash: 20e2d7bcaf1041f186f0723d7ff453bebbe46dd2
+ms.sourcegitcommit: f112efee7344d739bdbf385adba0c554ea2a63e3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123456077"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129439369"
 ---
 # <a name="products-resources"></a>Produktresurser
 
@@ -41,7 +41,7 @@ Representerar typen av en produkt.
 
 ## <a name="productlinks"></a>ProductLinks
 
-Innehåller en lista över länkar för en [Produkt](#product).
+Innehåller en lista med länkar för en [produkt](#product).
 
 | Egenskap        | Typ                                                          | Description                                          |
 |-----------------|---------------------------------------------------------------|------------------------------------------------------|
@@ -54,20 +54,21 @@ Representerar en köpbar lagerhållningsenhet (SKU) under en produkt. Dessa repr
 
 | Egenskap               | Typ             | Description                                                                           |
 |------------------------|------------------|---------------------------------------------------------------------------------------|
-| id                     | sträng           | ID:t för den här SKU:n. Det här ID:t är endast unikt inom kontexten för dess överordnade produkt. |
+| id                     | sträng           | ID:t för denna SKU. Det här ID:t är endast unikt inom kontexten för dess överordnade produkt. |
 | title                  | sträng           | Rubriken på SKU:n.                                                                 |
 | beskrivning            | sträng           | Beskrivning av SKU:n.                                                           |
-| productId              | sträng           | ID för den överordnade [produkten som](#product) innehåller denna SKU.                      |
+| productId              | sträng           | ID:t för den överordnade [produkt](#product) som innehåller denna SKU.                      |
 | minimumQuantity        | int              | Den minsta kvantitet som tillåts för inköp.                                            |
-| maximumQuantity        | int              | Den maximala kvantitet som tillåts för inköp.                                            |
-| isTrial                | boolesk             | Anger om den här SKU:n är ett utvärderingsobjekt.                                           |
-| supportedBillingCycles | matris med strängar | Listan över faktureringscykler som stöds för den här SKU:n. Värden som stöds är de medlemsnamn som finns [i BillingCycleType](#billingcycletype). |
+| maximumQuantity        | int              | Maximalt antal som tillåts för inköp.                                            |
+| isTrial                | boolesk             | Anger om denna SKU är ett utvärderingsobjekt.                                           |
+| supportedBillingCycles | matris med strängar | Listan över faktureringscykler som stöds för denna SKU. Värden som stöds är de medlemsnamn som finns [i BillingCycleType](#billingcycletype). |
 | purchasePrerequisites  | matris med strängar | Listan över nödvändiga steg eller åtgärder som krävs innan du köper det här objektet. Värdena som stöds är:<br/>  "InventoryCheck" – Anger att objektets inventering ska utvärderas innan du försöker köpa det här objektet.<br/> "AzureSubscriptionRegistration" – Anger att en Azure-prenumeration krävs och måste registreras innan du försöker köpa det här objektet.  |
-| inventoryVariables     | matris med strängar | Listan över variabler som behövs för att utföra en inventeringskontroll på det här objektet. Värdena som stöds är:<br/> "CustomerId" – ID:t för kunden som köpet gäller.<br/> "AzureSubscriptionId" – ID:t för den Azure-prenumeration som ska användas för ett Azure-reservationsköp.</br> "ArmRegionName" – Den region som inventeringen ska verifieras för. Det här värdet måste matcha "ArmRegionName" från SKU:ns DynamicAttributes. |
-| provisioningVariables  | matris med strängar | Listan över variabler som måste anges i etableringskontexten för ett [kundvagnsradsobjekt när du köper](cart-resources.md#cartlineitem) det här objektet. Värdena som stöds är:<br/> Omfång – Omfånget för ett Azure-reservationsköp: "Enkel", "Delad".<br/> "SubscriptionId" – ID:t för den Azure-prenumeration som ska användas för ett Azure-reservationsköp.<br/> "Duration" – Varaktigheten för Azure-reservationen: "1Year", "3Year".  |
-| dynamicAttributes      | nyckel/värde-par  | Ordlistan med dynamiska egenskaper som gäller för det här objektet. Egenskaperna i den här ordlistan är dynamiska och kan ändras utan föregående meddelande. Du bör inte skapa starka beroenden på specifika nycklar som finns i värdet för den här egenskapen.    |
+| inventoryVariables     | matris med strängar | Listan över variabler som behövs för att utföra en inventeringskontroll för det här objektet. De värden som stöds är:<br/> "CustomerId" – ID:t för kunden som köpet gäller.<br/> "AzureSubscriptionId" – ID:t för den Azure-prenumeration som ska användas för ett Azure-reservationsköp.</br> "ArmRegionName" – Den region som inventeringen ska verifieras för. Det här värdet måste matcha "ArmRegionName" från SKU:ns DynamicAttributes. |
+| provisioningVariables  | matris med strängar | Listan över variabler som måste anges i etableringskontexten för ett kundvagnsradsobjekt [när du köper](cart-resources.md#cartlineitem) det här objektet. De värden som stöds är:<br/> Omfång – Omfånget för ett Azure-reservationsköp: "Enkel", "Delad".<br/> "SubscriptionId" – ID:t för den Azure-prenumeration som ska användas för ett Azure-reservationsköp.<br/> "Varaktighet" – Varaktigheten för Azure-reservationen: "1Year", "3Year".  |
+| dynamicAttributes      | nyckel/värde-par  | Ordlistan med dynamiska egenskaper som gäller för det här objektet. Egenskaperna i den här ordlistan är dynamiska och kan ändras utan föregående meddelande. Du bör inte skapa starka beroenden på vissa nycklar som finns i värdet för den här egenskapen.    |
 | Länkar                  | [ResourceLinks](utility-resources.md#resourcelinks) | Resurslänkarna i SKU:n.                   |
 | AttestationProperties                  | [AttestationProperties](#attestationproperties) | Attestationsegenskaperna för en SKU.                   |
+| consumptionType                  | sträng | Är endast tillgängligt om SKU:n stöder förbrukning, till exempel *överförbrukning*.               |
 
 ## <a name="dynamic-sku-attributes"></a>Dynamiska SKU-attribut
 
@@ -82,7 +83,7 @@ Viktiga egenskaper som är relevanta för nya handelslicensbaserade produkter oc
 |isAddon|boolean|Beskriver om SKU:n är ett tillägg|
 |prerequisiteSkus|matris med strängar|Beskriver produkter och SKU:er som tillägget kan fungera med|
 |upgradeTargetOffers|matris med strängar|En lista över produkter och SKU:er som objektet kan uppgradera till|
-|converstionInstructions|lista över converstionInstructions|Lista över instruktioner som gäller konvergerade åtgärder|
+|converstionInstructions|lista över converstionInstructions|Lista över instruktioner för konvergerade åtgärder|
 
 ## <a name="availability"></a>Tillgänglighet
 
@@ -90,10 +91,10 @@ Representerar en konfiguration där en SKU är tillgänglig för inköp (till ex
 
 | Egenskap        | Typ                        | Description                                                                         |
 |-----------------|-----------------------------------------------------|-------------------------------------------------------------------------------------|
-| id              | sträng                        | ID för den här tillgängligheten. Det här ID:t är endast unikt inom kontexten för dess [överordnade produkt](#product) och [SKU.](#sku) **Obs!** Detta ID kan ändras med tiden. Du bör bara förlita dig på det här värdet inom ett kort tidsintervall när du har hämtat det.  |
+| id              | sträng                        | ID för den här tillgängligheten. Detta ID är endast unikt inom kontexten för dess överordnade [produkt och](#product) [SKU.](#sku) **Obs!** Detta ID kan ändras med tiden. Du bör bara förlita dig på det här värdet inom ett kort tidsintervall när du har hämtat det.  |
 | productId       | sträng                        | ID:t för [den produkt](#product) som innehåller den här tillgängligheten.           |
 | skuId           | sträng                        | ID:t för [den SKU som](#sku) innehåller den här tillgängligheten.                   |
-| catalogItemId   | sträng                        | Den unika identifieraren för det här objektet i katalogen. Detta är det ID som måste fyllas i i egenskaperna [OrderLineItem.OfferId](order-resources.md#orderlineitem) eller [CartLineItem.CatalogItemId](cart-resources.md#cartlineitem) när du köper den överordnade [SKU:n](#sku). **Obs!** Detta ID kan ändras med tiden. Du bör bara förlita dig på det här värdet inom en kort tid efter att du har hämtat det. Den bör endast nås och användas vid tidpunkten för köpet.  |
+| catalogItemId   | sträng                        | Den unika identifieraren för det här objektet i katalogen. Detta är det ID som måste fyllas i i egenskaperna [OrderLineItem.OfferId](order-resources.md#orderlineitem) eller [CartLineItem.CatalogItemId](cart-resources.md#cartlineitem) när du köper den överordnade [SKU:n](#sku). **Obs!** Detta ID kan ändras med tiden. Du bör bara förlita dig på det här värdet inom en kort tid efter att du har hämtat det. Den bör endast användas vid tidpunkten för köpet.  |
 | defaultCurrency | sträng                        | Standardvalutan som stöds för den här tillgängligheten.                               |
 | segment         | sträng                        | Branschsegmentet för den här tillgängligheten. Värden som stöds är: Commercial, Education, Government, NonProfit. |
 | land         | sträng                                              | Land eller region (i ISO-landskodformat) där den här tillgängligheten gäller. |
@@ -101,8 +102,8 @@ Representerar en konfiguration där en SKU är tillgänglig för inköp (till ex
 | isRenewable     | boolesk                                                | Anger om den här tillgängligheten kan förnyas. |
 | RenewalInstructions     | RenewalInstruction                                              | Representerar förnyelseinstruktioner för en viss tillgänglighet. |
 | produkt      | [Produkt](#product)               | Den produkt som tillgängligheten motsvarar. |
-| sku          | [Sku](#sku)            | Den SKU som tillgängligheten motsvarar. |
-| Villkor           | matris med [termresurser](#term)  | Den samling villkor som gäller för den här tillgängligheten. |
+| sku          | [Sku](#sku)            | Den SKU som den här tillgängligheten motsvarar. |
+| Villkor           | matris med [termresurser](#term)  | En samling villkor som gäller för den här tillgängligheten. |
 | Länkar           | [ResourceLinks](utility-resources.md#resourcelinks) | Resurslänkarna som finns i tillgängligheten. |
 
 ## <a name="renewal-instruction"></a>Förnyelseinstruktion
@@ -115,7 +116,7 @@ Representerar förnyelseinstruktioner för en viss tillgänglighet.
 
 | Egenskap        | Typ                        | Description                                                                         |
 |-----------------|-----------------------------------------------------|-------------------------------------------------------------|
-| applicableTermIds       | matris med strängar                       | Term-ID:er som anvisningarna gäller för |
+| applicableTermIds       | matris med strängar                       | Term-ID:er som instruktionerna gäller för |
 | RenewalOptions       | matris med RenewalOption                     | Alternativ som definierar förnyelser |
 
 ## <a name="renewaloption"></a>RenewalOption    
@@ -133,12 +134,12 @@ Representerar förnyelseinstruktioner för en viss tillgänglighet.
 
 ## <a name="term"></a>Period
 
-Representerar en period som tillgängligheten kan köpas för.
+Representerar en term som tillgängligheten kan köpas för.
 
 | Egenskap              | Typ                                        | Description                                                                         |
 |-----------------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
 | varaktighet              | sträng                                      | En ISO 8601-representation av termens varaktighet. De aktuella värdena som stöds är P1M (1 månad), P1Y (1 år) och P3Y (3 år). |
-| beskrivning           | sträng                                      | Beskrivningen av termen.           |
+| beskrivning           | sträng                                      | Beskrivning av termen.           |
 
 ## <a name="inventorycheckrequest"></a>InventoryCheckRequest
 
@@ -146,9 +147,9 @@ Representerar en begäran om att kontrollera inventeringen mot vissa katalogobje
 
 | Egenskap         | Typ                                                | Description                                                                                 |
 |------------------|-----------------------------------------------------|---------------------------------------------------------------------------------------------|
-| targetItems      | matris med [InventoryItem](#inventoryitem)            | Listan över katalogobjekt som inventeringskontrollen kommer att utvärdera.                           |
-| inventoryContext | nyckel/värde-par                                     | Ordlistan med kontextvärden som behövs för att utföra inventeringskontrollerna. Varje [SKU](#sku) för produkterna definierar vilka värden (om det finns några) som krävs för att utföra den här åtgärden.  |
-| Länkar            | [ResourceLinks](utility-resources.md#resourcelinks) | Resurslänkarna i begäran om inventeringskontroll.                            |
+| targetItems      | matris med [InventoryItem](#inventoryitem)            | Listan över katalogobjekt som inventeringskontrollen ska utvärdera.                           |
+| inventoryContext | nyckel/värde-par                                     | Ordlistan med kontextvärden som behövs för att utföra inventeringskontrollerna. Varje [SKU](#sku) för produkterna definierar vilka värden (om några) som behövs för att utföra den här åtgärden.  |
+| Länkar            | [ResourceLinks](utility-resources.md#resourcelinks) | Resurslänkarna i inventeringskontrollens begäran.                            |
 
 ## <a name="inventoryitem"></a>InventoryItem
 
@@ -159,7 +160,7 @@ Representerar ett enskilt objekt i en inventeringskontrollåtgärd. Den här res
 | productId        | sträng                                                            | (Krävs) ID för [produkten](#product).                            |
 | skuId            | sträng                                                            | ID för [SKU:n](#sku). När du använder den här resursen som indata för en inventeringsbegäran är det här värdet valfritt. Om det här värdet inte anges betraktas alla SKU:er under produkten som målobjekt i inventeringskontrollen.      |
 | isRestricted     | boolesk                                                              | Anger om det här objektet hittades för ett begränsat lager.            |
-| Begränsningar     | matris med [InventoryRestriction](#inventoryrestriction)            | Information om eventuella begränsningar som hittas för det här objektet. Den här egenskapen fylls bara i **om isRestricted** = "true". |
+| Begränsningar     | matris med [InventoryRestriction](#inventoryrestriction)            | Information om eventuella begränsningar som hittas för det här objektet. Den här egenskapen fylls bara i om **isRestricted** = "true". |
 
 ## <a name="inventoryrestriction"></a>InventoryRestriction
 
@@ -189,5 +190,5 @@ Representerar en attestationstyp och om det krävs för inköp.
 
 | Egenskap              | Typ                                        | Description                                                                         |
 |-----------------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-| attestationType              | sträng                                      | Anger attestationstyp. För Windows 365 är värdet Windows365. Windows 365-attestationstexten är "Jag förstår att varje person som använder Windows 365 Business med Windows Hybrid Benefit också måste ha en giltig kopia av Windows 10/11 Pro installerad på sin primära arbetsenhet." |
+| attestationType              | sträng                                      | Anger attestationstyp. För Windows 365 är värdet Windows365. Windows 365-attereringstexten är "Jag förstår att varje person som använder Windows 365 Business med Windows Hybrid Benefit också måste ha en giltig kopia av Windows 10/11 Pro installerad på sin primära arbetsenhet." |
 | enforceAttestation           | boolean                                      | Anger om attestation krävs för inköp.           |
