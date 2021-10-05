@@ -414,13 +414,19 @@
           href: transition-a-subscription.md
         - name: Övergå från en ny handelsprenumeration
           href: transition-a-new-commerce-subscription.md
+        - name: Verifiera en prenumeration för migrering
+          href: validate-subscription-for-migration.md
+        - name: Skapa en ny handelsmigrering
+          href: create-migration.md
+        - name: Skaffa en ny handelsmigrering
+          href: get-new-commerce-migration.md
         - name: Uppdatera en kundvagn
           href: update-a-cart.md
         - name: Uppdatera automatisk förnyelse för en prenumeration på kommersiell marknadsplats
           href: update-autorenew-for-an-azure-marketplace-subscription.md
         - name: Uppdatera överprenumeration
           href: update-subscription-overage.md
-        - name: Verifiera behörighet för befordran
+        - name: Verifiera berättigande till befordran
           href: verify-promotion-eligibility.md
     - name: Hantera utbetalning
       href: manage-payouts.md
