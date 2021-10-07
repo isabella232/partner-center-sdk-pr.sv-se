@@ -4,24 +4,24 @@ description: Så här kontrollerar du om en prenumeration är berättigad till m
 ms.date: 10/04/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c8d2ae596901a45a794230c79cfb54815963e300
-ms.sourcegitcommit: 856b0baa4824960e13ee9672817a2d2e713fdf43
+ms.openlocfilehash: d085093b8adc3750d1b8d95963fc9d74c4209e00
+ms.sourcegitcommit: 53980dc43fb2277878bf61a15a86013b8b1c2574
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129528728"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129610004"
 ---
 # <a name="validate-a-subscription-for-migration"></a>Verifiera en prenumeration för migrering
 
-**Gäller för**: Partner Center-| Partnercenter som drivs av 21Vianet | Partnercenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
+**Gäller för:** Partner Center | Partnercenter som drivs av 21Vianet | PartnerCenter för Microsoft Cloud Germany | Partnercenter för Microsoft Cloud for US Government
 
-Så här validerar du en prenumeration för migrering till New Commerce Experience
+Så här validerar du en prenumeration för migrering till Ny handelsupplevelse
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Autentiseringsuppgifter enligt beskrivningen i [Autentisering i Partnercenter.](partner-center-authentication.md) Det här scenariot stöder autentisering med både fristående app- och app-+användarautentiseringsuppgifter.
+- Autentiseringsuppgifter enligt beskrivningen i [Partner Center-autentisering](partner-center-authentication.md). Det här scenariot stöder autentisering med både fristående app- och app- och användarautentiseringsuppgifter.
 
-- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder.** Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID:t ( `customer-tenant-id` ).
+- Ett kund-ID ( `customer-tenant-id` ). Om du inte känner till kundens ID kan du leta upp det på instrumentpanelen i [Partnercenter.](https://partner.microsoft.com/dashboard) Välj **CSP** på Menyn i Partnercenter följt av **Kunder**. Välj kunden i kundlistan och välj sedan **Konto.** På kundens kontosida letar du upp **Microsoft-ID:t** i **avsnittet Kundkontoinformation.** Microsoft-ID:t är samma som kund-ID :t ( `customer-tenant-id` ).
 
 - Ett aktuellt prenumerations-ID
 
@@ -51,7 +51,7 @@ I den här tabellen beskrivs [prenumerationsegenskaperna](subscription-resources
 
 | Egenskap              | Typ             | Obligatorisk        | Beskrivning |
 |-----------------------|------------------|-----------------|-----------------------------------------------------------------------------------------------------------|
-| currentSubscriptionId | sträng           | Yes             | Ett prenumerations-ID som anger vilken prenumeration som kräver validering för migrering.            |
+| currentSubscriptionId | sträng           | Yes             | En prenumerations-ID som anger vilken prenumeration som kräver validering för migrering.            |
 
 ### <a name="request-example"></a>Exempel på begäran
 
@@ -65,7 +65,7 @@ Om det lyckas returnerar den här metoden ett "isEligible"-booleskt värde i sva
 
 ### <a name="response-success-and-error-codes"></a>Lyckade svar och felkoder
 
-Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
+Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat samt ytterligare felsökningsinformation. Använd ett nätverksspårningsverktyg för att läsa den här koden, feltypen och ytterligare parametrar. En fullständig lista finns i [Partner Center REST-felkoder.](error-codes.md)
 
 ### <a name="response-examples"></a>Svarsexempel
 
@@ -81,11 +81,13 @@ Varje svar levereras med en HTTP-statuskod som anger lyckad eller misslyckad sam
             }
         ]
     }
+```
 
+```http
 2. 
     {
         "currentSubscriptionId": "9beb6319-6889-4d28-a155-68ca9c783842",
         "isEligible": true,
-    "catalogItemId": "CFQ7TTC0LF8S:0002:CFQ7TTC0KSVV",
+        "catalogItemId": "CFQ7TTC0LF8S:0002:CFQ7TTC0KSVV"
     }
 ```

@@ -4,12 +4,12 @@ description: Så här skapar du en ny handelsmigrering
 ms.date: 10/04/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 659cc036b37ce85283581d2f3e28493814dad5f7
-ms.sourcegitcommit: 856b0baa4824960e13ee9672817a2d2e713fdf43
+ms.openlocfilehash: 558a0bac9a8f690cf2ca5d9a0b365ec259d00fa5
+ms.sourcegitcommit: 53980dc43fb2277878bf61a15a86013b8b1c2574
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129528732"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129609953"
 ---
 #  <a name="create-a-new-commerce-migration"></a>Skapa en ny handelsmigrering
 
@@ -56,7 +56,9 @@ I den här tabellen beskrivs [prenumerationsegenskaperna](subscription-resources
 ### <a name="request-example"></a>Exempel på begäran
 
 ```http
-"currentSubscriptionId" : "9beb6319-6889-4d28-a155-68ca9c783842"
+{
+    "currentSubscriptionId" : "9beb6319-6889-4d28-a155-68ca9c783842"
+}
 ```
 
 ## <a name="rest-response"></a>REST-svar
@@ -75,7 +77,6 @@ Varje svar levereras med en HTTP-statuskod som anger lyckat eller misslyckat sam
     "currentSubscriptionId": "9beb6319-6889-4d28-a155-68ca9c783842",
     "status": "Processing",
     "customerTenantId": "a836f6d8-1b17-44af-aaf1-1e5511c5d4e1",
-    "partnerTenantId": "7828d7ba-f17b-45c3-a1ce-8b6c3e3a26c0",
     "catalogItemId": "CFQ7TTC0LF8S:0002:CFQ7TTC0KSVV",
     "subscriptionEndDate": "2022-09-06T00:00:00Z",
     "quantity": 1,
