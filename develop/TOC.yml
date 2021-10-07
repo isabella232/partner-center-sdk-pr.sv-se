@@ -445,6 +445,15 @@
           href: update-a-service-request.md
         - name: Uppdatera en prenumerations supportkontakt
           href: update-a-subscription-s-support-contact.md
+    - name: Visa marginaler
+      href: view-margins.md
+      items:
+        - name: Hämta marginaler
+          href: get-margins.md
+        - name: Ladda ned marginaler
+          href: download-margins.md
+        - name: Marginalresurser
+          href: margin-resources.md
 - name: Sandbox-miljö för integrering
   items:
     - name: Sandbox-funktioner för återförsäljarrelation
