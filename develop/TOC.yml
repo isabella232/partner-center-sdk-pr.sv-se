@@ -424,6 +424,8 @@
           href: update-a-cart.md
         - name: Uppdatera automatisk förnyelse för en prenumeration på kommersiell marknadsplats
           href: update-autorenew-for-an-azure-marketplace-subscription.md
+        - name: Uppdatera faktureringsfrekvensen för en programvaruprenumeration
+          href: manage-billing-frequency-software-subs.md
         - name: Uppdatera överprenumeration
           href: update-subscription-overage.md
         - name: Verifiera berättigande till befordran

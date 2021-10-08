@@ -1,26 +1,26 @@
 ---
-title: Uppdatera automatiskt för en kommersiell marknadsplats och nya handelsprenumerationer
+title: Uppdatera automatisk uppdatering för kommersiella marknadsplatser och programvaruprenumerationer
 description: Uppdatera egenskapen autorenew för en prenumerationsresurs som matchar kunden och prenumerations-ID:t.
 ms.date: 02/23/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6d533a41c58b05ec449b76394466dd4608abc65a
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+ms.openlocfilehash: 89ccedaec2e19e32046225938a6b847c5f8787f3
+ms.sourcegitcommit: 36e88224d0957b7ea6298789c75cdd18fc0f3685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123455735"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129663333"
 ---
-# <a name="update-autorenew-for-a-commercial-marketplace-subscription-or-new-commerce-subscriptions"></a>Uppdatera automatiskt för en prenumeration på den kommersiella marknadsplatsen eller nya handelsprenumerationer
+# <a name="update-autorenew-for-a-commercial-marketplace-subscription-or-new-commerce-subscriptions-and-software-subscriptions"></a>Uppdatera automatiskt för en prenumeration på den kommersiella marknadsplatsen eller nya handelsprenumerationer och programvaruprenumerationer
 
 **Gäller för:** Partnercenter
 
 > [!Note] 
 > Nya handelsändringar är för närvarande endast tillgängliga för partner som ingår i den tekniska förhandsversionen av den nya handelsupplevelsen M365/D365.
 
-Uppdatera egenskapen autorenew för en kommersiell marknadsplats eller en ny prenumerationsresurs [för](subscription-resources.md) handel som matchar kund- och prenumerations-ID:t.
+Uppdatera den automatiska egenskapen för en kommersiell marknadsplats, [](subscription-resources.md) ny handel eller programvaruprenumeration som matchar kundens och prenumerations-ID:t.
 
-På instrumentpanelen i Partnercenter utförs den här åtgärden genom att först [välja en kund](get-a-customer-by-name.md). Välj sedan den prenumeration som du vill uppdatera. Växla slutligen alternativet **Förnya automatiskt och** välj sedan **Skicka.**
+I instrumentpanelen i Partnercenter utförs den här åtgärden genom att först [välja en kund](get-a-customer-by-name.md). Välj sedan den prenumeration som du vill uppdatera. Växla slutligen alternativet **Förnya automatiskt och** välj sedan **Skicka.**
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -69,7 +69,7 @@ Mer information finns i [Partner Center REST-huvuden.](headers.md)
 
 ### <a name="request-body"></a>Begärandetext
 
-En fullständig **prenumerationsresurs för** den kommersiella marknadsplatsen krävs i begärandetexten. Kontrollera att egenskapen **AutoRenewEnabled** har uppdaterats.
+En fullständig **prenumerationsresurs** krävs i begärandetexten. Kontrollera att egenskapen **AutoRenewEnabled** har uppdaterats.
 
 ### <a name="request-example-for-commercial-marketplace-subscription"></a>Exempel på begäran för commercial marketplace-prenumeration
 
